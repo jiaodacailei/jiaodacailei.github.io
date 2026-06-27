@@ -19,17 +19,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!topTags.length) return;
 
-  // build filter bar
+  // build filter bar (collapsed by default)
   var bar = document.createElement('div');
-  bar.className = 'tag-filter';
+  bar.className = 'tag-filter collapsed';
   var allBtn = '<button class="tag-btn active" data-tag="all">全部 (' + items.length + ')</button>';
   var tagBtns = topTags.map(function (t) {
     return '<button class="tag-btn" data-tag="' + t + '">' + t + ' (' + tagCount[t] + ')</button>';
   }).join('');
   bar.innerHTML = allBtn + tagBtns;
 
+  // expand / collapse toggle button
+  var toggle = document.createElement('button');
+  toggle.className = 'tag-toggle-btn';
+  toggle.textContent = '展开 ▾';
+  toggle.addEventListener('click', function () {
+    var isExpanded = bar.classList.toggle('expanded');
+    bar.classList.toggle('collapsed', !isExpanded);
+    toggle.textContent = isExpanded ? '收起 ▴' : '展开 ▾';
+  });
+
   var list = document.querySelector('.post-list');
-  if (list) list.parentNode.insertBefore(bar, list);
+  if (list) {
+    list.parentNode.insertBefore(bar, list);
+    list.parentNode.insertBefore(toggle, list);
+  }
 
   // filter on click
   bar.addEventListener('click', function (e) {

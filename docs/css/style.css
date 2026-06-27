@@ -878,11 +878,16 @@ footer {
 .tag-filter {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 8px;
-  padding: 0 24px 28px;
+  padding: 0 24px 4px;
   max-width: 860px;
   margin: 0 auto;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
 }
+.tag-filter.collapsed { max-height: 44px; }
+.tag-filter.expanded  { max-height: 600px; }
 .tag-btn {
   padding: 5px 14px;
   border: 1.5px solid #e2e8f0;
@@ -897,6 +902,20 @@ footer {
 }
 .tag-btn:hover { border-color: #6366f1; color: #6366f1; }
 .tag-btn.active { background: #6366f1; border-color: #6366f1; color: #fff; }
+.tag-toggle-btn {
+  display: block;
+  margin: 4px auto 20px;
+  padding: 3px 18px;
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tag-toggle-btn:hover { color: #6366f1; border-color: #6366f1; }
 
 /* ── RELATED POSTS ── */
 .related-posts {
