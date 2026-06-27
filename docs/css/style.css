@@ -808,6 +808,66 @@ footer {
   font-style: italic;
 }
 
+/* ── TAG FILTER ── */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 24px 28px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.tag-btn {
+  padding: 5px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  background: #fff;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.tag-btn:hover { border-color: #6366f1; color: #6366f1; }
+.tag-btn.active { background: #6366f1; border-color: #6366f1; color: #fff; }
+
+/* ── RELATED POSTS ── */
+.related-posts {
+  max-width: 760px;
+  margin: 48px auto 0;
+  padding: 28px 32px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+.related-posts h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.related-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.related-posts li { display: flex; align-items: flex-start; gap: 8px; }
+.related-posts li::before { content: '→'; color: #6366f1; flex-shrink: 0; margin-top: 1px; }
+.related-posts li a {
+  color: #1e293b;
+  text-decoration: none;
+  font-size: 0.93rem;
+  line-height: 1.45;
+  transition: color 0.15s;
+}
+.related-posts li a:hover { color: #6366f1; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .hero-inner {
