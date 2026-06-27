@@ -120,7 +120,7 @@ img { max-width: 100%; display: block; }
 .hero-inner {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 96px 32px 88px;
+  padding: 56px 32px 52px;
   display: grid;
   grid-template-columns: 1fr 180px;
   gap: 64px;
@@ -1115,7 +1115,7 @@ footer {
 @media (max-width: 768px) {
   .hero-inner {
     grid-template-columns: 1fr;
-    padding: 64px 24px 56px;
+    padding: 40px 24px 36px;
     gap: 40px;
   }
   .hero-photo { order: -1; }
