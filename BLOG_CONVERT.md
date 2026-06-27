@@ -28,11 +28,11 @@ git -C ../red2 log --diff-filter=A --format="%ad" --date=short -- "文件名"
 ### 转换步骤
 1. 读取 txt 内容
 2. 去除 `<<<` `>>>` 标记
-3. 理清结构，拆分 H2 章节
+3. 理清结构，拆分 H2 章节（每个自然段落对应一个 `<h2>`）
 4. 补写引言段（1-2 句点出主题）
 5. 补写结尾段（总结或行动建议）
 6. 生成 HTML，套用博客模板（见下方模板说明）
-7. 更新 `docs/blog/index.html` 和 `docs/index.html` 首页预览
+7. 更新 `docs/blog/index.html`、`docs/index.html` 首页预览、`docs/blog/posts.json`
 
 ### 质量分级
 | 档次 | 特征 | 处理方式 |
@@ -135,7 +135,7 @@ for i, slide in enumerate(prs.slides):
     </div>
 
     <div class="post-body">
-      <!-- 正文内容 -->
+      <!-- 正文内容，用 <h2> 划分章节，<h3> 划分子节 -->
     </div>
   </div>
 
@@ -144,15 +144,29 @@ for i, slide in enumerate(prs.slides):
   </footer>
 
   <script src="../../js/float-photos.js" data-base="../../images/"></script>
+  <script src="../../js/toc.js"></script>
+  <script src="../../js/related.js"></script>
 </body>
 </html>
 ```
+
+### 正文结构说明
+
+| 元素 | 用途 | 说明 |
+|------|------|------|
+| `<h2>` | 主章节标题 | 自动生成目录条目，自动添加编号徽章 |
+| `<h3>` | 子节标题 | 同上，编号连续排列（不分层级）|
+| `.post-body` | 正文容器 | `toc.js` 在此范围内识别标题 |
+| `.post-tag` | 标签 | 与 `post-subtitle` 的格式相同，供相关文章算法读取 |
+
+> **目录自动生成规则**：`.post-body` 内 `<h2>` / `<h3>` 合计 ≥ 2 个时自动生成目录。
+> 桌面端（≥1200px）显示右侧固定侧边栏；手机端显示右边缘悬浮数字条，可展开为完整列表。
 
 ---
 
 ## 五、更新索引
 
-每篇文章发布后，同步更新两个文件：
+每篇文章发布后，同步更新以下三个文件：
 
 ### `docs/blog/index.html`
 在 `.post-list` 中**顶部**插入新条目（最新的在最上面）：
@@ -165,14 +179,29 @@ for i, slide in enumerate(prs.slides):
   </div>
   <div class="post-info">
     <div class="post-title">文章标题</div>
-    <div class="post-subtitle">分类 · 标签</div>
+    <div class="post-subtitle">分类 · 标签1 · 标签2</div>
   </div>
   <span class="post-arrow">→</span>
 </a>
 ```
 
+> `post-subtitle` 的内容就是标签，用 ` · ` 分隔。博客列表页的**标签筛选栏**自动读取这里，出现 2 次以上的标签会显示为筛选按钮。
+
 ### `docs/index.html`
 首页只保留**最新 2 篇**预览，格式同上。
+
+### `docs/blog/posts.json`
+在数组**顶部**插入新文章条目（最新在前）：
+
+```json
+{
+  "slug": "文件名（不含.html）",
+  "title": "文章标题",
+  "tags": ["标签1", "标签2", "标签3"]
+}
+```
+
+> `tags` 与 `post-subtitle` 保持一致。`related.js` 读取此文件，按标签重叠数量为每篇文章推荐最多 4 篇相关文章，显示在正文末尾。
 
 ---
 
@@ -186,21 +215,25 @@ git push origin main
 
 ---
 
-## 七、已转换列表
+## 七、自动功能一览
 
-| 文章 | 来源 | 发布日期 | 文件 |
-|------|------|---------|------|
-| AI+低代码：一场正在发生的「羊吃人」 | txt | 2026-06-25 | sheep-eating-people.html |
-| 日本IT派遣的五层架构：你的钱是怎么被瓜分的？ | pptx | 2024-06-24 | it-dispatch-architecture.html |
-| 三月退场潮：日本IT派遣的财政年度密码 | txt | 2024-03-08 | dispatch-exit-season.html |
-| 日本IT技术者的三条出路：你选哪条？ | txt | 2024-05-16 | ultimate-goal.html |
-| 前后端三十年战争：JavaScript 的逆袭之路 | txt | 2024-02-06 | frontend-vs-backend.html |
-| 日本IT派遣技术栈全解：你该学什么？ | txt | 2024-02-05 | tech-stack-guide.html |
-| 日本IT薪资水平，你达标了吗？ | txt | 2024-02-05 | salary-benchmark.html |
-| 日本IT派遣面试潜规则：会社从来不告诉你的那些事 | pptx | 2024-02-05 | interview-secrets.html |
-| 中日IT面试乱象：从灵魂拷问到拔出萝卜带出泥 | pptx | 2024-02-05 | interview-chaos.html |
-| 2030年日本IT人才缺口79万：谁能抓住这波红利？ | pptx | 2024-02-05 | who-benefits-most.html |
+无需额外配置，模板中的三个脚本自动提供以下功能：
 
-## 八、待转换队列
+| 功能 | 脚本 | 触发条件 |
+|------|------|---------|
+| 悬浮返回按钮 | style.css `.back-link` | 所有文章页始终显示 |
+| 正文章节编号徽章 | `toc.js` | `.post-body` 内有 h2/h3 |
+| 桌面目录侧边栏 | `toc.js` | h2/h3 ≥ 2 且屏幕 ≥ 1200px |
+| 手机悬浮目录 | `toc.js` | h2/h3 ≥ 2 且屏幕 < 1200px |
+| 滚动高亮当前章节 | `toc.js` | 目录生成后自动开启 |
+| 图片点击放大 | `float-photos.js` | 有 `<img>` 在正文中 |
+| 推荐阅读（相关文章） | `related.js` | 读取 `posts.json`，按标签匹配 |
+| 博客列表标签筛选 | `tag-filter.js` | blog/index.html 专用，自动注入 |
 
-red2 目录中已全部完成转换。如有新素材，按上述流程继续处理。
+---
+
+## 八、已转换统计
+
+截至 2026-06-27，`../red2/` 目录全部完成转换，共 **64 篇**。
+
+详细列表见 `BLOG_QUEUE.md`。
