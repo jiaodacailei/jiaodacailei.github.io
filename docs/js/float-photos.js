@@ -2,18 +2,25 @@
   const script = document.currentScript;
   const base = (script && script.getAttribute('data-base')) || '../../images/';
 
-  // w/h = display size tuned to each photo's actual aspect ratio
-  // pos  = object-position to keep the face in frame
+  // w/h = desktop display size; aspect ratio tuned to each photo
   const PHOTOS = [
-    { file: 'photo-1.jpg', w: 128, h: 170, pos: 'center 8%'    }, // portrait upper-body ~3:4
-    { file: 'photo-2.jpg', w: 112, h: 186, pos: 'center 8%'    }, // tall full-body ~3:5
-    { file: 'photo-3.jpg', w: 128, h: 170, pos: 'center 10%'   }, // three-quarter ~3:4
-    { file: 'life-1.jpg',  w: 200, h: 150, pos: 'center center' }, // landscape 4:3
-    { file: 'life-2.jpg',  w: 112, h: 200, pos: 'center 12%'   }, // portrait selfie ~9:16
+    { file: 'photo-1.jpg', w: 128, h: 170, pos: 'center 8%'    },
+    { file: 'photo-2.jpg', w: 112, h: 186, pos: 'center 8%'    },
+    { file: 'photo-3.jpg', w: 128, h: 170, pos: 'center 10%'   },
+    { file: 'life-1.jpg',  w: 200, h: 150, pos: 'center center' },
+    { file: 'life-2.jpg',  w: 112, h: 200, pos: 'center 12%'   },
   ];
 
   function init() {
     const p = PHOTOS[Math.floor(Math.random() * PHOTOS.length)];
+
+    // On mobile (≤640px) scale down and sit just above the browser chrome
+    const mobile = window.innerWidth <= 640;
+    const scale  = mobile ? 0.72 : 1;
+    const dw     = Math.round(p.w * scale);
+    const dh     = Math.round(p.h * scale);
+    const bottom = mobile ? '12px' : '88px';
+    const right  = mobile ? '10px' : '20px';
 
     if (!document.getElementById('fp-style')) {
       const s = document.createElement('style');
@@ -29,16 +36,19 @@
           animation: fp-float 4.5s ease-in-out infinite;
           transition: transform .2s, box-shadow .2s;
         }
-        .fp-card:hover { animation-play-state: paused; transform: scale(1.04) translateY(-4px); }
+        .fp-card:hover  { animation-play-state: paused; transform: scale(1.04) translateY(-4px); }
+        .fp-card:active { animation-play-state: paused; transform: scale(0.97); }
         .fp-close {
           position: absolute; top: 6px; right: 6px;
-          width: 22px; height: 22px; border-radius: 50%;
-          background: rgba(0,0,0,.48); color: #fff; border: none;
+          width: 24px; height: 24px; border-radius: 50%;
+          background: rgba(0,0,0,.50); color: #fff; border: none;
           font-size: 16px; line-height: 1; cursor: pointer; padding: 0;
           display: flex; align-items: center; justify-content: center;
           opacity: 0; transition: opacity .2s;
         }
-        .fp-card:hover .fp-close { opacity: 1; }
+        .fp-card:hover  .fp-close { opacity: 1; }
+        /* always visible on touch devices */
+        @media (hover: none) { .fp-close { opacity: 1; } }
         .fp-label {
           position: absolute; bottom: 0; left: 0; right: 0;
           background: linear-gradient(transparent, rgba(0,0,0,.58));
@@ -54,12 +64,12 @@
     card.className = 'fp-card';
     Object.assign(card.style, {
       position:     'fixed',
-      right:        '20px',
-      bottom:       '88px',
+      right:        right,
+      bottom:       bottom,
       zIndex:       '55',
       borderRadius: '12px',
       overflow:     'hidden',
-      width:        p.w + 'px',
+      width:        dw + 'px',
       background:   '#fff',
       cursor:       'default',
     });
@@ -69,8 +79,8 @@
     img.alt = '蔡磊';
     Object.assign(img.style, {
       display:        'block',
-      width:          p.w + 'px',
-      height:         p.h + 'px',
+      width:          dw + 'px',
+      height:         dh + 'px',
       objectFit:      'cover',
       objectPosition: p.pos,
     });
