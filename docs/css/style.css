@@ -709,17 +709,21 @@ footer {
   font-weight: 600;
 }
 
-@media (max-width: 1199px) { .toc { display: none; } }
+@media (max-width: 1199px) {
+  .toc { display: none; }
+  /* push post text away from the right-side TOC strip */
+  .post-page { padding-right: 48px; }
+}
 
 /* ── MOBILE FLOATING TOC ── */
 .toc-float {
   position: fixed;
   top: 90px;
-  left: 12px;
+  right: 0;          /* flush to right edge */
   z-index: 200;
 }
 
-/* collapsed: vertical number strip */
+/* collapsed: vertical number strip — left-rounded, right flush */
 .toc-float-nums {
   display: flex;
   flex-direction: column;
@@ -727,9 +731,10 @@ footer {
   gap: 2px;
   background: rgba(255,255,255,0.96);
   border: 1px solid #e2e8f0;
-  border-radius: 20px;
+  border-right: none;
+  border-radius: 20px 0 0 20px;
   padding: 6px 4px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  box-shadow: -2px 2px 12px rgba(0,0,0,0.10);
   backdrop-filter: blur(6px);
 }
 .toc-float-toggle {
@@ -774,10 +779,11 @@ footer {
   display: none;
   background: #fff;
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  box-shadow: 0 6px 28px rgba(0,0,0,0.13);
+  border-radius: 14px 0 0 14px;
+  border-right: none;
+  box-shadow: -4px 4px 28px rgba(0,0,0,0.13);
   min-width: 200px;
-  max-width: calc(100vw - 32px);
+  max-width: calc(100vw - 40px);
   max-height: 65vh;
   overflow-y: auto;
 }
