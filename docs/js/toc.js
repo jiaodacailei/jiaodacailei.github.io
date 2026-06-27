@@ -10,15 +10,26 @@
     if (!h.id) h.id = 'toc-' + i;
   });
 
+  // extract keyword before ：or —— separator
+  function keyText(text) {
+    var s = text.indexOf('：');
+    if (s > 0) return text.slice(0, s);
+    s = text.indexOf('——');
+    if (s > 0) return text.slice(0, s);
+    return text;
+  }
+
   // build nav
   var nav = document.createElement('nav');
   nav.className = 'toc';
   nav.innerHTML =
     '<div class="toc-label">目录</div><ul>' +
     headings.map(function (h) {
+      var full = h.textContent;
+      var label = keyText(full);
       return (
         '<li class="toc-' + h.tagName.toLowerCase() + '">' +
-        '<a href="#' + h.id + '">' + h.textContent + '</a></li>'
+        '<a href="#' + h.id + '" title="' + full + '">' + label + '</a></li>'
       );
     }).join('') +
     '</ul>';
