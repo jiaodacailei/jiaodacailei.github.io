@@ -5,7 +5,14 @@
   var headings = Array.from(postBody.querySelectorAll('h2, h3'));
   if (headings.length < 2) return;
 
-  headings.forEach(function (h, i) { if (!h.id) h.id = 'toc-' + i; });
+  headings.forEach(function (h, i) {
+    if (!h.id) h.id = 'toc-' + i;
+    // inject number badge into heading
+    var badge = document.createElement('span');
+    badge.className = 'toc-num-badge';
+    badge.textContent = i + 1;
+    h.insertBefore(badge, h.firstChild);
+  });
 
   function keyText(text) {
     var s = text.indexOf('：');
