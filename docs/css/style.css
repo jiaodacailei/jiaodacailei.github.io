@@ -631,6 +631,7 @@ footer {
 }
 
 /* ── FLOATING TOC ── */
+/* desktop sidebar */
 .toc {
   position: fixed;
   right: 32px;
@@ -688,7 +689,39 @@ footer {
   border-left-color: #6366f1;
   font-weight: 600;
 }
-@media (max-width: 1200px) { .toc { display: none; } }
+
+/* mobile: inline collapsible block */
+@media (max-width: 1199px) {
+  .toc {
+    position: static;
+    width: auto;
+    max-height: 44px;
+    overflow: hidden;
+    right: auto;
+    top: auto;
+    margin-bottom: 28px;
+    box-shadow: none;
+    border-radius: 10px;
+    transition: max-height 0.3s ease;
+  }
+  .toc.toc-open {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  .toc-label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+    padding: 4px 8px;
+  }
+  .toc-label::after { content: '▾'; font-size: 12px; color: #94a3b8; }
+  .toc.toc-open .toc-label { margin-bottom: 10px; }
+  .toc.toc-open .toc-label::after { content: '▴'; }
+  .toc-h2 > a, .toc-h3 > a { white-space: normal; }
+}
 
 /* ── POST PAGE ── */
 .post-page {
