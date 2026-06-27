@@ -1115,11 +1115,15 @@ footer {
 @media (max-width: 768px) {
   .hero-inner {
     grid-template-columns: 1fr;
-    padding: 40px 24px 36px;
-    gap: 40px;
+    padding: 32px 24px 28px;
+    gap: 0;
   }
-  .hero-photo { order: -1; }
-  .hero-photo-frame img { width: 120px; height: 120px; }
+  .hero-photo { display: none; }          /* hide photo: save vertical space */
+  .hero-eyebrow { margin-bottom: 10px; }
+  .hero-desc { font-size: 15px; margin-bottom: 18px; line-height: 1.7; }
+  .hero-tags { display: none; }           /* hide tag chips on mobile */
+  .hero-actions { gap: 8px; }
+  .btn { padding: 11px 20px; font-size: 14px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-box { padding: 40px 28px; }
   .container { padding: 0 24px; }
