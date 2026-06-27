@@ -40,15 +40,14 @@
         .fp-card:active { animation-play-state: paused; transform: scale(0.97); }
         .fp-close {
           position: absolute; top: 6px; right: 6px;
-          width: 24px; height: 24px; border-radius: 50%;
-          background: rgba(0,0,0,.50); color: #fff; border: none;
-          font-size: 16px; line-height: 1; cursor: pointer; padding: 0;
+          width: 22px; height: 22px; border-radius: 50%;
+          background: rgba(0,0,0,.52); color: #fff; border: none;
+          font-size: 15px; line-height: 1; cursor: pointer; padding: 0;
           display: flex; align-items: center; justify-content: center;
-          opacity: 0; transition: opacity .2s;
+          transition: background .15s, transform .15s;
         }
-        .fp-card:hover  .fp-close { opacity: 1; }
-        /* always visible on touch devices */
-        @media (hover: none) { .fp-close { opacity: 1; } }
+        .fp-close:hover  { background: rgba(0,0,0,.78); transform: scale(1.15); }
+        .fp-close:active { transform: scale(0.9); }
         .fp-label {
           position: absolute; bottom: 0; left: 0; right: 0;
           background: linear-gradient(transparent, rgba(0,0,0,.58));
