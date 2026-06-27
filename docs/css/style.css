@@ -777,6 +777,27 @@ footer {
   color: inherit;
   font-size: 14px;
 }
+.post-body .post-img {
+  margin: 32px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.post-body .post-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.post-body .post-img figcaption {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 10px 16px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+}
+
 .post-body blockquote {
   border-left: 4px solid var(--blue);
   padding: 16px 24px;
