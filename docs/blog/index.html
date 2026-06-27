@@ -804,6 +804,15 @@
     <p>© 2026 蔡磊 · 用心记录，持续成长</p>
   </footer>
 
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var list = document.querySelector('.post-list');
+    if (!list) return;
+    var items = Array.from(list.querySelectorAll('.post-item'));
+    items.sort(function () { return Math.random() - 0.5; });
+    items.forEach(function (item) { list.appendChild(item); });
+  });
+  </script>
   <script src="../js/tag-filter.js"></script>
 </body>
 </html>
