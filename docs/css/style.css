@@ -638,24 +638,30 @@ footer {
 }
 
 .back-link {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 200;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 14px;
   font-weight: 600;
   color: var(--text-muted);
-  margin-bottom: 40px;
-  padding: 8px 16px;
-  background: var(--bg-soft);
+  padding: 9px 18px;
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: 100px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   transition: all 0.2s;
 }
 .back-link:hover {
   color: var(--blue);
   border-color: var(--blue-light);
   background: var(--blue-xlight);
+  box-shadow: 0 6px 20px rgba(99,102,241,0.15);
   text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .post-page-header {
@@ -883,4 +889,5 @@ footer {
   section { padding: 64px 0; }
   .nav-inner { padding: 0 24px; }
   .nav-links { gap: 20px; }
+  .back-link { bottom: 20px; left: 16px; font-size: 13px; padding: 8px 14px; }
 }
