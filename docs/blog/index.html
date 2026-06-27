@@ -809,8 +809,10 @@
     var list = document.querySelector('.post-list');
     if (!list) return;
     var items = Array.from(list.querySelectorAll('.post-item'));
-    items.sort(function () { return Math.random() - 0.5; });
-    items.forEach(function (item) { list.appendChild(item); });
+    if (items.length <= 1) return;
+    var rest = items.slice(1);
+    rest.sort(function () { return Math.random() - 0.5; });
+    rest.forEach(function (item) { list.appendChild(item); });
   });
   </script>
   <script src="../js/tag-filter.js"></script>

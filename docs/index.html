@@ -157,11 +157,15 @@
     fetch('blog/posts.json')
       .then(function (r) { return r.json(); })
       .then(function (posts) {
-        for (var i = posts.length - 1; i > 0; i--) {
+        if (!posts.length) return;
+        var newest = posts[0];
+        var rest = posts.slice(1);
+        for (var i = rest.length - 1; i > 0; i--) {
           var j = Math.floor(Math.random() * (i + 1));
-          var t = posts[i]; posts[i] = posts[j]; posts[j] = t;
+          var t = rest[i]; rest[i] = rest[j]; rest[j] = t;
         }
-        list.innerHTML = posts.slice(0, 2).map(function (p) {
+        var selected = [newest].concat(rest.slice(0, 2));
+        list.innerHTML = selected.map(function (p) {
           return '<a href="blog/posts/' + p.slug + '.html" class="post-item">' +
             '<div class="post-info">' +
             '<div class="post-title">' + p.title + '</div>' +
