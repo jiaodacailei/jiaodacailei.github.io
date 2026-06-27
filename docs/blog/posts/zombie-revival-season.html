@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日本IT僵尸复活季：那些死而不僵的老系统 · 蔡磊</title>
+  <meta name="description" content="马自达、丰田、俄罗斯勒索软件受害者——我遇到的日本IT项目，都有一个共同特征：几十年前的老系统，原作者早就跑路了，但系统还活着。" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../index.html" class="nav-logo">蔡磊</a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">关于</a></li>
+        <li><a href="../../index.html#skills">技能</a></li>
+        <li><a href="../index.html" class="active">博客</a></li>
+        <li><a href="../../index.html#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="post-page">
+    <a href="../index.html" class="back-link">← 返回博客</a>
+    <div class="post-page-header">
+      <h1>日本IT僵尸复活季：那些死而不僵的老系统</h1>
+      <div class="post-author">
+        <img src="../../images/photo-3.jpg" alt="蔡磊" class="post-author-avatar" />
+        <div class="post-author-info">
+          <span class="post-author-name">蔡磊</span>
+          <span class="post-author-title">在日IT技术者 · 零代码开发</span>
+        </div>
+      </div>
+      <div class="post-page-meta">
+        <span>2026-04-13</span>
+        <span class="post-tag">日本IT</span>
+        <span class="post-tag">老系统</span>
+        <span class="post-tag">技术债</span>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <p>来日本三年，我遇到的项目有个高度相似的特征：<strong>上游都有一个老系统，年龄至少二十岁，像僵尸一样死而不僵，还在每天工作。</strong></p>
+      <p>而我的任务，就是和这些僵尸打交道。</p>
+
+      <h2>案例一：马自达的PLC系统</h2>
+      <p>工厂里的生产线控制系统，PLC程序，用梯形图写的。</p>
+      <p>什么年代的产物？不知道，没有文档，没有注释，原作者早就退休了。有人说大概是20年前写的，有人说30年前。</p>
+      <p>工厂不敢动它，因为「动了怕出事」。但不动又不行，因为上游数据需要和下游ERP打通。</p>
+      <p>怎么办？考古。像研究甲骨文一样，从运行中的程序里反推逻辑。</p>
+
+      <h2>案例二：丰田的7年老代码</h2>
+      <p>前文提到过，那个天崩开局的丰田项目，主体业务代码是7年前写的，用的技术栈放到现在已经是「祖先级」的存在。</p>
+      <p>最骚的是：没有技术文档，没有注释，原开发人员据说也早就离开了，leader自己也不清楚当时的设计思路。</p>
+      <p>我拿到代码的第一反应：这是代码？还是一道考古题？</p>
+
+      <h2>案例三：勒索软件受害者</h2>
+      <p>听同事讲的，某个客户被俄罗斯黑客的勒索软件打穿了，核心系统全被加密，备份也一起没了。</p>
+      <p>然后呢？他们翻出了10年前的备份磁带，找了个能读那个格式磁带的老机器，把数据给恢复出来了。</p>
+      <p>日本人平时显得很慢，但在这种关键时刻，他们的「备用备用备用的备用方案」，经常能救命。</p>
+
+      <h2>为什么日本到处都是「僵尸系统」？</h2>
+      <p>因为日本企业信奉一条不成文的原则：<strong>能跑的系统不要碰。</strong></p>
+      <p>系统换代成本高、风险大、没有人愿意担责，于是几十年前的代码就这么一直跑着，跑着跑着，谁也不懂它了，但谁也不敢停它。</p>
+      <p>这就是日本IT技术债的根源，也是我们这些外来技术者的「就业保障」。</p>
+      <p>说难听点，是靠别人的技术债活着。但说好听点——<strong>能让一个20年没人敢碰的系统重新动起来，这本身就是一种价值。</strong></p>
+    </div>
+  </div>
+
+  <footer><p>© 2026 蔡磊 · 用心记录，持续成长</p></footer>
+  <script src="../../js/float-photos.js" data-base="../../images/"></script>
+</body>
+</html>

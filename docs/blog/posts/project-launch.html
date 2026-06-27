@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客户要3个画面，我交付了30个：一次零代码项目上线实录 · 蔡磊</title>
+  <meta name="description" content="日本大手客户项目上线。设计、开发、测试、实施，一个人。客户要3个画面，最终交付30多个。数据库100多张表，把同来的小姑娘都吓了一跳。" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../index.html" class="nav-logo">蔡磊</a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">关于</a></li>
+        <li><a href="../../index.html#skills">技能</a></li>
+        <li><a href="../index.html" class="active">博客</a></li>
+        <li><a href="../../index.html#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="post-page">
+    <a href="../index.html" class="back-link">← 返回博客</a>
+    <div class="post-page-header">
+      <h1>客户要3个画面，我交付了30个：一次零代码项目上线实录</h1>
+      <div class="post-author">
+        <img src="../../images/photo-3.jpg" alt="蔡磊" class="post-author-avatar" />
+        <div class="post-author-info">
+          <span class="post-author-name">蔡磊</span>
+          <span class="post-author-title">在日IT技术者 · 零代码开发</span>
+        </div>
+      </div>
+      <div class="post-page-meta">
+        <span>2026-04-13</span>
+        <span class="post-tag">项目实录</span>
+        <span class="post-tag">零代码</span>
+        <span class="post-tag">日本大手</span>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <p>好久没更新了，最近一个日本大手客户的项目上线，有点忙。失踪人口回归！</p>
+
+      <h2>这个项目的体制</h2>
+      <p>除了会社安排了一个日语好的小伙伴对接客户需求之外，这个项目从设计、开发、测试到实施，就我一个人。全靠我这个单核CPU串行处理。</p>
+      <p>客户一开始说：「只要三个画面就好啦！」最后我交作业时：您的30多个画面，请签收。这是买一送十啊！</p>
+
+      <h2>数据库：本来7张表，最后100多张</h2>
+      <p>整个项目用零代码平台做底座，大部分画面点点配置就出来了，真需要敲代码的画面，一只手数得过来。</p>
+      <p>但数据库嘛，本来只想安静地建7张业务表，结果……</p>
+      <ul>
+        <li>定时任务→加个开源框架：<strong>附赠11张表</strong></li>
+        <li>流程要灵活配置→塞个工作流引擎：<strong>再抱走25张表</strong></li>
+        <li>业务想自由定制→搬出自家零代码平台：<strong>直接再添50张表</strong></li>
+        <li>权限和系统管理：<strong>顺手再来10张</strong></li>
+      </ul>
+      <p>最后到现场部署时，同行的小姑娘盯着数据库惊呼：「这表……有一百多？！」</p>
+
+      <h2>零代码的优势，在现场救了我</h2>
+      <p>现场实施时果然蹦出几个测试环境没逮住的「惊喜」，但这时零代码平台直接封神——改配置秒生效，不用重新发布！</p>
+      <p>还遇上大手客户的土耳其合作伙伴来参观，一堆人围着我们系统拍照合影，莫名有种产品出道的感觉……</p>
+
+      <h2>验收通过，下个挑战来了</h2>
+      <p>前几天客户终于验收通过，我们可以理直气壮喊打款啦！</p>
+      <p>暂时能喘口气，但接下来要挑战：让客户自己配置业务流程。现在技术其实已经实现，但得让客户摆弄 JSON 和 SQL……客户表示：我只是想拖拽一下而已啊！</p>
+      <p>下个目标：做出小白也能玩的拖拽式流程配置。项目虐我千百遍，我待开发如初恋。继续加油！</p>
+    </div>
+  </div>
+
+  <footer><p>© 2026 蔡磊 · 用心记录，持续成长</p></footer>
+  <script src="../../js/float-photos.js" data-base="../../images/"></script>
+</body>
+</html>

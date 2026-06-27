@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日本IT项目推倒重来：今天的屠龙者，明天会成为恶龙 · 蔡磊</title>
+  <meta name="description" content="我用零代码平台替换了一个有着十年技术债的老系统。但做完我突然想到一句话：今天的屠龙者，明天会成为恶龙。我的零代码平台，会是下一个屎山吗？" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../index.html" class="nav-logo">蔡磊</a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">关于</a></li>
+        <li><a href="../../index.html#skills">技能</a></li>
+        <li><a href="../index.html" class="active">博客</a></li>
+        <li><a href="../../index.html#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="post-page">
+    <a href="../index.html" class="back-link">← 返回博客</a>
+    <div class="post-page-header">
+      <h1>日本IT项目推倒重来：今天的屠龙者，明天会成为恶龙</h1>
+      <div class="post-author">
+        <img src="../../images/photo-3.jpg" alt="蔡磊" class="post-author-avatar" />
+        <div class="post-author-info">
+          <span class="post-author-name">蔡磊</span>
+          <span class="post-author-title">在日IT技术者 · 零代码开发</span>
+        </div>
+      </div>
+      <div class="post-page-meta">
+        <span>2026-04-13</span>
+        <span class="post-tag">项目实录</span>
+        <span class="post-tag">技术债</span>
+        <span class="post-tag">零代码</span>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <p>前一阵接了个任务：把客户现场一个用了将近十年的老系统，整体迁移到我们的零代码平台上。</p>
+      <p>老系统是Java写的，MyBatis + SqlSession，那种古老的风格，手写SQL遍地都是，连个ORM都没有。</p>
+      <p>业务逻辑分散在几十个Service里，没有统一抽象，每个人写代码都有自己的风格，合在一起，就是一座标准的屎山。</p>
+
+      <h2>屠龙：替换老系统</h2>
+      <p>整个迁移花了大概两个月。</p>
+      <p>核心工作是梳理老系统的业务逻辑，用零代码平台重新配置出来，原来需要写代码的地方，现在改成拖拽配置，原来需要维护SQL的地方，改成可视化的数据流。</p>
+      <p>最终效果挺好——配置出来的系统，运行稳定，客户的业务人员可以自己调整部分参数，不再依赖开发介入。</p>
+      <p>老系统正式退役，我们把它归档，这座屎山被我们平了。</p>
+
+      <h2>但做完之后我突然想到一句话</h2>
+      <p>项目收尾那天，我对着那一堆配置文件发了一会儿呆。</p>
+      <p>然后我想到了一句话：<strong>今天的屠龙者，明天会成为恶龙。</strong></p>
+      <p>那个老系统，十年前也是当时最好的解法。它的开发者也曾经是「屠龙者」，是来解决前一代遗留问题的人。然后他们走了，系统留下来，越来越难改，变成了下一个人眼里的「恶龙」。</p>
+      <p>那我的零代码平台，十年后呢？</p>
+
+      <h2>我的答案</h2>
+      <p>我想了想，觉得这个问题没有完美答案，但有一个相对好的答案：</p>
+      <p><strong>让系统可被替换，比让系统不可替换更重要。</strong></p>
+      <p>零代码平台的配置是声明式的，数据结构是标准化的，迁移成本理论上比手写代码低。就算有一天我的平台也成了「老东西」，下一个人至少能读懂逻辑，而不是面对一堆手写SQL发呆。</p>
+      <p>屠龙这件事，永远不会结束。我只希望我手里的「龙」，让后来者容易接手一点。</p>
+    </div>
+  </div>
+
+  <footer><p>© 2026 蔡磊 · 用心记录，持续成长</p></footer>
+  <script src="../../js/float-photos.js" data-base="../../images/"></script>
+</body>
+</html>
