@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>个人履历 · 蔡磊</title>
+  <meta name="description" content="蔡磊的详细职业履历与项目经历，20年以上Java开发经验，涵盖电信系统、低代码平台、在日IT派遣等领域。" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── RESUME LAYOUT ── */
+    .resume-hero {
+      background: linear-gradient(140deg, #0c1445 0%, #1a3580 45%, #0f2260 100%);
+      padding: 52px 32px 48px;
+    }
+    .resume-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .resume-avatar img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.25);
+    }
+    .resume-name {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      margin: 0 0 4px;
+    }
+    .resume-subtitle {
+      color: #93c5fd;
+      font-size: 0.95rem;
+      margin: 0 0 14px;
+      line-height: 1.5;
+    }
+    .resume-meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .resume-meta-chip {
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 3px 12px;
+    }
+    .resume-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .resume-stat strong {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .resume-stat span {
+      font-size: 11px;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+
+    /* ── SECTION ── */
+    .resume-section {
+      padding: 56px 32px;
+    }
+    .resume-section .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .resume-section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 28px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .resume-section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: #6366f1;
+      border-radius: 2px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-category { margin-bottom: 20px; }
+    .skills-category-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .skills-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .skill-tag.expert { background: #eef2ff; color: #4f46e5; border: 1px solid #c7d2fe; }
+    .skill-tag.good   { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .skill-tag.basic  { background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
+    .skill-legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: #64748b;
+    }
+    .skill-legend span { display: flex; align-items: center; gap: 5px; }
+    .skill-legend .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-expert { background: #6366f1; }
+    .dot-good   { background: #22c55e; }
+    .dot-basic  { background: #94a3b8; }
+
+    /* ── CAREER TIMELINE ── */
+    .career-timeline { position: relative; padding-left: 28px; }
+    .career-timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px; top: 6px; bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, #6366f1, #c7d2fe);
+      border-radius: 2px;
+    }
+    .career-item { position: relative; margin-bottom: 32px; }
+    .career-item::before {
+      content: '';
+      position: absolute;
+      left: -24px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #6366f1;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px #6366f1;
+    }
+    .career-period { font-size: 12px; color: #6366f1; font-weight: 700; margin-bottom: 2px; }
+    .career-company { font-size: 1rem; font-weight: 800; color: #1e293b; margin-bottom: 2px; }
+    .career-role { font-size: 13px; color: #475569; margin-bottom: 6px; }
+    .career-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
+
+    /* ── PROJECT GROUPS ── */
+    .project-group { margin-bottom: 40px; }
+    .project-group-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6366f1;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-group-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    .project-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .project-card:hover { box-shadow: 0 2px 12px rgba(99,102,241,0.08); }
+    .project-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      background: #fff;
+      user-select: none;
+    }
+    .project-card-header:hover { background: #fafbff; }
+    .project-num {
+      min-width: 26px; height: 26px;
+      background: #eef2ff; color: #6366f1;
+      border-radius: 50%;
+      font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .project-card-main { flex: 1; min-width: 0; }
+    .project-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .project-name { font-size: 14px; font-weight: 700; color: #1e293b; }
+    .project-period-badge {
+      font-size: 11px;
+      color: #64748b;
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 1px 6px;
+      white-space: nowrap;
+    }
+    .project-meta-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+    .project-role-badge {
+      font-size: 11px;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .role-pm   { background: #fdf4ff; color: #9333ea; border: 1px solid #e9d5ff; }
+    .role-pl   { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+    .role-se   { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .role-pg   { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .project-location { font-size: 11px; color: #94a3b8; }
+    .project-team { font-size: 11px; color: #94a3b8; }
+    .project-tech-preview {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-top: 5px;
+    }
+    .tech-chip {
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: #f8fafc;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .project-toggle {
+      font-size: 14px;
+      color: #94a3b8;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .project-card.open .project-toggle { transform: rotate(180deg); }
+
+    .project-card-body {
+      display: none;
+      padding: 0 16px 16px 54px;
+      background: #fafbff;
+      border-top: 1px solid #eef2ff;
+    }
+    .project-card.open .project-card-body { display: block; }
+    .project-body-section { margin-top: 12px; }
+    .project-body-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .project-body-text {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    .project-body-text li { margin-left: 1em; }
+
+    /* ── EDUCATION ── */
+    .edu-item { display: flex; gap: 20px; margin-bottom: 20px; align-items: flex-start; }
+    .edu-year {
+      min-width: 80px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6366f1;
+      padding-top: 2px;
+    }
+    .edu-school { font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 2px; }
+    .edu-degree { font-size: 13px; color: #475569; }
+
+    /* ── LANGUAGES & CERTS ── */
+    .lang-cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .lc-group-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .lang-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+    .lang-name { font-size: 14px; font-weight: 600; color: #1e293b; }
+    .lang-level { font-size: 12px; color: #64748b; }
+    .cert-item { padding: 8px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; color: #475569; }
+    .cert-year { font-weight: 700; color: #1e293b; margin-right: 8px; }
+
+    @media (max-width: 768px) {
+      .resume-hero-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .resume-stats { gap: 16px; }
+      .lang-cert-grid { grid-template-columns: 1fr; }
+      .project-card-body { padding-left: 16px; }
+      .resume-section { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">蔡磊</a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">关于</a></li>
+        <li><a href="index.html#skills">技能</a></li>
+        <li><a href="blog/index.html">博客</a></li>
+        <li><a href="resume.html" class="active">履历</a></li>
+        <li><a href="index.html#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- RESUME HERO -->
+  <div class="resume-hero">
+    <div class="resume-hero-inner">
+      <div class="resume-avatar">
+        <img src="images/photo-3.jpg" alt="蔡磊" />
+      </div>
+      <div class="resume-intro">
+        <h1 class="resume-name">蔡 磊</h1>
+        <p class="resume-subtitle">全栈工程师 · 低代码开发专家 · 在日IT技术者</p>
+        <div class="resume-meta-chips">
+          <span class="resume-meta-chip">🇯🇵 日本·东京</span>
+          <span class="resume-meta-chip">🎓 上海交通大学 工学硕士</span>
+          <span class="resume-meta-chip">📅 2022年赴日</span>
+          <span class="resume-meta-chip">✉ jiaodacailei@foxmail.com</span>
+        </div>
+        <div class="resume-stats">
+          <div class="resume-stat">
+            <strong>20+</strong>
+            <span>年开发经验</span>
+          </div>
+          <div class="resume-stat">
+            <strong>19</strong>
+            <span>个项目</span>
+          </div>
+          <div class="resume-stat">
+            <strong>10+</strong>
+            <span>年团队管理</span>
+          </div>
+          <div class="resume-stat">
+            <strong>5</strong>
+            <span>家公司</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section class="resume-section">
+    <div class="container">
+      <h2 class="resume-section-title">核心技能</h2>
+      <div class="skill-legend">
+        <span><i class="dot dot-expert"></i> 精通（大量实务经验）</span>
+        <span><i class="dot dot-good"></i> 熟练（有实务经验）</span>
+        <span><i class="dot dot-basic"></i> 了解（有基础知识）</span>
+      </div>
+      <div class="skills-category">
+        <div class="skills-category-label">编程语言</div>
+        <div class="skills-tags">
+          <span class="skill-tag expert">Java</span>
+          <span class="skill-tag expert">JavaScript</span>
+          <span class="skill-tag expert">TypeScript</span>
+          <span class="skill-tag expert">HTML / CSS</span>
+          <span class="skill-tag expert">AJAX</span>
+          <span class="skill-tag expert">JSP / Servlet</span>
+          <span class="skill-tag good">PL/SQL</span>
+          <span class="skill-tag basic">VB</span>
+          <span class="skill-tag basic">C++</span>
+        </div>
+      </div>
+      <div class="skills-category">
+        <div class="skills-category-label">前端框架</div>
+        <div class="skills-tags">
+          <span class="skill-tag expert">Vue.js</span>
+          <span class="skill-tag expert">React</span>
+          <span class="skill-tag expert">jQuery</span>
+          <span class="skill-tag expert">UniApp</span>
+          <span class="skill-tag expert">ElementUI</span>
+          <span class="skill-tag good">ExtJS</span>
+          <span class="skill-tag good">Thymeleaf</span>
+          <span class="skill-tag good">Bootstrap</span>
+        </div>
+      </div>
+      <div class="skills-category">
+        <div class="skills-category-label">后端框架</div>
+        <div class="skills-tags">
+          <span class="skill-tag expert">Spring Boot</span>
+          <span class="skill-tag expert">Spring MVC</span>
+          <span class="skill-tag expert">MyBatis / MyBatis-Plus</span>
+          <span class="skill-tag expert">Spring Data JPA</span>
+          <span class="skill-tag expert">Hibernate</span>
+          <span class="skill-tag expert">Activiti / Flowable</span>
+          <span class="skill-tag expert">jBPM</span>
+          <span class="skill-tag expert">RESTful API</span>
+          <span class="skill-tag good">EJB / JMS</span>
+        </div>
+      </div>
+      <div class="skills-category">
+        <div class="skills-category-label">数据库</div>
+        <div class="skills-tags">
+          <span class="skill-tag expert">MySQL</span>
+          <span class="skill-tag expert">Data Warehouse</span>
+          <span class="skill-tag good">Oracle</span>
+          <span class="skill-tag good">PostgreSQL</span>
+          <span class="skill-tag good">Redis</span>
+          <span class="skill-tag good">InfluxDB</span>
+          <span class="skill-tag basic">SQL Server</span>
+          <span class="skill-tag basic">DB2 / Sybase</span>
+        </div>
+      </div>
+      <div class="skills-category">
+        <div class="skills-category-label">操作系统 &amp; 云</div>
+        <div class="skills-tags">
+          <span class="skill-tag expert">Windows</span>
+          <span class="skill-tag expert">Linux / CentOS / Ubuntu</span>
+          <span class="skill-tag good">AWS</span>
+          <span class="skill-tag basic">Mac</span>
+        </div>
+      </div>
+      <div class="skills-category">
+        <div class="skills-category-label">工具</div>
+        <div class="skills-tags">
+          <span class="skill-tag expert">Git</span>
+          <span class="skill-tag expert">IntelliJ IDEA</span>
+          <span class="skill-tag expert">Eclipse</span>
+          <span class="skill-tag expert">Tomcat</span>
+          <span class="skill-tag expert">Nginx</span>
+          <span class="skill-tag good">SVN</span>
+          <span class="skill-tag good">Teams / Slack / Zoom</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER TIMELINE -->
+  <section class="resume-section" style="background:#f8fafc;">
+    <div class="container">
+      <h2 class="resume-section-title">职业经历</h2>
+      <div class="career-timeline">
+
+        <div class="career-item">
+          <div class="career-period">2024.04 ～ 至今</div>
+          <div class="career-company">株式会社 Oneplus-tech</div>
+          <div class="career-role">工程师（在日IT派遣）</div>
+          <div class="career-desc">以IT派遣形式在日本从事软件开发，参与低代码系统等项目。</div>
+        </div>
+
+        <div class="career-item">
+          <div class="career-period">2022.10 ～ 2024.03</div>
+          <div class="career-company">CarryCode 株式会社</div>
+          <div class="career-role">工程师（在日IT派遣）</div>
+          <div class="career-desc">以IT派遣形式在日本从事软件开发，参与ERP、不动产系统等项目，曾担任团队技术负责人。</div>
+        </div>
+
+        <div class="career-item">
+          <div class="career-period">2018.12 ～ 2022.09</div>
+          <div class="career-company">四川大石海纳科技有限公司</div>
+          <div class="career-role">CTO（首席技术官）</div>
+          <div class="career-desc">主导企业级低代码软件开发平台建设；率队完成1个电信级项目、3个企业级项目，涵盖教育、工业制造等多个行业。</div>
+        </div>
+
+        <div class="career-item">
+          <div class="career-period">2006.09 ～ 2018.12</div>
+          <div class="career-company">华通科技有限公司（中兴通信子公司）</div>
+          <div class="career-role">部长</div>
+          <div class="career-desc">负责项目研发、架构设计与项目管理；主持公司CMMI 3认证审查；负责多个海外软件项目的实施与交付。</div>
+        </div>
+
+        <div class="career-item">
+          <div class="career-period">2001.03 ～ 2006.09</div>
+          <div class="career-company">中兴通信</div>
+          <div class="career-role">软件工程师（SE）/ 技术经理</div>
+          <div class="career-desc">参与电信网络管理系统（NMS）、电信资源管理系统、决策支持系统、统合网管平台（UEP）等大型电信项目的开发与实施。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="resume-section">
+    <div class="container">
+      <h2 class="resume-section-title">项目经历（共19项）</h2>
+      <p style="font-size:13px;color:#64748b;margin:-16px 0 24px;">点击项目卡片可展开详情</p>
+
+      <!-- Group 1: 在日 -->
+      <div class="project-group">
+        <div class="project-group-title">在日IT项目 (2022.10 – 2024.11)</div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">1</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">低代码系统</span>
+                <span class="project-period-badge">2023.12 – 2024.11 · 12个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-se">SE/PG</span>
+                <span class="project-location">📍 日本</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">Vue</span><span class="tech-chip">React</span><span class="tech-chip">TypeScript</span><span class="tech-chip">SpringBoot</span><span class="tech-chip">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向企业的低代码开发工具平台，含字典工具、画面设计工具、文档工具及业务系统POC。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">担当职责</div>
+              <div class="project-body-text">上流工程相关文档及POC新建、编码、测试。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">Vue / React / TypeScript / SpringBoot / Spring-JDBC · PostgreSQL · Windows</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">参与工程</div>
+              <div class="project-body-text">需求定义 · 基本设计 · 详细设计 · 编码 · 测试</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">2</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">ERP系统（余额·收付款管理）</span>
+                <span class="project-period-badge">2023.04 – 2023.09 · 6个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pg">PG</span>
+                <span class="project-location">📍 日本</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">Vue</span><span class="tech-chip">jQuery</span><span class="tech-chip">SpringBoot</span><span class="tech-chip">MyBatis</span><span class="tech-chip">Thymeleaf</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向零售·销售行业的ERP系统，负责余额管理与收付款管理模块。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">担当职责</div>
+              <div class="project-body-text">详细设计书修改、编码、测试用例文档新建；余额管理·收付款管理模块的编码与测试。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">Vue / jQuery / TypeScript / SpringBoot / Thymeleaf / MyBatis · PostgreSQL · Windows</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">参与工程</div>
+              <div class="project-body-text">详细设计 · 编码 · 测试</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">3</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">不动产企业ERP · 受注销售系统</span>
+                <span class="project-period-badge">2022.10 – 2023.03 · 6个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pl">PL/PG</span>
+                <span class="project-location">📍 日本</span>
+                <span class="project-team">👥 6人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">React</span><span class="tech-chip">SpringBoot</span><span class="tech-chip">Flowable</span><span class="tech-chip">MyBatis</span><span class="tech-chip">Redis</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">不动产企业的ERP系统，涵盖受注·销售管理模块，包含报价管理与工程管理功能。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">担当职责</div>
+              <div class="project-body-text">报价管理、工程管理模块的编码与测试；率领6人团队完成Java后端开发。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">React / SPA / SpringBoot / Flowable / MyBatis / Redis · MySQL 8 · Ubuntu</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">参与工程</div>
+              <div class="project-body-text">编码 · 测试 · 团队管理</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 2: CTO期 -->
+      <div class="project-group">
+        <div class="project-group-title">创业期 · 低代码平台研发 (2018.12 – 2022.09) · CTO</div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">4</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">珠宝加工生产销售企业管理系统</span>
+                <span class="project-period-badge">2022.03 – 2022.09 · 6个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 6人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">Vue</span><span class="tech-chip">UniApp</span><span class="tech-chip">SpringBoot</span><span class="tech-chip">Activiti</span><span class="tech-chip">Redis</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向珠宝行业的全流程企业管理系统，覆盖加工、生产、销售全链路。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">担当职责</div>
+              <div class="project-body-text">全流程参与（需求→上线）；率6人团队完成项目开发与交付。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">Vue / SPA / UniApp / ElementUI / SpringBoot / Activiti / MyBatis / Redis · MySQL 5.7 · CentOS 7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">5</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">自研低代码平台 RVA（PC端 + 移动端）</span>
+                <span class="project-period-badge">2021.09 – 2022.03 · 6个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 4人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">Vue</span><span class="tech-chip">UniApp</span><span class="tech-chip">SpringBoot</span><span class="tech-chip">Activiti</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">自主研发的低代码平台，包含PC端（Ruoyi-Vue-Auto项目）与移动端（rpp），支持可视化业务流程编排。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">担当职责</div>
+              <div class="project-body-text">架构设计与全流程主导；率4人团队完成平台研发。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">Vue / SPA / UniApp / ElementUI / SpringBoot / Activiti / MyBatis / Redis · MySQL 5.7 · CentOS 7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">6</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">心理咨询在线平台</span>
+                <span class="project-period-badge">2021.03 – 2021.09 · 6个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 3人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">SpringBoot</span><span class="tech-chip">MyBatis-Plus</span><span class="tech-chip">jQuery</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向教育行业的心理咨询在线服务平台，支持预约、咨询、记录管理等功能。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">jQuery / Bootstrap / Thymeleaf / Velocity / SpringBoot / MyBatis-Plus · MySQL 5.7 · CentOS 7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">7</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">厦门中学生音乐实技评价系统</span>
+                <span class="project-period-badge">2020.12 – 2021.03 · 3个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 5人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">SpringBoot</span><span class="tech-chip">MyBatis-Plus</span><span class="tech-chip">jQuery</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向厦门市中学生的音乐实技评价管理系统，服务于教育局考评业务。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">jQuery / Bootstrap / Thymeleaf / Velocity / SpringBoot / MyBatis-Plus · MySQL 5.7 · CentOS 7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">8</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">自研低代码平台 bc-adminlte</span>
+                <span class="project-period-badge">2020.07 – 2020.12 · 5个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 5人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">SpringBoot</span><span class="tech-chip">MyBatis-Plus</span><span class="tech-chip">jQuery</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">企业内部自研低代码框架，基于AdminLTE后台模板进行深度定制，提供可复用业务组件库。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">jQuery / Bootstrap / Thymeleaf / Velocity / SpringBoot / MyBatis-Plus · MySQL 5.7 · CentOS 7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">9</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">全国中小学质量评估（音乐）平台</span>
+                <span class="project-period-badge">2019.12 – 2020.07 · 7个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 8人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">SpringBoot</span><span class="tech-chip">Activiti</span><span class="tech-chip">Spring Data JPA</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向全国中小学生的音乐素质评估管理平台，支持多省市并行考评业务。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">jQuery / Bootstrap / SpringBoot / Activiti / Spring Data JPA / Thymeleaf · MySQL 5.7 · CentOS 7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">10</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">通信公司网元层网络管理项目</span>
+                <span class="project-period-badge">2018.12 – 2019.12 · 12个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 4人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">React</span><span class="tech-chip">SpringBoot</span><span class="tech-chip">InfluxDB</span><span class="tech-chip">Spring Data JPA</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">电信行业通信设备网元层网络管理系统，用于监控与管理通信设备状态及性能数据。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">React / SPA / SpringBoot / RESTful API / Spring Data JPA · MySQL 5.7 / InfluxDB · CentOS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 3: 华通科技 -->
+      <div class="project-group">
+        <div class="project-group-title">华通科技 · 电信系统研发 (2006.09 – 2018.12) · 部长</div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">11</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">四川联通校园管理软件 "See my baby"</span>
+                <span class="project-period-badge">2016.08 – 2018.12 · 28个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 7人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">ExtJS</span><span class="tech-chip">Spring MVC</span><span class="tech-chip">RESTful</span><span class="tech-chip">萤石云</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">四川联通面向校园的综合管理软件，支持门禁、考勤、家校沟通、视频监控（萤石云）等功能。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">ExtJS / SPA / Spring / SpringMVC / c3p0 / RESTful / 萤石云 / Nginx · CentOS / MySQL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">12</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">电信管理服务 · 电子运维管理系统</span>
+                <span class="project-period-badge">2011.06 – 2018.12 · 7.5年</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 12人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">JSP</span><span class="tech-chip">Spring MVC</span><span class="tech-chip">jBPM</span><span class="tech-chip">SQL Server</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">大型电信运营商的电子化运维管理系统，涵盖工单流转、设备管理、故障处理全流程，持续迭代超7年。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">JSP / Spring / SpringMVC / c3p0 / jBPM / RESTful · Windows / SQL Server</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">13</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">通信管理服务综合报表平台</span>
+                <span class="project-period-badge">2010.09 – 2018.12 · 8年</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 12人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">Data Warehouse</span><span class="tech-chip">JSP</span><span class="tech-chip">Spring MVC</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向通信管理局的综合报表与数据分析平台，整合多系统数据，提供决策支持报表。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">JSP / Spring / SpringMVC / c3p0 / jBPM / RESTful · Windows / SQL Server</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">14</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">企业内通信·工作流平台 / 移动业务支撑网管 / 本地调度维护系统</span>
+                <span class="project-period-badge">2007.08 – 2010.09 · 37个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 15人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">JSP</span><span class="tech-chip">Spring</span><span class="tech-chip">jBPM</span><span class="tech-chip">Linux</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">三套并行电信系统：① 企业内通信及工作流管理平台 ② 移动业务支撑网管平台 ③ 移动本地调度维护系统。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">JSP / Spring / SpringMVC / c3p0 / jBPM · Linux / MySQL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">15</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">移动服务支撑网管平台 · 电信视频外呼系统</span>
+                <span class="project-period-badge">2006.09 – 2007.08 · 11个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pm">PM/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 11人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">JSP</span><span class="tech-chip">Spring</span><span class="tech-chip">MySQL</span><span class="tech-chip">SQL Server</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">移动运营商服务支撑网管平台及电信视频外呼系统，支持客服自动化拨出业务。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">JSP / Spring / SpringMVC / c3p0 / jBPM · Windows / MySQL / SQL Server</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 4: 中兴通信 -->
+      <div class="project-group">
+        <div class="project-group-title">中兴通信 · 系统工程师期 (2001.03 – 2006.09)</div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">16</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">综合网络管理平台（UEP）</span>
+                <span class="project-period-badge">2003.09 – 2006.09 · 36个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-se">SE/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 35人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">Swing</span><span class="tech-chip">EJB</span><span class="tech-chip">JBoss</span><span class="tech-chip">Oracle</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">大型电信综合网络管理平台，支持多厂商设备接入，跨平台部署（Unix/Linux/Solaris/Windows），支持多种主流数据库。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">Swing / EJB / JMS / JBoss / PL SQL · Unix / Linux / Solaris / AIX / HP-UX / Windows · MySQL / Oracle / PostgreSQL / SQL Server / Sybase / DB2</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">17</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">电信经营分析系统</span>
+                <span class="project-period-badge">2002.12 – 2003.09 · 9个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pl">PL/PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 5人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">ASP</span><span class="tech-chip">SSIS</span><span class="tech-chip">SSAS</span><span class="tech-chip">SQL Server</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">电信运营商决策支持系统，基于数据仓库的经营分析与报表平台。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">ASP / SSIS / SSAS · Windows / SQL Server</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">18</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">电信骨干网资源管理系统</span>
+                <span class="project-period-badge">2002.03 – 2002.12 · 9个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pg">PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 18人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">C++</span><span class="tech-chip">CORBA</span><span class="tech-chip">EJB</span><span class="tech-chip">ArcGIS</span><span class="tech-chip">Oracle</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">面向电信骨干网的资源管理系统，含GIS地图可视化（ArcGIS），用于管理光缆、设备等网络资源。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">VB / C++ / CORBA / Swing / JSP / EJB / WebSphere / Weblogic / ArcGIS / PL SQL · Unix / Oracle</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-header">
+            <div class="project-num">19</div>
+            <div class="project-card-main">
+              <div class="project-title-row">
+                <span class="project-name">电信网络管理系统（NMS）</span>
+                <span class="project-period-badge">2001.03 – 2002.03 · 12个月</span>
+              </div>
+              <div class="project-meta-row">
+                <span class="project-role-badge role-pg">PG</span>
+                <span class="project-location">📍 中国</span>
+                <span class="project-team">👥 6人</span>
+                <div class="project-tech-preview">
+                  <span class="tech-chip">C++</span><span class="tech-chip">CORBA</span><span class="tech-chip">JSP/EJB</span><span class="tech-chip">Oracle</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-toggle">▾</div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-body-section">
+              <div class="project-body-label">项目概要</div>
+              <div class="project-body-text">职业生涯第一个项目。大型电信网络管理系统，负责详细设计、编码与测试。</div>
+            </div>
+            <div class="project-body-section">
+              <div class="project-body-label">技术栈</div>
+              <div class="project-body-text">VB / C++ / CORBA / Swing / JSP / EJB / WebSphere / Weblogic / ArcGIS / PL SQL · Unix / Oracle</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="resume-section" style="background:#f8fafc;">
+    <div class="container">
+      <h2 class="resume-section-title">教育背景</h2>
+      <div class="edu-item">
+        <div class="edu-year">1998 – 2001</div>
+        <div>
+          <div class="edu-school">上海交通大学</div>
+          <div class="edu-degree">工学硕士 · 电力系统及其自动化</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">1994 – 1998</div>
+        <div>
+          <div class="edu-school">上海交通大学</div>
+          <div class="edu-degree">工学学士 · 电力系统及其自动化</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">1994 – 1998</div>
+        <div>
+          <div class="edu-school">上海交通大学</div>
+          <div class="edu-degree">双学位 · 国际会计</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES & CERTS -->
+  <section class="resume-section">
+    <div class="container">
+      <h2 class="resume-section-title">语言与资格</h2>
+      <div class="lang-cert-grid">
+        <div>
+          <div class="lc-group-title">语言能力</div>
+          <div class="lang-item">
+            <span class="lang-name">中文</span>
+            <span class="lang-level">母语</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">英语</span>
+            <span class="lang-level">中级（CET-6, 读写流利）</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">日语</span>
+            <span class="lang-level">初级（日常·业务沟通）</span>
+          </div>
+        </div>
+        <div>
+          <div class="lc-group-title">资格证书</div>
+          <div class="cert-item">
+            <span class="cert-year">1998</span>CET-6（大学英语六级）
+          </div>
+          <div class="cert-item">
+            <span class="cert-year">2001</span>SCJP（Sun Java认证程序员）
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 蔡磊 · 用心记录，持续成长</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.project-card-header').forEach(function (header) {
+      header.addEventListener('click', function () {
+        header.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
