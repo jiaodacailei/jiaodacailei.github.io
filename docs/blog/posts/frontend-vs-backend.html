@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>前后端三十年战争：JavaScript 的逆袭之路 · 蔡磊</title>
+  <meta name="description" content="从 1995 年 JavaScript 诞生，到 Node.js 正面冲击 Java 后端，再到前端三大框架称霸——三十年来，这场没有硝烟的战争从未停止。" />
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../index.html" class="nav-logo">蔡磊</a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#about">关于</a></li>
+        <li><a href="../../index.html#skills">技能</a></li>
+        <li><a href="../index.html" class="active">博客</a></li>
+        <li><a href="../../index.html#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="post-page">
+    <a href="../index.html" class="back-link">← 返回博客</a>
+
+    <div class="post-page-header">
+      <h1>前后端三十年战争：JavaScript 的逆袭之路</h1>
+      <div class="post-author">
+        <img src="../../images/photo-3.jpg" alt="蔡磊" class="post-author-avatar" />
+        <div class="post-author-info">
+          <span class="post-author-name">蔡磊</span>
+          <span class="post-author-title">在日IT技术者 · 零代码开发</span>
+        </div>
+      </div>
+      <div class="post-page-meta">
+        <span>2024-02-06</span>
+        <span class="post-tag">技术历史</span>
+        <span class="post-tag">前端</span>
+        <span class="post-tag">Java</span>
+        <span class="post-tag">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      <p>
+        在日本 IT 派遣行业里，有一个经久不衰的问题：学 Java 还是学 JavaScript？
+        要回答这个问题，你得先搞清楚这两者三十年来的恩怨情仇。
+        这不只是技术史，更是理解日本 IT 现状与未来的一把钥匙。
+      </p>
+
+      <h2>蜜月期：前端还是弟弟的年代</h2>
+
+      <p>
+        1990 年代末，互联网刚刚起步，后端控制一切——页面由服务器生成，前端只是加点样式。
+        这个时代，Java 出道即巅峰。
+      </p>
+
+      <p>
+        1996 年，Java 1.0 发布，立刻登上《纽约时报》《华盛顿邮报》《商业周刊》的头版，
+        国家广播电台为它播出十分钟专题，风险投资为 Java 生态专门设立 1 亿美元基金。
+        它的父亲是 C++，出道即含金钥匙。
+        就连死忠微软阵营，VC++ 也无法阻止 Java 在 Windows 上野蛮生长。
+      </p>
+
+      <p>
+        彼时 JavaScript 只有 1 岁，在 Java 耀眼的光环下，只能低下头，满眼崇拜：
+        <em>"跟着 Java 走，生活有盼头。"</em>
+      </p>
+
+      <p>
+        Java 不仅没把这个小弟放在眼里，甚至直接推出了 Applet——在浏览器里运行 Java 代码，
+        从诞生第一天就宣布自己是全栈，根本不需要带 JavaScript 玩。
+      </p>
+
+      <h2>危机与反击：AJAX 和 JSON 的出现</h2>
+
+      <p>
+        1999 年，微软 IE5 引入了 XMLHttpRequest，这是 AJAX 技术的关键组件。
+        页面从此不用整个刷新，可以局部更新——JavaScript 第一次感受到自己有点用。
+      </p>
+
+      <p>
+        但 Java 阵营没当回事：不就是以前取整个 HTML，现在只取一部分？
+        一切还在 Java（JSP）的掌控之中。
+      </p>
+
+      <p>
+        直到 JavaScript 悄悄扔出了 <strong>JSON</strong>——2001 年推出，2006 年成为通用数据交换标准。
+        JSON 比基于 SOAP 的 Web Service 更轻量、更易解析，RESTful 接口随之崛起。
+        此后，越来越多的业务逻辑开始向前端迁移。
+      </p>
+
+      <p>
+        Java 这才正视这个曾经的小弟，被迫在 SOA 架构里同时支持 Web Service 和 RESTful 两套标准——
+        这是 Java 的第一次无奈妥协。
+      </p>
+
+      <h2>决战：Node.js 横空出世</h2>
+
+      <p>
+        2009 年，JavaScript 亮出了藏了多年的底牌——<strong>Node.js</strong>。
+      </p>
+
+      <p>
+        Node.js 让 JavaScript 能在后端运行。
+        这对 Java 来说是釜底抽薪：前端已经在慢慢蚕食业务逻辑，现在 JavaScript 要正面夺取后端地盘，
+        意味着一个人可以用 JavaScript 从头到尾包圆整个系统。
+      </p>
+
+      <p>
+        Java 的反击也来了：2010 年起布局微服务架构，十年磨剑，借助 Docker 等容器技术一飞冲天。
+        但在日本 IT 派遣的现实战场上，<strong>微服务几乎没有用武之地</strong>——
+        大多数项目是企业管理系统，用户量不大，根本用不上。
+      </p>
+
+      <blockquote>
+        也就是在 2010 年前后，Angular、React、Vue 前端三大框架接连出现，
+        把更多业务逻辑推向了前端。Java 再一次被动防守。
+      </blockquote>
+
+      <p>
+        2017 年，Oracle 正式宣布从后续 Java 版本中移除 Applet——
+        Java 在前端的最后一块阵地，就此彻底丢失。
+      </p>
+
+      <h2>补刀：TypeScript、Serverless 和跨平台</h2>
+
+      <p>
+        2012 年，微软开源了 <strong>TypeScript</strong>——
+        带静态类型检查、面向对象的 JavaScript 超集。
+        Java 那点「我更符合人类思维习惯」的念想，也随之烟消云散。
+      </p>
+
+      <p>
+        同期兴起的 <strong>Serverless（无服务器）</strong>架构，主力编程语言依然是 JavaScript。
+        再往后，uni-app（2017）、React Native 等框架让 JavaScript 代码直接编译为 Android 和 iOS 原生应用，
+        移动端也开始被前端技术侵蚀。
+      </p>
+
+      <h2>日本原生的技术力量</h2>
+
+      <p>这里也值得提一下几个来自日本的技术贡献：</p>
+
+      <ul>
+        <li><strong>Ruby</strong>（1996 年）：日本程序员松本行弘创建，Ruby on Rails（2004）帮助 Ruby 走向世界。</li>
+        <li><strong>HikariCP</strong>（2012 年）：高性能 JDBC 连接池，由日本工程师创建，现在已是 Spring Boot 默认连接池。</li>
+        <li><strong>Kotlin</strong>：JetBrains 日本工程师参与创建，后来成为 Android 官方首选语言。</li>
+      </ul>
+
+      <h2>现在的日本 IT 是什么格局？</h2>
+
+      <p>
+        Java、Python、Ruby 仍然占据日本 IT 派遣项目的大多数——这是现在。
+        但 JavaScript 生态（前端三大框架、Node.js、Next.js、Serverless）正在稳步增长——这是未来。
+      </p>
+
+      <p>
+        一句话总结：
+        <strong>贫穷和弱小从来不是失败的原因，傲慢才是。</strong>
+        Java 曾经的傲慢，给了 JavaScript 三十年的成长空间。
+      </p>
+
+      <h2>对新入行的建议</h2>
+
+      <p>
+        如果你刚入行，<strong>选 Java + Vue 组合</strong>是目前性价比最高的路线：
+        Java 后端需求量大，Vue 是日本前端现场覆盖最广的框架，两者都学，案件选择余地最大。
+      </p>
+
+      <p>
+        在此基础上，持续关注 JavaScript 整个生态——Node.js、Next.js、TypeScript。
+        这不是现在的要求，但会是未来的竞争力。
+      </p>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 蔡磊 · 用心记录，持续成长</p>
+  </footer>
+
+  <script src="../../js/float-photos.js" data-base="../../images/"></script>
+</body>
+</html>

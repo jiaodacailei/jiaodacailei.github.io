@@ -192,16 +192,15 @@ git push origin main
 |------|------|---------|------|
 | AI+低代码：一场正在发生的「羊吃人」 | txt | 2026-06-25 | sheep-eating-people.html |
 | 日本IT派遣的五层架构：你的钱是怎么被瓜分的？ | pptx | 2024-06-24 | it-dispatch-architecture.html |
+| 三月退场潮：日本IT派遣的财政年度密码 | txt | 2024-03-08 | dispatch-exit-season.html |
+| 日本IT技术者的三条出路：你选哪条？ | txt | 2024-05-16 | ultimate-goal.html |
+| 前后端三十年战争：JavaScript 的逆袭之路 | txt | 2024-02-06 | frontend-vs-backend.html |
+| 日本IT派遣技术栈全解：你该学什么？ | txt | 2024-02-05 | tech-stack-guide.html |
+| 日本IT薪资水平，你达标了吗？ | txt | 2024-02-05 | salary-benchmark.html |
+| 日本IT派遣面试潜规则：会社从来不告诉你的那些事 | pptx | 2024-02-05 | interview-secrets.html |
+| 中日IT面试乱象：从灵魂拷问到拔出萝卜带出泥 | pptx | 2024-02-05 | interview-chaos.html |
+| 2030年日本IT人才缺口79万：谁能抓住这波红利？ | pptx | 2024-02-05 | who-benefits-most.html |
 
-## 八、待转换队列（推荐顺序）
+## 八、待转换队列
 
-| 文件 | 档次 | 备注 |
-|------|------|------|
-| 日本IT派遣退场季.txt | A | 三月退场潮、财政年度分析 |
-| 日本IT派遣前后端的爱恨情仇.txt | A | JS vs Java 三十年战争，内容最丰富 |
-| 日本IT派遣技术栈比较.txt | A | 技术选型指南 |
-| 日本IT的终极目标.txt | B | 三条职业通道，需补充 |
-| 日本IT薪资水平，你达标了吗.txt | A | 数据型文章 |
-| 日本IT派遣面试潜规则.pptx | pptx | 有图可提取 |
-| 中日IT面试乱象.pptx | pptx | 有图可提取 |
-| 什么人来日本做IT价值增量最高.pptx | pptx | 市场缺口数据 |
+red2 目录中已全部完成转换。如有新素材，按上述流程继续处理。
