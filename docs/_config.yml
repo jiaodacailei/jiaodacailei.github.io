@@ -1,0 +1,8 @@
+title: 蔡磊
+url: "https://jiaodacailei.github.io"
+baseurl: ""
+
+# Don't process these directories as Jekyll source
+exclude:
+  - js/
+  - images/

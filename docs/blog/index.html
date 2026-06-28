@@ -1,26 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>博客 · 蔡磊</title>
-  <meta name="description" content="蔡磊的技术博客，记录在日IT工作与生活的点滴。" />
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">蔡磊</a>
-      <ul class="nav-links">
-        <li><a href="../index.html#about">关于</a></li>
-        <li><a href="../resume.html">履历</a></li>
-        <li><a href="index.html" class="active">博客</a></li>
-        <li><a href="../apps/index.html">应用</a></li>
-        <li><a href="../index.html#contact">联系</a></li>
-      </ul>
-    </div>
-  </nav>
+﻿---
+layout: default
+title: "博客 · 蔡磊"
+description: "蔡磊的技术博客，记录在日IT工作与生活的点滴。"
+nav_active: blog
+render_with_liquid: false
+---
 
   <div class="page-header">
     <h1>博客</h1>
@@ -800,26 +784,4 @@
 
     </div>
   </div>
-
-  <footer>
-    <p>© 2026 蔡磊 · 用心记录，持续成长</p>
-  </footer>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var list = document.querySelector('.post-list');
-    if (!list) return;
-    var items = Array.from(list.querySelectorAll('.post-item'));
-    if (items.length <= 1) return;
-    var rest = items.slice(1);
-    rest.sort(function () { return Math.random() - 0.5; });
-    rest.forEach(function (item) { list.appendChild(item); });
-  });
-  </script>
-  <script src="../js/tag-filter.js"></script>
-  <script data-goatcounter="https://jiaodacailei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
-
-
 

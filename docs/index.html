@@ -1,26 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>蔡磊 · 在日零代码开发技术者</title>
-  <meta name="description" content="蔡磊的个人主页，上海交通大学工学硕士，在日本从事零代码开发，记录技术与生活。" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">蔡磊</a>
-      <ul class="nav-links">
-        <li><a href="#about">关于</a></li>
-        <li><a href="resume.html">履历</a></li>
-        <li><a href="#blog">博客</a></li>
-        <li><a href="apps/index.html">应用</a></li>
-        <li><a href="#contact">联系</a></li>
-      </ul>
-    </div>
-  </nav>
+﻿---
+layout: default
+title: "蔡磊 · 在日零代码开发技术者"
+description: "蔡磊的个人主页，上海交通大学工学硕士，在日本从事零代码开发，记录技术与生活。"
+render_with_liquid: false
+---
 
   <!-- HERO -->
   <div class="hero">
@@ -171,41 +154,4 @@
       </div>
     </div>
   </section>
-
-  <footer>
-    <p>© 2026 蔡磊 · 用心记录，持续成长</p>
-  </footer>
-
-  <script>
-  (function () {
-    var list = document.getElementById('home-post-list');
-    if (!list) return;
-    fetch('blog/posts.json')
-      .then(function (r) { return r.json(); })
-      .then(function (posts) {
-        if (!posts.length) return;
-        var newest = posts[0];
-        var rest = posts.slice(1);
-        for (var i = rest.length - 1; i > 0; i--) {
-          var j = Math.floor(Math.random() * (i + 1));
-          var t = rest[i]; rest[i] = rest[j]; rest[j] = t;
-        }
-        var selected = [newest].concat(rest.slice(0, 2));
-        list.innerHTML = selected.map(function (p) {
-          return '<a href="blog/posts/' + p.slug + '.html" class="post-item">' +
-            '<div class="post-info">' +
-            '<div class="post-title">' + p.title + '</div>' +
-            '<div class="post-subtitle">' + p.tags.join(' · ') + '</div>' +
-            '</div><span class="post-arrow">→</span></a>';
-        }).join('');
-      })
-      .catch(function () {});
-  })();
-  </script>
-
-  <script data-goatcounter="https://jiaodacailei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
-
-
 

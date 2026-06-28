@@ -1,0 +1,12 @@
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">蔡磊</a>
+    <ul class="nav-links">
+      <li><a href="/#about">关于</a></li>
+      <li><a href="/resume.html" {% if page.nav_active == "resume" %}class="active"{% endif %}>履历</a></li>
+      <li><a href="/blog/" {% if page.nav_active == "blog" %}class="active"{% endif %}>博客</a></li>
+      <li><a href="/apps/" {% if page.nav_active == "apps" %}class="active"{% endif %}>应用</a></li>
+      <li><a href="/#contact">联系</a></li>
+    </ul>
+  </div>
+</nav>
