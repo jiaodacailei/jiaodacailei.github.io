@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日本IT薪资计算器 · 蔡磊</title>
+  <meta name="description" content="根据经验、日语、技术等级和岗位角色，估算在日本IT派遣市场的月单价、手取月薪和年收。" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root {
+      --c1: #6366f1;
+      --c1l: #eef2ff;
+      --c1d: #4338ca;
+      --cg: #f8fafc;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Page Layout ─────────────────────────── */
+    .calc-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+    .calc-hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .calc-hero h1 {
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .calc-hero p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+    /* ── Layout grid ─────────────────────────── */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 640px) { .calc-grid { grid-template-columns: 1fr; } }
+
+    .calc-panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .calc-panel.wide { grid-column: span 2; }
+    @media (max-width: 640px) { .calc-panel.wide { grid-column: span 1; } }
+
+    .panel-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--c1);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .panel-title .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: var(--c1);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+    }
+
+    /* ── Slider ──────────────────────────────── */
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .slider-row label {
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 56px;
+    }
+    .slider-row input[type=range] {
+      flex: 1;
+      accent-color: var(--c1);
+      height: 4px;
+      cursor: pointer;
+    }
+    .slider-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      text-align: right;
+      min-width: 52px;
+    }
+    .slider-val span { font-size: 13px; font-weight: 500; color: var(--muted); }
+
+    /* ── Button groups ───────────────────────── */
+    .btn-group {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .btn-group.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .btn-group.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .btn-group.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .opt-btn {
+      border: 2px solid var(--border);
+      background: var(--cg);
+      border-radius: 12px;
+      padding: 11px 8px;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      transition: all .14s;
+      line-height: 1.3;
+    }
+    .opt-btn:hover { border-color: #a5b4fc; background: var(--c1l); }
+    .opt-btn.sel { border-color: var(--c1); background: var(--c1l); }
+    .opt-btn .ob-main {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+    .opt-btn.sel .ob-main { color: var(--c1d); }
+    .opt-btn .ob-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* ── Cut slider ──────────────────────────── */
+    .cut-hint { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+
+    /* ── Result card ─────────────────────────── */
+    .result-card {
+      background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%);
+      border-radius: 18px;
+      padding: 32px 28px;
+      color: #fff;
+      grid-column: span 2;
+    }
+    @media (max-width: 640px) { .result-card { grid-column: span 1; } }
+
+    .result-top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 500px) {
+      .result-top { grid-template-columns: 1fr 1fr; }
+      .result-top .r-main { grid-column: span 2; }
+    }
+    .r-block { text-align: center; }
+    .r-block.r-main {
+      border-right: 1px solid rgba(255,255,255,0.2);
+      padding-right: 16px;
+    }
+    .r-block:last-child { border-left: 1px solid rgba(255,255,255,0.2); }
+    .r-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      opacity: .7;
+      margin-bottom: 6px;
+    }
+    .r-value {
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .r-value.sm { font-size: 28px; }
+    .r-unit { font-size: 13px; opacity: .8; margin-top: 3px; }
+
+    /* benchmarks */
+    .bench-title {
+      font-size: 12px;
+      opacity: .7;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 14px;
+    }
+    .bench-rows { display: flex; flex-direction: column; gap: 10px; }
+    .bench-row { display: flex; align-items: center; gap: 10px; }
+    .bench-name { font-size: 12px; opacity: .8; min-width: 100px; }
+    .bench-track {
+      flex: 1;
+      height: 8px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 99px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bench-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.7);
+      transition: width .6s cubic-bezier(.4,0,.2,1);
+    }
+    .bench-fill.you { background: #fbbf24; }
+    .bench-num { font-size: 12px; min-width: 48px; text-align: right; opacity: .85; }
+
+    /* divider */
+    .r-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin: 20px 0;
+    }
+
+    /* advice */
+    .r-advice {
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    /* ── Warning ─────────────────────────────── */
+    .calc-note {
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 20px;
+    }
+    .calc-note a { color: var(--c1); text-decoration: none; }
+
+    /* ── Tag chip ────────────────────────────── */
+    .r-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .badge-low  { background: rgba(239,68,68,.2);  color: #fca5a5; }
+    .badge-mid  { background: rgba(251,191,36,.2); color: #fde68a; }
+    .badge-high { background: rgba(52,211,153,.2); color: #6ee7b7; }
+    .badge-top  { background: rgba(167,139,250,.2);color: #ddd6fe; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">蔡磊</a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">关于</a></li>
+        <li><a href="resume.html">履历</a></li>
+        <li><a href="blog/index.html">博客</a></li>
+        <li><a href="index.html#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="calc-wrap">
+
+    <div class="calc-hero">
+      <div class="section-eyebrow">Tool</div>
+      <h1>日本IT薪资计算器</h1>
+      <p>输入你的经验、日语、技术水平，估算派遣市场的<br>月单价、手取月薪与年收，并与行业基准对比</p>
+    </div>
+
+    <div class="calc-grid">
+
+      <!-- 经验年数 -->
+      <div class="calc-panel">
+        <div class="panel-title"><span class="num">1</span>IT工作经验</div>
+        <div class="slider-row">
+          <label>经验年数</label>
+          <input type="range" id="expSlider" min="0" max="20" value="3" step="1" />
+          <div class="slider-val" id="expVal">3<span>年</span></div>
+        </div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:8px;" id="expHint"></div>
+      </div>
+
+      <!-- 岗位角色 -->
+      <div class="calc-panel">
+        <div class="panel-title"><span class="num">2</span>岗位角色</div>
+        <div class="btn-group cols-3" id="roleGroup">
+          <button class="opt-btn" data-val="1.00">
+            <span class="ob-main">工程师</span>
+            <span class="ob-sub">SE / Dev</span>
+          </button>
+          <button class="opt-btn" data-val="1.14">
+            <span class="ob-main">技术负责人</span>
+            <span class="ob-sub">Tech Lead</span>
+          </button>
+          <button class="opt-btn" data-val="1.38">
+            <span class="ob-main">项目经理</span>
+            <span class="ob-sub">PM / PL</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 日语等级 -->
+      <div class="calc-panel">
+        <div class="panel-title"><span class="num">3</span>IT日语等级</div>
+        <div class="btn-group cols-2" id="jpGroup">
+          <button class="opt-btn" data-val="0.87">
+            <span class="ob-main">初级 10–8 级</span>
+            <span class="ob-sub">只能自我介绍 / 勉强沟通</span>
+          </button>
+          <button class="opt-btn" data-val="1.00">
+            <span class="ob-main">中级 7–5 级</span>
+            <span class="ob-sub">可独立作业 / 一般流畅</span>
+          </button>
+          <button class="opt-btn" data-val="1.14">
+            <span class="ob-main">上级 4–3 级</span>
+            <span class="ob-sub">与客户讨论规格 / 流畅</span>
+          </button>
+          <button class="opt-btn" data-val="1.30">
+            <span class="ob-main">母语级 2–1 级</span>
+            <span class="ob-sub">业务敬语 / 可担任 PM</span>
+          </button>
+        </div>
+        <p style="font-size:12px;color:#94a3b8;margin-top:8px;">
+          <a href="blog/posts/it-japanese-level.html" style="color:var(--c1);text-decoration:none;">→ 查看10级评级详解</a>
+        </p>
+      </div>
+
+      <!-- 技术等级 -->
+      <div class="calc-panel">
+        <div class="panel-title"><span class="num">4</span>技术水平</div>
+        <div class="btn-group cols-2" id="techGroup">
+          <button class="opt-btn" data-val="0.86">
+            <span class="ob-main">初级</span>
+            <span class="ob-sub">测试 / 运维 / 简单编码</span>
+          </button>
+          <button class="opt-btn" data-val="1.00">
+            <span class="ob-main">中级</span>
+            <span class="ob-sub">详细设计 / 独立开发</span>
+          </button>
+          <button class="opt-btn" data-val="1.20">
+            <span class="ob-main">高级</span>
+            <span class="ob-sub">基本设计 / 要件定义</span>
+          </button>
+          <button class="opt-btn" data-val="1.44">
+            <span class="ob-main">架构师</span>
+            <span class="ob-sub">全栈架构 / 技术决策</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 派遣条件 -->
+      <div class="calc-panel wide">
+        <div class="panel-title"><span class="num">5</span>派遣条件</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">会社每月抽成</div>
+            <div class="slider-row">
+              <input type="range" id="cutSlider" min="5" max="20" value="10" step="1" style="flex:1" />
+              <div class="slider-val" id="cutVal">10<span>万</span></div>
+            </div>
+            <div class="cut-hint" id="cutHint"></div>
+          </div>
+          <div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">年均待机月数</div>
+            <div class="slider-row">
+              <input type="range" id="idleSlider" min="0" max="4" value="1" step="1" style="flex:1" />
+              <div class="slider-val" id="idleVal">1<span>月</span></div>
+            </div>
+            <div class="cut-hint" id="idleHint"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="result-card" id="resultCard">
+        <div class="result-top">
+          <div class="r-block r-main">
+            <div class="r-label">手取月薪</div>
+            <div class="r-value" id="rTakeHome">－</div>
+            <div class="r-unit">万円 / 月</div>
+            <div id="rBadge"></div>
+          </div>
+          <div class="r-block">
+            <div class="r-label">月単価（含会社抽成）</div>
+            <div class="r-value sm" id="rUnit">－</div>
+            <div class="r-unit">万円 / 月</div>
+          </div>
+          <div class="r-block">
+            <div class="r-label">推定年收</div>
+            <div class="r-value sm" id="rAnnual">－</div>
+            <div class="r-unit">万円 / 年</div>
+          </div>
+        </div>
+
+        <hr class="r-divider" />
+
+        <div class="bench-title">与市场基准对比（月手取）</div>
+        <div class="bench-rows">
+          <div class="bench-row">
+            <div class="bench-name">你的估算</div>
+            <div class="bench-track"><div class="bench-fill you" id="bYou" style="width:0%"></div></div>
+            <div class="bench-num" id="bYouNum">－</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-name">新手 25万</div>
+            <div class="bench-track"><div class="bench-fill" style="width:21%"></div></div>
+            <div class="bench-num">25万</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-name">全日本平均 37万</div>
+            <div class="bench-track"><div class="bench-fill" style="width:31%"></div></div>
+            <div class="bench-num">37万</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-name">普通IT 50万</div>
+            <div class="bench-track"><div class="bench-fill" style="width:42%"></div></div>
+            <div class="bench-num">50万</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-name">资深IT 65万</div>
+            <div class="bench-track"><div class="bench-fill" style="width:54%"></div></div>
+            <div class="bench-num">65万</div>
+          </div>
+          <div class="bench-row">
+            <div class="bench-name">PM级 90万</div>
+            <div class="bench-track"><div class="bench-fill" style="width:75%"></div></div>
+            <div class="bench-num">90万</div>
+          </div>
+        </div>
+
+        <hr class="r-divider" />
+        <div class="r-advice" id="rAdvice">选择以上选项后，这里会给出个性化建议。</div>
+      </div>
+
+    </div><!-- /calc-grid -->
+
+    <p class="calc-note">
+      数据参考：
+      <a href="blog/posts/salary-benchmark.html">日本IT薪资基准</a> ·
+      <a href="blog/posts/it-japanese-level.html">IT日语评级体系</a> ·
+      <a href="tools/it-level-checker.html">日语×薪资测算工具</a>
+      <br>本工具仅供参考，实际薪资因技术栈、地区、会社及市场行情不同而存在差异
+    </p>
+
+  </div><!-- /calc-wrap -->
+
+  <footer>
+    <p>© 2026 蔡磊 · 用心记录，持续成长</p>
+  </footer>
+
+  <script>
+  (function () {
+    // ── State ──────────────────────────────────────
+    var state = {
+      exp: 3,
+      role: null,
+      jp: null,
+      tech: null,
+      cut: 10,
+      idle: 1,
+    };
+
+    // ── Experience factor ─────────────────────────
+    function expFactor(y) {
+      if (y < 1)  return 0.72;
+      if (y < 2)  return 0.82;
+      if (y < 3)  return 0.90;
+      if (y < 5)  return 1.00;
+      if (y < 8)  return 1.16;
+      if (y < 12) return 1.32;
+      if (y < 16) return 1.44;
+      return 1.52;
+    }
+
+    var EXP_HINTS = [
+      '刚入行，以测试/运维为主',
+      '第1年，学习积累阶段',
+      '第2年，逐步独立',
+      '3年节点，应冲击40万+',
+      '第4年，中级工程师',
+      '5年节点，资深工程师起步',
+      '第6年','第7年',
+      '8年，高级工程师',
+      '第9年','第10年','第11年',
+      '12年+，专家/架构师',
+      '','','','','','','',
+      '20年，行业老兵'
+    ];
+
+    var CUT_HINTS = [
+      '','','','','',
+      '5万：非常优质，会社良心',
+      '6万：不错','7万：中上','8万：中等偏好','9万：正常',
+      '10万：市场平均水平',
+      '11万：略高','12万：偏高','13万：较高','14万：高',
+      '15万：需谈判','16万：较苛刻','17万：','18万：苛刻',
+      '19万：','20万：极高，建议换会社'
+    ];
+
+    var IDLE_HINTS = ['理想状态：无待机','1个月：轻微风险（行业平均）',
+      '2个月：需关注，提前找下家','3个月：高风险，会影响年收',
+      '4个月：危险，年收损失超30%'];
+
+    // ── DOM refs ──────────────────────────────────
+    var expSlider = document.getElementById('expSlider');
+    var expValEl  = document.getElementById('expVal');
+    var expHintEl = document.getElementById('expHint');
+    var cutSlider = document.getElementById('cutSlider');
+    var cutValEl  = document.getElementById('cutVal');
+    var cutHintEl = document.getElementById('cutHint');
+    var idleSlider= document.getElementById('idleSlider');
+    var idleValEl = document.getElementById('idleVal');
+    var idleHintEl= document.getElementById('idleHint');
+
+    // ── Slider listeners ──────────────────────────
+    expSlider.addEventListener('input', function () {
+      state.exp = +this.value;
+      expValEl.innerHTML = state.exp + '<span>年</span>';
+      expHintEl.textContent = EXP_HINTS[state.exp] || '';
+      compute();
+    });
+    cutSlider.addEventListener('input', function () {
+      state.cut = +this.value;
+      cutValEl.innerHTML = state.cut + '<span>万</span>';
+      cutHintEl.textContent = CUT_HINTS[state.cut] || '';
+      compute();
+    });
+    idleSlider.addEventListener('input', function () {
+      state.idle = +this.value;
+      idleValEl.innerHTML = state.idle + '<span>月</span>';
+      idleHintEl.textContent = IDLE_HINTS[state.idle] || '';
+      compute();
+    });
+
+    // initialize hints
+    expHintEl.textContent  = EXP_HINTS[3];
+    cutHintEl.textContent  = CUT_HINTS[10];
+    idleHintEl.textContent = IDLE_HINTS[1];
+
+    // ── Button group listeners ────────────────────
+    function setupGroup(id, key) {
+      var grp = document.getElementById(id);
+      grp.addEventListener('click', function (e) {
+        var btn = e.target.closest('.opt-btn');
+        if (!btn) return;
+        grp.querySelectorAll('.opt-btn').forEach(function (b) { b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        state[key] = parseFloat(btn.dataset.val);
+        compute();
+      });
+    }
+    setupGroup('roleGroup', 'role');
+    setupGroup('jpGroup',   'jp');
+    setupGroup('techGroup', 'tech');
+
+    // ── Compute ───────────────────────────────────
+    function compute() {
+      if (state.role === null || state.jp === null || state.tech === null) return;
+
+      var BASE = 44; // 万円, mid-level engineer, mid JP, 3-5yr
+      var unit = Math.min(140, Math.max(22,
+        BASE * expFactor(state.exp) * state.role * state.jp * state.tech
+      ));
+      unit = Math.round(unit);
+
+      var takeHome = Math.max(15, unit - state.cut);
+      var workMonths = 12 - state.idle;
+      var annual = Math.round(takeHome * workMonths);
+
+      // update DOM
+      document.getElementById('rUnit').textContent = unit;
+      document.getElementById('rTakeHome').textContent = takeHome;
+      document.getElementById('rAnnual').textContent = annual;
+      document.getElementById('bYouNum').textContent = takeHome + '万';
+
+      // benchmark bar (scale 0-120万 = 0-100%)
+      var pct = Math.min(100, takeHome / 120 * 100);
+      document.getElementById('bYou').style.width = pct + '%';
+
+      // badge
+      var badge = document.getElementById('rBadge');
+      if (takeHome < 30) {
+        badge.innerHTML = '<span class="r-badge badge-low">⚠ 低于市场</span>';
+      } else if (takeHome < 42) {
+        badge.innerHTML = '<span class="r-badge badge-mid">→ 达到全国平均</span>';
+      } else if (takeHome < 62) {
+        badge.innerHTML = '<span class="r-badge badge-high">✓ IT行业中等偏上</span>';
+      } else {
+        badge.innerHTML = '<span class="r-badge badge-top">★ 高薪段位</span>';
+      }
+
+      // advice
+      document.getElementById('rAdvice').textContent = buildAdvice(takeHome, unit, state);
+    }
+
+    function buildAdvice(take, unit, s) {
+      var tips = [];
+
+      if (take < 30) {
+        tips.push('目前薪资处于偏低区间。');
+        if (s.jp <= 0.88) tips.push('日语是最大瓶颈——从10级提升到6级，月薪可上涨8-15万。');
+        if (s.tech <= 0.86) tips.push('技术层面仍在初级，专攻一个需求旺盛的技术方向可以快速提升单价。');
+        if (s.cut >= 15) tips.push('会社抽成超过15万，建议认真考虑换会社或直接谈判。');
+      } else if (take < 42) {
+        tips.push('处于全国平均水平附近，已经起步，但IT行业应该做得更好。');
+        if (s.exp < 3) tips.push('经验是最快的杠杆，坚持3年，薪资会有明显跳升。');
+        if (s.jp <= 1.00) tips.push('日语从中级提升到上级（4-5级），可带来额外10-18%的单价提升。');
+      } else if (take < 62) {
+        tips.push('已超过IT行业平均水平，属于合格的中高级人才。');
+        if (s.jp < 1.14) tips.push('日语到上级后，可以直接参与要件定义和客户沟通，进一步打开单价空间。');
+        if (s.role <= 1.00) tips.push('工程师转Tech Lead可带来约14%的单价提升，积累管理经验是值得的投资。');
+        if (s.idle >= 2) tips.push('待机2个月以上会明显压低年收，建议提前布局下一个现场，或考虑长期项目。');
+      } else {
+        tips.push('你处于高薪段位，在派遣市场属于稀缺资源。');
+        if (s.jp < 1.30) tips.push('日语提升到业务级，叠加PM角色，可以突破100万月薪的门槛。');
+        if (s.cut >= 12) tips.push('在这个单价水平，抽成12万以上偏贵，有较强谈判筹码，建议重新谈条件。');
+        tips.push('也可以考虑从派遣转向正社员或自由顾问，收入天花板会更高。');
+      }
+
+      if (s.idle >= 3) tips.push('⚠ 年均待机3个月以上风险很高，年收损失超25%，稳定性需优先解决。');
+
+      return tips.join('　');
+    }
+
+  })();
+  </script>
+
+  <script data-goatcounter="https://jiaodacailei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
