@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>应用中心 · 蔡磊</title>
+  <meta name="description" content="蔡磊开发的在日IT实用工具：薪资计算器、日语等级测算等。" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .apps-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .app-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: box-shadow .15s, transform .15s;
+      text-decoration: none;
+    }
+    .app-card:hover {
+      box-shadow: 0 8px 28px rgba(99,102,241,0.12);
+      transform: translateY(-3px);
+    }
+    .app-icon {
+      font-size: 36px;
+      line-height: 1;
+    }
+    .app-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: #1e293b;
+    }
+    .app-desc {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .app-tag {
+      display: inline-block;
+      background: #eef2ff;
+      color: #6366f1;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 99px;
+      align-self: flex-start;
+    }
+    .app-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #6366f1;
+      margin-top: 4px;
+    }
+    .app-card-soon {
+      background: #f8fafc;
+      border: 2px dashed #e2e8f0;
+      border-radius: 18px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: .55;
+    }
+    .app-card-soon .app-name { color: #94a3b8; }
+    .soon-badge {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 99px;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">蔡磊</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">关于</a></li>
+        <li><a href="../resume.html">履历</a></li>
+        <li><a href="../blog/index.html">博客</a></li>
+        <li><a href="index.html" class="active">应用</a></li>
+        <li><a href="../index.html#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="apps-page">
+    <div class="section-eyebrow">Apps</div>
+    <h1 class="section-title">应用中心</h1>
+    <p style="color:#64748b;font-size:15px;margin-top:8px;">基于在日IT实务经验打造的实用小工具，持续更新中</p>
+
+    <div class="apps-grid">
+
+      <!-- 薪资计算器 -->
+      <a href="../salary-calculator.html" class="app-card">
+        <div class="app-icon">💴</div>
+        <div class="app-name">日本IT薪资计算器</div>
+        <div class="app-desc">
+          根据经验年数、年龄、日语等级、技术水平和岗位角色，估算派遣市场的月単価、手取月薪与推定年收，并与行业基准对比。
+        </div>
+        <span class="app-tag">派遣薪资</span>
+        <span class="app-open">立即使用 →</span>
+      </a>
+
+      <!-- 日语等级测算 -->
+      <a href="../tools/it-level-checker.html" class="app-card">
+        <div class="app-icon">🗣️</div>
+        <div class="app-name">日语等级 × 薪资测算</div>
+        <div class="app-desc">
+          基于 IT 日语 10 级评级体系，结合经验段位，查看当前可参与的工作范围和对应月薪区间，以及下一步提升建议。
+        </div>
+        <span class="app-tag">日语评级</span>
+        <span class="app-open">立即使用 →</span>
+      </a>
+
+      <!-- 占位：即将上线 -->
+      <div class="app-card-soon">
+        <div class="app-icon">🗂️</div>
+        <div class="app-name">派遣会社评分器</div>
+        <div class="app-desc">输入会社条件，自动评分：抽成比例、待机保障、技术成长空间……</div>
+        <span class="soon-badge">即将上线</span>
+      </div>
+
+      <div class="app-card-soon">
+        <div class="app-icon">📅</div>
+        <div class="app-name">待机风险计算器</div>
+        <div class="app-desc">基于待机频率和时长，估算年收损失，推算换会社的最佳时机。</div>
+        <span class="soon-badge">即将上线</span>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 蔡磊 · 用心记录，持续成长</p>
+  </footer>
+
+  <script data-goatcounter="https://jiaodacailei.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
