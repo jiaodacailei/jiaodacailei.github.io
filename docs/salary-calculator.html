@@ -102,45 +102,17 @@ render_with_liquid: false
         </div>
       </div>
 
-      <!-- 派遣条件 -->
-      <div class="calc-panel wide">
-        <div class="panel-title"><span class="num">5</span>派遣条件</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-          <div>
-            <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">会社每月抽成</div>
-            <div class="slider-row">
-              <input type="range" id="cutSlider" min="5" max="20" value="10" step="1" style="flex:1" />
-              <div class="slider-val" id="cutVal">10<span>万</span></div>
-            </div>
-            <div class="cut-hint" id="cutHint"></div>
-          </div>
-          <div>
-            <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">年均待机月数</div>
-            <div class="slider-row">
-              <input type="range" id="idleSlider" min="0" max="4" value="0" step="1" style="flex:1" />
-              <div class="slider-val" id="idleVal">0<span>月</span></div>
-            </div>
-            <div class="cut-hint" id="idleHint"></div>
-          </div>
-        </div>
-      </div>
-
       <!-- Result -->
       <div class="result-card" id="resultCard" style="display:none">
         <div class="result-top">
           <div class="r-block r-main">
-            <div class="r-label">手取月薪</div>
-            <div class="r-value" id="rTakeHome">－</div>
+            <div class="r-label">参考月単価</div>
+            <div class="r-value" id="rUnit">－</div>
             <div class="r-unit">万円 / 月</div>
             <div id="rBadge"></div>
           </div>
           <div class="r-block">
-            <div class="r-label">月単価（含会社抽成）</div>
-            <div class="r-value sm" id="rUnit">－</div>
-            <div class="r-unit">万円 / 月</div>
-          </div>
-          <div class="r-block">
-            <div class="r-label">推定年收</div>
+            <div class="r-label">参考年収</div>
             <div class="r-value sm" id="rAnnual">－</div>
             <div class="r-unit">万円 / 年</div>
           </div>
@@ -148,7 +120,7 @@ render_with_liquid: false
 
         <hr class="r-divider" />
 
-        <div class="bench-title">与市场基准对比（月手取）</div>
+        <div class="bench-title">与市场基准对比（月単価）</div>
         <div class="bench-rows">
           <div class="bench-row">
             <div class="bench-name">你的估算</div>
@@ -200,7 +172,7 @@ render_with_liquid: false
 
   <script>
   (function () {
-    var state = { exp: 3, age: 35, role: null, jp: null, tech: null, cut: 10, idle: 0 };
+    var state = { exp: 3, age: 35, role: null, jp: null, tech: null };
 
     function ageFactor(a) {
       if (a <= 50) return 1.00;
@@ -209,8 +181,6 @@ render_with_liquid: false
       if (a <= 58) return 0.82;
       return 0.76;
     }
-    var AGE_CAP = 55;
-
     function expFactor(y) {
       if (y < 1)  return 0.72;
       if (y < 2)  return 0.82;
@@ -226,12 +196,6 @@ render_with_liquid: false
       '3年节点，应冲击40万+','第4年，中级工程师','5年节点，资深工程师起步',
       '第6年','第7年','8年，高级工程师','第9年','第10年','第11年',
       '12年+，专家/架构师','','','','','','','','20年，行业老兵'];
-    var CUT_HINTS = ['','','','','',
-      '5万：非常优质，会社良心','6万：不错','7万：中上','8万：中等偏好','9万：正常',
-      '10万：市场平均水平','11万：略高','12万：偏高','13万：较高','14万：高',
-      '15万：需谈判','16万：较苛刻','17万：','18万：苛刻','19万：','20万：极高，建议换会社'];
-    var IDLE_HINTS = ['理想状态：无待机','1个月：轻微风险（行业平均）',
-      '2个月：需关注，提前找下家','3个月：高风险，会影响年收','4个月：危险，年收损失超30%'];
     var AGE_HINTS = {};
     for (var _a = 25; _a <= 65; _a++) {
       if (_a <= 35)      AGE_HINTS[_a] = '';
@@ -244,18 +208,12 @@ render_with_liquid: false
       else               AGE_HINTS[_a] = '⚠ 50岁以上：下调系数 ×0.76，手取上限 55万';
     }
 
-    var expSlider  = document.getElementById('expSlider');
-    var expValEl   = document.getElementById('expVal');
-    var expHintEl  = document.getElementById('expHint');
-    var ageSlider  = document.getElementById('ageSlider');
-    var ageValEl   = document.getElementById('ageVal');
-    var ageHintEl  = document.getElementById('ageHint');
-    var cutSlider  = document.getElementById('cutSlider');
-    var cutValEl   = document.getElementById('cutVal');
-    var cutHintEl  = document.getElementById('cutHint');
-    var idleSlider = document.getElementById('idleSlider');
-    var idleValEl  = document.getElementById('idleVal');
-    var idleHintEl = document.getElementById('idleHint');
+    var expSlider = document.getElementById('expSlider');
+    var expValEl  = document.getElementById('expVal');
+    var expHintEl = document.getElementById('expHint');
+    var ageSlider = document.getElementById('ageSlider');
+    var ageValEl  = document.getElementById('ageVal');
+    var ageHintEl = document.getElementById('ageHint');
     var resultCard = document.getElementById('resultCard');
 
     expSlider.addEventListener('input', function () {
@@ -270,21 +228,6 @@ render_with_liquid: false
       ageHintEl.textContent = AGE_HINTS[state.age] || '';
       compute();
     });
-    cutSlider.addEventListener('input', function () {
-      state.cut = +this.value;
-      cutValEl.innerHTML = state.cut + '<span>万</span>';
-      cutHintEl.textContent = CUT_HINTS[state.cut] || '';
-      compute();
-    });
-    idleSlider.addEventListener('input', function () {
-      state.idle = +this.value;
-      idleValEl.innerHTML = state.idle + '<span>月</span>';
-      idleHintEl.textContent = IDLE_HINTS[state.idle] || '';
-      compute();
-    });
-
-    cutHintEl.textContent  = CUT_HINTS[10];
-    idleHintEl.textContent = IDLE_HINTS[0];
 
     function setupGroup(id, key) {
       var grp = document.getElementById(id);
@@ -311,49 +254,41 @@ render_with_liquid: false
         BASE * expFactor(state.exp) * ageFactor(state.age) * state.role * state.jp * state.tech
       ));
       unit = Math.round(unit);
-
-      var takeHome = Math.max(15, unit - state.cut);
-      if (state.age > 50) takeHome = Math.min(AGE_CAP, takeHome);
-      var annual = Math.round(takeHome * (12 - state.idle));
+      var annual = unit * 12;
 
       document.getElementById('rUnit').textContent = unit;
-      document.getElementById('rTakeHome').textContent = takeHome;
       document.getElementById('rAnnual').textContent = annual;
-      document.getElementById('bYouNum').textContent = takeHome + '万';
-      document.getElementById('bYou').style.width = Math.min(100, takeHome / 120 * 100) + '%';
+      document.getElementById('bYouNum').textContent = unit + '万';
+      document.getElementById('bYou').style.width = Math.min(100, unit / 120 * 100) + '%';
 
       var badge = document.getElementById('rBadge');
-      if (takeHome < 30)      badge.innerHTML = '<span class="r-badge badge-low">⚠ 低于市场</span>';
-      else if (takeHome < 42) badge.innerHTML = '<span class="r-badge badge-mid">→ 达到全国平均</span>';
-      else if (takeHome < 62) badge.innerHTML = '<span class="r-badge badge-high">✓ IT行业中等偏上</span>';
-      else                    badge.innerHTML = '<span class="r-badge badge-top">★ 高薪段位</span>';
+      if (unit < 40)       badge.innerHTML = '<span class="r-badge badge-low">⚠ 低于市场</span>';
+      else if (unit < 55)  badge.innerHTML = '<span class="r-badge badge-mid">→ 达到全国平均</span>';
+      else if (unit < 75)  badge.innerHTML = '<span class="r-badge badge-high">✓ IT行业中等偏上</span>';
+      else                 badge.innerHTML = '<span class="r-badge badge-top">★ 高薪段位</span>';
 
-      document.getElementById('rAdvice').textContent = buildAdvice(takeHome, unit, state);
+      document.getElementById('rAdvice').textContent = buildAdvice(unit, state);
     }
 
-    function buildAdvice(take, unit, s) {
+    function buildAdvice(unit, s) {
       var tips = [];
-      if (take < 30) {
-        tips.push('目前薪资处于偏低区间。');
-        if (s.jp <= 0.88) tips.push('日语是最大瓶颈——从10级提升到6级，月薪可上涨8-15万。');
+      if (unit < 40) {
+        tips.push('目前单价处于偏低区间。');
+        if (s.jp <= 0.88) tips.push('日语是最大瓶颈——从10级提升到6级，单价可上涨8-15万。');
         if (s.tech <= 0.86) tips.push('技术层面仍在初级，专攻一个需求旺盛的技术方向可以快速提升单价。');
-        if (s.cut >= 15) tips.push('会社抽成超过15万，建议认真考虑换会社或直接谈判。');
-      } else if (take < 42) {
+      } else if (unit < 55) {
         tips.push('处于全国平均水平附近，已经起步，但IT行业应该做得更好。');
-        if (s.exp < 3) tips.push('经验是最快的杠杆，坚持3年，薪资会有明显跳升。');
+        if (s.exp < 3) tips.push('经验是最快的杠杆，坚持3年，单价会有明显跳升。');
         if (s.jp <= 1.00) tips.push('日语从中级提升到上级（4-5级），可带来额外10-18%的单价提升。');
-      } else if (take < 62) {
+      } else if (unit < 75) {
         tips.push('已超过IT行业平均水平，属于合格的中高级人才。');
         if (s.jp < 1.14) tips.push('日语到上级后，可以直接参与要件定义和客户沟通，进一步打开单价空间。');
         if (s.role <= 1.00) tips.push('工程师转Tech Lead可带来约14%的单价提升，积累管理经验是值得的投资。');
-        if (s.idle >= 2) tips.push('待机2个月以上会明显压低年收，建议提前布局下一个现场，或考虑长期项目。');
       } else {
         tips.push('你处于高薪段位，在派遣市场属于稀缺资源。');
-        if (s.jp < 1.30) tips.push('日语提升到业务级，叠加PM角色，可以突破100万月薪的门槛。');
-        if (s.cut >= 12) tips.push('在这个单价水平，抽成12万以上偏贵，有较强谈判筹码，建议重新谈条件。');
+        if (s.jp < 1.30) tips.push('日语提升到业务级，叠加PM角色，可以突破100万月単価的门槛。');
         tips.push('也可以考虑从派遣转向正社员或自由顾问，收入天花板会更高。');
       }
-      if (s.idle >= 3) tips.push('⚠ 年均待机3个月以上风险很高，年收损失超25%，稳定性需优先解决。');
       return tips.join('　');
     }
 
