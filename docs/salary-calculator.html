@@ -562,6 +562,17 @@
     setupGroup('jpGroup',   'jp');
     setupGroup('techGroup', 'tech');
 
+    // ── Pre-select defaults ───────────────────────
+    function preSelect(groupId, stateKey, val) {
+      var grp = document.getElementById(groupId);
+      var btn = grp.querySelector('[data-val="' + val + '"]');
+      if (btn) { btn.classList.add('sel'); state[stateKey] = val; }
+    }
+    preSelect('roleGroup', 'role', 1.00);
+    preSelect('jpGroup',   'jp',   1.00);
+    preSelect('techGroup', 'tech', 1.00);
+    compute();
+
     // ── Compute ───────────────────────────────────
     function compute() {
       if (state.role === null || state.jp === null || state.tech === null) return;
