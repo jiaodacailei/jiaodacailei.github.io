@@ -6,9 +6,13 @@
   span.textContent = '👁 - 次阅读';
   meta.appendChild(span);
   fetch('https://jiaodacailei.goatcounter.com/counter' + window.location.pathname + '.json')
-    .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+    .then(function (r) {
+      if (r.status === 404) { span.textContent = '👁 0 次阅读'; return null; }
+      if (!r.ok) throw new Error();
+      return r.json();
+    })
     .then(function (d) {
-      span.textContent = '👁 ' + (d.count || 0) + ' 次阅读';
+      if (d) span.textContent = '👁 ' + (d.count || 0) + ' 次阅读';
     })
     .catch(function () {});
 })();
