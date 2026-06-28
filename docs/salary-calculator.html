@@ -23,13 +23,13 @@ render_with_liquid: false
         <div class="slider-row">
           <label>经验年数</label>
           <input type="range" id="expSlider" min="0" max="20" value="3" step="1" />
-          <div class="slider-val" id="expVal">–<span>年</span></div>
+          <div class="slider-val" id="expVal">3<span>年</span></div>
         </div>
         <div style="font-size:12px;color:#94a3b8;margin-top:4px;margin-bottom:14px;" id="expHint"></div>
         <div class="slider-row">
           <label>年龄</label>
           <input type="range" id="ageSlider" min="25" max="65" value="35" step="1" />
-          <div class="slider-val" id="ageVal">–<span>岁</span></div>
+          <div class="slider-val" id="ageVal">35<span>岁</span></div>
         </div>
         <div style="font-size:12px;color:#94a3b8;margin-top:4px;" id="ageHint"></div>
       </div>
@@ -228,6 +228,9 @@ render_with_liquid: false
       ageHintEl.textContent = AGE_HINTS[state.age] || '';
       compute();
     });
+
+    expHintEl.textContent = EXP_HINTS[3];
+    ageHintEl.textContent = AGE_HINTS[35] || '';
 
     function setupGroup(id, key) {
       var grp = document.getElementById(id);
