@@ -942,6 +942,12 @@ footer {
   color: var(--text-muted);
 }
 
+.post-view-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
 .post-tag {
   background: var(--blue-xlight);
   color: var(--blue);
