@@ -1117,6 +1117,102 @@ footer {
 }
 .related-posts li a:hover { color: #6366f1; }
 
+/* ── TOOL SPOTLIGHT ── */
+.tool-spotlight {
+  background: linear-gradient(135deg, #312e81 0%, #4338ca 55%, #6366f1 100%);
+  padding: 56px 0;
+}
+.spotlight-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: center;
+}
+.spotlight-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  margin-bottom: 12px;
+}
+.spotlight-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+.spotlight-desc {
+  font-size: 15px;
+  color: #c7d2fe;
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+.spotlight-btn {
+  background: #fff;
+  color: #4338ca;
+  font-weight: 700;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s, transform 0.15s;
+}
+.spotlight-btn:hover { background: #e0e7ff; transform: translateY(-1px); }
+.spotlight-preview {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+}
+.preview-label {
+  display: block;
+  font-size: 12px;
+  color: #a5b4fc;
+  margin-bottom: 4px;
+}
+.preview-value {
+  font-size: 42px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+.preview-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: #c7d2fe;
+  margin-left: 4px;
+}
+.preview-stat {
+  font-size: 12px;
+  color: #a5b4fc;
+  margin: 8px 0 16px;
+}
+.preview-bar-track {
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  height: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.preview-bar-fill {
+  background: #a5b4fc;
+  height: 100%;
+  border-radius: 4px;
+  width: 43%;
+}
+.preview-badge {
+  font-size: 12px;
+  color: #a5b4fc;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .hero-inner {
@@ -1137,4 +1233,8 @@ footer {
   .nav-inner { padding: 0 24px; }
   .nav-links { gap: 20px; }
   .back-link { bottom: 20px; left: 16px; font-size: 13px; padding: 8px 14px; }
+  .spotlight-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 0; }
+  .spotlight-preview { display: none; }
+  .spotlight-title { font-size: 22px; }
+  .tool-spotlight { padding: 40px 0; }
 }
