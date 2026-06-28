@@ -110,15 +110,15 @@ render_with_liquid: false
             <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">会社每月抽成</div>
             <div class="slider-row">
               <input type="range" id="cutSlider" min="5" max="20" value="10" step="1" style="flex:1" />
-              <div class="slider-val" id="cutVal">–<span>万</span></div>
+              <div class="slider-val" id="cutVal">10<span>万</span></div>
             </div>
             <div class="cut-hint" id="cutHint"></div>
           </div>
           <div>
             <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">年均待机月数</div>
             <div class="slider-row">
-              <input type="range" id="idleSlider" min="0" max="4" value="1" step="1" style="flex:1" />
-              <div class="slider-val" id="idleVal">–<span>月</span></div>
+              <input type="range" id="idleSlider" min="0" max="4" value="0" step="1" style="flex:1" />
+              <div class="slider-val" id="idleVal">0<span>月</span></div>
             </div>
             <div class="cut-hint" id="idleHint"></div>
           </div>
@@ -200,7 +200,7 @@ render_with_liquid: false
 
   <script>
   (function () {
-    var state = { exp: 3, age: 35, role: null, jp: null, tech: null, cut: 10, idle: 1 };
+    var state = { exp: 3, age: 35, role: null, jp: null, tech: null, cut: 10, idle: 0 };
 
     function ageFactor(a) {
       if (a <= 50) return 1.00;
@@ -282,6 +282,9 @@ render_with_liquid: false
       idleHintEl.textContent = IDLE_HINTS[state.idle] || '';
       compute();
     });
+
+    cutHintEl.textContent  = CUT_HINTS[10];
+    idleHintEl.textContent = IDLE_HINTS[0];
 
     function setupGroup(id, key) {
       var grp = document.getElementById(id);
