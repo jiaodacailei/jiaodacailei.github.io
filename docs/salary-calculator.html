@@ -278,15 +278,21 @@
 
     <div class="calc-grid">
 
-      <!-- 经验年数 -->
+      <!-- 经验年数 + 年龄 -->
       <div class="calc-panel">
-        <div class="panel-title"><span class="num">1</span>IT工作经验</div>
+        <div class="panel-title"><span class="num">1</span>IT工作经验 &amp; 年龄</div>
         <div class="slider-row">
           <label>经验年数</label>
           <input type="range" id="expSlider" min="0" max="20" value="3" step="1" />
           <div class="slider-val" id="expVal">3<span>年</span></div>
         </div>
-        <div style="font-size:12px;color:#94a3b8;margin-top:8px;" id="expHint"></div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:4px;margin-bottom:14px;" id="expHint"></div>
+        <div class="slider-row">
+          <label>年龄</label>
+          <input type="range" id="ageSlider" min="25" max="65" value="35" step="1" />
+          <div class="slider-val" id="ageVal">35<span>岁</span></div>
+        </div>
+        <div style="font-size:12px;color:#94a3b8;margin-top:4px;" id="ageHint"></div>
       </div>
 
       <!-- 岗位角色 -->
@@ -462,12 +468,23 @@
     // ── State ──────────────────────────────────────
     var state = {
       exp: 3,
+      age: 35,
       role: null,
       jp: null,
       tech: null,
       cut: 10,
       idle: 1,
     };
+
+    // ── Age factor ────────────────────────────────
+    function ageFactor(a) {
+      if (a <= 50) return 1.00;
+      if (a <= 52) return 0.94;
+      if (a <= 55) return 0.88;
+      if (a <= 58) return 0.82;
+      return 0.76;
+    }
+    var AGE_CAP = 55; // 手取上限（50歳以上）
 
     // ── Experience factor ─────────────────────────
     function expFactor(y) {
@@ -510,10 +527,25 @@
       '2个月：需关注，提前找下家','3个月：高风险，会影响年收',
       '4个月：危险，年收损失超30%'];
 
+    var AGE_HINTS = {};
+    for (var _a = 25; _a <= 65; _a++) {
+      if (_a <= 35)      AGE_HINTS[_a] = '';
+      else if (_a <= 40) AGE_HINTS[_a] = '经验与薪资双升通道';
+      else if (_a <= 45) AGE_HINTS[_a] = '黄金期，技术 + 管理价值最高';
+      else if (_a <= 50) AGE_HINTS[_a] = '市场仍认可，维持高单价的关键期';
+      else if (_a <= 52) AGE_HINTS[_a] = '⚠ 50岁以上：下调系数 ×0.94，手取上限 55万';
+      else if (_a <= 55) AGE_HINTS[_a] = '⚠ 50岁以上：下调系数 ×0.88，手取上限 55万';
+      else if (_a <= 58) AGE_HINTS[_a] = '⚠ 50岁以上：下调系数 ×0.82，手取上限 55万';
+      else               AGE_HINTS[_a] = '⚠ 50岁以上：下调系数 ×0.76，手取上限 55万';
+    }
+
     // ── DOM refs ──────────────────────────────────
     var expSlider = document.getElementById('expSlider');
     var expValEl  = document.getElementById('expVal');
     var expHintEl = document.getElementById('expHint');
+    var ageSlider = document.getElementById('ageSlider');
+    var ageValEl  = document.getElementById('ageVal');
+    var ageHintEl = document.getElementById('ageHint');
     var cutSlider = document.getElementById('cutSlider');
     var cutValEl  = document.getElementById('cutVal');
     var cutHintEl = document.getElementById('cutHint');
@@ -526,6 +558,12 @@
       state.exp = +this.value;
       expValEl.innerHTML = state.exp + '<span>年</span>';
       expHintEl.textContent = EXP_HINTS[state.exp] || '';
+      compute();
+    });
+    ageSlider.addEventListener('input', function () {
+      state.age = +this.value;
+      ageValEl.innerHTML = state.age + '<span>岁</span>';
+      ageHintEl.textContent = AGE_HINTS[state.age] || '';
       compute();
     });
     cutSlider.addEventListener('input', function () {
@@ -543,6 +581,7 @@
 
     // initialize hints
     expHintEl.textContent  = EXP_HINTS[3];
+    ageHintEl.textContent  = AGE_HINTS[35] || '';
     cutHintEl.textContent  = CUT_HINTS[10];
     idleHintEl.textContent = IDLE_HINTS[1];
 
@@ -577,13 +616,14 @@
     function compute() {
       if (state.role === null || state.jp === null || state.tech === null) return;
 
-      var BASE = 44; // 万円, mid-level engineer, mid JP, 3-5yr
+      var BASE = 40; // 万円, mid-level engineer, mid JP, 3-5yr
       var unit = Math.min(140, Math.max(22,
-        BASE * expFactor(state.exp) * state.role * state.jp * state.tech
+        BASE * expFactor(state.exp) * ageFactor(state.age) * state.role * state.jp * state.tech
       ));
       unit = Math.round(unit);
 
       var takeHome = Math.max(15, unit - state.cut);
+      if (state.age > 50) takeHome = Math.min(AGE_CAP, takeHome);
       var workMonths = 12 - state.idle;
       var annual = Math.round(takeHome * workMonths);
 
