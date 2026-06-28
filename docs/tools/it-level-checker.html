@@ -89,3 +89,100 @@ render_with_liquid: false
     </p>
   </div>
 
+  <script>
+  (function () {
+    var selectedLevel = null;
+    var selectedExp = null;
+
+    var JOBS_ALL = ['测试', '运维', '详细设计', '编码', '基本设计', '要件定义', '客户沟通', '项目管理'];
+
+    var MATRIX = {
+      '0-0': { min: 22, max: 28, jobs: ['测试', '运维'], advice: '日语是当前最大瓶颈。建议先在测试/运维岗位积累现场经验，同时每天坚持日语训练，目标是3个月内升到8级，能应对基本业务对话。' },
+      '0-1': { min: 25, max: 32, jobs: ['测试', '运维', '编码'], advice: '有一定IT经验但日语仍是短板。编码岗位可能门开着，但独立沟通困难。优先突破日语听说，达到8级是转型关键。' },
+      '0-2': { min: 27, max: 36, jobs: ['测试', '运维', '编码', '详细设计'], advice: '技术积累足够，日语是唯一瓶颈。达到7-8级后，月薪可快速跳升10-15万。建议集中3-6个月强化日语。' },
+      '0-3': { min: 30, max: 40, jobs: ['测试', '运维', '编码', '详细设计'], advice: '技术实力强，但日语限制了你的单价天花板。日语从10级提升到6级，薪资空间可增加30%以上。' },
+      '0-4': { min: 32, max: 42, jobs: ['测试', '运维', '编码', '详细设计'], advice: '老手做测试/运维是大材小用。日语是唯一障碍——突破它，你的市场价值会迅速释放。' },
+      '0-5': { min: 35, max: 45, jobs: ['测试', '运维', '编码', '详细设计'], advice: 'PM经验宝贵，但日语不足会让管理能力难以发挥。建议在专攻日语的同时，用中文能力承接海外项目或内部协调工作。' },
+      '1-0': { min: 25, max: 33, jobs: ['测试', '运维'], advice: '日语和经验都在积累阶段，这是正常起步区间。专注当前工作，同时把日语目标定在6级——那是独立作业的分水岭。' },
+      '1-1': { min: 28, max: 37, jobs: ['测试', '运维', '编码'], advice: '已经能参与编码了，继续积累。日语从7-8级提升到6级，是打开更多机会的关键一步。' },
+      '1-2': { min: 32, max: 42, jobs: ['测试', '运维', '编码', '详细设计'], advice: '处于成长期的合理区间。日语达到6级后可独立作业，届时月薪区间可上移到38-48万。' },
+      '1-3': { min: 36, max: 48, jobs: ['测试', '运维', '编码', '详细设计', '基本设计'], advice: '资深技术背景 + 日语7-8级，是市场上数量最多的派遣技术者。要突破，需要日语到6级以上，或者深化某一技术方向拿稀缺单价。' },
+      '1-4': { min: 38, max: 52, jobs: ['测试', '运维', '编码', '详细设计', '基本设计'], advice: '技术很强，日语是瓶颈。一旦日语突破6级，立刻拥有独立接项目的能力，单价空间很大。' },
+      '1-5': { min: 40, max: 55, jobs: ['测试', '运维', '编码', '详细设计', '基本设计'], advice: 'PM经验 + 8级日语，可以在中日双语环境中发挥协调价值。日语上6级后，直接进入高单价PM派遣市场。' },
+      '2-0': { min: 28, max: 38, jobs: ['测试', '运维', '编码'], advice: '日语已经过关，是入行新手中的优质候选。专注技术积累，1-2年内目标月薪40万以上。' },
+      '2-1': { min: 33, max: 43, jobs: ['测试', '运维', '编码', '详细设计'], advice: '日语+初级经验，处于正常成长轨道。继续深化技术栈，目标是3年内突破40万。' },
+      '2-2': { min: 40, max: 50, jobs: ['测试', '运维', '编码', '详细设计', '基本设计'], advice: '达到了日本全行业平均线以上，属于合格的中级工程师。下一个目标：日语到4级+技术升级，冲击55万+。' },
+      '2-3': { min: 45, max: 58, jobs: ['测试', '运维', '编码', '详细设计', '基本设计'], advice: '资深 + 日语流畅，是市场上比较抢手的组合。继续提升日语到4级，可以参与要件定义，单价再上一台阶。' },
+      '2-4': { min: 48, max: 62, jobs: ['测试', '运维', '编码', '详细设计', '基本设计'], advice: '高级技术 + 流畅日语，稀缺组合。专注某一垂直领域（如金融系统、医疗系统），单价可远超普通市场。' },
+      '2-5': { min: 52, max: 70, jobs: ['测试', '运维', '编码', '详细设计', '基本设计', '客户沟通'], advice: '日语6级已可与客户基本沟通，PM价值开始体现。提升到4级后，可以真正发挥管理价值，进入70万+区间。' },
+      '3-0': { min: 33, max: 43, jobs: ['测试', '运维', '编码', '详细设计'], advice: '日语很强但经验尚浅，属于潜力股。积累1-2年技术经验，薪资会快速上升。' },
+      '3-1': { min: 40, max: 52, jobs: ['测试', '运维', '编码', '详细设计', '基本设计', '客户沟通'], advice: '日语流畅 + 初级经验，已有独特竞争力。加速技术积累，目标是3年内进入55-65万区间。' },
+      '3-2': { min: 50, max: 62, jobs: ['测试', '运维', '编码', '详细设计', '基本设计', '要件定义', '客户沟通'], advice: '你已经是稀缺人才。日语流畅+技术中级，可以直接参与要件定义，是和客户谈规格的人。目标：技术+管理双升，冲击70万。' },
+      '3-3': { min: 58, max: 75, jobs: ['测试', '运维', '编码', '详细设计', '基本设计', '要件定义', '客户沟通'], advice: '日语 × 经验双强，是派遣市场顶端。可以考虑转向直接雇用（正社员）或承包制，年收空间会更大。' },
+      '3-4': { min: 62, max: 80, jobs: JOBS_ALL.slice(0, 7), advice: '高级技术 + 流畅日语，市场稀缺。建议瞄准大手金融/制造业项目，或考虑转技术顾问/架构师方向，单价可突破80万。' },
+      '3-5': { min: 68, max: 90, jobs: JOBS_ALL, advice: '全能型人才：日语、技术、管理三合一。这个组合在日本IT市场非常稀缺，特别适合承担客户方PM或技术顾问角色，年收目标可设定1000万日元。' },
+      '4-0': { min: 38, max: 50, jobs: ['测试', '运维', '编码', '客户沟通'], advice: '日语超强，经验是短板。充分利用日语优势，在技术岗快速成长。日语2级的人，技术达到中级后薪资会跳跃式上升。' },
+      '4-1': { min: 48, max: 62, jobs: ['测试', '运维', '编码', '详细设计', '基本设计', '客户沟通'], advice: '日语业务级别，是真正稀缺的人才。继续技术积累，3-5年后你的组合价值会让你进入高薪自由职业市场。' },
+      '4-2': { min: 60, max: 78, jobs: JOBS_ALL.slice(0, 7), advice: '日语2级+中级经验，已经是精英段位。可以独立承接项目，直接跟客户谈规格，薪资谈判筹码很强。' },
+      '4-3': { min: 72, max: 92, jobs: JOBS_ALL, advice: '全生命周期都可以做，且日语无障碍。建议转型为技术合伙人或自由顾问，突破派遣模式的薪资天花板。' },
+      '4-4': { min: 78, max: 100, jobs: JOBS_ALL, advice: '顶端配置。在日本市场，这个组合可以直接进入客户方正社员或CTO级别的岗位，不应该停在派遣层级了。' },
+      '4-5': { min: 85, max: 120, jobs: JOBS_ALL, advice: '日语×经验×管理的终极组合。年收1000万以上是完全合理的目标。考虑创业、合伙人或客户方高管，派遣已经不是最优选择了。' },
+    };
+
+    function getLevelGroup(level) {
+      if (level >= 9) return 0;
+      if (level >= 7) return 1;
+      if (level >= 5) return 2;
+      if (level >= 3) return 3;
+      return 4;
+    }
+
+    function compute() {
+      if (selectedLevel === null || selectedExp === null) return;
+      var lg = getLevelGroup(selectedLevel);
+      var key = lg + '-' + selectedExp;
+      var data = MATRIX[key];
+      if (!data) return;
+
+      var mid = (data.min + data.max) / 2;
+      var pct = Math.min(100, Math.max(0, (mid - 22) / (100 - 22) * 100));
+
+      document.getElementById('salaryRange').textContent = data.min + '～' + data.max;
+      document.getElementById('salaryAnnual').textContent =
+        '折合年収約 ' + Math.round(data.min * 12 / 10) * 10 + '～' + Math.round(data.max * 12 / 10) * 10 + ' 万日元';
+
+      document.getElementById('barFill').style.width = pct + '%';
+      document.getElementById('barMarker').style.left = pct + '%';
+
+      var jobsEl = document.getElementById('resultJobs');
+      jobsEl.innerHTML = JOBS_ALL.map(function (j) {
+        var ok = data.jobs.indexOf(j) !== -1;
+        return '<span class="job-tag' + (ok ? '' : ' blocked') + '">' + j + '</span>';
+      }).join('');
+
+      document.getElementById('resultAdvice').textContent = data.advice;
+
+      var card = document.getElementById('resultCard');
+      card.classList.add('show');
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    document.getElementById('levelGrid').addEventListener('click', function (e) {
+      var btn = e.target.closest('.level-btn');
+      if (!btn) return;
+      document.querySelectorAll('.level-btn').forEach(function (b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      selectedLevel = parseInt(btn.dataset.level);
+      compute();
+    });
+
+    document.getElementById('expGrid').addEventListener('click', function (e) {
+      var btn = e.target.closest('.exp-btn');
+      if (!btn) return;
+      document.querySelectorAll('.exp-btn').forEach(function (b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      selectedExp = parseInt(btn.dataset.exp);
+      compute();
+    });
+  })();
+  </script>
