@@ -23,3 +23,16 @@ layout: default
 <script src="/js/toc.js"></script>
 <script src="/js/related.js"></script>
 <script src="/js/post-views.js"></script>
+<div id="disqus_thread" style="margin-top:48px;padding:0 24px 48px;max-width:860px;margin-left:auto;margin-right:auto;"></div>
+<script>
+var disqus_config = function () {
+  this.page.url = 'https://jiaodacailei.github.io' + window.location.pathname;
+  this.page.identifier = window.location.pathname;
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://jiaodacailei.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
