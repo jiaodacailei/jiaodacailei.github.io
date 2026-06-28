@@ -1220,7 +1220,17 @@ footer {
     padding: 32px 24px 28px;
     gap: 0;
   }
-  .hero-photo { display: none; }          /* hide photo: save vertical space */
+  .hero-photo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+  }
+  .hero-photo-frame img {
+    width: 72px;
+    height: 72px;
+    animation: none;
+  }
   .hero-eyebrow { margin-bottom: 10px; }
   .hero-desc { font-size: 15px; margin-bottom: 18px; line-height: 1.7; }
   .hero-tags { display: none; }           /* hide tag chips on mobile */
