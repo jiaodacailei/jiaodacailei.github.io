@@ -1038,6 +1038,33 @@ footer {
   font-style: italic;
 }
 
+.post-body .jp-quote {
+  border-left: 4px solid var(--blue);
+  padding: 24px 28px;
+  margin: 32px 0;
+  background: var(--blue-xlight);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.post-body .jp-quote p[lang="ja"] {
+  color: var(--text);
+  line-height: 2.3;
+  margin-bottom: 6px;
+}
+.post-body .jp-quote p.zh-trans {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+.post-body .jp-quote p:last-child {
+  margin-bottom: 0;
+}
+.post-body .jp-quote ruby rt {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
 /* ── TAG FILTER ── */
 .tag-filter {
   display: flex;
