@@ -9,6 +9,7 @@
     { file: 'photo-3.jpg', w: 128, h: 170, pos: 'center 10%'   },
     { file: 'life-1.jpg',  w: 200, h: 150, pos: 'center center' },
     { file: 'life-2.jpg',  w: 112, h: 200, pos: 'center 12%'   },
+    { file: 'life-3.jpg',  w: 128, h: 170, pos: 'center center' },
   ];
 
   function init() {
