@@ -2,6 +2,9 @@
 
 给一段日语录音，生成一个密码保护、逐句可播放/重放/循环的听力页面（假名注音 + 中文翻译 + 语法笔记）。
 
+> 完整流程（包括内容零散 vs 结构化两种情形、多 Agent 并行翻译、常见坑）见
+> `.claude/skills/jp-listening-page/SKILL.md`。这份 README 只讲脚本本身怎么用。
+
 ## 环境准备（只需一次）
 
 ```bash
@@ -37,6 +40,10 @@ python add_furigana.py curated.json enriched.json
 ### 4. 填写翻译和语法笔记
 
 打开 `enriched.json`，给每一条填上 `zh` 和 `notes`。这一步建议直接让 Claude 读 `enriched.json` 帮忙写，比纯脚本靠谱。
+
+> 内容如果是结构化的（比如 JLPT 真题分成問題1~5），条目一多建议改用多个 Agent 按分组
+> 并行翻译，再用 `merge_groups.py <items.json> <输出enriched.json> <分组结果1.json> ...`
+> 合并（会自动按 id 对齐 group/start/end 并生成假名注音）。详见 SKILL.md。
 
 ### 5. 生成最终页面
 

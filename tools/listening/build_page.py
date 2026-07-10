@@ -36,10 +36,20 @@ def cut_segments(audio_path, segs, out_audio_dir):
 
 
 def card_html(seg, audio_rel):
+    label = seg.get("label", "")
+    num_display = html.escape(label) if label else f"{seg['id']:02d}"
+    zh = html.escape(seg["zh"]).replace("\n", "<br>")
+    answer_html = ""
+    if seg.get("answer"):
+        answer_html = f'''
+        <details class="seg-answer">
+          <summary>点击查看答案</summary>
+          <div>{html.escape(seg['answer'])}</div>
+        </details>'''
     return f'''
       <div class="seg-card">
         <div class="seg-head">
-          <span class="seg-num">{seg['id']:02d}</span>
+          <span class="seg-num">{num_display}</span>
           <div class="seg-controls">
             <button class="seg-btn play" data-target="a{seg['id']}" title="播放/暂停">▶ 播放</button>
             <button class="seg-btn replay" data-target="a{seg['id']}" title="从头重放">↺ 重放</button>
@@ -47,10 +57,14 @@ def card_html(seg, audio_rel):
           </div>
         </div>
         <p class="seg-ja">{seg['furigana']}</p>
-        <p class="seg-zh">{html.escape(seg['zh'])}</p>
-        <div class="seg-notes">{html.escape(seg['notes'])}</div>
+        <p class="seg-zh">{zh}</p>
+        <div class="seg-notes">{html.escape(seg['notes'])}</div>{answer_html}
         <audio id="a{seg['id']}" preload="none" src="{audio_rel}seg-{seg['id']:02d}.mp3"></audio>
       </div>'''
+
+
+def group_header_html(group):
+    return f'<h2 class="mondai-header">{html.escape(group)}</h2>'
 
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
@@ -102,6 +116,19 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     font-size: 13px; line-height: 1.8; color: var(--text);
     background: var(--blue-xlight); border-left: 3px solid var(--blue);
     border-radius: 0 6px 6px 0; padding: 10px 14px;
+  }}
+  .mondai-header {{
+    font-size: 16px; color: var(--blue-dark); margin: 36px 0 14px;
+    padding-bottom: 6px; border-bottom: 2px solid var(--blue-light);
+  }}
+  .mondai-header:first-of-type {{ margin-top: 4px; }}
+  .seg-answer {{ margin-top: 10px; font-size: 13px; }}
+  .seg-answer summary {{
+    cursor: pointer; color: var(--blue-dark); font-weight: 600; user-select: none;
+  }}
+  .seg-answer div {{
+    margin-top: 8px; padding: 10px 14px; background: #fff7ed;
+    border-left: 3px solid var(--gold, #f59e0b); border-radius: 0 6px 6px 0; line-height: 1.7;
   }}
   audio {{ display: none; }}
   #gate {{
@@ -220,7 +247,15 @@ def main():
     audio_out_dir = os.path.join(args.out_dir, "audio")
     cut_segments(args.audio, segs, audio_out_dir)
 
-    cards = "\n".join(card_html(s, "audio/") for s in segs)
+    parts = []
+    last_group = None
+    for s in segs:
+        group = s.get("group")
+        if group and group != last_group:
+            parts.append(group_header_html(group))
+            last_group = group
+        parts.append(card_html(s, "audio/"))
+    cards = "\n".join(parts)
     pwd_hash = hashlib.sha256(args.password.encode("utf-8")).hexdigest()
 
     page = PAGE_TEMPLATE.format(
