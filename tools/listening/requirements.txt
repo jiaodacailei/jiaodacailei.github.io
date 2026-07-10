@@ -1,0 +1,3 @@
+faster-whisper
+pykakasi
+imageio-ffmpeg

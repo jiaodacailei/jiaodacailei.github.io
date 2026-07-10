@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>日语听力精听：定例会 260327</title>
+<style>
+  :root {
+    --navy: #0c1445; --blue: #2563eb; --blue-dark: #1d4ed8;
+    --blue-light: #dbeafe; --blue-xlight: #eff6ff;
+    --text: #0f172a; --text-muted: #64748b;
+    --bg: #ffffff; --bg-soft: #f8fafc;
+    --border: #e2e8f0; --radius: 10px;
+    --shadow: 0 4px 20px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg-soft); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 24px; margin: 0 0 6px; }
+  .subtitle { color: var(--text-muted); font-size: 14px; margin: 0 0 28px; line-height: 1.7; }
+  .seg-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 20px; margin-bottom: 16px; box-shadow: var(--shadow);
+  }
+  .seg-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+  .seg-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%; background: var(--blue-xlight);
+    color: var(--blue-dark); font-size: 12px; font-weight: 700;
+  }
+  .seg-controls { display: flex; gap: 6px; }
+  .seg-btn {
+    border: 1px solid var(--border); background: var(--bg-soft); color: var(--text);
+    border-radius: 999px; padding: 5px 12px; font-size: 12px; cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .seg-btn:hover { background: var(--blue-xlight); border-color: var(--blue-light); }
+  .seg-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .seg-ja { font-size: 17px; line-height: 2.4; margin: 4px 0 8px; }
+  .seg-ja ruby rt { font-size: 11px; color: var(--text-muted); font-style: normal; }
+  .seg-zh { color: var(--text-muted); font-size: 14px; font-style: italic; margin: 0 0 10px; }
+  .seg-notes {
+    font-size: 13px; line-height: 1.8; color: var(--text);
+    background: var(--blue-xlight); border-left: 3px solid var(--blue);
+    border-radius: 0 6px 6px 0; padding: 10px 14px;
+  }
+  audio { display: none; }
+  #gate {
+    position: fixed; inset: 0; background: var(--navy); display: flex;
+    align-items: center; justify-content: center; z-index: 999; flex-direction: column;
+  }
+  #gate .box {
+    background: #fff; border-radius: 14px; padding: 32px 28px; width: 300px;
+    text-align: center; box-shadow: var(--shadow);
+  }
+  #gate h2 { font-size: 16px; margin: 0 0 16px; }
+  #gate input {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 14px; margin-bottom: 12px; box-sizing: border-box;
+  }
+  #gate button {
+    width: 100%; padding: 10px; border: none; border-radius: 8px;
+    background: var(--blue); color: #fff; font-size: 14px; cursor: pointer;
+  }
+  #gate .err { color: #ef4444; font-size: 12px; margin-top: 8px; min-height: 16px; }
+  #content { display: none; }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="box">
+    <h2>&#128274; 输入密码查看内容</h2>
+    <input type="password" id="pwdInput" placeholder="密码" autofocus />
+    <button id="pwdBtn">进入</button>
+    <div class="err" id="pwdErr"></div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="wrap">
+    <h1>日语听力精听：定例会 260327</h1>
+    <p class="subtitle">来源：定例会260327.m4a 自动转写后人工筛选出可信段落（原始约50段，保留14段）。每段可单独播放、重放、单句循环，配假名注音、中文翻译与语法笔记。</p>
+    
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">01</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a1" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a1" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a1" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja"><ruby>記録用<rt>きろくよう</rt></ruby>にちょっと<ruby>入れ<rt>いれ</rt></ruby>てるだけです。</p>
+        <p class="seg-zh">只是为了留个记录，稍微录一下而已。</p>
+        <div class="seg-notes">「〜だけです」表示“只是……而已”，用于弱化语气、说明自己的行为不是什么大事。「記録用」＝“用于记录”，〜用（よう）是常见的“用途”后缀，如「保存用」「確認用」。</div>
+        <audio id="a1" preload="none" src="audio/seg-01.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">02</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a2" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a2" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a2" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja"><ruby>何台<rt>なんだい</rt></ruby>か<ruby>止ま<rt>とま</rt></ruby>っているという<ruby>事象<rt>じしょう</rt></ruby>があったので、インプリの<ruby>方<rt>ほう</rt></ruby>で<ruby>見て<rt>みて</rt></ruby>もらうようになっています。</p>
+        <p class="seg-zh">因为出现了几台设备停止运行的情况，所以已经安排实施那边去查看了。</p>
+        <div class="seg-notes">「〜という事象があった」是日企IT现场常用的报告句型，“发生了……的情况/现象”，比直接说「問題があった」更客观、不带主观评判。「インプリ」是「インプリメンテーション（implementation）」的简称，指“实施/开发担当”。「〜てもらうようになっている」表示“（已经安排好、形成惯例）让别人为自己做……”，强调这是已经固定下来的安排。</div>
+        <audio id="a2" preload="none" src="audio/seg-02.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">03</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a3" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a3" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a3" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja"><ruby>再現<rt>さいげん</rt></ruby>できないでしょ。</p>
+        <p class="seg-zh">这个（问题）没法复现吧。</p>
+        <div class="seg-notes">IT现场高频词「再現する」＝“复现（bug）”。句尾「でしょ」是「でしょう」的口语缩略，用于寻求对方认同或带推测语气，比「だろう」更委婉。</div>
+        <audio id="a3" preload="none" src="audio/seg-03.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">04</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a4" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a4" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a4" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">この<ruby>間<rt>かん</rt></ruby>、DBとAPの<ruby>時間差<rt>じかんさ</rt></ruby>が<ruby>出て<rt>でて</rt></ruby>きてるのは<ruby>東日本<rt>ひがしにほん</rt></ruby>でしたっけ?</p>
+        <p class="seg-zh">前阵子，DB和AP之间出现时间差的，是东日本那边吧？</p>
+        <div class="seg-notes">「この間」＝“前几天/前阵子”，读作「このあいだ」。句尾「〜でしたっけ?」用于确认自己记不清、向对方求证，“是……来着?”，是很实用的商务日语口语表达。DB＝数据库，AP＝应用服务器（Application Server）的行业缩写。</div>
+        <audio id="a4" preload="none" src="audio/seg-04.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">05</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a5" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a5" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a5" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja"><ruby>確かに<rt>たしかに</rt></ruby>、1<ruby>台<rt>だい</rt></ruby>1つのゲームまで<ruby>時間差<rt>じかんさ</rt></ruby>が<ruby>出て<rt>でて</rt></ruby>きてる。</p>
+        <p class="seg-zh">确实，具体到每台设备的每个游戏，都出现了时间差。</p>
+        <div class="seg-notes">「確かに」＝“确实、的确”，用于附和、认同对方说法。「1台1つの〜」＝“每一台、每一个……”，这种数量词叠加是口语中表达“逐一、每个都”的常见方式。</div>
+        <audio id="a5" preload="none" src="audio/seg-05.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">06</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a6" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a6" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a6" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja"><ruby>再起動<rt>さいきどう</rt></ruby>してる? <ruby>定期的<rt>ていきてき</rt></ruby>に?</p>
+        <p class="seg-zh">在重启吗？是定期的吗？</p>
+        <div class="seg-notes">「〜してる?」是「〜している?」的口语省略形式，日常对话/会议闲聊中很常见。「定期的に」＝“定期地”，な形容词「定期的」+に 变成副词。</div>
+        <audio id="a6" preload="none" src="audio/seg-06.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">07</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a7" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a7" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a7" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">トリアルテスト<ruby>環境<rt>かんきょう</rt></ruby>でテストしてみて。</p>
+        <p class="seg-zh">在trial测试环境里试着测一下。</p>
+        <div class="seg-notes">「〜てみて」是「〜てみる」的て形，表示“试着做……”。「トリアル」是 trial 的外来语音译，标准写法通常是「トライアル」，这里是口语发音上的小变体，听懂即可不必较真拼写。</div>
+        <audio id="a7" preload="none" src="audio/seg-07.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">08</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a8" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a8" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a8" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja"><ruby>再開<rt>さいかい</rt></ruby>するかどうか。</p>
+        <p class="seg-zh">要不要重新开始。</p>
+        <div class="seg-notes">「〜かどうか」＝“是否……”，用来表达不确定、需要判断的两种可能性，是日语里非常高频的句型，常跟在名词/动词简体后面。</div>
+        <audio id="a8" preload="none" src="audio/seg-08.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">09</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a9" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a9" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a9" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">しなかったら<ruby>他の<rt>ほかの</rt></ruby><ruby>用意<rt>ようい</rt></ruby>だと<ruby>思う<rt>おもう</rt></ruby>ので。</p>
+        <p class="seg-zh">如果不做的话，我觉得就要准备别的方案了。</p>
+        <div class="seg-notes">「〜なかったら」是「〜ない」的假定形，“如果不……的话”。句尾「ので」在口语里常用来代替生硬的「から」收尾表原因，语气更委婉。</div>
+        <audio id="a9" preload="none" src="audio/seg-09.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">10</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a10" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a10" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a10" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">あと<ruby>少し<rt>すこし</rt></ruby>お<ruby>待ち<rt>まち</rt></ruby>ください。</p>
+        <p class="seg-zh">请再稍等一下。</p>
+        <div class="seg-notes">「あと少し」＝“再稍微……一点”。「お待ちください」是「待つ」的尊敬语（お+ます形+ください），商务日语中请人等待的标准礼貌说法，比「待ってください」更正式。</div>
+        <audio id="a10" preload="none" src="audio/seg-10.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">11</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a11" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a11" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a11" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">よろしくお<ruby>願い<rt>ねがい</rt></ruby>します。</p>
+        <p class="seg-zh">拜托了/请多关照。</p>
+        <div class="seg-notes">日语里使用频率最高的寒暄语之一，几乎可以用在任何“请求、拜托、结束对话”的场合，没有固定对应的中文翻译，需要根据语境灵活理解。</div>
+        <audio id="a11" preload="none" src="audio/seg-11.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">12</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a12" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a12" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a12" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">あれ、これもう<ruby>解決<rt>かいけつ</rt></ruby>していたんですよ。</p>
+        <p class="seg-zh">咦，这个其实已经解决了哦。</p>
+        <div class="seg-notes">「あれ」是发现意外情况时的感叹词，相当于“咦、诶”。「〜んですよ」＝「〜のですよ」，のだ语气用于向对方说明、强调新信息，带有“其实是这样的”的语感。</div>
+        <audio id="a12" preload="none" src="audio/seg-12.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">13</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a13" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a13" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a13" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">おしゃべりをしていたんですよ。</p>
+        <p class="seg-zh">（大家）只是在闲聊而已呢。</p>
+        <div class="seg-notes">「おしゃべり」＝“闲聊、聊天”，前面加お是美化语。搭配「〜んですよ」进一步说明情况，呼应上一句“其实已经解决了”，暗示那段时间其实是在闲聊。</div>
+        <audio id="a13" preload="none" src="audio/seg-13.mp3"></audio>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-head">
+          <span class="seg-num">14</span>
+          <div class="seg-controls">
+            <button class="seg-btn play" data-target="a14" title="播放/暂停">▶ 播放</button>
+            <button class="seg-btn replay" data-target="a14" title="从头重放">↺ 重放</button>
+            <button class="seg-btn loop" data-target="a14" title="单句循环">⟲ 循环</button>
+          </div>
+        </div>
+        <p class="seg-ja">お<ruby>疲れ<rt>つかれ</rt></ruby><ruby>様<rt>さま</rt></ruby>でした。</p>
+        <p class="seg-zh">辛苦了。</p>
+        <div class="seg-notes">日本职场会议/工作结束时最标准的道别语，字面“您辛苦了”，几乎可用于对任何同事、同级或下级的场合；对上级更礼貌的说法是「お疲れ様でございました」。</div>
+        <audio id="a14" preload="none" src="audio/seg-14.mp3"></audio>
+      </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var HASH = "bb6db7538afe36c647632bf9a561cf15101756f132337f1d650ac8cd95cc3c81";
+  async function sha256(str) {
+    var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+  async function tryUnlock(pwd) {
+    var h = await sha256(pwd);
+    if (h === HASH) {
+      document.getElementById("gate").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      sessionStorage.setItem("unlocked-" + location.pathname, "1");
+    } else {
+      document.getElementById("pwdErr").textContent = "密码错误";
+    }
+  }
+  if (sessionStorage.getItem("unlocked-" + location.pathname) === "1") {
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  }
+  document.getElementById("pwdBtn").addEventListener("click", function() {
+    tryUnlock(document.getElementById("pwdInput").value);
+  });
+  document.getElementById("pwdInput").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") tryUnlock(this.value);
+  });
+})();
+
+document.querySelectorAll(".seg-card").forEach(function(card) {
+  var audio = card.querySelector("audio");
+  var playBtn = card.querySelector(".play");
+  var replayBtn = card.querySelector(".replay");
+  var loopBtn = card.querySelector(".loop");
+
+  playBtn.addEventListener("click", function() {
+    if (audio.paused) { audio.play(); playBtn.textContent = "⏸ 暂停"; }
+    else { audio.pause(); playBtn.textContent = "▶ 播放"; }
+  });
+  audio.addEventListener("ended", function() {
+    if (!audio.loop) playBtn.textContent = "▶ 播放";
+  });
+  replayBtn.addEventListener("click", function() {
+    audio.currentTime = 0;
+    audio.play();
+    playBtn.textContent = "⏸ 暂停";
+  });
+  loopBtn.addEventListener("click", function() {
+    audio.loop = !audio.loop;
+    loopBtn.classList.toggle("active", audio.loop);
+  });
+});
+</script>
+
+</body>
+</html>
