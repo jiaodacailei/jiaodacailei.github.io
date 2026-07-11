@@ -1,20 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-用法：python merge_groups.py <items.json> <output enriched.json> <result1.json> [result2.json ...]
+用法：python merge_groups.py <raw_sentences.json> <输出 enriched.json> <分组结果1.json> [分组结果2.json ...]
 
 给结构化听力材料（比如 JLPT 真题，按大题/小题分好了边界）用的合并脚本，
-配合"多个 Agent 并行翻译不同分组"的流程使用：
+配合"多个 Agent 并行做逐句拆分+翻译"的流程使用：
 
-  1. 先手动或半自动整理出 items.json：数组，每项至少有
-     {"id": 1, "group": "問題1", "label": "1番", "start": 117.64, "end": 201.72}
-     （group/label 用于分组小标题和卡片编号，start/end 用于切音频）
-  2. 把 items 按 group 分给多个 Agent 并行处理，每个 Agent 返回一个 JSON 数组，
-     每项 {"id":.., "label":.., "text": "清理后的日语原文", "zh": "中文翻译",
-           "notes": "语法笔记", "answer": "答案(可选)"}
+  1. 先准备 raw_sentences.json：数组，每项是原始转写的一个片段
+     {"raw_id": 1, "mondai": "問題1", "question": "1番", "start": 117.64, "end": 126.64, "text": ".."}
+  2. 把 raw_sentences.json 按 mondai 拆成几份，分给多个 Agent 并行处理，每个 Agent
+     参考"已校对过的整题文本"把内容拆成自然的句子，并把每句话对应的 raw_id 标注出来
+     （因为原始转写经常把一句话切成两段、或者把两句话粘一起，需要 Agent 判断合并）。
+     每个 Agent 返回一个 JSON 对象：
+     {
+       "sentences": [{"raw_ids": [1,2], "question": "1番", "text": "..", "zh": "..", "notes": ".."}, ...],
+       "questions": [{"question": "1番", "overview": "..", "answer": ".."}, ...]
+     }
   3. 把每个 Agent 的结果各自存成一个 json 文件，用本脚本合并：
-     - 按 id 对齐 items.json 里的 group/start/end
+     - 用 raw_ids 反查 raw_sentences.json 得到 start（取最早）/end（取最晚）/mondai
      - 自动生成假名注音（<ruby>）
-     - 按 id 排序输出成 enriched.json
+     - 按 start 时间排序，重新分配全局 id
+     - questions 数组按 mondai + 原始顺序合并去重
   4. enriched.json 直接喂给 build_page.py 生成最终页面。
 
 注意：Agent 返回的 JSON 里如果中文字段用了英文直引号 " 做强调，
@@ -49,39 +54,76 @@ def to_ruby_html(text):
 
 
 def main():
-    items_path = sys.argv[1]
+    raw_path = sys.argv[1]
     out_path = sys.argv[2]
     result_paths = sys.argv[3:]
 
-    with open(items_path, encoding="utf-8") as f:
-        items = json.load(f)
-    by_id = {it["id"]: it for it in items}
+    with open(raw_path, encoding="utf-8") as f:
+        raw_list = json.load(f)
+    raw_by_id = {r["raw_id"]: r for r in raw_list}
 
-    merged = []
+    sentences = []
+    questions = []
+    seen_questions = set()
+
     for rp in result_paths:
         with open(rp, encoding="utf-8") as f:
-            results = json.load(f)
-        for r in results:
-            base = by_id[r["id"]]
-            merged.append({
-                "id": r["id"],
-                "group": base.get("group"),
-                "label": r.get("label", base.get("label", "")),
-                "start": base["start"],
-                "end": base["end"],
-                "text": r["text"],
-                "furigana": to_ruby_html(r["text"]),
-                "zh": r["zh"],
-                "notes": r["notes"],
-                "answer": r.get("answer", ""),
+            result = json.load(f)
+
+        for s in result.get("sentences", []):
+            raws = [raw_by_id[rid] for rid in s["raw_ids"] if rid in raw_by_id]
+            if not raws:
+                continue
+            start = min(r["start"] for r in raws)
+            end = max(r["end"] for r in raws)
+            mondai = raws[0]["mondai"]
+            sentences.append({
+                "mondai": mondai,
+                "question": s["question"],
+                "start": start,
+                "end": end,
+                "text": s["text"],
+                "furigana": to_ruby_html(s["text"]),
+                "zh": s["zh"],
+                "notes": s.get("notes", ""),
             })
 
-    merged.sort(key=lambda x: x["id"])
+        for q in result.get("questions", []):
+            # infer mondai from any sentence in this same result file with matching question
+            mondai = None
+            for s in result.get("sentences", []):
+                if s["question"] == q["question"]:
+                    raws = [raw_by_id[rid] for rid in s["raw_ids"] if rid in raw_by_id]
+                    if raws:
+                        mondai = raws[0]["mondai"]
+                        break
+            key = (mondai, q["question"])
+            if key in seen_questions:
+                continue
+            seen_questions.add(key)
+            questions.append({
+                "mondai": mondai,
+                "question": q["question"],
+                "overview": q.get("overview", ""),
+                "answer": q.get("answer", ""),
+            })
+
+    sentences.sort(key=lambda x: x["start"])
+    for i, s in enumerate(sentences, 1):
+        s["id"] = i
+
+    # order questions by the start time of their first sentence
+    first_start = {}
+    for s in sentences:
+        key = (s["mondai"], s["question"])
+        if key not in first_start:
+            first_start[key] = s["start"]
+    questions.sort(key=lambda q: first_start.get((q["mondai"], q["question"]), 1e18))
 
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(merged, f, ensure_ascii=False, indent=2)
+        json.dump({"sentences": sentences, "questions": questions}, f, ensure_ascii=False, indent=2)
 
-    print(f"Merged {len(merged)} items from {len(result_paths)} files into {out_path}")
+    print(f"Merged {len(sentences)} sentences and {len(questions)} questions from {len(result_paths)} files into {out_path}")
 
 
 if __name__ == "__main__":
