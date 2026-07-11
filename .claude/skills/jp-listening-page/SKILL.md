@@ -1,13 +1,16 @@
 ---
 name: jp-listening-page
-description: Turn a Japanese audio recording (meeting recording, JLPT listening test, etc.) into a password-protected, unlisted listening-practice page on this site — sentence-level clips with furigana, Chinese translation, grammar notes, a blog-style TOC sidebar, and three-level (sentence / question / section) play+loop controls. Use when the user gives you a Japanese audio file and asks for a listening drill page, a "N级听力" page, or to "把这段录音做成听力页面".
+description: Turn a Japanese audio recording (meeting recording, JLPT listening test, etc.) into a password-protected, unlisted listening-practice page on this site — sentence-level clips with furigana, Chinese translation, grammar notes, tab-based navigation (問題1~5 as tabs, right-side/floating small-question nav scoped to the active tab), and a persistent floating mini-player (play/pause/loop/stop, speed control, JA/JA+ZH/ZH display toggle). Use when the user gives you a Japanese audio file and asks for a listening drill page, a "N级听力" page, or to "把这段录音做成听力页面".
 ---
 
 # 日语听力精听页生成
 
 给一段日语录音，生成一个密码保护、不进导航的**逐句**精听页面：假名注音 + 中文翻译 +
-语法笔记，配三层播放控制（逐句 / 小题整体 / 大题整体，每层都能单次播放和循环），
-页面结构复用博客文章同款的目录侧栏（`toc.js`），方便手机上浏览。
+语法笔记，問題1~5 做成顶部 tab（点哪个大题只显示哪个大题的内容），配套的小题导航
+仿照博客 `.toc`/`.toc-float` 的视觉风格（桌面右侧栏/手机悬浮目录，但内容随 tab 切换），
+右下角一个常驻悬浮迷你播放器统一控制播放/暂停/循环/停止，另有播放速度和
+日文/日中/中文显示模式的设置面板。页面完全自包含（不依赖外部 `/css/style.css` 或
+`toc.js`），本地 `file://` 打开和线上部署效果一致。
 
 ## 参数
 
@@ -18,8 +21,9 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
 /jp-listening-page C:\Users\xxx\Downloads\2021年7月N2.mp3
 ```
 
-开工前仍然要跟用户确认标题、密码、输出 slug（用来定输出目录名 `docs/private/<slug>/`）、
-是否公开进导航——见下面"0. 先问清楚"。这些不是 args 的一部分，是对话里问。
+标题、密码、输出 slug（用来定输出目录名 `docs/private/<slug>/`）、是否公开进导航——
+默认直接按"已跑过的真实案例"里最接近的先例定，不用逐项跟用户确认，见下面
+"0. 默认值怎么定"。
 
 ## 已跑过的真实案例
 
@@ -27,8 +31,12 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   还是扁平卡片结构，没有分组/没有三层播放，仅供参考对比，没有按新版重新生成过（内容
   简单，其实不太需要分组/目录，扁平卡片够用）。
 - `docs/private/n2-listening/2021-07/` — 一套完整 JLPT N2 听力真题，**已按下面这版流程
-  跑通**：308 句、29 个小题、5 个大题，`h2`/`h3` + `toc.js` 目录、三层播放控制全部验证
-  可用。下面第 2~3 步描述的"两轮 Agent"做法就是从这个案例里跑出来的最佳实践。
+  跑通并经过多轮用户反馈迭代**：308 句、29 个小题、5 个大题。当前形态：問題1~5 顶部
+  tab 切换（只显示当前大题）、小题导航随 tab 联动、悬浮迷你播放器（不再是散落各处的
+  播放/循环按钮）、页面 CSS 完全自包含（不依赖外部 style.css/toc.js）、UI 文案全日文
+  （密码框/按钮/提示都是日语，只有逐句翻译/概览/答案解析这些内容性文字是中文）。
+  下面第 2~3 步描述的"两轮 Agent"做法、以及第 5 步的时间戳去重叠算法，都是从这个
+  案例里跑出来的最佳实践。
 
 ## 工具在哪
 
@@ -42,28 +50,61 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   内容简单（十几句、没有天然的题号结构）时用这个就够了。
 - `merge_groups.py` — 结构化流程用的合并脚本，输入是 `raw_sentences.json`（原始转写片段，
   含 raw_id/mondai/question/start/end/text）+ 若干个 Agent 产出的分组翻译结果（每项标注
-  `raw_ids` 归属哪些原始片段），自动反查时间戳、生成假名注音、按 mondai+question 合并
-  小题总览，输出 `enriched.json`（`{"sentences":[...], "questions":[...]}`）。
-- `build_page.py` — 生成最终页面：`.post-body` + `h2`(問題N)/`h3`(小题) 结构、动态注入
-  `/js/toc.js`（密码验证通过后才注入，见下面"常见坑"）、三层播放控制 JS、密码门、
-  `noindex`。输入是 `merge_groups.py`（或 `add_furigana.py`）产出的 `enriched.json`。
+  `raw_ids` 归属哪些原始片段），自动反查时间戳、**用锚点中点算法消除相邻/嵌套/三方重叠
+  的时间戳**（见下面"常见坑"）、生成假名注音、按 mondai+question 合并小题总览，输出
+  `enriched.json`（`{"sentences":[...], "questions":[...]}`）。这一步只保证时间戳
+  不重叠，不保证精确——精确边界要靠下面的 `refine_boundaries.py`。
+- `refine_boundaries.py` — **结构化流程强烈建议加的一步**：以每道题（大问+小题）为
+  单位重新做 word-level 转写，把题目内全部句子的期望文本跟识别文本做序列对齐
+  （`difflib.SequenceMatcher`），按实际内容定位句子边界，题目的外边界（第一句起点/
+  最后一句终点）锁定不变，只重新分配内部边界。对齐质量不够时单题回退成字数比例。
+  见下面"常见坑"里踩过的三次坑和最终方案。
+- `validate_boundaries.py` — `refine_boundaries.py` 跑完之后**必须**跑的收尾校验：
+  按 mondai 分组检查相邻句重叠（有就前向裁剪）、零时长/负时长（有就直接报错退出，
+  不悄悄吞掉）、字符数/时长比值异常（默认阈值 25 字/秒，超过的打印出来人工复核——
+  往往是转写异常比如复读循环的信号）。**不要现写一次性 python -c 脚本做这些检查**，
+  这个脚本已经把踩过的坑都固化进去了，直接用。
+- `build_page.py` — 生成最终页面：`.post-page`/`.post-body` + 問題1~5 顶部 tab + 小题
+  导航（桌面右侧栏/手机悬浮，仿博客 `.toc`/`.toc-float` 视觉但内容随 tab 联动）+
+  右下角悬浮迷你播放器 + 播放速度/显示模式设置面板 + 密码门 + `noindex`。**页面所有
+  CSS 都内联在自己的 `<style>` 里，不 `<link>` 外部样式表**（这不是博客文章，是独立
+  工具页，没必要依赖 `/css/style.css`，本地 file:// 测试也不会因为外部资源 404 而
+  样式跑掉）。输入是 `merge_groups.py`（或 `add_furigana.py`）产出的 `enriched.json`。
+  密码支持 `--password <明文>`（首次生成用）或 `--password-hash <哈希>`（改完边界/
+  文案要重新生成页面、但密码不变时用，不用把明文密码再传一遍——从旧页面的
+  `<script>` 里直接摘 `HASH = "..."` 那一行常量即可），二选一。
 - `README.md` — 环境安装说明。
 
 ## 整体流程
 
-### 0. 先问清楚，别自己假设
+### 0. 默认值怎么定
 
-开工前必须跟用户确认这几件事：
+不要跟用户逐项确认标题/密码/slug/是否进导航这些——除非真的没有先例可循，直接问会被
+当成噪音而不是细心（真实反馈：同类音频第二次跑 skill 时用户明确说"不要问了"）。
 
-1. **这段录音是谁的内容？** 不是用户本人原创的（官方真题、他人会议录音等），要提示
-   版权/隐私风险：公开仓库里，密码门只挡"随便点进网站的人"，挡不住"直接翻 GitHub
-   仓库文件列表的人"。用户拍板要不要继续。
-2. **要不要进站内导航？** 默认不进，只用 `noindex` + 密码门做"不公开链接"。
-3. **密码是什么、标题是什么、输出目录 slug 用什么？** 都让用户定或确认，不要自己编。
-4. **处理范围多大？** 音频越长后续步骤越慢（转写 + 逐句翻译 + 切片）。跟用户确认全部
-   处理还是先做一段验证。
-5. **逐句笔记的详略度**：默认只在真正有语法/词汇点的句子写笔记，"はい""そうですね"
-   这类语气词/寒暄不用硬凑笔记（除非用户要求每句都写）。
+- **有先例可循时**（比如"已跑过的真实案例"里已经有同系列/同来源的内容，如同一考试
+  不同月份的 JLPT 真题）：直接照抄先例的做法——
+  - 输出 slug 沿用先例的目录命名规律（如 `n2-listening/2021-07` → `n2-listening/2021-12`）。
+  - 标题/副标题沿用先例的文案风格，替换掉具体的日期/期数。
+  - 密码复用先例页面的密码——不用问用户要明文，直接从旧页面 `<script>` 里摘
+    `HASH = "..."` 那行，用 `build_page.py` 的 `--password-hash` 传入即可（同一密码
+    在多个同系列页面通用，不用每次生成新密码）。
+  - 是否进导航：沿用先例的选择（多数场景先例是不进，见下方进导航的默认规则）。
+  - 处理范围：默认全部处理（先例已验证过流程可靠，不用再拆成"先做一段验证"）。
+  - 处理完之后正常汇报做了什么、生成在哪，让用户看结果决定要不要改，而不是动手前
+    逐项打断确认。
+  - **例外**：如果内容的版权/隐私性质跟先例不同（比如先例是官方真题、这次是别人的
+    私人录音），或者用户消息里出现了新的强指令（比如"生成完先别做别的，等我确认"），
+    这些必须照办，不能套用"不问"的默认行为。
+  - **默认不进导航、只用 `noindex` + 密码门**这条本身也不用重新问——公开仓库里密码门
+    只挡"随便点进网站的人"，挡不住直接翻仓库文件列表的人，这个风险提示已经在第一次
+    做同系列内容时讲过，不用每次重复。
+- **没有先例可循时**（这个 skill 第一次用在某类新内容上，或者内容的版权/隐私风险
+  跟以往案例明显不同）：这时候才需要跟用户确认版权/隐私风险是否可接受、是否进导航、
+  密码/标题/slug、处理范围、笔记详略度这几件事，别自己瞎编。
+- **笔记详略度**：不管有没有先例，默认只在真正有语法/词汇点的句子写笔记，
+  "はい""そうですね"这类语气词/寒暄不用硬凑笔记（除非用户要求每句都写）——这条
+  是固定默认值，不需要确认。
 
 ### 1. 转写
 
@@ -144,6 +185,20 @@ python tools/listening/merge_groups.py raw_sentences.json enriched.json sent_m1.
 会按 `raw_ids` 反查每句的 start/end/mondai，生成 `<ruby>` 假名注音，按时间顺序排序，
 输出 `{"sentences":[...], "questions":[...]}`。
 
+结构化流程到这里**别急着进入第 5 步**，先跑一遍精修（以题为单位重新转写+文本对齐，
+细节和踩过的坑见上面"常见坑"），再跑校验收尾：
+
+```bash
+python tools/listening/refine_boundaries.py <原始音频> enriched.json enriched_refined.json
+python tools/listening/validate_boundaries.py enriched_refined.json enriched_final.json
+```
+
+`validate_boundaries.py` 会自动前向裁剪残留的小重叠、检查零时长（有就报错退出，
+不要绕过）、打印语速异常的句子供复核。**不要现写一次性 python -c 脚本做这些检查**，
+拿 `validate_boundaries.py` 输出的 `enriched_final.json` 去跑第 5 步的
+`build_page.py`，不要直接用 `merge_groups.py` 或 `refine_boundaries.py` 刚输出的
+那份。
+
 ### 5. 生成最终页面
 
 ```bash
@@ -152,6 +207,10 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
   --subtitle "副标题，说明来源和处理方式" \
   --password <用户指定的密码>
 ```
+
+后续如果只是边界/文案改了要重新生成页面、密码不用变，用 `--password-hash <旧页面
+里的哈希>` 代替 `--password`，不用问用户再要一遍明文密码（哈希从旧 `index.html`
+的 `<script>` 里 `HASH = "..."` 那行直接摘）。
 
 `build_page.py` 产出的页面结构：
 
@@ -213,13 +272,70 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
   最后一句的时间范围里，切每句音频前要单独核实边界，选项编号（"1""2""3"）容易被
   单独识别成一句，记得合并回对应内容。
 - Agent 返回的 JSON 里用直引号 `"` 做中文强调会导致 JSON 解析失败，写文件前处理掉。
-- 三层播放控制要做好"停止其它正在播放的序列"，否则容易叠音。
-- `toc.js` 只有 `.post-body` 内 `h2`/`h3` 合计 ≥2 个才会生成目录，页面结构一定要用
-  真正的 `h2`/`h3` 标签，不能用别的元素模拟标题。
-- `toc.js` 必须在密码验证通过、内容变为可见之后才动态注入执行，不能在页面加载时
-  静态引入，否则它量测标题位置时内容还是 `display:none`，目录点击跳转的位置全错。
-- 一句话如果被 Agent 判定为对应同一个原始 `raw_id`（比如两个很短的寒暄语被 Whisper
-  合并识别成了一段），最终会共享同一段时间戳、切出同一段音频——这是原始转写粒度的
-  限制，不是 bug，不用强行拆开。
+- 播放控制要做好"开始新播放前先停止其它正在播放的"，否则容易叠音（现在统一收在
+  `build_page.py` 的单一 `player` 状态对象里管理，见下方悬浮播放器说明）。
+- **时间戳重叠/重复是真 bug，必须修，不能将就**：多句话共享同一个 `raw_id`、或者
+  一句的 `raw_ids` 横跨了另外两句各自的范围，都会导致切出来的音频片段互相重叠甚至
+  完全重复（真实案例里出现过"两张卡片播放同一段音频"、"前一句结尾漏进下一句开头
+  的字"）。不要用简单的"两两比较、发现重复就分摊"去修——真实数据里会出现三句甚至
+  更多互相嵌套重叠的情况，简单补丁修不干净还可能修出负时长。`merge_groups.py` 里
+  `resolve_overlaps()` 用的是更稳的办法：取每句原始时间范围的中点当"锚点"，按锚点
+  重新排序，每句的新边界＝它和相邻两句锚点的中点——不管原始重叠是什么形状，结果
+  必然是按时间顺序、彼此不重叠、时长恒为正的连续切片。合并完一定要跑一遍校验
+  （相邻句 `end <= 下一句 start`，且 `end > start`），别假设它是对的。
+- **但 `resolve_overlaps()` 只保证"不重叠"，不保证"切得准"**：它靠文字长度比例瞎猜
+  一句话在共享片段里占多少时长，实测下来相当一部分句子会切早/切晚，播放时能明显
+  听到"上一句尾巴漏进下一句"或者"这句开头被吞了几个字"——这是真实案例里被用户
+  当场听出来的，不是理论假设。
+- **边界精修算法踩了三次坑才定下来，记录一下避免以后重蹈覆辙**：
+  - ❌ 第一次尝试：对每道题的音频整体重新做 `word_timestamps=True` 转写，检测词间隔
+    ≥0.12s 当"真实停顿"，按停顿切声学区间。结果间隔阈值太敏感，把**句子内部**的
+    逗号停顿/换气也当成了句子边界，导致错位一路级联下去——句子被提前切断，
+    尾巴漏进下一句开头，下一句自己也被提前切断，一直传递错位。
+  - ❌ 第二次尝试：放弃"检测真实停顿"，改成对每道题整体转写后**按全题文字比例
+    分配词数**。结果发现绝大多数句子（90%+）本来就有自己独立对应的 raw Whisper
+    片段、边界早就是准的，重新估算反而引入了新偏移，而且偏移会在长对话里逐句
+    累积放大。
+  - ❌ 第三次尝试（曾经短暂当成"最终方案"，后来被推翻）：只修"共享同一个原始
+    raw 片段"的那一小撮句子（约占全部句子的一成），用文本对齐在共享片段内部
+    定位边界，其余句子完全不碰、保留 `merge_groups.py` 的锚点中点边界。**这个
+    方案的隐藏假设是错的**：只要一句话独占自己的 raw 片段，就认为这个片段的
+    起止时间戳是准的——但实测 Whisper 给相邻 raw 片段打的时间戳本身可能不准、
+    甚至互相重叠（例如"うん。…"和"…行くんだ。」"分属两个不同 raw_id，但后一个
+    片段的起始时间戳比前一个片段的结束时间戳还早了近 2 秒），这种情况下"独占
+    raw 片段"完全不能保证边界准，用户反馈"005 结尾漏进下一句的音头、006 开头
+    丢了自己的音头、006 结尾丢了'行くんだ'、007 开头多了'行くんだ'"就是这么
+    来的——四句话跨了三个原本各自独立、彼此又互相重叠的 raw 片段，完全不在
+    "共享片段"的修复范围内。
+  - ✅ 最终方案（`refine_boundaries.py` 现在的实现）：**不再区分是否共享 raw
+    片段，以整道题为单位统一用文本对齐**。文本对齐跟字数比例不一样，它按实际
+    识别出的内容找边界，如果原来的边界本来就准，对齐结果会落在同一位置，不会
+    像字数比例那样凭空引入新偏移——所以可以放心地把它用到题目里的全部句子上，
+    不用先花一个启发式步骤去判断"哪些边界可疑"，也不会漏掉"两个独立 raw 片段
+    自己就不准"这种第三次尝试漏掉的情况。题目的外边界（第一句起点/最后一句
+    终点）锁定用原来的 start/end 不重新估计，只重新分配题目内部的句子边界。
+  - **配套踩的一个坑：Whisper 复读循环**。整题跨度常有一两分钟，实测在某道题上
+    复现过 Whisper 转写陷入复读循环——把开头一句话反复输出四五遍，后面真正的
+    对话内容整段丢失，识别文本跟期望文本的匹配覆盖率只剩 17%，直接触发对齐质量
+    不够的回退，切出一堆近零时长的句子（人工听感："上一句几乎没声音、下一句
+    塞进了老长一段"）。这是 Whisper 在长片段上的已知失败模式，不是对齐算法的
+    锅。修法：`model.transcribe(...)` 加 `condition_on_previous_text=False`，
+    禁用"用已解码的前文去影响后续解码"，复读循环消失，识别文本长度和内容都恢复
+    正常。**这个参数现在已经固化在 `refine_boundaries.py` 里，不用每次手动加**。
+  - 用法：`python refine_boundaries.py <原始音频> enriched.json enriched_refined.json`，
+    以题为单位转写，29 道题一次跑完（实测几分钟到十几分钟量级，比"共享片段"方案慢
+    但比"整题都要人工排查"快得多）。跑完接 `validate_boundaries.py`（见上面工具
+    列表）做收尾校验，不要现写一次性检查脚本。
+- Python 三引号字符串里如果手滑写了 `\"`（想在生成的 JS 字符串里用双引号包一段
+  CSS 选择器），反斜杠会被 Python 自己的字符串解析吃掉，输出里只剩裸的 `"`，
+  破坏 JS 语法导致整个 `<script>` 解析失败（表现为密码框点了没反应——因为同一个
+  `<script>` 标签里其它代码，包括密码校验，也一起没执行）。要么用 f-string 里
+  切换成单引号包 JS 字符串（`'.foo[bar="baz"]'`），要么老老实实用 `\\"` 双重转义。
+- 从 `style.css` 抄 CSS 规则进页面自己的 `<style>` 时，注意选择器优先级冲突：比如
+  抄来的 `.toc ul { display: flex; }`（针对博客场景"toc 里只有一个 ul"写的）比本页
+  自己的 `.side-nav-list { display: none; }`（用来在多个 `<ul>` 间做 tab 切换显隐）
+  优先级更高，会静默覆盖掉隐藏效果，导致"应该只显示当前 tab 的列表，结果全部tab的
+  列表都显示了"。抄来的规则和本页自己新增的显隐逻辑作用在同一个元素上时，要么提高
+  本页规则的选择器特异性（比如 `.toc ul.side-nav-list`），要么整体重新设计选择器。
 - 公开仓库 = 没有真正的访问控制，密码门只是"防随便看"，不是"防有心人"，动手前把这个
   风险跟用户说清楚。

@@ -17,6 +17,13 @@ import argparse
 from faster_whisper import WhisperModel
 import imageio_ffmpeg
 
+# Windows 控制台默认用 cp932/gbk 之类的窄编码，print 日语/中文文本时容易
+# UnicodeEncodeError 崩溃（哪怕转写本身已经成功、结果已经写盘）。强制 stdout/stderr
+# 用 UTF-8，编不了的字符替换掉而不是直接抛异常。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 
 
