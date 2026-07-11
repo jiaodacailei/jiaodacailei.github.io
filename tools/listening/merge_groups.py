@@ -53,6 +53,38 @@ def to_ruby_html(text):
     return '<br>'.join(out_lines)
 
 
+def resolve_overlaps(sentences):
+    """原始 raw_id 归属经常导致相邻句子的时间戳互相重叠——不只是简单的两两重复，
+    还会出现三句甚至更多句子互相嵌套/部分重叠的情况（比如一句的 raw_ids 横跨了
+    另外两句各自的范围）。与其挨个模式打补丁，不如统一用每句原始时间范围的
+    "中点"当锚点：按锚点重新排序，每句的新边界取它和相邻两句锚点的中点——
+    这样结果必然是按时间顺序、彼此不重叠、时长恒为正的连续切片，不用管原始
+    重叠是什么形状。修改是原地对 sentences 列表里的字典做的。
+    """
+    by_mondai = {}
+    for s in sentences:
+        by_mondai.setdefault(s["mondai"], []).append(s)
+
+    for group in by_mondai.values():
+        for s in group:
+            s["_anchor"] = (s["start"] + s["end"]) / 2
+        group.sort(key=lambda s: s["_anchor"])
+        prev_anchor = None
+        for s in group:
+            if prev_anchor is not None and s["_anchor"] <= prev_anchor:
+                s["_anchor"] = prev_anchor + 0.02
+            prev_anchor = s["_anchor"]
+
+        n = len(group)
+        orig_first_start = min(s["start"] for s in group)
+        orig_last_end = max(s["end"] for s in group)
+        for i, s in enumerate(group):
+            s["start"] = orig_first_start if i == 0 else round((group[i - 1]["_anchor"] + s["_anchor"]) / 2, 2)
+            s["end"] = orig_last_end if i == n - 1 else round((s["_anchor"] + group[i + 1]["_anchor"]) / 2, 2)
+        for s in group:
+            del s["_anchor"]
+
+
 def main():
     raw_path = sys.argv[1]
     out_path = sys.argv[2]
@@ -108,6 +140,8 @@ def main():
                 "answer": q.get("answer", ""),
             })
 
+    sentences.sort(key=lambda x: x["start"])
+    resolve_overlaps(sentences)
     sentences.sort(key=lambda x: x["start"])
     for i, s in enumerate(sentences, 1):
         s["id"] = i

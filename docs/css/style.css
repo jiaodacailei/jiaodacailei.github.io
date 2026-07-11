@@ -738,7 +738,11 @@ footer {
   padding: 6px 4px;
   box-shadow: -2px 2px 12px rgba(0,0,0,0.10);
   backdrop-filter: blur(6px);
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  scrollbar-width: none;
 }
+.toc-float-nums::-webkit-scrollbar { display: none; }
 .toc-float-toggle {
   width: 28px;
   height: 28px;

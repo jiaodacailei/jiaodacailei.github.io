@@ -3,3 +3,5 @@
 .idea/
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
+__pycache__/
+*.pyc
