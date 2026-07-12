@@ -22,8 +22,53 @@ import hashlib
 import argparse
 import subprocess
 import imageio_ffmpeg
+import pykakasi
 
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
+_kks = pykakasi.kakasi()
+
+
+def _is_kanji(ch):
+    return '一' <= ch <= '鿿'
+
+
+def ruby_html(text, char_times=None):
+    """假名注音渲染。有 char_times（refine_boundaries.py 用词级时间戳文本对齐算出来
+    的、这句里每个字符对应的绝对播放时间）时，额外给每个分词包一层
+    `<span class="tw" data-t="...">`，播放时前端按 audio.currentTime 找到当前应该
+    高亮的词。没有 char_times（简单流程没跑 refine_boundaries.py，或者这句对齐质量
+    太差被跳过）就退化成纯 <ruby> 输出，不带高亮能力——静态展示效果不受影响，
+    只是没有跟读高亮。
+    """
+    lines = text.split("\n")
+    out_lines = []
+    char_idx = 0
+    for li, line in enumerate(lines):
+        tokens = _kks.convert(line)
+        parts = []
+        for t in tokens:
+            orig = t['orig']
+            hira = t['hira']
+            tok_len = len(orig)
+            t_time = None
+            if char_times is not None and char_idx < len(char_times):
+                t_time = char_times[char_idx]
+            char_idx += tok_len
+            if any(_is_kanji(ch) for ch in orig) and hira != orig:
+                inner = f'<ruby>{orig}<rt>{hira}</rt></ruby>'
+            else:
+                inner = orig
+            # 标点/符号（「、」「。」「?」之类）不算"读到的词"，不参与跟读高亮——
+            # pykakasi 分词里纯标点 token 没有假名/汉字，isalnum() 全假，用这个判断跳过。
+            has_content = any(ch.isalnum() for ch in orig)
+            if t_time is not None and has_content:
+                parts.append(f'<span class="tw" data-t="{t_time:.2f}">{inner}</span>')
+            else:
+                parts.append(inner)
+        out_lines.append(''.join(parts))
+        if li < len(lines) - 1:
+            char_idx += 1  # 换行符本身也占一个字符位，对齐 char_times 的下标
+    return '<br>'.join(out_lines)
 
 
 def cut_segments(audio_path, sentences, out_audio_dir):
@@ -45,9 +90,15 @@ def sentence_card_html(s, audio_rel):
     notes_html = ""
     if s.get("notes"):
         notes_html = f'<div class="seg-notes">{html.escape(s["notes"])}</div>'
+    # char_times 是绝对时间戳（跟 s["start"]/s["end"] 一个坐标系），但这句自己的
+    # audio 文件是从它自己的 start 开始单独切出来的（文件内 t=0 对应 s["start"]），
+    # 所以喂给 ruby_html 之前要减去 s["start"] 转成这个音频文件内部的相对时间。
+    char_times = s.get("char_times")
+    rel_char_times = [round(t - s["start"], 2) for t in char_times] if char_times else None
+    ja_html = ruby_html(s["text"], rel_char_times) if rel_char_times else s["furigana"]
     return f'''
         <div class="seg-card" id="card-a{s['id']}">
-          <p class="seg-ja">{s['furigana']}</p>
+          <p class="seg-ja">{ja_html}</p>
           <p class="seg-zh">{zh}</p>{notes_html}
           <audio id="a{s['id']}" preload="none" src="{audio_rel}seg-{s['id']:03d}.mp3"></audio>
         </div>'''
@@ -101,6 +152,35 @@ def mobile_nums_list_html(mondai_idx, question_labels, active):
     )
     return f'<div class="{cls}" data-mondai-idx="{mondai_idx}">{btns}</div>'
 
+
+# 播放/暂停/循环/设置/关闭这几个图标改用内联 SVG（fill="currentColor"）而不是 emoji 字符
+# （▶⏸⚙⟲✕之类）——这些字符在部分移动端浏览器上会被系统符号字体接管渲染，忽略 CSS
+# color（表现为图标发灰而不是预期的白色/蓝色）、且字形本身的可视重心跟按钮的 flex
+# 居中假设对不上（表现为图标偏离圆心）。SVG 路径取自 Material Design 图标，跨平台
+# 渲染结果完全一致，不存在字体兜底的不确定性。
+ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
+ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
+ICON_GEAR = ('<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,'
+             '0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32'
+             'c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04'
+             '-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,'
+             '7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87C2.62,9.08,2.66,9.34,2.86,9.48'
+             'l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14,-0.23,'
+             '0.41,-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,'
+             '0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54'
+             'c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,'
+             '0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,'
+             '1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>')
+ICON_LOOP = ('<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10'
+             'H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>')
+ICON_CLOSE = ('<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 '
+              '5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>')
+# 上一个/下一个/最前/最后导航原来用 «‹›» 这几个字符，实测太细太淡，不容易注意到——
+# 换成跟其它按钮一样的实心 SVG 箭头，视觉粗细一致，也更显眼。
+ICON_PREV = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>'
+ICON_NEXT = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>'
+ICON_FIRST = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>'
+ICON_LAST = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>'
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -209,9 +289,11 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     text-transform: uppercase; border-bottom: 1px solid #f1f5f9;
   }}
   .toc-float-close {{
-    border: none; background: none; color: #94a3b8; font-size: 14px; cursor: pointer;
-    padding: 0; line-height: 1; font-family: inherit; transition: color 0.15s;
+    border: none; background: none; color: #94a3b8; cursor: pointer;
+    padding: 0; font-family: inherit; transition: color 0.15s;
+    display: inline-flex; align-items: center; justify-content: center;
   }}
+  .toc-float-close svg {{ width: 14px; height: 14px; display: block; }}
   .toc-float-close:hover {{ color: #6366f1; }}
   .toc-float-panel ul {{ list-style: none; padding: 6px 8px 10px; margin: 0; }}
   .toc-float-panel .toc-h2 > a {{
@@ -239,6 +321,13 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   }}
   .seg-ja {{ font-size: 16px; line-height: 2.2; margin: 0 24px 4px 0; }}
   .seg-ja ruby rt {{ font-size: 10px; color: var(--text-muted); font-style: normal; }}
+  /* 跟读高亮：播放到哪个词，data-t 时间戳最接近当前播放进度的 .tw 就加这个类 */
+  .seg-ja .tw {{ border-radius: 3px; transition: background .1s, color .1s; }}
+  .seg-ja .tw.tw-active {{
+    color: var(--blue-dark); font-weight: 700;
+    border-bottom: 2px solid var(--blue); padding-bottom: 1px;
+  }}
+  .seg-ja .tw.tw-active ruby rt {{ color: var(--blue); }}
   .seg-zh {{ color: var(--text-muted); font-size: 13px; font-style: italic; margin: 0 0 4px; }}
   .seg-notes {{
     font-size: 12.5px; line-height: 1.65; color: var(--text);
@@ -307,14 +396,16 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 
   /* ── 右下角悬浮设置：播放速度 + 显示模式 ── */
   .settings-toggle {{
-    position: fixed; right: 24px; bottom: 24px; z-index: 260;
+    position: fixed; right: 24px; bottom: 80px; z-index: 260;
     width: 48px; height: 48px; border-radius: 50%; border: none;
     background: var(--blue); color: #fff; font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
     box-shadow: 0 6px 20px rgba(37,99,235,0.35); transition: transform .15s;
   }}
+  .settings-toggle svg {{ width: 22px; height: 22px; display: block; }}
   .settings-toggle:hover {{ transform: scale(1.06); }}
   .settings-panel {{
-    display: none; position: fixed; right: 24px; bottom: 82px; z-index: 260;
+    display: none; position: fixed; right: 24px; bottom: 138px; z-index: 260;
     width: 216px; background: #fff; border: 1px solid var(--border); border-radius: 14px;
     box-shadow: var(--shadow-lg); padding: 16px;
   }}
@@ -333,31 +424,37 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   .settings-opt:hover {{ background: var(--blue-xlight); border-color: var(--blue-light); }}
   .settings-opt.active {{ background: var(--blue); border-color: var(--blue); color: #fff; }}
 
-  /* ── 悬浮迷你播放器：播放中才出现，导航（最初/前/播放/次/最後）+ 循环/停止 ── */
+  /* ── 悬浮迷你播放器：播放中才出现，导航（最初/前/播放/次/最後）+ 循环/停止 ──
+     贴紧视口底部和左右两侧（不留边距、不带圆角），悬浮设置按钮相应上移到条上方避免遮挡。 */
   .mini-player {{
-    display: none; align-items: center; gap: 5px;
-    position: fixed; left: 24px; right: 84px; bottom: 24px; z-index: 270;
-    max-width: 480px; background: #fff; border: 1px solid var(--border);
-    border-radius: 999px; box-shadow: var(--shadow-lg); padding: 6px 8px 6px 6px;
+    display: none; align-items: center; gap: 8px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 270;
+    background: #fff; border: none; border-top: 1px solid var(--border);
+    border-radius: 0; box-shadow: var(--shadow-lg); padding: 8px 16px;
   }}
   .mini-player.active {{ display: flex; }}
   .mp-btn {{
     flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: none;
-    background: var(--blue-xlight); color: var(--blue-dark); font-size: 13px; cursor: pointer;
+    background: var(--blue-xlight); color: var(--blue-dark); cursor: pointer;
     display: flex; align-items: center; justify-content: center; transition: all .15s;
   }}
+  .mp-btn svg {{ width: 15px; height: 15px; display: block; }}
   .mp-btn:hover {{ background: var(--blue-light); }}
   .mp-btn[disabled] {{ opacity: .3; cursor: default; pointer-events: none; }}
-  .mp-playpause {{ background: var(--blue); color: #fff; font-size: 15px; }}
+  .mp-playpause {{ background: var(--blue); color: #fff; }}
+  .mp-playpause svg {{ width: 16px; height: 16px; }}
   .mp-playpause:hover {{ background: var(--blue-dark); }}
   .mp-loop.active {{ background: var(--blue); color: #fff; }}
   .mp-info {{ flex: 1; min-width: 0; }}
   .mp-scope {{ font-size: 13px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
   .mp-pos {{ font-size: 11px; color: var(--text-muted); }}
   @media (max-width: 480px) {{
-    .mini-player {{ left: 8px; right: 8px; bottom: 78px; max-width: none; gap: 3px; padding: 5px 6px; }}
-    .mp-btn {{ width: 27px; height: 27px; font-size: 11px; }}
-    .mp-playpause {{ font-size: 13px; }}
+    .mini-player {{ gap: 3px; padding: 6px 10px; }}
+    .mp-btn {{ width: 27px; height: 27px; }}
+    .mp-btn svg {{ width: 13px; height: 13px; }}
+    .mp-playpause svg {{ width: 14px; height: 14px; }}
+    .settings-toggle {{ bottom: 70px; }}
+    .settings-panel {{ bottom: 128px; }}
   }}
 
   #gate {{
@@ -409,12 +506,12 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
       {mobile_nums_lists}
     </div>
     <div class="toc-float-panel">
-      <div class="toc-float-header"><span>小問</span><button class="toc-float-close" id="snmClose">✕</button></div>
+      <div class="toc-float-header"><span>小問</span><button class="toc-float-close" id="snmClose">{ICON_CLOSE}</button></div>
       {side_nav_lists_mobile}
     </div>
   </div>
 
-  <button class="settings-toggle" id="settingsToggle" title="再生設定">⚙</button>
+  <button class="settings-toggle" id="settingsToggle" title="再生設定">{ICON_GEAR}</button>
   <div class="settings-panel" id="settingsPanel">
     <div class="settings-group">
       <div class="settings-label">再生速度</div>
@@ -436,17 +533,17 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   </div>
 
   <div class="mini-player" id="miniPlayer">
-    <button class="mp-btn mp-first" id="mpFirst" title="最初" disabled>«</button>
-    <button class="mp-btn mp-prev" id="mpPrev" title="前へ" disabled>‹</button>
-    <button class="mp-btn mp-playpause" id="mpPlayPause" title="再生/一時停止">⏸</button>
-    <button class="mp-btn mp-next" id="mpNext" title="次へ" disabled>›</button>
-    <button class="mp-btn mp-last" id="mpLast" title="最後" disabled>»</button>
+    <button class="mp-btn mp-first" id="mpFirst" title="最初" disabled>{ICON_FIRST}</button>
+    <button class="mp-btn mp-prev" id="mpPrev" title="前へ" disabled>{ICON_PREV}</button>
+    <button class="mp-btn mp-playpause" id="mpPlayPause" title="再生/一時停止">{ICON_PAUSE}</button>
+    <button class="mp-btn mp-next" id="mpNext" title="次へ" disabled>{ICON_NEXT}</button>
+    <button class="mp-btn mp-last" id="mpLast" title="最後" disabled>{ICON_LAST}</button>
     <div class="mp-info">
       <div class="mp-scope" id="mpScope">-</div>
       <div class="mp-pos" id="mpPos"></div>
     </div>
-    <button class="mp-btn mp-loop" id="mpLoop" title="ループ">⟲</button>
-    <button class="mp-btn mp-stop" id="mpStop" title="停止">✕</button>
+    <button class="mp-btn mp-loop" id="mpLoop" title="ループ">{ICON_LOOP}</button>
+    <button class="mp-btn mp-stop" id="mpStop" title="停止">{ICON_CLOSE}</button>
   </div>
 
   <div class="post-page">
@@ -513,6 +610,42 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   var mpNext = document.getElementById("mpNext");
   var mpLast = document.getElementById("mpLast");
 
+  // 跟读高亮：播放到哪个词就给哪个 .tw 加 tw-active。用 requestAnimationFrame
+  // 自己重新调度（而不是 audio 的 timeupdate 事件，那个大概 4Hz 一次，词级高亮
+  // 切换会明显卡顿），player.active 变 false 时自然停止重新调度、顺带清掉高亮。
+  var wordHighlightRAF = null, hlCard = null, hlWord = null;
+  function tickWordHighlight() {{
+    if (!player.active) {{
+      wordHighlightRAF = null;
+      if (hlWord) hlWord.classList.remove("tw-active");
+      hlCard = null; hlWord = null;
+      return;
+    }}
+    var a = player.audios[player.idx];
+    var card = a ? a.closest(".seg-card") : null;
+    if (card !== hlCard) {{
+      if (hlWord) hlWord.classList.remove("tw-active");
+      hlWord = null;
+      hlCard = card;
+    }}
+    if (a && card) {{
+      var words = card.querySelectorAll(".seg-ja .tw");
+      var t = a.currentTime, active = null;
+      for (var i = 0; i < words.length; i++) {{
+        if (parseFloat(words[i].getAttribute("data-t")) <= t) {{ active = words[i]; }} else {{ break; }}
+      }}
+      if (active !== hlWord) {{
+        if (hlWord) hlWord.classList.remove("tw-active");
+        if (active) active.classList.add("tw-active");
+        hlWord = active;
+      }}
+    }}
+    wordHighlightRAF = requestAnimationFrame(tickWordHighlight);
+  }}
+  function startWordHighlight() {{
+    if (wordHighlightRAF === null) {{ wordHighlightRAF = requestAnimationFrame(tickWordHighlight); }}
+  }}
+
   // 当前正在播放的句子加高亮效果，并自动滚动到可视区域内，方便连播/跳转时跟着看
   function setPlayingCard(audio) {{
     document.querySelectorAll(".seg-card.playing").forEach(function(c) {{ c.classList.remove("playing"); }});
@@ -534,7 +667,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     mpScope.textContent = player.scopeLabel;
     mpPos.textContent = player.audios.length > 1 ? (player.idx + 1) + " / " + player.audios.length : "";
     var current = player.audios[player.idx];
-    mpPlayPause.textContent = current && !current.paused ? "⏸" : "▶";
+    mpPlayPause.innerHTML = current && !current.paused ? '{ICON_PAUSE}' : '{ICON_PLAY}';
     mpLoop.classList.toggle("active", player.loop);
     var hasNav = !!player.navType && player.navSiblings.length > 1;
     var atFirst = player.navIndex <= 0;
@@ -575,6 +708,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     a.play();
     setPlayingCard(a);
     updateMiniPlayer();
+    startWordHighlight();
   }}
 
   // 点句卡片/h3/h2 或迷你播放器导航按钮都走这一个入口。
@@ -895,6 +1029,15 @@ def main():
         side_nav_lists_mobile=side_nav_lists_mobile,
         mobile_nums_lists=mobile_nums_lists,
         pwd_hash=pwd_hash,
+        ICON_PLAY=ICON_PLAY,
+        ICON_PAUSE=ICON_PAUSE,
+        ICON_GEAR=ICON_GEAR,
+        ICON_LOOP=ICON_LOOP,
+        ICON_CLOSE=ICON_CLOSE,
+        ICON_PREV=ICON_PREV,
+        ICON_NEXT=ICON_NEXT,
+        ICON_FIRST=ICON_FIRST,
+        ICON_LAST=ICON_LAST,
     )
 
     out_html = os.path.join(args.out_dir, "index.html")

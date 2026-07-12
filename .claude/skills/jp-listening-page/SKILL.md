@@ -1,16 +1,17 @@
 ---
 name: jp-listening-page
-description: Turn a Japanese audio recording (meeting recording, JLPT listening test, etc.) into a password-protected, unlisted listening-practice page on this site — sentence-level clips with furigana, Chinese translation, grammar notes, tab-based navigation (問題1~5 as tabs, right-side/floating small-question nav scoped to the active tab), and a persistent floating mini-player (play/pause/loop/stop, speed control, JA/JA+ZH/ZH display toggle). Use when the user gives you a Japanese audio file and asks for a listening drill page, a "N级听力" page, or to "把这段录音做成听力页面".
+description: Turn a Japanese audio recording (meeting recording, JLPT listening test, etc.) into a password-protected, unlisted listening-practice page on this site — sentence-level clips with furigana, Chinese translation, grammar notes, word-level read-along highlighting during playback, tab-based navigation (問題1~5 as tabs, right-side/floating small-question nav scoped to the active tab), and a persistent floating mini-player (play/pause/loop/stop, speed control, JA/JA+ZH/ZH display toggle). Use when the user gives you a Japanese audio file and asks for a listening drill page, a "N级听力" page, or to "把这段录音做成听力页面".
 ---
 
 # 日语听力精听页生成
 
 给一段日语录音，生成一个密码保护、不进导航的**逐句**精听页面：假名注音 + 中文翻译 +
-语法笔记，問題1~5 做成顶部 tab（点哪个大题只显示哪个大题的内容），配套的小题导航
-仿照博客 `.toc`/`.toc-float` 的视觉风格（桌面右侧栏/手机悬浮目录，但内容随 tab 切换），
-右下角一个常驻悬浮迷你播放器统一控制播放/暂停/循环/停止，另有播放速度和
-日文/日中/中文显示模式的设置面板。页面完全自包含（不依赖外部 `/css/style.css` 或
-`toc.js`），本地 `file://` 打开和线上部署效果一致。
+语法笔记，播放时逐词跟读高亮（读到哪个词哪个词就带下划线），問題1~5 做成顶部 tab
+（点哪个大题只显示哪个大题的内容），配套的小题导航仿照博客 `.toc`/`.toc-float` 的
+视觉风格（桌面右侧栏/手机悬浮目录，但内容随 tab 切换），右下角一个贴底贴边的常驻
+悬浮迷你播放器统一控制播放/暂停/循环/停止，另有播放速度和日文/日中/中文显示模式的
+设置面板。页面完全自包含（不依赖外部 `/css/style.css` 或 `toc.js`），本地 `file://`
+打开和线上部署效果一致。
 
 ## 参数
 
@@ -36,7 +37,15 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   播放/循环按钮）、页面 CSS 完全自包含（不依赖外部 style.css/toc.js）、UI 文案全日文
   （密码框/按钮/提示都是日语，只有逐句翻译/概览/答案解析这些内容性文字是中文）。
   下面第 2~3 步描述的"两轮 Agent"做法、以及第 5 步的时间戳去重叠算法，都是从这个
-  案例里跑出来的最佳实践。
+  案例里跑出来的最佳实践。**注意**：这个页面本身没有跟着 2021-12 案例的后续修复
+  （SVG 图标、贴底迷你播放条、跟读高亮）一起重新生成过——生成它用的 `enriched.json`
+  留在某次旧 session 的 scratchpad 里，这次找不到了，等以后有需要再补。
+- `docs/private/n2-listening/2021-12/` — 同系列第二套真题，直接复用 2021-07 的
+  slug 命名/标题风格/密码哈希，全量跑通，28 个小题、5 个大题、334 句。这一版在
+  2021-07 的基础上又踩出/修好了三个东西（都已经固化进 `refine_boundaries.py`/
+  `build_page.py`，下面"常见坑"和"跟读高亮"两节有细节）：迷你播放条改成贴底贴边
+  无圆角、图标从 emoji 字符改成内联 SVG、句子切分点从"正中点"改成"偏向前一句
+  结尾"，以及新增的逐词跟读高亮功能。
 
 ## 工具在哪
 
@@ -58,7 +67,12 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   单位重新做 word-level 转写，把题目内全部句子的期望文本跟识别文本做序列对齐
   （`difflib.SequenceMatcher`），按实际内容定位句子边界，题目的外边界（第一句起点/
   最后一句终点）锁定不变，只重新分配内部边界。对齐质量不够时单题回退成字数比例。
-  见下面"常见坑"里踩过的三次坑和最终方案。
+  见下面"常见坑"里踩过的三次坑和最终方案。**不管题目内是一句还是多句都会跑**（单句
+  题目不需要切内部边界，但同一次转写顺带算出的逐字符时间戳仍然要用于跟读高亮，
+  所以不再像早期版本那样跳过单句题目）；顺带给每句算出 `char_times`（这句里每个
+  字符对应的绝对播放时间），供 `build_page.py` 渲染跟读高亮，对齐质量不够时这部分
+  退回线性插值，不影响边界切分那部分的回退逻辑。两者共用同一次 word-level 转写，
+  不会为了两个目的重复转写同一段音频。
 - `validate_boundaries.py` — `refine_boundaries.py` 跑完之后**必须**跑的收尾校验：
   按 mondai 分组检查相邻句重叠（有就前向裁剪）、零时长/负时长（有就直接报错退出，
   不悄悄吞掉）、字符数/时长比值异常（默认阈值 25 字/秒，超过的打印出来人工复核——
@@ -66,13 +80,16 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   这个脚本已经把踩过的坑都固化进去了，直接用。
 - `build_page.py` — 生成最终页面：`.post-page`/`.post-body` + 問題1~5 顶部 tab + 小题
   导航（桌面右侧栏/手机悬浮，仿博客 `.toc`/`.toc-float` 视觉但内容随 tab 联动）+
-  右下角悬浮迷你播放器 + 播放速度/显示模式设置面板 + 密码门 + `noindex`。**页面所有
+  贴底贴边悬浮迷你播放器 + 播放速度/显示模式设置面板 + 密码门 + `noindex`。**页面所有
   CSS 都内联在自己的 `<style>` 里，不 `<link>` 外部样式表**（这不是博客文章，是独立
   工具页，没必要依赖 `/css/style.css`，本地 file:// 测试也不会因为外部资源 404 而
-  样式跑掉）。输入是 `merge_groups.py`（或 `add_furigana.py`）产出的 `enriched.json`。
-  密码支持 `--password <明文>`（首次生成用）或 `--password-hash <哈希>`（改完边界/
-  文案要重新生成页面、但密码不变时用，不用把明文密码再传一遍——从旧页面的
-  `<script>` 里直接摘 `HASH = "..."` 那一行常量即可），二选一。
+  样式跑掉）。输入是 `merge_groups.py`（或 `add_furigana.py`）产出的 `enriched.json`
+  （最好是过了 `refine_boundaries.py`/`validate_boundaries.py` 那份，带 `char_times`
+  才有跟读高亮）。密码支持 `--password <明文>`（首次生成用）或 `--password-hash
+  <哈希>`（改完边界/文案要重新生成页面、但密码不变时用，不用把明文密码再传一遍——
+  从旧页面的 `<script>` 里直接摘 `HASH = "..."` 那一行常量即可），二选一。播放/暂停/
+  循环/设置/关闭这几个图标用内联 SVG（`fill="currentColor"`），不用 emoji 字符——
+  原因见下面"常见坑"。
 - `README.md` — 环境安装说明。
 
 ## 整体流程
@@ -220,34 +237,48 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
   页面**——不能在 HTML 里静态写死 `<script src="/js/toc.js">`，因为 toc.js 是立即执行
   的 IIFE，如果页面刚加载、内容还被密码门藏着（`display:none`）就跑，量测到的
   `offsetTop` 全是 0，目录生成的滚动定位会全部错位。
-- `h2`＝每个大题（問題1、問題2…），标题里嵌着"▶ 播放整个问题"和"⟲ 循环整个问题"
-  两个按钮（`class="scope-btn m-play/m-loop"`），外层包一个
-  `<section class="mondai-section" data-scope="mondai">`。
-- `h3`＝每个小题（1番、2番…），这是目录里能点进去的第二级条目，标题里嵌
-  "▶ 播放整题"/"⟲ 循环整题"按钮（`class="scope-btn q-play/q-loop"`），外层包
-  `<div class="question-block" data-scope="question">`，下面先渲染 `overview`，
-  `answer` 用 `<details class="seg-answer">` 折叠。
-- 每个小题下面按顺序列出该题的每一句：`.seg-card` 小卡片，逐句"▶ 播放"/"↺ 重放"/
-  "⟲ 循环"，配假名 + 中文翻译 +（如果有）笔记。
+- `h2`＝每个大题（問題1、問題2…），外层包一个
+  `<section class="mondai-section" data-scope="mondai">`，点击 `h2` 播放整个大题。
+- `h3`＝每个小题（1番、2番…），这是目录里能点进去的第二级条目，外层包
+  `<div class="question-block" data-scope="question">`，点击 `h3` 播放整题；下面先
+  渲染 `overview`，`answer` 用 `<details class="seg-answer">` 折叠。
+- 每个小题下面按顺序列出该题的每一句：`.seg-card` 小卡片，点击卡片本身（不是独立
+  按钮）播放这一句，配假名 + 中文翻译 +（如果有）笔记。**没有常驻的"▶/↺/⟲"按钮**——
+  早期版本每句/每题/每大题都有独立播放按钮，后来改成"点标题/内容本身播放"，视觉更
+  干净，卡片/标题只是加 `cursor:pointer` + hover 反馈，暂停/继续/循环统一交给右下角
+  的悬浮迷你播放器。
 
 **三层播放控制的实现**（不需要额外切拼接音频文件，直接顺序播放已切好的逐句 `<audio>`）：
 
+- 点击入口只有一个统一函数 `playScope(navType, navSiblings, navIndex)`
+  （`navType` 是 `"sentence"`/`"question"`/`"mondai"`），不管点的是句卡片、`h3`
+  还是 `h2` 都走这里：`navSiblings` 是同级兄弟节点数组（比如点某句时，`navSiblings`
+  是它所在小题下的全部句卡片；点某个 `h3` 时，是它所在大题下的全部小题），`navIndex`
+  是"这是同级里的第几个"——这两个字段同时喂给迷你播放器的上一个/下一个/最前/最后
+  导航用，导航严格限制在同级内、不跨级。
 - 不是靠 `data-mondai`/`data-question` 属性去全局筛选 `<audio>`，而是靠 DOM 嵌套：
-  播放整题时 `document.querySelectorAll('.question-block[data-scope="question"]')`
-  里每个 block 自己 `querySelector("audio")` 拿到区块内的所有音频（DOM 顺序即播放顺序）；
-  播放整个大题同理，作用域换成 `.mondai-section`。这样不用额外打标签，容器嵌套关系
-  本身就是作用域。
-- 用一个 `playSequence(audios, loop, btn)` 函数统一处理"播放整题"和"播放整个问题"：
-  维护一个 `idx`，靠每个 `audio.onended` 驱动播放下一个；循环模式下放完最后一个跳回
-  `idx=0` 继续；提供 `stop()` 方法清空所有 `onended` 监听并暂停。
-- **全局只允许一路播放**：模块级变量 `activeSeq`（当前序列播放）和 `activeSingle`
-  （当前单句播放），任何新播放动作开始前先调用 `stopEverything()` 清掉这两者、
-  重置所有按钮的文案/`active`样式。
+  播放整题时 `.question-block[data-scope="question"]` 这个 block 自己
+  `querySelectorAll("audio")` 拿到区块内的所有音频（DOM 顺序即播放顺序）；播放整个
+  大题同理，作用域换成 `.mondai-section`。这样不用额外打标签，容器嵌套关系本身就是
+  作用域。
+- 全局只有一个 `player` 状态对象（`audios`/`idx`/`loop`/`active`/`finished`/
+  `navType`/`navSiblings`/`navIndex`），`playNext()` 靠 `audio.onended` 驱动播放
+  下一个，循环模式下放完最后一个跳回 `idx=0` 继续。**全局只允许一路播放**：任何新
+  播放动作（`playScope` 被再次调用）开始前先把 `player.audios` 里所有音频的
+  `onended` 清空、`pause()`，不会叠音。
+- 播放中/暂停后，右下角悬浮迷你播放器（贴底贴边、不带圆角，图标用内联 SVG 不用
+  emoji）常驻显示：暂停/继续、上一个/下一个/最前/最后（严格同级导航、到头就禁用、
+  切换目标后立刻自动播放新目标）、循环（跨越"切到新句/新题"持续生效，不会每次
+  播放新内容就被重置）、停止。切到别的大题时页面 Tab 会自动跟着切换过去；不管切到
+  哪一级，当前播放的句子都会在页面上高亮（`.seg-card.playing`）并自动滚动到可见
+  区域。播放自然结束（没循环）时迷你播放器不消失，停在"播完待命"状态（图标变回
+  播放、导航仍可用），点了播放条以外的地方才真正关闭。
 
 生成后：
 1. 用 `Start-Process` 打开本地文件，自己检查：密码门、目录侧栏（桌面宽屏 / 手机窄屏
-   都看一下）、逐句播放/重放/循环、小题整体播放/循环、大题整体播放/循环、循环之间
-   互不冲突。
+   都看一下）、点句卡片/点 h3/点 h2 分别播放句子/整题/整个大题、迷你播放器的
+   暂停继续/上一个下一个/最前最后/循环/停止、跟读高亮跟不跟得上（有 `char_times`
+   的话）、手机宽度下迷你播放条是不是贴底贴边、循环之间互不冲突。
 2. **不要**加进 `docs/blog/index.html`、`docs/index.html`、`docs/blog/posts.json`
    或任何导航——除非用户明确要求公开。
 3. `git status` 确认没有把原始长音频文件（用户桌面/下载目录里的源文件）带进
@@ -314,6 +345,20 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
     不用先花一个启发式步骤去判断"哪些边界可疑"，也不会漏掉"两个独立 raw 片段
     自己就不准"这种第三次尝试漏掉的情况。题目的外边界（第一句起点/最后一句
     终点）锁定用原来的 start/end 不重新估计，只重新分配题目内部的句子边界。
+  - **后续追加的一个修正：切分点不能取两词之间静音间隔的正中点**（2021年12月N2
+    問題5 2番案例踩出来的）。原实现在相邻两句对应的识别词之间取
+    `(前一词 end + 后一词 start) / 2`：如果句尾是"ね。"这类词、下一句开头是
+    "へー"这类语气词，Whisper 对语气词前的停顿判断经常偏晚（把停顿的一部分算进
+    语气词自己的时长，或者干脆把停顿和语气词合并成一个跨度很长的 token），正中点
+    会把这部分"多算的停顿"分一半给前一句，导致前一句结尾带了一截空白甚至下一句
+    的气声/语气词头部、下一句开头被相应削掉一截——真实反馈是"前一句尾部多了点
+    下一句的东西，导致下一句开头少了一点"，而且不止一处，嘈杂对话/口语化内容里
+    到处是语气词，同类问题成串出现。人耳对"下一句开头被削"比"两句之间停顿稍微
+    长一点"敏感得多，所以改成切分点偏向前一句结尾这一侧：只吃掉停顿间隔的一小
+    部分（间隔的 25%，最多 0.15 秒），剩下的停顿全部留给下一句当作起始静音，宁可
+    让前一句尾巴干净、下一句开头多一点无声，也不要反过来。这个偏置逻辑已经固化
+    成 `refine_boundaries.py` 里的 `biased_split_time()`，`alignment_split` 和
+    兜底用的 `proportional_split` 都在用，不用每次手动调。
   - **配套踩的一个坑：Whisper 复读循环**。整题跨度常有一两分钟，实测在某道题上
     复现过 Whisper 转写陷入复读循环——把开头一句话反复输出四五遍，后面真正的
     对话内容整段丢失，识别文本跟期望文本的匹配覆盖率只剩 17%，直接触发对齐质量
@@ -337,5 +382,41 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
   优先级更高，会静默覆盖掉隐藏效果，导致"应该只显示当前 tab 的列表，结果全部tab的
   列表都显示了"。抄来的规则和本页自己新增的显隐逻辑作用在同一个元素上时，要么提高
   本页规则的选择器特异性（比如 `.toc ul.side-nav-list`），要么整体重新设计选择器。
+- **播放/暂停/循环/设置这几个图标不要用 emoji 字符**（▶⏸⚙⟲✕之类），改用内联
+  SVG（`fill="currentColor"`）。真实反馈：手机上暂停图标（⏸）和设置齿轮（⚙）
+  发灰而不是预期的白色，齿轮图标还偏离按钮圆心——这类不算特别常见的 Unicode
+  符号（Miscellaneous Technical / Miscellaneous Symbols 区块）在部分移动端会被
+  系统符号字体接管渲染，不跟随 CSS `color`，字形本身的可视重心也跟按钮的 flex
+  居中假设对不上。SVG 路径（取自 Material Design 图标）跨平台渲染结果完全一致，
+  不存在字体兜底的不确定性；简单的方向号（«‹›»）不在此列，是普通标点字符，
+  各平台字体渲染都稳定，不用跟着换成 SVG。
+- **迷你播放条要贴底贴边、不带圆角**，不要悬浮在页面内容上方留边距——早期版本是
+  一个四周留白、带圆角的悬浮胶囊条，用户反馈想要贴紧视口底部/左右两侧的常驻工具
+  条观感。改动时注意右下角的悬浮设置按钮（齿轮）原来是靠"右侧让出一块空间"跟
+  播放条并排共存的，播放条改成贴边通栏之后这块空间没了，设置按钮要相应地整体
+  上移到播放条上方（`bottom` 从贴着视口底部改成"播放条自身高度 + 一点间距"），
+  不能再往右边挪，否则会被贴边的播放条盖住。
 - 公开仓库 = 没有真正的访问控制，密码门只是"防随便看"，不是"防有心人"，动手前把这个
   风险跟用户说清楚。
+
+## 跟读高亮（逐词高亮当前播放到的位置）
+
+`refine_boundaries.py` 做题目内文本对齐时，顺带把"这句里每个字符对应哪个识别词的
+起始时间"也算出来（`char_times`，绝对时间，长度跟 `s["text"]` 一一对应），不用为了
+这个额外再转写一遍音频。`build_page.py` 渲染假名注音时，如果这句有 `char_times`，
+就给每个 pykakasi 分词包一层 `<span class="tw" data-t="...">`（时间戳取该分词第一个
+字符对应的值，转成这句自己音频文件内部的相对时间——每句是单独切出来的音频文件，
+文件内 t=0 对应这句的 `start`，喂给渲染函数前记得减掉 `s["start"]`）；没有
+`char_times`（简单流程没跑 `refine_boundaries.py`，或者某句对齐质量太差被跳过）就
+退化成纯 `<ruby>` 输出，静态展示不受影响，只是没有跟读高亮，不会报错。
+
+播放时前端不是靠 `audio` 的 `timeupdate` 事件（大概只有 4Hz，词级切换会明显卡顿），
+而是用 `requestAnimationFrame` 自己重新调度，每帧按 `audio.currentTime` 在当前播放
+句子的 `.tw` 节点里找时间戳最新的一个加 `tw-active` 类；`player.active` 变 false
+时循环自然停止重新调度、顺带清掉高亮，不用额外的清理逻辑。
+
+标点/符号 token（「、」「。」「？」之类）不参与高亮——pykakasi 分词里纯标点 token
+没有假名/汉字，`any(ch.isalnum() for ch in orig)` 全假，跳过包裹 `<span class="tw">`
+即可（`char_idx` 照常推进，不影响后面字符的下标对齐）。高亮样式用蓝色下划线+加粗
+（`border-bottom` + `color`），没有用背景色块——真实反馈背景块观感比较重，下划线
+更轻。

@@ -56,9 +56,29 @@ def main():
     work_dir = os.path.join(os.path.dirname(os.path.abspath(args.out_json)), "chunks_tmp")
     os.makedirs(work_dir, exist_ok=True)
 
+    # 断点续跑：如果上次被中途杀掉（比如宿主环境重启），重新跑不用从头开始——
+    # 之前每处理完一块就把当前进度写盘，这里启动时先看有没有旧进度可以接着跑。
     all_segments = []
     offset = 0.0
     idx = 0
+    if os.path.exists(args.out_json):
+        with open(args.out_json, "r", encoding="utf-8") as f:
+            prev = json.load(f)
+        if not prev.get("done"):
+            all_segments = prev.get("segments", [])
+            offset = prev.get("next_offset", 0.0)
+            idx = prev.get("next_idx", 0)
+            print(f"检测到未完成的进度，从 {offset:.1f}s 继续（已有 {len(all_segments)} 条）", flush=True)
+
+    def checkpoint(done):
+        tmp_path = args.out_json + ".tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "language": "ja", "duration": total_dur, "segments": all_segments,
+                "next_offset": offset, "next_idx": idx, "done": done,
+            }, f, ensure_ascii=False, indent=2)
+        os.replace(tmp_path, args.out_json)
+
     while offset < total_dur:
         chunk_path = os.path.join(work_dir, f"chunk_{idx:04d}.wav")
         subprocess.run(
@@ -86,10 +106,10 @@ def main():
         os.remove(chunk_path)
         offset += args.chunk_sec
         idx += 1
+        checkpoint(done=False)
     os.rmdir(work_dir)
 
-    with open(args.out_json, "w", encoding="utf-8") as f:
-        json.dump({"language": "ja", "duration": total_dur, "segments": all_segments}, f, ensure_ascii=False, indent=2)
+    checkpoint(done=True)
 
     print(f"Done in {time.time()-t0:.1f}s. {len(all_segments)} segments written to {args.out_json}", flush=True)
     print("下一步：人工复听 transcript，删掉明显跑偏/幻觉的段落，只留听得懂的句子，再跑 add_furigana.py", flush=True)
