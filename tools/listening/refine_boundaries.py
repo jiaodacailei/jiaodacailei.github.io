@@ -21,10 +21,18 @@
      文字也拼起来，用 `difflib.SequenceMatcher` 做序列对齐，按**实际内容**
      （而不是字数比例、也不是检测停顿）找出每两句之间的真实分界点落在识别
      文本的哪个位置，再映射回对应的词、取词边界时间戳
-  4. 对齐质量不够（识别文字跟校对文字差太多）就针对这道题回退成字数比例切分，
-     不强行相信一个烂对齐；题目整体的第一句起点/最后一句终点固定不变，只重新
-     分配内部边界
-  5. 单句题目（题目内只有一句）没有内部边界要切，边界原样保留
+  4. 对齐质量不够（识别文字跟校对文字差太多）就针对这道题回退：多句题目的内部
+     切分退回字数比例，题目整体的外边界（第一句起点/最后一句终点）保持原样——
+     没有可信的对齐结果，不强行重新定位。
+  5. 对齐质量够的情况下，题目整体的外边界（第一句起点/最后一句终点）**也会用
+     对齐结果里第一个/最后一个真实匹配块重新定位**，不是"锁定不变"——早期版本
+     假设外边界已经在更早的步骤（人工通读 items.json）里核实过、值得信任，只精修
+     内部切分点。这个假设只对结构化材料成立，碰到从嘈杂录音里筛出来的单句（没有
+     items.json 那道人工核实）就会暴露：外边界其实是 Whisper 粗转写的 segment
+     边界，本来就不准，"锁定不变"等于把这份不准也锁死了，播放时每句开头/结尾会
+     带一大截空白、完全没对齐。改成外边界也重新定位之后，结构化材料因为外边界
+     本来就准，对齐结果会落在同一位置，不会引入新偏移，不会有回归；单句题目终于
+     也能获得跟内部切分同等精度的边界。
 
 同一次转写+对齐结果还顺带算出每句内部**逐字符的时间戳**（`char_times`），供页面
 播放时高亮当前正在读的词——不管题目内是一句还是多句都会算，单句题目也不再跳过
@@ -125,27 +133,39 @@ def make_pos_mapper(blocks):
 
 
 def align_group(members, words, span_start):
-    """对一道题（不管只有一句还是有多句）算两件事，共用同一次 word-level 转写
-    和同一套文本对齐结果，不用为了两个目的对同一段音频重复转写两次：
+    """对一道题（不管只有一句还是有多句）算三件事，共用同一次 word-level 转写
+    和同一套文本对齐结果，不用为了多个目的对同一段音频重复转写两次：
 
+    - edge_start/edge_end：题目整体的起点/终点（相对 span_start 的时间）。早期版本
+      这两个边界是"锁定不变"的——直接照抄传进来的 span_start/span_end，理由是
+      "题目外边界已经在更早的步骤里人工核实过，值得信任"。但这个假设只对"经过
+      items.json 人工通读确认"的结构化材料成立；碰到从嘈杂录音里筛出来的单句
+      （没有这一步人工核实）就会暴露问题——传进来的边界就是 Whisper 粗转写的
+      segment 边界，本来就不准，"锁定不变"等于把这份不准也锁死了，播放时明显能
+      听到"每句开头/结尾一大截空白，完全没对齐"。所以现在改成：不管题目外边界
+      传进来时准不准，都用对齐结果里**第一个/最后一个真实匹配块**对应的词边界
+      重新定位——如果外边界本来就准，对齐结果会落在同一位置，不会引入新偏移
+      （跟内部切分点当初改用文本对齐是同一个道理）；如果本来不准，这里能精确
+      改过来，不用再假设"外边界不需要动"。
     - split_times：多句时，相邻句之间的切分点（原来 alignment_split 的算法）。
     - char_times_per_sentence：每句内部逐字符的时间戳（绝对时间，= span_start +
       该字符对应识别词的起始时间），给跟读高亮用——哪怕题目只有一句也需要这个，
       所以不能像切分点那样"只有多句才算"。
 
-    对齐质量不够（识别文字跟校对文字差太多）返回 (None, None)，调用方按各自的
-    兜底逻辑处理（split 退回字数比例，char_times 退回线性插值）。
+    对齐质量不够（识别文字跟校对文字差太多）返回 (None, None, None, None)，调用方
+    按各自的兜底逻辑处理（split 退回字数比例，边界/char_times 退回原样/线性插值）。
     """
     recognized_text, char_to_word = build_char_to_word(words)
     if not recognized_text:
-        return None, None
+        return None, None, None, None
 
     expected_text = "".join(s["text"] for s in members)
     sm = difflib.SequenceMatcher(None, expected_text, recognized_text, autojunk=False)
     blocks = sm.get_matching_blocks()
-    matched_chars = sum(b.size for b in blocks)
-    if len(expected_text) == 0 or matched_chars / len(expected_text) < MIN_ALIGNMENT_COVERAGE:
-        return None, None
+    real_blocks = [b for b in blocks if b.size > 0]
+    matched_chars = sum(b.size for b in real_blocks)
+    if len(expected_text) == 0 or not real_blocks or matched_chars / len(expected_text) < MIN_ALIGNMENT_COVERAGE:
+        return None, None, None, None
 
     pos_map = make_pos_mapper(blocks)
 
@@ -163,11 +183,23 @@ def align_group(members, words, span_start):
         for p in range(len(expected_text))
     ]
 
+    # 题目外边界：直接用第一个/最后一个真实匹配块对应的词，不走 word_at()（那个是
+    # 给"中间切分点"设计的插值逻辑，边界在两端时没有"前一个/后一个块"可插值，容易
+    # 算错）——第一个匹配块的起点、最后一个匹配块的终点就是这道题内容在这段音频里
+    # 实际开始/结束的地方，足够直接。
+    first_b, last_b = real_blocks[0], real_blocks[-1]
+    wi_first = char_to_word[first_b.b] if first_b.b < len(char_to_word) else 0
+    last_rec_pos = last_b.b + last_b.size - 1
+    wi_last = char_to_word[last_rec_pos] if last_rec_pos < len(char_to_word) else len(words) - 1
+    wi_last = max(wi_first, wi_last)
+    edge_start = round(words[wi_first].start, 2)
+    edge_end = round(words[wi_last].end, 2)
+
     split_times = None
     if len(members) > 1:
         cum = 0
         split_times = []
-        prev_word_idx = 0
+        prev_word_idx = wi_first
         for s in members[:-1]:
             cum += len(s["text"])
             wi = word_at(cum, prev_word_idx + 1)
@@ -181,7 +213,7 @@ def align_group(members, words, span_start):
         char_times_per_sentence.append(char_times_flat[offset:offset + n])
         offset += n
 
-    return split_times, char_times_per_sentence
+    return split_times, char_times_per_sentence, edge_start, edge_end
 
 
 def main():
@@ -234,25 +266,28 @@ def main():
                   f"skip boundary refine + word timing")
             continue
 
-        split_times, char_times_per_sentence = align_group(members, words, span_start)
+        split_times, char_times_per_sentence, edge_start, edge_end = align_group(members, words, span_start)
         method = "alignment"
-        if split_times is None and n > 1:
-            split_times = proportional_split(members, words)
-            method = "proportional-fallback"
-            fallback_count += 1
+        if edge_start is None:
+            # 对齐失败（覆盖率太低）——外边界没有可信依据重新定位，保持原样；
+            # 多句题目的内部切分退回字数比例，不强行相信一个烂对齐。
+            edge_start, edge_end = 0.0, span_end - span_start
+            if n > 1:
+                split_times = proportional_split(members, words)
+                method = "proportional-fallback"
+                fallback_count += 1
 
-        if n > 1:
-            bounds = [0.0] + split_times + [span_end - span_start]
-            # 保证单调递增，避免对齐结果偶尔给出非递增的切分点
-            for i in range(1, len(bounds) - 1):
-                if bounds[i] <= bounds[i - 1]:
-                    bounds[i] = bounds[i - 1] + 0.05
-            bounds = [span_start + b for b in bounds]
-            for i, s in enumerate(members):
-                s["start"], s["end"] = round(bounds[i], 2), round(bounds[i + 1], 2)
-                fixed += 1
-            print(f"  {mondai} {question} {span_start}-{span_end}: {n} sentences [{method}] -> "
-                  f"{[round(b, 2) for b in bounds]}")
+        bounds = [edge_start] + (split_times or []) + [edge_end]
+        # 保证单调递增，避免对齐结果偶尔给出非递增的切分点
+        for i in range(1, len(bounds) - 1):
+            if bounds[i] <= bounds[i - 1]:
+                bounds[i] = bounds[i - 1] + 0.05
+        bounds = [span_start + b for b in bounds]
+        for i, s in enumerate(members):
+            s["start"], s["end"] = round(bounds[i], 2), round(bounds[i + 1], 2)
+            fixed += 1
+        print(f"  {mondai} {question} {span_start}-{span_end}: {n} sentences [{method}] -> "
+              f"{[round(b, 2) for b in bounds]}")
 
         if char_times_per_sentence is None:
             # 对齐质量不够，逐字符时间戳退回线性插值（在句子自己的 start/end 之间
