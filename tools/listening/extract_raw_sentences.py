@@ -53,7 +53,12 @@ def main():
     raw_id = 1
     for item in items:
         for seg in segments:
-            if seg["start"] >= item["start"] and seg["end"] <= item["end"] + 0.01:
+            # 按 segment 起点归属所在题目，不要求整个 segment（含终点）都落在题目范围内——
+            # items.json 的边界本来就是粗边界，一个 segment 起点在这道题、终点略微超出
+            # （跨到下一题边界那一侧）很常见，早期版本要求"起点+终点都在范围内"会把这种
+            # 跨边界的 segment 整句丢掉（真实案例：問題5 7番一个选项句因为终点晚了1秒多
+            # 落到下一题边界外，两道题都没收，内容直接消失，round-2 阶段才发现少了一句）。
+            if item["start"] <= seg["start"] < item["end"]:
                 text = seg["text"].strip()
                 if not text or text in FILLER_ONLY or text in drop_set:
                     continue

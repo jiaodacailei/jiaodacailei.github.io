@@ -173,7 +173,12 @@ def align_group(members, words, span_start):
         rec_pos = pos_map(target_a)
         rec_pos = max(0, min(rec_pos, len(recognized_text) - 1))
         wi = char_to_word[rec_pos] if rec_pos < len(char_to_word) else len(words) - 1
-        return max(floor_word_idx, min(wi, len(words) - 1))
+        # 先取 floor 再夹到合法范围内，不能反过来——句子数远多于识别到的词数时
+        # （比如某道题绝大多数句子是没有真的对应音频、纯靠重建文本拼出来的选项），
+        # floor_word_idx 可能已经超出 len(words)-1，"先夹范围再取 floor" 会把结果
+        # 顶回超界，索引直接越界崩掉。这里退化成"贴着最后一个词"，不是精确解，但
+        # 好过整个流程崩溃——这种题目本来就该走对齐质量不够的兜底路径。
+        return min(max(floor_word_idx, wi), len(words) - 1)
 
     # 逐字符时间戳：expected_text 里每个字符 -> 它所在识别词的起始时间（绝对时间）。
     # Whisper 给日语打的词级时间戳本来就接近逐字/逐音节粒度（"私""は""高""い"这种），

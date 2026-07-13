@@ -93,7 +93,7 @@ def parse_insert(spec):
     return mondai, label, float(t)
 
 
-def detect_renumber_bounds(segments, start_mondai):
+def detect_renumber_bounds(segments, start_mondai, force_splits=()):
     """没有「問題N」播报标记时的兜底（真实案例：2020年12月N2录音，分享者把播音员的
     说明/编号播报整段剪掉了，但内容其实还是结构化的5道大题）。没有"問題N"这个锚点，
     只能靠"N番"这类小题编号本身的规律反推大题分界：JLPT 每道大题内部小题编号从1
@@ -126,19 +126,42 @@ def detect_renumber_bounds(segments, start_mondai):
         last_num = n
     groups.append(current)
 
-    bounds = {}
+    interval_bounds = []
     prev_hi = segments[0]["start"]
     for i, g in enumerate(groups):
-        n = start_mondai + i
         hi = groups[i + 1][0][0] if i + 1 < len(groups) else segments[-1]["end"]
-        bounds[n] = (prev_hi, hi)
+        interval_bounds.append((prev_hi, hi))
         prev_hi = hi
+
+    # --force-split 补丁：编号重置规律只在"新大题的第一小题真的被听成1番"时才触发，
+    # 如果这道小题的编号被 Whisper 完全听漏/听成裸数字（比如这道小题干脆没留下任何
+    # "N番"文本痕迹），规律本身就失灵，两个大题会被错误合并成一段——这种情况规律
+    # 本身补不出缺的分界点，只能人工核对转写文本确定时间点后用这个参数强制拆开
+    # （跟 --insert 是同一个思路：弱信号推断有极限，缺口交给人工＋命令行参数补，
+    # 不是手改输出的 json）。
+    if force_splits:
+        split_points = []
+        for lo, hi in interval_bounds:
+            pts = sorted(t for t in force_splits if lo < t < hi)
+            prev = lo
+            for t in pts:
+                split_points.append((prev, t))
+                prev = t
+            split_points.append((prev, hi))
+        interval_bounds = split_points
+
+    bounds = {}
+    for i, (lo, hi) in enumerate(interval_bounds):
+        bounds[start_mondai + i] = (lo, hi)
     print(f"没有识别到「問題N」播报标记，退回按「番」编号从1重新计数的规律推断大题"
-          f"分界——识别到 {len(groups)} 段编号序列，按 問題{start_mondai}~"
-          f"問題{start_mondai + len(groups) - 1} 顺序假设（--start-mondai 可改起始号）。"
-          f"这是弱信号推断，务必核对大题数量、顺序是否符合预期，尤其留意播音员说明/"
-          f"练习例题是否也被剪掉——剪掉了的话不影响这里的分界，剪不干净留了残留文本"
-          f"就可能干扰下面的练习提示检测。")
+          f"分界——识别到 {len(groups)} 段编号序列"
+          + (f"，force-split 后拆成 {len(interval_bounds)} 段" if force_splits else "")
+          + f"，按 問題{start_mondai}~問題{start_mondai + len(interval_bounds) - 1} "
+          f"顺序假设（--start-mondai 可改起始号）。这是弱信号推断，务必核对大题数量、"
+          f"顺序是否符合预期，尤其留意播音员说明/练习例题是否也被剪掉——剪掉了的话不"
+          f"影响这里的分界，剪不干净留了残留文本就可能干扰下面的练习提示检测。如果某道"
+          f"大题的第一小题编号被听漏/听成裸数字、规律因此把它跟前一个大题错误合并了，"
+          f"用 --force-split <时间戳> 人工指定分界点（可重复传多个）。")
     return bounds
 
 
@@ -153,6 +176,10 @@ def main():
                      help="没有「問題N」标记、退回按「番」编号重新计数推断大题分界时，"
                           "第一段编号序列算第几大题（默认1；如果問題1整段被剪掉、"
                           "录音从問題2开始，传2）")
+    ap.add_argument("--force-split", action="append", type=float, default=[],
+                     help="没有「問題N」标记的兜底模式下，某道大题的第一小题编号被"
+                          "听漏/听成裸数字导致规律没能拆出它自己的分界时，人工指定"
+                          "分界时间戳强制拆开（可重复传多个，仅对兜底模式生效）")
     args = ap.parse_args()
     transcript_path, out_path = args.transcript_path, args.out_path
     manual_inserts = [parse_insert(s) for s in args.insert]
@@ -173,7 +200,7 @@ def main():
             next_start = mondai_starts[mondai_order[i + 1]] if i + 1 < len(mondai_order) else segments[-1]["end"]
             mondai_bounds[n] = (mondai_starts[n], next_start)
     else:
-        mondai_bounds = detect_renumber_bounds(segments, args.start_mondai)
+        mondai_bounds = detect_renumber_bounds(segments, args.start_mondai, args.force_split)
         if mondai_bounds is None:
             print("没有识别到任何「問題N」标记，也没有识别到任何「N番」编号——这份材料"
                   "可能不是结构化的 JLPT 型内容，应该走 SKILL.md 里的「简单流程」，"
@@ -227,6 +254,14 @@ def main():
                 continue
             seen.add(label)
             dedup_markers.append((t, label))
+
+        # 隐式1番是个"这道题起点必然有内容"的假设——如果这道题的起点（content_start）
+        # 跟紧接着的第一个真实标记时间戳重合（没有间隔），说明起点这里根本没有独立于
+        # 第一个真实标记的内容，隐式1番就是个零时长的幽灵条目，删掉，让第一个真实标记
+        # 自己的编号（可能不是"1番"，比如力度拆分正好切在下一题第一个真实标记上）
+        # 当这道题真正的第一条。
+        if len(dedup_markers) >= 2 and dedup_markers[1][0] <= dedup_markers[0][0]:
+            dedup_markers.pop(0)
 
         # 编号应该是从1连续数到N的——缺号八成是 Whisper 把"N番"听漏/听成了裸数字
         # （真实案例都出现过：整句漏听、或者"番"字单独丢字），不是"这道题真的不存在"。
