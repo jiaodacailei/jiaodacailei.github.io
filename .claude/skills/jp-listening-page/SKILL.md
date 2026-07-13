@@ -10,8 +10,11 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
 （点哪个大题只显示哪个大题的内容），配套的小题导航仿照博客 `.toc`/`.toc-float` 的
 视觉风格（桌面右侧栏/手机悬浮目录，但内容随 tab 切换），右下角一个贴底贴边的常驻
 悬浮迷你播放器统一控制播放/暂停/循环/停止，另有播放速度和日文/日中/中文显示模式的
-设置面板。页面完全自包含（不依赖外部 `/css/style.css` 或 `toc.js`），本地 `file://`
-打开和线上部署效果一致。
+设置面板。样式和交互逻辑是所有听力页共用的两个文件（`docs/css/listening-page.css`、
+`docs/js/listening-page.js`），不依赖博客的 `/css/style.css`/`toc.js`，但**本地验证
+不能再用 `file://` 直接双击打开**（浏览器对本地文件加载其它本地文件有安全限制，
+绝对路径解析不到）——用 `python -m http.server` 在 `docs/` 目录起个本地服务器代替，
+见下面第5步。
 
 ## 参数
 
@@ -40,7 +43,8 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
 - `docs/private/n2-listening/2021-07/` — 一套完整 JLPT N2 听力真题，**已按下面这版流程
   跑通并经过多轮用户反馈迭代**：308 句、29 个小题、5 个大题。当前形态：問題1~5 顶部
   tab 切换（只显示当前大题）、小题导航随 tab 联动、悬浮迷你播放器（不再是散落各处的
-  播放/循环按钮）、页面 CSS 完全自包含（不依赖外部 style.css/toc.js）、UI 文案全日文
+  播放/循环按钮）、样式/交互靠共享的 `listening-page.css`/`.js`（不依赖博客的
+  style.css/toc.js，见下面工具列表里 `build_page.py` 的说明）、UI 文案全日文
   （密码框/按钮/提示都是日语，只有逐句翻译/概览/答案解析这些内容性文字是中文）。
   下面第 2~3 步描述的"两轮 Agent"做法、以及第 5 步的时间戳去重叠算法，都是从这个
   案例里跑出来的最佳实践。**已跟 2021-12 一起同步到最新标准**（SVG 图标、贴底迷你
@@ -110,16 +114,26 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   这个脚本已经把踩过的坑都固化进去了，直接用。
 - `build_page.py` — 生成最终页面：`.post-page`/`.post-body` + 問題1~5 顶部 tab + 小题
   导航（桌面右侧栏/手机悬浮，仿博客 `.toc`/`.toc-float` 视觉但内容随 tab 联动）+
-  贴底贴边悬浮迷你播放器 + 播放速度/显示模式设置面板 + 密码门 + `noindex`。**页面所有
-  CSS 都内联在自己的 `<style>` 里，不 `<link>` 外部样式表**（这不是博客文章，是独立
-  工具页，没必要依赖 `/css/style.css`，本地 file:// 测试也不会因为外部资源 404 而
-  样式跑掉）。输入是 `merge_groups.py`（或 `add_furigana.py`）产出的 `enriched.json`
-  （最好是过了 `refine_boundaries.py`/`validate_boundaries.py` 那份，带 `char_times`
-  才有跟读高亮）。密码支持 `--password <明文>`（首次生成用）或 `--password-hash
-  <哈希>`（改完边界/文案要重新生成页面、但密码不变时用，不用把明文密码再传一遍——
-  从旧页面的 `<script>` 里直接摘 `HASH = "..."` 那一行常量即可），二选一。播放/暂停/
-  循环/设置/关闭这几个图标用内联 SVG（`fill="currentColor"`），不用 emoji 字符——
-  原因见下面"常见坑"。
+  贴底贴边悬浮迷你播放器 + 播放速度/显示模式设置面板 + 密码门 + `noindex`。**样式和
+  交互逻辑不再内联在每个页面自己的 `<style>`/`<script>` 里，改成所有听力页共用的
+  两个文件**：`docs/css/listening-page.css`（`<link rel="stylesheet">` 引用）+
+  `docs/js/listening-page.js`（`<script src>` 引用，`defer`）。以前每个页面都各自
+  内联一份完整 CSS/JS，改一个图标颜色要把每个已发布页面重新生成一遍才能生效
+  （真实反馈：这份仓库攒到第4个听力页时才发现这个问题）；现在只用改这两个共享文件
+  一次，所有页面立刻生效，不用碰 `enriched.json`/音频、也不用重新跑 `build_page.py`。
+  代价是**本地验证不能再用 `file://` 直接双击打开**（浏览器出于安全限制，file://
+  页面加载不了绝对路径 `/css/...`、`/js/...` 指向的本地文件），改用
+  `python -m http.server 8000`（在仓库的 `docs/` 目录下跑）起个本地服务器，访问
+  `http://localhost:8000/private/<slug>/` 代替。输入是 `merge_groups.py`（或
+  `add_furigana.py`）产出的 `enriched.json`（最好是过了
+  `refine_boundaries.py`/`validate_boundaries.py` 那份，带 `char_times` 才有跟读
+  高亮）。密码支持 `--password <明文>`（首次生成用）或 `--password-hash <哈希>`
+  （改完边界/文案要重新生成页面、但密码不变时用，不用把明文密码再传一遍——密码哈希
+  现在存在 `#gate` 的 `data-hash` 属性里，从旧页面 HTML 里摘
+  `<div id="gate" data-hash="...">` 这一行的属性值即可），二选一。播放/暂停/循环/
+  设置/关闭这几个图标用内联 SVG（`fill="currentColor"`），不用 emoji 字符——原因见
+  下面"常见坑"（播放/暂停两个运行时动态切换的图标在共享 JS 里；其余生成时渲染一次
+  就不再变的图标还是 Python 端渲染成静态 HTML，没必要也搬进共享 JS）。
 - `README.md` — 环境安装说明。
 
 ## 整体流程
@@ -133,9 +147,9 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   不同月份的 JLPT 真题）：直接照抄先例的做法——
   - 输出 slug 沿用先例的目录命名规律（如 `n2-listening/2021-07` → `n2-listening/2021-12`）。
   - 标题/副标题沿用先例的文案风格，替换掉具体的日期/期数。
-  - 密码复用先例页面的密码——不用问用户要明文，直接从旧页面 `<script>` 里摘
-    `HASH = "..."` 那行，用 `build_page.py` 的 `--password-hash` 传入即可（同一密码
-    在多个同系列页面通用，不用每次生成新密码）。
+  - 密码复用先例页面的密码——不用问用户要明文，直接从旧页面 HTML 里摘
+    `<div id="gate" data-hash="...">` 这一行的属性值，用 `build_page.py` 的
+    `--password-hash` 传入即可（同一密码在多个同系列页面通用，不用每次生成新密码）。
   - 是否进导航：沿用先例的选择（多数场景先例是不进，见下方进导航的默认规则）。
   - 处理范围：默认全部处理（先例已验证过流程可靠，不用再拆成"先做一段验证"）。
   - 处理完之后正常汇报做了什么、生成在哪，让用户看结果决定要不要改，而不是动手前
@@ -263,16 +277,19 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
 
 后续如果只是边界/文案改了要重新生成页面、密码不用变，用 `--password-hash <旧页面
 里的哈希>` 代替 `--password`，不用问用户再要一遍明文密码（哈希从旧 `index.html`
-的 `<script>` 里 `HASH = "..."` 那行直接摘）。
+里 `<div id="gate" data-hash="...">` 这一行的属性值直接摘）。
 
 `build_page.py` 产出的页面结构：
 
-- 整体外壳用 `.post-page > .post-page-header + .post-body` 结构（复用 `/css/style.css`
-  里博客文章的样式），密码门 `#gate` 覆盖在最外层。`#content` 默认 `display:none`，
-  密码验证通过后才 `display:block` **并动态创建 `<script src="/js/toc.js">` 注入到
-  页面**——不能在 HTML 里静态写死 `<script src="/js/toc.js">`，因为 toc.js 是立即执行
-  的 IIFE，如果页面刚加载、内容还被密码门藏着（`display:none`）就跑，量测到的
-  `offsetTop` 全是 0，目录生成的滚动定位会全部错位。
+- 整体外壳用 `.post-page > .post-page-header + .post-body` 结构（`.toc`/`.toc-float`/
+  `.post-page`/`.post-body` 这几个类名和样式是从博客的 `/css/style.css` 里抄一份进
+  `listening-page.css` 的，视觉一致但不产生实际依赖——这是独立工具页，不是博客文章），
+  密码门 `#gate` 覆盖在最外层。`#content` 默认 `display:none`，密码验证通过后才
+  `display:block`。**不依赖博客的 `/js/toc.js`**——小题导航/滚动定位的逻辑是
+  `listening-page.js` 自己实现的一套（不是复用 toc.js），滚动测量 `offsetTop` 只
+  发生在用户实际滚动页面时（`scroll` 事件回调里），而滚动只可能在密码验证通过、
+  内容已经 `display:block` 之后才发生，不存在"内容还被密码门藏着就去量
+  offsetTop"这种时序问题。
 - `h2`＝每个大题（問題1、問題2…），外层包一个
   `<section class="mondai-section" data-scope="mondai">`，点击 `h2` 播放整个大题。
 - `h3`＝每个小题（1番、2番…），这是目录里能点进去的第二级条目，外层包
@@ -311,10 +328,13 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
   播放、导航仍可用），点了播放条以外的地方才真正关闭。
 
 生成后：
-1. 用 `Start-Process` 打开本地文件，自己检查：密码门、目录侧栏（桌面宽屏 / 手机窄屏
-   都看一下）、点句卡片/点 h3/点 h2 分别播放句子/整题/整个大题、迷你播放器的
-   暂停继续/上一个下一个/最前最后/循环/停止、跟读高亮跟不跟得上（有 `char_times`
-   的话）、手机宽度下迷你播放条是不是贴底贴边、循环之间互不冲突。
+1. 页面依赖共享的 `/css/listening-page.css`、`/js/listening-page.js`，**不能再用
+   `Start-Process` 直接 `file://` 打开**——在仓库的 `docs/` 目录下跑
+   `python -m http.server 8000`（`run_in_background: true`），用 `Start-Process`
+   打开 `http://localhost:8000/private/<slug>/` 代替，自己检查：密码门、目录侧栏
+   （桌面宽屏 / 手机窄屏都看一下）、点句卡片/点 h3/点 h2 分别播放句子/整题/整个
+   大题、迷你播放器的暂停继续/上一个下一个/最前最后/循环/停止、跟读高亮跟不跟得上
+   （有 `char_times` 的话）、手机宽度下迷你播放条是不是贴底贴边、循环之间互不冲突。
 2. **不要**加进 `docs/blog/index.html`、`docs/index.html`、`docs/blog/posts.json`
    或任何导航——除非用户明确要求公开。
 3. `git status` 确认没有把原始长音频文件（用户桌面/下载目录里的源文件）带进
@@ -451,6 +471,19 @@ python tools/listening/build_page.py <原始音频> enriched.json docs/private/<
   不能再往右边挪，否则会被贴边的播放条盖住。
 - 公开仓库 = 没有真正的访问控制，密码门只是"防随便看"，不是"防有心人"，动手前把这个
   风险跟用户说清楚。
+- **每个页面各自内联一份完整 CSS/JS，攒到第4个页面才发现是个坑**：早期版本每次
+  `build_page.py` 生成页面都把样式和播放器逻辑完整复制一份写进那个页面自己的
+  `<style>`/`<script>` 里，图省事（不用管外部资源加载、file:// 直接能用）。代价是
+  任何样式/交互层面的修复（图标改 SVG、播放条改贴底、切分点算法这类**跟内容无关**
+  的改动）都得把已发布的每个页面重新跑一遍 `build_page.py` 才能生效，哪怕内容和
+  音频完全没变——这份仓库攒到 2021-07/2021-12/2020-12/dingliehui 四个页面时，
+  这个重复劳动的成本已经很明显了。改成两个共享文件（`docs/css/listening-page.css`
+  + `docs/js/listening-page.js`，所有页面都 `<link>`/`<script src>` 引用同一份）
+  之后，这类修复只用改一次，所有页面立刻生效。密码哈希是每个页面独有的数据，没法
+  写死进共享文件，改成放 `#gate` 的 `data-hash` 属性里，共享 JS 运行时读这个属性。
+  代价：本地验证不能再直接 `file://` 双击打开（改用 `python -m http.server`，见上面
+  "生成后"那步）；页面体积本身没怎么变小（大头是逐句内容+跟读高亮时间戳，不是
+  CSS/JS），省的是"改一次全生效"这个维护成本，不是省体积。
 
 ## 跟读高亮（逐词高亮当前播放到的位置）
 
