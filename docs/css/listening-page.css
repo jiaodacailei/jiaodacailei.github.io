@@ -25,6 +25,11 @@ body {
   letter-spacing: -0.025em; margin-bottom: 20px; color: var(--text);
 }
 .post-page-meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; font-size: 14px; color: var(--text-muted); }
+.play-hint {
+  display: inline-flex; align-items: center; gap: 6px; margin: 10px 0 0;
+  font-size: 12.5px; color: var(--blue-dark); background: var(--blue-xlight);
+  border: 1px solid var(--blue-light); border-radius: 999px; padding: 4px 12px;
+}
 .post-body { line-height: 1.85; color: var(--text); font-size: 16px; }
 .post-body h2, .post-body h3 {
   cursor: pointer; transition: color .15s;
@@ -32,9 +37,9 @@ body {
 .post-body h2:hover, .post-body h3:hover { color: var(--blue-dark); }
 .post-body h2::after, .post-body h3::after {
   content: "▶"; font-size: .55em; color: var(--text-muted); margin-left: 8px;
-  opacity: 0; transition: opacity .15s;
+  opacity: .45; transition: opacity .15s;
 }
-.post-body h2:hover::after, .post-body h3:hover::after { opacity: .7; }
+.post-body h2:hover::after, .post-body h3:hover::after { opacity: .85; }
 .post-body h2 { font-size: 22px; font-weight: 800; margin: 32px 0 12px; letter-spacing: -0.02em; color: var(--text); }
 .post-body h3 { font-size: 18px; font-weight: 700; margin: 22px 0 8px; }
 
@@ -121,9 +126,9 @@ body {
 .seg-card:hover { border-color: var(--blue-light); box-shadow: 0 2px 8px rgba(37,99,235,0.12); }
 .seg-card::after {
   content: "▶"; position: absolute; top: 10px; right: 12px;
-  font-size: 11px; color: var(--blue); opacity: 0; transition: opacity .15s; pointer-events: none;
+  font-size: 11px; color: var(--blue); opacity: .4; transition: opacity .15s; pointer-events: none;
 }
-.seg-card:hover::after { opacity: .6; }
+.seg-card:hover::after { opacity: .8; }
 .seg-card.playing {
   border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue-light); background: var(--blue-xlight);
 }

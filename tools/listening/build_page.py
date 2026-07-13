@@ -275,6 +275,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     <div class="post-page-header">
       <h1>{title}</h1>
       <p class="post-page-meta">{subtitle}</p>
+      <p class="play-hint">▶ 点击题目标题或句子卡片即可播放对应音频</p>
     </div>
     <div class="post-body">
       {sections}
