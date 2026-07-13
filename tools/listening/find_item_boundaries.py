@@ -93,6 +93,55 @@ def parse_insert(spec):
     return mondai, label, float(t)
 
 
+def detect_renumber_bounds(segments, start_mondai):
+    """没有「問題N」播报标记时的兜底（真实案例：2020年12月N2录音，分享者把播音员的
+    说明/编号播报整段剪掉了，但内容其实还是结构化的5道大题）。没有"問題N"这个锚点，
+    只能靠"N番"这类小题编号本身的规律反推大题分界：JLPT 每道大题内部小题编号从1
+    连续数到底，编号又从1重新数起的地方，就是新大题的开始。跟明确有"問題N"标记时
+    一样，这也只是粗边界，不追求精确到秒——真正的小题内容边界交给 refine_boundaries.py
+    重新对齐，这里的分界只要能把"1番"这类真正的小题标记扫描起点圈对就够用。
+
+    返回 {mondai数字: (lo, hi)}，跟 mondai_starts 场景下 mondai_bounds 的形状一致，
+    后面的大题内小题扫描逻辑不用关心边界是从哪种方式来的。识别不到任何"N番"编号
+    （连这个规律都用不上，说明内容压根不是结构化材料）时返回 None，调用方应该退回
+    SKILL.md 的"简单流程"。"""
+    markers = []
+    for seg in segments:
+        im = ITEM_RE.search(seg["text"])
+        if im:
+            n = normalize_number(im.group(1))
+            if n:
+                markers.append((seg["start"], n))
+    if not markers:
+        return None
+
+    groups = []
+    current = []
+    last_num = None
+    for t, n in markers:
+        if n == 1 and last_num is not None and last_num != 1:
+            groups.append(current)
+            current = []
+        current.append((t, n))
+        last_num = n
+    groups.append(current)
+
+    bounds = {}
+    prev_hi = segments[0]["start"]
+    for i, g in enumerate(groups):
+        n = start_mondai + i
+        hi = groups[i + 1][0][0] if i + 1 < len(groups) else segments[-1]["end"]
+        bounds[n] = (prev_hi, hi)
+        prev_hi = hi
+    print(f"没有识别到「問題N」播报标记，退回按「番」编号从1重新计数的规律推断大题"
+          f"分界——识别到 {len(groups)} 段编号序列，按 問題{start_mondai}~"
+          f"問題{start_mondai + len(groups) - 1} 顺序假设（--start-mondai 可改起始号）。"
+          f"这是弱信号推断，务必核对大题数量、顺序是否符合预期，尤其留意播音员说明/"
+          f"练习例题是否也被剪掉——剪掉了的话不影响这里的分界，剪不干净留了残留文本"
+          f"就可能干扰下面的练习提示检测。")
+    return bounds
+
+
 def main():
     import argparse
     ap = argparse.ArgumentParser()
@@ -100,6 +149,10 @@ def main():
     ap.add_argument("out_path")
     ap.add_argument("--insert", action="append", default=[],
                      help='手动补一个漏检的小题标记，格式 "問題2:4番:974.44"，可重复传多个')
+    ap.add_argument("--start-mondai", type=int, default=1,
+                     help="没有「問題N」标记、退回按「番」编号重新计数推断大题分界时，"
+                          "第一段编号序列算第几大题（默认1；如果問題1整段被剪掉、"
+                          "录音从問題2开始，传2）")
     args = ap.parse_args()
     transcript_path, out_path = args.transcript_path, args.out_path
     manual_inserts = [parse_insert(s) for s in args.insert]
@@ -113,16 +166,20 @@ def main():
             if n and n not in mondai_starts:
                 mondai_starts[n] = seg["start"]
 
-    if not mondai_starts:
-        print("没有识别到任何「問題N」标记——这份材料可能不是结构化的 JLPT 型内容，"
-              "应该走 SKILL.md 里的「简单流程」，不需要 items.json。")
-        sys.exit(1)
-
-    mondai_order = sorted(mondai_starts)
-    mondai_bounds = {}
-    for i, n in enumerate(mondai_order):
-        next_start = mondai_starts[mondai_order[i + 1]] if i + 1 < len(mondai_order) else segments[-1]["end"]
-        mondai_bounds[n] = (mondai_starts[n], next_start)
+    if mondai_starts:
+        mondai_order = sorted(mondai_starts)
+        mondai_bounds = {}
+        for i, n in enumerate(mondai_order):
+            next_start = mondai_starts[mondai_order[i + 1]] if i + 1 < len(mondai_order) else segments[-1]["end"]
+            mondai_bounds[n] = (mondai_starts[n], next_start)
+    else:
+        mondai_bounds = detect_renumber_bounds(segments, args.start_mondai)
+        if mondai_bounds is None:
+            print("没有识别到任何「問題N」标记，也没有识别到任何「N番」编号——这份材料"
+                  "可能不是结构化的 JLPT 型内容，应该走 SKILL.md 里的「简单流程」，"
+                  "不需要 items.json。")
+            sys.exit(1)
+        mondai_order = sorted(mondai_bounds)
 
     items = []
     for n in mondai_order:
