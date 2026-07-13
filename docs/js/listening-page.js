@@ -1,35 +1,6 @@
 // 日语听力精听页共享脚本（tools/listening/build_page.py 生成的所有页面都用这一份）。
-// 密码哈希是每个页面独有的数据，不能写死在这份共享文件里——从 #gate 的 data-hash
-// 属性读，build_page.py 生成 HTML 时把哈希写进那个属性。
-(function() {
-  var HASH = document.getElementById("gate").dataset.hash;
-  async function sha256(str) {
-    var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
-  }
-  function afterUnlock() {
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("content").style.display = "block";
-  }
-  async function tryUnlock(pwd) {
-    var h = await sha256(pwd);
-    if (h === HASH) {
-      afterUnlock();
-      sessionStorage.setItem("unlocked-" + location.pathname, "1");
-    } else {
-      document.getElementById("pwdErr").textContent = "パスワードが違います";
-    }
-  }
-  if (sessionStorage.getItem("unlocked-" + location.pathname) === "1") {
-    afterUnlock();
-  }
-  document.getElementById("pwdBtn").addEventListener("click", function() {
-    tryUnlock(document.getElementById("pwdInput").value);
-  });
-  document.getElementById("pwdInput").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") tryUnlock(this.value);
-  });
-})();
+// 密码门逻辑不在这份文件里——那是所有私有页面（不只是听力页）通用的一段，抽到
+// private-gate.js 了，页面里在这份文件之前先引入那个。
 
 // 播放/暂停图标（SVG，取自 Material Design，跟 build_page.py 里静态 HTML 用的是
 // 同一份路径）——这两个是播放中动态切换用的，其它图标（设置齿轮/循环/关闭/上一个

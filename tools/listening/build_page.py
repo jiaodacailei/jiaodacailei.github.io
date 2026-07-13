@@ -15,11 +15,14 @@
 生成后把 <输出目录> 放到 docs/private/<slug>/ 下即可通过个人网站访问，
 但不要把它加进 blog/index.html、posts.json 或站内导航——保持"不公开链接"。
 
-页面依赖 docs/css/listening-page.css 和 docs/js/listening-page.js 这两个所有听力页
-共用的文件（不再是每个页面各自内联一份，改样式/改交互只用改这两个文件一次，不用
-重新生成每个页面）。**本地验证不能再直接双击 index.html 用 file:// 打开**——浏览器
-对 file:// 页面加载本地其它文件有安全限制，绝对路径 `/css/...`、`/js/...` 解析不到。
-改用 `python -m http.server` 在 docs/ 目录起个本地服务器，用 http://localhost:8000/
+页面依赖三个共用文件（不再是每个页面各自内联一份，改样式/改交互只用改这些文件
+一次，不用重新生成每个页面）：docs/css/listening-page.css、docs/js/listening-page.js
+（听力页专属：播放器/tab/跟读高亮），docs/js/private-gate.js（密码门逻辑，不只是
+听力页在用，其它私有页面比如枢纽页也用这份——解锁状态按密码哈希存 sessionStorage，
+不按页面路径存，同一个密码在多个页面通用时解锁一处、其它页面自动跳过登录）。
+**本地验证不能再直接双击 index.html 用 file:// 打开**——浏览器对 file:// 页面加载
+本地其它文件有安全限制，绝对路径 `/css/...`、`/js/...` 解析不到。改用
+`python -m http.server` 在 docs/ 目录起个本地服务器，用 http://localhost:8000/
 private/<slug>/ 访问。
 """
 import os
@@ -279,6 +282,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   </div>
 </div>
 
+<script src="/js/private-gate.js" defer></script>
 <script src="/js/listening-page.js" defer></script>
 
 </body>

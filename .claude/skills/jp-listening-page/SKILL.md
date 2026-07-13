@@ -136,6 +136,40 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   就不再变的图标还是 Python 端渲染成静态 HTML，没必要也搬进共享 JS）。
 - `README.md` — 环境安装说明。
 
+`docs/js/private-gate.js` — 密码门逻辑单独抽出来的共享脚本（不算 `tools/listening/`
+下的处理工具，是 `docs/js/` 里的站点静态资源），所有密码保护的私有页面都引用这一份，
+包括听力页和下面的枢纽页，见"枢纽页与单点登录"一节。
+
+## 枢纽页与单点登录（SSO）
+
+`docs/private/index.html` 是所有听力精听页的入口页（卡片列表，链到每个子页面），
+跟子页面一样密码保护、`noindex`、不进站内导航。用户明确要求"枢纽页登录成功后，
+就不需要各个页面单独再登录了"，所以密码门做成了跨页面共享解锁状态：
+
+- 解锁状态存 `sessionStorage`，key 是 `"unlocked-hash-" + 密码哈希`（不是按页面路径
+  存）。同一个密码在枢纽页和它链接的每个听力页都通用，只要在同一个浏览器标签页里
+  解锁过一次，哈希相同的其它页面会在密码门脚本跑起来时自动检测到已解锁、直接跳过
+  输入框（不管是先开枢纽页登录、还是直接开某个子页面登录，效果一样）。
+- 这个逻辑单独抽成 `docs/js/private-gate.js`（从原本内嵌在 `listening-page.js` 里的
+  密码门 IIFE 拆出来的），因为枢纽页不需要播放器/跟读高亮那套 `listening-page.js`
+  逻辑，但仍然需要密码门——两者解耦之后枢纽页只引用 `private-gate.js`，子页面两个
+  都引用（`private-gate.js` 要放在 `listening-page.js` 前面）。
+- 页面结构约定（`private-gate.js` 依赖这个 DOM 结构，新页面要接入密码门照抄这个
+  骨架）：`<div id="gate" data-hash="密码的SHA-256">` 包一个 `.box`（`#pwdInput`/
+  `#pwdBtn`/`#pwdErr`）+ `<div id="content" style="display:none">` 装正文，验证通过后
+  `#gate` 隐藏、`#content` 显示。
+- **直接访问某个子页面（不经过枢纽页）密码门不会被跳过**——SSO 只在同一个浏览器
+  标签页的 sessionStorage 里已经解锁过同一个密码哈希时才生效，全新标签页/清过
+  session 照样要输密码，这是预期行为不是漏洞。
+- 枢纽页要不要收纳某个私有页面（比如工作会议录音这类跟 JLPT 真题性质不同的内容）
+  默认跟用户确认——这次用户明确要求"需要包括会议录音哟，反正都是我个人用"，把
+  `dingliehui-260327` 也列进了枢纽页，这条不是通用默认值，下次遇到性质不同的内容
+  还是要问。
+- 枢纽页自己的卡片列表样式是页面自带的一小段内联 `<style>`（不值得为几个链接卡片
+  再抽一个共享文件），复用了 `listening-page.css` 里的 CSS 变量（`--border`/
+  `--radius`/`--shadow-xs` 等）保持视觉一致，但 `<link>` 引用 `listening-page.css`
+  主要是为了它里面的 `#gate`/`.post-page`/`.post-body` 样式。
+
 ## 整体流程
 
 ### 0. 默认值怎么定
