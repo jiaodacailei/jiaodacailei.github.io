@@ -226,11 +226,24 @@ def main():
         lo, hi = mondai_bounds[n]
         in_range = [seg for seg in segments if lo <= seg["start"] < hi]
 
-        has_practice = any(PRACTICE_CUE_RE.search(seg["text"]) for seg in in_range)
+        # 練習しましょう/では始めます 这类指示语只会出现在大题一开头的说明部分，
+        # 紧跟在"問題N"播报之后——真正的练习例题+答案揭晓+第二次"では始めます"
+        # 全部挤在开头一小段时间内。如果不限定窗口、对整个大题范围扫描，"練習"这个
+        # 字很容易在后面小题的对话内容里作为普通词汇出现（比如"最近練習していない"
+        # 这种日常吐槽，不是"それでは練習しましょう"这种指示语），一旦被误判成
+        # has_practice=True，后面"取 in_range 里最后一次では始めます"的逻辑会把
+        # 深埋在内容里、跟真正练习指示毫不相关的"では始めます"（比如最后一道小题
+        # 自己的"では始めます"）当成练习结束点，把前面所有小题的真实内容全部
+        # 当成"练习部分"丢弃（真实案例：2018-07 問題5，"練習していない"是小题2
+        # 对话内容里的普通词汇，导致小题1、2 整个被吞掉）。真正的练习指示块从不
+        # 会离大题开头很远，限定在前 120 秒内扫描，从根上避免这类深埋误判。
+        PRACTICE_CUE_WINDOW = 120.0
+        early_range = [seg for seg in in_range if seg["start"] < lo + PRACTICE_CUE_WINDOW]
+        has_practice = any(PRACTICE_CUE_RE.search(seg["text"]) for seg in early_range)
         content_start = lo
         if has_practice:
             start_mark_time = None
-            for seg in in_range:
+            for seg in early_range:
                 if START_MARK_RE.search(seg["text"]):
                     start_mark_time = seg["end"]
             if start_mark_time is not None:
