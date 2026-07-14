@@ -180,6 +180,13 @@ def main():
                      help="没有「問題N」标记的兜底模式下，某道大题的第一小题编号被"
                           "听漏/听成裸数字导致规律没能拆出它自己的分界时，人工指定"
                           "分界时间戳强制拆开（可重复传多个，仅对兜底模式生效）")
+    ap.add_argument("--insert-mondai", action="append", default=[],
+                     help='能识别到至少一个「問題N」标记、但某道大题的播报被听成了'
+                          '别的音（比如"問題2"听成了「問題に」——数字读音被転写成'
+                          '假名而不是数字本身，"に"不在 MONDAI_RE 匹配范围内，跟'
+                          '"一番"那种日常词误判正相反，这里是该匹配的没匹配上），'
+                          '导致这道大题的播报完全没被识别、整段并进了前一道大题，'
+                          '格式 "2:556.88"（大题号:播报时间戳），可重复传多个')
     args = ap.parse_args()
     transcript_path, out_path = args.transcript_path, args.out_path
     manual_inserts = [parse_insert(s) for s in args.insert]
@@ -192,6 +199,12 @@ def main():
             n = normalize_number(m.group(1))
             if n and n not in mondai_starts:
                 mondai_starts[n] = seg["start"]
+
+    for spec in args.insert_mondai:
+        n_str, t_str = spec.split(":")
+        n, t = int(n_str), float(t_str)
+        mondai_starts[n] = t
+        print(f"  手动补：問題{n} 播报 @ {t:.2f}")
 
     if mondai_starts:
         mondai_order = sorted(mondai_starts)
