@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>日语听力精听：定例会 260714</title>
+<link rel="stylesheet" href="/css/listening-page.css">
+</head>
+<body>
+
+<div id="gate" data-hash="bb6db7538afe36c647632bf9a561cf15101756f132337f1d650ac8cd95cc3c81">
+  <div class="box">
+    <h2>&#128274; パスワードを入力してください</h2>
+    <input type="password" id="pwdInput" placeholder="パスワード" autofocus />
+    <button id="pwdBtn">開く</button>
+    <div class="err" id="pwdErr"></div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="sticky-header">
+    <div class="sh-title">日语听力精听：定例会 260714</div>
+    <div class="tab-bar"><button class="tab-btn active" data-mondai-idx="1">定例会</button></div>
+  </div>
+
+  <nav class="toc" id="sideNav">
+    <div class="toc-label">小問</div>
+    <ul class="side-nav-list tab-active" data-mondai-idx="1"><li class="toc-h2"><a class="side-nav-btn" data-target="q-1-1">定例会</a></li></ul>
+  </nav>
+
+  <div class="toc-float" id="sideNavMobile">
+    <div class="toc-float-nums">
+      <button class="toc-float-toggle" id="snmToggle" title="目次を開く">≡</button>
+      <div class="snm-nums-list tab-active" data-mondai-idx="1"><button class="toc-float-num side-nav-btn" data-target="q-1-1">1</button></div>
+    </div>
+    <div class="toc-float-panel">
+      <div class="toc-float-header"><span>小問</span><button class="toc-float-close" id="snmClose"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
+      <ul class="side-nav-list tab-active" data-mondai-idx="1"><li class="toc-h2"><a class="side-nav-btn" data-target="q-1-1">定例会</a></li></ul>
+    </div>
+  </div>
+
+  <button class="settings-toggle" id="settingsToggle" title="再生設定"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14,-0.23,0.41,-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg></button>
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-group">
+      <div class="settings-label">再生速度</div>
+      <div class="settings-options" id="speedOptions">
+        <button class="settings-opt" data-speed="0.5">0.5x</button>
+        <button class="settings-opt" data-speed="0.75">0.75x</button>
+        <button class="settings-opt active" data-speed="1">1x</button>
+        <button class="settings-opt" data-speed="1.2">1.2x</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <div class="settings-label">表示</div>
+      <div class="settings-options" id="langOptions">
+        <button class="settings-opt" data-lang="ja">日本語</button>
+        <button class="settings-opt active" data-lang="both">日中</button>
+        <button class="settings-opt" data-lang="zh">中国語</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-player" id="miniPlayer">
+    <button class="mp-btn mp-first" id="mpFirst" title="最初" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+    <button class="mp-btn mp-prev" id="mpPrev" title="前へ" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+    <button class="mp-btn mp-playpause" id="mpPlayPause" title="再生/一時停止"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+    <button class="mp-btn mp-next" id="mpNext" title="次へ" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+    <button class="mp-btn mp-last" id="mpLast" title="最後" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+    <div class="mp-info">
+      <div class="mp-scope" id="mpScope">-</div>
+      <div class="mp-pos" id="mpPos"></div>
+    </div>
+    <button class="mp-btn mp-loop" id="mpLoop" title="ループ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
+    <button class="mp-btn mp-stop" id="mpStop" title="停止"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+
+  <div class="post-page">
+    <div class="post-page-header">
+      <h1>日语听力精听：定例会 260714</h1>
+      <p class="post-page-meta">来源：定例会260714.m4a 自动转写后人工筛选出可信段落（原始302段，保留22段）。逐句配假名注音、中文翻译与语法笔记，播放时逐词跟读高亮，悬浮迷你播放器支持暂停/继续/循环。</p>
+      <p class="play-hint">▶ 点击题目标题或句子卡片即可播放对应音频</p>
+    </div>
+    <div class="post-body">
+      
+    <section class="mondai-section tab-active" id="m-1" data-scope="mondai">
+      <h2>定例会</h2>
+      
+      <div class="question-block" id="q-1-1" data-scope="question">
+        <h3>定例会</h3>
+        
+        
+        <div class="seg-card" id="card-a1">
+          <p class="seg-ja"><span class="tw" data-t="0.00"><ruby>他の<rt>ほかの</rt></ruby></span><span class="tw" data-t="0.48"><ruby>人<rt>にん</rt></ruby></span><span class="tw" data-t="0.60">は</span><span class="tw" data-t="0.88"><ruby>普通<rt>ふつう</rt></ruby></span><span class="tw" data-t="1.08">に</span><span class="tw" data-t="1.24">ログイン</span><span class="tw" data-t="1.46">できるってこと</span>?</p>
+          <p class="seg-zh">也就是说，其他人可以正常登录，是吗？</p><div class="seg-notes">「〜ってこと?」是口语中用来确认对方话语真实含义的常见说法，相当于「という意味ですか」的随意说法。</div>
+          <audio id="a1" preload="none" src="audio/seg-001.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a2">
+          <p class="seg-ja"><span class="tw" data-t="0.67">そういうことになるでしょ</span>、<span class="tw" data-t="1.43">アカウント</span><span class="tw" data-t="1.91"><ruby>全体的<rt>ぜんたいてき</rt></ruby></span><span class="tw" data-t="2.47">に</span><span class="tw" data-t="2.71">ブロック</span><span class="tw" data-t="3.09">する</span>。</p>
+          <p class="seg-zh">那应该就是这么回事吧，整个账号被封锁了。</p><div class="seg-notes">「そういうことになる」表示就会变成这种情况/结论，常用来对前面的话做归纳性确认。</div>
+          <audio id="a2" preload="none" src="audio/seg-002.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a3">
+          <p class="seg-ja"><span class="tw" data-t="0.00">ログイン</span><span class="tw" data-t="1.02">するときに</span>、<span class="tw" data-t="1.60">ID</span><span class="tw" data-t="1.88">と</span><span class="tw" data-t="2.10">パスワード</span><span class="tw" data-t="2.64">と</span>、<span class="tw" data-t="3.06">その</span><span class="tw" data-t="3.16">スマホ</span><span class="tw" data-t="3.48">の</span><span class="tw" data-t="3.68"><ruby>番号<rt>ばんごう</rt></ruby></span><span class="tw" data-t="4.00">が</span><span class="tw" data-t="4.18"><ruby>必要<rt>ひつよう</rt></ruby></span>。</p>
+          <p class="seg-zh">登录的时候，需要ID、密码，还有那部手机的验证码。</p><div class="seg-notes">这里的「スマホの番号」指的是手机上收到的两步验证码（二段階認証），不是电话号码本身。</div>
+          <audio id="a3" preload="none" src="audio/seg-003.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a4">
+          <p class="seg-ja"><span class="tw" data-t="0.00">これがまた</span><span class="tw" data-t="1.34"><ruby>延期<rt>えんき</rt></ruby></span><span class="tw" data-t="1.70">になって</span>、<span class="tw" data-t="2.78"><ruby>金曜日<rt>きんようび</rt></ruby></span><span class="tw" data-t="3.18">17</span><span class="tw" data-t="3.40"><ruby>日<rt>にち</rt></ruby></span><span class="tw" data-t="3.70">の</span><span class="tw" data-t="4.44">19</span><span class="tw" data-t="4.66"><ruby>時に<rt>ときに</rt></ruby></span><span class="tw" data-t="4.86">なりました</span>。</p>
+          <p class="seg-zh">这个又延期了，改成了17号星期五的19点。</p><div class="seg-notes">「延期になる」表示被延期，是「延期する」在句子里的自动词/被动语感表达，日常业务场景中很常用。</div>
+          <audio id="a4" preload="none" src="audio/seg-004.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a5">
+          <p class="seg-ja"><span class="tw" data-t="0.45">もともと</span><span class="tw" data-t="6.09">10</span><span class="tw" data-t="6.23"><ruby>日<rt>にち</rt></ruby></span><span class="tw" data-t="6.37">から</span><span class="tw" data-t="8.65">17</span><span class="tw" data-t="9.17"><ruby>日<rt>にち</rt></ruby></span><span class="tw" data-t="9.37">になって</span>、<span class="tw" data-t="11.27">また</span><span class="tw" data-t="11.39"><ruby>延び<rt>のび</rt></ruby></span><span class="tw" data-t="11.63">たの</span><span class="tw" data-t="11.73">?17</span><span class="tw" data-t="12.45"><ruby>日<rt>にち</rt></ruby></span><span class="tw" data-t="12.85">から</span><span class="tw" data-t="12.85"><ruby>変わ<rt>かわ</rt></ruby></span><span class="tw" data-t="13.27">ったの</span>?</p>
+          <p class="seg-zh">本来是从10号改成17号的，难道又往后延了？是从17号又改了吗？</p><div class="seg-notes">「また延びたの?」口语疑问句省略了「ですか」，语调上扬即可表达疑问，「延びる」是「延期になる」的自动词形式。</div>
+          <audio id="a5" preload="none" src="audio/seg-005.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a6">
+          <p class="seg-ja"><span class="tw" data-t="0.00"><ruby>言わ<rt>いわ</rt></ruby></span><span class="tw" data-t="0.24">れる</span><span class="tw" data-t="0.38"><ruby>前<rt>まえ</rt></ruby></span><span class="tw" data-t="0.64">に</span>、<span class="tw" data-t="0.86"><ruby>一回<rt>いっかい</rt></ruby></span><span class="tw" data-t="1.10">たぶん</span><span class="tw" data-t="2.96"><ruby>定期的<rt>ていきてき</rt></ruby></span><span class="tw" data-t="3.58">に</span><span class="tw" data-t="3.84">2</span>、<span class="tw" data-t="3.92">3</span><span class="tw" data-t="4.04"><ruby>日<rt>にち</rt></ruby></span><span class="tw" data-t="4.22">でもいいんですけど</span>、</p>
+          <p class="seg-zh">在被人说之前，其实定期哪怕两三天写一次也行，</p><div class="seg-notes">「〜前に」表示在…之前，这里引出说话人自己主动行动、避免被上级提醒的态度。</div>
+          <audio id="a6" preload="none" src="audio/seg-006.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a7">
+          <p class="seg-ja"><span class="tw" data-t="0.00"><ruby>細め<rt>ほそめ</rt></ruby></span><span class="tw" data-t="0.64">に</span><span class="tw" data-t="0.84"><ruby>記載し<rt>きさいし</rt></ruby></span><span class="tw" data-t="1.34">といた</span><span class="tw" data-t="1.58"><ruby>方が<rt>ほうが</rt></ruby></span><span class="tw" data-t="1.82">いいと</span><span class="tw" data-t="2.96"><ruby>言わ<rt>いわ</rt></ruby></span><span class="tw" data-t="3.14">れたら</span>、<span class="tw" data-t="3.56">またあんな</span><span class="tw" data-t="5.28"><ruby>感じ<rt>かんじ</rt></ruby></span><span class="tw" data-t="5.60">で</span>、</p>
+          <p class="seg-zh">要是被说最好写得细一点，那又要变成那种局面了，</p><div class="seg-notes">「〜といた方がいい」是「〜ておいた方がいい」的口语缩约形，「〜と言われたら」表示被别人这么说的话。</div>
+          <audio id="a7" preload="none" src="audio/seg-007.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a8">
+          <p class="seg-ja"><span class="tw" data-t="0.00"><ruby>言わ<rt>いわ</rt></ruby></span><span class="tw" data-t="0.26">れたら</span>、<span class="tw" data-t="0.64">じゃああなたも</span><span class="tw" data-t="1.30"><ruby>工数<rt>こうすう</rt></ruby></span><span class="tw" data-t="1.52"><ruby>書い<rt>かい</rt></ruby></span><span class="tw" data-t="1.70">てくださいって</span><span class="tw" data-t="2.50"><ruby>言い返せ<rt>いいかえせ</rt></ruby></span><span class="tw" data-t="3.06">ばいいじゃん</span>。</p>
+          <p class="seg-zh">要是被这么说，那你就反问回去「那你也写工时表啊」不就行了嘛。</p><div class="seg-notes">「〜って言い返せばいいじゃん」意为反驳回去就好了嘛，「〜ばいいじゃん」是很随意的建议/吐槽语气。</div>
+          <audio id="a8" preload="none" src="audio/seg-008.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a9">
+          <p class="seg-ja"><span class="tw" data-t="0.00">あなた</span><span class="tw" data-t="0.32"><ruby>何<rt>なに</rt></ruby></span><span class="tw" data-t="0.54"><ruby>仕事<rt>しごと</rt></ruby></span><span class="tw" data-t="0.82">してるか</span><span class="tw" data-t="1.28"><ruby>分か<rt>わか</rt></ruby></span><span class="tw" data-t="1.60">んないから</span>、<span class="tw" data-t="2.16"><ruby>工数<rt>こうすう</rt></ruby></span><span class="tw" data-t="2.32"><ruby>書い<rt>かい</rt></ruby></span><span class="tw" data-t="2.52">て</span><span class="tw" data-t="2.64"><ruby>毎月<rt>まいつき</rt></ruby></span><span class="tw" data-t="3.06"><ruby>提出<rt>ていしゅつ</rt></ruby></span><span class="tw" data-t="3.48">して</span>、</p>
+          <p class="seg-zh">因为不知道你在做什么工作，所以要写工时表、每个月提交，</p><div class="seg-notes">「分かんない」是「分からない」的口语音变，日常对话中很常见。</div>
+          <audio id="a9" preload="none" src="audio/seg-009.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a10">
+          <p class="seg-ja"><span class="tw" data-t="0.32"><ruby>言い<rt>いい</rt></ruby></span><span class="tw" data-t="0.64">たいんだけど</span>、<span class="tw" data-t="2.40">その</span><span class="tw" data-t="3.24"><ruby>場面<rt>ばめん</rt></ruby></span><span class="tw" data-t="3.60">でちょっとそこまで</span><span class="tw" data-t="4.56"><ruby>言う<rt>いう</rt></ruby></span><span class="tw" data-t="4.80">たら</span>、</p>
+          <p class="seg-zh">虽然很想这么说，但在那个场合真要说到这个份上的话，</p><div class="seg-notes">「〜んだけど」表示想说但有所保留的语气；「言うたら」是「言ったら」的关西腔式变化，反映说话人口语习惯。</div>
+          <audio id="a10" preload="none" src="audio/seg-010.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a11">
+          <p class="seg-ja"><span class="tw" data-t="0.00">また</span><span class="tw" data-t="0.58"><ruby>別の<rt>べつの</rt></ruby></span><span class="tw" data-t="0.94"><ruby>問題<rt>もんだい</rt></ruby></span><span class="tw" data-t="1.16">が</span><span class="tw" data-t="1.32"><ruby>起き<rt>おき</rt></ruby></span><span class="tw" data-t="1.46">ちゃうわけです</span>。</p>
+          <p class="seg-zh">又会引发别的问题。</p><div class="seg-notes">「〜ちゃう」是「〜てしまう」的口语缩约，「〜わけです」用来对前文做解释性归纳。</div>
+          <audio id="a11" preload="none" src="audio/seg-011.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a12">
+          <p class="seg-ja"><span class="tw" data-t="0.00">じゃあ</span><span class="tw" data-t="0.00"><ruby>言わ<rt>いわ</rt></ruby></span><span class="tw" data-t="0.30">れる</span><span class="tw" data-t="0.46"><ruby>前<rt>まえ</rt></ruby></span><span class="tw" data-t="0.62">に</span><span class="tw" data-t="0.78"><ruby>言お<rt>いお</rt></ruby></span><span class="tw" data-t="0.82">うか</span>。</p>
+          <p class="seg-zh">那就在被说之前，我们先说吧。</p><div class="seg-notes">「〜前に〜（よ）うか」表示要不趁着…之前先做…吧的提议语气。</div>
+          <audio id="a12" preload="none" src="audio/seg-012.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a13">
+          <p class="seg-ja"><span class="tw" data-t="1.23"><ruby>言わ<rt>いわ</rt></ruby></span><span class="tw" data-t="1.95">れる</span><span class="tw" data-t="2.11"><ruby>前<rt>まえ</rt></ruby></span><span class="tw" data-t="2.29">に</span><span class="tw" data-t="2.41"><ruby>言お<rt>いお</rt></ruby></span><span class="tw" data-t="2.41">う</span>。</p>
+          <p class="seg-zh">趁被说之前，先说吧。</p>
+          <audio id="a13" preload="none" src="audio/seg-013.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a14">
+          <p class="seg-ja"><span class="tw" data-t="0.00"><ruby>確かに<rt>たしかに</rt></ruby></span>。</p>
+          <p class="seg-zh">确实。</p>
+          <audio id="a14" preload="none" src="audio/seg-014.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a15">
+          <p class="seg-ja"><span class="tw" data-t="-0.48">あなたこそ</span><span class="tw" data-t="1.00"><ruby>提出<rt>ていしゅつ</rt></ruby></span><span class="tw" data-t="1.38">してください</span>。</p>
+          <p class="seg-zh">你才更应该提交吧。</p><div class="seg-notes">「〜こそ」表示强调，正是你才应该……，带有反驳/针锋相对的语气。</div>
+          <audio id="a15" preload="none" src="audio/seg-015.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a16">
+          <p class="seg-ja"><span class="tw" data-t="0.28"><ruby>確かに<rt>たしかに</rt></ruby></span><span class="tw" data-t="1.02"><ruby>石井<rt>いしい</rt></ruby></span><span class="tw" data-t="1.22">さんとかは</span><span class="tw" data-t="1.88"><ruby>書い<rt>かい</rt></ruby></span><span class="tw" data-t="1.92">てあるんですけど</span>、</p>
+          <p class="seg-zh">确实像石井这些人是写了的，不过，</p><div class="seg-notes">「〜とか」在口语中常用来举例、模糊指代像…之类的人/事。</div>
+          <audio id="a16" preload="none" src="audio/seg-016.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a17">
+          <p class="seg-ja"><span class="tw" data-t="0.44"><ruby>石井<rt>いしい</rt></ruby></span><span class="tw" data-t="0.94">さん</span><span class="tw" data-t="1.14"><ruby>書い<rt>かい</rt></ruby></span><span class="tw" data-t="1.30">ててさ</span>、<span class="tw" data-t="1.78"><ruby>他の<rt>ほかの</rt></ruby></span><span class="tw" data-t="2.04"><ruby>人<rt>にん</rt></ruby></span><span class="tw" data-t="2.14"><ruby>書い<rt>かい</rt></ruby></span><span class="tw" data-t="2.30">てないよね</span>。</p>
+          <p class="seg-zh">石井是写了啦，但其他人都没写吧。</p><div class="seg-notes">句末「〜さ」「〜よね」都是随意口语的语气终助词，前者带一点感叹/强调，后者寻求对方认同。</div>
+          <audio id="a17" preload="none" src="audio/seg-017.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a18">
+          <p class="seg-ja"><span class="tw" data-t="0.33"><ruby>慎太郎<rt>しんたろう</rt></ruby></span><span class="tw" data-t="0.77">さんの</span><span class="tw" data-t="4.57"><ruby>方が<rt>ほうが</rt></ruby></span><span class="tw" data-t="6.63">ダメ</span><span class="tw" data-t="8.59">っていい</span>?<span class="tw" data-t="11.11"><ruby>向こう<rt>むこう</rt></ruby></span><span class="tw" data-t="11.11">の</span><span class="tw" data-t="11.11"><ruby>部署<rt>ぶしょ</rt></ruby></span><span class="tw" data-t="11.11">の</span><span class="tw" data-t="11.11"><ruby>問題<rt>もんだい</rt></ruby></span><span class="tw" data-t="11.11">だかと</span><span class="tw" data-t="11.29"><ruby>言った<rt>いった</rt></ruby></span><span class="tw" data-t="11.53">らどうですか</span>?</p>
+          <p class="seg-zh">要不说慎太郎那边更不行？就说这是对方部门的问题，怎么样？</p><div class="seg-notes">「〜と言ったらどうですか」意为要不就这么说怎么样，是提议说辞时常用的委婉句型。</div>
+          <audio id="a18" preload="none" src="audio/seg-018.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a19">
+          <p class="seg-ja"><span class="tw" data-t="0.09">いや</span>、<span class="tw" data-t="0.31">あなた</span><span class="tw" data-t="0.53"><ruby>出荷<rt>しゅっか</rt></ruby></span><span class="tw" data-t="1.15">していないでしょって</span>。</p>
+          <p class="seg-zh">不是，（对方肯定会说）你自己不也没出货吗这种话吧。</p><div class="seg-notes">句末「〜でしょって」是「でしょ」+「って」，用来转述/模拟对方可能说出的话，是口语中常见的引用方式。</div>
+          <audio id="a19" preload="none" src="audio/seg-019.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a20">
+          <p class="seg-ja"><span class="tw" data-t="0.21">あんまり</span><span class="tw" data-t="0.39"><ruby>仲良<rt>なかよし</rt></ruby></span><span class="tw" data-t="0.63">いように</span><span class="tw" data-t="0.63"><ruby>対応<rt>たいおう</rt></ruby></span><span class="tw" data-t="0.79">していないですね</span>。</p>
+          <p class="seg-zh">彼此之间的应对方式不太友好呢。</p>
+          <audio id="a20" preload="none" src="audio/seg-020.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a21">
+          <p class="seg-ja"><span class="tw" data-t="1.09">まあどうせ</span><span class="tw" data-t="1.69"><ruby>書く<rt>かく</rt></ruby></span><span class="tw" data-t="2.01">であれば</span>、<span class="tw" data-t="3.21"><ruby>書き<rt>かき</rt></ruby></span><span class="tw" data-t="3.65">たくはないんですよ</span>。</p>
+          <p class="seg-zh">反正要写的话，其实是不想写的。</p><div class="seg-notes">「どうせ〜であれば」意为反正要…的话，「〜たくはない」比「〜たくない」语气上多了一分并不是很想要的委婉否定。</div>
+          <audio id="a21" preload="none" src="audio/seg-021.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a22">
+          <p class="seg-ja"><span class="tw" data-t="2.79">はい</span>、<span class="tw" data-t="8.79"><ruby>以上<rt>いじょう</rt></ruby></span><span class="tw" data-t="9.15">です</span>。<span class="tw" data-t="10.93">ありがとうございました</span>。</p>
+          <p class="seg-zh">好，以上就是这些内容，谢谢大家。</p><div class="seg-notes">日本职场会议/汇报常用的结束语，「以上です」表示到此为止/汇报完毕。</div>
+          <audio id="a22" preload="none" src="audio/seg-022.mp3"></audio>
+        </div>
+      </div>
+    </section>
+    </div>
+  </div>
+</div>
+
+<script src="/js/private-gate.js" defer></script>
+<script src="/js/listening-page.js" defer></script>
+
+</body>
+</html>
