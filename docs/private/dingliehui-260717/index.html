@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>日语听力精听：定例会 260717</title>
+<link rel="stylesheet" href="/css/listening-page.css">
+</head>
+<body>
+
+<div id="gate" data-hash="bb6db7538afe36c647632bf9a561cf15101756f132337f1d650ac8cd95cc3c81">
+  <div class="box">
+    <h2>&#128274; パスワードを入力してください</h2>
+    <input type="password" id="pwdInput" placeholder="パスワード" autofocus />
+    <button id="pwdBtn">開く</button>
+    <div class="err" id="pwdErr"></div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="sticky-header">
+    <div class="sh-title">日语听力精听：定例会 260717</div>
+    <div class="tab-bar"><button class="tab-btn active" data-mondai-idx="1">听力材料</button></div>
+  </div>
+
+  <nav class="toc" id="sideNav">
+    <div class="toc-label">小問</div>
+    <ul class="side-nav-list tab-active" data-mondai-idx="1"><li class="toc-h2"><a class="side-nav-btn" data-target="q-1-1">听力材料</a></li></ul>
+  </nav>
+
+  <div class="toc-float" id="sideNavMobile">
+    <div class="toc-float-nums">
+      <button class="toc-float-toggle" id="snmToggle" title="目次を開く">≡</button>
+      <div class="snm-nums-list tab-active" data-mondai-idx="1"><button class="toc-float-num side-nav-btn" data-target="q-1-1">1</button></div>
+    </div>
+    <div class="toc-float-panel">
+      <div class="toc-float-header"><span>小問</span><button class="toc-float-close" id="snmClose"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
+      <ul class="side-nav-list tab-active" data-mondai-idx="1"><li class="toc-h2"><a class="side-nav-btn" data-target="q-1-1">听力材料</a></li></ul>
+    </div>
+  </div>
+
+  <button class="settings-toggle" id="settingsToggle" title="再生設定"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14,-0.23,0.41,-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg></button>
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-group">
+      <div class="settings-label">再生速度</div>
+      <div class="settings-options" id="speedOptions">
+        <button class="settings-opt" data-speed="0.5">0.5x</button>
+        <button class="settings-opt" data-speed="0.75">0.75x</button>
+        <button class="settings-opt active" data-speed="1">1x</button>
+        <button class="settings-opt" data-speed="1.2">1.2x</button>
+      </div>
+    </div>
+    <div class="settings-group">
+      <div class="settings-label">表示</div>
+      <div class="settings-options" id="langOptions">
+        <button class="settings-opt" data-lang="ja">日本語</button>
+        <button class="settings-opt active" data-lang="both">日中</button>
+        <button class="settings-opt" data-lang="zh">中国語</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-player" id="miniPlayer">
+    <button class="mp-btn mp-first" id="mpFirst" title="最初" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+    <button class="mp-btn mp-prev" id="mpPrev" title="前へ" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+    <button class="mp-btn mp-playpause" id="mpPlayPause" title="再生/一時停止"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+    <button class="mp-btn mp-next" id="mpNext" title="次へ" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+    <button class="mp-btn mp-last" id="mpLast" title="最後" disabled><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+    <div class="mp-info">
+      <div class="mp-scope" id="mpScope">-</div>
+      <div class="mp-pos" id="mpPos"></div>
+    </div>
+    <button class="mp-btn mp-loop" id="mpLoop" title="ループ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
+    <button class="mp-btn mp-stop" id="mpStop" title="停止"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+
+  <div class="post-page">
+    <div class="post-page-header">
+      <h1>日语听力精听：定例会 260717</h1>
+      <p class="post-page-meta">来源：定例会260717.m4a 自动转写后人工筛选出可信段落（原始约271段，保留12段）。逐句配假名注音、中文翻译与语法笔记，播放时逐词跟读高亮，悬浮迷你播放器支持暂停/继续/循环。</p>
+      <p class="play-hint">▶ 点击题目标题或句子卡片即可播放对应音频</p>
+    </div>
+    <div class="post-body">
+      
+    <section class="mondai-section tab-active" id="m-1" data-scope="mondai">
+      <h2>听力材料</h2>
+      
+      <div class="question-block" id="q-1-1" data-scope="question">
+        <h3>听力材料</h3>
+        
+        
+        <div class="seg-card" id="card-a1">
+          <p class="seg-ja"><span class="tw" data-t="0.00">いや</span>、<span class="tw" data-t="0.60"><ruby>全然<rt>ぜんぜん</rt></ruby></span><span class="tw" data-t="0.94"><ruby>関係<rt>かんけい</rt></ruby></span><span class="tw" data-t="1.28">ないんですけど</span>、<span class="tw" data-t="1.90"><ruby>保守契約<rt>ほしゅけいやく</rt></ruby></span><span class="tw" data-t="2.42">が</span><span class="tw" data-t="2.64">2</span><span class="tw" data-t="2.80">つあるのが</span><span class="tw" data-t="3.40"><ruby>気に<rt>きに</rt></ruby></span><span class="tw" data-t="3.54">なってましたよね</span>。</p>
+          <p class="seg-zh">啊，跟现在的话题完全没关系，不过我一直有点在意，怎么会有两份维保合同呢。</p><div class="seg-notes">「全然関係ないんですけど」是转换话题前常用的缓冲语（跟这个没关系，不过…）；「〜てましたよね」＝ている+た+よね，带确认+回忆语气，表示一直…来着，对吧。</div>
+          <audio id="a1" preload="none" src="audio/seg-001.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a2">
+          <p class="seg-ja"><span class="tw" data-t="0.00">2</span><span class="tw" data-t="0.44"><ruby>番目<rt>ばんめ</rt></ruby></span><span class="tw" data-t="0.70">と</span><span class="tw" data-t="1.04">5</span><span class="tw" data-t="1.32"><ruby>番目<rt>ばんめ</rt></ruby></span><span class="tw" data-t="1.60">が</span><span class="tw" data-t="1.90"><ruby>全部<rt>ぜんぶ</rt></ruby></span><span class="tw" data-t="2.24"><ruby>保守契約<rt>ほしゅけいやく</rt></ruby></span><span class="tw" data-t="2.68">です</span>。</p>
+          <p class="seg-zh">第2项和第5项全部都是维保合同。</p>
+          <audio id="a2" preload="none" src="audio/seg-002.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a3">
+          <p class="seg-ja"><span class="tw" data-t="0.00">あ</span>、<span class="tw" data-t="0.60">これは</span><span class="tw" data-t="0.80"><ruby>多分<rt>たぶん</rt></ruby></span><span class="tw" data-t="1.12">ロボ</span><span class="tw" data-t="1.44">の</span><span class="tw" data-t="1.62"><ruby>保守契約<rt>ほしゅけいやく</rt></ruby></span><span class="tw" data-t="2.32">かな</span>。</p>
+          <p class="seg-zh">啊，这个大概是机器人的维保合同吧。</p><div class="seg-notes">「〜かな」表示自言自语式的推测，语气比「〜だろう」更随意、更像自问自答。</div>
+          <audio id="a3" preload="none" src="audio/seg-003.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a4">
+          <p class="seg-ja"><span class="tw" data-t="0.00">あれ</span>?<span class="tw" data-t="0.43"><ruby>前<rt>まえ</rt></ruby></span><span class="tw" data-t="0.57">もそんな</span><span class="tw" data-t="1.14"><ruby>感じ<rt>かんじ</rt></ruby></span><span class="tw" data-t="1.43">ですか</span>?</p>
+          <p class="seg-zh">咦？之前也是这种情况吗？</p><div class="seg-notes">「そんな感じ」＝那种感觉/那种情况，口语中常用来模糊指代状态。</div>
+          <audio id="a4" preload="none" src="audio/seg-004.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a5">
+          <p class="seg-ja"><span class="tw" data-t="-0.14">たぶん</span><span class="tw" data-t="0.00"><ruby>機器<rt>きき</rt></ruby></span><span class="tw" data-t="0.00"><ruby>管理<rt>かんり</rt></ruby></span><span class="tw" data-t="0.42">の</span><span class="tw" data-t="0.56"><ruby>方<rt>ほう</rt></ruby></span><span class="tw" data-t="0.66">から</span><span class="tw" data-t="0.88"><ruby>自動<rt>じどう</rt></ruby></span><span class="tw" data-t="1.20">で</span><span class="tw" data-t="1.36"><ruby>取っ<rt>とっ</rt></ruby></span><span class="tw" data-t="1.44">てきてるかもしれないです</span>。</p>
+          <p class="seg-zh">可能是从设备管理那边自动获取过来的。</p><div class="seg-notes">「〜てきてる」＝てくる+ている，表示一直…过来的状态；「かもしれないです」比「かもしれません」更随意的礼貌形式。</div>
+          <audio id="a5" preload="none" src="audio/seg-005.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a6">
+          <p class="seg-ja"><span class="tw" data-t="0.00"><ruby>名前<rt>なまえ</rt></ruby></span><span class="tw" data-t="0.46"><ruby>変え<rt>かえ</rt></ruby></span><span class="tw" data-t="0.78">たほうがいい</span>。</p>
+          <p class="seg-zh">名字还是改一下比较好。</p><div class="seg-notes">「〜たほうがいい」＝最好…，提建议的基本句型。</div>
+          <audio id="a6" preload="none" src="audio/seg-006.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a7">
+          <p class="seg-ja"><span class="tw" data-t="0.00">そうですね</span>、<span class="tw" data-t="0.50">ロボット</span><span class="tw" data-t="0.82"><ruby>現場<rt>げんば</rt></ruby></span><span class="tw" data-t="1.14">で</span><span class="tw" data-t="1.28"><ruby>変え<rt>かえ</rt></ruby></span><span class="tw" data-t="1.54">たほうがいい</span>。</p>
+          <p class="seg-zh">是啊，最好在机器人现场那边改一下。</p><div class="seg-notes">「現場」＝生产/作业一线，工厂・仓库类会话中高频词。</div>
+          <audio id="a7" preload="none" src="audio/seg-007.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a8">
+          <p class="seg-ja"><span class="tw" data-t="-0.66">NODA</span><span class="tw" data-t="0.00">の</span><span class="tw" data-t="0.52"><ruby>方<rt>ほう</rt></ruby></span><span class="tw" data-t="1.10">で</span>、<span class="tw" data-t="1.94"><ruby>今まで<rt>いままで</rt></ruby></span><span class="tw" data-t="2.38">そのまま</span><span class="tw" data-t="3.22">VPN</span><span class="tw" data-t="3.68">を</span><span class="tw" data-t="3.68"><ruby>遠隔<rt>えんかく</rt></ruby></span><span class="tw" data-t="4.80"><ruby>接続<rt>せつぞく</rt></ruby></span><span class="tw" data-t="5.20">できるんですけど</span>、<span class="tw" data-t="6.30">これからは</span><span class="tw" data-t="8.72"><ruby>担当者<rt>たんとうしゃ</rt></ruby></span><span class="tw" data-t="9.06">に</span><span class="tw" data-t="9.18"><ruby>連絡<rt>れんらく</rt></ruby></span><span class="tw" data-t="9.46">しないと</span><span class="tw" data-t="10.06"><ruby>接続<rt>せつぞく</rt></ruby></span><span class="tw" data-t="10.40">できないことです</span>。</p>
+          <p class="seg-zh">关于NODA那边，到目前为止一直可以直接远程VPN连接，不过从今以后，如果不联系负责人就无法连接了。</p><div class="seg-notes">「〜んですけど、これからは〜」表对比转折（一直以来是…不过接下来…）；「ないと〜ない」＝不…就不能…的条件句型。</div>
+          <audio id="a8" preload="none" src="audio/seg-008.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a9">
+          <p class="seg-ja"><span class="tw" data-t="0.00">なので</span>、<span class="tw" data-t="0.00"><ruby>土日<rt>どにち</rt></ruby></span><span class="tw" data-t="0.66">は</span><span class="tw" data-t="0.86"><ruby>対応<rt>たいおう</rt></ruby></span><span class="tw" data-t="1.12">できないんで</span>、<span class="tw" data-t="2.76"><ruby>何か<rt>なにか</rt></ruby></span><span class="tw" data-t="2.94">あったら</span><span class="tw" data-t="3.36"><ruby>事前<rt>じぜん</rt></ruby></span><span class="tw" data-t="3.64">に</span><span class="tw" data-t="4.74"><ruby>余裕<rt>よゆう</rt></ruby></span><span class="tw" data-t="4.96">を</span><span class="tw" data-t="5.14"><ruby>持っ<rt>もっ</rt></ruby></span><span class="tw" data-t="5.14">て</span><span class="tw" data-t="5.26"><ruby>連絡<rt>れんらく</rt></ruby></span><span class="tw" data-t="5.58">してもらいたいです</span>。<span class="tw" data-t="9.36"><ruby>以上<rt>いじょう</rt></ruby></span><span class="tw" data-t="9.42">です</span>。</p>
+          <p class="seg-zh">所以周六日没法处理，如果有什么事，希望大家提前留出充裕的时间联系我们。以上。</p><div class="seg-notes">「んで」＝「ので」的口语形式；「余裕を持って」＝留出充裕时间/留有余地；「〜てもらいたいです」＝委婉地希望对方做某事；「以上です」是会议/报告结尾的固定说法。</div>
+          <audio id="a9" preload="none" src="audio/seg-009.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a10">
+          <p class="seg-ja"><span class="tw" data-t="0.00">まあまあまあ</span>、<span class="tw" data-t="2.34"><ruby>念のため<rt>ねんのため</rt></ruby></span>、<span class="tw" data-t="4.58">チャンネル</span><span class="tw" data-t="4.94">にも</span><span class="tw" data-t="5.60"><ruby>書い<rt>かい</rt></ruby></span><span class="tw" data-t="5.70">てあるんですけど</span>。</p>
+          <p class="seg-zh">嗯嗯嗯，保险起见，其实频道里也写了……</p><div class="seg-notes">「念のため」＝以防万一/保险起见；「〜てある」表示（事先做好并留下的状态）已经…了。</div>
+          <audio id="a10" preload="none" src="audio/seg-010.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a11">
+          <p class="seg-ja"><span class="tw" data-t="0.00">お</span><span class="tw" data-t="0.68"><ruby>疲れ<rt>つかれ</rt></ruby></span><span class="tw" data-t="1.24"><ruby>様<rt>さま</rt></ruby></span><span class="tw" data-t="1.24">でした</span>。</p>
+          <p class="seg-zh">辛苦了。</p><div class="seg-notes">会议结束时的寒暄用语，日本职场几乎每次都会说，用于结束时互相致意。</div>
+          <audio id="a11" preload="none" src="audio/seg-011.mp3"></audio>
+        </div>
+
+        <div class="seg-card" id="card-a12">
+          <p class="seg-ja"><span class="tw" data-t="0.00">お</span><span class="tw" data-t="0.50"><ruby>疲れ<rt>つかれ</rt></ruby></span><span class="tw" data-t="0.84"><ruby>様<rt>さま</rt></ruby></span><span class="tw" data-t="1.08">でした</span>。</p>
+          <p class="seg-zh">辛苦了。</p>
+          <audio id="a12" preload="none" src="audio/seg-012.mp3"></audio>
+        </div>
+      </div>
+    </section>
+    </div>
+  </div>
+</div>
+
+<script src="/js/private-gate.js" defer></script>
+<script src="/js/listening-page.js" defer></script>
+
+</body>
+</html>
