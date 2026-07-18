@@ -281,6 +281,19 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   只写一遍+只取第一次raw_id"的两轮prompt模板效果持续有效**，6道小题
   全部一次对齐成功，没有复现2016-12那次的挤压坑，进一步确认这条modus
   operandi应该固定为問題2类型的标准操作。
+- `docs/private/n2-listening/2014-12/` — 同系列第十三套真题，31 个小题、5 个大题、
+  343 句。两个都是老熟人坑，没有新坑：一是「問題2」又被听成"問題に"（转写文本里
+  能看到"問題にでは"），用 `--insert-mondai` 补上播报时间点解决，`items.json`
+  里問題2 边界（6道小题）正常。二是問題5 3番（質問1/質問2格式）的选项文本又一次
+  没有对应真实音频——这次直接照 2018-12 案例定下的最终做法（round-2 阶段选项
+  句子的 `raw_ids` 留空，等 `refine_boundaries.py`/`validate_boundaries.py`
+  跑完之后用 `_patch_mondai5_options.py` 直接在 `enriched_final.json` 上补回
+  这 8 句，时间戳从两道问题之间/问题2到录音结尾的静音区间均分），一次到位，没有
+  再走 2019-07 案例里先在 `raw_sentences.json` 打补丁又被冲掉的弯路。全程没有
+  出现"N番の学校"类 `ITEM_RE` 误判、没有语速异常、`validate_boundaries.py`
+  零重叠零零时长——是继 2017-07 之后第二次全程干净跑完的案例，进一步确认这两个
+  坑（問題2听岔、問題5末题选项无音频）已经是这个系列的常规已知项，不是每次都会
+  牵连出新问题。
 
 ## 工具在哪
 
