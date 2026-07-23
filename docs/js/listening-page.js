@@ -357,3 +357,218 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v1
     }
   });
 })();
+
+// ── 练习模式：跟读（默认，现状）／默写／填空 ──
+// 模式按钮是运行时插进设置面板的（不改 build_page.py 模板、不用重新生成任何一个
+// 已有页面），默写/填空的 UI 同样是运行时读取 .seg-card 里已有的 .seg-ja/.seg-zh/
+// .seg-notes 现造出来的，所以这份改动对所有已生成的听力页（n2-listening、
+// dingliehui 会议听力页……）立即生效。
+(function() {
+  var MODE_KEY = "n2listen-mode";
+  var mode = localStorage.getItem(MODE_KEY) || "read";
+
+  function applyMode() {
+    document.body.classList.remove("mode-dictate", "mode-blank");
+    if (mode === "dictate") document.body.classList.add("mode-dictate");
+    if (mode === "blank") document.body.classList.add("mode-blank");
+  }
+
+  var settingsPanel = document.getElementById("settingsPanel");
+  if (settingsPanel) {
+    var group = document.createElement("div");
+    group.className = "settings-group";
+    group.innerHTML =
+      '<div class="settings-label">練習モード</div>' +
+      '<div class="settings-options" id="modeOptions">' +
+        '<button class="settings-opt" data-mode="read">跟读</button>' +
+        '<button class="settings-opt" data-mode="dictate">默写</button>' +
+        '<button class="settings-opt" data-mode="blank">填空</button>' +
+      '</div>';
+    settingsPanel.appendChild(group);
+    Array.from(group.querySelectorAll(".settings-opt")).forEach(function(b) {
+      b.classList.toggle("active", b.dataset.mode === mode);
+      b.addEventListener("click", function() {
+        mode = b.dataset.mode;
+        localStorage.setItem(MODE_KEY, mode);
+        Array.from(group.querySelectorAll(".settings-opt")).forEach(function(x) { x.classList.toggle("active", x === b); });
+        applyMode();
+      });
+    });
+  }
+  applyMode();
+
+  // 去掉假名注音（<rt>）之后的原文纯文本——默写比对的标准答案、填空定位挖空范围
+  // 用的"纯文本坐标系"，都是这份文本。
+  function plainTextOf(node) {
+    var clone = node.cloneNode(true);
+    Array.from(clone.querySelectorAll("rt")).forEach(function(rt) { rt.remove(); });
+    return clone.textContent;
+  }
+
+  var PUNCT_RE = /[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'"]/g;
+  function stripPunct(s) { return (s || "").replace(PUNCT_RE, ""); }
+
+  // ---- 默写：逐句隐藏日语原文，常驻提示中文翻译，输入跟原文一致（忽略标点）
+  //      才算过关，按小题（question-block）顺序解锁下一句 ----
+  document.querySelectorAll(".seg-card").forEach(function(card) {
+    var segJa = card.querySelector(".seg-ja");
+    var segZh = card.querySelector(".seg-zh");
+    if (!segJa) return;
+    var answer = plainTextOf(segJa);
+    var answerStripped = stripPunct(answer);
+
+    var ui = document.createElement("div");
+    ui.className = "dictate-ui";
+    ui.innerHTML =
+      '<div class="dictate-hint"></div>' +
+      '<div class="dictate-row">' +
+        '<input type="text" class="dictate-input" autocomplete="off" placeholder="听写这一句的日语…">' +
+        '<button type="button" class="dictate-btn dictate-check">確認</button>' +
+        '<button type="button" class="dictate-btn dictate-reveal">答えを見る</button>' +
+      '</div>' +
+      '<div class="dictate-status"></div>' +
+      '<div class="dictate-answer"></div>' +
+      '<div class="dictate-locked">🔒 先完成上一句</div>';
+    segJa.insertAdjacentElement("afterend", ui);
+
+    var input = ui.querySelector(".dictate-input");
+    var checkBtn = ui.querySelector(".dictate-check");
+    var revealBtn = ui.querySelector(".dictate-reveal");
+    var status = ui.querySelector(".dictate-status");
+    var answerBox = ui.querySelector(".dictate-answer");
+    var hintBox = ui.querySelector(".dictate-hint");
+    if (segZh) hintBox.textContent = segZh.textContent;
+    // 只挡输入框/按钮的点击（避免每次点它们都触发外层 .seg-card 的"点击播放"），
+    // 提示区/空白处仍然能点击播放——不整体 stopPropagation。
+    [input, checkBtn, revealBtn].forEach(function(el) {
+      el.addEventListener("click", function(e) { e.stopPropagation(); });
+    });
+
+    card._dictate = { state: "locked" };
+
+    function setState(s) {
+      card._dictate.state = s;
+      ui.classList.remove("state-locked", "state-active", "state-done");
+      ui.classList.add("state-" + s);
+      input.disabled = (s !== "active");
+      if (s === "active") setTimeout(function() { input.focus(); }, 0);
+    }
+    card._dictate.setState = setState;
+    setState("locked");
+
+    function check(reveal) {
+      if (card._dictate.state === "done") return;
+      var matched = stripPunct(input.value) === answerStripped;
+      if (reveal || matched) {
+        var badge = matched
+          ? '<span class="dictate-badge ok">✓ 正解</span> '
+          : '<span class="dictate-badge rev">👁 答案</span> ';
+        answerBox.innerHTML = badge + segJa.innerHTML;
+        setState("done");
+        advance(card);
+      } else {
+        status.textContent = "✗ 不一致，再检查一下";
+        status.className = "dictate-status ng";
+      }
+    }
+    checkBtn.addEventListener("click", function() { check(false); });
+    revealBtn.addEventListener("click", function() { check(true); });
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") { e.preventDefault(); check(false); }
+    });
+  });
+
+  function advance(card) {
+    var block = card.closest(".question-block");
+    if (!block) return;
+    var cards = Array.from(block.querySelectorAll(".seg-card")).filter(function(c) { return c._dictate; });
+    var i = cards.indexOf(card);
+    if (i >= 0 && i + 1 < cards.length) {
+      cards[i + 1]._dictate.setState("active");
+      cards[i + 1].scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  // 每个小题解锁第一句为 active，其余保持 locked——只跑一次，不随模式来回切换重置进度
+  document.querySelectorAll(".question-block").forEach(function(block) {
+    var cards = Array.from(block.querySelectorAll(".seg-card")).filter(function(c) { return c._dictate; });
+    if (cards.length) cards[0]._dictate.setState("active");
+  });
+
+  // ---- 填空：从 seg-notes 里第一个「…」抓语法点原文，在句子里定位到对应的
+  //      .tw 词（挖空按词级 token 对齐，不做字符级切割），挖空成一个输入框 ----
+  function baseTokens(segJa) {
+    var tokens = [], offset = 0;
+    Array.from(segJa.childNodes).forEach(function(node) {
+      if (node.nodeType === 3) {
+        var t = node.textContent;
+        if (t) { tokens.push({ start: offset, end: offset + t.length, node: node, text: t }); offset += t.length; }
+      } else if (node.nodeType === 1) {
+        if (node.tagName === "BR") { tokens.push({ start: offset, end: offset + 1, node: node, text: "\n" }); offset += 1; return; }
+        if (node.classList.contains("tw")) {
+          var txt = plainTextOf(node);
+          tokens.push({ start: offset, end: offset + txt.length, node: node, text: txt });
+          offset += txt.length;
+        }
+      }
+    });
+    return tokens;
+  }
+
+  function extractGrammarQuery(notesText) {
+    var m = notesText.match(/「([^」]+)」/);
+    if (!m) return null;
+    var q = m[1].replace(/^[~〜]+/, "").replace(/[^\p{L}\p{N}ー々]+$/u, "");
+    return q.length >= 2 ? q : null;
+  }
+
+  function findBlankRange(plain, query) {
+    for (var len = query.length; len >= 2; len--) {
+      var idx = plain.indexOf(query.slice(0, len));
+      if (idx !== -1) return { start: idx, end: idx + len };
+    }
+    return null;
+  }
+
+  document.querySelectorAll(".seg-card").forEach(function(card) {
+    var segJa = card.querySelector(".seg-ja");
+    var notes = card.querySelector(".seg-notes");
+    if (!segJa || !notes) return;
+    var query = extractGrammarQuery(notes.textContent);
+    if (!query) return;
+    var tokens = baseTokens(segJa);
+    var plain = tokens.map(function(t) { return t.text; }).join("");
+    var range = findBlankRange(plain, query);
+    if (!range) return;
+
+    // 在原文的克隆上动手（不碰真正的 .seg-ja，跟读高亮/切模式回退都还是原样）
+    var clone = segJa.cloneNode(true);
+    clone.className = "seg-ja-blank";
+    var cloneTokens = baseTokens(clone);
+    var overlapping = cloneTokens.filter(function(t) { return t.start < range.end && t.end > range.start; });
+    if (!overlapping.length) return;
+    var answer = overlapping.map(function(t) { return t.text; }).join("");
+
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "blank-input";
+    input.autocomplete = "off";
+    input.dataset.answer = answer;
+    input.style.width = (answer.length * 1.4 + 1.2) + "em";
+    var parent = overlapping[0].node.parentNode;
+    parent.insertBefore(input, overlapping[0].node);
+    overlapping.forEach(function(t) { if (t.node.parentNode) t.node.parentNode.removeChild(t.node); });
+    input.addEventListener("click", function(e) { e.stopPropagation(); });
+    input.addEventListener("keydown", function(e) {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      var ok = input.value.trim() === input.dataset.answer;
+      input.classList.toggle("ok", ok);
+      input.classList.toggle("ng", !ok);
+      if (ok) card.classList.add("blank-revealed");
+    });
+
+    segJa.insertAdjacentElement("afterend", clone);
+    card.classList.add("has-blank");
+  });
+})();
