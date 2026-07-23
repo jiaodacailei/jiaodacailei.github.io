@@ -155,45 +155,64 @@ python tools/listening/validate_boundaries.py enriched_refined.json enriched_fin
 ```
 
 生词表：不跑 `refine_boundaries.py`，直接用第2步里 Whisper 粗 segment 的时间戳
-（去掉幻觉 segment 后按顺序一一对应），`char_times` 留 `null`（单词没有逐字符
-跟读高亮，`ruby_html()` 退化成纯 furigana 展示，不影响使用）。`mondai` 统一填
-"生词"，`question` 可以按教材自己的分组（比如"生词表1"/"生词表2"……）—照抄源
-材料自己的分组标签，不用发明新的。**但组装完 `enriched.json` 之后，仍然要跑
-一遍 `validate_boundaries.py`**（`python validate_boundaries.py enriched_vocab.json
-enriched_vocab_final.json`）——`transcribe.py` 分块转写在块边界上偶尔会切出
-时间戳相邻重叠的 segment，生词表直接照搬这些粗时间戳的话，重叠部分会让前一个
-词的音频尾巴多播出后一个词的开头（真实案例踩过5次，见"常见坑"），`validate_
-boundaries.py` 的重叠裁剪不依赖 `refine_boundaries.py` 有没有跑过，跑这一步
-零成本，务必不要省。
+按顺序一一对应，`char_times` 留 `null`（单词没有逐字符跟读高亮，`ruby_html()`
+退化成纯 furigana 展示，不影响使用）。这一步不用现写脚本，用共享工具
+`tools/listening/build_vocab_from_wordlist.py`：
+
+```bash
+python tools/listening/build_vocab_from_wordlist.py vocab_words.json transcript_vocab.json enriched_vocab.json \
+  --drop-hallucination "ご視聴ありがとうございました"
+```
+
+`vocab_words.json` 是自己按截图整理的词表（格式见脚本文档字符串：`group`/
+`text`/`zh`/可选的 `kana`——有 `kana` 就用这个读音包 `<ruby>`，不用 `kana`
+就走 `ruby_html()` 自动转换，遇到熟字训容易读错的词一定要填 `kana`，见"常见
+坑"）。`--drop-hallucination` 传要从转写结果里剔除的幻觉文本（人工通读
+transcript 发现，可重复传多个）。脚本会自检"词表条数 == segment 数"，对不上
+直接报错退出（不悄悄错位对应）——**数量对上了也不代表完全没问题**，`transcribe.
+py` 分块转写偶尔会把两个词的音频粘连成一个 segment（表现是这个 segment 的
+时长明显长于同类词条），这种情况总数可能刚好还是对的，只是从这个位置起内容
+错位，见"常见坑"，跑完建议打印一份"词表 vs segment 文本"的逐位置对照表人工
+过一遍，尤其留意时长异常的条目。
+
+**跑完之后无论如何都要再跑一遍 `validate_boundaries.py`**（哪怕跳过了 `refine_
+boundaries.py`）：
+
+```bash
+python tools/listening/validate_boundaries.py enriched_vocab.json enriched_vocab_final.json
+```
+
+——`transcribe.py` 分块转写在块边界上偶尔会切出时间戳相邻重叠的 segment，
+生词表直接照搬这些粗时间戳的话，重叠部分会让前一个词的音频尾巴多播出后一个
+词的开头（真实案例踩过5次），`validate_boundaries.py` 的重叠裁剪不依赖
+`refine_boundaries.py` 有没有跑过，跑这一步零成本，务必不要省。
 
 ### 5. 多段音频怎么合成一个页面
 
 `build_page.py` 只接受**一个** `audio_path` 参数（`cut_segments()` 对着这一个
-文件用 `ffmpeg -ss/-t` 切每句），但教材天然是每个部分一份独立音频。做法：**先
-把几段音频顺序拼接成一个文件**（用 ffmpeg 的 `concat` filter，不是 `concat`
-demuxer——后者要求几个文件编码参数完全一致，比较脆弱，filter 版本更稳）：
+文件用 `ffmpeg -ss/-t` 切每句），但教材天然是每个部分一份独立音频。这一步不用
+现写脚本，用共享工具 `tools/listening/merge_sections.py`——一条命令同时做完
+"拼接音频"+"按偏移量平移各段时间戳"+"合并成一份 enriched.json"：
 
 ```bash
-ffmpeg -i 会话.m4a -i 课文.m4a -i 单词.m4a \
-  -filter_complex "[0:a][1:a][2:a]concat=n=3:v=0:a=1[out]" -map "[out]" -b:a 128k \
-  combined.m4a
+python tools/listening/merge_sections.py combined.m4a enriched_combined.json \
+  --section 会话.m4a enriched_dialogue_final.json \
+  --section 课文.m4a enriched_text_final.json \
+  --section 单词.m4a enriched_vocab_final.json
 ```
 
-拼接顺序要跟最终 tab 顺序一致。然后**把每段各自跑完 `refine_boundaries.py`/
-`validate_boundaries.py` 产出的 `enriched_final.json`（这些文件里的时间戳都是
-各自原始音频的本地坐标系，从0开始）按各自在 `combined.m4a` 里的偏移量整体平移**
-（`start`/`end`/`char_times` 都要加上偏移量，偏移量＝前面几段音频的时长总和，
-用 `ffmpeg -i <文件> 2>&1 | grep Duration` 量出来），平移完合并成一份
-`enriched_combined.json`、重新分配连续 `id`，喂给 `build_page.py` 的 `<原始音频>`
-参数就传 `combined.m4a`。
+`--section` 按最终 tab 顺序传，每个都是"这一段的原始音频 + 这一段的
+`enriched_final.json`"，可以传任意多段。拼接用的是 ffmpeg 的 `concat` filter
+（不是 `concat` demuxer——后者要求几个文件编码参数完全一致，比较脆弱，filter
+版本更稳）。
 
-**关键原则：`refine_boundaries.py` 必须对着每段各自的原始音频单独跑，不能对拼接
-后的 `combined.m4a` 跑**——那个脚本内部会对着传入的音频文件重新截取一段做
-word-level 转写，如果传的是拼接文件、时间戳却是本地坐标系（没先平移），会截到
-完全无关的音频位置；反过来如果先平移了时间戳再传拼接文件去跑 `refine_
-boundaries.py`，则该脚本本身没有"平移量"的概念，同样会出问题。正确顺序是「各自
-原始音频 + 本地时间戳」→跑完精修→平移→合并→拼接音频只在最后 `build_page.py`
-这一步登场。
+**关键原则：传给 `--section` 的每个 `enriched_final.json` 必须是对着它自己
+那段原始音频（不是合并后的 `combined.m4a`）跑完 `refine_boundaries.py` 算出来
+的**——那个脚本内部会对着传入的音频文件重新截取一段做 word-level 转写，如果
+传的是拼接文件、时间戳却是本段自己的本地坐标系（没先平移），会截到完全无关
+的音频位置；反过来如果先平移了时间戳再传拼接文件去跑 `refine_boundaries.py`，
+则该脚本本身没有"平移量"的概念，同样会出问题。正确顺序是「各自原始音频 + 本地
+时间戳」→各自跑完精修→`merge_sections.py` 一步到位完成拼接+平移+合并。
 
 ### 6. 生成页面
 
@@ -290,6 +309,26 @@ python tools/listening/build_page.py combined.m4a enriched_combined.json docs/pr
   才对上）。发现确实漏了词之后，找截图来源（用户/教材）确认这个词的读音和
   释义，插入到正确位置，把原来那一个粘连 segment 按真实词级转写重新切开
   （而不是简单假设"数量对得上就没问题"）。
+  **补录：插入漏掉的词之后，第一次修复仍然不够——用小窗口（9秒）重新转写
+  时只捕捉到了"お、ご"两个字就结束，把"お/ご〜申し上げる"的 end 定在了
+  82.0，实际这个词一直说到 86秒才真正结束（"もうしあげる"本身就读了将近
+  4秒）。窗口切得太小、师傅刚好在窗口边缘截断了后半个词，得到的仍然是错误
+  边界——这个错误边界又连锁导致后面"札幌/片道/光/合図する/算数/解く/表示/
+  ローマ字/満足"一串词的时间槽全部错位，用户听录音又发现了一次（"这个单词
+  被分成了三段…导致后续单词和音频全部错位"）。**教训：核实一个可疑边界时，
+  转写窗口要留够余量，宁可切宽一点（比如20~40秒）也不要卡着"预期这个词
+  应该在哪结束"来切，卡太紧本身就会把真实边界切在窗口外，产出的仍然是
+  错误数据，而且这次的错误看起来"已经修过了"，更容易被当成解决了**。同一
+  次深挖里，还顺带发现"お世話になります"（另一个原始重叠 segment 的"第二
+  个词"，之前只做过 `validate_boundaries.py` 的重叠裁剪、没有单独做过
+  word-level 核实）也有类似但没那么严重的偏差（真实只有2.88秒，不是6秒），
+  同样用词级转写核实修复了。**这次的经验是：原始5对重叠 segment 里"第二个
+  词"都属于同一类风险最高的位置（重叠说明 Whisper 在那附近的分块转写本来
+  就不可靠），仅凭一次"数量对上了""时长看起来还算合理"的检查不足以确认
+  它们真的正确，值得针对这几个位置都单独做一次 word-level 核实**——精确到
+  "生词表里每一条都要单独核实"目前没有做到，这是已知的覆盖局限，后续如果
+  再发现类似问题，同样按这个思路（宽窗口 word-level 转写 + 找自然停顿）
+  排查。
 - **中文旁白/场景说明不能当成 `.seg-card`**——默写/填空模式的实现假设了"每个
   `.seg-card` 一定有 `.seg-ja`"，硬塞一个没有日语原文的卡片会在这两个模式下
   表现异常（默写模式会要求用户"听写"一句空白/占位文本）。
