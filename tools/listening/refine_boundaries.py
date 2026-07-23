@@ -50,12 +50,22 @@
     做匹配，边界该在哪就在哪；如果原来的边界本来就准，对齐结果会落在同一位置，
     不会凭空引入新偏移——所以可以放心地把它用到全部句子上，而不只是可疑片段。
 """
+import os
 import sys
 import json
 import difflib
 import subprocess
+import tempfile
 import imageio_ffmpeg
 from faster_whisper import WhisperModel
+
+# Windows 控制台默认用 cp932/gbk 之类的窄编码，print 里带简体中文（比如
+# mondai/question 标签用中文而不是日文假名/汉字时，cp932 里没有对应字形）会直接
+# UnicodeEncodeError 崩溃，哪怕对齐/写盘本身已经成功。跟 transcribe.py 一样强制
+# stdout/stderr 用 UTF-8，编不了的字符替换掉而不是抛异常。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 MIN_ALIGNMENT_COVERAGE = 0.45  # 匹配上的字符比例低于这个就认为对齐不可信，回退
@@ -238,7 +248,10 @@ def main():
           f"all of them get char-level timing for word-highlight playback")
 
     model = WhisperModel("medium", device="cpu", compute_type="int8")
-    clip_path = "refine_clip_tmp.wav"
+    # 用系统临时目录而不是相对路径——之前写死在当前工作目录下，脚本经常是从
+    # 仓库根目录调用的，产出的 refine_clip_tmp.wav 会遗留在仓库根目录里污染
+    # git status（多个真实案例里出现过，一直靠事后手动删）。跑完整个函数后清理掉。
+    clip_path = os.path.join(tempfile.gettempdir(), "refine_clip_tmp.wav")
 
     fixed, fallback_count, timed, timed_fallback = 0, 0, 0, 0
     for (mondai, question), members in groups.items():
@@ -317,6 +330,8 @@ def main():
     print(f"Refined {fixed} sentence boundaries ({fallback_count} questions used proportional fallback), "
           f"left {len(sentences) - fixed} untouched; computed word-highlight timing for {timed} sentences "
           f"({timed_fallback} questions used linear-interpolation fallback), wrote {out_enriched_path}")
+    if os.path.exists(clip_path):
+        os.remove(clip_path)
 
 
 if __name__ == "__main__":

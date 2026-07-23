@@ -22,6 +22,12 @@ import sys
 import json
 import argparse
 
+# 同 refine_boundaries.py：Windows 控制台 cp932 编不了简体中文（比如 mondai/
+# question 标签用中文时），print 会直接崩溃，强制 stdout/stderr 用 UTF-8。
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 
 def main():
     ap = argparse.ArgumentParser()
