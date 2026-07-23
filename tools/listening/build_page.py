@@ -111,15 +111,38 @@ def ruby_html(text, char_times=None):
     return '<br>'.join(out_lines)
 
 
+def _probe_duration(path):
+    """已存在文件的实际时长（秒），探测失败（文件损坏/不是有效音频）返回 None。"""
+    probe = subprocess.run(
+        [FFMPEG, "-i", path], capture_output=True, text=True, encoding="utf-8", errors="replace"
+    )
+    lines = [l for l in probe.stderr.splitlines() if "Duration" in l]
+    if not lines:
+        return None
+    hms = lines[0].split("Duration:")[1].split(",")[0].strip()
+    h, m, s = hms.split(":")
+    return int(h) * 3600 + int(m) * 60 + float(s)
+
+
 def cut_segments(audio_path, sentences, out_audio_dir):
+    """跳过重切的判断不能只看"文件存在"——改时间戳（修边界/重新排序）之后重新跑
+    这个函数时，已经切过的旧文件会原样保留、不会跟着刷新，页面看起来"文字/翻译
+    是新的，音频却还是旧的"（真实踩过的坑：改完 enriched.json 里的边界，忘了这一
+    出，实际听到的还是修复前的音频，且这个问题不会在任何 HTML 层面的检查里
+    暴露出来，只有实际播放或者比对音频时长才能发现）。现在改成：文件存在时探测
+    它的实际时长，跟这句现在期望的时长（end-start）对不上才重切，对得上（在
+    容差范围内）才真正跳过。
+    """
     os.makedirs(out_audio_dir, exist_ok=True)
     for s in sentences:
         out_file = os.path.join(out_audio_dir, f"seg-{s['id']:03d}.mp3")
+        expected_dur = s["end"] - s["start"]
         if os.path.exists(out_file):
-            continue
-        dur = s["end"] - s["start"]
+            actual_dur = _probe_duration(out_file)
+            if actual_dur is not None and abs(actual_dur - expected_dur) < 0.15:
+                continue
         subprocess.run(
-            [FFMPEG, "-y", "-ss", str(s["start"]), "-t", str(dur), "-i", audio_path,
+            [FFMPEG, "-y", "-ss", str(s["start"]), "-t", str(expected_dur), "-i", audio_path,
              "-ar", "44100", "-ac", "1", "-b:a", "96k", out_file],
             capture_output=True
         )

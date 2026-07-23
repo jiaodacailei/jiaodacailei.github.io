@@ -158,7 +158,13 @@ python tools/listening/validate_boundaries.py enriched_refined.json enriched_fin
 （去掉幻觉 segment 后按顺序一一对应），`char_times` 留 `null`（单词没有逐字符
 跟读高亮，`ruby_html()` 退化成纯 furigana 展示，不影响使用）。`mondai` 统一填
 "生词"，`question` 可以按教材自己的分组（比如"生词表1"/"生词表2"……）—照抄源
-材料自己的分组标签，不用发明新的。
+材料自己的分组标签，不用发明新的。**但组装完 `enriched.json` 之后，仍然要跑
+一遍 `validate_boundaries.py`**（`python validate_boundaries.py enriched_vocab.json
+enriched_vocab_final.json`）——`transcribe.py` 分块转写在块边界上偶尔会切出
+时间戳相邻重叠的 segment，生词表直接照搬这些粗时间戳的话，重叠部分会让前一个
+词的音频尾巴多播出后一个词的开头（真实案例踩过5次，见"常见坑"），`validate_
+boundaries.py` 的重叠裁剪不依赖 `refine_boundaries.py` 有没有跑过，跑这一步
+零成本，务必不要省。
 
 ### 5. 多段音频怎么合成一个页面
 
@@ -268,11 +274,26 @@ python tools/listening/build_page.py combined.m4a enriched_combined.json docs/pr
 - **中文旁白/场景说明不能当成 `.seg-card`**——默写/填空模式的实现假设了"每个
   `.seg-card` 一定有 `.seg-ja`"，硬塞一个没有日语原文的卡片会在这两个模式下
   表现异常（默写模式会要求用户"听写"一句空白/占位文本）。
-- **生词条目不需要 `refine_boundaries.py`**——单词粒度的逐字符跟读高亮价值
-  很低（一个词通常只有一两个音节，高亮意义不大），而 `refine_boundaries.py`
-  对每个 question 分组要重新跑一次 word-level 转写，几十上百个单词逐一处理
-  会明显拖慢流程；直接用 Whisper 粗转写的 segment 时间戳（去掉幻觉 segment
-  后按顺序一一对应）就够用。
+- **生词条目不需要 `refine_boundaries.py`，但仍然要跑 `validate_boundaries.py`
+  ——这是两件不同的事，漏了后者会真的做出有问题的音频**。单词粒度的逐字符
+  跟读高亮价值很低（一个词通常只有一两个音节，高亮意义不大），而 `refine_
+  boundaries.py` 对每个 question 分组要重新跑一次 word-level 转写，几十上百
+  个单词逐一处理会明显拖慢流程，所以直接用 Whisper 粗转写的 segment 时间戳
+  （去掉幻觉 segment 后按顺序一一对应）就够用——**这部分判断没错**。但真实
+  案例（textbook-sjp-zg-l10，用户实际听出来的问题）：`transcribe.py` 按固定
+  时长分块转写，相邻两块之间有重叠，个别词恰好卡在块边界上时，会被相邻两块
+  各自转写出一个 segment、时间戳互相重叠（比如"壷"[74.0,77.0] 和紧接着的
+  "お/ご〜申し上げる"[75.0,82.0] 重叠了2秒）——生词表直接用这些粗 segment
+  时间戳，从没跑过 `validate_boundaries.py` 的"相邻句重叠就前向裁剪"这一步
+  （这一步不依赖 `refine_boundaries.py` 有没有跑过，只要有 `start`/`end`/
+  `mondai` 字段就能跑），重叠部分让"壷"的音频尾巴多播了"お"的开头一截，
+  "お/ご〜申し上げる"的音频开头也带了"壷"的尾音——真实案例里5个词条都踩了
+  这个坑（`python validate_boundaries.py enriched_vocab.json enriched_vocab_
+  fixed.json` 一条命令就修好了全部5处，`build_vocab_enriched.py` 里少跑了
+  这一步是纯粹的疏忽）。**跳过 `refine_boundaries.py` 不等于可以跳过
+  `validate_boundaries.py`，生词表的 `enriched.json` 组装完之后一定要过一遍
+  `validate_boundaries.py`（哪怕跳过它自己就有的对齐/语速/句尾跳变那几项
+  高级检查用不上，光是"重叠裁剪"这一步就值得跑）**。
 - **多段音频不能直接把 `enriched.json` 时间戳按比例硬凑**——见上面第5步，
   必须先在各自本地坐标系里跑完 `refine_boundaries.py`，再统一平移合并，
   顺序不能反。
