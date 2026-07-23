@@ -451,7 +451,6 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v1
       ui.classList.remove("state-locked", "state-active", "state-done");
       ui.classList.add("state-" + s);
       input.disabled = (s !== "active");
-      if (s === "active") setTimeout(function() { input.focus(); }, 0);
     }
     card._dictate.setState = setState;
     setState("locked");
@@ -483,9 +482,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v1
     if (!block) return;
     var cards = Array.from(block.querySelectorAll(".seg-card")).filter(function(c) { return c._dictate; });
     var i = cards.indexOf(card);
+    // 只在原地解锁下一句，不自动聚焦/自动滚动——之前 focus()+scrollIntoView 会把视口
+    // 拉到下一句，如果下一句的"確認/答えを見る"按钮刚好滚到跟当前点击位置同一个坐标，
+    // 用户紧接着的第二次点击（哪怕只是手抖多点一下）就会误触下一句，连锁着把好几句
+    // 都当场看了答案。留在原地，用户自己决定什么时候滚下去、点进下一句的输入框。
     if (i >= 0 && i + 1 < cards.length) {
       cards[i + 1]._dictate.setState("active");
-      cards[i + 1].scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
