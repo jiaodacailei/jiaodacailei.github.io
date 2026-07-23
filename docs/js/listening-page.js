@@ -574,3 +574,186 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v1
     card.classList.add("has-blank");
   });
 })();
+
+// ── 单词测试 tab：填空题／听音频写假名／中文写假名／日文写中文，四类题目每次
+//    都全做一遍（不抽样），错题次数记本地存储，下次优先做之前错过的 ──
+// 数据来自 build_vocab_quiz_data.py 生成、build_page.py 内嵌的 <script
+// id="vocab-quiz-data">；没有这个 tab 的页面（没传 --quiz-json 生成的）这段
+// 直接整体跳过，不影响任何现有听力页。
+(function() {
+  var dataEl = document.getElementById("vocab-quiz-data");
+  if (!dataEl) return;
+  var words = JSON.parse(dataEl.textContent);
+
+  var ERROR_KEY = "n2listen-quiz-errors:" + location.pathname;
+  var errors = {};
+  try { errors = JSON.parse(localStorage.getItem(ERROR_KEY) || "{}"); } catch (e) { errors = {}; }
+
+  function errKey(wordId, type) { return wordId + ":" + type; }
+  function getErr(k) { return errors[k] || 0; }
+  function bumpErr(k) {
+    errors[k] = getErr(k) + 1;
+    localStorage.setItem(ERROR_KEY, JSON.stringify(errors));
+  }
+
+  var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh"];
+  var TYPE_LABELS = {
+    blank: "填空题", audio2kana: "听音频写假名",
+    zh2kana: "根据中文写假名", ja2zh: "根据单词写中文意思"
+  };
+  var KANJI_RE = /[一-鿿]/;
+  // 词性标签（"[名]"「[动3]」之类）是词典抄来的，不算释义内容，判分前先去掉，
+  // 不然用户如果照抄了词性标签会误判、如果没抄也不该因为"少打了标签"算错。
+  var POS_RE = /^\s*[「『\[［【]{1}[^\]」』］】]*[\]」』］】]\s*/;
+
+  function audioSrcFor(word) {
+    var id = String(word.id);
+    while (id.length < 3) id = "0" + id;
+    return "audio/seg-" + id + ".mp3";
+  }
+
+  // 队列：每个词 × 4 种题型，全量不抽样；按"这道题之前错过几次"降序排列，之前
+  // 错得越多排越前，同错误次数的保持原有顺序（Array#sort 是稳定排序）
+  var queue = [];
+  words.forEach(function(w) {
+    TYPES.forEach(function(t) { queue.push({ word: w, type: t }); });
+  });
+  queue.sort(function(a, b) {
+    return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type));
+  });
+
+  var qi = 0;
+  var resolved = false;      // 这道题是否已经判完（正确或已看答案），控制按钮显隐
+  var countedWrong = false;  // 这道题这一轮是否已经计过一次错，避免反复提交同一道题重复累加
+
+  var quizProgress = document.getElementById("quizProgress");
+  var quizCard = document.getElementById("quizCard");
+  var quizDone = document.getElementById("quizDone");
+  var quizTypeLabel = document.getElementById("quizTypeLabel");
+  var quizPrompt = document.getElementById("quizPrompt");
+  var quizPlayBtn = document.getElementById("quizPlayBtn");
+  var quizInput = document.getElementById("quizInput");
+  var quizCheck = document.getElementById("quizCheck");
+  var quizReveal = document.getElementById("quizReveal");
+  var quizNext = document.getElementById("quizNext");
+  var quizStatus = document.getElementById("quizStatus");
+  var quizResetErrors = document.getElementById("quizResetErrors");
+  var quizAudio = new Audio();
+
+  [quizInput, quizCheck, quizReveal, quizNext, quizPlayBtn, quizResetErrors].forEach(function(el) {
+    el.addEventListener("click", function(e) { e.stopPropagation(); });
+  });
+
+  function answerFor(q) {
+    if (q.type === "blank") return q.word.blank;
+    if (q.type === "audio2kana" || q.type === "zh2kana") return q.word.kana;
+    return null; // ja2zh 是多选一匹配，见 checkJa2Zh
+  }
+
+  function zhSegments(zh) {
+    return zh.replace(POS_RE, "").split(/[,，、;；]/).map(function(s) { return s.trim(); }).filter(Boolean);
+  }
+
+  function checkAnswer(q, raw) {
+    var v = raw.trim();
+    if (q.type === "ja2zh") return zhSegments(q.word.zh).indexOf(v) !== -1;
+    return v === answerFor(q);
+  }
+
+  function render() {
+    if (qi >= queue.length) {
+      quizCard.style.display = "none";
+      quizDone.style.display = "block";
+      quizProgress.textContent = queue.length + " / " + queue.length;
+      return;
+    }
+    quizCard.style.display = "";
+    quizDone.style.display = "none";
+    quizProgress.textContent = (qi + 1) + " / " + queue.length;
+
+    var q = queue[qi];
+    resolved = false;
+    countedWrong = false;
+    quizTypeLabel.textContent = TYPE_LABELS[q.type];
+    quizInput.value = "";
+    quizInput.disabled = false;
+    quizStatus.textContent = "";
+    quizStatus.className = "quiz-status";
+    quizCheck.style.display = "";
+    quizReveal.style.display = "";
+    quizNext.style.display = "none";
+    quizPlayBtn.style.display = "none";
+
+    if (q.type === "blank") {
+      var idx = q.word.sentence.indexOf(q.word.blank);
+      var blanked = idx === -1 ? q.word.sentence
+        : q.word.sentence.slice(0, idx) + "____" + q.word.sentence.slice(idx + q.word.blank.length);
+      quizPrompt.innerHTML = '<div class="quiz-ja">' + blanked + '</div>' +
+        '<div class="quiz-zh-hint">' + q.word.sentence_zh + '</div>';
+    } else if (q.type === "audio2kana") {
+      quizPrompt.innerHTML = '<div class="quiz-hint-text">听发音，写出假名</div>';
+      quizPlayBtn.style.display = "";
+      quizAudio.src = audioSrcFor(q.word);
+    } else if (q.type === "zh2kana") {
+      quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + q.word.zh + '</div>';
+    } else {
+      var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
+        ? q.word.text + "（" + q.word.kana + "）" : q.word.text;
+      quizPrompt.innerHTML = '<div class="quiz-ja-prompt">' + shown + '</div>';
+    }
+    quizInput.focus();
+  }
+
+  function markResolved(correct, revealedAnswer) {
+    resolved = true;
+    quizInput.disabled = true;
+    quizCheck.style.display = "none";
+    quizReveal.style.display = "none";
+    quizNext.style.display = "";
+    if (correct) {
+      quizStatus.textContent = "✓ 正解！";
+      quizStatus.className = "quiz-status ok";
+    } else {
+      quizStatus.textContent = "👁 答案：" + revealedAnswer;
+      quizStatus.className = "quiz-status rev";
+    }
+  }
+
+  function doCheck() {
+    if (resolved) return;
+    var q = queue[qi];
+    var ok = checkAnswer(q, quizInput.value);
+    if (ok) {
+      markResolved(true, null);
+    } else {
+      if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; }
+      quizStatus.textContent = "✗ 不对，再检查一下";
+      quizStatus.className = "quiz-status ng";
+    }
+  }
+
+  function doReveal() {
+    if (resolved) return;
+    var q = queue[qi];
+    if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; }
+    var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
+    markResolved(false, ans);
+  }
+
+  quizCheck.addEventListener("click", doCheck);
+  quizReveal.addEventListener("click", doReveal);
+  quizInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") { e.preventDefault(); doCheck(); }
+  });
+  quizNext.addEventListener("click", function() { qi++; render(); });
+  quizPlayBtn.addEventListener("click", function() { quizAudio.currentTime = 0; quizAudio.play(); });
+  quizResetErrors.addEventListener("click", function() {
+    errors = {};
+    localStorage.setItem(ERROR_KEY, JSON.stringify(errors));
+    queue.sort(function(a, b) { return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type)); });
+    qi = 0;
+    render();
+  });
+
+  render();
+})();

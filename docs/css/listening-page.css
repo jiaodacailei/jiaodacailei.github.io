@@ -327,6 +327,57 @@ body.mode-blank .seg-card.has-blank.blank-revealed .seg-notes { display: block; 
 .blank-input.ok { border-color: #16a34a; background: #f0fdf4; }
 .blank-input.ng { border-color: #dc2626; background: #fef2f2; }
 
+/* ── 単語テスト tab：填空/听音频写假名/中文写假名/日文写中文，单卡片互动出题 ── */
+.quiz-app { max-width: 520px; margin: 0 auto; }
+.quiz-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.quiz-progress { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+.quiz-reset-btn {
+  border: 1px solid var(--border); background: var(--bg-soft); color: var(--text-muted);
+  border-radius: 999px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: all .15s;
+}
+.quiz-reset-btn:hover { background: #fef2f2; border-color: #fecaca; color: #dc2626; }
+.quiz-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px 20px; box-shadow: var(--shadow-xs);
+}
+.quiz-type-label {
+  display: inline-block; font-size: 11px; font-weight: 700; color: var(--blue-dark);
+  background: var(--blue-xlight); border-radius: 999px; padding: 3px 10px; margin-bottom: 14px;
+}
+.quiz-prompt { min-height: 60px; margin-bottom: 14px; }
+.quiz-ja { font-size: 18px; line-height: 1.8; }
+.quiz-zh-hint { color: var(--text-muted); font-size: 13px; font-style: italic; margin-top: 8px; }
+.quiz-zh-prompt { font-size: 17px; line-height: 1.7; }
+.quiz-ja-prompt { font-size: 22px; font-weight: 700; }
+.quiz-hint-text { color: var(--text-muted); font-size: 14px; }
+.quiz-play-btn {
+  border: 1px solid var(--blue-light); background: var(--blue-xlight); color: var(--blue-dark);
+  border-radius: 999px; padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+  margin-bottom: 14px;
+}
+.quiz-play-btn:hover { background: var(--blue-light); }
+.quiz-input-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.quiz-input {
+  flex: 1; min-width: 160px; padding: 9px 12px; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 15px; font-family: inherit;
+}
+.quiz-input:disabled { background: var(--bg-soft); color: var(--text-muted); }
+.quiz-btn {
+  border: 1px solid var(--border); background: var(--bg-soft); color: var(--text);
+  border-radius: 8px; padding: 8px 14px; font-size: 13px; cursor: pointer; white-space: nowrap;
+}
+.quiz-btn:hover { background: var(--blue-xlight); border-color: var(--blue-light); }
+.quiz-next { background: var(--blue); border-color: var(--blue); color: #fff; }
+.quiz-next:hover { background: var(--blue-dark); }
+.quiz-status { font-size: 13px; font-weight: 700; margin-top: 12px; min-height: 18px; }
+.quiz-status.ok { color: #16a34a; }
+.quiz-status.ng { color: #dc2626; }
+.quiz-status.rev { color: #b45309; }
+.quiz-done {
+  text-align: center; font-size: 18px; font-weight: 700; color: var(--text);
+  padding: 60px 20px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+}
+
 #gate {
   position: fixed; inset: 0; background: var(--navy); display: flex;
   align-items: center; justify-content: center; z-index: 999; flex-direction: column;

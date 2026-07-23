@@ -196,6 +196,44 @@ def mondai_section_html(mondai_idx, mondai_label, question_blocks_html, active):
     </section>'''
 
 
+# "单词测试" tab 是运行时纯前端生成的互动题（填空/听音频写假名/中文写假名/日文写
+# 中文），不是像其它大题那样预先渲染好一堆 .seg-card——这里只需要一个空容器 + 一份
+# 内嵌 JSON 数据（build_vocab_quiz_data.py 生成），listening-page.js 里的 quiz 引擎
+# 找到这个 <script> 标签就会接管渲染，找不到（没传 --quiz-json 的普通听力页）就是
+# 纯静态无操作，不影响任何现有页面。
+# 用跟其它大题一样的 data-scope="mondai" + 一份（空的）side-nav-list/snm-nums-list，
+# 是为了让 tab 切换那段共享 JS（按下标并行 toggle 这三类 NodeList）不用改一行就能
+# 正确处理"多出来一个 tab"的情况，不用专门为这个 tab 加分支逻辑。
+def quiz_section_html(mondai_idx, quiz_json_data, active):
+    scope_id = f"m-{mondai_idx}"
+    cls = "mondai-section tab-active" if active else "mondai-section"
+    quiz_json = json.dumps(quiz_json_data, ensure_ascii=False)
+    return f'''
+    <section class="{cls}" id="{scope_id}" data-scope="mondai">
+      <h2>単語テスト</h2>
+      <div class="quiz-app" id="quizApp">
+        <div class="quiz-toolbar">
+          <div class="quiz-progress" id="quizProgress">0 / 0</div>
+          <button type="button" class="quiz-reset-btn" id="quizResetErrors">错题记录清零</button>
+        </div>
+        <div class="quiz-card" id="quizCard">
+          <div class="quiz-type-label" id="quizTypeLabel"></div>
+          <div class="quiz-prompt" id="quizPrompt"></div>
+          <button type="button" class="quiz-play-btn" id="quizPlayBtn" style="display:none">▶ 播放发音</button>
+          <div class="quiz-input-row">
+            <input type="text" class="quiz-input" id="quizInput" autocomplete="off" placeholder="在此输入…">
+            <button type="button" class="quiz-btn quiz-check" id="quizCheck">確認</button>
+            <button type="button" class="quiz-btn quiz-reveal" id="quizReveal">答えを見る</button>
+            <button type="button" class="quiz-btn quiz-next" id="quizNext" style="display:none">次へ</button>
+          </div>
+          <div class="quiz-status" id="quizStatus"></div>
+        </div>
+        <div class="quiz-done" id="quizDone" style="display:none">🎉 本轮全部完成！</div>
+      </div>
+      <script type="application/json" id="vocab-quiz-data">{quiz_json}</script>
+    </section>'''
+
+
 def side_nav_list_html(mondai_idx, question_labels, active):
     """桌面 .toc 侧栏 / 手机 .toc-float-panel 都用这份列表（结构与 toc.js 生成的一致）。"""
     cls = "side-nav-list tab-active" if active else "side-nav-list"
@@ -344,7 +382,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 '''
 
 
-def build_sections_html(sentences, questions, audio_rel):
+def build_sections_html(sentences, questions, audio_rel, quiz_data=None):
     # group sentences by (mondai, question) preserving first-seen order
     by_mondai = []
     mondai_index = {}
@@ -382,9 +420,17 @@ def build_sections_html(sentences, questions, audio_rel):
         nav_lists.append(side_nav_list_html(mi, q_labels, is_first))
         nav_nums_mobile.append(mobile_nums_list_html(mi, q_labels, is_first))
 
+    tab_labels = [mrec["mondai"] for mrec in by_mondai]
+    if quiz_data is not None:
+        quiz_idx = len(by_mondai) + 1
+        sections.append(quiz_section_html(quiz_idx, quiz_data, False))
+        nav_lists.append(side_nav_list_html(quiz_idx, [], False))
+        nav_nums_mobile.append(mobile_nums_list_html(quiz_idx, [], False))
+        tab_labels.append("単語テスト")
+
     tab_buttons = "\n".join(
-        f'<button class="tab-btn{" active" if mi == 1 else ""}" data-mondai-idx="{mi}">{html.escape(mrec["mondai"])}</button>'
-        for mi, mrec in enumerate(by_mondai, 1)
+        f'<button class="tab-btn{" active" if i == 1 else ""}" data-mondai-idx="{i}">{html.escape(label)}</button>'
+        for i, label in enumerate(tab_labels, 1)
     )
     return (
         "\n".join(sections), tab_buttons,
@@ -402,6 +448,9 @@ def main():
     ap.add_argument("--password", help="设置新密码（跟 --password-hash 二选一）")
     ap.add_argument("--password-hash", help="复用已有页面的密码哈希（跟 --password 二选一），"
                      "适合改完边界/文案重新生成页面但密码不用变的场景——不用把明文密码再传一遍")
+    ap.add_argument("--quiz-json", help="build_vocab_quiz_data.py 的输出，传了就多生成一个"
+                     "「単語テスト」tab（互动出题，不是 seg-card 列表），不传就是普通听力页，"
+                     "跟以前完全一样")
     args = ap.parse_args()
     if not args.password and not args.password_hash:
         ap.error("must provide --password or --password-hash")
@@ -417,8 +466,13 @@ def main():
     audio_out_dir = os.path.join(args.out_dir, "audio")
     cut_segments(args.audio, sentences, audio_out_dir)
 
+    quiz_data = None
+    if args.quiz_json:
+        with open(args.quiz_json, encoding="utf-8") as f:
+            quiz_data = json.load(f)
+
     sections, tab_buttons, side_nav_lists, side_nav_lists_mobile, mobile_nums_lists = \
-        build_sections_html(sentences, questions, "audio/")
+        build_sections_html(sentences, questions, "audio/", quiz_data)
     pwd_hash = args.password_hash or hashlib.sha256(args.password.encode("utf-8")).hexdigest()
 
     page = PAGE_TEMPLATE.format(
