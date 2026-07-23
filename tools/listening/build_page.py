@@ -42,6 +42,30 @@ def _is_kanji(ch):
     return '一' <= ch <= '鿿'
 
 
+# pykakasi 是按单字/常见复合词猜读音的，罕见组合容易读错，已经踩过两类坑：
+# 1) 单字在孤立语境下的默认读音，放进特定复合词里其实要变——"表"单独最常见的
+#    读音是おもて（"正面"），但在"スケジュール表"（日程表）这个复合词里应该读
+#    ひょう；这类只在"上一个 token 是特定词"时才生效，不能无条件覆盖每一个
+#    "表"字（其它页面/其它上下文里独立出现的"表"多半确实该读おもて）。
+# 2) 纯粹的库内部转换 bug，不管上下文都会错——"入っ"（"入る"促音变前的词干，
+#    后面接 て/たり/た）pykakasi 会输出无效假名"いっっ"（多出一个っ），这个
+#    token 只可能来自五段动词"入る"，不存在"入っ"读别的音的情况，可以无条件覆盖。
+# 两种覆盖都只改 `hira`（显示的读音文本），不改 `orig`，字符长度对
+# char_times 下标的计算完全没有影响，不会连带影响跟读高亮的时间戳对齐。
+_TOKEN_READING_OVERRIDES_BY_PREV = {
+    ("スケジュール", "表"): "ひょう",
+    # "その日"（那天，独立指某一天）该读ひ，pykakasi 默认给孤立的"日"字读にち
+    # （日期计数用法，比如"1日"=いちにち这种搭配才对）。
+    ("その", "日"): "ひ",
+    # "20日"是日期特殊读法はつか（不是にじゅうにち），只在"20"后面才触发，不影响
+    # "1日"(いちにち)/"3日"(みっか，还没遇到但同理不受影响)这些其它数字+日的组合。
+    ("20", "日"): "はつか",
+}
+_TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
+    "入っ": "はいっ",
+}
+
+
 def ruby_html(text, char_times=None):
     """假名注音渲染。有 char_times（refine_boundaries.py 用词级时间戳文本对齐算出来
     的、这句里每个字符对应的绝对播放时间）时，额外给每个分词包一层
@@ -56,9 +80,15 @@ def ruby_html(text, char_times=None):
     for li, line in enumerate(lines):
         tokens = _kks.convert(line)
         parts = []
+        prev_orig = None
         for t in tokens:
             orig = t['orig']
             hira = t['hira']
+            if orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
+                hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
+            elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
+                hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
+            prev_orig = orig
             tok_len = len(orig)
             t_time = None
             if char_times is not None and char_idx < len(char_times):
