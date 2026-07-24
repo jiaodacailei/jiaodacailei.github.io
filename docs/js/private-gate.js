@@ -30,6 +30,13 @@
   }
   if (sessionStorage.getItem(STORAGE_KEY) === "1") {
     afterUnlock();
+  } else {
+    // HTML 上已经写了 autofocus，这里再用 JS 调一次 .focus() 兜底（defer 脚本
+    // 执行时机、部分浏览器对 autofocus 的处理差异等都可能让它不生效）。iOS
+    // Safari 出于防止意外弹出键盘的考虑，非用户手势触发的 focus() 大概率还是
+    // 不会拉起键盘——这是平台限制，网页代码没有绕过的办法，光标停在输入框上
+    // （聚焦态本身）依然是生效的，只是键盘不会自动弹出，用户点一下就行。
+    document.getElementById("pwdInput").focus();
   }
   document.getElementById("pwdBtn").addEventListener("click", function() {
     tryUnlock(document.getElementById("pwdInput").value);
