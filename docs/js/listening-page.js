@@ -80,6 +80,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v1
   }
 
   function updateMiniPlayer() {
+    // 悬浮设置按钮平时贴底显示，播放中迷你播放器出现时才需要让位上移，
+    // 靠这个 body class（不是 miniPlayer 自己的 .active，那个只在悬浮播放器
+    // 元素上，CSS 兄弟选择器够不到它前面的 .settings-toggle）驱动 CSS 联动。
+    document.body.classList.toggle("mini-player-open", player.active);
     if (!player.active) {
       miniPlayer.classList.remove("active");
       return;

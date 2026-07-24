@@ -207,21 +207,31 @@ body.lang-zh-only .seg-ja { display: none; }
 
 .post-page { padding-top: 110px; }
 
-/* ── 右下角悬浮设置：播放速度 + 显示模式 ── */
+/* ── 右下角悬浮设置：播放速度 + 显示模式 ──
+   平时贴底显示（留一点安全间距，避开 iOS 主屏幕指示条的手势区域）；播放中
+   悬浮迷你播放器出现时才让位上移，避免被挡住——上移靠 body.mini-player-open
+   这个类联动（updateMiniPlayer() 里跟着 player.active 一起切换）。 */
 .settings-toggle {
-  position: fixed; right: 24px; bottom: 80px; z-index: 260;
-  width: 48px; height: 48px; border-radius: 50%; border: none;
+  position: fixed; right: 24px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 260; width: 48px; height: 48px; border-radius: 50%; border: none;
   background: var(--blue); color: #fff; font-size: 20px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 20px rgba(37,99,235,0.35); transition: transform .15s;
+  box-shadow: 0 6px 20px rgba(37,99,235,0.35); transition: transform .15s, bottom .15s;
 }
-.settings-toggle svg { width: 22px; height: 22px; display: block; }
+/* 图标放大是直接写进不分断点的基础规则里的（不再放在手机专属的 @media 里）——
+   之前放大倍数只在 @media (max-width:480px) 里覆盖过，实测在真机 Safari 上
+   没有生效（两台 iPhone 都还是原来的小图标，原因未查清），干脆去掉这层
+   媒体查询依赖，直接从根源上保证任何屏幕宽度下都是这个尺寸，不再依赖某个
+   媒体查询条件是否被命中。 */
+.settings-toggle svg { width: 44px; height: 44px; display: block; }
 .settings-toggle:hover { transform: scale(1.06); }
+body.mini-player-open .settings-toggle { bottom: 70px; }
 .settings-panel {
-  display: none; position: fixed; right: 24px; bottom: 138px; z-index: 260;
+  display: none; position: fixed; right: 24px; bottom: 74px; z-index: 260;
   width: 216px; background: #fff; border: 1px solid var(--border); border-radius: 14px;
-  box-shadow: var(--shadow-lg); padding: 16px;
+  box-shadow: var(--shadow-lg); padding: 16px; transition: bottom .15s;
 }
+body.mini-player-open .settings-panel { bottom: 128px; }
 .settings-panel.open { display: block; }
 .settings-group { margin-bottom: 14px; }
 .settings-group:last-child { margin-bottom: 0; }
@@ -271,9 +281,6 @@ body.lang-zh-only .seg-ja { display: none; }
   .mp-btn { width: 38px; height: 38px; }
   .mp-btn svg { width: 19px; height: 19px; }
   .mp-playpause svg { width: 20px; height: 20px; }
-  .settings-toggle { bottom: 81px; }
-  .settings-toggle svg { width: 44px; height: 44px; }
-  .settings-panel { bottom: 139px; }
 }
 
 /* ── 练习模式：默写 ──
