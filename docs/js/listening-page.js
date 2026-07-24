@@ -696,8 +696,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var queue = buildQueue();
 
   var qi = 0;
-  var resolved = false;      // 这道题是否已经判完（正确或已看答案），控制按钮显隐
+  var resolved = false;      // 这道题是否已经判完（点过确认），控制按钮显隐
   var countedWrong = false;  // 这道题这一轮是否已经计过一次错，避免反复提交同一道题重复累加
+  var autoAdvanceTimer = null; // 点确认后3秒自动跳下一题的计时器，手动点"次へ"或提前进新题要清掉，避免重复推进
 
   var quizProgress = document.getElementById("quizProgress");
   var quizCard = document.getElementById("quizCard");
@@ -707,13 +708,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var quizPlayBtn = document.getElementById("quizPlayBtn");
   var quizInput = document.getElementById("quizInput");
   var quizCheck = document.getElementById("quizCheck");
-  var quizReveal = document.getElementById("quizReveal");
   var quizNext = document.getElementById("quizNext");
   var quizStatus = document.getElementById("quizStatus");
   var quizResetErrors = document.getElementById("quizResetErrors");
   var quizAudio = new Audio();
 
-  [quizInput, quizCheck, quizReveal, quizNext, quizPlayBtn, quizResetErrors].forEach(function(el) {
+  [quizInput, quizCheck, quizNext, quizPlayBtn, quizResetErrors].forEach(function(el) {
     el.addEventListener("click", function(e) { e.stopPropagation(); });
   });
 
@@ -729,7 +729,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
   function checkAnswer(q, raw) {
     var v = raw.trim();
-    if (q.type === "ja2zh") return zhSegments(q.word.zh).indexOf(v) !== -1;
+    // ja2zh（根据单词写中文意思）判分放宽成"包含"：只要某个可接受释义片段里
+    // 包含用户输入的内容就算对，不要求逐字对齐——用户可能只打了释义的一部分
+    // （比如"担心"打成"担"也算抓住了意思），严格相等对这种简答式题目太苛刻。
+    if (q.type === "ja2zh") {
+      return !!v && zhSegments(q.word.zh).some(function(seg) { return seg.indexOf(v) !== -1; });
+    }
     return v === answerFor(q);
   }
 
@@ -772,6 +777,8 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     quizDone.style.display = "none";
     quizProgress.innerHTML = progressHtml(doneCountThisRound() + qi + 1);
 
+    if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+
     var q = queue[qi];
     resolved = false;
     countedWrong = false;
@@ -781,7 +788,6 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     quizStatus.textContent = "";
     quizStatus.className = "quiz-status";
     quizCheck.style.display = "";
-    quizReveal.style.display = "";
     quizNext.style.display = "none";
     quizPlayBtn.style.display = "none";
 
@@ -805,46 +811,40 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     quizInput.focus();
   }
 
+  // 点"確認"之后不管对错都立刻定死答案（不再要求额外点"答えを見る"才能看到
+  // 正确答案）——正解也把标准答案带出来，方便用户核对自己的写法是否也算数
+  // （比如 ja2zh 现在是"包含"判分，用户可能想知道完整释义是什么）。
   function markResolved(correct, revealedAnswer) {
     resolved = true;
     quizInput.disabled = true;
     quizCheck.style.display = "none";
-    quizReveal.style.display = "none";
     quizNext.style.display = "";
     if (correct) {
-      quizStatus.textContent = "✓ 正解！";
+      quizStatus.textContent = "✓ 正解！　答案：" + revealedAnswer;
       quizStatus.className = "quiz-status ok";
     } else {
-      quizStatus.textContent = "👁 答案：" + revealedAnswer;
+      quizStatus.textContent = "✗ 答案：" + revealedAnswer;
       quizStatus.className = "quiz-status rev";
     }
+    // 3秒后自动跳下一题，手动点"次へ"会提前触发并清掉这个计时器，不会重复推进
+    autoAdvanceTimer = setTimeout(function() {
+      autoAdvanceTimer = null;
+      qi++;
+      render();
+    }, 3000);
   }
 
   function doCheck() {
     if (resolved) return;
     var q = queue[qi];
     var ok = checkAnswer(q, quizInput.value);
-    if (ok) {
-      markDone(q);
-      markResolved(true, null);
-    } else {
-      if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; refreshProgress(); }
-      quizStatus.textContent = "✗ 不对，再检查一下";
-      quizStatus.className = "quiz-status ng";
-    }
-  }
-
-  function doReveal() {
-    if (resolved) return;
-    var q = queue[qi];
-    if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; refreshProgress(); }
+    if (!ok && !countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; refreshProgress(); }
     markDone(q);
     var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
-    markResolved(false, ans);
+    markResolved(ok, ans);
   }
 
   quizCheck.addEventListener("click", doCheck);
-  quizReveal.addEventListener("click", doReveal);
   quizInput.addEventListener("keydown", function(e) {
     if (e.key === "Enter") { e.preventDefault(); doCheck(); }
   });

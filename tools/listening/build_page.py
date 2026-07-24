@@ -223,7 +223,6 @@ def quiz_section_html(mondai_idx, quiz_json_data, active):
           <div class="quiz-input-row">
             <input type="text" class="quiz-input" id="quizInput" autocomplete="off" placeholder="在此输入…">
             <button type="button" class="quiz-btn quiz-check" id="quizCheck">確認</button>
-            <button type="button" class="quiz-btn quiz-reveal" id="quizReveal">答えを見る</button>
             <button type="button" class="quiz-btn quiz-next" id="quizNext" style="display:none">次へ</button>
           </div>
           <div class="quiz-status" id="quizStatus"></div>
