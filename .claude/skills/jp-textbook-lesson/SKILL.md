@@ -220,8 +220,14 @@ python tools/listening/merge_sections.py combined.m4a enriched_combined.json \
 python tools/listening/build_page.py combined.m4a enriched_combined.json docs/private/<slug> \
   --title "标准日本语中级第N课：<课文主题>" \
   --subtitle "来源：《标准日本语》中级第N课（会话/课文/生词）。逐句配假名注音、中文翻译与语法笔记，播放时逐词跟读高亮，支持默写/填空练习，悬浮迷你播放器支持暂停/继续/循环。" \
-  --password-hash <摘的哈希>
+  --password-hash <摘的哈希> \
+  --side-nav-label ""
 ```
+
+**`--side-nav-label ""` 不能漏**——`build_page.py` 的侧栏分类标签默认是「小問」
+（继承自 JLPT/会议听力页的問題→小問结构，那边是对的），但教材课文页侧栏挂的
+是章节/生词表这类内容，不是「問題」，沿用「小問」文不对题——教材课文页固定
+传空字符串把这个标签隐藏掉，只留列表本身，不需要一个不准确的分类词。
 
 ### 6a.（可选）单词测试 tab：填空/听音频写假名/中文写假名/日文写中文
 

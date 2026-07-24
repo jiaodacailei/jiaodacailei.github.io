@@ -312,7 +312,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   </div>
 
   <nav class="toc" id="sideNav">
-    <div class="toc-label">小問</div>
+    {toc_label_html}
     {side_nav_lists}
   </nav>
 
@@ -322,7 +322,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
       {mobile_nums_lists}
     </div>
     <div class="toc-float-panel">
-      <div class="toc-float-header"><span>小問</span><button class="toc-float-close" id="snmClose">{ICON_CLOSE}</button></div>
+      <div class="toc-float-header"><span>{side_nav_label}</span><button class="toc-float-close" id="snmClose">{ICON_CLOSE}</button></div>
       {side_nav_lists_mobile}
     </div>
   </div>
@@ -451,6 +451,10 @@ def main():
     ap.add_argument("--quiz-json", help="build_vocab_quiz_data.py 的输出，传了就多生成一个"
                      "「単語テスト」tab（互动出题，不是 seg-card 列表），不传就是普通听力页，"
                      "跟以前完全一样")
+    ap.add_argument("--side-nav-label", default="小問", help="桌面侧栏/手机悬浮目录顶部的分类"
+                     "标签，默认「小問」（JLPT/会议听力页的問題→小問结构下这个词是对的）。"
+                     "教材课文页的侧栏挂的是章节/生词表这类内容，不是「問題」，生成教材页时"
+                     "传空字符串 --side-nav-label \"\" 就不显示这个标签，只留列表本身")
     args = ap.parse_args()
     if not args.password and not args.password_hash:
         ap.error("must provide --password or --password-hash")
@@ -474,6 +478,8 @@ def main():
     sections, tab_buttons, side_nav_lists, side_nav_lists_mobile, mobile_nums_lists = \
         build_sections_html(sentences, questions, "audio/", quiz_data)
     pwd_hash = args.password_hash or hashlib.sha256(args.password.encode("utf-8")).hexdigest()
+    side_nav_label = html.escape(args.side_nav_label)
+    toc_label_html = f'<div class="toc-label">{side_nav_label}</div>' if side_nav_label else ""
 
     page = PAGE_TEMPLATE.format(
         title=html.escape(args.title),
@@ -483,6 +489,8 @@ def main():
         side_nav_lists=side_nav_lists,
         side_nav_lists_mobile=side_nav_lists_mobile,
         mobile_nums_lists=mobile_nums_lists,
+        toc_label_html=toc_label_html,
+        side_nav_label=side_nav_label,
         pwd_hash=pwd_hash,
         ICON_PAUSE=ICON_PAUSE,
         ICON_GEAR=ICON_GEAR,
