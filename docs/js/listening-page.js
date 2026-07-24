@@ -612,15 +612,32 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v1
     return "audio/seg-" + id + ".mp3";
   }
 
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
+  }
+
   // 队列：每个词 × 4 种题型，全量不抽样；按"这道题之前错过几次"降序排列，之前
-  // 错得越多排越前，同错误次数的保持原有顺序（Array#sort 是稳定排序）
-  var queue = [];
-  words.forEach(function(w) {
-    TYPES.forEach(function(t) { queue.push({ word: w, type: t }); });
-  });
-  queue.sort(function(a, b) {
-    return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type));
-  });
+  // 错得越多排越前。同错误次数的题目顺序要随机——先整体洗牌一次，再用稳定
+  // 排序按错误次数分组，稳定排序不会打乱同错误次数题目之间的相对顺序，也就
+  // 是洗牌后的随机顺序（不这么做的话，同一个词的4种题型会挨在一起连续出现，
+  // 因为一开始所有词的错误次数都是0，稳定排序会原样保留"逐词展开"时的插入
+  // 顺序）。
+  function buildQueue() {
+    var q = [];
+    words.forEach(function(w) {
+      TYPES.forEach(function(t) { q.push({ word: w, type: t }); });
+    });
+    shuffle(q);
+    q.sort(function(a, b) {
+      return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type));
+    });
+    return q;
+  }
+  var queue = buildQueue();
 
   var qi = 0;
   var resolved = false;      // 这道题是否已经判完（正确或已看答案），控制按钮显隐
@@ -750,7 +767,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v1
   quizResetErrors.addEventListener("click", function() {
     errors = {};
     localStorage.setItem(ERROR_KEY, JSON.stringify(errors));
-    queue.sort(function(a, b) { return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type)); });
+    queue = buildQueue();
     qi = 0;
     render();
   });
