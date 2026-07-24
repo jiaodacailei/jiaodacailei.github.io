@@ -337,7 +337,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 
   <button class="settings-toggle" id="settingsToggle" title="再生設定">{ICON_GEAR}</button>
   <div class="settings-panel" id="settingsPanel">
-    <div class="settings-group">
+    <div class="settings-group settings-group-speed">
       <div class="settings-label">再生速度</div>
       <div class="settings-options" id="speedOptions">
         <button class="settings-opt" data-speed="0.5">0.5x</button>
@@ -346,7 +346,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
         <button class="settings-opt" data-speed="1.2">1.2x</button>
       </div>
     </div>
-    <div class="settings-group">
+    <div class="settings-group settings-group-lang">
       <div class="settings-label">表示</div>
       <div class="settings-options" id="langOptions">
         <button class="settings-opt" data-lang="ja">日本語</button>

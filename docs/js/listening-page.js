@@ -256,9 +256,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     document.dispatchEvent(new CustomEvent("stopAllAudio"));
 
     tabBtns.forEach(function(b, i) { b.classList.toggle("active", i === idx); });
-    document.querySelectorAll('.mondai-section[data-scope="mondai"]').forEach(function(sec, i) {
+    var sections = document.querySelectorAll('.mondai-section[data-scope="mondai"]');
+    sections.forEach(function(sec, i) {
       sec.classList.toggle("tab-active", i === idx);
     });
+    // 单词测试 tab 是单卡片互动出题，没有"小题"可跳转，也不需要跟读速度/显示
+    // 模式/默写填空这些跟句子卡片相关的设置——用这个 body class 联动隐藏悬浮
+    // 目录和设置面板里不相关的选项组（是否是这个 tab 靠"里面有没有单词测试的
+    // 数据 script 标签"判断，不用在 build_page.py 里为此专门加一个新 class）。
+    document.body.classList.toggle("quiz-tab-active", !!(sections[idx] && sections[idx].querySelector("#vocab-quiz-data")));
     document.querySelectorAll(".side-nav-list").forEach(function(list, i) {
       list.classList.toggle("tab-active", i === idx);
     });
@@ -380,7 +386,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var settingsPanel = document.getElementById("settingsPanel");
   if (settingsPanel) {
     var group = document.createElement("div");
-    group.className = "settings-group";
+    group.className = "settings-group settings-group-mode";
     group.innerHTML =
       '<div class="settings-label">練習モード</div>' +
       '<div class="settings-options" id="modeOptions">' +
@@ -617,6 +623,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     saveProgress();
   }
 
+  // 出题范围："all"=四类题型全部都做，"wrong"=只做累计出过错的题（getErr>0）。
+  var SCOPE_KEY = "n2listen-quiz-scope:" + location.pathname;
+  var scope = localStorage.getItem(SCOPE_KEY) || "all";
+
   var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh"];
   var TYPE_LABELS = {
     blank: "填空题", audio2kana: "听音频写假名",
@@ -647,16 +657,31 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 是洗牌后的随机顺序（不这么做的话，同一个词的4种题型会挨在一起连续出现，
   // 因为一开始所有词的错误次数都是0，稳定排序会原样保留"逐词展开"时的插入
   // 顺序）。
-  function buildQueue() {
+  // 出题范围先筛一遍（all=全部，wrong=只留累计错过至少一次的），范围本身
+  // 决定了"这一轮"的总题数，跟错误次数排序、round 完成后重开是两件独立的事，
+  // 顺序不能反——先按范围筛，再在筛出来的这个子集里判断"是不是都做完了"。
+  function scopedAllItems() {
     var all = [];
     words.forEach(function(w) {
-      TYPES.forEach(function(t) { all.push({ word: w, type: t }); });
+      TYPES.forEach(function(t) {
+        if (scope === "wrong" && getErr(errKey(w.id, t)) <= 0) return;
+        all.push({ word: w, type: t });
+      });
     });
+    return all;
+  }
+
+  var TOTAL_THIS_ROUND = 0; // buildQueue() 每次都会重新算，跟着 scope/completed 变化
+
+  function buildQueue() {
+    var all = scopedAllItems();
     // 只留这一轮还没做过的；如果全都做过了（上一轮刚好在这里做完、或者
     // localStorage 里的记录跟当前生词表对不上了），当作新一轮重新开始，不
-    // 留下"永远显示已完成"的死状态。
-    var q = all.filter(function(item) { return !completed[errKey(item.word.id, item.type)]; });
-    if (!q.length) {
+    // 留下"永远显示已完成"的死状态。"仅错题"范围下 all 本身就可能是空的
+    // （还没积累出任何错题），这种情况不当"一轮做完了"处理，交给调用方
+    // （render）显示"还没有错题"，不在这里瞎重置。
+    var q = all.length ? all.filter(function(item) { return !completed[errKey(item.word.id, item.type)]; }) : [];
+    if (all.length && !q.length) {
       completed = {};
       saveProgress();
       q = all;
@@ -665,6 +690,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     q.sort(function(a, b) {
       return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type));
     });
+    TOTAL_THIS_ROUND = all.length;
     return q;
   }
   var queue = buildQueue();
@@ -707,10 +733,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return v === answerFor(q);
   }
 
-  // 进度显示按"这一轮总题数"算，不是按当次刷新后剩下的队列长度算——不然刷新
-  // 恢复进度之后，进度条会从一个奇怪的小分母重新数起（比如剩 385 题就显示
-  // "1 / 385"），显得之前做过的全部作废了。
-  var TOTAL_THIS_ROUND = words.length * TYPES.length;
+  // 进度显示按"这一轮总题数"（TOTAL_THIS_ROUND，buildQueue() 里定，随 scope
+  // 变化）算，不是按当次刷新后剩下的队列长度算——不然刷新恢复进度之后，进度
+  // 条会从一个奇怪的小分母重新数起（比如剩 385 题就显示"1 / 385"），显得之前
+  // 做过的全部作废了。
   function doneCountThisRound() { return TOTAL_THIS_ROUND - queue.length; }
 
   // 进度条格式："当前题号/本轮总题数(累计错误次数)"，括号里的错误数是红色——
@@ -727,9 +753,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
 
   function render() {
+    if (TOTAL_THIS_ROUND === 0) {
+      // "仅错题"范围下，还没有任何累计错误——不是"这一轮做完了"，是压根没题可做
+      quizCard.style.display = "none";
+      quizDone.style.display = "block";
+      quizDone.textContent = "还没有错题，切换到「全部题目」先做一遍积累错题吧";
+      quizProgress.innerHTML = "0 / 0";
+      return;
+    }
     if (qi >= queue.length) {
       quizCard.style.display = "none";
       quizDone.style.display = "block";
+      quizDone.textContent = "🎉 本轮全部完成！";
       quizProgress.innerHTML = progressHtml(TOTAL_THIS_ROUND);
       return;
     }
@@ -824,6 +859,35 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     qi = 0;
     render();
   });
+
+  // 出题范围（全部题目／仅错题）——设置面板里只在单词测试 tab 激活时才显示
+  // 的那一组，跟播放速度/显示模式/练习模式那几组是互斥的（见 CSS 的
+  // .settings-group-quizscope 规则），不用这个 tab 时完全不占地方。
+  var settingsPanel = document.getElementById("settingsPanel");
+  if (settingsPanel) {
+    var scopeGroup = document.createElement("div");
+    scopeGroup.className = "settings-group settings-group-quizscope";
+    scopeGroup.innerHTML =
+      '<div class="settings-label">出題範囲</div>' +
+      '<div class="settings-options" id="quizScopeOptions">' +
+        '<button class="settings-opt" data-scope="all">全部题目</button>' +
+        '<button class="settings-opt" data-scope="wrong">仅错题</button>' +
+      '</div>';
+    settingsPanel.appendChild(scopeGroup);
+    var scopeBtns = Array.from(scopeGroup.querySelectorAll(".settings-opt"));
+    scopeBtns.forEach(function(b) {
+      b.classList.toggle("active", b.dataset.scope === scope);
+      b.addEventListener("click", function() {
+        if (b.dataset.scope === scope) return;
+        scope = b.dataset.scope;
+        localStorage.setItem(SCOPE_KEY, scope);
+        scopeBtns.forEach(function(x) { x.classList.toggle("active", x === b); });
+        queue = buildQueue();
+        qi = 0;
+        render();
+      });
+    });
+  }
 
   render();
 })();

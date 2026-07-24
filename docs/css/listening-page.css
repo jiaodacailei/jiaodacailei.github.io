@@ -195,6 +195,9 @@ body.lang-zh-only .seg-ja { display: none; }
 .toc { top: 110px; max-height: calc(100vh - 140px); }
 .toc-float { top: 104px; }
 @media (min-width: 1200px) { .toc-float { display: none; } }
+/* 单词测试 tab 是单卡片互动出题，没有"小题"可跳转，桌面侧栏/手机悬浮目录
+   整个隐藏（不只是列表内容为空——那样还会剩一个只有 ≡ 按钮的空壳浮在那）。 */
+body.quiz-tab-active #sideNav, body.quiz-tab-active #sideNavMobile { display: none; }
 
 .side-nav-list { display: none; }
 .side-nav-list.tab-active { display: flex; flex-direction: column; gap: 2px; }
@@ -235,6 +238,14 @@ body.mini-player-open .settings-panel { bottom: 128px; }
 .settings-panel.open { display: block; }
 .settings-group { margin-bottom: 14px; }
 .settings-group:last-child { margin-bottom: 0; }
+/* 单词测试 tab 用的设置项跟播放速度/显示模式/跟读默写填空完全不相关（题目
+   是互动出题，不是句子卡片），所以互斥显示：那几组平时显示、单词测试 tab
+   激活时隐藏；出题范围这一组反过来，平时隐藏、只在单词测试 tab 才出现。 */
+body.quiz-tab-active .settings-group-speed,
+body.quiz-tab-active .settings-group-lang,
+body.quiz-tab-active .settings-group-mode { display: none; }
+.settings-group-quizscope { display: none; }
+body.quiz-tab-active .settings-group-quizscope { display: block; }
 .settings-label {
   font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase;
   letter-spacing: .06em; margin-bottom: 8px;
