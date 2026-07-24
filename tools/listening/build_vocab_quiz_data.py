@@ -16,6 +16,18 @@
   拼，不在这份数据里重复）。id 允许带不带 "a" 前缀都行，这里统一转成不带前缀
   的数字字符串再往下用。
 
+  没有 "kana" 字段的词条，读音现在会跟生词卡片显示用的furigana走同一条
+  pykakasi 转换（`build_page.py` 的 `ruby_html()`），不是简单退化成 `text`
+  本身——**这是修过的一个真实 bug**：之前退化成 `text`，"听音频写假名"/
+  "根据中文写假名" 这两类题型对没填 `kana` 的词（大多数词其实都没填，因为
+  pykakasi 默认转换已经猜对了，只有猜错的才需要显式填 `kana` 覆盖）判分时，
+  标准答案会变成词的原文本身（比如"〜食"）而不是假名（"しょく"），用户怎么
+  打都会被判错，"答えを見る"给出的也是错的"答案"。只有真的需要覆盖 pykakasi
+  默认读音（比如"〜所"这种多音字，pykakasi 会猜成ところ而不是しょ）的词条
+  才必须显式填 `kana`，其余词条不填也能拿到正确读音——但如果这里退化成
+  `text` 而不是真的转换一遍，等于所有"没显式填 kana"的词条全部受影响，
+  不是只有个别偏门词条才踩坑。
+
 <sentences.json>：{"dialogue": [{"ja":..., "zh":...}, ...], "text": [...]}
   —— 从已生成页面的会话/课文 tab 抽出来的句子，供 occurrences.json 按
   (src, idx) 定位到具体是哪一句。
@@ -37,8 +49,12 @@
 词——脚本会硬报错提醒，不悄悄跳过缺失或忽略重复。
 """
 import sys
+import os
 import json
 import argparse
+
+sys.path.insert(0, os.path.dirname(__file__))
+from build_page import _kks, _is_kanji, _TOKEN_READING_OVERRIDES_UNCONDITIONAL, _TOKEN_READING_OVERRIDES_BY_PREV
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -47,6 +63,44 @@ if hasattr(sys.stdout, "reconfigure"):
 def norm_id(raw_id):
     s = str(raw_id)
     return s[1:] if s.startswith("a") else s
+
+
+def kana_for(word):
+    """没有显式 kana 覆盖时，走跟生词卡片显示furigana完全同一条转换路径（同一个
+    pykakasi 实例 + 同一张手动订正表），不能简单退化成 word["text"] 本身——这是
+    之前真实踩过的坑（详见文件头部说明）。
+
+    "〜"是词典抄来的占位符号（不对应实际发音，比如"〜食"读しょく，不读〜しょく），
+    转换完之后要去掉，不然"听音频写假名"这类题型会要求用户连这个不发音的符号
+    也打出来。"/"表示"二选一"（比如"お/ご〜申し上げる"是"お…申し上げる"或
+    "ご…申し上げる"两种说法，不是"お"和"ご"连着念的"おご…"），没法自动算出
+    唯一读音，这类词条必须显式提供 kana，这里直接报错提醒，不去猜一个大概率
+    错误的拼接结果。"""
+    if "kana" in word:
+        return word["kana"]
+    if "/" in word["text"]:
+        raise ValueError(
+            f"词条 {word['text']!r} 带 '/' 二选一符号（比如敬语'お/ご'前缀），"
+            f"没法自动算出唯一读音，必须在 vocab_words.json 里显式给这条填 kana 字段"
+        )
+    # 跟 ruby_html() 同一条判断：只有含汉字的 token 才用假名读音替换，片假名/
+    # 平假名/符号这些 token 原样保留——片假名外来语（比如"スケジュール"）本来
+    # 就是用片假名书写/朗读的，不存在另一套"平假名读音"，转成平假名反而是错的
+    # （真实踩过：这条改动第一版没加这层判断，把"スケジュール"转成了
+    # "すけじゅーる"，"ハード"转成"はーど"，这类片假名词条一次性有10个受影响）。
+    tokens = _kks.convert(word["text"])
+    parts = []
+    prev_orig = None
+    for t in tokens:
+        orig = t["orig"]
+        hira = t["hira"]
+        if orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
+            hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
+        elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
+            hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
+        prev_orig = orig
+        parts.append(hira if any(_is_kanji(ch) for ch in orig) else orig)
+    return "".join(parts).replace("〜", "")
 
 
 def main():
@@ -85,10 +139,15 @@ def main():
     quiz = []
     for w in words:
         wid = norm_id(w["id"])
+        try:
+            kana = kana_for(w)
+        except ValueError as e:
+            print(f"FAIL: word {wid} ({w['text']!r}): {e}")
+            sys.exit(1)
         entry = {
             "id": int(wid),
             "text": w["text"],
-            "kana": w.get("kana", w["text"]),
+            "kana": kana,
             "zh": w["zh"],
         }
         occ_key = next((k for k in occurrences if norm_id(k) == wid), None)
