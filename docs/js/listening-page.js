@@ -609,6 +609,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function saveProgress() {
     localStorage.setItem(PROGRESS_KEY, JSON.stringify(Object.keys(completed)));
   }
+  function totalErrorCount() {
+    return Object.keys(errors).reduce(function(sum, k) { return sum + errors[k]; }, 0);
+  }
   function markDone(q) {
     completed[errKey(q.word.id, q.type)] = 1;
     saveProgress();
@@ -710,16 +713,29 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var TOTAL_THIS_ROUND = words.length * TYPES.length;
   function doneCountThisRound() { return TOTAL_THIS_ROUND - queue.length; }
 
+  // 进度条格式："当前题号/本轮总题数(累计错误次数)"，括号里的错误数是红色——
+  // 不是本轮的错误数，是从有记录以来累计的错误次数，点"清除使用记录"才清零。
+  function progressHtml(current) {
+    return current + " / " + TOTAL_THIS_ROUND +
+      '<span class="quiz-progress-err">(' + totalErrorCount() + ')</span>';
+  }
+
+  // 判错之后立刻刷新括号里的错误数（不调用 render()，那会连题目状态一起重置）
+  function refreshProgress() {
+    if (qi >= queue.length) { quizProgress.innerHTML = progressHtml(TOTAL_THIS_ROUND); return; }
+    quizProgress.innerHTML = progressHtml(doneCountThisRound() + qi + 1);
+  }
+
   function render() {
     if (qi >= queue.length) {
       quizCard.style.display = "none";
       quizDone.style.display = "block";
-      quizProgress.textContent = TOTAL_THIS_ROUND + " / " + TOTAL_THIS_ROUND;
+      quizProgress.innerHTML = progressHtml(TOTAL_THIS_ROUND);
       return;
     }
     quizCard.style.display = "";
     quizDone.style.display = "none";
-    quizProgress.textContent = (doneCountThisRound() + qi + 1) + " / " + TOTAL_THIS_ROUND;
+    quizProgress.innerHTML = progressHtml(doneCountThisRound() + qi + 1);
 
     var q = queue[qi];
     resolved = false;
@@ -777,7 +793,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       markDone(q);
       markResolved(true, null);
     } else {
-      if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; }
+      if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; refreshProgress(); }
       quizStatus.textContent = "✗ 不对，再检查一下";
       quizStatus.className = "quiz-status ng";
     }
@@ -786,7 +802,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function doReveal() {
     if (resolved) return;
     var q = queue[qi];
-    if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; }
+    if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; refreshProgress(); }
     markDone(q);
     var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
     markResolved(false, ans);

@@ -214,7 +214,7 @@ def quiz_section_html(mondai_idx, quiz_json_data, active):
       <div class="quiz-app" id="quizApp">
         <div class="quiz-toolbar">
           <div class="quiz-progress" id="quizProgress">0 / 0</div>
-          <button type="button" class="quiz-reset-btn" id="quizResetErrors">错题记录清零</button>
+          <button type="button" class="quiz-reset-btn" id="quizResetErrors">清除使用记录</button>
         </div>
         <div class="quiz-card" id="quizCard">
           <div class="quiz-type-label" id="quizTypeLabel"></div>

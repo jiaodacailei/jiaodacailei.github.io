@@ -344,6 +344,7 @@ body.mode-blank .seg-card.has-blank.blank-revealed .seg-notes { display: block; 
 .quiz-app { max-width: 520px; margin: 0 auto; }
 .quiz-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
 .quiz-progress { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+.quiz-progress-err { color: #dc2626; margin-left: 3px; }
 .quiz-reset-btn {
   border: 1px solid var(--border); background: var(--bg-soft); color: var(--text-muted);
   border-radius: 999px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: all .15s;
