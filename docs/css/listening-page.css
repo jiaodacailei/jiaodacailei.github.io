@@ -76,14 +76,14 @@ body {
 }
 .toc-float-nums::-webkit-scrollbar { display: none; }
 .toc-float-toggle {
-  width: 28px; height: 28px; border: none; background: none; color: #94a3b8;
-  font-size: 16px; cursor: pointer; border-radius: 50%; display: flex;
+  width: 56px; height: 56px; border: none; background: none; color: #94a3b8;
+  font-size: 32px; cursor: pointer; border-radius: 50%; display: flex;
   align-items: center; justify-content: center; margin-bottom: 2px;
   font-family: inherit; transition: color 0.15s, background 0.15s;
 }
 .toc-float-toggle:hover { color: #6366f1; background: #eef2ff; }
 .toc-float-num {
-  width: 26px; height: 26px; border: none; background: none; font-size: 11px;
+  width: 52px; height: 52px; border: none; background: none; font-size: 22px;
   font-weight: 700; color: #94a3b8; cursor: pointer; border-radius: 50%; display: flex;
   align-items: center; justify-content: center; padding: 0; font-family: inherit; transition: all 0.15s;
 }
@@ -106,7 +106,7 @@ body {
   padding: 0; font-family: inherit; transition: color 0.15s;
   display: inline-flex; align-items: center; justify-content: center;
 }
-.toc-float-close svg { width: 14px; height: 14px; display: block; }
+.toc-float-close svg { width: 28px; height: 28px; display: block; }
 .toc-float-close:hover { color: #6366f1; }
 .toc-float-panel ul { list-style: none; padding: 6px 8px 10px; margin: 0; }
 .toc-float-panel .toc-h2 > a {
@@ -262,12 +262,17 @@ body.lang-zh-only .seg-ja { display: none; }
 .mp-scope { font-size: 13px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mp-pos { font-size: 11px; color: var(--text-muted); }
 @media (max-width: 480px) {
+  /* 迷你播放器一排有5个导航按钮+循环+停止共7个圆形按钮，字面意义上的整体放大
+     2倍（27px→54px）在360px宽的手机上算下来会让7个按钮本身就超出可用宽度，
+     中间的曲目/进度文字完全没地方放——这里放大到38px（约1.4倍）是在"明显
+     变大"和"不挤爆一整排"之间选的一个还算安全的上限，440px以下的宽度都还
+     留得出十几到几十px给中间文字。 */
   .mini-player { gap: 3px; padding: 6px 10px; }
-  .mp-btn { width: 27px; height: 27px; }
-  .mp-btn svg { width: 13px; height: 13px; }
-  .mp-playpause svg { width: 14px; height: 14px; }
-  .settings-toggle { bottom: 70px; }
-  .settings-panel { bottom: 128px; }
+  .mp-btn { width: 38px; height: 38px; }
+  .mp-btn svg { width: 19px; height: 19px; }
+  .mp-playpause svg { width: 20px; height: 20px; }
+  .settings-toggle { bottom: 81px; }
+  .settings-panel { bottom: 139px; }
 }
 
 /* ── 练习模式：默写 ──
