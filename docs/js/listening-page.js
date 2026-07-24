@@ -6,8 +6,8 @@
 // 同一份路径）——这两个是播放中动态切换用的，其它图标（设置齿轮/循环/关闭/上一个
 // 下一个/最前最后）只在生成时渲染一次、不会运行时切换，留在 build_page.py 里当
 // 静态 HTML 生成，不用在这份共享 JS 里重复一份。
-var ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+var ICON_PLAY = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
 
 // ── 统一播放器：逐句 / 小题整体 / 大题整体都走同一套状态，
 //    点标题/内容播放，配合右下角悬浮迷你播放器暂停/继续/上一个/下一个/最前/最后/循环/停止 ──

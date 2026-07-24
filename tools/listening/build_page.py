@@ -262,8 +262,16 @@ def mobile_nums_list_html(mondai_idx, question_labels, active):
 # ICON_PLAY 不在这里定义——播放/暂停图标运行时动态切换（点按钮时用哪个取决于播放
 # 状态），这个切换逻辑在共享的 listening-page.js 里，同一份 SVG 常量在那边重复定义
 # 了一次，不从这里传过去（这里只放"生成时渲染一次就不再变"的静态图标）。
-ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
-ICON_GEAR = ('<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,'
+# 每个 <svg> 都显式带了 width="24" height="24"（等于 viewBox 的自然尺寸），不是纯
+# 装饰——真实案例：设置按钮图标改大到 44px 后（对应的 CSS 只有 `.settings-toggle
+# svg{width:44px;height:44px}`，没有这两个 HTML 属性），两台不同型号的 iPhone 上
+# Safari 实测图标依然停留在很小的尺寸，按钮本身（纯 CSS 控制的 48px 圆形）大小和
+# 位置都正确，只有 svg 内部图形没跟着放大——只有 CSS 宽高、没有 HTML 属性宽高时，
+# 部分 WebKit 版本对 <svg> 缺 width/height 属性时的内部 viewBox 缩放处理不可靠。
+# 显式补上跟 viewBox 一致的 width/height 属性给浏览器一个明确的"原始尺寸"参照，
+# CSS 里的 width/height 仍然会按正常层叠规则覆盖它、决定最终显示大小，两者不冲突。
+ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>'
+ICON_GEAR = ('<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,'
              '0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32'
              'c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04'
              '-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,'
@@ -274,16 +282,16 @@ ICON_GEAR = ('<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94
              'c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,'
              '0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,'
              '1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>')
-ICON_LOOP = ('<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10'
+ICON_LOOP = ('<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10'
              'H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>')
-ICON_CLOSE = ('<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 '
+ICON_CLOSE = ('<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 '
               '5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>')
 # 上一个/下一个/最前/最后导航原来用 «‹›» 这几个字符，实测太细太淡，不容易注意到——
 # 换成跟其它按钮一样的实心 SVG 箭头，视觉粗细一致，也更显眼。
-ICON_PREV = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>'
-ICON_NEXT = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>'
-ICON_FIRST = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>'
-ICON_LAST = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>'
+ICON_PREV = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>'
+ICON_NEXT = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>'
+ICON_FIRST = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>'
+ICON_LAST = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>'
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
 <html lang="zh-CN">
