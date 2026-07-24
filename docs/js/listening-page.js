@@ -593,11 +593,25 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var errors = {};
   try { errors = JSON.parse(localStorage.getItem(ERROR_KEY) || "{}"); } catch (e) { errors = {}; }
 
+  // 记录"这一轮已经做过（判对或已看答案）的题"，刷新页面时跳过这些，只接着做
+  // 剩下的——不然每次刷新都从头 400 题重来一遍。等一轮全部做完（剩余为空）才
+  // 清空，开始下一轮；"错题记录清零"按钮也会顺带清掉这份记录，视为完全重开。
+  var PROGRESS_KEY = "n2listen-quiz-progress:" + location.pathname;
+  var completed = {};
+  try { (JSON.parse(localStorage.getItem(PROGRESS_KEY) || "[]")).forEach(function(k) { completed[k] = 1; }); } catch (e) { completed = {}; }
+
   function errKey(wordId, type) { return wordId + ":" + type; }
   function getErr(k) { return errors[k] || 0; }
   function bumpErr(k) {
     errors[k] = getErr(k) + 1;
     localStorage.setItem(ERROR_KEY, JSON.stringify(errors));
+  }
+  function saveProgress() {
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(Object.keys(completed)));
+  }
+  function markDone(q) {
+    completed[errKey(q.word.id, q.type)] = 1;
+    saveProgress();
   }
 
   var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh"];
@@ -631,10 +645,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 因为一开始所有词的错误次数都是0，稳定排序会原样保留"逐词展开"时的插入
   // 顺序）。
   function buildQueue() {
-    var q = [];
+    var all = [];
     words.forEach(function(w) {
-      TYPES.forEach(function(t) { q.push({ word: w, type: t }); });
+      TYPES.forEach(function(t) { all.push({ word: w, type: t }); });
     });
+    // 只留这一轮还没做过的；如果全都做过了（上一轮刚好在这里做完、或者
+    // localStorage 里的记录跟当前生词表对不上了），当作新一轮重新开始，不
+    // 留下"永远显示已完成"的死状态。
+    var q = all.filter(function(item) { return !completed[errKey(item.word.id, item.type)]; });
+    if (!q.length) {
+      completed = {};
+      saveProgress();
+      q = all;
+    }
     shuffle(q);
     q.sort(function(a, b) {
       return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type));
@@ -681,16 +704,22 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return v === answerFor(q);
   }
 
+  // 进度显示按"这一轮总题数"算，不是按当次刷新后剩下的队列长度算——不然刷新
+  // 恢复进度之后，进度条会从一个奇怪的小分母重新数起（比如剩 385 题就显示
+  // "1 / 385"），显得之前做过的全部作废了。
+  var TOTAL_THIS_ROUND = words.length * TYPES.length;
+  function doneCountThisRound() { return TOTAL_THIS_ROUND - queue.length; }
+
   function render() {
     if (qi >= queue.length) {
       quizCard.style.display = "none";
       quizDone.style.display = "block";
-      quizProgress.textContent = queue.length + " / " + queue.length;
+      quizProgress.textContent = TOTAL_THIS_ROUND + " / " + TOTAL_THIS_ROUND;
       return;
     }
     quizCard.style.display = "";
     quizDone.style.display = "none";
-    quizProgress.textContent = (qi + 1) + " / " + queue.length;
+    quizProgress.textContent = (doneCountThisRound() + qi + 1) + " / " + TOTAL_THIS_ROUND;
 
     var q = queue[qi];
     resolved = false;
@@ -745,6 +774,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var q = queue[qi];
     var ok = checkAnswer(q, quizInput.value);
     if (ok) {
+      markDone(q);
       markResolved(true, null);
     } else {
       if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; }
@@ -757,6 +787,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (resolved) return;
     var q = queue[qi];
     if (!countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; }
+    markDone(q);
     var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
     markResolved(false, ans);
   }
@@ -771,6 +802,8 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   quizResetErrors.addEventListener("click", function() {
     errors = {};
     localStorage.setItem(ERROR_KEY, JSON.stringify(errors));
+    completed = {};
+    saveProgress();
     queue = buildQueue();
     qi = 0;
     render();
