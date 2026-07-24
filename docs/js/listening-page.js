@@ -627,6 +627,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var SCOPE_KEY = "n2listen-quiz-scope:" + location.pathname;
   var scope = localStorage.getItem(SCOPE_KEY) || "all";
 
+  // 确认后自动跳下一题的等待秒数——是通用偏好（不跟具体某一课绑定），所以
+  // key 不带 location.pathname，跟 SPEED_KEY/LANG_KEY/MODE_KEY 一样全站共用。
+  var DELAY_KEY = "n2listen-quiz-delay";
+  var advanceDelay = parseInt(localStorage.getItem(DELAY_KEY) || "3", 10);
+
   var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh"];
   var TYPE_LABELS = {
     blank: "填空题", audio2kana: "听音频写假名",
@@ -826,12 +831,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       quizStatus.textContent = "✗ 答案：" + revealedAnswer;
       quizStatus.className = "quiz-status rev";
     }
-    // 3秒后自动跳下一题，手动点"次へ"会提前触发并清掉这个计时器，不会重复推进
+    // 等 advanceDelay 秒后自动跳下一题（设置面板可调1/2/3秒），手动点"次へ"
+    // 会提前触发并清掉这个计时器，不会重复推进
     autoAdvanceTimer = setTimeout(function() {
       autoAdvanceTimer = null;
       qi++;
       render();
-    }, 3000);
+    }, advanceDelay * 1000);
   }
 
   function doCheck() {
@@ -885,6 +891,28 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         queue = buildQueue();
         qi = 0;
         render();
+      });
+    });
+
+    // 确认后自动跳下一题的等待秒数，同样只在单词测试 tab 激活时显示，跟
+    // 出题范围共用 .settings-group-quizscope 的显隐规则。
+    var delayGroup = document.createElement("div");
+    delayGroup.className = "settings-group settings-group-quizscope";
+    delayGroup.innerHTML =
+      '<div class="settings-label">自動次へ（秒）</div>' +
+      '<div class="settings-options" id="quizDelayOptions">' +
+        '<button class="settings-opt" data-delay="1">1</button>' +
+        '<button class="settings-opt" data-delay="2">2</button>' +
+        '<button class="settings-opt" data-delay="3">3</button>' +
+      '</div>';
+    settingsPanel.appendChild(delayGroup);
+    var delayBtns = Array.from(delayGroup.querySelectorAll(".settings-opt"));
+    delayBtns.forEach(function(b) {
+      b.classList.toggle("active", parseInt(b.dataset.delay, 10) === advanceDelay);
+      b.addEventListener("click", function() {
+        advanceDelay = parseInt(b.dataset.delay, 10);
+        localStorage.setItem(DELAY_KEY, advanceDelay);
+        delayBtns.forEach(function(x) { x.classList.toggle("active", x === b); });
       });
     });
   }
