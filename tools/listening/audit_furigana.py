@@ -2,6 +2,7 @@
 """
 用法：
   python audit_furigana.py <enriched.json> [<enriched2.json> ...]
+  python audit_furigana.py --all <enriched.json> [<enriched2.json> ...]
 
 人/月/日/方/上/下/中/分/時/気/家/物/目/手/口/力/名/音/色/間 这类常用单字，读音
 高度依赖上下文——同一个字，独立出现/接在数字后/接在特定助词后，读音可能完全
@@ -41,6 +42,23 @@ pykakasi 会得到默认的ちから，误报成"读音不对"，而实际页面
     json`）给这一条加/改 `kana` 字段，重新跑 `build_vocab_from_wordlist.py`。
 这个脚本**只负责发现疑似读音问题、不判断对错、不负责自动修**——报告里每一条
 都要人工用自己的日语知识核对，不能假设"命中高危字表=一定是错的"。
+
+## `--all`：全量读音复核（不限于高危字表，真正的人工全审）
+
+`DANGER_KANJI` 这张表本身也有天花板——只能覆盖"已经在某次真实案例里踩过坑
+的字"，专有名词（人名/地名/作品名）这类读音完全没有通用规律可循、必须靠
+具体知识判断的情况，天生就不可能靠"哪个字危险"这种模式列表覆盖到。真实
+案例（textbook-sjp-zg-l11）：《千と千尋の神隠し》（《千与千寻》）这句话
+里的人名"千尋"被 pykakasi 按通用音读猜成せんじん（该读ちひろ），"尋"这个
+字根本不在 `DANGER_KANJI` 里，默认扫描完全不会命中、不会被提醒复核——
+这类 bug 只有把**全部**假名注音（不只是命中高危字表的）都过一遍、每一条
+都用自己的日语知识判断，才能发现。加 `--all` 参数即可切换到这个模式：
+不再按 `DANGER_KANJI` 过滤，打印这份 `enriched.json` 里**每一个**带汉字的
+读音（句子级的带完整原句上下文，生词级的带词条本身），供逐条人工全审。
+一课通常一两百条，一次性读完可行，读的时候优先留意：人名/地名/作品名这类
+专有名词（读音没有规律可循，必须凭知识判断）、同一个字/同一个词在这一课
+不同地方读音是否前后矛盾（比如同一课里两条生词都叫"その後"却读音不一样，
+这种不一致本身就值得停下来确认是不是有问题，即使两个读音单独看都不算错）。
 """
 import sys
 import os
@@ -67,13 +85,18 @@ DANGER_KANJI = set("人月日方上下中分時気家物目手口力名音色間
 _RUBY_RE = re.compile(r"<ruby>([^<]+)<rt>([^<]+)</rt></ruby>")
 
 
-def _scan_live_text(text):
+def _has_kanji(s):
+    return any("一" <= ch <= "鿿" for ch in s)
+
+
+def _scan_live_text(text, show_all):
     """有 char_times 的句子——build_page.py 现场跑 ruby_html()，这里重现同一套
     分词+订正表逻辑（不是重新发明一套，直接复用 build_page.py 的表和 _kks）。"""
     hits = []
     for line in text.split("\n"):
         tokens = _kks.convert(line)
         prev_orig = None
+        row = []
         for i, t in enumerate(tokens):
             orig = t["orig"]
             hira = t["hira"]
@@ -89,20 +112,31 @@ def _scan_live_text(text):
                 if new_hira != hira:
                     hira = new_hira
                     overridden = True
-            if any(ch in DANGER_KANJI for ch in orig):
+            if show_all:
+                if _has_kanji(orig) and hira != orig:
+                    row.append(f"{orig}[{hira}]")
+            elif any(ch in DANGER_KANJI for ch in orig):
                 before = tokens[i - 1]["orig"] if i > 0 else ""
                 after = tokens[i + 1]["orig"] if i + 1 < len(tokens) else ""
                 tag = " (订正表已生效)" if overridden else ""
                 hits.append(f"...{before}[{orig}→{hira}]{after}...{tag}")
             prev_orig = orig
+        if show_all and row:
+            hits.append(" ".join(row) + f"   full=「{line}」")
     return hits
 
 
-def _scan_prebaked_furigana(furigana_html):
+def _scan_prebaked_furigana(furigana_html, show_all, word_text=None):
     """没有 char_times 的（生词表）——build_page.py 直接用这个字段，不重新
     计算，读音真实来源可能是词表里人工填的 kana，不是 pykakasi 默认输出。"""
     hits = []
-    for orig, hira in _RUBY_RE.findall(furigana_html or ""):
+    pairs = _RUBY_RE.findall(furigana_html or "")
+    if show_all:
+        if pairs:
+            row = " ".join(f"{o}[{h}]" for o, h in pairs)
+            hits.append(f"(vocab {word_text!r}): {row}")
+        return hits
+    for orig, hira in pairs:
         if any(ch in DANGER_KANJI for ch in orig):
             hits.append(f"[{orig}→{hira}] (生词表 furigana 字段)")
     return hits
@@ -111,6 +145,8 @@ def _scan_prebaked_furigana(furigana_html):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("enriched_json", nargs="+")
+    ap.add_argument("--all", action="store_true",
+                     help="不按 DANGER_KANJI 过滤，打印全部带汉字的读音，供逐条人工全审")
     args = ap.parse_args()
 
     total = 0
@@ -119,14 +155,17 @@ def main():
         print(f"=== {path} ===")
         for s in sorted(data["sentences"], key=lambda s: s["id"]):
             if s.get("char_times"):
-                hits = _scan_live_text(s["text"])
+                hits = _scan_live_text(s["text"], args.all)
             else:
-                hits = _scan_prebaked_furigana(s.get("furigana"))
+                hits = _scan_prebaked_furigana(s.get("furigana"), args.all, s.get("text"))
             for h in hits:
                 total += 1
                 print(f"  #{s['id']}: {h}")
 
-    print(f"\n共 {total} 处高危字命中，逐条人工确认读音是否符合这句/这个词的实际语境")
+    label = "处带汉字的读音，逐条用日语知识确认（人名/地名/作品名等专有名词、" \
+            "同一个字/词在本课内前后读音是否一致，尤其要留意）" if args.all \
+            else "处高危字命中，逐条人工确认读音是否符合这句/这个词的实际语境"
+    print(f"\n共 {total} {label}")
 
 
 if __name__ == "__main__":
