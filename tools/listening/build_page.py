@@ -60,10 +60,6 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
     # "20日"是日期特殊读法はつか（不是にじゅうにち），只在"20"后面才触发，不影响
     # "1日"(いちにち)/"3日"(みっか，还没遇到但同理不受影响)这些其它数字+日的组合。
     ("20", "日"): "はつか",
-    # "の人"（〜の人＝"〜的人"，独立名词"人"）该读ひと，pykakasi 默认给孤立的
-    # "人"字读にん（数量词/复合词读音，比如"三人"=さんにん、"個人"=こじん才对，
-    # 这些场景"人"前面从来不会紧跟着"の"，只在数字/其它汉字后面直接拼接）。
-    ("の", "人"): "ひと",
     # "か月"（〜个月，时长量词，比如"1か月"=いっかげつ）该读げつ，pykakasi 默认
     # 给孤立的"月"字读がつ（日历月份读音，比如"1月"=いちがつ才对，这个场景数字
     # 后面直接跟"月"、中间没有"か"）。
@@ -72,6 +68,25 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
 _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
     "入っ": "はいっ",
 }
+
+
+def _resolve_hira(orig, hira, prev_orig):
+    """`_TOKEN_READING_OVERRIDES_*` 处理"固定搭配"（触发条件是具体的某个
+    prev_orig 字面值），但"人"这个字的正确读音规律更通用，值得单独写一条规则
+    而不是不断往字典里加案例——孤立成词的"人"（不是"外国人""成人""大人""人気"
+    这类已经被 pykakasi 自己合并成一个多字 token 的复合词，那些不受这条规则
+    影响）几乎总是该读ひと（"〜的人"，独立名词），只有紧跟在数字后面表示
+    "多少人"这个数量词读法时才该读にん/じん（"3人"=さんにん、"20人"=にじゅう
+    にん）。真实案例：一开始只加了 `("の","人")→"ひと"` 这一条件，只能覆盖
+    "の"独立成词紧跟在"人"前面的情况（比如"同世代の人"），但"人"前面的词大量
+    时候是跟"の"合并成一个 token 的（比如"他の"整个是一个 token，"の"不会单独
+    出现），或者是动词/形容词连体形（"いる人""する人""忙しい人"），这些都会被
+    这条窄规则漏掉——直接按"prev_orig 是不是数字"这个更通用的条件判断，一次
+    覆盖所有这些场景，不用每发现一种新的前置词形态就加一条。
+    """
+    if orig == "人" and (prev_orig is None or not prev_orig.isdigit()):
+        return "ひと"
+    return hira
 
 
 def ruby_html(text, char_times=None):
@@ -96,6 +111,8 @@ def ruby_html(text, char_times=None):
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
             elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
                 hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
+            else:
+                hira = _resolve_hira(orig, hira, prev_orig)
             prev_orig = orig
             tok_len = len(orig)
             t_time = None

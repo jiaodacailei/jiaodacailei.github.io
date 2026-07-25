@@ -49,7 +49,12 @@ import json
 import argparse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_page import _kks, _TOKEN_READING_OVERRIDES_BY_PREV, _TOKEN_READING_OVERRIDES_UNCONDITIONAL
+from build_page import (
+    _kks,
+    _TOKEN_READING_OVERRIDES_BY_PREV,
+    _TOKEN_READING_OVERRIDES_UNCONDITIONAL,
+    _resolve_hira,
+)
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -79,6 +84,11 @@ def _scan_live_text(text):
             elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
                 hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
                 overridden = True
+            else:
+                new_hira = _resolve_hira(orig, hira, prev_orig)
+                if new_hira != hira:
+                    hira = new_hira
+                    overridden = True
             if any(ch in DANGER_KANJI for ch in orig):
                 before = tokens[i - 1]["orig"] if i > 0 else ""
                 after = tokens[i + 1]["orig"] if i + 1 < len(tokens) else ""
