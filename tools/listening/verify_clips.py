@@ -28,17 +28,30 @@
    早了、前面留了太多空白（真实案例：生词"見込み"最初切出来的音频前面有
    几秒纯静音才开始说话）。**不是所有偏晚都代表 bug**——有些词本身音频里就
    有正常的呼吸/停顿，报告只是提醒复核，不是直接判定为错误。
-4. **音量检测（区分"真的静音"和"识别噪声"的关键一步）**——对每条 EMPTY/
-   LOW_SIMILARITY 都跑一次 `ffmpeg -af volumedetect` 拿 `max_volume`。**这一步
-   不是可选的锦上添花，是本脚本最重要的判据**：真实案例（textbook-sjp-zg-l11）
-   踩过的最大的坑——Whisper 在完全静音/近似静音的音频上也会"幻听"出看起来
-   合理的文字（转写内容甚至能跟期望文本部分匹配），仅凭"转写出了像样的字"
-   完全无法判断这段音频是不是真的有内容，反复用 word-level 转写去核实同一个
-   边界会一直得到"看起来合理但其实是幻觉"的结果，只有音量检测能可靠戳穿这个
-   假象。报告里会给每条 EMPTY/LOW_SIMILARITY 标注 `[疑似静音]`（`max_volume`
-   明显低于该音频文件里其它条目的中位数，经验阈值是比中位数低15dB以上）还是
-   `[可能是识别噪声]`（音量正常），前者几乎总是真实 bug、必须重新定位，后者
-   大概率是 ASR 对短/生僻内容的正常识别局限，可以放心跳过不用继续深挖。
+4. **音量检测**——对每条 EMPTY/LOW_SIMILARITY 都跑一次 `ffmpeg -af volumedetect`
+   拿 `max_volume`，报告里标注 `[疑似静音]`（明显低于该音频文件里其它条目的
+   中位数，经验阈值是比中位数低15dB以上）还是 `[可能是识别噪声]`（音量正常）。
+   **这一步只能分辨"这段时间范围里有没有声音"，分辨不出"这段声音是不是正确的
+   内容"**——见下面第5条，光凭这一项做取舍是不够的，`[可能是识别噪声]` **不等于
+   "可以跳过不用管"**。
+5. **内容合理性判据（区分"真的没内容"和"内容混进来了但不是这一条该有的"）**——
+   真实案例（textbook-sjp-zg-l11）：生词"〜ら"/"抜く"/"さっと"三条最初都被
+   本脚本正确标记为 LOW_SIMILARITY，但音量检测给它们打了 `[可能是识别噪声]`
+   （因为这三条切出来的音频里确实有一截响亮的真实语音，只是内容是从旁边混
+   进来的——不是纯静音，音量检测在这种情况下完全帮不上忙），当时误判为"大概
+   率是正常识别局限"跳过了，用户实际听后发现全部是真 bug（错位/截断/内容
+   对不上）。事后核对发现一个更有效的信号：**识别出来的文字本身像不像连贯
+   真实的日语**——"はっ!"「ご視聴ありがとうございました」「どう?」都是完整、
+   通顺的日语词/短语，说明 Whisper 真的听到了某处的真实人声，只是不是这一条
+   该有的内容（边界切错了位置，混进了旁边的音频）；反过来像"TNM"「SIM」
+   「C」这种夹杂拉丁字母/数字的乱码输出，通常代表 Whisper 在真的很短/生僻的
+   孤立词上转写失败，位置本身没问题，这才是可以放心跳过的"识别噪声"。报告
+   会在每条 LOW_SIMILARITY 后面追加 `[命中已知静音幻觉套话]`（识别文本命中
+   "ご視聴ありがとうございました"这类 Whisper 对静音的经典幻觉输出，几乎
+   100%是 bug）/`[疑似内容错位-像连贯日语]`（识别文本大部分是假名/汉字且够
+   长，像正常日语而不是识别乱码，**必须人工复核，不能因为音量正常就跳过**）
+   /`[像ASR对短词的识别局限]`（识别文本主要是拉丁字母/数字乱码，大概率是
+   正常识别局限）。**这一项判据独立于音量检测，两项都要看，不能只看音量**。
 
 ## 用法建议
 
@@ -51,12 +64,18 @@
 
 报告分三段：EMPTY（完全没识别到内容，优先看这些，最可能是真实bug）、
 LOW_SIMILARITY（读音对不上）、LEAD_SILENCE（开头疑似留白过长）。EMPTY/
-LOW_SIMILARITY 每条都带 `[疑似静音]`/`[可能是识别噪声]` 标注（见上面第4条），
-**优先处理带 `[疑似静音]` 标注的条目，这些几乎总是真实 bug**；`[可能是识别
-噪声]` 的条目人工快速扫一眼即可，不用逐条深挖。**这个脚本只负责发现问题、
-不负责自动修**——修复时同样不能只信新一轮 word-level 转写"看起来合理"，
-改完之后要重新跑一遍这个脚本（或者至少对改过的条目单独跑一次 volumedetect）
-确认音量真的恢复正常，不是又幻觉出了一个新的"看起来对"的错误位置。
+LOW_SIMILARITY 每条都带音量标注（`[疑似静音]`/`[可能是识别噪声]`，见上面
+第4条）和内容合理性标注（`[命中已知静音幻觉套话]`/`[疑似内容错位-像连贯
+日语]`/`[像ASR对短词的识别局限]`，见上面第5条）。**两项标注要一起看**：
+`[疑似静音]` 或 `[命中已知静音幻觉套话]` 或 `[疑似内容错位-像连贯日语]`
+三者任意命中一个，都必须人工复核（用宽窗口 word-level/VAD 转写+`ffmpeg
+silencedetect`或逐帧 RMS 振幅剖面重新定位真实边界，参考 SKILL.md 里
+"识别出的文字本身像不像连贯真实的日语"这条常见坑的具体做法）；只有音量
+正常**且**内容判据落在`[像ASR对短词的识别局限]`的条目才可以人工快速扫一眼、
+不用逐条深挖。**这个脚本只负责发现问题、不负责自动修**——修复时同样不能只
+信新一轮 word-level 转写"看起来合理"，改完之后要重新跑一遍这个脚本确认
+两项标注都恢复正常，不是又混进了一个新的"看起来对但其实是别处内容"的错误
+位置。
 """
 import sys
 import os
@@ -75,10 +94,44 @@ _kks = pykakasi.kakasi()
 _PUNCT_RE = re.compile(r"[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'\"０-９0-9]")
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 
+# Whisper 对着静音/近似静音音频常"幻听"出的几句经典套话（YouTube 视频片尾语的
+# 训练数据痕迹），命中即高置信度判定为静音位置写错了 bug，不是识别噪声。
+# 不是穷举列表，遇到新的幻觉套话就往这里加。
+HALLUCINATION_PHRASES = [
+    "ご視聴ありがとうございました",
+    "字幕視聴ありがとうございました",
+    "最後までご視聴いただきありがとうございました",
+    "チャンネル登録よろしくお願いします",
+    "本当にありがとうございます",
+]
+
 
 def to_hiragana(text):
     text = _PUNCT_RE.sub("", text or "")
     return "".join(t["hira"] for t in _kks.convert(text))
+
+
+def _is_ja_char(c):
+    o = ord(c)
+    return (0x3040 <= o <= 0x30FF) or (0x4E00 <= o <= 0x9FFF) or (0x3400 <= o <= 0x4DBF)
+
+
+def content_risk_tag(recognized):
+    """光看音量分不清"这里有没有声音"和"这段声音是不是该在这的内容"——一段
+    音频可能混进了旁边词/旁白的真实人声，音量完全正常，但内容是错的。这里换
+    一个跟音量无关的判据：识别出来的文字本身像不像连贯真实的日语。像的话，说明
+    Whisper 真的听到了某处的人声（只是不是这条该有的），必须人工复核；只是
+    拉丁字母/数字乱码的话，大概率是 Whisper 在孤立短词上的正常识别局限。"""
+    stripped = recognized.strip()
+    if not stripped:
+        return ""
+    if any(p in stripped for p in HALLUCINATION_PHRASES):
+        return "[命中已知静音幻觉套话]"
+    ja_chars = [c for c in stripped if not c.isspace()]
+    ja_ratio = (sum(1 for c in ja_chars if _is_ja_char(c)) / len(ja_chars)) if ja_chars else 0.0
+    if ja_ratio >= 0.8 and len(ja_chars) >= 2:
+        return "[疑似内容错位-像连贯日语]"
+    return "[像ASR对短词的识别局限]"
 
 
 def max_volume_db(clip_path):
@@ -173,7 +226,8 @@ def main():
                     f"{' max_volume=' + str(round(vol,1)) + 'dB' if vol is not None else ''}\n")
         f.write("\n=== LOW_SIMILARITY（读音跟期望文本对不上，相似度<%.2f）===\n" % args.min_ratio)
         for sid, text, recognized, ratio, vol in sorted(low_sim, key=lambda x: x[3]):
-            f.write(f"  #{sid} {text!r} 相似度={ratio}: 识别为 {recognized!r} {silence_tag(vol)}"
+            f.write(f"  #{sid} {text!r} 相似度={ratio}: 识别为 {recognized!r} "
+                    f"{silence_tag(vol)}{content_risk_tag(recognized)}"
                     f"{' max_volume=' + str(round(vol,1)) + 'dB' if vol is not None else ''}\n")
         f.write("\n=== LEAD_SILENCE（开头疑似留白超过 %.1fs）===\n" % args.lead_warn)
         for sid, text, lead in sorted(lead_silence, key=lambda x: -x[2]):
