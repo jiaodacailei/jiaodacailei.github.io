@@ -84,8 +84,21 @@ def _resolve_hira(orig, hira, prev_orig):
     这条窄规则漏掉——直接按"prev_orig 是不是数字"这个更通用的条件判断，一次
     覆盖所有这些场景，不用每发现一种新的前置词形态就加一条。
     """
-    if orig == "人" and (prev_orig is None or not prev_orig.isdigit()):
+    # 判断"前一个 token 是不是数字"不能用 prev_orig.isdigit() 整串判断——
+    # pykakasi 会把"第"跟紧跟着的阿拉伯数字合并成一个 token（"第２"作为一个
+    # token，不是"第"+"２"两个），整串 isdigit() 会因为含有"第"字而判 False，
+    # 漏掉"第２位"这种真实场景，必须看 prev_orig 的最后一个字符是不是数字。
+    prev_ends_with_digit = bool(prev_orig) and prev_orig[-1].isdigit()
+    if orig == "人" and not prev_ends_with_digit:
         return "ひと"
+    # "位"孤立成词时 pykakasi 默认给くらい（"大概/左右"，比如"3人くらい"里的
+    # くらい，但那种くらい本来就是假名写的，不会走到这条判断），但紧跟在阿拉伯
+    # 数字后面表示名次（"第２位"=だいにい、"20位"=にじゅうい）时该读い——跟
+    # "人"是同一种坑：汉字数字会被 pykakasi 直接合并成一个 token（"一位"=
+    # いちい、"第一位"=だいいちい，不受这条规则影响），只有阿拉伯数字+"位"
+    # 会被拆成独立 token 然后读错。
+    if orig == "位" and prev_ends_with_digit:
+        return "い"
     return hira
 
 
