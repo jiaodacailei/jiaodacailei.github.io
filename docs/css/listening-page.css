@@ -295,9 +295,10 @@ body.quiz-tab-active .settings-group-quizscope { display: block; }
 }
 
 /* ── 练习模式：默写 ──
-   .seg-ja/.seg-zh/.seg-notes 藏起来，换成 .dictate-ui（提示中文＋输入框＋確認/
-   答えを見る）。三种状态：locked（还没轮到）／active（当前作答）／done（已通过
-   或已看答案），只有 active 时输入框可编辑，done 时把原句（含假名注音）显示出来。 */
+   .seg-ja/.seg-zh/.seg-notes 藏起来，换成 .dictate-ui（提示中文＋输入框＋確認，
+   没有"查看答案"按钮）。三种状态：locked（还没轮到）／active（当前作答，提交错了
+   会带 .revealed 类露出正确答案但不解锁下一句，必须改对重新提交）／done（已通过，
+   把原句（含假名注音）显示出来），只有 active 时输入框可编辑。 */
 body.mode-dictate .seg-card .seg-ja,
 body.mode-dictate .seg-card .seg-zh,
 body.mode-dictate .seg-card .seg-notes { display: none; }
@@ -322,7 +323,7 @@ body.mode-dictate .dictate-ui { display: block; }
 .dictate-answer ruby rt { font-size: 10px; color: var(--text-muted); font-style: normal; }
 .dictate-badge { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 999px; margin-right: 4px; white-space: nowrap; }
 .dictate-badge.ok { background: #dcfce7; color: #16a34a; }
-.dictate-badge.rev { background: #fef3c7; color: #b45309; }
+.dictate-badge.wrong { background: #fee2e2; color: #dc2626; }
 .dictate-locked { display: none; color: var(--text-muted); font-size: 13px; padding: 4px 0; }
 
 .dictate-ui.state-locked .dictate-hint,
@@ -331,6 +332,10 @@ body.mode-dictate .dictate-ui { display: block; }
 .dictate-ui.state-locked .dictate-answer { display: none; }
 .dictate-ui.state-locked .dictate-locked { display: block; }
 .dictate-ui.state-active .dictate-answer { display: none; }
+/* 提交错了之后：state 还是 active（输入框不锁、可以继续改），但要露出正确
+   答案逼用户对照修改——用单独的 .revealed 类覆盖上面那条"active 隐藏答案"
+   的规则，不能直接改 state（改了 state 就会触发 input.disabled）。 */
+.dictate-ui.state-active.revealed .dictate-answer { display: block; }
 .dictate-ui.state-done .dictate-row,
 .dictate-ui.state-done .dictate-status { display: none; }
 

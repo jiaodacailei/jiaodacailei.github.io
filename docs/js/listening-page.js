@@ -434,7 +434,6 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       '<div class="dictate-row">' +
         '<input type="text" class="dictate-input" autocomplete="off" placeholder="听写这一句的日语…">' +
         '<button type="button" class="dictate-btn dictate-check">確認</button>' +
-        '<button type="button" class="dictate-btn dictate-reveal">答えを見る</button>' +
       '</div>' +
       '<div class="dictate-status"></div>' +
       '<div class="dictate-answer"></div>' +
@@ -443,14 +442,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
     var input = ui.querySelector(".dictate-input");
     var checkBtn = ui.querySelector(".dictate-check");
-    var revealBtn = ui.querySelector(".dictate-reveal");
     var status = ui.querySelector(".dictate-status");
     var answerBox = ui.querySelector(".dictate-answer");
     var hintBox = ui.querySelector(".dictate-hint");
     if (segZh) hintBox.textContent = segZh.textContent;
     // 只挡输入框/按钮的点击（避免每次点它们都触发外层 .seg-card 的"点击播放"），
     // 提示区/空白处仍然能点击播放——不整体 stopPropagation。
-    [input, checkBtn, revealBtn].forEach(function(el) {
+    [input, checkBtn].forEach(function(el) {
       el.addEventListener("click", function(e) { e.stopPropagation(); });
     });
 
@@ -465,25 +463,30 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     card._dictate.setState = setState;
     setState("locked");
 
-    function check(reveal) {
+    // 默写没有"查看答案"按钮——提交后不对，直接把正确答案显示出来，但不算
+    // 过关、不解锁下一句，必须用户自己把输入框改成跟答案一致再提交一次才能
+    // 前进（跟单词测试"不管对错都显示答案+自动倒计时前进"的逻辑不是一回事，
+    // 默写就是要逼着用户改到对为止，不能靠等自动跳过）。
+    function check() {
       if (card._dictate.state === "done") return;
       var matched = stripPunct(input.value) === answerStripped;
-      if (reveal || matched) {
-        var badge = matched
-          ? '<span class="dictate-badge ok">✓ 正解</span> '
-          : '<span class="dictate-badge rev">👁 答案</span> ';
-        answerBox.innerHTML = badge + segJa.innerHTML;
+      if (matched) {
+        answerBox.innerHTML = '<span class="dictate-badge ok">✓ 正解</span> ' + segJa.innerHTML;
+        status.textContent = "";
+        status.className = "dictate-status";
+        ui.classList.remove("revealed");
         setState("done");
         advance(card);
       } else {
-        status.textContent = "✗ 不一致，再检查一下";
+        answerBox.innerHTML = '<span class="dictate-badge wrong">✗ 答案</span> ' + segJa.innerHTML;
+        ui.classList.add("revealed");
+        status.textContent = "跟上面的答案对一下，改好之后重新提交";
         status.className = "dictate-status ng";
       }
     }
-    checkBtn.addEventListener("click", function() { check(false); });
-    revealBtn.addEventListener("click", function() { check(true); });
+    checkBtn.addEventListener("click", check);
     input.addEventListener("keydown", function(e) {
-      if (e.key === "Enter") { e.preventDefault(); check(false); }
+      if (e.key === "Enter") { e.preventDefault(); check(); }
     });
   });
 
@@ -493,9 +496,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var cards = Array.from(block.querySelectorAll(".seg-card")).filter(function(c) { return c._dictate; });
     var i = cards.indexOf(card);
     // 只在原地解锁下一句，不自动聚焦/自动滚动——之前 focus()+scrollIntoView 会把视口
-    // 拉到下一句，如果下一句的"確認/答えを見る"按钮刚好滚到跟当前点击位置同一个坐标，
-    // 用户紧接着的第二次点击（哪怕只是手抖多点一下）就会误触下一句，连锁着把好几句
-    // 都当场看了答案。留在原地，用户自己决定什么时候滚下去、点进下一句的输入框。
+    // 拉到下一句，如果下一句的"確認"按钮刚好滚到跟当前点击位置同一个坐标，用户紧
+    // 接着的第二次点击（哪怕只是手抖多点一下）就会误触下一句，连锁着把好几句都
+    // 当场看了答案。留在原地，用户自己决定什么时候滚下去、点进下一句的输入框。
     if (i >= 0 && i + 1 < cards.length) {
       cards[i + 1]._dictate.setState("active");
     }
