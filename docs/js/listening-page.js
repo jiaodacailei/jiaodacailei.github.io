@@ -416,7 +416,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
 
   var PUNCT_RE = /[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'"]/g;
-  function stripPunct(s) { return (s || "").replace(PUNCT_RE, ""); }
+  // 全角数字（０-９）跟半角数字（0-9）是同一个数字，但课本原文排版经常用
+  // 全角、键盘打字自然是半角——判分前先统一转成半角，不然会出现"数字明明
+  // 打对了，就因为全角/半角不一致被判错"的情况。
+  function normalizeDigits(s) {
+    return (s || "").replace(/[０-９]/g, function(ch) {
+      return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+    });
+  }
+  function stripPunct(s) { return normalizeDigits(s).replace(PUNCT_RE, ""); }
 
   // ---- 默写：逐句隐藏日语原文，常驻提示中文翻译，输入跟原文一致（忽略标点）
   //      才算过关，按小题（question-block）顺序解锁下一句 ----
