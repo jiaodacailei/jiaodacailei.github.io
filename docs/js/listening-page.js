@@ -67,14 +67,30 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (wordHighlightRAF === null) { wordHighlightRAF = requestAnimationFrame(tickWordHighlight); }
   }
 
-  // 当前正在播放的句子加高亮效果，并自动滚动到可视区域内，方便连播/跳转时跟着看
+  // 卡片是不是已经在"不被顶部 sticky-header / 底部悬浮播放器挡住"的可视区域内——
+  // 连播一长串句子时，如果每一句都不管三七二十一地 scrollIntoView，画面会一直在
+  // 平滑滚动动画中，用户这时候点别的句子卡片，点击坐标是按当前视觉位置算的，
+  // 但内容正在动画滚动、真实位置随时在变，就会出现"点了没反应"或者"点好几次
+  // 才点中"——不是点击逻辑本身的 bug，是不必要的滚动动画抢了点击的准头。
+  function isCardVisible(card) {
+    var r = card.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var topGuard = 70;   // sticky-header 实际高度约55px，留一点余量
+    var bottomGuard = 90; // 悬浮迷你播放器实际高度约55px，留一点余量
+    return r.top >= topGuard && r.bottom <= vh - bottomGuard;
+  }
+
+  // 当前正在播放的句子加高亮效果，只有卡片不在可视区域时才自动滚动——已经看
+  // 得见就不打断，方便连播/跳转时跟着看，又不会因为动画滚动干扰点击。
   function setPlayingCard(audio) {
     document.querySelectorAll(".seg-card.playing").forEach(function(c) { c.classList.remove("playing"); });
     if (audio) {
       var card = audio.closest(".seg-card");
       if (card) {
         card.classList.add("playing");
-        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (!isCardVisible(card)) {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
       }
     }
   }
