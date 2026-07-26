@@ -416,15 +416,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
 
   var PUNCT_RE = /[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'"]/g;
-  // 全角数字（０-９）跟半角数字（0-9）是同一个数字，但课本原文排版经常用
-  // 全角、键盘打字自然是半角——判分前先统一转成半角，不然会出现"数字明明
-  // 打对了，就因为全角/半角不一致被判错"的情况。
-  function normalizeDigits(s) {
-    return (s || "").replace(/[０-９]/g, function(ch) {
+  // 全角数字/字母（０-９Ａ-Ｚａ-ｚ）跟半角（0-9A-Za-z）是同一个字符，但课本
+  // 原文排版经常用全角（比如"テレビＣＭ"里的ＣＭ）、键盘打字自然是半角——
+  // 判分前先统一转成半角，不然会出现"明明打对了，就因为全角/半角不一致
+  // 被判错"的情况。全角形式（Unicode 全角字符区）到半角 ASCII 的码位偏移
+  // 统一是 0xFEE0，数字/大写字母/小写字母都适用，不用分开写三次转换。
+  function normalizeFullwidth(s) {
+    return (s || "").replace(/[０-９Ａ-Ｚａ-ｚ]/g, function(ch) {
       return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
     });
   }
-  function stripPunct(s) { return normalizeDigits(s).replace(PUNCT_RE, ""); }
+  function stripPunct(s) { return normalizeFullwidth(s).replace(PUNCT_RE, ""); }
 
   // ---- 默写：逐句隐藏日语原文，常驻提示中文翻译，输入跟原文一致（忽略标点）
   //      才算过关，按小题（question-block）顺序解锁下一句 ----
