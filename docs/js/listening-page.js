@@ -432,7 +432,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     ui.innerHTML =
       '<div class="dictate-hint"></div>' +
       '<div class="dictate-row">' +
-        '<input type="text" class="dictate-input" autocomplete="off" placeholder="听写这一句的日语…">' +
+        '<textarea class="dictate-input" rows="2" autocomplete="off" placeholder="听写这一句的日语…"></textarea>' +
         '<button type="button" class="dictate-btn dictate-check">確認</button>' +
       '</div>' +
       '<div class="dictate-status"></div>' +
