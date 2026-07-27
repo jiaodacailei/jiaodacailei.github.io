@@ -327,7 +327,12 @@ body.mode-dictate .dictate-ui { display: block; }
 .dictate-badge { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 999px; margin-right: 4px; white-space: nowrap; }
 .dictate-badge.ok { background: #dcfce7; color: #16a34a; }
 .dictate-badge.wrong { background: #fee2e2; color: #dc2626; }
-.dictate-locked { display: none; color: var(--text-muted); font-size: 13px; padding: 4px 0; }
+.dictate-locked {
+  display: none; color: var(--blue); font-size: 13px; padding: 7px 12px;
+  border: 1px dashed var(--blue-light); background: var(--blue-xlight);
+  border-radius: 8px; cursor: pointer; font-family: inherit; width: 100%; text-align: left;
+}
+.dictate-locked:hover { background: var(--blue-light); }
 
 .dictate-ui.state-locked .dictate-hint,
 .dictate-ui.state-locked .dictate-row,

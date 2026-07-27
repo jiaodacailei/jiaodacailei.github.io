@@ -474,7 +474,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       '<div class="dictate-status"></div>' +
       '<div class="dictate-answer"></div>' +
       '<div class="dictate-redo-row"><button type="button" class="dictate-btn dictate-redo">重新练习</button></div>' +
-      '<div class="dictate-locked">🔒 先完成上一句</div>';
+      '<button type="button" class="dictate-locked">▶ 点击开始听写</button>';
     segJa.insertAdjacentElement("afterend", ui);
 
     var input = ui.querySelector(".dictate-input");
@@ -482,11 +482,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var status = ui.querySelector(".dictate-status");
     var answerBox = ui.querySelector(".dictate-answer");
     var redoBtn = ui.querySelector(".dictate-redo");
+    var lockedBtn = ui.querySelector(".dictate-locked");
     var hintBox = ui.querySelector(".dictate-hint");
     if (segZh) hintBox.textContent = segZh.textContent;
     // 只挡输入框/按钮的点击（避免每次点它们都触发外层 .seg-card 的"点击播放"），
     // 提示区/空白处仍然能点击播放——不整体 stopPropagation。
-    [input, checkBtn, redoBtn].forEach(function(el) {
+    [input, checkBtn, redoBtn, lockedBtn].forEach(function(el) {
       el.addEventListener("click", function(e) { e.stopPropagation(); });
     });
 
@@ -548,6 +549,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       setState("active");
       input.focus();
     });
+
+    // 不限制顺序——任何一句还锁着的卡片都能直接点开开始练习，不用先做完
+    // 前面的句子。跟 redoBtn 一样只切状态，不自动 focus/scroll（同样是为了
+    // 避免连续点击误触下一个元素）。
+    lockedBtn.addEventListener("click", function() {
+      setState("active");
+      input.focus();
+    });
   });
 
   function advance(card) {
@@ -559,7 +568,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 拉到下一句，如果下一句的"確認"按钮刚好滚到跟当前点击位置同一个坐标，用户紧
     // 接着的第二次点击（哪怕只是手抖多点一下）就会误触下一句，连锁着把好几句都
     // 当场看了答案。留在原地，用户自己决定什么时候滚下去、点进下一句的输入框。
-    if (i >= 0 && i + 1 < cards.length) {
+    // 只在下一句还是"locked"时才自动解锁——用户可能已经跳着练习把下一句
+    // 提前做完了（active 甚至 done），这时不能覆盖它的状态，否则会把已经
+    // 做完的句子重新打回"作答中"、白白抹掉刚记的 ✓ 正解。
+    if (i >= 0 && i + 1 < cards.length && cards[i + 1]._dictate.state === "locked") {
       cards[i + 1]._dictate.setState("active");
     }
   }
