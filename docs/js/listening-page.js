@@ -576,17 +576,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
   }
 
-  // 每个小题解锁"第一句还没过关的"为 active，前面已经过关的（刷新页面恢复
-  // 出来的）保持 done，再后面的保持 locked——不是无脑解锁 cards[0]，不然
-  // 每次刷新都会把已经做完的第一句重新解锁成"作答中"，等于进度白记了。
-  document.querySelectorAll(".question-block").forEach(function(block) {
-    var cards = Array.from(block.querySelectorAll(".seg-card")).filter(function(c) { return c._dictate; });
-    var firstNotDone = null;
-    for (var i = 0; i < cards.length; i++) {
-      if (cards[i]._dictate.state !== "done") { firstNotDone = cards[i]; break; }
-    }
-    if (firstNotDone) firstNotDone._dictate.setState("active");
-  });
+  // 不再自动解锁"第一句还没过关的"——所有句子（包括第一句）默认都收起，
+  // 只显示中文提示，用户点哪句就练哪句。已过关的句子在上面 forEach 里
+  // 已经各自 renderDone() 恢复成 done，其余的都保持 setState("locked") 时
+  // 的初始状态，不用在这里再处理。
 
   // ---- 填空：从 seg-notes 里第一个「…」抓语法点原文，在句子里定位到对应的
   //      .tw 词（挖空按词级 token 对齐，不做字符级切割），挖空成一个输入框 ----
