@@ -334,7 +334,6 @@ body.mode-dictate .dictate-ui { display: block; }
 }
 .dictate-locked:hover { background: var(--blue-light); }
 
-.dictate-ui.state-locked .dictate-hint,
 .dictate-ui.state-locked .dictate-row,
 .dictate-ui.state-locked .dictate-status,
 .dictate-ui.state-locked .dictate-answer { display: none; }
