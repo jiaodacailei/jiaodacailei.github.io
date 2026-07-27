@@ -473,6 +473,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       '</div>' +
       '<div class="dictate-status"></div>' +
       '<div class="dictate-answer"></div>' +
+      '<div class="dictate-redo-row"><button type="button" class="dictate-btn dictate-redo">重新练习</button></div>' +
       '<div class="dictate-locked">🔒 先完成上一句</div>';
     segJa.insertAdjacentElement("afterend", ui);
 
@@ -480,11 +481,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var checkBtn = ui.querySelector(".dictate-check");
     var status = ui.querySelector(".dictate-status");
     var answerBox = ui.querySelector(".dictate-answer");
+    var redoBtn = ui.querySelector(".dictate-redo");
     var hintBox = ui.querySelector(".dictate-hint");
     if (segZh) hintBox.textContent = segZh.textContent;
     // 只挡输入框/按钮的点击（避免每次点它们都触发外层 .seg-card 的"点击播放"），
     // 提示区/空白处仍然能点击播放——不整体 stopPropagation。
-    [input, checkBtn].forEach(function(el) {
+    [input, checkBtn, redoBtn].forEach(function(el) {
       el.addEventListener("click", function(e) { e.stopPropagation(); });
     });
 
@@ -533,6 +535,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     checkBtn.addEventListener("click", check);
     input.addEventListener("keydown", function(e) {
       if (e.key === "Enter") { e.preventDefault(); check(); }
+    });
+
+    // 已经过关的句子想重复练习——只是把这一句重新切回"作答中"，不影响它
+    // 已经记进 localStorage 的过关状态（不需要真的答对第二次才能继续解锁
+    // 后面的句子），也不影响其它句子的进度，纯粹是这一句自己的"再练一次"。
+    redoBtn.addEventListener("click", function() {
+      input.value = "";
+      status.textContent = "";
+      status.className = "dictate-status";
+      ui.classList.remove("revealed");
+      setState("active");
+      input.focus();
     });
   });
 
