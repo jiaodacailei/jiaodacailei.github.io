@@ -662,6 +662,34 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     };
   }
 
+  // 每个词的 id 理应是这份 quiz_data 里全局唯一、稳定不变的编号，但真实出过
+  // bug（textbook-sjp-zg-l11：生词表 id 编号体系用错，事后修复重新发布后
+  // 全部 144 个词的 id 整体平移了 35）——用户浏览器里旧的错题/进度记录是按
+  // 旧 id 存的，页面更新后这些 key 对不上任何一个"现在真实存在的词"，变成
+  // 无主的孤儿记录。`totalErrorCount()` 是直接累加 errors 对象里所有值，
+  // 不会区分"这个 key 现在还对应哪个词"，孤儿记录会让错题数显示比"仅错题"
+  // 队列里真实能筛出来的题目数更大（真实案例：显示"1 / 7(9)"，队列只有7道
+  // 真实能匹配上的错题，但累计错误数被两条孤儿记录污染成了9）。
+  var validWordIds = {};
+  words.forEach(function(w) { validWordIds[w.id] = true; });
+
+  // 清掉 errors/completed 里 key 对应的 wordId 已经不在当前词表里的孤儿
+  // 记录——errKey 格式是 "wordId:type"，取冒号前的部分对比。清完立刻存回
+  // localStorage，不是只在内存里筛一下，不然下次读到的还是带孤儿记录的
+  // 旧数据、每次都要重新筛一遍。
+  function pruneOrphans(obj, saveFn) {
+    var changed = false;
+    Object.keys(obj).forEach(function(key) {
+      var wordId = key.slice(0, key.lastIndexOf(":"));
+      if (!validWordIds[wordId]) {
+        delete obj[key];
+        changed = true;
+      }
+    });
+    if (changed) saveFn();
+    return changed;
+  }
+
   var errors = {}, completed = {}, scope = "all";
   function loadCategoryState() {
     var k = stateKeys();
@@ -673,6 +701,8 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     try { (JSON.parse(localStorage.getItem(k.progress) || "[]")).forEach(function(key) { completed[key] = 1; }); } catch (e) { completed = {}; }
     // 出题范围："all"=四类题型全部都做，"wrong"=只做累计出过错的题（getErr>0）。
     scope = localStorage.getItem(k.scope) || "all";
+    pruneOrphans(errors, function() { localStorage.setItem(k.error, JSON.stringify(errors)); });
+    pruneOrphans(completed, function() { localStorage.setItem(k.progress, JSON.stringify(Object.keys(completed))); });
   }
   loadCategoryState();
 
