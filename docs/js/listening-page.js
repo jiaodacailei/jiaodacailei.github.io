@@ -445,7 +445,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function stripPunct(s) { return normalizeFullwidth(s).replace(PUNCT_RE, ""); }
 
   // ---- 默写：逐句隐藏日语原文，常驻提示中文翻译，输入跟原文一致（忽略标点）
-  //      才算过关，按小题（question-block）顺序解锁下一句 ----
+  //      才算过关，按小题（question-block）顺序解锁下一句；哪些句子已经过关
+  //      记 localStorage，刷新页面不从头重来——跟单词测试的 completed 是
+  //      同一个道理，card.id（形如"card-a48"）在整份页面里天然唯一，直接
+  //      当 key 用，不用另外拼 errKey 那一套。 ----
+  var DICTATE_DONE_KEY = "n2listen-dictate-done:" + location.pathname;
+  var dictateDone = {};
+  try { (JSON.parse(localStorage.getItem(DICTATE_DONE_KEY) || "[]")).forEach(function(id) { dictateDone[id] = 1; }); } catch (e) { dictateDone = {}; }
+  function saveDictateDone() {
+    localStorage.setItem(DICTATE_DONE_KEY, JSON.stringify(Object.keys(dictateDone)));
+  }
+
   document.querySelectorAll(".seg-card").forEach(function(card) {
     var segJa = card.querySelector(".seg-ja");
     var segZh = card.querySelector(".seg-zh");
@@ -489,6 +499,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     card._dictate.setState = setState;
     setState("locked");
 
+    // 判对之后的展示逻辑单独拆出来，重新打开页面恢复已完成的句子时也要用
+    // 同一套（不然恢复出来的样子跟当场刚答对时不一致）。
+    function renderDone() {
+      answerBox.innerHTML = '<span class="dictate-badge ok">✓ 正解</span> ' + segJa.innerHTML;
+      status.textContent = "";
+      status.className = "dictate-status";
+      ui.classList.remove("revealed");
+      setState("done");
+    }
+    card._dictate.renderDone = renderDone;
+    if (dictateDone[card.id]) renderDone();
+
     // 默写没有"查看答案"按钮——提交后不对，直接把正确答案显示出来，但不算
     // 过关、不解锁下一句，必须用户自己把输入框改成跟答案一致再提交一次才能
     // 前进（跟单词测试"不管对错都显示答案+自动倒计时前进"的逻辑不是一回事，
@@ -497,11 +519,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (card._dictate.state === "done") return;
       var matched = stripPunct(input.value) === answerStripped;
       if (matched) {
-        answerBox.innerHTML = '<span class="dictate-badge ok">✓ 正解</span> ' + segJa.innerHTML;
-        status.textContent = "";
-        status.className = "dictate-status";
-        ui.classList.remove("revealed");
-        setState("done");
+        renderDone();
+        dictateDone[card.id] = 1;
+        saveDictateDone();
         advance(card);
       } else {
         answerBox.innerHTML = '<span class="dictate-badge wrong">✗ 答案</span> ' + segJa.innerHTML;
@@ -530,10 +550,16 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
   }
 
-  // 每个小题解锁第一句为 active，其余保持 locked——只跑一次，不随模式来回切换重置进度
+  // 每个小题解锁"第一句还没过关的"为 active，前面已经过关的（刷新页面恢复
+  // 出来的）保持 done，再后面的保持 locked——不是无脑解锁 cards[0]，不然
+  // 每次刷新都会把已经做完的第一句重新解锁成"作答中"，等于进度白记了。
   document.querySelectorAll(".question-block").forEach(function(block) {
     var cards = Array.from(block.querySelectorAll(".seg-card")).filter(function(c) { return c._dictate; });
-    if (cards.length) cards[0]._dictate.setState("active");
+    var firstNotDone = null;
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i]._dictate.state !== "done") { firstNotDone = cards[i]; break; }
+    }
+    if (firstNotDone) firstNotDone._dictate.setState("active");
   });
 
   // ---- 填空：从 seg-notes 里第一个「…」抓语法点原文，在句子里定位到对应的
@@ -556,11 +582,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return tokens;
   }
 
-  function extractGrammarQuery(notesText) {
-    var m = notesText.match(/「([^」]+)」/);
-    if (!m) return null;
-    var q = m[1].replace(/^[~〜]+/, "").replace(/[^\p{L}\p{N}ー々]+$/u, "");
-    return q.length >= 2 ? q : null;
+  // 一句的 seg-notes 里可能不止一个语法点（比如"「AでもBでも」表示…；
+  // 「当たる」在此意为…"这种一句两个点都讲的笔记），要把「…」全部抓出来，
+  // 不能只挖第一个——挖漏的语法点相当于这句根本没有练到。
+  function extractGrammarQueries(notesText) {
+    var out = [];
+    var re = /「([^」]+)」/g;
+    var m;
+    while ((m = re.exec(notesText))) {
+      var q = m[1].replace(/^[~〜]+/, "").replace(/[^\p{L}\p{N}ー々]+$/u, "");
+      if (q.length >= 2) out.push(q);
+    }
+    return out;
   }
 
   function findBlankRange(plain, query) {
@@ -571,43 +604,95 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return null;
   }
 
+  // 哪些空已经提交过（对/错都算"提交过"）记 localStorage，刷新页面恢复成
+  // 提交时的样子（对错状态+正确答案），不用重新做一遍——值存的是对/错
+  // （true/false），不是用户当时打的原文，恢复时统一直接显示正确答案就
+  // 够了（打对了本来就等于正确答案，打错了揭示出来的也是正确答案，没必要
+  // 单独记一份用户当时的错误输入）。
+  var BLANK_DONE_KEY = "n2listen-blank-done:" + location.pathname;
+  var blankDone = {};
+  try { blankDone = JSON.parse(localStorage.getItem(BLANK_DONE_KEY) || "{}"); } catch (e) { blankDone = {}; }
+  function saveBlankDone() {
+    localStorage.setItem(BLANK_DONE_KEY, JSON.stringify(blankDone));
+  }
+
   document.querySelectorAll(".seg-card").forEach(function(card) {
     var segJa = card.querySelector(".seg-ja");
     var notes = card.querySelector(".seg-notes");
     if (!segJa || !notes) return;
-    var query = extractGrammarQuery(notes.textContent);
-    if (!query) return;
-    var tokens = baseTokens(segJa);
-    var plain = tokens.map(function(t) { return t.text; }).join("");
-    var range = findBlankRange(plain, query);
-    if (!range) return;
+    var queries = extractGrammarQueries(notes.textContent);
+    if (!queries.length) return;
 
     // 在原文的克隆上动手（不碰真正的 .seg-ja，跟读高亮/切模式回退都还是原样）
     var clone = segJa.cloneNode(true);
     clone.className = "seg-ja-blank";
     var cloneTokens = baseTokens(clone);
-    var overlapping = cloneTokens.filter(function(t) { return t.start < range.end && t.end > range.start; });
-    if (!overlapping.length) return;
-    var answer = overlapping.map(function(t) { return t.text; }).join("");
+    var plain = cloneTokens.map(function(t) { return t.text; }).join("");
 
-    var input = document.createElement("input");
-    input.type = "text";
-    input.className = "blank-input";
-    input.autocomplete = "off";
-    input.dataset.answer = answer;
-    input.style.width = (answer.length * 1.4 + 1.2) + "em";
-    var parent = overlapping[0].node.parentNode;
-    parent.insertBefore(input, overlapping[0].node);
-    overlapping.forEach(function(t) { if (t.node.parentNode) t.node.parentNode.removeChild(t.node); });
-    input.addEventListener("click", function(e) { e.stopPropagation(); });
-    input.addEventListener("keydown", function(e) {
-      if (e.key !== "Enter") return;
-      e.preventDefault();
-      var ok = input.value.trim() === input.dataset.answer;
-      input.classList.toggle("ok", ok);
-      input.classList.toggle("ng", !ok);
-      if (ok) card.classList.add("blank-revealed");
+    var ranges = [];
+    queries.forEach(function(q) {
+      var r = findBlankRange(plain, q);
+      if (r) ranges.push(r);
     });
+    ranges.sort(function(a, b) { return a.start - b.start; });
+    // 两个语法点意外圈到同一段文字时只保留先出现的那个，避免同一批 token
+    // 被挖空两次（第二次挖的时候 token 已经不在 DOM 里了）。
+    ranges = ranges.filter(function(r, i) { return i === 0 || r.start >= ranges[i - 1].end; });
+    if (!ranges.length) return;
+
+    // 一句可能挖了不止一个空，但 seg-notes 往往是把这几个语法点写在同一段
+    // 笔记里的（比如"「AでもBでも」表示…；「当たる」在此意为…"）——如果
+    // 提交了第一个空就把 seg-notes 整段放出来，会连第二个空的答案一起提前
+    // 剧透。要等这句所有空都提交过之后才放出 seg-notes，不能每提交一个空
+    // 就检查一次单独放行。
+    var blanksTotal = 0, blanksResolved = 0;
+    function maybeRevealNotes() {
+      if (blanksResolved >= blanksTotal) card.classList.add("blank-revealed");
+    }
+
+    ranges.forEach(function(range, blankIdx) {
+      var overlapping = cloneTokens.filter(function(t) { return t.start < range.end && t.end > range.start; });
+      if (!overlapping.length) return;
+      var answer = overlapping.map(function(t) { return t.text; }).join("");
+      var blankId = card.id + ":" + blankIdx;
+      blanksTotal++;
+
+      var input = document.createElement("input");
+      input.type = "text";
+      input.className = "blank-input";
+      input.autocomplete = "off";
+      input.dataset.answer = answer;
+      input.style.width = (answer.length * 1.4 + 1.2) + "em";
+      var parent = overlapping[0].node.parentNode;
+      parent.insertBefore(input, overlapping[0].node);
+      overlapping.forEach(function(t) { if (t.node.parentNode) t.node.parentNode.removeChild(t.node); });
+      input.addEventListener("click", function(e) { e.stopPropagation(); });
+
+      // 不管对错，提交后都直接给出正确答案，不要求改到对才能继续——这条
+      // 特意跟单词测试的"不管对错都显示答案"保持一致，不是默写"必须改对"
+      // 那一套（填空考的是语法点本身记没记住，不是靠反复重试硬凑答案）。
+      function resolve(ok) {
+        input.disabled = true;
+        input.classList.toggle("ok", ok);
+        input.classList.toggle("ng", !ok);
+        if (!ok) input.value = answer;
+        blanksResolved++;
+        maybeRevealNotes();
+        blankDone[blankId] = ok;
+        saveBlankDone();
+      }
+      input.addEventListener("keydown", function(e) {
+        if (e.key !== "Enter" || input.disabled) return;
+        e.preventDefault();
+        resolve(input.value.trim() === answer);
+      });
+
+      if (blankId in blankDone) {
+        input.value = answer;
+        resolve(blankDone[blankId]);
+      }
+    });
+    if (!blanksTotal) return;
 
     segJa.insertAdjacentElement("afterend", clone);
     card.classList.add("has-blank");
