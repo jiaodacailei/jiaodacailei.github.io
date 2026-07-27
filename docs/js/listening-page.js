@@ -624,25 +624,66 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   if (!dataEl) return;
   var words = JSON.parse(dataEl.textContent);
 
-  var ERROR_KEY = "n2listen-quiz-errors:" + location.pathname;
-  var errors = {};
-  try { errors = JSON.parse(localStorage.getItem(ERROR_KEY) || "{}"); } catch (e) { errors = {}; }
+  // 单词测试分"全部/会话相关/课文相关/其他"四个分类分别测试——分类来自
+  // build_vocab_quiz_data.py 写进每个词条的 category 字段（"dialogue"/"text"/
+  // "other"，直接复用人工核实过的"这个词真的出现在哪"的数据，不是拿词典
+  // 基本型重新猜一遍）。没有 category 字段的旧数据（页面还没用新版脚本重新
+  // 生成过）一律当"other"处理，不会报错也不会漏词。
+  var CATEGORY_KEY = "n2listen-quiz-category:" + location.pathname;
+  var CATEGORIES = [
+    { key: "all", label: "全部" },
+    { key: "dialogue", label: "会话相关" },
+    { key: "text", label: "课文相关" },
+    { key: "other", label: "其他单词" }
+  ];
+  var presentCategories = {};
+  words.forEach(function(w) { presentCategories[w.category || "other"] = true; });
+  // "全部"永远展示；具体分类只在这份数据里真的有对应词的时候才展示，避免
+  // 点开一个空空如也的分类（比如某一课没有课文 tab，就不会有"课文相关"）。
+  var availableCategories = CATEGORIES.filter(function(c) { return c.key === "all" || presentCategories[c.key]; });
+  var category = localStorage.getItem(CATEGORY_KEY) || "all";
+  if (category !== "all" && !presentCategories[category]) category = "all";
 
-  // 记录"这一轮已经做过（判对或已看答案）的题"，刷新页面时跳过这些，只接着做
-  // 剩下的——不然每次刷新都从头 400 题重来一遍。等一轮全部做完（剩余为空）才
-  // 清空，开始下一轮；"错题记录清零"按钮也会顺带清掉这份记录，视为完全重开。
-  var PROGRESS_KEY = "n2listen-quiz-progress:" + location.pathname;
-  var completed = {};
-  try { (JSON.parse(localStorage.getItem(PROGRESS_KEY) || "[]")).forEach(function(k) { completed[k] = 1; }); } catch (e) { completed = {}; }
+  function categoryWords() {
+    if (category === "all") return words;
+    return words.filter(function(w) { return (w.category || "other") === category; });
+  }
+
+  // 错题/进度/出题范围这三份状态都要按分类分开记——同一个页面里"会话相关"
+  // 跟"课文相关"是两套独立的做题进度，不能共用一份 localStorage。key 里的
+  // category 会随用户切分类实时变化，所以不能像 DELAY_KEY 那样在模块顶层
+  // 算一次就定死，每次要用的时候都要重新拼。
+  function stateKeys() {
+    var suffix = ":" + location.pathname + ":" + category;
+    return {
+      error: "n2listen-quiz-errors" + suffix,
+      progress: "n2listen-quiz-progress" + suffix,
+      scope: "n2listen-quiz-scope" + suffix
+    };
+  }
+
+  var errors = {}, completed = {}, scope = "all";
+  function loadCategoryState() {
+    var k = stateKeys();
+    try { errors = JSON.parse(localStorage.getItem(k.error) || "{}"); } catch (e) { errors = {}; }
+    // 记录"这一轮已经做过（判对或已看答案）的题"，刷新页面时跳过这些，只接着
+    // 做剩下的——不然每次刷新都从头重来一遍。等一轮全部做完（剩余为空）才
+    // 清空，开始下一轮；"错题记录清零"按钮也会顺带清掉这份记录，视为完全重开。
+    completed = {};
+    try { (JSON.parse(localStorage.getItem(k.progress) || "[]")).forEach(function(key) { completed[key] = 1; }); } catch (e) { completed = {}; }
+    // 出题范围："all"=四类题型全部都做，"wrong"=只做累计出过错的题（getErr>0）。
+    scope = localStorage.getItem(k.scope) || "all";
+  }
+  loadCategoryState();
 
   function errKey(wordId, type) { return wordId + ":" + type; }
   function getErr(k) { return errors[k] || 0; }
   function bumpErr(k) {
     errors[k] = getErr(k) + 1;
-    localStorage.setItem(ERROR_KEY, JSON.stringify(errors));
+    localStorage.setItem(stateKeys().error, JSON.stringify(errors));
   }
   function saveProgress() {
-    localStorage.setItem(PROGRESS_KEY, JSON.stringify(Object.keys(completed)));
+    localStorage.setItem(stateKeys().progress, JSON.stringify(Object.keys(completed)));
   }
   function totalErrorCount() {
     return Object.keys(errors).reduce(function(sum, k) { return sum + errors[k]; }, 0);
@@ -651,10 +692,6 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     completed[errKey(q.word.id, q.type)] = 1;
     saveProgress();
   }
-
-  // 出题范围："all"=四类题型全部都做，"wrong"=只做累计出过错的题（getErr>0）。
-  var SCOPE_KEY = "n2listen-quiz-scope:" + location.pathname;
-  var scope = localStorage.getItem(SCOPE_KEY) || "all";
 
   // 确认后自动跳下一题的等待秒数——是通用偏好（不跟具体某一课绑定），所以
   // key 不带 location.pathname，跟 SPEED_KEY/LANG_KEY/MODE_KEY 一样全站共用。
@@ -696,7 +733,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 顺序不能反——先按范围筛，再在筛出来的这个子集里判断"是不是都做完了"。
   function scopedAllItems() {
     var all = [];
-    words.forEach(function(w) {
+    categoryWords().forEach(function(w) {
       TYPES.forEach(function(t) {
         if (scope === "wrong" && getErr(errKey(w.id, t)) <= 0) return;
         all.push({ word: w, type: t });
@@ -734,6 +771,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var countedWrong = false;  // 这道题这一轮是否已经计过一次错，避免反复提交同一道题重复累加
   var autoAdvanceTimer = null; // 点确认后3秒自动跳下一题的计时器，手动点"次へ"或提前进新题要清掉，避免重复推进
 
+  var quizApp = document.getElementById("quizApp");
   var quizProgress = document.getElementById("quizProgress");
   var quizCard = document.getElementById("quizCard");
   var quizDone = document.getElementById("quizDone");
@@ -887,13 +925,44 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   quizPlayBtn.addEventListener("click", function() { quizAudio.currentTime = 0; quizAudio.play(); });
   quizResetErrors.addEventListener("click", function() {
     errors = {};
-    localStorage.setItem(ERROR_KEY, JSON.stringify(errors));
+    localStorage.setItem(stateKeys().error, JSON.stringify(errors));
     completed = {};
     saveProgress();
     queue = buildQueue();
     qi = 0;
     render();
   });
+
+  // 分类选择条（全部/会话相关/课文相关/其他单词）——只有真的存在对应词的
+  // 分类才会出现在 availableCategories 里，不足两个分类（比如这一课没有课文
+  // tab、所有词都归"其他"）时不用渲染这排按钮，避免看起来像"有得选却选了
+  // 也没变化"。放在答题卡片上方、跟"出题范围"这类藏在设置面板里的次要偏好
+  // 区别开——选哪个分类是"测哪一批词"这种主要选择，要放在显眼位置。
+  if (availableCategories.length > 1) {
+    var categoryBar = document.createElement("div");
+    categoryBar.className = "quiz-category-bar";
+    categoryBar.innerHTML = availableCategories.map(function(c) {
+      return '<button type="button" class="quiz-category-btn" data-category="' + c.key + '">' +
+        c.label + '</button>';
+    }).join("");
+    quizApp.insertBefore(categoryBar, quizApp.firstChild);
+    var categoryBtns = Array.from(categoryBar.querySelectorAll(".quiz-category-btn"));
+    categoryBtns.forEach(function(b) {
+      b.classList.toggle("active", b.dataset.category === category);
+      b.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (b.dataset.category === category) return;
+        category = b.dataset.category;
+        localStorage.setItem(CATEGORY_KEY, category);
+        categoryBtns.forEach(function(x) { x.classList.toggle("active", x === b); });
+        loadCategoryState();
+        scopeBtns.forEach(function(x) { x.classList.toggle("active", x.dataset.scope === scope); });
+        queue = buildQueue();
+        qi = 0;
+        render();
+      });
+    });
+  }
 
   // 出题范围（全部题目／仅错题）——设置面板里只在单词测试 tab 激活时才显示
   // 的那一组，跟播放速度/显示模式/练习模式那几组是互斥的（见 CSS 的
@@ -915,7 +984,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       b.addEventListener("click", function() {
         if (b.dataset.scope === scope) return;
         scope = b.dataset.scope;
-        localStorage.setItem(SCOPE_KEY, scope);
+        localStorage.setItem(stateKeys().scope, scope);
         scopeBtns.forEach(function(x) { x.classList.toggle("active", x === b); });
         queue = buildQueue();
         qi = 0;

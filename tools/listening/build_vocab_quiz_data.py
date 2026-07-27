@@ -10,6 +10,12 @@
 音频写假名/中文写假名/日文写中文"四种题目，不在这里预先展开成 400 条——
 题目怎么问是纯前端逻辑，这里只负责把每个词该有的素材备齐。
 
+每条输出还带一个 `category` 字段（"dialogue"/"text"/"other"），直接复用
+occurrences.json 里人工核实过的 `src`（会话/课文里真实出现的词，已经处理过
+活用形不一致的问题，不是重新拿词典基本型去匹配）；走 authored_examples.json
+（会话/课文里真没找到）的词条固定是 "other"。前端"单词测试"tab 靠这个字段
+把词库分成"会话相关/课文相关/其他"三部分分别测试、各自独立记进度和错题。
+
 <vocab_words.json>：跟 build_vocab_from_wordlist.py 用的是同一份格式，但这里
   只用 id/text/zh/kana 四个字段（audio 路径不需要传，跟 build_page.py 生成
   生词卡片时用的是同一条规则：`audio/seg-{id:03d}.mp3`，由 build_page.py 自己
@@ -161,6 +167,11 @@ def main():
             entry["sentence"] = sent["ja"]
             entry["sentence_zh"] = sent["zh"]
             entry["blank"] = o["blank"]
+            # "这个词真的出现在会话/课文里"这件事，人工核实 occurrence 的时候已经
+            # 判断过一次了（包括处理活用形不一致的问题——blank 存的是这句里实际
+            # 出现的活用形，不是词典基本型），单词测试 tab 按"会话相关/课文相关/
+            # 其他"分三部分测试时直接复用这个 src，不用另外再猜一遍。
+            entry["category"] = o["src"]
         else:
             auth_key = next(k for k in authored if norm_id(k) == wid)
             a = authored[auth_key]
@@ -170,6 +181,9 @@ def main():
             entry["sentence"] = a["ja"]
             entry["sentence_zh"] = a["zh"]
             entry["blank"] = a["blank"]
+            # 会话/课文里真没找到这个词才会走到人工补写例句这条路，天然就是
+            # "其他"分类（不属于会话，也不属于课文）。
+            entry["category"] = "other"
         quiz.append(entry)
 
     json.dump(quiz, open(args.out_json, "w", encoding="utf-8"), ensure_ascii=False, indent=2)

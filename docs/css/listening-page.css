@@ -360,6 +360,17 @@ body.mode-blank .seg-card.has-blank.blank-revealed .seg-notes { display: block; 
 
 /* ── 単語テスト tab：填空/听音频写假名/中文写假名/日文写中文，单卡片互动出题 ── */
 .quiz-app { max-width: 520px; margin: 0 auto; }
+/* 分类选择条（全部/会话相关/课文相关/其他单词）——选哪个分类是"测哪一批词"
+   这种主要选择，样式故意比 .quiz-reset-btn 这类次要操作更显眼一点（更大的
+   字号、选中态更明显），跟设置面板里藏起来的 .settings-opt 区别开。 */
+.quiz-category-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.quiz-category-btn {
+  flex: 1; min-width: 80px; border: 1px solid var(--border); background: var(--bg-soft);
+  color: var(--text); border-radius: 999px; padding: 7px 10px; font-size: 13px;
+  font-weight: 600; cursor: pointer; transition: all .15s;
+}
+.quiz-category-btn:hover { background: var(--blue-xlight); border-color: var(--blue-light); }
+.quiz-category-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
 .quiz-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .quiz-progress { font-size: 13px; font-weight: 700; color: var(--text-muted); }
 .quiz-progress-err { color: #dc2626; margin-left: 3px; }
