@@ -684,6 +684,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (blanksResolved >= blanksTotal) card.classList.add("blank-revealed");
     }
 
+    // token 粒度可能比语法点标注的原文粗——分词器有时会把一长串纯假名（比如
+    // "があるというわけではないんですね"）粘成一个不可再分的 token，但语法
+    // 点笔记只标了其中一小段（"というわけではない"）。挖空范围/正确答案都要
+    // 按 range 精确裁切，不能把命中到的整个 token 一起挖空，不然要求用户打
+    // 的"正确答案"会比语法点本身长一大截，用户对着 notes 打不出来。
+    function isPlainToken(t) {
+      return t.node.nodeType === 3 || (t.node.nodeType === 1 && !t.node.querySelector("ruby"));
+    }
     var consumedNodes = [];
     ranges.forEach(function(range, blankIdx) {
       var overlapping = cloneTokens.filter(function(t) {
@@ -691,7 +699,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       });
       if (!overlapping.length) return;
       consumedNodes = consumedNodes.concat(overlapping.map(function(t) { return t.node; }));
-      var answer = overlapping.map(function(t) { return t.text; }).join("");
+      var answer = overlapping.map(function(t) {
+        var s = Math.max(t.start, range.start) - t.start;
+        var e = Math.min(t.end, range.end) - t.start;
+        return t.text.slice(s, e);
+      }).join("");
       var blankId = card.id + ":" + blankIdx;
       blanksTotal++;
 
@@ -701,21 +713,65 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       input.autocomplete = "off";
       input.dataset.answer = answer;
       input.style.width = (answer.length * 1.4 + 1.2) + "em";
-      var parent = overlapping[0].node.parentNode;
-      parent.insertBefore(input, overlapping[0].node);
+      var first = overlapping[0], last = overlapping[overlapping.length - 1];
+      var parent = first.node.parentNode;
+      // 首尾 token 如果比 range 宽、且是纯文本（没有 ruby 标注结构），劈开成
+      // "不挖空的那一截照常保留"+"挖空的那一截换成输入框"，纯假名 token 直接
+      // 切字符串就行；如果边界 token 带 ruby（汉字词，切开会破坏注音结构），
+      // 这种少见情况退回整个 token 一起挖空的旧行为，不强行拆。
+      if (first.start < range.start && isPlainToken(first)) {
+        parent.insertBefore(document.createTextNode(first.text.slice(0, range.start - first.start)), first.node);
+      }
+      parent.insertBefore(input, first.node);
+      if (last.end > range.end && isPlainToken(last)) {
+        parent.insertBefore(document.createTextNode(last.text.slice(range.end - last.start)), last.node.nextSibling);
+      }
       overlapping.forEach(function(t) { if (t.node.parentNode) t.node.parentNode.removeChild(t.node); });
       input.addEventListener("click", function(e) { e.stopPropagation(); });
+
+      // 重做按钮——提交过之后（不管对错）才出现，点了把这个空重新切回可编辑，
+      // 跟默写的"重新练习"一个道理：只是给用户一个重新做一遍的入口，不影响
+      // 已经记进 localStorage 的过关状态、也不影响 seg-notes 的揭示状态
+      // （notes 一旦因为"这句所有空都提交过"而放出来，就不会因为重做某一个
+      // 空又重新藏回去——放出来的内容已经看到了，藏回去没有意义）。
+      var redoBtn = document.createElement("button");
+      redoBtn.type = "button";
+      redoBtn.className = "blank-redo";
+      redoBtn.textContent = "↻";
+      redoBtn.title = "重新做这道题";
+      redoBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        input.disabled = false;
+        input.value = "";
+        input.classList.remove("ok", "ng");
+        input.focus();
+      });
 
       // 不管对错，提交后都直接给出正确答案，不要求改到对才能继续——这条
       // 特意跟单词测试的"不管对错都显示答案"保持一致，不是默写"必须改对"
       // 那一套（填空考的是语法点本身记没记住，不是靠反复重试硬凑答案）。
+      // everResolved 只在"这次页面加载里，这个空第一次被 resolve()"时推进
+      // blanksResolved/放出 notes——必须从 false 开始，不能按 blankDone
+      // 是否已有记录来初始化：blanksResolved 是每次刷新页面都从 0 重新计的
+      // 内存计数器，哪怕这个空之前已经在 localStorage 里记过，这次加载时
+      // 用 blankDone 恢复状态那一次 resolve() 调用也必须真的执行一次
+      // "+1"，不然 blanksResolved 永远数不到 blanksTotal、notes 也就永远
+      // 放不出来（真实踩过：写成按 blankDone 初始化，导致刷新页面之后所有
+      // 已完成的填空都不再显示 notes，即使这句所有空都做完了）。这个 flag
+      // 真正要防的是"同一次页面加载里，用户重做之后再提交一次"不要重复计数，
+      // 不是要跳过刷新页面后的首次恢复。
+      var everResolved = false;
       function resolve(ok) {
         input.disabled = true;
         input.classList.toggle("ok", ok);
         input.classList.toggle("ng", !ok);
         if (!ok) input.value = answer;
-        blanksResolved++;
-        maybeRevealNotes();
+        redoBtn.classList.add("shown");
+        if (!everResolved) {
+          everResolved = true;
+          blanksResolved++;
+          maybeRevealNotes();
+        }
         blankDone[blankId] = ok;
         saveBlankDone();
       }
@@ -724,6 +780,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         e.preventDefault();
         resolve(input.value.trim() === answer);
       });
+      input.parentNode.insertBefore(redoBtn, input.nextSibling);
 
       if (blankId in blankDone) {
         input.value = answer;

@@ -388,6 +388,15 @@ body.mode-blank .seg-card.has-blank.blank-revealed .seg-notes { display: block; 
 }
 .blank-input.ok { border-color: #16a34a; background: #f0fdf4; }
 .blank-input.ng { border-color: #dc2626; background: #fef2f2; }
+/* 重做按钮——提交过（不管对错）才出现，跟在输入框后面的小图标，不占独立
+   一行（填空是嵌在句子里的，不像默写整句一个块，放不下"重新练习"那种大
+   按钮）。 */
+.blank-redo {
+  display: none; border: none; background: none; color: var(--blue); cursor: pointer;
+  font-size: 15px; padding: 0 2px; vertical-align: middle; line-height: 1;
+}
+.blank-redo.shown { display: inline-block; }
+.blank-redo:hover { color: var(--blue-dark); }
 
 /* ── 単語テスト tab：填空/听音频写假名/中文写假名/日文写中文，单卡片互动出题 ── */
 .quiz-app { max-width: 520px; margin: 0 auto; }
