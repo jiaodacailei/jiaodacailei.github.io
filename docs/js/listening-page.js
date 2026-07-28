@@ -444,6 +444,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
   function stripPunct(s) { return normalizeFullwidth(s).replace(PUNCT_RE, ""); }
 
+  // 会话类课文原文常带"说话人：”前缀（比如"王：あのポスター…"）——默写时整句
+  // 日语原文是隐藏的（连中文提示都只有翻译，不提示是谁说的），逼用户去猜说话人
+  // 名字打不打得对没有意义（而且音频本身也不会念出"王："这三个字），正确答案
+  // 比对前把这部分去掉，只要求听写实际说的台词。只在句首匹配"非空白/非冒号
+  // 字符+冒号"，且第一个字符不能是数字——避免误伤"10:30に集合"这类句首就是
+  // 时间写法的句子（时间前缀几乎总以数字开头，说话人名字不会）。
+  var SPEAKER_LABEL_RE = /^([^\s：:\d][^\s：:]*)[：:]/;
+  function stripSpeakerLabel(s) { return (s || "").replace(SPEAKER_LABEL_RE, ""); }
+
   // ---- 默写：逐句隐藏日语原文，常驻提示中文翻译，输入跟原文一致（忽略标点）
   //      才算过关，按小题（question-block）顺序解锁下一句；哪些句子已经过关
   //      记 localStorage，刷新页面不从头重来——跟单词测试的 completed 是
@@ -460,7 +469,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var segJa = card.querySelector(".seg-ja");
     var segZh = card.querySelector(".seg-zh");
     if (!segJa) return;
-    var answer = plainTextOf(segJa);
+    var answer = stripSpeakerLabel(plainTextOf(segJa));
     var answerStripped = stripPunct(answer);
 
     var ui = document.createElement("div");
