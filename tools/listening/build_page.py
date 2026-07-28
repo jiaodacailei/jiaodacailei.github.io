@@ -235,9 +235,25 @@ def sentence_card_html(s, audio_rel):
     char_times = s.get("char_times")
     rel_char_times = [round(t - s["start"], 2) for t in char_times] if char_times else None
     ja_html = ruby_html(s["text"], rel_char_times) if rel_char_times else s["furigana"]
+    # 会话类课文常有说话人（比如"王：""担当者："）——独立成一栏用绝对定位放在
+    # .seg-ja 之外的左侧内边距里，不要拼进 text 里再喂给 ruby_html（那样说话人
+    # 会被当成日语原文的一部分参与跟读高亮/默写比对/填空挖空，都不合适，见
+    # CSS 里 .seg-speaker 的注释）。没有 speaker 字段的句子（绝大多数场景，
+    # 包括所有没有说话人的独白/课文）跟以前完全一样，.seg-card 不加
+    # has-speaker 类、不多出这个 div，布局完全不受影响。
+    speaker_html = ""
+    card_class = "seg-card"
+    if s.get("speaker"):
+        card_class += " has-speaker"
+        speaker_kana = s.get("speaker_kana")
+        speaker_inner = (
+            f'<ruby>{html.escape(s["speaker"])}<rt>{html.escape(speaker_kana)}</rt></ruby>'
+            if speaker_kana else html.escape(s["speaker"])
+        )
+        speaker_html = f'<div class="seg-speaker">{speaker_inner}</div>\n          '
     return f'''
-        <div class="seg-card" id="card-a{s['id']}">
-          <p class="seg-ja">{ja_html}</p>
+        <div class="{card_class}" id="card-a{s['id']}">
+          {speaker_html}<p class="seg-ja">{ja_html}</p>
           <p class="seg-zh">{zh}</p>{notes_html}
           <audio id="a{s['id']}" preload="none" src="{audio_rel}seg-{s['id']:03d}.mp3"></audio>
         </div>'''

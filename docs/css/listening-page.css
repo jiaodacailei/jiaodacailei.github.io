@@ -121,7 +121,7 @@ body {
   background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
   padding: 10px 14px; margin-bottom: 8px; box-shadow: var(--shadow-xs);
   cursor: pointer; position: relative;
-  transition: border-color .15s, box-shadow .15s, background .15s;
+  transition: border-color .15s, box-shadow .15s, background .15s, padding-left .15s;
 }
 .seg-card:hover { border-color: var(--blue-light); box-shadow: 0 2px 8px rgba(37,99,235,0.12); }
 .seg-card::after {
@@ -132,6 +132,24 @@ body {
 .seg-card.playing {
   border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue-light); background: var(--blue-xlight);
 }
+/* 会话类课文的说话人名字——独立于 .seg-ja 之外的一栏，不混进日语原文本身，
+   绝对定位放在卡片左侧内边距腾出来的空档里，不改动 .seg-ja/.seg-zh/
+   .seg-notes/audio 这几个原有子元素的排列方式（依然是普通的从上到下堆叠），
+   没有说话人的卡片（绝大多数页面/绝大多数句子）完全不受影响，不用给全站
+   所有已发布页面的 HTML 结构做改动。跟读模式下常驻显示，方便一眼看出这句
+   是谁说的；默写/填空这类考"这句话本身"的练习模式里完全不出现（不用猜
+   说话人名字怎么打，也不提前剧透答案框里会不会带说话人），靠下面两条
+   body.mode-* 规则隐藏，隐藏的同时把 .seg-card 的左内边距收回去，不留空档。 */
+.seg-card.has-speaker { padding-left: 54px; }
+.seg-speaker {
+  position: absolute; left: 14px; top: 10px; width: 34px;
+  text-align: center; font-size: 13px; font-weight: 700; color: var(--text-muted); line-height: 1.4;
+  padding-right: 8px; border-right: 1px solid var(--border);
+}
+.seg-speaker ruby rt { font-size: 8px; font-weight: 400; }
+body.mode-dictate .seg-speaker, body.mode-blank .seg-speaker { display: none; }
+body.mode-dictate .seg-card.has-speaker, body.mode-blank .seg-card.has-speaker { padding-left: 14px; }
+@media (max-width: 640px) { .seg-card.has-speaker { padding-left: 42px; } .seg-speaker { width: 24px; font-size: 11px; left: 10px; padding-right: 6px; } }
 .seg-ja { font-size: 16px; line-height: 2.2; margin: 0 24px 4px 0; }
 .seg-ja ruby rt { font-size: 10px; color: var(--text-muted); font-style: normal; }
 /* 跟读高亮：播放到哪个词，data-t 时间戳最接近当前播放进度的 .tw 就加这个类 */
