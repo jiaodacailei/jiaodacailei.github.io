@@ -198,6 +198,12 @@ body.lang-zh-only .seg-ja { display: none; }
 /* 单词测试 tab 是单卡片互动出题，没有"小题"可跳转，桌面侧栏/手机悬浮目录
    整个隐藏（不只是列表内容为空——那样还会剩一个只有 ≡ 按钮的空壳浮在那）。 */
 body.quiz-tab-active #sideNav, body.quiz-tab-active #sideNavMobile { display: none; }
+/* 标题+副标题+"点击播放"提示是给会话/课文/生词这类听力卡片准备的，单词测试
+   tab 是完全不同的互动答题界面，这段说明文字既不适用、又占地方——手机屏幕
+   本来就窄，这一段顶在最上面，用户切到单词测试 tab 时得先划过这一大段跟当前
+   操作无关的文字才能看到题目，喧宾夺主。sticky-header 里已经有一份简短标题
+   常驻在顶部，这里整段隐藏不影响找到页面标题。 */
+body.quiz-tab-active .post-page-header { display: none; }
 
 .side-nav-list { display: none; }
 .side-nav-list.tab-active { display: flex; flex-direction: column; gap: 2px; }
