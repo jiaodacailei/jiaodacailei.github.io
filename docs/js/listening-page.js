@@ -664,7 +664,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     });
     ranges.sort(function(a, b) { return a.start - b.start; });
     // 两个语法点意外圈到同一段文字时只保留先出现的那个，避免同一批 token
-    // 被挖空两次（第二次挖的时候 token 已经不在 DOM 里了）。
+    // 被挖空两次（第二次挖的时候 token 已经不在 DOM 里了）。这一步只挡得住
+    // "两个 range 字符范围本身重叠"的情况，挡不住"range 不重叠，但恰好都
+    // 覆盖到同一个多字符 token 的一部分"这种——挖空是按整个 token 挖的，不是
+    // 按字符精确裁的，真实踩过（card-a16："には"/"つかむ"两个语法点分别命中
+    // 字符区间[9,12)/[12,14)，互不重叠，但两个区间都落在同一个 token"を
+    // つかむには"[8,14)内部），这种情况得在下面按 token 级别（而不是字符级别）
+    // 去重，见 consumedNodes。
     ranges = ranges.filter(function(r, i) { return i === 0 || r.start >= ranges[i - 1].end; });
     if (!ranges.length) return;
 
@@ -678,9 +684,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (blanksResolved >= blanksTotal) card.classList.add("blank-revealed");
     }
 
+    var consumedNodes = [];
     ranges.forEach(function(range, blankIdx) {
-      var overlapping = cloneTokens.filter(function(t) { return t.start < range.end && t.end > range.start; });
+      var overlapping = cloneTokens.filter(function(t) {
+        return t.start < range.end && t.end > range.start && consumedNodes.indexOf(t.node) === -1;
+      });
       if (!overlapping.length) return;
+      consumedNodes = consumedNodes.concat(overlapping.map(function(t) { return t.node; }));
       var answer = overlapping.map(function(t) { return t.text; }).join("");
       var blankId = card.id + ":" + blankIdx;
       blanksTotal++;
