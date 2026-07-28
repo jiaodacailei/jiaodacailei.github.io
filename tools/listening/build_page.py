@@ -76,7 +76,7 @@ _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
 }
 
 
-def _resolve_hira(orig, hira, prev_orig):
+def _resolve_hira(orig, hira, prev_orig, next_char=None):
     """`_TOKEN_READING_OVERRIDES_*` 处理"固定搭配"（触发条件是具体的某个
     prev_orig 字面值），但"人"这个字的正确读音规律更通用，值得单独写一条规则
     而不是不断往字典里加案例——孤立成词的"人"（不是"外国人""成人""大人""人気"
@@ -105,7 +105,35 @@ def _resolve_hira(orig, hira, prev_orig):
     # 会被拆成独立 token 然后读错。
     if orig == "位" and prev_ends_with_digit:
         return "い"
+    # "その後"是个歧义词，两个读音都是常见的正确用法，不能像"その日"那样无条件
+    # 覆盖：そのご（书面语，"之后/其后"，常作句首连接副词用，后面接逗号停顿——
+    # 比如课文里"その後，デジタル技術の開発が進むとともに…"）vs そのあと（口语，
+    # "那之后"，直接接续下一个动作、中间没有停顿——比如"その後食事に行った"）。
+    # pykakasi 默认给孤立的"後"字读のち（另一个真实存在但这里都用不上的读音），
+    # 两种都不对。用"紧跟着的下一个字符是不是逗号"这个信号区分：书面语用法
+    # 后面几乎总有停顿标点，口语接续用法后面直接是下一个词，没有标点。
+    if orig == "後" and prev_orig == "その" and next_char in ("，", "、"):
+        return "ご"
     return hira
+
+
+def _split_trailing_kana(orig, hira):
+    """把"汉字+送假名"合并成一个 token 时（比如形容词过去式"悪かった"，pykakasi
+    切成"悪か"/"った"两个 token，前一个 token 原文="悪か"读音="わるか"），假名
+    注音不应该连送假名一起标——正确的排版规范是只给汉字本身标注读音（"悪"→
+    "わる"），后面已经是假名的"か"直接照抄显示，不用再在 <rt> 里重复一遍。
+    做法：只要 orig 结尾字符不是汉字、且这个字符跟 hira 结尾字符完全一致（说明
+    这确实是原样保留的送假名，不是汉字注音的一部分），就把这个字符从两边一起
+    摘掉，挪到返回的 suffix 里，重复到摘不动为止（比如"忙しかった"里的
+    "忙しか"要连续摘两次"か""し"才能摘到纯汉字"忙"）。摘的过程中永远留至少
+    一个字符在 core 里，不会摘穿。"""
+    core_orig, core_hira, suffix = orig, hira, ""
+    while (len(core_orig) > 1 and core_hira and not _is_kanji(core_orig[-1])
+           and core_orig[-1] == core_hira[-1]):
+        suffix = core_orig[-1] + suffix
+        core_orig = core_orig[:-1]
+        core_hira = core_hira[:-1]
+    return core_orig, core_hira, suffix
 
 
 def ruby_html(text, char_times=None):
@@ -123,23 +151,27 @@ def ruby_html(text, char_times=None):
         tokens = _kks.convert(line)
         parts = []
         prev_orig = None
+        line_offset = 0
         for t in tokens:
             orig = t['orig']
             hira = t['hira']
+            tok_len = len(orig)
+            next_char = line[line_offset + tok_len] if line_offset + tok_len < len(line) else ""
+            line_offset += tok_len
             if orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
             elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
                 hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
             else:
-                hira = _resolve_hira(orig, hira, prev_orig)
+                hira = _resolve_hira(orig, hira, prev_orig, next_char)
             prev_orig = orig
-            tok_len = len(orig)
             t_time = None
             if char_times is not None and char_idx < len(char_times):
                 t_time = char_times[char_idx]
             char_idx += tok_len
             if any(_is_kanji(ch) for ch in orig) and hira != orig:
-                inner = f'<ruby>{orig}<rt>{hira}</rt></ruby>'
+                core_orig, core_hira, suffix = _split_trailing_kana(orig, hira)
+                inner = f'<ruby>{core_orig}<rt>{core_hira}</rt></ruby>{suffix}'
             else:
                 inner = orig
             # 标点/符号（「、」「。」「?」之类）不算"读到的词"，不参与跟读高亮——
