@@ -251,8 +251,20 @@ def sentence_card_html(s, audio_rel):
             if speaker_kana else html.escape(s["speaker"])
         )
         speaker_html = f'<div class="seg-speaker">{speaker_inner}</div>\n          '
+    # 填空练习模式挖哪几个空、正确答案是什么，来自 `blanks`（这句原文里要
+    # 挖空的具体文字组成的列表，比如 ["映画にしても音楽にしても"]）——不是从
+    # `notes` 里用正则解析出来的：`notes` 给人看的解释经常用抽象占位字母
+    # （"AにしてもBにしても"）或者跟正文不完全一致的写法（词典型 vs 活用形），
+    # 靠字符串匹配去猜这两种情况根本猜不出来，而且猜错了没有任何报错，只有
+    # 打开填空模式实际点开才会发现。`blanks` 由内容作者显式指定，就是这句
+    # 原文里的真实子串，前端按这个精确定位，不用再猜。空列表/没有这个字段
+    # 都表示这句不出填空题，`notes` 照常只当纯展示的解释文字用。
+    blanks_attr = ""
+    if s.get("blanks"):
+        blanks_json = json.dumps(s["blanks"], ensure_ascii=False)
+        blanks_attr = f' data-blanks="{html.escape(blanks_json)}"'
     return f'''
-        <div class="{card_class}" id="card-a{s['id']}">
+        <div class="{card_class}" id="card-a{s['id']}"{blanks_attr}>
           {speaker_html}<p class="seg-ja">{ja_html}</p>
           <p class="seg-zh">{zh}</p>{notes_html}
           <audio id="a{s['id']}" preload="none" src="{audio_rel}seg-{s['id']:03d}.mp3"></audio>

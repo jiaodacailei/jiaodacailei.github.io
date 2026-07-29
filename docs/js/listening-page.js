@@ -590,8 +590,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 已经各自 renderDone() 恢复成 done，其余的都保持 setState("locked") 时
   // 的初始状态，不用在这里再处理。
 
-  // ---- 填空：从 seg-notes 里第一个「…」抓语法点原文，在句子里定位到对应的
-  //      .tw 词（挖空按词级 token 对齐，不做字符级切割），挖空成一个输入框 ----
+  // ---- 填空：挖哪几个空、正确答案是什么，来自每张卡片自己的 data-blanks
+  //      （build_page.py 按 `blanks` 字段生成，比如 ["映画にしても音楽にしても"]，
+  //      内容作者显式指定的这句原文里的真实子串），在句子里定位到对应的
+  //      .tw 词（挖空按词级 token 对齐，不做字符级切割），挖空成一个输入框。
+  //      以前是从 seg-notes 文字里用正则猜「…」引号内容当挖空目标，猜不准
+  //      两类场景：notes 写抽象占位字母（"AでもBでも"，句子里根本没有这几个
+  //      字母）、notes 引用词典型但句子里是活用形（"とんでもない" vs 实际的
+  //      "とんでもありません"）——猜错了没有任何报错，只有打开填空模式点开
+  //      才会发现，而且改起来还得先读懂正则猜测逻辑才知道该往 notes 里塞
+  //      什么样的文字才能猜对。现在 `blanks` 由内容作者直接看着句子原文写，
+  //      要挖哪段就写哪段，前端不用猜，也没有猜错的可能——`data-blanks` 里
+  //      随便打错一个字，唯一后果就是这个空找不到位置、被跳过，不会误挖到
+  //      不该挖的地方。 ----
   function baseTokens(segJa) {
     var tokens = [], offset = 0;
     Array.from(segJa.childNodes).forEach(function(node) {
@@ -610,28 +621,6 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return tokens;
   }
 
-  // 一句的 seg-notes 里可能不止一个语法点（比如"「AでもBでも」表示…；
-  // 「当たる」在此意为…"这种一句两个点都讲的笔记），要把「…」全部抓出来，
-  // 不能只挖第一个——挖漏的语法点相当于这句根本没有练到。
-  function extractGrammarQueries(notesText) {
-    var out = [];
-    var re = /「([^」]+)」/g;
-    var m;
-    while ((m = re.exec(notesText))) {
-      var q = m[1].replace(/^[~〜]+/, "").replace(/[^\p{L}\p{N}ー々]+$/u, "");
-      if (q.length >= 2) out.push(q);
-    }
-    return out;
-  }
-
-  function findBlankRange(plain, query) {
-    for (var len = query.length; len >= 2; len--) {
-      var idx = plain.indexOf(query.slice(0, len));
-      if (idx !== -1) return { start: idx, end: idx + len };
-    }
-    return null;
-  }
-
   // 哪些空已经提交过（对/错都算"提交过"）记 localStorage，刷新页面恢复成
   // 提交时的样子（对错状态+正确答案），不用重新做一遍——值存的是对/错
   // （true/false），不是用户当时打的原文，恢复时统一直接显示正确答案就
@@ -647,9 +636,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   document.querySelectorAll(".seg-card").forEach(function(card) {
     var segJa = card.querySelector(".seg-ja");
     var notes = card.querySelector(".seg-notes");
-    if (!segJa || !notes) return;
-    var queries = extractGrammarQueries(notes.textContent);
-    if (!queries.length) return;
+    if (!segJa || !card.dataset.blanks) return;
+    var blankTexts;
+    try { blankTexts = JSON.parse(card.dataset.blanks); } catch (e) { blankTexts = null; }
+    if (!blankTexts || !blankTexts.length) return;
 
     // 在原文的克隆上动手（不碰真正的 .seg-ja，跟读高亮/切模式回退都还是原样）
     var clone = segJa.cloneNode(true);
@@ -658,19 +648,24 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var plain = cloneTokens.map(function(t) { return t.text; }).join("");
 
     var ranges = [];
-    queries.forEach(function(q) {
-      var r = findBlankRange(plain, q);
-      if (r) ranges.push(r);
+    blankTexts.forEach(function(text) {
+      var idx = plain.indexOf(text);
+      if (idx === -1) {
+        // data-blanks 里的文字在这句原文里找不到——多半是内容作者打字打错了
+        // （或者句子后来改过、blanks 没跟着更新），控制台报警方便定位，不
+        // 静默跳过导致"这个空莫名其妙消失了"却没人知道为什么。
+        console.warn("[填空] " + card.id + " 的 data-blanks 里 “" + text + "” 没有在原文中找到，检查数据是否有误");
+        return;
+      }
+      ranges.push({ start: idx, end: idx + text.length });
     });
     ranges.sort(function(a, b) { return a.start - b.start; });
-    // 两个语法点意外圈到同一段文字时只保留先出现的那个，避免同一批 token
-    // 被挖空两次（第二次挖的时候 token 已经不在 DOM 里了）。这一步只挡得住
-    // "两个 range 字符范围本身重叠"的情况，挡不住"range 不重叠，但恰好都
-    // 覆盖到同一个多字符 token 的一部分"这种——挖空是按整个 token 挖的，不是
-    // 按字符精确裁的，真实踩过（card-a16："には"/"つかむ"两个语法点分别命中
-    // 字符区间[9,12)/[12,14)，互不重叠，但两个区间都落在同一个 token"を
-    // つかむには"[8,14)内部），这种情况得在下面按 token 级别（而不是字符级别）
-    // 去重，见 consumedNodes。
+    // 两个 blanks 条目意外圈到同一段文字时只保留先出现的那个，避免同一批
+    // token 被挖空两次（第二次挖的时候 token 已经不在 DOM 里了）。这一步
+    // 只挡得住"两个 range 字符范围本身重叠"的情况，挡不住"range 不重叠，
+    // 但恰好都覆盖到同一个多字符 token 的一部分"这种——挖空是按整个 token
+    // 挖的，不是按字符精确裁的，这种情况得在下面按 token 级别（而不是字符
+    // 级别）去重，见 consumedNodes。
     ranges = ranges.filter(function(r, i) { return i === 0 || r.start >= ranges[i - 1].end; });
     if (!ranges.length) return;
 
