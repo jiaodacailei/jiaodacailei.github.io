@@ -48,20 +48,30 @@
     return parts.join("");
   }
 
-  // 跟 build_page.py 的 sentence_card_html() 一一对应。
-  function renderCard(s) {
+  // 跟 build_page.py 的 sentence_card_html() 一一对应。contextSpeaker 是"进
+  // 这张卡片之前，当前对话轮到谁说"的状态（由 renderQuestionBlock 按顺序
+  // 维护，见那边的注释）——同一个人连续说好几句时，只有第一句在 data 里
+  // 显式带 speaker，后面几句 speaker 是 null，但左边的说话人栏依然要空出来
+  // 跟上一句对齐（只是不重复显示名字），不然连续对话看起来就一会儿缩进一会儿
+  // 不缩进，很乱。
+  function renderCard(s, contextSpeaker) {
     var zh = esc(s.zh).replace(/\n/g, "<br>");
     var notesHtml = s.notes ? '<div class="seg-notes">' + esc(s.notes) + "</div>" : "";
     var jaHtml = renderTokens(s.tokens);
 
     var cardClass = "seg-card";
     var speakerHtml = "";
-    if (s.speaker) {
+    if (s.speaker || contextSpeaker) {
       cardClass += " has-speaker";
-      var speakerInner = s.speakerKana
-        ? "<ruby>" + esc(s.speaker) + "<rt>" + esc(s.speakerKana) + "</rt></ruby>"
-        : esc(s.speaker);
-      speakerHtml = '<div class="seg-speaker">' + speakerInner + "</div>";
+      if (s.speaker) {
+        var speakerInner = s.speakerKana
+          ? "<ruby>" + esc(s.speaker) + "<rt>" + esc(s.speakerKana) + "</rt></ruby>"
+          : esc(s.speaker);
+        speakerHtml = '<div class="seg-speaker">' + speakerInner + "</div>";
+      } else {
+        // 延续上一句的说话人，只留空位对齐，不重复显示名字。
+        speakerHtml = '<div class="seg-speaker"></div>';
+      }
     }
 
     var blanksAttr = "";
@@ -79,14 +89,21 @@
     );
   }
 
-  // 跟 build_page.py 的 question_block_html() 一一对应。
+  // 跟 build_page.py 的 question_block_html() 一一对应。currentSpeaker 这个
+  // "当前对话轮到谁说"的状态每道小题（question-block）开始时重置为
+  // null——换了场景/段落，不该把上一题最后说话的人顺带延续过来。
   function renderQuestionBlock(mondaiIdx, qIdx, q) {
     var label = q.question || "";
     var overviewHtml = q.overview ? '<p class="q-overview">' + esc(q.overview) + "</p>" : "";
     var answerHtml = q.answer
       ? '<details class="seg-answer"><summary>答えを見る</summary><div>' + esc(q.answer) + "</div></details>"
       : "";
-    var cards = q.sentences.map(renderCard).join("");
+    var currentSpeaker = null;
+    var cards = q.sentences.map(function (s) {
+      var html = renderCard(s, currentSpeaker);
+      currentSpeaker = s.speaker || currentSpeaker;
+      return html;
+    }).join("");
     return (
       '<div class="question-block" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question">' +
         "<h3>" + esc(label) + "</h3>" +
