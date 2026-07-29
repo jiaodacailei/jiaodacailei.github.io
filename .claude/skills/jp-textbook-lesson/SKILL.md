@@ -543,6 +543,26 @@ python tools/listening/verify_blank_answers.py docs/private/<slug>/index.html
 字段就该跑）之后必须跑，是跟 `verify_clips.py`/`verify_quiz_ids.py` 同等
 级别的必做项**。
 
+### 6e. data-driven 页面自带一个网页端编辑模式，用户可以自己校对+改内容
+
+`--data-driven` 生成的页面（`docs/js/edit-mode.js`/`edit-mode-restore.js`，
+跟 `page-renderer.js` 一样是共享文件，任何 `--data-driven` 页面自动带这个
+功能，不用额外配置）自带一个轻量编辑器：设置面板里有个"✎ 编辑模式"开关，
+打开后每张卡片右下角出现一个 ✎ 小图标（单独 stopPropagation，不影响点击
+卡片本身播放音频——跟读/默写/填空任何模式下都能一边听音频校对一边编辑），
+点图标弹出一个 JSON 文本框，显示这句的 `speaker`/`speakerKana`/`tokens`/
+`zh`/`notes`/`blanks` 字段（`id`/`audio` 不可编辑，避免手滑改坏结构性
+字段），改完点"应用"当场生效（直接改的是内存里的 `window.LESSON_DATA`，
+同时记一份到 localStorage，刷新页面/下次打开还在）。设置面板里还有"导出"
+按钮，把当前（带着所有修改的）`LESSON_DATA` 整个下载成一份新的 `data.js`。
+
+**这个功能是给用户自己校对内容用的，不是这个 skill 生成流程要做的事**——
+生成页面时不用管这个，它是共享文件自带的能力。用户如果说"我在页面上改了
+内容，导出了一份 data.js 发给你"，直接用这份文件替换 `docs/private/<slug>/
+data.js`，跑一遍 `git diff` 看清楚具体改了哪几句、有没有意外改动，确认
+没问题（尤其看一眼 `verify_blank_answers.py`/`verify_quiz_ids.py` 还过不
+过）再提交，不用重新走生成流程。
+
 ### 7. 本地测试、建/更新独立枢纽页、确认提交
 
 1. `python -m http.server 8000`（`docs/` 目录下，`run_in_background: true`），

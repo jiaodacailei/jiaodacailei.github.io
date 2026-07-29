@@ -211,4 +211,51 @@
   document.getElementById("sideNavListsMobile").innerHTML = navLists.join("");
   document.getElementById("mobileNumsLists").innerHTML = navNumsMobile.join("");
   document.getElementById("postBody").innerHTML = sections.join("");
+
+  // 编辑模式（docs/js/edit-mode.js）用来在原地刷新一张卡片的显示内容，不用
+  // 重新渲染整个页面（那样会把 listening-page.js 已经挂在其它卡片上的交互
+  // 状态全部打乱）。只更新 .seg-speaker/.seg-ja/.seg-zh/.seg-notes/data-blanks
+  // 这几处内容，不动 .seg-card 本身这个 DOM 节点（点击播放的事件监听器挂在
+  // 卡片节点上，节点不替换就不用重新绑定）。
+  //
+  // 说话人栏是否显示（has-speaker 类）**保持卡片原有状态不变**，不根据编辑
+  // 后的 speaker 字段重新判断——判断"这句该不该有说话人缩进"依赖同一小题里
+  // 前后句的说话人状态链（见 renderQuestionBlock 的 contextSpeaker），单张
+  // 卡片编辑时不具备这个上下文，重新计算容易算错、影响到没被编辑的其它卡片。
+  // 如果真的需要新增/去掉某句的说话人缩进，应该走完整重新生成流程，不是这里
+  // 的局部编辑。
+  function rerenderCardContent(cardEl, s) {
+    var jaHtml = renderTokens(s.tokens);
+    cardEl.querySelector(".seg-ja").innerHTML = jaHtml;
+    cardEl.querySelector(".seg-zh").innerHTML = esc(s.zh).replace(/\n/g, "<br>");
+
+    var notesEl = cardEl.querySelector(".seg-notes");
+    if (s.notes) {
+      if (!notesEl) {
+        notesEl = document.createElement("div");
+        notesEl.className = "seg-notes";
+        cardEl.querySelector(".seg-zh").insertAdjacentElement("afterend", notesEl);
+      }
+      notesEl.innerHTML = esc(s.notes);
+    } else if (notesEl) {
+      notesEl.remove();
+    }
+
+    var speakerEl = cardEl.querySelector(".seg-speaker");
+    if (speakerEl) {
+      speakerEl.innerHTML = s.speaker
+        ? (s.speakerKana
+          ? "<ruby>" + esc(s.speaker) + "<rt>" + esc(s.speakerKana) + "</rt></ruby>"
+          : esc(s.speaker))
+        : "";
+    }
+
+    if (s.blanks && s.blanks.length) {
+      cardEl.dataset.blanks = JSON.stringify(s.blanks);
+    } else {
+      delete cardEl.dataset.blanks;
+    }
+  }
+
+  window.PageRenderer = { renderTokens: renderTokens, rerenderCardContent: rerenderCardContent };
 })();

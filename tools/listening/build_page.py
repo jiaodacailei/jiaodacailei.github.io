@@ -543,6 +543,13 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 # 前面（都是 defer script，会按文档顺序依次执行）——等 listening-page.js 那些
 # `document.querySelectorAll(".seg-card")` 之类的查询跑起来时，DOM 必须已经渲染好，
 # 不然会查到空结果，所有交互都不会生效。
+#
+# edit-mode-restore.js **不带 defer**，紧跟在 <script src="data.js"> 后面——
+# 要在 page-renderer.js（defer，稍后才跑）渲染页面之前，把编辑模式暂存在
+# localStorage 里的修改先合并进 window.LESSON_DATA，不然用户上次在页面里编辑
+# 过的内容刷新一次就"消失"了（其实是暂存数据还在，只是渲染时用的是没合并
+# 编辑的旧数据）。edit-mode.js（defer，给每张卡片加 ✎ 编辑图标+编辑弹窗）
+# 排在 page-renderer.js 后面——卡片必须先被渲染出来，才能挂编辑图标上去。
 SHELL_TEMPLATE = '''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -631,7 +638,9 @@ SHELL_TEMPLATE = '''<!DOCTYPE html>
 </div>
 
 <script src="data.js"></script>
+<script src="/js/edit-mode-restore.js"></script>
 <script src="/js/page-renderer.js" defer></script>
+<script src="/js/edit-mode.js" defer></script>
 <script src="/js/private-gate.js" defer></script>
 <script src="/js/listening-page.js" defer></script>
 

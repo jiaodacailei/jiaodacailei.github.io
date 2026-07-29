@@ -287,6 +287,56 @@ body.quiz-tab-active .settings-group-quizscope { display: block; }
 .settings-opt:hover { background: var(--blue-xlight); border-color: var(--blue-light); }
 .settings-opt.active { background: var(--blue); border-color: var(--blue); color: #fff; }
 
+/* ── 编辑模式（docs/js/edit-mode.js）：设置面板里的开关+导出/清除，加号在
+   每张卡片右上角的 ✎ 图标，以及编辑弹窗 ── */
+.edit-mode-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.edit-pending-count { font-size: 12px; color: var(--blue-dark); font-weight: 600; }
+/* 图标常驻在 DOM 里、默认不显示——不是开启编辑模式时才临时插入，纯 CSS
+   切换，避免每次切换编辑模式都要重新扫一遍全部卡片。跟 ▶ 播放提示
+   （.seg-card::after，top:10px;right:12px）错开位置，放右下角不会跟它或者
+   跟说话人栏冲突。 */
+.seg-edit-icon {
+  display: none; position: absolute; right: 8px; bottom: 8px; z-index: 2;
+  width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border);
+  background: #fff; color: var(--text-muted); font-size: 13px; cursor: pointer;
+  align-items: center; justify-content: center; box-shadow: var(--shadow-xs);
+}
+body.edit-mode .seg-edit-icon { display: flex; }
+.seg-edit-icon:hover { color: var(--blue); border-color: var(--blue-light); background: var(--blue-xlight); }
+/* 这张卡片已经有暂存未导出的修改——小圆点提醒，不用点开每张卡片才知道
+   改过没改过。 */
+.seg-edit-icon.has-pending::after {
+  content: ""; position: absolute; top: -2px; right: -2px; width: 8px; height: 8px;
+  border-radius: 50%; background: #f59e0b; border: 1px solid #fff;
+}
+
+.edit-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 400;
+  background: rgba(15, 23, 42, 0.45); align-items: center; justify-content: center; padding: 20px;
+}
+.edit-modal-overlay.open { display: flex; }
+.edit-modal {
+  background: #fff; border-radius: 14px; box-shadow: var(--shadow-lg);
+  width: 100%; max-width: 560px; max-height: 86vh; padding: 18px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.edit-modal-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.edit-modal-play {
+  border: 1px solid var(--blue-light); background: var(--blue-xlight); color: var(--blue-dark);
+  border-radius: 999px; padding: 4px 12px; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.edit-modal-play:hover { background: var(--blue-light); }
+.edit-modal-textarea {
+  flex: 1; min-height: 320px; font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 13px; line-height: 1.6; border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px; resize: vertical; white-space: pre; overflow: auto;
+}
+.edit-modal-error { color: #dc2626; font-size: 12.5px; min-height: 16px; }
+.edit-modal-footer { display: flex; justify-content: flex-end; gap: 8px; }
+
 /* ── 悬浮迷你播放器：播放中才出现，导航（最初/前/播放/次/最後）+ 循环/停止 ──
    贴紧视口底部和左右两侧（不留边距、不带圆角），悬浮设置按钮相应上移到条上方避免遮挡。 */
 .mini-player {
