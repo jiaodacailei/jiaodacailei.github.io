@@ -648,16 +648,24 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var plain = cloneTokens.map(function(t) { return t.text; }).join("");
 
     var ranges = [];
+    // searchFrom 只往前推进，不用每条都从头 plain.indexOf(text)——同一段文字
+    // 在句子里出现不止一次时（比如"AでもBでも"两个"でも"都要单独挖空），从
+    // 头找每次都会命中同一个最靠前的位置，导致后一条被当成"跟前一条重叠"
+    // 在下面的去重步骤里静默吃掉，那个空实际上永远不会出现。要求 blanks
+    // 数组按它们在原文里从左到右出现的顺序书写（正常写法本来就是这样）。
+    var searchFrom = 0;
     blankTexts.forEach(function(text) {
-      var idx = plain.indexOf(text);
+      var idx = plain.indexOf(text, searchFrom);
       if (idx === -1) {
         // data-blanks 里的文字在这句原文里找不到——多半是内容作者打字打错了
-        // （或者句子后来改过、blanks 没跟着更新），控制台报警方便定位，不
-        // 静默跳过导致"这个空莫名其妙消失了"却没人知道为什么。
+        // （或者句子后来改过、blanks 没跟着更新，或者这一条排在了它在原文
+        // 里实际位置的后一条前面），控制台报警方便定位，不静默跳过导致
+        // "这个空莫名其妙消失了"却没人知道为什么。
         console.warn("[填空] " + card.id + " 的 data-blanks 里 “" + text + "” 没有在原文中找到，检查数据是否有误");
         return;
       }
       ranges.push({ start: idx, end: idx + text.length });
+      searchFrom = idx + text.length;
     });
     ranges.sort(function(a, b) { return a.start - b.start; });
     // 两个 blanks 条目意外圈到同一段文字时只保留先出现的那个，避免同一批
