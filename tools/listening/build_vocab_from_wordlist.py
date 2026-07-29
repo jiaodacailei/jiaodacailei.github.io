@@ -123,6 +123,12 @@ def main():
             "end": seg["end"],
             "text": w["text"],
             "furigana": furigana_for(w),
+            # data-driven 页面（build_page.py --data-driven）不用 furigana 这个
+            # 预先拼好的 HTML 字符串，而是要 token 级的数据——生词条目没有
+            # char_times（单词粒度不做逐字符跟读高亮），sentence_to_data() 拿不到
+            # 词级时间戳来跑 tokenize_ja()，只能整词当一个 token 处理，这时候
+            # word 自己填的 kana 覆盖读音就得原样传下去，不能丢在这一步。
+            "kana": w.get("kana"),
             "zh": w["zh"],
             "notes": "",
             "char_times": None,

@@ -136,20 +136,29 @@ def _split_trailing_kana(orig, hira):
     return core_orig, core_hira, suffix
 
 
-def ruby_html(text, char_times=None):
-    """假名注音渲染。有 char_times（refine_boundaries.py 用词级时间戳文本对齐算出来
-    的、这句里每个字符对应的绝对播放时间）时，额外给每个分词包一层
-    `<span class="tw" data-t="...">`，播放时前端按 audio.currentTime 找到当前应该
-    高亮的词。没有 char_times（简单流程没跑 refine_boundaries.py，或者这句对齐质量
-    太差被跳过）就退化成纯 <ruby> 输出，不带高亮能力——静态展示效果不受影响，
-    只是没有跟读高亮。
+def tokenize_ja(text, char_times=None):
+    """假名注音分词——把日语原文按 pykakasi 分词、套用读音订正表
+    （_TOKEN_READING_OVERRIDES_*/_resolve_hira）、拆分送假名（_split_trailing_kana），
+    返回一个"扁平化 token 列表"，每个 token 是一个 dict：
+      {"text": 这个 token 的原文, "kana": 假名读音（可选，只在需要标注且跟 text
+       不同时才有）, "t": 跟读高亮用的绝对时间戳（可选，只在传了 char_times 且
+       这个 token 有实际可读内容时才有）}
+    换行符单独表示成 {"text": "\\n"}（渲染时转成 <br>，不参与 ruby/高亮）。
+
+    这是原来 ruby_html() 的核心逻辑，拆出来单独返回结构化数据（而不是直接拼好
+    的 HTML 字符串）——data-driven 页面（--data-driven，见 build_lesson_data()）
+    把这份数据序列化进 data.js，前端渲染器（docs/js/page-renderer.js）只需要
+    做简单模板拼接（token 有 kana 就包一层 <ruby>，有 t 就包一层
+    <span class="tw" data-t="...">），不用在 JS 里重新实现这里的分词/读音订正/
+    送假名拆分——这些逻辑复杂且经过多轮真实案例订正（见本文件开头的
+    _TOKEN_READING_OVERRIDES_*/_resolve_hira/_split_trailing_kana 注释），只应该
+    存在一份、只应该在生成时（Python，有 pykakasi 可用）跑一次。
     """
+    out = []
     lines = text.split("\n")
-    out_lines = []
     char_idx = 0
     for li, line in enumerate(lines):
         tokens = _kks.convert(line)
-        parts = []
         prev_orig = None
         line_offset = 0
         for t in tokens:
@@ -169,22 +178,56 @@ def ruby_html(text, char_times=None):
             if char_times is not None and char_idx < len(char_times):
                 t_time = char_times[char_idx]
             char_idx += tok_len
-            if any(_is_kanji(ch) for ch in orig) and hira != orig:
-                core_orig, core_hira, suffix = _split_trailing_kana(orig, hira)
-                inner = f'<ruby>{core_orig}<rt>{core_hira}</rt></ruby>{suffix}'
-            else:
-                inner = orig
             # 标点/符号（「、」「。」「?」之类）不算"读到的词"，不参与跟读高亮——
             # pykakasi 分词里纯标点 token 没有假名/汉字，isalnum() 全假，用这个判断跳过。
             has_content = any(ch.isalnum() for ch in orig)
-            if t_time is not None and has_content:
-                parts.append(f'<span class="tw" data-t="{t_time:.2f}">{inner}</span>')
+            if any(_is_kanji(ch) for ch in orig) and hira != orig:
+                core_orig, core_hira, suffix = _split_trailing_kana(orig, hira)
+                entry = {"text": core_orig, "kana": core_hira}
+                if t_time is not None and has_content:
+                    entry["t"] = round(t_time, 2)
+                out.append(entry)
+                if suffix:
+                    out.append({"text": suffix})
             else:
-                parts.append(inner)
-        out_lines.append(''.join(parts))
+                entry = {"text": orig}
+                if t_time is not None and has_content:
+                    entry["t"] = round(t_time, 2)
+                out.append(entry)
         if li < len(lines) - 1:
+            out.append({"text": "\n"})
             char_idx += 1  # 换行符本身也占一个字符位，对齐 char_times 的下标
-    return '<br>'.join(out_lines)
+    return out
+
+
+def ruby_html_from_tokens(tokens):
+    """把 tokenize_ja() 的输出拼成 HTML 字符串——原来 ruby_html() 直接拼字符串
+    的那部分逻辑，拆出来复用，保证"生成完整 HTML 的旧流程"和"生成 data.js 给
+    前端渲染器用的新流程"读的是同一份分词结果，不会出现两条路径读音不一致。"""
+    parts = []
+    for tok in tokens:
+        text = tok["text"]
+        if text == "\n":
+            parts.append("<br>")
+            continue
+        kana = tok.get("kana")
+        inner = f'<ruby>{text}<rt>{kana}</rt></ruby>' if kana and kana != text else text
+        if "t" in tok:
+            parts.append(f'<span class="tw" data-t="{tok["t"]:.2f}">{inner}</span>')
+        else:
+            parts.append(inner)
+    return ''.join(parts)
+
+
+def ruby_html(text, char_times=None):
+    """假名注音渲染（旧接口，非 data-driven 页面仍在用）。有 char_times（
+    refine_boundaries.py 用词级时间戳文本对齐算出来的、这句里每个字符对应的
+    绝对播放时间）时，额外给每个分词包一层 `<span class="tw" data-t="...">`，
+    播放时前端按 audio.currentTime 找到当前应该高亮的词。没有 char_times（
+    简单流程没跑 refine_boundaries.py，或者这句对齐质量太差被跳过）就退化成
+    纯 <ruby> 输出，不带高亮能力——静态展示效果不受影响，只是没有跟读高亮。
+    """
+    return ruby_html_from_tokens(tokenize_ja(text, char_times))
 
 
 def _probe_duration(path):
@@ -492,9 +535,116 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 </html>
 '''
 
+# data-driven 页面用的壳模板——跟 PAGE_TEMPLATE 骨架完全一样（密码门/吸顶栏/
+# 悬浮播放器/设置面板这些固定 UI 不变），区别只在于 {tab_buttons}/{side_nav_lists}/
+# {mobile_nums_lists}/{side_nav_lists_mobile}/{sections} 这几处不再是生成时算好的
+# HTML，换成空容器（带 id，给 page-renderer.js 定位用），内容由 data.js +
+# page-renderer.js 在浏览器里渲染出来。page-renderer.js 必须排在 listening-page.js
+# 前面（都是 defer script，会按文档顺序依次执行）——等 listening-page.js 那些
+# `document.querySelectorAll(".seg-card")` 之类的查询跑起来时，DOM 必须已经渲染好，
+# 不然会查到空结果，所有交互都不会生效。
+SHELL_TEMPLATE = '''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>{title}</title>
+<link rel="stylesheet" href="/css/listening-page.css">
+</head>
+<body>
 
-def build_sections_html(sentences, questions, audio_rel, quiz_data=None):
-    # group sentences by (mondai, question) preserving first-seen order
+<div id="gate" data-hash="{pwd_hash}">
+  <div class="box">
+    <h2>&#128274; パスワードを入力してください</h2>
+    <input type="password" id="pwdInput" placeholder="パスワード" autofocus />
+    <button id="pwdBtn">開く</button>
+    <div class="err" id="pwdErr"></div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="sticky-header">
+    <div class="sh-title">{title}</div>
+    <div class="tab-bar" id="tabBar"></div>
+  </div>
+
+  <nav class="toc" id="sideNav">
+    {toc_label_html}
+    <div id="sideNavLists"></div>
+  </nav>
+
+  <div class="toc-float" id="sideNavMobile">
+    <div class="toc-float-nums">
+      <button class="toc-float-toggle" id="snmToggle" title="目次を開く">≡</button>
+      <div id="mobileNumsLists"></div>
+    </div>
+    <div class="toc-float-panel">
+      <div class="toc-float-header"><span>{side_nav_label}</span><button class="toc-float-close" id="snmClose">{ICON_CLOSE}</button></div>
+      <div id="sideNavListsMobile"></div>
+    </div>
+  </div>
+
+  <button class="settings-toggle" id="settingsToggle" title="再生設定">{ICON_GEAR}</button>
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-group settings-group-speed">
+      <div class="settings-label">再生速度</div>
+      <div class="settings-options" id="speedOptions">
+        <button class="settings-opt" data-speed="0.5">0.5x</button>
+        <button class="settings-opt" data-speed="0.75">0.75x</button>
+        <button class="settings-opt active" data-speed="1">1x</button>
+        <button class="settings-opt" data-speed="1.2">1.2x</button>
+      </div>
+    </div>
+    <div class="settings-group settings-group-lang">
+      <div class="settings-label">表示</div>
+      <div class="settings-options" id="langOptions">
+        <button class="settings-opt" data-lang="ja">日本語</button>
+        <button class="settings-opt active" data-lang="both">日中</button>
+        <button class="settings-opt" data-lang="zh">中国語</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-player" id="miniPlayer">
+    <button class="mp-btn mp-first" id="mpFirst" title="最初" disabled>{ICON_FIRST}</button>
+    <button class="mp-btn mp-prev" id="mpPrev" title="前へ" disabled>{ICON_PREV}</button>
+    <button class="mp-btn mp-playpause" id="mpPlayPause" title="再生/一時停止">{ICON_PAUSE}</button>
+    <button class="mp-btn mp-next" id="mpNext" title="次へ" disabled>{ICON_NEXT}</button>
+    <button class="mp-btn mp-last" id="mpLast" title="最後" disabled>{ICON_LAST}</button>
+    <div class="mp-info">
+      <div class="mp-scope" id="mpScope">-</div>
+      <div class="mp-pos" id="mpPos"></div>
+    </div>
+    <button class="mp-btn mp-loop" id="mpLoop" title="ループ">{ICON_LOOP}</button>
+    <button class="mp-btn mp-stop" id="mpStop" title="停止">{ICON_CLOSE}</button>
+  </div>
+
+  <div class="post-page">
+    <div class="post-page-header">
+      <h1>{title}</h1>
+      <p class="post-page-meta">{subtitle}</p>
+      <p class="play-hint">▶ 点击题目标题或句子卡片即可播放对应音频</p>
+    </div>
+    <div class="post-body" id="postBody"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="/js/page-renderer.js" defer></script>
+<script src="/js/private-gate.js" defer></script>
+<script src="/js/listening-page.js" defer></script>
+
+</body>
+</html>
+'''
+
+
+def _group_by_mondai_question(sentences, questions):
+    """按 (mondai, question) 分组，保留首次出现的顺序，附带每道题的
+    overview/answer——这份分组结构是 build_sections_html()（生成完整 HTML）
+    和 build_lesson_data()（生成 data-driven 用的 JSON 数据）共用的，两条
+    路径分组逻辑必须完全一致，所以只写一份。"""
     by_mondai = []
     mondai_index = {}
     for s in sentences:
@@ -510,7 +660,81 @@ def build_sections_html(sentences, questions, audio_rel, quiz_data=None):
         mrec["questions"][mrec["q_index"][q]]["sentences"].append(s)
 
     overview_map = {(q["mondai"], q["question"]): q for q in questions}
+    for mrec in by_mondai:
+        for qrec in mrec["questions"]:
+            meta = overview_map.get((mrec["mondai"], qrec["question"]), {})
+            qrec["overview"] = meta.get("overview", "")
+            qrec["answer"] = meta.get("answer", "")
+    return by_mondai
 
+
+def sentence_to_data(s, audio_rel):
+    """把一句 sentence 转成 data-driven 页面用的结构化数据（page-renderer.js
+    渲染 .seg-card 用）——跟 sentence_card_html() 是同一份信息，只是不拼成
+    HTML 字符串，改成前端能直接用的 dict。char_times 的绝对时间戳→音频文件
+    内部相对时间的换算、token 化都复用跟旧路径完全相同的函数
+    （tokenize_ja()），保证两条路径读音/高亮时间戳一致。
+    生词条目没有 char_times（单词粒度不做逐字符跟读高亮），这种情况下如果
+    词条自己填了 `kana`（覆盖读音，见 build_vocab_from_wordlist.py 的
+    furigana_for()），直接当一个整词 token 用这个读音，不再跑 tokenize_ja()
+    自动分词——pykakasi 对熟字训/专有名词容易读错，`kana` 存在就是为了绕开
+    自动转换，这里也要尊重这个覆盖，不能又走回自动分词。没有 char_times 也
+    没有 `kana` 的普通句子（简单流程没跑 refine_boundaries.py）才退回
+    tokenize_ja(text)（不传 char_times，token 不带 t 字段，没有跟读高亮但
+    假名注音仍然正确）。"""
+    char_times = s.get("char_times")
+    rel_char_times = [round(t - s["start"], 2) for t in char_times] if char_times else None
+    if rel_char_times:
+        tokens = tokenize_ja(s["text"], rel_char_times)
+    elif s.get("kana"):
+        tokens = [{"text": s["text"], "kana": s["kana"]}]
+    else:
+        tokens = tokenize_ja(s["text"])
+    return {
+        "id": s["id"],
+        "speaker": s.get("speaker"),
+        "speakerKana": s.get("speaker_kana"),
+        "tokens": tokens,
+        "zh": s["zh"],
+        "notes": s.get("notes") or "",
+        "blanks": s.get("blanks") or [],
+        "audio": f"{audio_rel}seg-{s['id']:03d}.mp3",
+    }
+
+
+def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, audio_rel, quiz_data=None):
+    """data-driven 页面的完整数据——序列化进 data.js，page-renderer.js 读这份
+    数据在浏览器里渲染出页面骨架（tab栏/侧栏目录/mondai-section/question-block/
+    seg-card），结构上跟 build_sections_html() 生成的 HTML 是一一对应的。"""
+    by_mondai = _group_by_mondai_question(sentences, questions)
+    tabs = [
+        {
+            "mondai": mrec["mondai"],
+            "questions": [
+                {
+                    "question": qrec["question"],
+                    "overview": qrec["overview"],
+                    "answer": qrec["answer"],
+                    "sentences": [sentence_to_data(s, audio_rel) for s in qrec["sentences"]],
+                }
+                for qrec in mrec["questions"]
+            ],
+        }
+        for mrec in by_mondai
+    ]
+    data = {
+        "title": title,
+        "subtitle": subtitle,
+        "sideNavLabel": side_nav_label,
+        "tabs": tabs,
+    }
+    if quiz_data is not None:
+        data["quiz"] = quiz_data
+    return data
+
+
+def build_sections_html(sentences, questions, audio_rel, quiz_data=None):
+    by_mondai = _group_by_mondai_question(sentences, questions)
     sections = []
     nav_lists = []       # 桌面 .toc 和手机 .toc-float-panel 共用（同一份 <ul> 标记）
     nav_nums_mobile = []  # 手机悬浮收起状态下的数字按钮条
@@ -521,10 +745,9 @@ def build_sections_html(sentences, questions, audio_rel, quiz_data=None):
         for qi, qrec in enumerate(mrec["questions"], 1):
             label = qrec["question"] or mrec["mondai"]
             q_labels.append(label)
-            meta = overview_map.get((mrec["mondai"], qrec["question"]), {})
             q_blocks.append(question_block_html(
                 mi, qi, label,
-                meta.get("overview", ""), meta.get("answer", ""),
+                qrec["overview"], qrec["answer"],
                 qrec["sentences"], audio_rel
             ))
         sections.append(mondai_section_html(mi, mrec["mondai"], "\n".join(q_blocks), is_first))
@@ -566,6 +789,13 @@ def main():
                      "标签，默认「小問」（JLPT/会议听力页的問題→小問结构下这个词是对的）。"
                      "教材课文页的侧栏挂的是章节/生词表这类内容，不是「問題」，生成教材页时"
                      "传空字符串 --side-nav-label \"\" 就不显示这个标签，只留列表本身")
+    ap.add_argument("--data-driven", action="store_true", help="内容数据（每句原文token化"
+                     "结果/翻译/笔记/填空/说话人）单独写进 <输出目录>/data.js，index.html "
+                     "只是引用这份数据的壳（页面结构由 docs/js/page-renderer.js 在浏览器里"
+                     "渲染出来）——想直接改内容（改翻译、改填空、订正读音）不用碰 HTML，"
+                     "改 data.js 里对应字段就行。默认不传，保持跟以前完全一样的行为（内容"
+                     "直接烘焙进 index.html），已发布页面不受影响，只有明确传了这个 flag "
+                     "才走新路径")
     args = ap.parse_args()
     if not args.password and not args.password_hash:
         ap.error("must provide --password or --password-hash")
@@ -586,11 +816,46 @@ def main():
         with open(args.quiz_json, encoding="utf-8") as f:
             quiz_data = json.load(f)
 
-    sections, tab_buttons, side_nav_lists, side_nav_lists_mobile, mobile_nums_lists = \
-        build_sections_html(sentences, questions, "audio/", quiz_data)
     pwd_hash = args.password_hash or hashlib.sha256(args.password.encode("utf-8")).hexdigest()
     side_nav_label = html.escape(args.side_nav_label)
     toc_label_html = f'<div class="toc-label">{side_nav_label}</div>' if side_nav_label else ""
+
+    if args.data_driven:
+        lesson_data = build_lesson_data(
+            args.title, args.subtitle, args.side_nav_label,
+            sentences, questions, "audio/", quiz_data
+        )
+        out_data_js = os.path.join(args.out_dir, "data.js")
+        # indent=2 让每个属性单独一行——这是给人改的文件，不是纯粹的传输格式，
+        # 排版紧凑成一行虽然省字节但没人会想在一整行 JSON 里定位要改的字段。
+        with open(out_data_js, "w", encoding="utf-8") as f:
+            f.write("window.LESSON_DATA = ")
+            json.dump(lesson_data, f, ensure_ascii=False, indent=2)
+            f.write(";\n")
+
+        page = SHELL_TEMPLATE.format(
+            title=html.escape(args.title),
+            subtitle=args.subtitle,
+            toc_label_html=toc_label_html,
+            side_nav_label=side_nav_label,
+            pwd_hash=pwd_hash,
+            ICON_PAUSE=ICON_PAUSE,
+            ICON_GEAR=ICON_GEAR,
+            ICON_LOOP=ICON_LOOP,
+            ICON_CLOSE=ICON_CLOSE,
+            ICON_PREV=ICON_PREV,
+            ICON_NEXT=ICON_NEXT,
+            ICON_FIRST=ICON_FIRST,
+            ICON_LAST=ICON_LAST,
+        )
+        out_html = os.path.join(args.out_dir, "index.html")
+        with open(out_html, "w", encoding="utf-8") as f:
+            f.write(page)
+        print(f"Wrote {out_html}, {out_data_js} and {len(sentences)} audio clips to {audio_out_dir}")
+        return
+
+    sections, tab_buttons, side_nav_lists, side_nav_lists_mobile, mobile_nums_lists = \
+        build_sections_html(sentences, questions, "audio/", quiz_data)
 
     page = PAGE_TEMPLATE.format(
         title=html.escape(args.title),

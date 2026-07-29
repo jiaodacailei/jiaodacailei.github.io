@@ -30,12 +30,19 @@ clips.py` 检查的是每段音频文件本身内容对不对，这里音频文�
 一个（比如同一课里"その後"出现了两次，读音还不一样），按文档顺序位置对应
 比按文字比对更可靠，不会被重名词条搞乱。
 
-默认只报告不对的地方，不改文件；加 `--fix` 才会把算出来的正确 id 写回页面
-的 `<script id="vocab-quiz-data">`（`category`/`sentence`/`blank` 这些字段
+默认只报告不对的地方，不改文件；加 `--fix` 才会把算出来的正确 id 写回
+（data-driven 页面写回同目录 data.js 的 `quiz` 字段；旧式页面写回页面自己的
+`<script id="vocab-quiz-data">`——`category`/`sentence`/`blank` 这些字段都
 不受影响，只改 `id`）。**这一步应该跟 `verify_clips.py`/`audit_furigana.py`
 一样，成为生成単語テスト tab 之后的必做校验**，不能假设"数据流水线走完了
 就一定没问题"——这次的坑恰恰是流水线每一步单独看都没报错，只有连起来最终
 交叉比对才能发现。
+
+**data-driven 页面**（同目录有 `data.js`）：直接从 `window.LESSON_DATA.quiz`
+读词条、从 `tabs[].sentences[]`（mondai 等于 --vocab-label 的那个 tab）按
+文档顺序读真实 id，不用碰 HTML、也不用正则解析——`data.js` 是结构化数据，
+sentence 的 `id` 字段本来就是"真实音频编号"，不需要像旧式 HTML 那样从
+`<audio src="...">` 反推。
 """
 import sys
 import os
@@ -54,8 +61,8 @@ _QUIZDATA_RE = re.compile(
 )
 
 
-def extract_vocab_real_ids(html, vocab_label):
-    """按文档顺序返回"生词"tab 里每张卡片真实用的音频编号列表。"""
+def extract_vocab_real_ids_html(html, vocab_label):
+    """旧式页面：按文档顺序返回"生词"tab 里每张卡片真实用的音频编号列表。"""
     for body in _SECTION_RE.findall(html):
         h2 = _H2_RE.search(body)
         if h2 and h2.group(1).strip() == vocab_label:
@@ -63,27 +70,48 @@ def extract_vocab_real_ids(html, vocab_label):
     return None
 
 
+def extract_vocab_real_ids_data(lesson_data, vocab_label):
+    """data-driven 页面：按文档顺序返回"生词"tab 里每句真实的 id 列表。"""
+    for tab in lesson_data.get("tabs", []):
+        if tab.get("mondai") == vocab_label:
+            return [s["id"] for q in tab["questions"] for s in q["sentences"]]
+    return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("html_path")
     ap.add_argument("--fix", action="store_true", help="真的写回文件，不传就只打印报告")
-    ap.add_argument("--vocab-label", default="生词", help="生词 tab 的 <h2> 文字，默认“生词”")
+    ap.add_argument("--vocab-label", default="生词", help="生词 tab 的标签文字，默认“生词”")
     args = ap.parse_args()
 
-    html = open(args.html_path, encoding="utf-8").read()
-    m = _QUIZDATA_RE.search(html)
-    if not m:
-        print('FAIL: 页面里没找到 <script id="vocab-quiz-data">，这个页面没有単語テスト tab')
-        sys.exit(1)
+    data_js_path = os.path.join(os.path.dirname(args.html_path), "data.js")
+    is_data_driven = os.path.exists(data_js_path)
 
-    quiz = json.loads(m.group(2))
-    real_ids = extract_vocab_real_ids(html, args.vocab_label)
+    if is_data_driven:
+        raw = open(data_js_path, encoding="utf-8").read()
+        raw = raw[raw.index("{"): raw.rindex("}") + 1]
+        lesson_data = json.loads(raw)
+        quiz = lesson_data.get("quiz")
+        if quiz is None:
+            print('FAIL: data.js 里没有 "quiz" 字段，这个页面没有単語テスト tab')
+            sys.exit(1)
+        real_ids = extract_vocab_real_ids_data(lesson_data, args.vocab_label)
+    else:
+        html = open(args.html_path, encoding="utf-8").read()
+        m = _QUIZDATA_RE.search(html)
+        if not m:
+            print('FAIL: 页面里没找到 <script id="vocab-quiz-data">，这个页面没有単語テスト tab')
+            sys.exit(1)
+        quiz = json.loads(m.group(2))
+        real_ids = extract_vocab_real_ids_html(html, args.vocab_label)
+
     if real_ids is None:
-        print(f"FAIL: 没找到 <h2>{args.vocab_label}</h2> 对应的 tab，检查 --vocab-label 是否正确")
+        print(f"FAIL: 没找到标签为「{args.vocab_label}」的 tab，检查 --vocab-label 是否正确")
         sys.exit(1)
 
     if len(real_ids) != len(quiz):
-        print(f"FAIL: 生词 tab 有 {len(real_ids)} 张卡片，quiz_data 有 {len(quiz)} 条词条，"
+        print(f"FAIL: 生词 tab 有 {len(real_ids)} 句，quiz_data 有 {len(quiz)} 条词条，"
               f"数量对不上，说明词表本身就不一致，不能简单按顺序对应，需要人工核查")
         sys.exit(1)
 
@@ -111,10 +139,18 @@ def main():
 
     for entry, real_id in zip(quiz, real_ids):
         entry["id"] = real_id
-    new_json = json.dumps(quiz, ensure_ascii=False)
-    new_html = html[: m.start()] + m.group(1) + new_json + m.group(3) + html[m.end() :]
-    open(args.html_path, "w", encoding="utf-8").write(new_html)
-    print(f"wrote back to {args.html_path}")
+
+    if is_data_driven:
+        with open(data_js_path, "w", encoding="utf-8") as f:
+            f.write("window.LESSON_DATA = ")
+            json.dump(lesson_data, f, ensure_ascii=False, indent=2)
+            f.write(";\n")
+        print(f"wrote back to {data_js_path}")
+    else:
+        new_json = json.dumps(quiz, ensure_ascii=False)
+        new_html = html[: m.start()] + m.group(1) + new_json + m.group(3) + html[m.end():]
+        open(args.html_path, "w", encoding="utf-8").write(new_html)
+        print(f"wrote back to {args.html_path}")
 
 
 if __name__ == "__main__":

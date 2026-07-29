@@ -23,6 +23,12 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
 - 教材音频通常拆成**多个独立文件**（会话/课文/生词各一段），不是一份连续录音，
   页面却要合成一个（tab 切换、悬浮播放器统一控制）。见下面"多段音频怎么合成一个
   页面"。
+- 这个 skill 生成页面时固定传 `build_page.py` 的 `--data-driven`（另外两个 skill
+  不传，保持原来"内容直接烘焙进 HTML"的行为不变）——教材内容比听力转写更容易
+  事后订正（改翻译措辞、调整语法笔记、订正读音这类小改动很常见），`--data-
+  driven` 把内容单独存成同目录下人类可读的 `data.js`，改内容不用碰 HTML、也
+  不用重新走一遍生成流程，配套的渲染逻辑在共享文件 `docs/js/page-renderer.js`
+  里（`listening-page.js`/`listening-page.css` 之外新增的第三个共享文件）。
 
 ## 已跑过的真实案例
 
@@ -351,13 +357,27 @@ python tools/listening/build_page.py combined.m4a enriched_combined.json docs/pr
   --title "标准日本语中级第N课：<课文主题>" \
   --subtitle "来源：《标准日本语》中级第N课（会话/课文/生词）。逐句配假名注音、中文翻译与语法笔记，播放时逐词跟读高亮，支持默写/填空练习，悬浮迷你播放器支持暂停/继续/循环。" \
   --password-hash <摘的哈希> \
-  --side-nav-label ""
+  --side-nav-label "" \
+  --data-driven
 ```
 
 **`--side-nav-label ""` 不能漏**——`build_page.py` 的侧栏分类标签默认是「小問」
 （继承自 JLPT/会议听力页的問題→小問结构，那边是对的），但教材课文页侧栏挂的
 是章节/生词表这类内容，不是「問題」，沿用「小問」文不对题——教材课文页固定
 传空字符串把这个标签隐藏掉，只留列表本身，不需要一个不准确的分类词。
+
+**`--data-driven` 是这个 skill 的固定用法，一定要传**——不传的话内容（每句
+原文/翻译/笔记/填空/说话人）会直接烘焙进 `index.html`，之后想改任何一个字
+都得在一整份生成好的 HTML 里定点 patch（正则找到具体位置改），既容易改错
+地方、又没法一眼看出"这一课到底有哪些内容"。传了这个 flag 之后，`build_
+page.py` 只生成一个精简的 `index.html`"壳"（密码门/tab栏/悬浮播放器这些
+固定 UI），内容单独写进同目录的 `data.js`（pretty-print，每个字段一行），
+页面打开时由 `docs/js/page-renderer.js` 在浏览器里把 `data.js` 渲染成
+跟以前完全一样的页面结构——**以后想改内容（改翻译、改填空目标、订正读音、
+改说话人），直接改 `data.js` 里对应字段就行，不用碰 HTML、也不用重新跑
+一遍生成流程**。`data.js` 里每句的 `tokens` 数组就是 `ruby_html()` 内部
+分词+读音订正的结果（`{"text":原文,"kana":读音,"t":跟读高亮时间戳}`），
+想订正某个字的读音，直接找到对应 token 改 `kana` 字段就行。
 
 ### 6a.（可选）单词测试 tab：填空/听音频写假名/中文写假名/日文写中文
 
@@ -378,9 +398,11 @@ python tools/listening/build_page.py combined.m4a enriched_combined.json docs/pr
 1. **给每个生词找一个例句**——优先用会话/课文里真实出现的句子（哪怕是活用
    形，比如动词读成て形/た形/ます形都行，不强求跟词典形一模一样），真的没
    出现过的词再人工补写一句（教材程度、跟原文风格一致）。
-   - 提取会话/课文纯文本（`(ja, zh)` 二元组数组）可以从已生成页面的 HTML 里
-     抠：`<p class="seg-ja">`/`<p class="seg-zh">`，先去掉 `<rt>...</rt>`
-     （连标签带内容一起去掉，不是只去标签）再去掉其它标签。
+   - 提取会话/课文纯文本（`(ja, zh)` 二元组数组）——`--data-driven` 生成的
+     页面直接读同目录 `data.js` 里 `tabs[].questions[].sentences[]`，每句
+     的 `tokens` 数组拼出 `text`（`t["text"] for t in s["tokens"]` 直接
+     join，不用管 `kana`）、`zh` 字段就是翻译，都是结构化数据，不用正则
+     从 HTML 里抠。
    - **"这个词是否真的出现在这句里"绝对不能用脚本模糊匹配后直接采信**——
      汉字词干/假名活用的自动匹配极易出现假阳性，见下面"常见坑"，唯一可靠
      做法是把候选句子全部打印出来人工过一遍确认。
@@ -461,6 +483,9 @@ sections.py` → **先删 `audio/` 再** `build_page.py`），再跑一遍
 python tools/listening/verify_quiz_ids.py docs/private/<slug>/index.html
 ```
 
+（`--data-driven` 生成的页面会自动检测同目录的 `data.js` 并从里面读数据校验，
+`--fix` 也会正确写回 `data.js` 而不是 HTML——两种页面格式都不用额外传参区分。）
+
 `verify_clips.py` 校验的是音频文件本身的内容对不对，**校验不了"单词测试
 tab 引用的是哪个音频文件"这一层数据链接**——単語テスト的"听音频写假名"
 题型靠 `quiz_data.json` 里每个词条自己的 `id` 拼 `audio/seg-{id}.mp3`
@@ -491,8 +516,11 @@ clips.py` 检查音频内容本身没问题（因为它压根不知道"这段音
 python tools/listening/verify_blank_answers.py docs/private/<slug>/index.html
 ```
 
+（同样自动检测 `data.js`，两种页面格式通用。）
+
 "填空"练习模式挖哪几个空、正确答案是什么，**直接来自第4步 `blanks` 字段**
-（`build_page.py` 原样渲染成 `.seg-card` 的 `data-blanks` 属性），不是靠
+（`--data-driven` 页面原样放进 `data.js` 每句的 `blanks` 数组，旧式页面渲染
+成 `.seg-card` 的 `data-blanks` 属性），不是靠
 正则从 `notes` 里猜——这是这个 skill 早期版本踩过一连串坑之后改的架构：
 最早直接从 `seg-notes` 的「...」引号里正则抓文字当挖空目标，猜不出两类
 场景（notes 写抽象占位字母比如"AでもBでも"、notes 引用词典型但句子里是
@@ -1068,3 +1096,26 @@ python tools/listening/verify_blank_answers.py docs/private/<slug>/index.html
   前后各扩几秒）按50ms切帧算能量，人工读数值找出真正的语音爆发区间（读音
   突然从底噪 -50dB 左右跳到 -10~-20dB 再回落），再拿这个真实爆发区间去跟
   词表顺序核对是不是对得上这个词。
+- **`--data-driven` 是这个 skill 后来才加上的架构（内容单独存 `data.js`，
+  不再烘焙进 HTML），已经用旧方式发布的页面要迁移过去，用
+  `tools/listening/migrate_to_data_driven.py <index.html>`（从当前已发布、
+  当前正确的 HTML 反向抽取内容生成 `data.js`，同时把 `index.html` 换成引用
+  这份数据的壳）——**前提是原始 `enriched.json` 已经不在了**（比如按约定
+  清理过 `tools/listening/work/` 工作目录），如果原始数据还在，应该直接对
+  着它重新跑 `build_page.py ... --data-driven`，反向抽取只能拿到 HTML 里
+  已经烘焙进去的信息，精度和完整性都不如从源头重新生成（比如 char_times
+  只能从 `data-t` 属性反推，损失了原始浮点精度之外的位数）。写这个反向抽取
+  脚本时踩过一个正则坑，值得记录：`sentence_card_html()` 生成的卡片模板里
+  `<audio>` 标签出现在卡片自己的 `</div>` **之前**（不是之后），一开始想当
+  然地写了 `(.*?)</div>\s*<audio` 当卡片内容的结束锚点，实际匹配到的是卡片
+  内部（`.seg-speaker`/`.seg-notes`）更早出现的某个无关 `</div>`，导致 179
+  张卡片只抽取出16张（凑巧等于当时带 `data-blanks` 属性的卡片数——这些卡片
+  可能因为 `data-blanks` 后面紧跟的属性/内容结构差异侥幸匹配对了，纯属巧合，
+  不是设计如此）。**教训**：反向解析已生成 HTML 时，锚点要选模板里位置
+  " 真正固定不变、不会跟内部其它同名标签混淆" 的元素（这里应该用 `<audio
+  id="aN" ...></audio>\s*</div>` 整体当结束锚点，`<audio>` 标签本身在模板
+  里位置唯一、不会跟卡片内部其它 `</div>` 混淆），不能想当然假设"最后一个
+  子元素在最外层闭合标签之前"这类未经验证的模板结构假设，写完解析脚本后
+  一定要拿抽取出来的数量去跟已知的真实数量（比如 `verify_blank_answers.py`
+  之前报告过的卡片总数）交叉核对，数量对不上就是抽取逻辑有问题，不能就地
+  信任脚本的"成功"输出。
