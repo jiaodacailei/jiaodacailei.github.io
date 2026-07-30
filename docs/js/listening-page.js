@@ -368,7 +368,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     icon.type = "button";
     icon.className = "seg-repeat-icon";
     icon.title = "选段复读";
-    icon.textContent = "🔁";
+    // 用纯文字符号（跟 .seg-edit-icon 的 ✎ 同一路），不用 emoji——emoji 在
+    // 大多数浏览器/系统上会渲染成自带颜色的彩色图标，不吃按钮自己的
+    // color:var(--text-muted)，跟周围单色的圆形按钮放在一起显得风格不
+    // 不统一。↻（U+21BB，属于 Arrows 区块）默认就是纯文字字形，不是这种
+    // "有 emoji 变体"的字符，不会被系统自动上色。
+    icon.textContent = "↻";
     icon.addEventListener("click", function(e) {
       e.stopPropagation();
       // 同一张卡片已经点了起点、还在等点终点——再点一次图标视为取消，退回
@@ -429,7 +434,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       repeatGroup.innerHTML =
         '<div class="settings-label">跟读练习</div>' +
         '<div class="settings-options">' +
-          '<button class="settings-opt" id="repeatModeToggle">🔁 选段复读</button>' +
+          '<button class="settings-opt" id="repeatModeToggle">↻ 选段复读</button>' +
         "</div>";
       repeatSettingsPanel.appendChild(repeatGroup);
 

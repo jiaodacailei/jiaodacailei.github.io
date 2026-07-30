@@ -311,17 +311,21 @@ body.edit-mode .seg-edit-icon { display: flex; }
 }
 
 /* ── 选段复读（docs/js/listening-page.js 里的 playRange 相关逻辑）：设置面板
-   开关 + 每张带跟读时间戳的卡片右下角的 🔁 图标 + 选中范围高亮 ──
-   图标定位跟 .seg-edit-icon 同一行（bottom:8px），横向错开摆在它左边，两个
-   模式同时打开时并排显示不重叠；生词卡片没有 .tw[data-t]，图标不会被插入，
-   不需要额外的隐藏规则。 */
+   开关 + 每张带跟读时间戳的卡片右下角的 ↻ 图标 + 选中范围高亮 ──
+   默认跟 .seg-edit-icon 用同一个位置（right:8px）——编辑模式没开的时候，
+   两个功能不会同时占用这个角落，选段复读没必要平时就让位摆在旁边。只有
+   编辑模式也同时开着时，才把选段复读图标横向让位到它左边（body.edit-
+   mode.repeat-mode-on 这个更具体的选择器覆盖掉默认的 right:8px），两个
+   图标才需要并排不重叠。生词卡片没有 .tw[data-t]，图标不会被插入，不需要
+   额外的隐藏规则。 */
 .seg-repeat-icon {
-  display: none; position: absolute; right: 40px; bottom: 8px; z-index: 2;
+  display: none; position: absolute; right: 8px; bottom: 8px; z-index: 2;
   width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border);
   background: #fff; color: var(--text-muted); font-size: 13px; cursor: pointer;
   align-items: center; justify-content: center; box-shadow: var(--shadow-xs);
 }
 body.repeat-mode-on .seg-repeat-icon { display: flex; }
+body.edit-mode.repeat-mode-on .seg-repeat-icon { right: 40px; }
 /* 只在跟读模式下可用——默写/填空模式把 .seg-ja 整个隐藏了（见下面
    body.mode-dictate/mode-blank .seg-card .seg-ja 那两条规则），选段要点的
    .tw 词根本看不见，图标留着只会是个点了也没法选词的死状态，直接隐藏。 */
