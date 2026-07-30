@@ -3139,8 +3139,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "同行する",
-                  "kana": "どうこうする"
+                  "text": "同行",
+                  "kana": "どうこう"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 同行，一起去",
@@ -3169,8 +3172,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "喜んで",
-                  "kana": "よろこんで"
+                  "text": "喜",
+                  "kana": "よろこ"
+                },
+                {
+                  "text": "んで"
                 }
               ],
               "zh": "[副] 高兴地，非常愿意地",
@@ -3226,8 +3232,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "耳にする",
-                  "kana": "みみにする"
+                  "text": "耳",
+                  "kana": "みみ"
+                },
+                {
+                  "text": "にする"
                 }
               ],
               "zh": "听到",
@@ -3255,8 +3264,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "遠慮しておきます",
-                  "kana": "えんりょしておきます"
+                  "text": "遠慮",
+                  "kana": "えんりょ"
+                },
+                {
+                  "text": "しておきます"
                 }
               ],
               "zh": "算了，不用了",
@@ -3336,8 +3348,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "好き嫌い",
-                  "kana": "すききらい"
+                  "text": "好き嫌",
+                  "kana": "すききら"
+                },
+                {
+                  "text": "い"
                 }
               ],
               "zh": "[名] 挑剔；好恶",
@@ -3351,8 +3366,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "山登り",
-                  "kana": "やまのぼり"
+                  "text": "山登",
+                  "kana": "やまのぼ"
+                },
+                {
+                  "text": "り"
                 }
               ],
               "zh": "[名] 登山，爬山",
@@ -3366,8 +3384,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "作成する",
-                  "kana": "さくせいする"
+                  "text": "作成",
+                  "kana": "さくせい"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 写，作，制作",
@@ -3381,8 +3402,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "披露する",
-                  "kana": "ひろうする"
+                  "text": "披露",
+                  "kana": "ひろう"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 宣布，公布，公开",
@@ -3396,8 +3420,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "変更する",
-                  "kana": "へんこうする"
+                  "text": "変更",
+                  "kana": "へんこう"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 改变，变更，更改",
@@ -3411,8 +3438,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "改めて",
-                  "kana": "あらためて"
+                  "text": "改",
+                  "kana": "あらた"
+                },
+                {
+                  "text": "めて"
                 }
               ],
               "zh": "[副] 再，重新",
@@ -3441,8 +3471,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "目にする",
-                  "kana": "めにする"
+                  "text": "目",
+                  "kana": "め"
+                },
+                {
+                  "text": "にする"
                 }
               ],
               "zh": "看到，看见",
@@ -3456,8 +3489,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言葉に甘える",
-                  "kana": "ことばにあまえる"
+                  "text": "言葉に甘",
+                  "kana": "ことばにあま"
+                },
+                {
+                  "text": "える"
                 }
               ],
               "zh": "按您所说，如您所说",
@@ -3583,8 +3619,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "断る",
-                  "kana": "ことわる"
+                  "text": "断",
+                  "kana": "ことわ"
+                },
+                {
+                  "text": "る"
                 }
               ],
               "zh": "[动1] 拒绝，谢绝；预先通知",
@@ -3613,8 +3652,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "不足する",
-                  "kana": "ふそくする"
+                  "text": "不足",
+                  "kana": "ふそく"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 不足，不够，短缺",
@@ -3680,8 +3722,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "異なる",
-                  "kana": "ことなる"
+                  "text": "異",
+                  "kana": "こと"
+                },
+                {
+                  "text": "なる"
                 }
               ],
               "zh": "[动1] 不一样，不同",
@@ -3754,8 +3799,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "投げる",
-                  "kana": "なげる"
+                  "text": "投",
+                  "kana": "な"
+                },
+                {
+                  "text": "げる"
                 }
               ],
               "zh": "[动2] 投，扔，掷",
@@ -3769,8 +3817,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "解釈する",
-                  "kana": "かいしゃくする"
+                  "text": "解釈",
+                  "kana": "かいしゃく"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 解释，说明",
@@ -3784,8 +3835,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "投げ返す",
-                  "kana": "なげかえす"
+                  "text": "投げ返",
+                  "kana": "なげかえ"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 扔回去，投回去",
@@ -3799,8 +3853,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "保管する",
-                  "kana": "ほかんする"
+                  "text": "保管",
+                  "kana": "ほかん"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 保管，管理",
@@ -3814,8 +3871,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "聞き間違える",
-                  "kana": "ききまちがえる"
+                  "text": "聞き間違",
+                  "kana": "ききまちが"
+                },
+                {
+                  "text": "える"
                 }
               ],
               "zh": "[动2] 听错，误听",
@@ -3829,8 +3889,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "浸透する",
-                  "kana": "しんとうする"
+                  "text": "浸透",
+                  "kana": "しんとう"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 渗透，渗入",
@@ -3881,8 +3944,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "独立する",
-                  "kana": "どくりつする"
+                  "text": "独立",
+                  "kana": "どくりつ"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 独立",
@@ -3896,8 +3962,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "述べる",
-                  "kana": "のべる"
+                  "text": "述",
+                  "kana": "の"
+                },
+                {
+                  "text": "べる"
                 }
               ],
               "zh": "[动2] 陈述，叙述，说明",
@@ -4061,8 +4130,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "後悔する",
-                  "kana": "こうかいする"
+                  "text": "後悔",
+                  "kana": "こうかい"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 后悔",
@@ -4076,8 +4148,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "書き間違える",
-                  "kana": "かきまちがえる"
+                  "text": "書き間違",
+                  "kana": "かきまちが"
+                },
+                {
+                  "text": "える"
                 }
               ],
               "zh": "[动2] 写错",
@@ -4091,8 +4166,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言い間違える",
-                  "kana": "いいまちがえる"
+                  "text": "言い間違",
+                  "kana": "いいまちが"
+                },
+                {
+                  "text": "える"
                 }
               ],
               "zh": "[动2] 说错",
@@ -4106,8 +4184,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言い返す",
-                  "kana": "いいかえす"
+                  "text": "言い返",
+                  "kana": "いいかえ"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 顶嘴；反复说",
@@ -4121,8 +4202,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "聞き返す",
-                  "kana": "ききかえす"
+                  "text": "聞き返",
+                  "kana": "ききかえ"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 反问；反复问",
@@ -4136,8 +4220,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "思い返す",
-                  "kana": "おもいかえす"
+                  "text": "思い返",
+                  "kana": "おもいかえ"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 回想，反省；再考虑一遍，重新考虑",
@@ -4351,8 +4438,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "登録する",
-                  "kana": "とうろくする"
+                  "text": "登録",
+                  "kana": "とうろく"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 登记，注册",
@@ -4396,8 +4486,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "支払う",
-                  "kana": "しはらう"
+                  "text": "支払",
+                  "kana": "しはら"
+                },
+                {
+                  "text": "う"
                 }
               ],
               "zh": "[动1] 支付，付款",
@@ -4411,8 +4504,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "取り消す",
-                  "kana": "とりけす"
+                  "text": "取り消",
+                  "kana": "とりけ"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 取消，作废，撤销",
@@ -4426,8 +4522,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "待ち合わせる",
-                  "kana": "まちあわせる"
+                  "text": "待ち合",
+                  "kana": "まちあ"
+                },
+                {
+                  "text": "わせる"
                 }
               ],
               "zh": "[动2] 约会，碰头",

@@ -2638,8 +2638,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "入れる",
-                  "kana": "いれる"
+                  "text": "入",
+                  "kana": "い"
+                },
+                {
+                  "text": "れる"
                 }
               ],
               "zh": "[动2] 包含，算上",
@@ -2732,8 +2735,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "関心がある",
-                  "kana": "かんしんがある"
+                  "text": "関心",
+                  "kana": "かんしん"
+                },
+                {
+                  "text": "がある"
                 }
               ],
               "zh": "感兴趣",
@@ -2786,8 +2792,11 @@ window.LESSON_DATA = {
                   "text": "〜"
                 },
                 {
-                  "text": "付き",
-                  "kana": "つき"
+                  "text": "付",
+                  "kana": "つ"
+                },
+                {
+                  "text": "き"
                 }
               ],
               "zh": "帯〜，附送〜",
@@ -2852,8 +2861,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "清掃する",
-                  "kana": "せいそうする"
+                  "text": "清掃",
+                  "kana": "せいそう"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 扫除，清扫",
@@ -2867,8 +2879,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "組む",
-                  "kana": "くむ"
+                  "text": "組",
+                  "kana": "く"
+                },
+                {
+                  "text": "む"
                 }
               ],
               "zh": "[动1] 计划，安排，编制，编排",
@@ -2911,8 +2926,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "来社する",
-                  "kana": "らいしゃする"
+                  "text": "来社",
+                  "kana": "らいしゃ"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 来(我)公司",
@@ -2926,8 +2944,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "協力する",
-                  "kana": "きょうりょくする"
+                  "text": "協力",
+                  "kana": "きょうりょく"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 合作，协作，配合",
@@ -2956,8 +2977,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "試着する",
-                  "kana": "しちゃくする"
+                  "text": "試着",
+                  "kana": "しちゃく"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 试穿",
@@ -2974,8 +2998,11 @@ window.LESSON_DATA = {
                   "text": "お/ご〜"
                 },
                 {
-                  "text": "申し上げ",
-                  "kana": "もうしあげ"
+                  "text": "申し上",
+                  "kana": "もうしあ"
+                },
+                {
+                  "text": "げ"
                 },
                 {
                   "text": "る"
@@ -3037,8 +3064,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "合図する",
-                  "kana": "あいずする"
+                  "text": "合図",
+                  "kana": "あいず"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 发信号，递暗号",
@@ -3067,8 +3097,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "解く",
-                  "kana": "とく"
+                  "text": "解",
+                  "kana": "と"
+                },
+                {
+                  "text": "く"
                 }
               ],
               "zh": "[动1] 解，解答，解明",
@@ -3179,8 +3212,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "延べ",
-                  "kana": "のべ"
+                  "text": "延",
+                  "kana": "の"
+                },
+                {
+                  "text": "べ"
                 }
               ],
               "zh": "[名] 总计，共计",
@@ -3209,8 +3245,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "湧き出る",
-                  "kana": "わきでる"
+                  "text": "湧き出",
+                  "kana": "わきで"
+                },
+                {
+                  "text": "る"
                 }
               ],
               "zh": "[动2] 喷涌，喷出，涌出",
@@ -3239,8 +3278,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "含む",
-                  "kana": "ふくむ"
+                  "text": "含",
+                  "kana": "ふく"
+                },
+                {
+                  "text": "む"
                 }
               ],
               "zh": "[动1] 包含，含有",
@@ -3269,8 +3311,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "濁る",
-                  "kana": "にごる"
+                  "text": "濁",
+                  "kana": "にご"
+                },
+                {
+                  "text": "る"
                 }
               ],
               "zh": "[动1] 混浊，污浊",
@@ -3344,8 +3389,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "変える",
-                  "kana": "かえる"
+                  "text": "変",
+                  "kana": "か"
+                },
+                {
+                  "text": "える"
                 }
               ],
               "zh": "[动2] 换，改变",
@@ -3416,8 +3464,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "集める",
-                  "kana": "あつめる"
+                  "text": "集",
+                  "kana": "あつ"
+                },
+                {
+                  "text": "める"
                 }
               ],
               "zh": "[动2] 招徕，吸引",
@@ -3431,8 +3482,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "宿泊する",
-                  "kana": "しゅくはくする"
+                  "text": "宿泊",
+                  "kana": "しゅくはく"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 住宿，投宿",
@@ -3461,8 +3515,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "日帰り",
-                  "kana": "ひがえり"
+                  "text": "日帰",
+                  "kana": "ひがえ"
+                },
+                {
+                  "text": "り"
                 }
               ],
               "zh": "[名] 当天往返",
@@ -3579,8 +3636,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "楽しむ",
-                  "kana": "たのしむ"
+                  "text": "楽",
+                  "kana": "たの"
+                },
+                {
+                  "text": "しむ"
                 }
               ],
               "zh": "[动1] 享受，欣赏",
@@ -3720,8 +3780,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "流す",
-                  "kana": "ながす"
+                  "text": "流",
+                  "kana": "なが"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 冲走，冲刷",
@@ -3763,8 +3826,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "全く",
-                  "kana": "まったく"
+                  "text": "全",
+                  "kana": "まった"
+                },
+                {
+                  "text": "く"
                 }
               ],
               "zh": "[副] 完全，全然",
@@ -3852,8 +3918,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "香り",
-                  "kana": "かおり"
+                  "text": "香",
+                  "kana": "かお"
+                },
+                {
+                  "text": "り"
                 }
               ],
               "zh": "[名] 香味，芳香",
@@ -3914,8 +3983,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "予防する",
-                  "kana": "よぼうする"
+                  "text": "予防",
+                  "kana": "よぼう"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 预防",
@@ -3929,8 +4001,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "立て直す",
-                  "kana": "たてなおす"
+                  "text": "立て直",
+                  "kana": "たてなお"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 重整，重建",
@@ -3944,8 +4019,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "維持する",
-                  "kana": "いじする"
+                  "text": "維持",
+                  "kana": "いじ"
+                },
+                {
+                  "text": "する"
                 }
               ],
               "zh": "[动3] 维持，保持",

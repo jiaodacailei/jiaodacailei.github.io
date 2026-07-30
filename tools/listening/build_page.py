@@ -711,9 +711,14 @@ def sentence_to_data(s, audio_rel):
     （tokenize_ja()），保证两条路径读音/高亮时间戳一致。
     生词条目没有 char_times（单词粒度不做逐字符跟读高亮），这种情况下如果
     词条自己填了 `kana`（覆盖读音，见 build_vocab_from_wordlist.py 的
-    furigana_for()），直接当一个整词 token 用这个读音，不再跑 tokenize_ja()
-    自动分词——pykakasi 对熟字训/专有名词容易读错，`kana` 存在就是为了绕开
-    自动转换，这里也要尊重这个覆盖，不能又走回自动分词。没有 char_times 也
+    furigana_for()），用这个读音而不是跑 tokenize_ja() 自动分词——pykakasi
+    对熟字训/专有名词容易读错，`kana` 存在就是为了绕开自动转换，这里也要
+    尊重这个覆盖，不能又走回自动分词。但送假名（比如"比べ"的"べ"、"悪かった"
+    的"かった"）仍然要用 `_split_trailing_kana()` 拆出来，只给汉字本体标
+    读音——不拆的话会把"比べ"整个包进 `<ruby>`，注音显示"くらべ"盖住"比べ"
+    两个字，而不是只给"比"注"くら"、"べ"照原样显示，这条规则跟 tokenize_ja()
+    内部处理自动分词结果时完全一样，`kana` 覆盖只是免掉了自动分词/读音猜测
+    这一步，排版规范不能因为走的是覆盖分支就不一样。没有 char_times 也
     没有 `kana` 的普通句子（简单流程没跑 refine_boundaries.py）才退回
     tokenize_ja(text)（不传 char_times，token 不带 t 字段，没有跟读高亮但
     假名注音仍然正确）。"""
@@ -722,7 +727,14 @@ def sentence_to_data(s, audio_rel):
     if rel_char_times:
         tokens = tokenize_ja(s["text"], rel_char_times)
     elif s.get("kana"):
-        tokens = [{"text": s["text"], "kana": s["kana"]}]
+        text, kana = s["text"], s["kana"]
+        if any(_is_kanji(ch) for ch in text) and kana != text:
+            core_orig, core_hira, suffix = _split_trailing_kana(text, kana)
+            tokens = [{"text": core_orig, "kana": core_hira}]
+            if suffix:
+                tokens.append({"text": suffix})
+        else:
+            tokens = [{"text": text}]
     else:
         tokens = tokenize_ja(s["text"])
     return {

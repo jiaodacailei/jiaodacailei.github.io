@@ -825,7 +825,8 @@ window.LESSON_DATA = {
               "zh": "他们无论是电影还是音乐，只要是好东西就会立刻接受。",
               "notes": "「映画にしても音楽にしても」（AにしてもBにしても）意为无论A还是B。",
               "blanks": [
-                "にしても", "にしても"
+                "にしても",
+                "にしても"
               ],
               "audio": "audio/seg-014.mp3"
             },
@@ -1493,7 +1494,8 @@ window.LESSON_DATA = {
               "zh": "日本的漫画，从面向儿童到面向成人，按对象年龄层的不同有各种各样的种类。",
               "notes": "「〜向け」意为面向……、以……为对象。",
               "blanks": [
-                "向け", "向け"
+                "向け",
+                "向け"
               ],
               "audio": "audio/seg-025.mp3"
             },
@@ -1596,7 +1598,8 @@ window.LESSON_DATA = {
               "zh": "也有很多描写上班族生活、经济相关内容等只有大人才能享受的漫画。",
               "notes": "「にしか楽しめない」（〜にしか…ない）意为只有……才……，表限定。",
               "blanks": [
-                "にしか", "ない"
+                "にしか",
+                "ない"
               ],
               "audio": "audio/seg-026.mp3"
             },
@@ -2571,8 +2574,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "見込み",
-                  "kana": "みこみ"
+                  "text": "見込",
+                  "kana": "みこ"
+                },
+                {
+                  "text": "み"
                 }
               ],
               "zh": "[名] 预料，估计；可能性",
@@ -2618,8 +2624,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "当た",
-                  "kana": "あた"
+                  "text": "当",
+                  "kana": "あ"
+                },
+                {
+                  "text": "た"
                 },
                 {
                   "text": "る"
@@ -2654,8 +2663,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "高ま",
-                  "kana": "たかま"
+                  "text": "高",
+                  "kana": "たか"
+                },
+                {
+                  "text": "ま"
                 },
                 {
                   "text": "る"
@@ -2718,8 +2730,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "受け入れ",
-                  "kana": "うけいれ"
+                  "text": "受け入",
+                  "kana": "うけい"
+                },
+                {
+                  "text": "れ"
                 },
                 {
                   "text": "る"
@@ -2736,8 +2751,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "彼ら",
-                  "kana": "かれら"
+                  "text": "彼",
+                  "kana": "かれ"
+                },
+                {
+                  "text": "ら"
                 }
               ],
               "zh": "[代] 他们",
@@ -2813,8 +2831,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "気が",
-                  "kana": "きが"
+                  "text": "気",
+                  "kana": "き"
+                },
+                {
+                  "text": "が"
                 },
                 {
                   "text": "する"
@@ -2928,8 +2949,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "抜く",
-                  "kana": "ぬく"
+                  "text": "抜",
+                  "kana": "ぬ"
+                },
+                {
+                  "text": "く"
                 }
               ],
               "zh": "[动1] 超过，超出",
@@ -2985,8 +3009,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "高め",
-                  "kana": "たかめ"
+                  "text": "高",
+                  "kana": "たか"
+                },
+                {
+                  "text": "め"
                 },
                 {
                   "text": "る"
@@ -3003,8 +3030,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "広ま",
-                  "kana": "ひろま"
+                  "text": "広",
+                  "kana": "ひろ"
+                },
+                {
+                  "text": "ま"
                 },
                 {
                   "text": "る"
@@ -3021,8 +3051,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "広め",
-                  "kana": "ひろめ"
+                  "text": "広",
+                  "kana": "ひろ"
+                },
+                {
+                  "text": "め"
                 },
                 {
                   "text": "る"
@@ -3039,8 +3072,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "強ま",
-                  "kana": "つよま"
+                  "text": "強",
+                  "kana": "つよ"
+                },
+                {
+                  "text": "ま"
                 },
                 {
                   "text": "る"
@@ -3057,8 +3093,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "強め",
-                  "kana": "つよめ"
+                  "text": "強",
+                  "kana": "つよ"
+                },
+                {
+                  "text": "め"
                 },
                 {
                   "text": "る"
@@ -3075,8 +3114,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "弱ま",
-                  "kana": "よわま"
+                  "text": "弱",
+                  "kana": "よわ"
+                },
+                {
+                  "text": "ま"
                 },
                 {
                   "text": "る"
@@ -3093,8 +3135,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "弱め",
-                  "kana": "よわめ"
+                  "text": "弱",
+                  "kana": "よわ"
+                },
+                {
+                  "text": "め"
                 },
                 {
                   "text": "る"
@@ -3111,8 +3156,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "深ま",
-                  "kana": "ふかま"
+                  "text": "深",
+                  "kana": "ふか"
+                },
+                {
+                  "text": "ま"
                 },
                 {
                   "text": "る"
@@ -3174,8 +3222,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "薄め",
-                  "kana": "うすめ"
+                  "text": "薄",
+                  "kana": "うす"
+                },
+                {
+                  "text": "め"
                 },
                 {
                   "text": "る"
@@ -3243,8 +3294,11 @@ window.LESSON_DATA = {
                   "text": "/"
                 },
                 {
-                  "text": "田んぼ",
-                  "kana": "たんぼ"
+                  "text": "田",
+                  "kana": "た"
+                },
+                {
+                  "text": "んぼ"
                 }
               ],
               "zh": "[名] 田地；稻田，水田（也作「田」）",
@@ -3462,8 +3516,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "壊す",
-                  "kana": "こわす"
+                  "text": "壊",
+                  "kana": "こわ"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 损害，伤害",
@@ -3477,8 +3534,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "売り切れ",
-                  "kana": "うりきれ"
+                  "text": "売り切",
+                  "kana": "うりき"
+                },
+                {
+                  "text": "れ"
                 },
                 {
                   "text": "る"
@@ -3595,8 +3655,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "関す",
-                  "kana": "かんす"
+                  "text": "関",
+                  "kana": "かん"
+                },
+                {
+                  "text": "す"
                 },
                 {
                   "text": "る"
@@ -3641,8 +3704,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ちびまる子ちゃん",
-                  "kana": "ちびまるこちゃん"
+                  "text": "ちびまる子",
+                  "kana": "ちびまるこ"
+                },
+                {
+                  "text": "ちゃん"
                 }
               ],
               "zh": "[专] 樱桃小丸子",
@@ -3656,8 +3722,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "鉄腕アトム",
-                  "kana": "てつわんアトム"
+                  "text": "鉄腕",
+                  "kana": "てつわん"
+                },
+                {
+                  "text": "アトム"
                 }
               ],
               "zh": "[专] 铁臂阿童木",
@@ -3686,8 +3755,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "比べ",
-                  "kana": "くらべ"
+                  "text": "比",
+                  "kana": "くら"
+                },
+                {
+                  "text": "べ"
                 },
                 {
                   "text": "もの"
@@ -3736,8 +3808,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "生み出す",
-                  "kana": "うみだす"
+                  "text": "生み出",
+                  "kana": "うみだ"
+                },
+                {
+                  "text": "す"
                 }
               ],
               "zh": "[动1] 诞生，创作出，产生",
@@ -3923,8 +3998,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "千と千尋の神隠し",
-                  "kana": "せんとちひろのかみかくし"
+                  "text": "千と千尋の神隠",
+                  "kana": "せんとちひろのかみかく"
+                },
+                {
+                  "text": "し"
                 }
               ],
               "zh": "[专] 千与千寻",
@@ -3956,8 +4034,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "比べ",
-                  "kana": "くらべ"
+                  "text": "比",
+                  "kana": "くら"
+                },
+                {
+                  "text": "べ"
                 },
                 {
                   "text": "ものにならない"
@@ -3989,8 +4070,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜向け",
-                  "kana": "むけ"
+                  "text": "〜向",
+                  "kana": "む"
+                },
+                {
+                  "text": "け"
                 }
               ],
               "zh": "适合〜，面向〜",
@@ -4071,8 +4155,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "追い",
-                  "kana": "おい"
+                  "text": "追",
+                  "kana": "お"
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "かける"
@@ -4104,8 +4191,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "締め切り",
-                  "kana": "しめきり"
+                  "text": "締め切",
+                  "kana": "しめき"
+                },
+                {
+                  "text": "り"
                 }
               ],
               "zh": "[名] 截止，期限，届满",
@@ -4119,8 +4209,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "向ける",
-                  "kana": "むける"
+                  "text": "向",
+                  "kana": "む"
+                },
+                {
+                  "text": "ける"
                 }
               ],
               "zh": "[动2] 向，朝，对",
@@ -4134,8 +4227,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "向く",
-                  "kana": "むく"
+                  "text": "向",
+                  "kana": "む"
+                },
+                {
+                  "text": "く"
                 }
               ],
               "zh": "[动1] 向，朝；适合，对路",
@@ -4177,8 +4273,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "関連す",
-                  "kana": "かんれんす"
+                  "text": "関連",
+                  "kana": "かんれん"
+                },
+                {
+                  "text": "す"
                 },
                 {
                   "text": "る"
@@ -4195,8 +4294,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "手続き",
-                  "kana": "てつづき"
+                  "text": "手続",
+                  "kana": "てつづ"
+                },
+                {
+                  "text": "き"
                 }
               ],
               "zh": "[名] 手续",
@@ -4301,8 +4403,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "裏切る",
-                  "kana": "うらぎる"
+                  "text": "裏切",
+                  "kana": "うらぎ"
+                },
+                {
+                  "text": "る"
                 }
               ],
               "zh": "[动1] 背叛，违背",
@@ -4345,8 +4450,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "見かけ",
-                  "kana": "みかけ"
+                  "text": "見",
+                  "kana": "み"
+                },
+                {
+                  "text": "かけ"
                 },
                 {
                   "text": "る"
@@ -4560,8 +4668,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "上げ",
-                  "kana": "あげ"
+                  "text": "上",
+                  "kana": "あ"
+                },
+                {
+                  "text": "げ"
                 },
                 {
                   "text": "る"
@@ -4578,8 +4689,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜向き",
-                  "kana": "むき"
+                  "text": "〜向",
+                  "kana": "む"
+                },
+                {
+                  "text": "き"
                 }
               ],
               "zh": "〜适合",
@@ -4725,8 +4839,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "貧しい",
-                  "kana": "まずしい"
+                  "text": "貧",
+                  "kana": "まず"
+                },
+                {
+                  "text": "しい"
                 }
               ],
               "zh": "[形1] 贫穷，穷苦",

@@ -61,7 +61,7 @@ import difflib
 import pykakasi
 
 sys.path.insert(0, os.path.dirname(__file__))
-from build_page import ruby_html
+from build_page import ruby_html, _is_kanji, _split_trailing_kana
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -81,7 +81,17 @@ def reading_of(word):
 
 def furigana_for(word):
     if "kana" in word:
-        return f'<ruby>{word["text"]}<rt>{word["kana"]}</rt></ruby>'
+        text, kana = word["text"], word["kana"]
+        # 送假名（比如"比べ"的"べ"）不能连着汉字一起包进 <ruby>——那样注音会
+        # 显示成"くらべ"整个盖住"比べ"两个字，正确排版是只给汉字本体"比"注
+        # "くら"，"べ"本来就是假名，照原样显示在 <ruby> 外面，不用再注一遍。
+        # 跟 build_page.py 的 tokenize_ja() 处理自动分词结果时用的是同一条
+        # 规则（同一个 _split_trailing_kana()），`kana` 覆盖分支不能因为跳过
+        # 了自动分词就漏掉这一步。
+        if any(_is_kanji(ch) for ch in text) and kana != text:
+            core_orig, core_hira, suffix = _split_trailing_kana(text, kana)
+            return f'<ruby>{core_orig}<rt>{core_hira}</rt></ruby>{suffix}'
+        return text
     return ruby_html(word["text"])
 
 
