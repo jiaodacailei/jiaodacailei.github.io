@@ -39,7 +39,12 @@ _kks = pykakasi.kakasi()
 
 
 def _is_kanji(ch):
-    return '一' <= ch <= '鿿'
+    # 々（叠字符号，U+3005，比如"少々""人々""次々"）不在 CJK 表意文字主区块
+    # 里，但它在读音上等同于"重复前一个汉字"，furigana 拆分要把它当汉字一样
+    # 对待——真实案例（textbook-sjp-zg-l10，"少々"）：不算进来的话，_split_
+    # kana_segments() 会把它误判成普通送假名字符，结果两个字都读不出音（"少"
+    # 找不到读音，"々"本来就不是假名，hira 里也搜不到它，兜底成两个都不注音）。
+    return '一' <= ch <= '鿿' or ch == '々'
 
 
 def _needs_kana_annotation(text):

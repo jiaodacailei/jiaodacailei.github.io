@@ -42,9 +42,12 @@ window.LESSON_DATA = {
                   "t": 1.26
                 },
                 {
-                  "text": "願い",
-                  "kana": "ねがい",
+                  "text": "願",
+                  "kana": "ねが",
                   "t": 1.6
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "します",
@@ -154,9 +157,12 @@ window.LESSON_DATA = {
                   "t": 3.64
                 },
                 {
-                  "text": "立て",
-                  "kana": "たて",
+                  "text": "立",
+                  "kana": "た",
                   "t": 3.76
+                },
+                {
+                  "text": "て"
                 },
                 {
                   "text": "ました",
@@ -174,9 +180,12 @@ window.LESSON_DATA = {
                   "t": 5.44
                 },
                 {
-                  "text": "過ぎ",
-                  "kana": "すぎ",
+                  "text": "過",
+                  "kana": "す",
                   "t": 5.7
+                },
+                {
+                  "text": "ぎ"
                 },
                 {
                   "text": "ますか",
@@ -323,9 +332,12 @@ window.LESSON_DATA = {
                   "t": 1.86
                 },
                 {
-                  "text": "入れ",
-                  "kana": "いれ",
+                  "text": "入",
+                  "kana": "い",
                   "t": 1.98
+                },
+                {
+                  "text": "れ"
                 },
                 {
                   "text": "ていません",
@@ -363,9 +375,12 @@ window.LESSON_DATA = {
                   "t": 5.76
                 },
                 {
-                  "text": "寄っ",
-                  "kana": "よっ",
+                  "text": "寄",
+                  "kana": "よ",
                   "t": 5.98
+                },
+                {
+                  "text": "っ"
                 },
                 {
                   "text": "てみませんか",
@@ -431,9 +446,12 @@ window.LESSON_DATA = {
                   "t": 1.63
                 },
                 {
-                  "text": "思って",
-                  "kana": "おもって",
+                  "text": "思",
+                  "kana": "おも",
                   "t": 2.89
+                },
+                {
+                  "text": "って"
                 },
                 {
                   "text": "…。"
@@ -461,9 +479,12 @@ window.LESSON_DATA = {
                   "t": 1.63
                 },
                 {
-                  "text": "行って",
-                  "kana": "いって",
+                  "text": "行",
+                  "kana": "い",
                   "t": 1.81
+                },
+                {
+                  "text": "って"
                 },
                 {
                   "text": "みたいです",
@@ -484,9 +505,12 @@ window.LESSON_DATA = {
               "speakerKana": "やまだ",
               "tokens": [
                 {
-                  "text": "分か",
-                  "kana": "わか",
+                  "text": "分",
+                  "kana": "わ",
                   "t": 0.0
+                },
+                {
+                  "text": "か"
                 },
                 {
                   "text": "りました",
@@ -612,9 +636,12 @@ window.LESSON_DATA = {
                   "t": 1.81
                 },
                 {
-                  "text": "願い",
-                  "kana": "ねがい",
+                  "text": "願",
+                  "kana": "ねが",
                   "t": 2.01
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "したいんですが",
@@ -689,9 +716,12 @@ window.LESSON_DATA = {
                   "t": 1.47
                 },
                 {
-                  "text": "名で",
-                  "kana": "めいで",
+                  "text": "名",
+                  "kana": "めい",
                   "t": 1.59
+                },
+                {
+                  "text": "で"
                 },
                 {
                   "text": "1",
@@ -710,9 +740,12 @@ window.LESSON_DATA = {
                   "text": "、"
                 },
                 {
-                  "text": "空い",
-                  "kana": "あい",
+                  "text": "空",
+                  "kana": "あ",
                   "t": 2.89
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "ているでしょうか",
@@ -809,9 +842,12 @@ window.LESSON_DATA = {
                   "t": 6.26
                 },
                 {
-                  "text": "待ち",
-                  "kana": "まち",
+                  "text": "待",
+                  "kana": "ま",
                   "t": 6.42
+                },
+                {
+                  "text": "ち"
                 },
                 {
                   "text": "くださいませ",
@@ -875,9 +911,12 @@ window.LESSON_DATA = {
                   "t": 4.11
                 },
                 {
-                  "text": "付き",
-                  "kana": "つき",
+                  "text": "付",
+                  "kana": "つ",
                   "t": 4.37
+                },
+                {
+                  "text": "き"
                 },
                 {
                   "text": "で",
@@ -1012,9 +1051,12 @@ window.LESSON_DATA = {
                   "t": 4.12
                 },
                 {
-                  "text": "願い",
-                  "kana": "ねがい",
+                  "text": "願",
+                  "kana": "ねが",
                   "t": 4.3
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "します",
@@ -1124,9 +1166,12 @@ window.LESSON_DATA = {
                   "t": 6.16
                 },
                 {
-                  "text": "延べ",
-                  "kana": "のべ",
+                  "text": "延",
+                  "kana": "の",
                   "t": 6.72
+                },
+                {
+                  "text": "べ"
                 },
                 {
                   "text": "1",
@@ -1193,19 +1238,28 @@ window.LESSON_DATA = {
                   "t": 2.0
                 },
                 {
-                  "text": "湧き",
-                  "kana": "わき",
+                  "text": "湧",
+                  "kana": "わ",
                   "t": 2.26
                 },
                 {
-                  "text": "出る",
-                  "kana": "でる",
+                  "text": "き"
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
                   "t": 2.52
                 },
                 {
-                  "text": "温かい",
-                  "kana": "あたたかい",
+                  "text": "る"
+                },
+                {
+                  "text": "温",
+                  "kana": "あたた",
                   "t": 3.1
+                },
+                {
+                  "text": "かい"
                 },
                 {
                   "text": "お",
@@ -1221,9 +1275,12 @@ window.LESSON_DATA = {
                   "t": 3.84
                 },
                 {
-                  "text": "思って",
-                  "kana": "おもって",
+                  "text": "思",
+                  "kana": "おも",
                   "t": 4.34
+                },
+                {
+                  "text": "って"
                 },
                 {
                   "text": "いる",
@@ -1239,9 +1296,12 @@ window.LESSON_DATA = {
                   "t": 5.04
                 },
                 {
-                  "text": "多い",
-                  "kana": "おおい",
+                  "text": "多",
+                  "kana": "おお",
                   "t": 5.32
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "。"
@@ -1267,9 +1327,12 @@ window.LESSON_DATA = {
                   "text": "、"
                 },
                 {
-                  "text": "冷たい",
-                  "kana": "つめたい",
+                  "text": "冷",
+                  "kana": "つめ",
                   "t": 1.5
+                },
+                {
+                  "text": "たい"
                 },
                 {
                   "text": "水",
@@ -1302,9 +1365,12 @@ window.LESSON_DATA = {
                   "t": 3.88
                 },
                 {
-                  "text": "含ん",
-                  "kana": "ふくん",
+                  "text": "含",
+                  "kana": "ふく",
                   "t": 4.06
+                },
+                {
+                  "text": "ん"
                 },
                 {
                   "text": "でいれば",
@@ -1367,14 +1433,20 @@ window.LESSON_DATA = {
                   "t": 2.79
                 },
                 {
-                  "text": "白く",
-                  "kana": "しろく",
+                  "text": "白",
+                  "kana": "しろ",
                   "t": 3.73
                 },
                 {
-                  "text": "濁っ",
-                  "kana": "にごっ",
+                  "text": "く"
+                },
+                {
+                  "text": "濁",
+                  "kana": "にご",
                   "t": 4.39
+                },
+                {
+                  "text": "っ"
                 },
                 {
                   "text": "たものや",
@@ -1422,9 +1494,12 @@ window.LESSON_DATA = {
                   "t": 2.75
                 },
                 {
-                  "text": "違い",
-                  "kana": "ちがい",
+                  "text": "違",
+                  "kana": "ちが",
                   "t": 2.99
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "によって",
@@ -1469,9 +1544,12 @@ window.LESSON_DATA = {
                   "t": 9.21
                 },
                 {
-                  "text": "効く",
-                  "kana": "きく",
+                  "text": "効",
+                  "kana": "き",
                   "t": 9.29
+                },
+                {
+                  "text": "く"
                 },
                 {
                   "text": "といわれている",
@@ -1535,9 +1613,12 @@ window.LESSON_DATA = {
                   "t": 3.48
                 },
                 {
-                  "text": "使わ",
-                  "kana": "つかわ",
+                  "text": "使",
+                  "kana": "つか",
                   "t": 3.64
+                },
+                {
+                  "text": "わ"
                 },
                 {
                   "text": "れていた",
@@ -1581,9 +1662,12 @@ window.LESSON_DATA = {
                   "t": 2.0
                 },
                 {
-                  "text": "変え",
-                  "kana": "かえ",
+                  "text": "変",
+                  "kana": "か",
                   "t": 2.22
+                },
+                {
+                  "text": "え"
                 },
                 {
                   "text": "てのんびりするために",
@@ -1631,9 +1715,12 @@ window.LESSON_DATA = {
                   "t": 0.48
                 },
                 {
-                  "text": "多く",
-                  "kana": "おおく",
+                  "text": "多",
+                  "kana": "おお",
                   "t": 0.7
+                },
+                {
+                  "text": "く"
                 },
                 {
                   "text": "は",
@@ -1649,9 +1736,12 @@ window.LESSON_DATA = {
                   "t": 2.08
                 },
                 {
-                  "text": "豊か",
-                  "kana": "ゆたか",
+                  "text": "豊",
+                  "kana": "ゆた",
                   "t": 2.24
+                },
+                {
+                  "text": "か"
                 },
                 {
                   "text": "な",
@@ -1697,9 +1787,12 @@ window.LESSON_DATA = {
                   "t": 1.78
                 },
                 {
-                  "text": "見な",
-                  "kana": "みな",
+                  "text": "見",
+                  "kana": "み",
                   "t": 2.0
+                },
+                {
+                  "text": "な"
                 },
                 {
                   "text": "がら",
@@ -1718,9 +1811,12 @@ window.LESSON_DATA = {
                   "t": 3.68
                 },
                 {
-                  "text": "入っ",
-                  "kana": "はいっ",
+                  "text": "入",
+                  "kana": "はい",
                   "t": 3.9
+                },
+                {
+                  "text": "っ"
                 },
                 {
                   "text": "たり",
@@ -1730,9 +1826,12 @@ window.LESSON_DATA = {
                   "text": "、"
                 },
                 {
-                  "text": "広い",
-                  "kana": "ひろい",
+                  "text": "広",
+                  "kana": "ひろ",
                   "t": 4.96
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "お",
@@ -1817,9 +1916,12 @@ window.LESSON_DATA = {
                   "t": 1.94
                 },
                 {
-                  "text": "集め",
-                  "kana": "あつめ",
+                  "text": "集",
+                  "kana": "あつ",
                   "t": 2.16
+                },
+                {
+                  "text": "め"
                 },
                 {
                   "text": "るための",
@@ -1849,9 +1951,12 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "例えば",
-                  "kana": "たとえば",
+                  "text": "例",
+                  "kana": "たと",
                   "t": 0.75
+                },
+                {
+                  "text": "えば"
                 },
                 {
                   "text": "、"
@@ -1915,9 +2020,12 @@ window.LESSON_DATA = {
                   "t": 6.31
                 },
                 {
-                  "text": "使用で",
-                  "kana": "しようで",
+                  "text": "使用",
+                  "kana": "しよう",
                   "t": 6.53
+                },
+                {
+                  "text": "で"
                 },
                 {
                   "text": "きる",
@@ -1927,9 +2035,12 @@ window.LESSON_DATA = {
                   "text": "「"
                 },
                 {
-                  "text": "日帰り",
-                  "kana": "ひがえり",
+                  "text": "日帰",
+                  "kana": "ひがえ",
                   "t": 7.61
+                },
+                {
+                  "text": "り"
                 },
                 {
                   "text": "温泉",
@@ -2089,9 +2200,12 @@ window.LESSON_DATA = {
                   "text": "「"
                 },
                 {
-                  "text": "日帰り",
-                  "kana": "ひがえり",
+                  "text": "日帰",
+                  "kana": "ひがえ",
                   "t": 2.67
+                },
+                {
+                  "text": "り"
                 },
                 {
                   "text": "入浴",
@@ -2120,9 +2234,12 @@ window.LESSON_DATA = {
                   "t": 4.31
                 },
                 {
-                  "text": "増え",
-                  "kana": "ふえ",
+                  "text": "増",
+                  "kana": "ふ",
                   "t": 4.61
+                },
+                {
+                  "text": "え"
                 },
                 {
                   "text": "てきている",
@@ -2168,9 +2285,12 @@ window.LESSON_DATA = {
                   "text": "、"
                 },
                 {
-                  "text": "安い",
-                  "kana": "やすい",
+                  "text": "安",
+                  "kana": "やす",
                   "t": 2.74
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "値段",
@@ -2228,9 +2348,12 @@ window.LESSON_DATA = {
                   "text": "、"
                 },
                 {
-                  "text": "多く",
-                  "kana": "おおく",
+                  "text": "多",
+                  "kana": "おお",
                   "t": 1.76
+                },
+                {
+                  "text": "く"
                 },
                 {
                   "text": "の",
@@ -2255,9 +2378,12 @@ window.LESSON_DATA = {
                   "t": 3.1
                 },
                 {
-                  "text": "作ら",
-                  "kana": "つくら",
+                  "text": "作",
+                  "kana": "つく",
                   "t": 4.0
+                },
+                {
+                  "text": "ら"
                 },
                 {
                   "text": "れた",
@@ -2312,9 +2438,12 @@ window.LESSON_DATA = {
                   "t": 2.35
                 },
                 {
-                  "text": "少なく",
-                  "kana": "すくなく",
+                  "text": "少",
+                  "kana": "すく",
                   "t": 2.57
+                },
+                {
+                  "text": "なく"
                 },
                 {
                   "text": "なってきているが",
@@ -2352,9 +2481,12 @@ window.LESSON_DATA = {
                   "t": 6.87
                 },
                 {
-                  "text": "出て",
-                  "kana": "でて",
+                  "text": "出",
+                  "kana": "で",
                   "t": 7.07
+                },
+                {
+                  "text": "て"
                 },
                 {
                   "text": "きて",
@@ -2370,9 +2502,12 @@ window.LESSON_DATA = {
                   "t": 8.19
                 },
                 {
-                  "text": "集め",
-                  "kana": "あつめ",
+                  "text": "集",
+                  "kana": "あつ",
                   "t": 8.35
+                },
+                {
+                  "text": "め"
                 },
                 {
                   "text": "ている",
@@ -2420,9 +2555,12 @@ window.LESSON_DATA = {
                   "t": 2.92
                 },
                 {
-                  "text": "高い",
-                  "kana": "たかい",
+                  "text": "高",
+                  "kana": "たか",
                   "t": 3.12
+                },
+                {
+                  "text": "い"
                 },
                 {
                   "text": "が",
@@ -2481,9 +2619,12 @@ window.LESSON_DATA = {
                   "t": 9.52
                 },
                 {
-                  "text": "楽し",
-                  "kana": "たのし",
+                  "text": "楽",
+                  "kana": "たの",
                   "t": 9.9
+                },
+                {
+                  "text": "し"
                 },
                 {
                   "text": "める",
@@ -2525,9 +2666,12 @@ window.LESSON_DATA = {
                   "t": 1.95
                 },
                 {
-                  "text": "忙しい",
-                  "kana": "いそがしい",
+                  "text": "忙",
+                  "kana": "いそが",
                   "t": 2.81
+                },
+                {
+                  "text": "しい"
                 },
                 {
                   "text": "人",
@@ -3144,8 +3288,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ローマ字",
-                  "kana": "ローマじ"
+                  "text": "ローマ"
+                },
+                {
+                  "text": "字",
+                  "kana": "じ"
                 }
               ],
               "zh": "[名] 罗马字",
@@ -3614,8 +3761,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "スーパー銭湯",
-                  "kana": "スーパーせんとう"
+                  "text": "スーパー"
+                },
+                {
+                  "text": "銭湯",
+                  "kana": "せんとう"
                 }
               ],
               "zh": "[名] 超级洗浴中心",

@@ -4053,8 +4053,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ボランティア活動",
-                  "kana": "ボランティアかつどう"
+                  "text": "ボランティア"
+                },
+                {
+                  "text": "活動",
+                  "kana": "かつどう"
                 }
               ],
               "zh": "[名] 志愿者活动",
