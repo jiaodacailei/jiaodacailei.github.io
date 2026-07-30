@@ -566,6 +566,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       setState("active");
       input.focus();
     });
+
+    // 给"清除默写进度"整体重置用——跟 redoBtn 几乎一样，但目标状态是
+    // "locked"（回到初始未开始，不是"active"继续这一句），给全局清除按钮
+    // 调用，不暴露给单句自己的 UI（单句重来用 redoBtn 就够）。
+    card._dictate.reset = function() {
+      input.value = "";
+      status.textContent = "";
+      status.className = "dictate-status";
+      ui.classList.remove("revealed");
+      setState("locked");
+    };
   });
 
   function advance(card) {
@@ -686,6 +697,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     function maybeRevealNotes() {
       if (blanksResolved >= blanksTotal) card.classList.add("blank-revealed");
     }
+    // 给"清除填空进度"整体重置收集每个空自己的重置动作——每个空的
+    // input/redoBtn/everResolved 都是下面 ranges.forEach 里各自的闭包变量，
+    // 只能在定义的地方各自收一份重置函数，没法从外面直接够到。
+    var blankResets = [];
 
     // token 粒度可能比语法点标注的原文粗——分词器有时会把一长串纯假名（比如
     // "があるというわけではないんですね"）粘成一个不可再分的 token，但语法
@@ -784,6 +799,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         resolve(input.value.trim() === answer);
       });
       input.parentNode.insertBefore(redoBtn, input.nextSibling);
+      blankResets.push(function() {
+        input.disabled = false;
+        input.value = "";
+        input.classList.remove("ok", "ng");
+        redoBtn.classList.remove("shown");
+        everResolved = false;
+      });
 
       if (blankId in blankDone) {
         input.value = answer;
@@ -794,7 +816,46 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
     segJa.insertAdjacentElement("afterend", clone);
     card.classList.add("has-blank");
+    card._blank = {
+      reset: function() {
+        blankResets.forEach(function(fn) { fn(); });
+        blanksResolved = 0;
+        card.classList.remove("blank-revealed");
+      }
+    };
   });
+
+  // ---- 设置面板：清除默写/填空进度——默写/填空各自独立一个按钮，只清
+  //      对应模式自己的 localStorage 记录 + 把所有卡片打回初始未作答状态，
+  //      不影响另一种模式、也不影响跟读/单词测试的进度。跟单词测试的
+  //      "清除使用记录"是同一个设计思路，这里两个模式分开放（而不是共用
+  //      一个"清除全部进度"），因为默写/填空是两件独立的事，用户可能只想
+  //      重来其中一种。 ----
+  if (settingsPanel) {
+    var progressGroup = document.createElement("div");
+    progressGroup.className = "settings-group settings-group-progress-reset";
+    progressGroup.innerHTML =
+      '<div class="settings-options">' +
+        '<button type="button" class="settings-reset-btn" id="dictateProgressReset">清除默写进度</button>' +
+        '<button type="button" class="settings-reset-btn" id="blankProgressReset">清除填空进度</button>' +
+      '</div>';
+    settingsPanel.appendChild(progressGroup);
+
+    document.getElementById("dictateProgressReset").addEventListener("click", function() {
+      dictateDone = {};
+      localStorage.removeItem(DICTATE_DONE_KEY);
+      document.querySelectorAll(".seg-card").forEach(function(card) {
+        if (card._dictate) card._dictate.reset();
+      });
+    });
+    document.getElementById("blankProgressReset").addEventListener("click", function() {
+      blankDone = {};
+      localStorage.removeItem(BLANK_DONE_KEY);
+      document.querySelectorAll(".seg-card").forEach(function(card) {
+        if (card._blank) card._blank.reset();
+      });
+    });
+  }
 })();
 
 // ── 单词测试 tab：填空题／听音频写假名／中文写假名／日文写中文，四类题目每次

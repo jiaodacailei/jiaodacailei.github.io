@@ -453,6 +453,23 @@ body.mode-blank .seg-card.has-blank.blank-revealed .seg-notes { display: block; 
 .blank-redo.shown { display: inline-block; }
 .blank-redo:hover { color: var(--blue-dark); }
 
+/* 设置面板里"清除默写进度"/"清除填空进度"——只在对应模式下才显示，跟
+   .seg-edit-icon 靠 body class 控制显隐是同一个思路，不相关的模式下不用
+   在设置面板里多占地方。样式复用 .quiz-reset-btn（次要、破坏性操作，
+   不做成显眼的主按钮）。 */
+.settings-group-progress-reset { display: none; }
+body.mode-dictate .settings-group-progress-reset,
+body.mode-blank .settings-group-progress-reset { display: block; }
+.settings-reset-btn {
+  border: 1px solid var(--border); background: var(--bg-soft); color: var(--text-muted);
+  border-radius: 999px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: all .15s;
+}
+.settings-reset-btn:hover { background: #fef2f2; border-color: #fecaca; color: #dc2626; }
+#dictateProgressReset { display: none; }
+body.mode-dictate #dictateProgressReset { display: inline-block; }
+#blankProgressReset { display: none; }
+body.mode-blank #blankProgressReset { display: inline-block; }
+
 /* ── 単語テスト tab：填空/听音频写假名/中文写假名/日文写中文，单卡片互动出题 ── */
 .quiz-app { max-width: 520px; margin: 0 auto; }
 /* 分类选择条（全部/会话相关/课文相关/其他单词）——选哪个分类是"测哪一批词"
