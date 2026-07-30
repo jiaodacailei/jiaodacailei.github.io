@@ -3348,8 +3348,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "好き嫌",
-                  "kana": "すききら"
+                  "text": "好",
+                  "kana": "す"
+                },
+                {
+                  "text": "き"
+                },
+                {
+                  "text": "嫌",
+                  "kana": "きら"
                 },
                 {
                   "text": "い"
@@ -3489,8 +3496,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言葉に甘",
-                  "kana": "ことばにあま"
+                  "text": "言葉",
+                  "kana": "ことば"
+                },
+                {
+                  "text": "に"
+                },
+                {
+                  "text": "甘",
+                  "kana": "あま"
                 },
                 {
                   "text": "える"
@@ -3835,8 +3849,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "投げ返",
-                  "kana": "なげかえ"
+                  "text": "投",
+                  "kana": "な"
+                },
+                {
+                  "text": "げ"
+                },
+                {
+                  "text": "返",
+                  "kana": "かえ"
                 },
                 {
                   "text": "す"
@@ -3871,8 +3892,14 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "聞き間違",
-                  "kana": "ききまちが"
+                  "text": "聞"
+                },
+                {
+                  "text": "き"
+                },
+                {
+                  "text": "間違",
+                  "kana": "きまちが"
                 },
                 {
                   "text": "える"
@@ -4148,8 +4175,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "書き間違",
-                  "kana": "かきまちが"
+                  "text": "書",
+                  "kana": "か"
+                },
+                {
+                  "text": "き"
+                },
+                {
+                  "text": "間違",
+                  "kana": "まちが"
                 },
                 {
                   "text": "える"
@@ -4166,8 +4200,14 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言い間違",
-                  "kana": "いいまちが"
+                  "text": "言"
+                },
+                {
+                  "text": "い"
+                },
+                {
+                  "text": "間違",
+                  "kana": "いまちが"
                 },
                 {
                   "text": "える"
@@ -4184,8 +4224,14 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言い返",
-                  "kana": "いいかえ"
+                  "text": "言"
+                },
+                {
+                  "text": "い"
+                },
+                {
+                  "text": "返",
+                  "kana": "いかえ"
                 },
                 {
                   "text": "す"
@@ -4202,8 +4248,14 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "聞き返",
-                  "kana": "ききかえ"
+                  "text": "聞"
+                },
+                {
+                  "text": "き"
+                },
+                {
+                  "text": "返",
+                  "kana": "きかえ"
                 },
                 {
                   "text": "す"
@@ -4220,8 +4272,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "思い返",
-                  "kana": "おもいかえ"
+                  "text": "思",
+                  "kana": "おも"
+                },
+                {
+                  "text": "い"
+                },
+                {
+                  "text": "返",
+                  "kana": "かえ"
                 },
                 {
                   "text": "す"
@@ -4409,8 +4468,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "我が国",
-                  "kana": "わがくに"
+                  "text": "我",
+                  "kana": "わ"
+                },
+                {
+                  "text": "が"
+                },
+                {
+                  "text": "国",
+                  "kana": "くに"
                 }
               ],
               "zh": "[名] 我国",
@@ -4504,8 +4570,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "取り消",
-                  "kana": "とりけ"
+                  "text": "取",
+                  "kana": "と"
+                },
+                {
+                  "text": "り"
+                },
+                {
+                  "text": "消",
+                  "kana": "け"
                 },
                 {
                   "text": "す"
@@ -4522,8 +4595,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "待ち合",
-                  "kana": "まちあ"
+                  "text": "待",
+                  "kana": "ま"
+                },
+                {
+                  "text": "ち"
+                },
+                {
+                  "text": "合",
+                  "kana": "あ"
                 },
                 {
                   "text": "わせる"

@@ -237,9 +237,16 @@ window.LESSON_DATA = {
                   "text": "、"
                 },
                 {
-                  "text": "食べ物",
-                  "kana": "たべもの",
+                  "text": "食",
+                  "kana": "た",
                   "t": 3.66
+                },
+                {
+                  "text": "べ"
+                },
+                {
+                  "text": "物",
+                  "kana": "もの"
                 },
                 {
                   "text": "、"
@@ -2998,8 +3005,15 @@ window.LESSON_DATA = {
                   "text": "お/ご〜"
                 },
                 {
-                  "text": "申し上",
-                  "kana": "もうしあ"
+                  "text": "申",
+                  "kana": "もう"
+                },
+                {
+                  "text": "し"
+                },
+                {
+                  "text": "上",
+                  "kana": "あ"
                 },
                 {
                   "text": "げ"
@@ -3245,8 +3259,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "湧き出",
-                  "kana": "わきで"
+                  "text": "湧",
+                  "kana": "わ"
+                },
+                {
+                  "text": "き"
+                },
+                {
+                  "text": "出",
+                  "kana": "で"
                 },
                 {
                   "text": "る"
@@ -4001,8 +4022,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "立て直",
-                  "kana": "たてなお"
+                  "text": "立",
+                  "kana": "た"
+                },
+                {
+                  "text": "て"
+                },
+                {
+                  "text": "直",
+                  "kana": "なお"
                 },
                 {
                   "text": "す"

@@ -810,9 +810,19 @@ window.LESSON_DATA = {
                   "t": 3.5
                 },
                 {
-                  "text": "受け入れ",
-                  "kana": "うけいれ",
+                  "text": "受",
+                  "kana": "う",
                   "t": 5.04
+                },
+                {
+                  "text": "け"
+                },
+                {
+                  "text": "入",
+                  "kana": "い"
+                },
+                {
+                  "text": "れ"
                 },
                 {
                   "text": "ます",
@@ -1161,9 +1171,16 @@ window.LESSON_DATA = {
                   "t": 1.4
                 },
                 {
-                  "text": "食べ物",
-                  "kana": "たべもの",
+                  "text": "食",
+                  "kana": "た",
                   "t": 1.66
+                },
+                {
+                  "text": "べ"
+                },
+                {
+                  "text": "物",
+                  "kana": "もの"
                 },
                 {
                   "text": "でも",
@@ -2073,9 +2090,19 @@ window.LESSON_DATA = {
                   "t": 7.8
                 },
                 {
-                  "text": "生み出さ",
-                  "kana": "うみださ",
+                  "text": "生",
+                  "kana": "う",
                   "t": 8.26
+                },
+                {
+                  "text": "み"
+                },
+                {
+                  "text": "出",
+                  "kana": "だ"
+                },
+                {
+                  "text": "さ"
                 },
                 {
                   "text": "れるようになった",
@@ -2730,8 +2757,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "受け入",
-                  "kana": "うけい"
+                  "text": "受",
+                  "kana": "う"
+                },
+                {
+                  "text": "け"
+                },
+                {
+                  "text": "入",
+                  "kana": "い"
                 },
                 {
                   "text": "れ"
@@ -3534,8 +3568,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "売り切",
-                  "kana": "うりき"
+                  "text": "売",
+                  "kana": "う"
+                },
+                {
+                  "text": "り"
+                },
+                {
+                  "text": "切",
+                  "kana": "き"
                 },
                 {
                   "text": "れ"
@@ -3808,8 +3849,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "生み出",
-                  "kana": "うみだ"
+                  "text": "生",
+                  "kana": "う"
+                },
+                {
+                  "text": "み"
+                },
+                {
+                  "text": "出",
+                  "kana": "だ"
                 },
                 {
                   "text": "す"
@@ -3998,8 +4046,22 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "千と千尋の神隠",
-                  "kana": "せんとちひろのかみかく"
+                  "text": "千",
+                  "kana": "せん"
+                },
+                {
+                  "text": "と"
+                },
+                {
+                  "text": "千尋",
+                  "kana": "ちひろ"
+                },
+                {
+                  "text": "の"
+                },
+                {
+                  "text": "神隠",
+                  "kana": "かみかく"
                 },
                 {
                   "text": "し"
@@ -4191,8 +4253,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "締め切",
-                  "kana": "しめき"
+                  "text": "締",
+                  "kana": "し"
+                },
+                {
+                  "text": "め"
+                },
+                {
+                  "text": "切",
+                  "kana": "き"
                 },
                 {
                   "text": "り"
@@ -4516,8 +4585,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "木の葉",
-                  "kana": "このは"
+                  "text": "木",
+                  "kana": "こ"
+                },
+                {
+                  "text": "の"
+                },
+                {
+                  "text": "葉",
+                  "kana": "は"
                 }
               ],
               "zh": "[名] 树叶",

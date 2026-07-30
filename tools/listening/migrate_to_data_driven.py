@@ -24,7 +24,7 @@ HTML 里已经烘焙进去的信息，比如 char_times 只能从 data-t 属性�
 `<span class="tw" data-t="X.XX">INNER</span>`（INNER 是 `<ruby>ORIG<rt>KANA
 </rt></ruby>` 或纯文本），要么是没有 data-t 包裹的裸 `<ruby>...</ruby>`
 （没有 char_times 关联到这个 token 时），要么是裸文本（标点、或者
-_split_trailing_kana 拆出来的送假名后缀）。
+_split_kana_segments 拆出来的送假名部分）。
 
 原地覆盖 index.html——运行前建议确认 git 工作区干净（这个脚本改的文件后续
 可以用 git diff 复核，改坏了能直接 git checkout 撤销）。

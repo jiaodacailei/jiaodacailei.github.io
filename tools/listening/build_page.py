@@ -155,28 +155,76 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     return hira
 
 
-def _split_trailing_kana(orig, hira):
-    """把"汉字+送假名"合并成一个 token 时（比如形容词过去式"悪かった"，pykakasi
-    切成"悪か"/"った"两个 token，前一个 token 原文="悪か"读音="わるか"），假名
-    注音不应该连送假名一起标——正确的排版规范是只给汉字本身标注读音（"悪"→
-    "わる"），后面已经是假名的"か"直接照抄显示，不用再在 <rt> 里重复一遍。
-    做法：只要 orig 结尾字符不是汉字、且这个字符跟 hira 结尾字符完全一致（说明
-    这确实是原样保留的送假名，不是汉字注音的一部分），就把这个字符从两边一起
-    摘掉，挪到返回的 suffix 里，重复到摘不动为止（比如"忙しかった"里的
-    "忙しか"要连续摘两次"か""し"才能摘到纯汉字"忙"）。摘的过程中永远留至少
-    一个字符在 core 里，不会摘穿。"""
-    core_orig, core_hira, suffix = orig, hira, ""
-    while (len(core_orig) > 1 and core_hira and not _is_kanji(core_orig[-1])
-           and core_orig[-1] == core_hira[-1]):
-        suffix = core_orig[-1] + suffix
-        core_orig = core_orig[:-1]
-        core_hira = core_hira[:-1]
-    return core_orig, core_hira, suffix
+def _split_kana_segments(orig, hira):
+    """把一个"汉字+送假名"混合 token 拆成交替的 [{"text":汉字串,"kana":读音}, {"text":
+    送假名串}, ...] 段列表——正确的排版规范是只给每一段连续汉字标注读音，中间/
+    结尾已经是假名的部分照抄显示，不用在 <rt> 里重复一遍。
+
+    这个函数取代了原来的 `_split_trailing_kana()`（只会从结尾摘送假名，摘到
+    第一个汉字就停）——那个版本只能处理"一段汉字+结尾送假名"这一种形状（比如
+    "悪かった"/"比べ"），遇到"汉字+中间送假名+汉字+结尾送假名"这种有多段汉字
+    的词（比如"書き間違える" = 書+き+間違+える）就会出错：从结尾摘到"違"字
+    （汉字）就停手，中间的送假名"き"没被摘出来，被错误地跟前面的"書"、后面的
+    "間違"一起并进同一个 <rt> 注音里，显示成"書き間違"整体标读音"かきまちが"
+    （虽然读音字符本身没错，但排版上把不该注音的"き"也框进了注音范围）。真实
+    案例（textbook-sjp-zg-l12，"書き間違える"）：用户反馈期望是拆成两段独立
+    注音"書→か"和"間違→まちが"，"き"和"える"照原样显示，不应该合并成一段。
+
+    算法：把 orig 按"连续汉字"/"连续非汉字"分组（相邻同类字符归并成一组，
+    两类必然交替出现）。非汉字组本身就是假名，天然知道自己在 hira 里对应哪段
+    （逐字符原样出现）——用非汉字组的首字符去 hira 里搜索定位，搜到的位置
+    之前那一段就是紧邻的前一个汉字组的读音。整段 orig 全是汉字（熟字训，比如
+    "女将"→"おかみ"，没有任何送假名可以当定位锚点）或者整段全是非汉字（比如
+    纯罗马字生词"DVD"→"ディーブイディー"，没有汉字可拆）这两种退化情况，
+    直接整体当一段处理，不拆。"""
+    if orig == hira:
+        return [{"text": orig}]
+    groups = []
+    for ch in orig:
+        is_kanji = _is_kanji(ch)
+        if groups and groups[-1][0] == is_kanji:
+            groups[-1] = (is_kanji, groups[-1][1] + ch)
+        else:
+            groups.append((is_kanji, ch))
+    kanji_groups = [g for g in groups if g[0]]
+    if not kanji_groups or len(kanji_groups) == len(groups):
+        # 退化情况：整段没有汉字（罗马字/数字类词），或者整段全是汉字（熟字训，
+        # 没有送假名可当定位锚点）——都没法按分段对齐，整体当一段注音。
+        return [{"text": orig, "kana": hira}]
+    segments = []
+    hira_pos = 0
+    pending_kanji = None
+    for is_kanji, gtext in groups:
+        if is_kanji:
+            pending_kanji = gtext
+            continue
+        if pending_kanji is not None:
+            idx = hira.find(gtext[0], hira_pos)
+            if idx == -1:
+                # 兜底：hira 里找不到这个假名字符（读音订正表把读音改得跟表面
+                # 字符对不上之类的边界情况），放弃细分，保守地不给这段汉字注音，
+                # 总比崩掉强——真出现这种情况应该是订正表本身有问题，需要人工
+                # 回头核实，不是这个函数该默默"修好"的。
+                segments.append({"text": pending_kanji})
+                idx = hira_pos
+            else:
+                reading = hira[hira_pos:idx]
+                segments.append({"text": pending_kanji, "kana": reading} if reading
+                                 else {"text": pending_kanji})
+            hira_pos = idx
+            pending_kanji = None
+        segments.append({"text": gtext})
+        hira_pos += len(gtext)
+    if pending_kanji is not None:
+        reading = hira[hira_pos:]
+        segments.append({"text": pending_kanji, "kana": reading} if reading
+                         else {"text": pending_kanji})
+    return segments
 
 
 def tokenize_ja(text, char_times=None):
     """假名注音分词——把日语原文按 pykakasi 分词、套用读音订正表
-    （_TOKEN_READING_OVERRIDES_*/_resolve_hira）、拆分送假名（_split_trailing_kana），
+    （_TOKEN_READING_OVERRIDES_*/_resolve_hira）、拆分送假名（_split_kana_segments），
     返回一个"扁平化 token 列表"，每个 token 是一个 dict：
       {"text": 这个 token 的原文, "kana": 假名读音（可选，只在需要标注且跟 text
        不同时才有）, "t": 跟读高亮用的绝对时间戳（可选，只在传了 char_times 且
@@ -189,7 +237,7 @@ def tokenize_ja(text, char_times=None):
     做简单模板拼接（token 有 kana 就包一层 <ruby>，有 t 就包一层
     <span class="tw" data-t="...">），不用在 JS 里重新实现这里的分词/读音订正/
     送假名拆分——这些逻辑复杂且经过多轮真实案例订正（见本文件开头的
-    _TOKEN_READING_OVERRIDES_*/_resolve_hira/_split_trailing_kana 注释），只应该
+    _TOKEN_READING_OVERRIDES_*/_resolve_hira/_split_kana_segments 注释），只应该
     存在一份、只应该在生成时（Python，有 pykakasi 可用）跑一次。
     """
     out = []
@@ -220,13 +268,11 @@ def tokenize_ja(text, char_times=None):
             # pykakasi 分词里纯标点 token 没有假名/汉字，isalnum() 全假，用这个判断跳过。
             has_content = any(ch.isalnum() for ch in orig)
             if any(_is_kanji(ch) for ch in orig) and hira != orig:
-                core_orig, core_hira, suffix = _split_trailing_kana(orig, hira)
-                entry = {"text": core_orig, "kana": core_hira}
-                if t_time is not None and has_content:
-                    entry["t"] = round(t_time, 2)
-                out.append(entry)
-                if suffix:
-                    out.append({"text": suffix})
+                for i, seg in enumerate(_split_kana_segments(orig, hira)):
+                    entry = dict(seg)
+                    if i == 0 and t_time is not None and has_content:
+                        entry["t"] = round(t_time, 2)
+                    out.append(entry)
             else:
                 entry = {"text": orig}
                 if t_time is not None and has_content:
@@ -726,9 +772,10 @@ def sentence_to_data(s, audio_rel):
     furigana_for()），用这个读音而不是跑 tokenize_ja() 自动分词——pykakasi
     对熟字训/专有名词容易读错，`kana` 存在就是为了绕开自动转换，这里也要
     尊重这个覆盖，不能又走回自动分词。但送假名（比如"比べ"的"べ"、"悪かった"
-    的"かった"）仍然要用 `_split_trailing_kana()` 拆出来，只给汉字本体标
-    读音——不拆的话会把"比べ"整个包进 `<ruby>`，注音显示"くらべ"盖住"比べ"
-    两个字，而不是只给"比"注"くら"、"べ"照原样显示，这条规则跟 tokenize_ja()
+    的"かった"、"書き間違える"中间的"き"）仍然要用 `_split_kana_segments()`
+    拆出来，只给每一段汉字本体标读音——不拆的话会把"比べ"整个包进
+    `<ruby>`，注音显示"くらべ"盖住"比べ"两个字，而不是只给"比"注"くら"、
+    "べ"照原样显示；这条规则跟 tokenize_ja()
     内部处理自动分词结果时完全一样，`kana` 覆盖只是免掉了自动分词/读音猜测
     这一步，排版规范不能因为走的是覆盖分支就不一样。没有 char_times 也
     没有 `kana` 的普通句子（简单流程没跑 refine_boundaries.py）才退回
@@ -741,10 +788,7 @@ def sentence_to_data(s, audio_rel):
     elif s.get("kana"):
         text, kana = s["text"], s["kana"]
         if _needs_kana_annotation(text) and kana != text:
-            core_orig, core_hira, suffix = _split_trailing_kana(text, kana)
-            tokens = [{"text": core_orig, "kana": core_hira}]
-            if suffix:
-                tokens.append({"text": suffix})
+            tokens = _split_kana_segments(text, kana)
         else:
             tokens = [{"text": text}]
     else:
