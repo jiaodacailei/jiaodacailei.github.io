@@ -1155,9 +1155,12 @@ window.LESSON_DATA = {
                   "t": 5.78
                 },
                 {
-                  "text": "口コミ",
-                  "kana": "くちこみ",
+                  "text": "口",
+                  "kana": "くち",
                   "t": 6.06
+                },
+                {
+                  "text": "コミ"
                 },
                 {
                   "text": "を",
@@ -1250,9 +1253,12 @@ window.LESSON_DATA = {
                   "text": "，"
                 },
                 {
-                  "text": "口コミ",
-                  "kana": "くちこみ",
+                  "text": "口",
+                  "kana": "くち",
                   "t": 5.76
+                },
+                {
+                  "text": "コミ"
                 },
                 {
                   "text": "で",
@@ -2931,8 +2937,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "口コミ",
-                  "kana": "くちこみ"
+                  "text": "口",
+                  "kana": "くち"
+                },
+                {
+                  "text": "コミ"
                 }
               ],
               "zh": "[名] 口碑，口头互传，口头推荐",
@@ -3340,8 +3349,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "キリスト教",
-                  "kana": "きりすときょう"
+                  "text": "キリスト"
+                },
+                {
+                  "text": "教",
+                  "kana": "きょう"
                 }
               ],
               "zh": "[名] 基督教",

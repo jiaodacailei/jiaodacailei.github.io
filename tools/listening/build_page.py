@@ -160,6 +160,17 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     return hira
 
 
+def _kata_to_hira_char(ch):
+    """把片假名字符转成对应的平假名——片假名和平假名在 Unicode 里是平行区块，
+    对应字符之间固定偏移0x60（比如"ア"U+30A2对"あ"U+3042），标准片假名范围
+    （U+30A1~U+30F6，涵盖长音符ー之外的全部假名）直接减0x60即可，其它字符
+    原样返回。"""
+    code = ord(ch)
+    if 0x30A1 <= code <= 0x30F6:
+        return chr(code - 0x60)
+    return ch
+
+
 def _split_kana_segments(orig, hira):
     """把一个"汉字+送假名"混合 token 拆成交替的 [{"text":汉字串,"kana":读音}, {"text":
     送假名串}, ...] 段列表——正确的排版规范是只给每一段连续汉字标注读音，中间/
@@ -181,7 +192,14 @@ def _split_kana_segments(orig, hira):
     之前那一段就是紧邻的前一个汉字组的读音。整段 orig 全是汉字（熟字训，比如
     "女将"→"おかみ"，没有任何送假名可以当定位锚点）或者整段全是非汉字（比如
     纯罗马字生词"DVD"→"ディーブイディー"，没有汉字可拆）这两种退化情况，
-    直接整体当一段处理，不拆。"""
+    直接整体当一段处理，不拆。
+
+    非汉字组如果是片假名（比如"口コミ"的"コミ"、"キリスト教"的"キリスト"），
+    hira 里存的读音是平假名，片假名字符不会字面出现在 hira 里，直接拿片假名
+    字符去 hira.find() 搜是搜不到的——用 `_kata_to_hira_char()` 把搜索用的
+    首字符转成对应平假名再搜，搜到的位置照样是正确的边界（片假名/平假名是
+    同一套假名的两种写法，字符数量、顺序都一一对应，只有搜索这一步需要转换，
+    最终塞进 segment 里的还是原始片假名文本，不影响显示）。"""
     if orig == hira:
         return [{"text": orig}]
     groups = []
@@ -213,10 +231,11 @@ def _split_kana_segments(orig, hira):
             # 后面的"間違"多吞了一个"き"。真实案例（textbook-sjp-zg-l12，
             # "聞き間違える"）：就是这个坑，"聞"丢了读音、"間違"读音多了个
             # "き"变成"きまちが"（正确应为"間違"→"まちが"，"聞"→"き"）。
+            anchor_char = _kata_to_hira_char(gtext[0])
             min_start = hira_pos + max(1, len(pending_kanji))
-            idx = hira.find(gtext[0], min_start)
+            idx = hira.find(anchor_char, min_start)
             if idx == -1:
-                idx = hira.find(gtext[0], hira_pos)
+                idx = hira.find(anchor_char, hira_pos)
             if idx == -1:
                 # 兜底：hira 里找不到这个假名字符（读音订正表把读音改得跟表面
                 # 字符对不上之类的边界情况），放弃细分，保守地不给这段汉字注音，
