@@ -3559,8 +3559,7 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "DVD",
-                  "kana": "ディーブイディー"
+                  "text": "DVD"
                 }
               ],
               "zh": "[名] DVD机；数字光盘",
