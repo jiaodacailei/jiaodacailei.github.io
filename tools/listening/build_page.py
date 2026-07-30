@@ -199,7 +199,19 @@ def _split_kana_segments(orig, hira):
             pending_kanji = gtext
             continue
         if pending_kanji is not None:
-            idx = hira.find(gtext[0], hira_pos)
+            # 找这段送假名的第一个字符在 hira 里的位置，来定位前一段汉字读音的
+            # 结束点——不能直接从 hira_pos 开始裸搜，每个汉字至少占1个假名音
+            # （没有"零音读音"的汉字），搜索起点至少要跳过 len(pending_kanji)
+            # 个字符，否则送假名首字符如果刚好和汉字读音的最后一个假名相同
+            # （比如"聞き"，聞→き，紧跟着送假名也是"き"，hira="ききまちが"），
+            # 裸搜索会在 hira_pos 本身就命中第一个"き"，误判成"聞"读音是空、
+            # 后面的"間違"多吞了一个"き"。真实案例（textbook-sjp-zg-l12，
+            # "聞き間違える"）：就是这个坑，"聞"丢了读音、"間違"读音多了个
+            # "き"变成"きまちが"（正确应为"間違"→"まちが"，"聞"→"き"）。
+            min_start = hira_pos + max(1, len(pending_kanji))
+            idx = hira.find(gtext[0], min_start)
+            if idx == -1:
+                idx = hira.find(gtext[0], hira_pos)
             if idx == -1:
                 # 兜底：hira 里找不到这个假名字符（读音订正表把读音改得跟表面
                 # 字符对不上之类的边界情况），放弃细分，保守地不给这段汉字注音，

@@ -3892,14 +3892,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "聞"
+                  "text": "聞",
+                  "kana": "き"
                 },
                 {
                   "text": "き"
                 },
                 {
                   "text": "間違",
-                  "kana": "きまちが"
+                  "kana": "まちが"
                 },
                 {
                   "text": "える"
@@ -4200,14 +4201,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言"
+                  "text": "言",
+                  "kana": "い"
                 },
                 {
                   "text": "い"
                 },
                 {
                   "text": "間違",
-                  "kana": "いまちが"
+                  "kana": "まちが"
                 },
                 {
                   "text": "える"
@@ -4224,14 +4226,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "言"
+                  "text": "言",
+                  "kana": "い"
                 },
                 {
                   "text": "い"
                 },
                 {
                   "text": "返",
-                  "kana": "いかえ"
+                  "kana": "かえ"
                 },
                 {
                   "text": "す"
@@ -4248,14 +4251,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "聞"
+                  "text": "聞",
+                  "kana": "き"
                 },
                 {
                   "text": "き"
                 },
                 {
                   "text": "返",
-                  "kana": "きかえ"
+                  "kana": "かえ"
                 },
                 {
                   "text": "す"
