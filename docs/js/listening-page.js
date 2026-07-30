@@ -15,9 +15,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // navType: "sentence" | "question" | "mondai"；navSiblings 是同级兄弟节点数组（用于上一个/
   // 下一个/最前/最后导航，导航不跨级——句子不跨小题、小题不跨大题、大题就是顶层）；
   // loop 不随 playScope 重置，是迷你播放器里的全局开关，切换播放目标时保持原状态。
+  // rangeStart/rangeEnd：选段复读模式下的播放范围（秒，相对当前 audio 自己
+  // 的时间轴），非选段播放时都是 null——tickWordHighlight() 靠这两个字段
+  // 判断要不要在到达终点时截断/循环回起点，见文件后面"选段复读"那一段。
   var player = {
     audios: [], idx: 0, loop: false, active: false, finished: false, scopeLabel: "",
-    navType: null, navSiblings: [], navIndex: -1
+    navType: null, navSiblings: [], navIndex: -1,
+    rangeStart: null, rangeEnd: null
   };
 
   var miniPlayer = document.getElementById("miniPlayer");
@@ -59,6 +63,29 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         if (hlWord) hlWord.classList.remove("tw-active");
         if (active) active.classList.add("tw-active");
         hlWord = active;
+      }
+    }
+    // 选段复读：到达范围终点——循环开着就跳回起点接着放，没开循环就停在终点，
+    // 不往下播这句剩下的内容（这是跟"整句播放不循环时自然播完"最大的行为
+    // 差异，见 playRange() 的注释）。rangeEnd 为 null 表示选中的终点已经是
+    // 这句最后一个词，没有"下一个词的 t"可用，退化成用这条音频自己的总时长
+    // 当终点——duration 要等浏览器加载完元数据才有值，播放开始后几乎立刻
+    // 就绪，加载完之前这里先不做截断判断，不影响观感（正常听感上不会卡在
+    // 这一两帧的窗口期）。
+    if (a && player.rangeStart !== null) {
+      var effectiveEnd = player.rangeEnd !== null ? player.rangeEnd : a.duration;
+      if (effectiveEnd && a.currentTime >= effectiveEnd) {
+        if (player.loop) {
+          a.currentTime = player.rangeStart;
+        } else {
+          // finishPlayer()（复用整句/整题播放"自然播完"那条路径，一并清掉
+          // 卡片的 .playing 高亮，跟正常播放完的视觉表现保持一致）本身不会
+          // 暂停音频——它设计给"onended 已经自然触发过、音频早就停了"的
+          // 场景用，这里是自己主动检测到范围终点、音频其实还在播，要先
+          // 手动暂停。
+          a.pause();
+          finishPlayer();
+        }
       }
     }
     wordHighlightRAF = requestAnimationFrame(tickWordHighlight);
@@ -120,11 +147,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
 
   // 主动停止/关闭：彻底隐藏迷你播放器（✕按钮、切 Tab、播完后点了别处）
+  // 顺带清掉选段复读的范围状态——这是退出选段模式的唯一方式（clearRange
+  // Selection 定义在文件后面"选段复读"那一段，函数声明会被提升到本闭包
+  // 顶部，这里调用在定义之前没问题）。
   function stopPlayer() {
     player.audios.forEach(function(a) { a.onended = null; a.pause(); });
     player.active = false;
     player.finished = false;
     player.audios = [];
+    player.rangeStart = null;
+    player.rangeEnd = null;
+    clearRangeSelection();
     setPlayingCard(null);
     updateMiniPlayer();
   }
@@ -181,13 +214,58 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     player.navSiblings = navSiblings;
     player.navIndex = navIndex;
     player.active = true;
+    // 正常整句/整题/整大题播放跟选段复读互斥——切到这边来的话，之前如果
+    // 还留着选段的范围状态/卡片上的选中样式，要一并清掉，不然 tickWord
+    // Highlight() 会拿旧范围去截断这次的正常播放。
+    player.rangeStart = null;
+    player.rangeEnd = null;
+    clearRangeSelection();
     playNext();
+  }
+
+  // 选段复读：只播一句音频里 [startT, endT) 这一段，循环开着就在到达 endT
+  // 时跳回 startT 继续放（边界检测在 tickWordHighlight() 里，跟跟读高亮
+  // 用的是同一个 RAF 循环，不需要另外起一个定时器）。跟 playScope() 的
+  // "从头到尾依次播完一串 <audio>"形状不一样（只有一个 audio、只播中间
+  // 一段），所以单独开一个入口，不往 playScope() 里硬塞参数。
+  function playRange(audio, startT, endT, label) {
+    player.audios.forEach(function(a) { a.onended = null; a.pause(); });
+    player.audios = [audio];
+    player.idx = 0;
+    player.finished = false;
+    player.scopeLabel = label;
+    player.navType = null;   // 没有同级兄弟节点，导航按钮在 updateMiniPlayer() 里自动禁用
+    player.navSiblings = [];
+    player.navIndex = -1;
+    player.rangeStart = startT;
+    player.rangeEnd = endT;
+    player.active = true;
+    audio.currentTime = startT;
+    audio.onended = null;    // 选段模式不依赖 onended 判断"播完"，靠 tickWordHighlight() 的范围检测
+    audio.play();
+    setPlayingCard(audio);
+    updateMiniPlayer();
+    startWordHighlight();
   }
 
   mpPlayPause.addEventListener("click", function() {
     if (!player.active) return;
     if (player.finished) {
       player.finished = false;
+      // 选段复读播完停在终点（没开循环）时，"再播一次"要回到选段的起点
+      // 重新放，不能走下面 playNext() 那条路——那个是给"依次播完一串
+      // <audio>"设计的，会把 currentTime 强制归零（回到整条音频最开头，
+      // 不是选段的起点）、还会重新挂上"播完自动接下一条"的 onended，两个
+      // 都不是选段模式想要的行为。
+      if (player.rangeStart !== null) {
+        var a = player.audios[player.idx];
+        a.currentTime = player.rangeStart;
+        a.play();
+        setPlayingCard(a);
+        updateMiniPlayer();
+        startWordHighlight();
+        return;
+      }
       player.idx = 0;
       playNext();
       return;
@@ -248,6 +326,126 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       playScope("mondai", siblings, siblings.indexOf(section));
     });
   });
+
+  // ── 选段复读：跟读模式下选中一句话里连续的一段词，单独循环播放这一段 ──
+  // 只在带跟读时间戳（.tw[data-t]，来自会话/课文句子的 char_times）的卡片
+  // 上出现——生词条目没有逐词时间戳，天然不会有任何 .tw[data-t]，图标不会
+  // 被插入，不用额外传参区分。默认关闭（body 不带 repeat-mode-on 类时图标
+  // 整体 CSS 隐藏），设置面板里的开关打开才显示，避免平时跟读模式下卡片
+  // 右下角多一个不相关的图标。
+  var selectingCard = null, selectStart = null;
+
+  // 去掉假名注音（<rt>）之后的原文纯文本——跟默写/填空模块里同名函数逻辑
+  // 完全一样，但那份定义在文件后面另一个独立的 IIFE 里，闭包作用域够不到，
+  // 这里单独放一份（选段复读的播放条标题文字要用，只取 <ruby> 的 base 部分，
+  // 不要把假名读音也拼进去）。
+  function plainTextOf(node) {
+    var clone = node.cloneNode(true);
+    Array.from(clone.querySelectorAll("rt")).forEach(function(rt) { rt.remove(); });
+    return clone.textContent;
+  }
+
+  // 退出选段模式的入口都要清这份状态——stopPlayer()（点✕/切Tab/播完后点了
+  // 别处）、playScope()（切去正常整句/整题播放）都已经在调用这个函数。
+  function clearRangeSelection() {
+    selectingCard = null;
+    selectStart = null;
+    document.querySelectorAll(".seg-card.seg-selecting").forEach(function(c) {
+      c.classList.remove("seg-selecting");
+    });
+    document.querySelectorAll(".tw.seg-range-pending, .tw.seg-range-selected").forEach(function(w) {
+      w.classList.remove("seg-range-pending", "seg-range-selected");
+    });
+  }
+
+  var anyRepeatable = false;
+  document.querySelectorAll(".seg-card").forEach(function(card) {
+    var words = Array.from(card.querySelectorAll(".seg-ja .tw[data-t]"));
+    if (!words.length) return;   // 生词条目/没有跟读时间戳的卡片不显示图标
+    anyRepeatable = true;
+
+    var icon = document.createElement("button");
+    icon.type = "button";
+    icon.className = "seg-repeat-icon";
+    icon.title = "选段复读";
+    icon.textContent = "🔁";
+    icon.addEventListener("click", function(e) {
+      e.stopPropagation();
+      // 同一张卡片已经点了起点、还在等点终点——再点一次图标视为取消，退回
+      // 中性状态，不重新进入选段中（要重新选，用户自己再点一次图标）。
+      if (selectingCard === card && selectStart) {
+        clearRangeSelection();
+        return;
+      }
+      // 其它情况（中性状态点开始选、或者切到别的卡片重新选）：先彻底停掉
+      // 当前播放/清空旧的选段状态，再进入这张卡片的"选段中"。
+      stopPlayer();
+      selectingCard = card;
+      card.classList.add("seg-selecting");
+    });
+    card.appendChild(icon);
+
+    words.forEach(function(w) {
+      w.addEventListener("click", function(e) {
+        if (selectingCard !== card) return;   // 不在选段中，交给卡片自己的点击逻辑正常整句播放
+        e.stopPropagation();
+        if (!selectStart) {
+          selectStart = w;
+          w.classList.add("seg-range-pending");
+          return;
+        }
+        var startIdx = words.indexOf(selectStart);
+        var endIdx = words.indexOf(w);
+        if (startIdx > endIdx) { var tmp = startIdx; startIdx = endIdx; endIdx = tmp; }
+
+        selectStart.classList.remove("seg-range-pending");
+        for (var i = startIdx; i <= endIdx; i++) { words[i].classList.add("seg-range-selected"); }
+
+        var startT = parseFloat(words[startIdx].getAttribute("data-t"));
+        var endT = endIdx + 1 < words.length ? parseFloat(words[endIdx + 1].getAttribute("data-t")) : null;
+        var label = words.slice(startIdx, endIdx + 1).map(function(x) { return plainTextOf(x); }).join("");
+        if (label.length > 20) { label = label.slice(0, 20) + "…"; }
+
+        card.classList.remove("seg-selecting");
+        selectingCard = null;
+        selectStart = null;
+
+        var audio = card.querySelector("audio");
+        playRange(audio, startT, endT, label);
+      });
+    });
+  });
+
+  // 设置面板开关——一整个页面都没有带跟读时间戳的卡片（比如纯生词表页面）
+  // 时不显示这个开关，打开了也没有任何图标会出现，纯粹是无意义的按钮。
+  // 默认关闭（localStorage 没记过就是关），跟编辑模式的开关是同一套持久化
+  // 方式，但两个功能互不依赖，各自存各自的 key。
+  if (anyRepeatable) {
+    var repeatSettingsPanel = document.getElementById("settingsPanel");
+    if (repeatSettingsPanel) {
+      var REPEAT_MODE_KEY = "n2listen-repeat-mode";
+      var repeatGroup = document.createElement("div");
+      repeatGroup.className = "settings-group settings-group-repeatmode";
+      repeatGroup.innerHTML =
+        '<div class="settings-label">跟读练习</div>' +
+        '<div class="settings-options">' +
+          '<button class="settings-opt" id="repeatModeToggle">🔁 选段复读</button>' +
+        "</div>";
+      repeatSettingsPanel.appendChild(repeatGroup);
+
+      var repeatToggleBtn = repeatGroup.querySelector("#repeatModeToggle");
+      function setRepeatMode(on) {
+        document.body.classList.toggle("repeat-mode-on", on);
+        repeatToggleBtn.classList.toggle("active", on);
+        localStorage.setItem(REPEAT_MODE_KEY, on ? "1" : "");
+        if (!on) clearRangeSelection();
+      }
+      setRepeatMode(localStorage.getItem(REPEAT_MODE_KEY) === "1");
+      repeatToggleBtn.addEventListener("click", function() {
+        setRepeatMode(!document.body.classList.contains("repeat-mode-on"));
+      });
+    }
+  }
 })();
 
 // ── Tab 切换：問題1~5，点击后只显示该大题内容 + 对应的小题导航 ──

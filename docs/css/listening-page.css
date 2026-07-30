@@ -310,6 +310,37 @@ body.edit-mode .seg-edit-icon { display: flex; }
   border-radius: 50%; background: #f59e0b; border: 1px solid #fff;
 }
 
+/* ── 选段复读（docs/js/listening-page.js 里的 playRange 相关逻辑）：设置面板
+   开关 + 每张带跟读时间戳的卡片右下角的 🔁 图标 + 选中范围高亮 ──
+   图标定位跟 .seg-edit-icon 同一行（bottom:8px），横向错开摆在它左边，两个
+   模式同时打开时并排显示不重叠；生词卡片没有 .tw[data-t]，图标不会被插入，
+   不需要额外的隐藏规则。 */
+.seg-repeat-icon {
+  display: none; position: absolute; right: 40px; bottom: 8px; z-index: 2;
+  width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border);
+  background: #fff; color: var(--text-muted); font-size: 13px; cursor: pointer;
+  align-items: center; justify-content: center; box-shadow: var(--shadow-xs);
+}
+body.repeat-mode-on .seg-repeat-icon { display: flex; }
+/* 只在跟读模式下可用——默写/填空模式把 .seg-ja 整个隐藏了（见下面
+   body.mode-dictate/mode-blank .seg-card .seg-ja 那两条规则），选段要点的
+   .tw 词根本看不见，图标留着只会是个点了也没法选词的死状态，直接隐藏。 */
+body.mode-dictate .seg-repeat-icon, body.mode-blank .seg-repeat-icon { display: none; }
+.seg-repeat-icon:hover { color: var(--blue); border-color: var(--blue-light); background: var(--blue-xlight); }
+/* 已点了起点、正在等待点终点——整张卡片边框换色提示"请点选终点词" */
+.seg-card.seg-selecting { border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue-light); }
+/* 已点选的起点词，等待选终点时的样式（虚线下划线，跟 .tw-active 的实线
+   下划线区分开，避免误以为是正在播放） */
+.tw.seg-range-pending { border-bottom: 2px dashed var(--blue); padding-bottom: 1px; }
+/* 选段确定后，范围内所有词的持续高亮——浅色背景，跟 .tw-active"当前正在读
+   的这一个词"那层更显眼的下划线+加粗叠加显示，两者视觉上能同时区分。 */
+.tw.seg-range-selected { background: var(--blue-xlight); }
+.tw.seg-range-selected.tw-active { background: var(--blue-light); }
+/* 选段模式下 .tw 是要点击的目标（平时只是纯展示用的 span），点击热区太小
+   在手机上不好点中，开启选段模式时给所有 .tw 补一点内边距扩大热区——只在
+   开启这个模式时才加，不影响其它模式下的正常排版行间距。 */
+body.repeat-mode-on .seg-ja .tw { padding: 2px 1px; }
+
 .edit-modal-overlay {
   display: none; position: fixed; inset: 0; z-index: 400;
   background: rgba(15, 23, 42, 0.45); align-items: center; justify-content: center; padding: 20px;
