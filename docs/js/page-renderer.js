@@ -26,19 +26,95 @@
       .replace(/'/g, "&#39;");
   }
 
+  // 跟 tools/listening/build_page.py 的 _is_kanji()/_kata_to_hira_char()/
+  // _split_kana_segments() 是同一份逻辑的 JS 移植——原来这几个函数只在 Python
+  // 生成 data.js 那一步跑一次，注释里写"这里纯粹是模板拼接，不做任何语言学
+  // 分析"是因为假设 token 永远是 Python 那边预先拆好的。但编辑模式
+  // （edit-mode.js）允许直接在浏览器里手打一个"汉字+送假名"合并成一个 token
+  // 的 kana 覆盖（比如把"聞き間違える"整个填一个 kana="ききまちがえる"），
+  // 这条路径完全绕开了 Python，如果渲染器自己不会拆，编辑模式存的合并 token
+  // 就会照原样渲染成一个 <ruby> 盖住整段文字——真实案例：用户在编辑模式里
+  // 填了这种合并 token，验证发现确实没有正确拆分。渲染器必须有能力独立完成
+  // 同样的拆分，不能只依赖 Python 那一步做好，两边逻辑改动也要保持同步。
+  function isKanji(ch) {
+    var code = ch.charCodeAt(0);
+    return (code >= 0x4e00 && code <= 0x9fff) || ch === "々";
+  }
+
+  function kataToHiraChar(ch) {
+    var code = ch.charCodeAt(0);
+    return (code >= 0x30a1 && code <= 0x30f6) ? String.fromCharCode(code - 0x60) : ch;
+  }
+
+  function splitKanaSegments(orig, hira) {
+    if (orig === hira) return [{ text: orig }];
+    var groups = [];
+    for (var i = 0; i < orig.length; i++) {
+      var ch = orig[i];
+      var k = isKanji(ch);
+      if (groups.length && groups[groups.length - 1][0] === k) {
+        groups[groups.length - 1][1] += ch;
+      } else {
+        groups.push([k, ch]);
+      }
+    }
+    var kanjiGroupCount = groups.filter(function (g) { return g[0]; }).length;
+    if (kanjiGroupCount === 0 || kanjiGroupCount === groups.length) {
+      // 退化情况：整段没有汉字，或者整段全是汉字（熟字训，没有送假名可当
+      // 定位锚点）——都没法按分段对齐，整体当一段注音。
+      return [{ text: orig, kana: hira }];
+    }
+    var segments = [];
+    var hiraPos = 0;
+    var pendingKanji = null;
+    groups.forEach(function (g) {
+      var isK = g[0], gtext = g[1];
+      if (isK) { pendingKanji = gtext; return; }
+      if (pendingKanji !== null) {
+        var anchorChar = kataToHiraChar(gtext[0]);
+        var minStart = hiraPos + Math.max(1, pendingKanji.length);
+        var idx = hira.indexOf(anchorChar, minStart);
+        if (idx === -1) idx = hira.indexOf(anchorChar, hiraPos);
+        if (idx === -1) {
+          segments.push({ text: pendingKanji });
+          idx = hiraPos;
+        } else {
+          var reading = hira.slice(hiraPos, idx);
+          segments.push(reading ? { text: pendingKanji, kana: reading } : { text: pendingKanji });
+        }
+        hiraPos = idx;
+        pendingKanji = null;
+      }
+      segments.push({ text: gtext });
+      hiraPos += gtext.length;
+    });
+    if (pendingKanji !== null) {
+      var tailReading = hira.slice(hiraPos);
+      segments.push(tailReading ? { text: pendingKanji, kana: tailReading } : { text: pendingKanji });
+    }
+    return segments;
+  }
+
   // 跟 tools/listening/build_page.py 的 ruby_html_from_tokens() 是同一份逻辑——
   // 两边必须保持一致，token 有 kana 且跟 text 不同就包一层 <ruby>，有 t 就包一层
-  // <span class="tw" data-t="...">。所有"怎么分词、读音该是什么"的判断都已经在
-  // 生成 data.js 那一步由 Python（pykakasi + 各种订正表）做完了，这里纯粹是
-  // 模板拼接，不做任何语言学分析。
+  // <span class="tw" data-t="...">。"怎么分词、读音该是什么"这部分语言学判断
+  // （pykakasi + 各种订正表）仍然只在 Python 生成 data.js 那一步做——这里只是
+  // 额外兜底"送假名要不要从汉字读音里拆出来"这一步（splitKanaSegments()），
+  // 保证不管 token 是 Python 预先拆好的、还是编辑模式里手填的合并 kana 覆盖，
+  // 渲染出来的排版规则都一致。
   function renderTokens(tokens) {
     var parts = [];
     (tokens || []).forEach(function (tok) {
       if (tok.text === "\n") { parts.push("<br>"); return; }
-      var text = esc(tok.text);
-      var inner = tok.kana && tok.kana !== tok.text
-        ? "<ruby>" + text + "<rt>" + esc(tok.kana) + "</rt></ruby>"
-        : text;
+      var segs = (tok.kana && tok.kana !== tok.text)
+        ? splitKanaSegments(tok.text, tok.kana)
+        : [{ text: tok.text }];
+      var inner = segs.map(function (seg) {
+        var segText = esc(seg.text);
+        return (seg.kana && seg.kana !== seg.text)
+          ? "<ruby>" + segText + "<rt>" + esc(seg.kana) + "</rt></ruby>"
+          : segText;
+      }).join("");
       if (tok.t !== undefined && tok.t !== null) {
         parts.push('<span class="tw" data-t="' + tok.t.toFixed(2) + '">' + inner + "</span>");
       } else {
