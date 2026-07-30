@@ -276,6 +276,36 @@ def _split_kana_segments(orig, hira):
     return segments
 
 
+def _split_plain_by_char_times(text, times):
+    """把一段不带汉字读音的纯文本（送假名、或者整段没有汉字的 token，比如
+    一长串"ということになりました"这样的助词/助动词连读）按 char_times
+    "连续相同时间戳算一组"拆成更细的跟读高亮单元列表 [(子串, 时间戳), ...]。
+
+    真实案例（用户反馈）：跟读模式下有的高亮一次盖住近十个假名，是因为
+    tokenize_ja() 原来"一个 pykakasi 分词结果=一个跟读高亮单元"，纯假名的
+    长串（pykakasi 常把好几个助词/助动词粘成一个不可再分的 token）就只有
+    一个时间戳、一整段一起亮。但 refine_boundaries.py 的 align_group() 算
+    char_times 时早就注释过："Whisper 给日语打的词级时间戳本来就接近逐字/
+    逐音节粒度"——也就是说这段长文字底下其实已经有好几个不同的真实时间戳，
+    只是 tokenize_ja() 只挑了第一个字符的时间戳、把后面的全丢了。这个函数
+    把这份本来就有的细粒度数据重新利用起来，同一个时间戳对应的连续字符
+    合并成一个高亮单元，时间戳变化的地方就该断开成新的单元。
+
+    `times` 是跟 `text` 等长的时间戳列表（元素可以是 None，表示这个字符
+    没有可用时间戳，比如 char_times 数组比句子本身短的边界情况）——如果
+    长度对不上或者整个没有时间戳数据，直接整段不拆当一个单元返回（没有
+    更细的数据可用，没法拆，保底行为等同于拆分前）。"""
+    if not times or len(times) != len(text):
+        return [(text, times[0] if times else None)]
+    runs = []
+    start = 0
+    for i in range(1, len(text) + 1):
+        if i == len(text) or times[i] != times[start]:
+            runs.append((text[start:i], times[start]))
+            start = i
+    return runs
+
+
 def tokenize_ja(text, char_times=None):
     """假名注音分词——把日语原文按 pykakasi 分词、套用读音订正表
     （_TOKEN_READING_OVERRIDES_*/_resolve_hira）、拆分送假名（_split_kana_segments），
@@ -314,28 +344,76 @@ def tokenize_ja(text, char_times=None):
             else:
                 hira = _resolve_hira(orig, hira, prev_orig, next_char)
             prev_orig = orig
-            t_time = None
-            if char_times is not None and char_idx < len(char_times):
-                t_time = char_times[char_idx]
+            # 这个 token 自己的逐字符时间戳切片（跟 orig 等长，越界的位置填
+            # None）——之前只挑第一个字符的时间戳给整个 token 用，这里保留
+            # 全部，供下面按汉字段/纯假名段分别细化跟读高亮粒度。
+            if char_times is not None:
+                tok_times = [
+                    char_times[char_idx + i] if char_idx + i < len(char_times) else None
+                    for i in range(tok_len)
+                ]
+            else:
+                tok_times = None
             char_idx += tok_len
             # 标点/符号（「、」「。」「?」之类）不算"读到的词"，不参与跟读高亮——
             # pykakasi 分词里纯标点 token 没有假名/汉字，isalnum() 全假，用这个判断跳过。
             has_content = any(ch.isalnum() for ch in orig)
-            if any(_is_kanji(ch) for ch in orig) and hira != orig:
-                for i, seg in enumerate(_split_kana_segments(orig, hira)):
-                    entry = dict(seg)
-                    if i == 0 and t_time is not None and has_content:
-                        entry["t"] = round(t_time, 2)
-                    out.append(entry)
+            if not has_content:
+                out.append({"text": orig})
+            elif any(_is_kanji(ch) for ch in orig) and hira != orig:
+                offset = 0
+                for seg in _split_kana_segments(orig, hira):
+                    seg_len = len(seg["text"])
+                    seg_times = tok_times[offset:offset + seg_len] if tok_times is not None else None
+                    offset += seg_len
+                    if any(_is_kanji(ch) for ch in seg["text"]):
+                        # 汉字段（带读音注音的那部分）当一个高亮单元，不再往下拆——
+                        # 一个汉字/复合词的读音是一起念出来的，跟读高亮按"这个读音
+                        # 开始的时刻"整体点亮才符合直觉，细拆到单字反而不自然。
+                        entry = dict(seg)
+                        if seg_times and seg_times[0] is not None:
+                            entry["t"] = round(seg_times[0], 2)
+                        out.append(entry)
+                    else:
+                        # 送假名（比如"える"）不带读音注音，可以放心按 char_times
+                        # 里的真实分段细化，不用担心切碎了破坏 <ruby> 的显示。
+                        for sub_text, sub_time in _split_plain_by_char_times(seg["text"], seg_times):
+                            entry = {"text": sub_text}
+                            if sub_time is not None:
+                                entry["t"] = round(sub_time, 2)
+                            out.append(entry)
             else:
-                entry = {"text": orig}
-                if t_time is not None and has_content:
-                    entry["t"] = round(t_time, 2)
-                out.append(entry)
+                for sub_text, sub_time in _split_plain_by_char_times(orig, tok_times):
+                    entry = {"text": sub_text}
+                    if sub_time is not None:
+                        entry["t"] = round(sub_time, 2)
+                    out.append(entry)
         if li < len(lines) - 1:
             out.append({"text": "\n"})
             char_idx += 1  # 换行符本身也占一个字符位，对齐 char_times 的下标
-    return out
+
+    # 收尾合并：上面按 char_times 细分是"在每个 pykakasi 分词内部"做的，不会
+    # 跨分词边界合并——但 pykakasi 偶尔会把同一个 Whisper 识别词从中间断开
+    # 成两个分词（真实案例：「分からない」被 pykakasi 切成"分か"/"らないこ
+    # とがあるものですね"两段，"から"这两个字恰好一个在前一段末尾、一个在
+    # 后一段开头，但 char_times 显示这两个字享有完全相同的时间戳，说明
+    # Whisper 识别成的是同一个词）。这种情况如果不处理，"から"会被拆成两个
+    # 独立的跟读高亮点，明明是同一个词却分两次点亮，观感上比"没拆开"更奇怪。
+    # 收尾这一步把相邻的两个"纯文本段（没有 kana 注音）"在共享同一个真实
+    # 时间戳时合并回一段——只合并没有汉字读音的部分（有 <ruby> 注音的段落
+    # 不参与合并，见上面"汉字段当一个高亮单元不再往下拆"的注释，避免破坏
+    # 已经处理好的读音标注范围），且只在两边的 t 都存在且相等时才合并（没有
+    # 时间戳的段落之间不能瞎合并，那样会把本来就是两个不相关分词的文字粘
+    # 一起，跟这次要修的问题背道而驰）。
+    merged = []
+    for entry in out:
+        if (merged and "kana" not in entry and "kana" not in merged[-1]
+                and entry["text"] != "\n" and merged[-1]["text"] != "\n"
+                and entry.get("t") is not None and merged[-1].get("t") == entry.get("t")):
+            merged[-1] = {"text": merged[-1]["text"] + entry["text"], "t": merged[-1]["t"]}
+        else:
+            merged.append(entry)
+    return merged
 
 
 def ruby_html_from_tokens(tokens):
