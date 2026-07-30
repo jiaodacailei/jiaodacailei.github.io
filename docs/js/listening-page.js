@@ -179,7 +179,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var a = player.audios[player.idx];
     a.currentTime = 0;
     a.onended = function() { player.idx++; playNext(); };
-    a.play();
+    safePlay(a);
     setPlayingCard(a);
     updateMiniPlayer();
     startWordHighlight();
@@ -223,6 +223,34 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     playNext();
   }
 
+  // audio.play() 返回的 Promise 被拒绝时（自动播放策略拦截、播放请求被
+  // 打断……）不接住的话用户看到的就是"点了播放，没声音，也不提示报错"
+  // ——不需要精细的错误 UI，至少往控制台打一条，方便排查。
+  function safePlay(audio) {
+    var p = audio.play();
+    if (p && p.catch) {
+      p.catch(function(err) { console.warn("[播放] audio.play() 被拒绝：", err); });
+    }
+  }
+
+  // 选段复读起播用——共享的 <audio> 标签是 preload="none"，第一次点到
+  // 某句时浏览器还没加载任何数据（readyState 是 0），这时候直接设
+  // currentTime 再紧接着 play()，seek 和 play 谁先真正生效不确定，真实
+  // 表现就是"点了播放，偶尔没声音，也不报错"。等 loadedmetadata（元数据
+  // 到了，seek 才有意义）之后再做"seek+play"；已经加载过的（readyState
+  // >=1，比如之前跟读播放过同一句）就不用等，直接做。
+  function seekAndPlay(audio, t) {
+    function doIt() {
+      audio.currentTime = t;
+      safePlay(audio);
+    }
+    if (audio.readyState >= 1) {
+      doIt();
+    } else {
+      audio.addEventListener("loadedmetadata", doIt, { once: true });
+    }
+  }
+
   // 选段复读：只播一句音频里 [startT, endT) 这一段，循环开着就在到达 endT
   // 时跳回 startT 继续放（边界检测在 tickWordHighlight() 里，跟跟读高亮
   // 用的是同一个 RAF 循环，不需要另外起一个定时器）。跟 playScope() 的
@@ -240,9 +268,25 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     player.rangeStart = startT;
     player.rangeEnd = endT;
     player.active = true;
-    audio.currentTime = startT;
-    audio.onended = null;    // 选段模式不依赖 onended 判断"播完"，靠 tickWordHighlight() 的范围检测
-    audio.play();
+    // 选段循环收尾主要靠下面 tickWordHighlight() 里的 RAF 检查，在到达
+    // 终点前主动把 currentTime 拨回起点续播；但如果选中范围一直到句尾
+    // （endT 用 audio.duration 兜底，见 playRange 调用方），会跟浏览器
+    // 自己"播到底自动暂停"的原生行为抢同一个时间点——RAF 大多数时候能
+    // 抢先，但只要哪一帧慢了一点，浏览器就会先把音频暂停，这时候单靠
+    // RAF 再去拨 currentTime 已经晚了（暂停状态下改 currentTime 不会
+    // 自动续播，真实表现是"放了几遍之后自己停了"）。onended 原生事件在
+    // 这种情况下一定会触发，当一道保险：真到了原生"播完"，同样按循环/
+    // 不循环两种情况处理，不会再卡死。
+    audio.onended = function() {
+      if (player.rangeStart === null) return;
+      if (player.loop) {
+        audio.currentTime = player.rangeStart;
+        safePlay(audio);
+      } else {
+        finishPlayer();
+      }
+    };
+    seekAndPlay(audio, startT);
     setPlayingCard(audio);
     updateMiniPlayer();
     startWordHighlight();
@@ -260,7 +304,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (player.rangeStart !== null) {
         var a = player.audios[player.idx];
         a.currentTime = player.rangeStart;
-        a.play();
+        safePlay(a);
         setPlayingCard(a);
         updateMiniPlayer();
         startWordHighlight();
@@ -272,7 +316,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
     var current = player.audios[player.idx];
     if (!current) return;
-    if (current.paused) { current.play(); } else { current.pause(); }
+    if (current.paused) { safePlay(current); } else { current.pause(); }
     updateMiniPlayer();
   });
   // 播完后停在原地，点了迷你播放器以外的任何地方才把它关掉
