@@ -165,9 +165,13 @@ window.LESSON_DATA = {
                   "t": 1.46
                 },
                 {
-                  "text": "第２",
-                  "kana": "だいに",
+                  "text": "第",
+                  "kana": "だい",
                   "t": 2.29
+                },
+                {
+                  "text": "２",
+                  "kana": "に"
                 },
                 {
                   "text": "位",
@@ -3024,8 +3028,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "同〜",
+                  "text": "同",
                   "kana": "どう"
+                },
+                {
+                  "text": "〜"
                 }
               ],
               "zh": "同〜，相同〜",
@@ -3500,7 +3507,10 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜教",
+                  "text": "〜"
+                },
+                {
+                  "text": "教",
                   "kana": "きょう"
                 }
               ],
@@ -4264,7 +4274,10 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜向",
+                  "text": "〜"
+                },
+                {
+                  "text": "向",
                   "kana": "む"
                 },
                 {
@@ -4282,8 +4295,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "高〜",
+                  "text": "高",
                   "kana": "こう"
+                },
+                {
+                  "text": "〜"
                 }
               ],
               "zh": "高〜",
@@ -4297,7 +4313,10 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜率",
+                  "text": "〜"
+                },
+                {
+                  "text": "率",
                   "kana": "りつ"
                 }
               ],
@@ -4312,7 +4331,10 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜性",
+                  "text": "〜"
+                },
+                {
+                  "text": "性",
                   "kana": "せい"
                 }
               ],
@@ -4327,7 +4349,10 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜力",
+                  "text": "〜"
+                },
+                {
+                  "text": "力",
                   "kana": "りょく"
                 }
               ],
@@ -4900,7 +4925,10 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜向",
+                  "text": "〜"
+                },
+                {
+                  "text": "向",
                   "kana": "む"
                 },
                 {

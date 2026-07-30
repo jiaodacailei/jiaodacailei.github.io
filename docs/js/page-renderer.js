@@ -64,10 +64,17 @@
       // 定位锚点）——都没法按分段对齐，整体当一段注音。
       return [{ text: orig, kana: hira }];
     }
-    var segments = [];
+
+    // "〜"（语法笔记占位符，比如"〜性""同〜"）完全不发音，字面不会出现在
+    // hira 里——先过滤掉它跑锚点定位算出每段汉字的读音，最后再按原始顺序
+    // 把占位段交错拼回去（不能在第一遍顺手拼，"〜"可能出现在待定汉字读音
+    // **结算之前**，比如"同〜"，"同"的读音要等到整个 orig 处理完才结算，
+    // 这时候如果顺手把"〜"也塞进 segments，输出顺序会变成"〜"排在"同"前面）。
+    var filtered = groups.filter(function (g) { return g[0] || g[1] !== "〜"; });
+    var kanjiReadings = [];
     var hiraPos = 0;
     var pendingKanji = null;
-    groups.forEach(function (g) {
+    filtered.forEach(function (g) {
       var isK = g[0], gtext = g[1];
       if (isK) { pendingKanji = gtext; return; }
       if (pendingKanji !== null) {
@@ -76,22 +83,31 @@
         var idx = hira.indexOf(anchorChar, minStart);
         if (idx === -1) idx = hira.indexOf(anchorChar, hiraPos);
         if (idx === -1) {
-          segments.push({ text: pendingKanji });
+          kanjiReadings.push(null);
           idx = hiraPos;
         } else {
-          var reading = hira.slice(hiraPos, idx);
-          segments.push(reading ? { text: pendingKanji, kana: reading } : { text: pendingKanji });
+          kanjiReadings.push(hira.slice(hiraPos, idx) || null);
         }
         hiraPos = idx;
         pendingKanji = null;
       }
-      segments.push({ text: gtext });
       hiraPos += gtext.length;
     });
     if (pendingKanji !== null) {
-      var tailReading = hira.slice(hiraPos);
-      segments.push(tailReading ? { text: pendingKanji, kana: tailReading } : { text: pendingKanji });
+      kanjiReadings.push(hira.slice(hiraPos) || null);
     }
+
+    var segments = [];
+    var ki = 0;
+    groups.forEach(function (g) {
+      var isK = g[0], gtext = g[1];
+      if (isK) {
+        var reading = kanjiReadings[ki++];
+        segments.push(reading ? { text: gtext, kana: reading } : { text: gtext });
+      } else {
+        segments.push({ text: gtext });
+      }
+    });
     return segments;
   }
 

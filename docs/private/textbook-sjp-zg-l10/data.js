@@ -4107,7 +4107,10 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜所",
+                  "text": "〜"
+                },
+                {
+                  "text": "所",
                   "kana": "しょ"
                 }
               ],

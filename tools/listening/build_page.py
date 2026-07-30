@@ -199,7 +199,18 @@ def _split_kana_segments(orig, hira):
     字符去 hira.find() 搜是搜不到的——用 `_kata_to_hira_char()` 把搜索用的
     首字符转成对应平假名再搜，搜到的位置照样是正确的边界（片假名/平假名是
     同一套假名的两种写法，字符数量、顺序都一一对应，只有搜索这一步需要转换，
-    最终塞进 segment 里的还是原始片假名文本，不影响显示）。"""
+    最终塞进 segment 里的还是原始片假名文本，不影响显示）。
+
+    "〜"（语法笔记里表示"接在词干后面"的占位符，比如"〜性""同〜"）是完全
+    不发音的符号，字面上不会出现在 hira 里，也不占用任何一个假名音——不能
+    当成普通非汉字组处理（会被误判成"hira 里找不到这个字符"从而放弃给相邻
+    汉字注音，真实案例：textbook-sjp-zg-l11 的"〜性"/"せい"，"性"完全没标
+    读音）。处理方式：先把"〜"占位组从分组序列里过滤掉，用剩下的"正常"分组
+    跑一遍同样的锚点定位算法算出每一段汉字的读音，最后再按原始分组顺序把
+    结果和"〜"占位段重新交错拼回去——两遍处理是必须的，不能在第一遍顺手
+    处理，因为"〜"可能出现在待定汉字读音**结算之前**（比如"同〜"，"同"的
+    读音要等到整个 orig 处理完才能结算出来，如果这时候顺手把"〜"也塞进
+    segments，输出顺序会变成"〜"排在"同"前面，跟原文顺序颠倒）。"""
     if orig == hira:
         return [{"text": orig}]
     groups = []
@@ -214,10 +225,12 @@ def _split_kana_segments(orig, hira):
         # 退化情况：整段没有汉字（罗马字/数字类词），或者整段全是汉字（熟字训，
         # 没有送假名可当定位锚点）——都没法按分段对齐，整体当一段注音。
         return [{"text": orig, "kana": hira}]
-    segments = []
+
+    filtered = [g for g in groups if g[0] or g[1] != "〜"]
+    kanji_readings = []
     hira_pos = 0
     pending_kanji = None
-    for is_kanji, gtext in groups:
+    for is_kanji, gtext in filtered:
         if is_kanji:
             pending_kanji = gtext
             continue
@@ -241,20 +254,25 @@ def _split_kana_segments(orig, hira):
                 # 字符对不上之类的边界情况），放弃细分，保守地不给这段汉字注音，
                 # 总比崩掉强——真出现这种情况应该是订正表本身有问题，需要人工
                 # 回头核实，不是这个函数该默默"修好"的。
-                segments.append({"text": pending_kanji})
+                kanji_readings.append(None)
                 idx = hira_pos
             else:
-                reading = hira[hira_pos:idx]
-                segments.append({"text": pending_kanji, "kana": reading} if reading
-                                 else {"text": pending_kanji})
+                kanji_readings.append(hira[hira_pos:idx])
             hira_pos = idx
             pending_kanji = None
-        segments.append({"text": gtext})
         hira_pos += len(gtext)
     if pending_kanji is not None:
-        reading = hira[hira_pos:]
-        segments.append({"text": pending_kanji, "kana": reading} if reading
-                         else {"text": pending_kanji})
+        kanji_readings.append(hira[hira_pos:] or None)
+
+    segments = []
+    ki = 0
+    for is_kanji, gtext in groups:
+        if is_kanji:
+            reading = kanji_readings[ki]
+            ki += 1
+            segments.append({"text": gtext, "kana": reading} if reading else {"text": gtext})
+        else:
+            segments.append({"text": gtext})
     return segments
 
 
