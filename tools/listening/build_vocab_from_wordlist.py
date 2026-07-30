@@ -61,7 +61,7 @@ import difflib
 import pykakasi
 
 sys.path.insert(0, os.path.dirname(__file__))
-from build_page import ruby_html, _is_kanji, _split_trailing_kana
+from build_page import ruby_html, _split_trailing_kana, _needs_kana_annotation
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -88,7 +88,7 @@ def furigana_for(word):
         # 跟 build_page.py 的 tokenize_ja() 处理自动分词结果时用的是同一条
         # 规则（同一个 _split_trailing_kana()），`kana` 覆盖分支不能因为跳过
         # 了自动分词就漏掉这一步。
-        if any(_is_kanji(ch) for ch in text) and kana != text:
+        if _needs_kana_annotation(text) and kana != text:
             core_orig, core_hira, suffix = _split_trailing_kana(text, kana)
             return f'<ruby>{core_orig}<rt>{core_hira}</rt></ruby>{suffix}'
         return text

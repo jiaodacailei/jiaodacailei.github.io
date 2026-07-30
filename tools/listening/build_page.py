@@ -42,6 +42,18 @@ def _is_kanji(ch):
     return '一' <= ch <= '鿿'
 
 
+def _needs_kana_annotation(text):
+    """判断这个词自己的原文能不能让读者看出读音——汉字读不出来需要注音，这个
+    没有争议；但纯罗马字/数字（比如生词"DVD"，读音"ディーブイディー"）同样
+    看着原文猜不出日语读音，跟汉字是同一类问题。真实案例（textbook-sjp-zg-l12）：
+    "DVD"这条生词表里填了 kana="ディーブイディー"，但 sentence_to_data() 的
+    kana 覆盖分支只在 `any(_is_kanji(...))` 时才生成 <ruby> 注音，DVD 没有汉字，
+    这个判断直接漏掉，读音被悄悄丢弃，页面上只显示"DVD"三个字母、完全没有
+    注音提示。纯假名/纯片假名词条不算在内——假名本身就是表音文字，照原文就能
+    读出来，不需要再注一遍。"""
+    return any(_is_kanji(ch) or (ch.isascii() and ch.isalnum()) for ch in text)
+
+
 # pykakasi 是按单字/常见复合词猜读音的，罕见组合容易读错，已经踩过两类坑：
 # 1) 单字在孤立语境下的默认读音，放进特定复合词里其实要变——"表"单独最常见的
 #    读音是おもて（"正面"），但在"スケジュール表"（日程表）这个复合词里应该读
@@ -728,7 +740,7 @@ def sentence_to_data(s, audio_rel):
         tokens = tokenize_ja(s["text"], rel_char_times)
     elif s.get("kana"):
         text, kana = s["text"], s["kana"]
-        if any(_is_kanji(ch) for ch in text) and kana != text:
+        if _needs_kana_annotation(text) and kana != text:
             core_orig, core_hira, suffix = _split_trailing_kana(text, kana)
             tokens = [{"text": core_orig, "kana": core_hira}]
             if suffix:
