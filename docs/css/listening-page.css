@@ -336,10 +336,19 @@ body.mode-dictate .seg-repeat-icon, body.mode-blank .seg-repeat-icon { display: 
 /* 已点选的起点词，等待选终点时的样式（虚线下划线，跟 .tw-active 的实线
    下划线区分开，避免误以为是正在播放） */
 .tw.seg-range-pending { border-bottom: 2px dashed var(--blue); padding-bottom: 1px; }
-/* 选段确定后，范围内所有词的持续高亮——浅色背景，跟 .tw-active"当前正在读
-   的这一个词"那层更显眼的下划线+加粗叠加显示，两者视觉上能同时区分。 */
-.tw.seg-range-selected { background: var(--blue-xlight); }
-.tw.seg-range-selected.tw-active { background: var(--blue-light); }
+/* 选段确定后，范围内所有词的持续高亮——之前用 --blue-xlight（#eff6ff，
+   非常接近白色）几乎看不出来，尤其选完立刻开始播放、没有停下来看一眼的
+   空档，用户反馈"选中状态直接消失了"，其实不是消失，是太浅根本看不清。
+   换成三级更明显的层次：不在选中范围——无背景；在选中范围、但不是当前
+   正在读的词——浅蓝背景（--blue-light）持续存在，一眼就能看出选了哪几
+   个字；当前正在读的这一个词（同时命中 .tw-active）——实心蓝底+白字，
+   在浅蓝范围背景上再突出一层，清楚区分"选了哪段"和"读到哪个字"这两件
+   事，不会因为背景撞色而分不清。 */
+.tw.seg-range-selected { background: var(--blue-light); border-radius: 3px; }
+.tw.seg-range-selected.tw-active {
+  background: var(--blue); color: #fff;
+}
+.tw.seg-range-selected.tw-active ruby rt { color: #fff; }
 /* 选段模式下 .tw 是要点击的目标（平时只是纯展示用的 span），点击热区太小
    在手机上不好点中，开启选段模式时给所有 .tw 补一点内边距扩大热区——只在
    开启这个模式时才加，不影响其它模式下的正常排版行间距。 */
