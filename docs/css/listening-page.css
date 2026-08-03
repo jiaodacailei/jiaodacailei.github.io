@@ -258,12 +258,22 @@ body.quiz-tab-active .post-page-header { display: none; }
 .settings-toggle svg { width: 44px; height: 44px; display: block; }
 .settings-toggle:hover { transform: scale(1.06); }
 body.mini-player-open .settings-toggle { bottom: 70px; }
+/* 面板本来没设高度上限——这套听力页这些年陆续加了不少设置项（练习模式/
+   编辑模式/进度重置/单词测试出题范围/选段复读……），内容撑高之后，面板
+   是"贴着 bottom 往上长"，矮屏幕（比如手机横屏、小尺寸笔记本窗口）上
+   长过头会把上半部分顶到视口外面，而且没有滚动条，顶出去的部分完全够
+   不着。加 max-height（跟视口高度联动，减去 bottom 占的距离、再留一点
+   顶部安全边距）+ overflow-y:auto，撑不下的时候面板内部自己滚动，不会
+   整体超出屏幕；bottom 在悬浮迷你播放器出现时会变大（见下面 body.mini-
+   player-open 那条规则），max-height 要跟着一起收紧，不然那种状态下
+   反而会顶得更高。 */
 .settings-panel {
   display: none; position: fixed; right: 24px; bottom: 74px; z-index: 260;
   width: 216px; background: #fff; border: 1px solid var(--border); border-radius: 14px;
   box-shadow: var(--shadow-lg); padding: 16px; transition: bottom .15s;
+  max-height: calc(100vh - 94px); overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
-body.mini-player-open .settings-panel { bottom: 128px; }
+body.mini-player-open .settings-panel { bottom: 128px; max-height: calc(100vh - 148px); }
 .settings-panel.open { display: block; }
 .settings-group { margin-bottom: 14px; }
 .settings-group:last-child { margin-bottom: 0; }
