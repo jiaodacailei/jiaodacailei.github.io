@@ -109,12 +109,26 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
   // 当前正在播放的句子加高亮效果，只有卡片不在可视区域时才自动滚动——已经看
   // 得见就不打断，方便连播/跳转时跟着看，又不会因为动画滚动干扰点击。
+  //
+  // preload="none" 的 <audio> 第一次点到某句时还没加载任何数据，点击到真的
+  // 出声之间可能有一段读取延迟（网络慢/文件较大时更明显），之前这段等待期
+  // 卡片除了立刻加上 .playing 高亮之外没有任何提示，用户分不清是真的在等
+  // 还是点击没生效——加了个靠 waiting 事件驱动的 .loading 转圈 spinner，
+  // 但真实反馈"没看到spinner，但确实卡了一下"：waiting 这个原生事件对"点了
+  // 播放但压根还没加载过任何数据"这第一次尝试，不同浏览器/不同网络状况下
+  // 触发是否够及时并不可靠，不能只靠它来"添加" loading 状态。改成在这里
+  // （每次真正标记"这张卡片是当前播放目标"的唯一入口）直接同步加上
+  // .loading，不等任何异步事件——点击瞬间必定显示，不依赖浏览器自己判断
+  // "算不算在等"。清除仍然交给 playing/pause/error 这几个可靠的原生事件
+  // （见下面的监听器），播放真的开始出声、暂停、或者这条资源真的加载失败
+  // 都会正确摘掉转圈，不会一直转下去。
   function setPlayingCard(audio) {
     document.querySelectorAll(".seg-card.playing").forEach(function(c) { c.classList.remove("playing"); });
     if (audio) {
       var card = audio.closest(".seg-card");
       if (card) {
         card.classList.add("playing");
+        card.classList.add("loading");
         if (!isCardVisible(card)) {
           card.scrollIntoView({ behavior: "smooth", block: "center" });
         }
@@ -122,24 +136,16 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
   }
 
-  // preload="none" 的 <audio> 第一次点到某句时还没加载任何数据，点击到真的
-  // 出声之间可能有一段读取延迟（网络慢/文件较大时更明显），之前这段等待期
-  // 卡片除了立刻加上 .playing 高亮之外没有任何提示，用户分不清是真的在等
-  // 还是点击没生效。这里靠原生 <audio> 事件驱动一个 .loading 状态（CSS 里
-  // 换成一个转圈 spinner，见 .seg-card.loading::after）：
-  //   waiting  —— 浏览器自己判断"数据不够，播不动，得等一等"时触发，不管是
-  //               刚点开始播放还是播到一半网络卡了一下都会触发，比自己写
-  //               超时/猜测更准，直接反映浏览器的真实缓冲状态。
-  //   playing  —— 真的开始出声了（缓冲够了/网络恢复）触发，清掉 loading。
-  //   pause/error —— 用户自己暂停、或者这条资源真的加载失败，同样不该再
-  //               转圈，一并清掉。
-  // 每个 <audio> 元素只在页面初始化时绑定一次，不随着每次点击/每次播放
-  // 重新绑定，不会有监听器重复堆积的问题。
+  // 每个 <audio> 元素只在页面初始化时绑定一次，不随着每次点击/每次播放重新
+  // 绑定，不会有监听器重复堆积的问题。
   document.querySelectorAll(".seg-card audio").forEach(function(audio) {
     function clearLoading() {
       var card = audio.closest(".seg-card");
       if (card) card.classList.remove("loading");
     }
+    // 播到一半网络卡了一下（不是刚点开始播放那种）依然靠 waiting 重新加上
+    // 转圈——这个场景不是"点了没反应"，是已经开始播放之后才卡的，浏览器
+    // 这时候触发 waiting 比较可靠，不存在"第一次尝试触发不及时"这个问题。
     audio.addEventListener("waiting", function() {
       var card = audio.closest(".seg-card");
       if (card) card.classList.add("loading");
