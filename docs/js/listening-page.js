@@ -155,6 +155,101 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     audio.addEventListener("error", clearLoading);
   });
 
+  // ── 音频本地缓存：GitHub Pages 给音频文件的 Cache-Control 只有10分钟，
+  //    超过这个时间浏览器自己的 HTTP 缓存就失效了，同一句话隔一段时间再点
+  //    还是会重新发请求。这里用 Cache Storage API（不需要注册 Service
+  //    Worker——不拦截浏览器自己的网络层，只是手动管理一份客户端缓存，
+  //    命中时把 <audio> 的 src 换成本地 Blob URL）额外存一份不受10分钟
+  //    限制的缓存。只缓存真正播放过的句子（不是页面一打开就预抓全部音频，
+  //    保持 preload="none" 本来的省流量意图），并给已缓存的卡片打一个可点
+  //    的标记，点击可以清掉这一条缓存、强制重新拉取——本课音频这次 session
+  //    里已经被重新裁剪过好几轮，留一个"怀疑缓存是旧版本"时能自己动手
+  //    清掉的出口，比做自动失效判断更简单可靠。 ──
+  var AUDIO_CACHE_NAME = "n2listen-audio-v1";
+  var audioCacheSupported = "caches" in window;
+
+  function markCached(audio, cached) {
+    var card = audio.closest(".seg-card");
+    if (card) card.classList.toggle("audio-cached", cached);
+  }
+
+  // 每条 audio 只在第一次用到时把当时的真实网络地址记下来（.src 这个 IDL
+  // 属性即使还没开始加载也会返回解析后的绝对 URL，不用等 loadedmetadata）
+  // ——后面缓存命中会把 audio.src 换成 blob: URL，真实地址得靠这个 dataset
+  // 属性一直留着，不然缓存 key 都对不上、也没法在强制刷新时知道该重新
+  // fetch 哪个地址。
+  function audioRealUrl(audio) {
+    if (!audio.dataset.audioUrl) audio.dataset.audioUrl = audio.src;
+    return audio.dataset.audioUrl;
+  }
+
+  // 播放前调用：命中缓存就把 audio.src 同步换成本地 Blob URL（换过一次
+  // 之后打个标记 dataset.cacheReady，同一条不会重复转换、也不会造成 Blob
+  // URL 泄漏）；没命中就维持原网络地址不变（不阻塞这次播放），播放开始后
+  // 在后台单独 fetch 一份存进缓存，供下次使用。任何环节失败（不支持 Cache
+  // Storage、fetch 失败……）都静默按"这次走网络播放，跟没有缓存机制时
+  // 行为一致"处理，缓存只是锦上添花，不能变成播放本身的新故障点。
+  function prepareAudioSrc(audio) {
+    if (!audioCacheSupported) return Promise.resolve();
+    var url = audioRealUrl(audio);
+    if (audio.dataset.cacheReady === url) return Promise.resolve();
+    return caches.open(AUDIO_CACHE_NAME).then(function(cache) {
+      return cache.match(url).then(function(res) {
+        if (res) {
+          return res.blob().then(function(blob) {
+            audio.src = URL.createObjectURL(blob);
+            audio.dataset.cacheReady = url;
+            markCached(audio, true);
+          });
+        }
+        fetch(url).then(function(res2) {
+          if (res2.ok) {
+            cache.put(url, res2.clone());
+            markCached(audio, true);
+          }
+        }).catch(function() {});
+      });
+    }).catch(function() {});
+  }
+
+  // 页面初始化时给每条已有跟读时间戳的音频加一个左下角缓存标记——已经
+  // 缓存过的（比如上次访问缓存的）立刻显示出来，不用等这次重新播放一遍
+  // 才知道；标记本身可点，点了清掉这一条缓存并立刻重新拉取（如果当前
+  // src 已经是之前换过的 blob: URL，先 revoke 掉再换回真实网络地址，不然
+  // 接下来播放会用一份已经失效的旧内容）。
+  if (audioCacheSupported) {
+    document.querySelectorAll(".seg-card audio").forEach(function(audio) {
+      var card = audio.closest(".seg-card");
+      if (!card) return;
+      var url = audioRealUrl(audio);
+      caches.open(AUDIO_CACHE_NAME).then(function(cache) {
+        return cache.match(url).then(function(res) { if (res) markCached(audio, true); });
+      }).catch(function() {});
+      var badge = document.createElement("button");
+      badge.type = "button";
+      badge.className = "seg-cache-badge";
+      badge.title = "已缓存到本地，点击可清除并重新下载";
+      badge.textContent = "✓";
+      badge.addEventListener("click", function(e) {
+        e.stopPropagation();
+        caches.open(AUDIO_CACHE_NAME).then(function(cache) {
+          return cache.delete(url).then(function() {
+            markCached(audio, false);
+            if (audio.src.indexOf("blob:") === 0) {
+              URL.revokeObjectURL(audio.src);
+              audio.src = url;
+            }
+            delete audio.dataset.cacheReady;
+            return fetch(url).then(function(res) {
+              if (res.ok) { cache.put(url, res.clone()); markCached(audio, true); }
+            });
+          });
+        }).catch(function() {});
+      });
+      card.appendChild(badge);
+    });
+  }
+
   function updateMiniPlayer() {
     // 悬浮设置按钮平时贴底显示，播放中迷你播放器出现时才需要让位上移，
     // 靠这个 body class（不是 miniPlayer 自己的 .active，那个只在悬浮播放器
@@ -210,12 +305,20 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (player.loop) { player.idx = 0; } else { finishPlayer(); return; }
     }
     var a = player.audios[player.idx];
-    a.currentTime = 0;
     a.onended = function() { player.idx++; playNext(); };
-    safePlay(a);
+    // setPlayingCard() 同步执行（立刻显示 loading 转圈），prepareAudioSrc()
+    // 命中本地缓存时可能有一点 Blob 转换的耗时——把这段耗时放在"卡片已经
+    // 显示等待状态"之后，不会让转圈的出现本身也依赖这次异步查询。
     setPlayingCard(a);
     updateMiniPlayer();
-    startWordHighlight();
+    prepareAudioSrc(a).then(function() {
+      // 等缓存查询这段时间里播放器可能已经被停止/切换到别的目标（用户
+      // 点了别的句子、点了停止……），这种情况不能再接着播这条过时的音频。
+      if (!player.active || player.audios[player.idx] !== a) return;
+      a.currentTime = 0;
+      safePlay(a);
+      startWordHighlight();
+    });
   }
 
   // 点句卡片/h3/h2 或迷你播放器导航按钮都走这一个入口。
@@ -334,10 +437,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         finishPlayer();
       }
     };
-    seekAndPlay(audio, startT);
     setPlayingCard(audio);
     updateMiniPlayer();
-    startWordHighlight();
+    prepareAudioSrc(audio).then(function() {
+      if (!player.active || player.audios[0] !== audio) return;
+      seekAndPlay(audio, startT);
+      startWordHighlight();
+    });
   }
 
   mpPlayPause.addEventListener("click", function() {
@@ -351,11 +457,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 都不是选段模式想要的行为。
       if (player.rangeStart !== null) {
         var a = player.audios[player.idx];
-        a.currentTime = player.rangeStart;
-        safePlay(a);
         setPlayingCard(a);
         updateMiniPlayer();
-        startWordHighlight();
+        // 这条音频这次 session 里已经播过一次，prepareAudioSrc() 内部靠
+        // dataset.cacheReady 判断大概率会立刻 resolve，这里等它一下只是
+        // 为了保持跟其它入口一致的写法，不会有实质等待。
+        prepareAudioSrc(a).then(function() {
+          if (!player.active || player.audios[player.idx] !== a) return;
+          a.currentTime = player.rangeStart;
+          safePlay(a);
+          startWordHighlight();
+        });
         return;
       }
       player.idx = 0;

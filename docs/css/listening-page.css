@@ -146,6 +146,22 @@ body {
   opacity: 1; animation: seg-loading-spin .7s linear infinite;
 }
 @keyframes seg-loading-spin { to { transform: rotate(360deg); } }
+/* 音频本地缓存标记（见 listening-page.js 的 Cache Storage 逻辑）——GitHub
+   Pages 给音频文件的 Cache-Control 只有10分钟，超过这个时间浏览器自己的
+   HTTP 缓存就失效了，同一句话隔一段时间再点还是会重新发请求。这里额外用
+   Cache Storage API 存一份不受那10分钟限制的本地缓存，播放成功过的句子
+   打上标记，用户能一眼看出"这句已经缓存了、下次点会秒开"，不确定缓存是不
+   是最新版本（比如这句音频后来被重新裁剪过）时可以直接点这个标记强制
+   清掉重新拉取。放左下角（跟右下角的编辑/选段复读图标、右上角的播放/
+   加载提示都不冲突的空位）。 */
+.seg-cache-badge {
+  display: none; position: absolute; left: 8px; bottom: 8px; z-index: 2;
+  width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--border);
+  background: #fff; color: var(--text-muted); font-size: 11px; cursor: pointer;
+  align-items: center; justify-content: center; box-shadow: var(--shadow-xs);
+}
+.seg-card.audio-cached .seg-cache-badge { display: flex; }
+.seg-cache-badge:hover { color: var(--blue); border-color: var(--blue-light); background: var(--blue-xlight); }
 /* 会话类课文的说话人名字——独立于 .seg-ja 之外的一栏，不混进日语原文本身，
    绝对定位放在卡片左侧内边距腾出来的空档里，不改动 .seg-ja/.seg-zh/
    .seg-notes/audio 这几个原有子元素的排列方式（依然是普通的从上到下堆叠），
