@@ -132,6 +132,20 @@ body {
 .seg-card.playing {
   border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue-light); background: var(--blue-xlight);
 }
+/* 音频 <audio preload="none"> 第一次点到某句时还没加载任何数据，点击到真的
+   出声之间可能有一段读取延迟（尤其网络慢/文件较大时）——之前这段等待期间
+   卡片除了立刻加上 .playing 高亮之外没有任何区别于"已经在正常播放"的提示，
+   用户反馈"点了半天没反应，是不是网络问题"分不清是真的在等，还是点击没
+   生效。这里复用 .seg-card::after 原来的 ▶ 提示图标位置，等待期间换成一个
+   转圈的 spinner，跟 waiting/playing 这两个原生 <audio> 事件联动（见
+   listening-page.js），播放真的开始出声了才消失，能直接反映浏览器自己
+   对缓冲状态的判断，不用自己猜测/写超时逻辑。 */
+.seg-card.loading::after {
+  content: ""; width: 11px; height: 11px; margin-top: -1px;
+  border: 2px solid var(--blue-light); border-top-color: var(--blue); border-radius: 50%;
+  opacity: 1; animation: seg-loading-spin .7s linear infinite;
+}
+@keyframes seg-loading-spin { to { transform: rotate(360deg); } }
 /* 会话类课文的说话人名字——独立于 .seg-ja 之外的一栏，不混进日语原文本身，
    绝对定位放在卡片左侧内边距腾出来的空档里，不改动 .seg-ja/.seg-zh/
    .seg-notes/audio 这几个原有子元素的排列方式（依然是普通的从上到下堆叠），

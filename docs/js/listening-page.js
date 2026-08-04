@@ -122,6 +122,33 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
   }
 
+  // preload="none" 的 <audio> 第一次点到某句时还没加载任何数据，点击到真的
+  // 出声之间可能有一段读取延迟（网络慢/文件较大时更明显），之前这段等待期
+  // 卡片除了立刻加上 .playing 高亮之外没有任何提示，用户分不清是真的在等
+  // 还是点击没生效。这里靠原生 <audio> 事件驱动一个 .loading 状态（CSS 里
+  // 换成一个转圈 spinner，见 .seg-card.loading::after）：
+  //   waiting  —— 浏览器自己判断"数据不够，播不动，得等一等"时触发，不管是
+  //               刚点开始播放还是播到一半网络卡了一下都会触发，比自己写
+  //               超时/猜测更准，直接反映浏览器的真实缓冲状态。
+  //   playing  —— 真的开始出声了（缓冲够了/网络恢复）触发，清掉 loading。
+  //   pause/error —— 用户自己暂停、或者这条资源真的加载失败，同样不该再
+  //               转圈，一并清掉。
+  // 每个 <audio> 元素只在页面初始化时绑定一次，不随着每次点击/每次播放
+  // 重新绑定，不会有监听器重复堆积的问题。
+  document.querySelectorAll(".seg-card audio").forEach(function(audio) {
+    function clearLoading() {
+      var card = audio.closest(".seg-card");
+      if (card) card.classList.remove("loading");
+    }
+    audio.addEventListener("waiting", function() {
+      var card = audio.closest(".seg-card");
+      if (card) card.classList.add("loading");
+    });
+    audio.addEventListener("playing", clearLoading);
+    audio.addEventListener("pause", clearLoading);
+    audio.addEventListener("error", clearLoading);
+  });
+
   function updateMiniPlayer() {
     // 悬浮设置按钮平时贴底显示，播放中迷你播放器出现时才需要让位上移，
     // 靠这个 body class（不是 miniPlayer 自己的 .active，那个只在悬浮播放器
@@ -224,12 +251,27 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
 
   // audio.play() 返回的 Promise 被拒绝时（自动播放策略拦截、播放请求被
-  // 打断……）不接住的话用户看到的就是"点了播放，没声音，也不提示报错"
-  // ——不需要精细的错误 UI，至少往控制台打一条，方便排查。
+  // 打断……）不能只是控制台打一条警告就完事——真实案例：选段复读循环到
+  // 句尾时靠 onended 兜底重新 play()（见 playRange() 里的注释），这次
+  // resume 不是紧跟着一次真实用户点击触发的，比"用户直接点了播放按钮"
+  // 更容易被浏览器的自动播放策略拦下来，而且循环次数越多、离最初那次
+  // 点击越远，被拦的概率看起来越高（真实反馈"读了几遍之后就莫名其妙
+  // 不读了"）。如果只打日志不更新 player 状态，迷你播放器会一直显示
+  // "播放中"，音频其实已经卡死不再出声，用户看不出发生了什么、也没有
+  // 任何可以点的按钮能恢复。这里失败时统一按 finishPlayer()（复用"自然
+  // 播完"那条路径）处理，播放器至少会正确切换成"播完"状态，用户能看到
+  // 迷你播放器上的播放按钮、点一下重新播放（这次是真实点击触发，大概率
+  // 不会再被拦）。只在这条音频还是 player 当前正在追踪的那条时才处理，
+  // 避免已经切到别的播放目标之后，旧音频这次迟到的失败反过来污染新状态。
   function safePlay(audio) {
     var p = audio.play();
     if (p && p.catch) {
-      p.catch(function(err) { console.warn("[播放] audio.play() 被拒绝：", err); });
+      p.catch(function(err) {
+        console.warn("[播放] audio.play() 被拒绝：", err);
+        if (player.audios.indexOf(audio) !== -1) {
+          finishPlayer();
+        }
+      });
     }
   }
 
