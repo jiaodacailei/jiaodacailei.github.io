@@ -2597,7 +2597,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "低",
-                  "kana": "ひ",
+                  "kana": "ひく",
                   "t": 7.68
                 },
                 {
@@ -2668,7 +2668,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "低",
-                  "kana": "ひ",
+                  "kana": "ひく",
                   "t": 2.38
                 },
                 {

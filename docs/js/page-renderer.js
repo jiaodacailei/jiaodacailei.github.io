@@ -46,6 +46,14 @@
     return (code >= 0x30a1 && code <= 0x30f6) ? String.fromCharCode(code - 0x60) : ch;
   }
 
+  // 跟 tools/listening/build_page.py 的 _KANJI_MIN_MORA 是同一张表——某些
+  // 常见汉字单字训读本身有2拍以上，如果这个字读音的最后一拍恰好跟紧跟着的
+  // 送假名首字符相同（比如"低く"，低→ひく最后一拍是く，紧跟送假名也是く），
+  // 默认"至少1拍"的下限不够，会在还没跳过这个字真实读音之前就撞见这个假
+  // 字符，误判读音提前结束（真实案例："低"被错误注音成"ひ"，正确应为
+  // "ひく"）。只登记真的观察到撞车的字，不用未卜先知地收录每个2拍字。
+  var KANJI_MIN_MORA = { "低": 2 };
+
   function splitKanaSegments(orig, hira) {
     if (orig === hira) return [{ text: orig }];
     var groups = [];
@@ -79,7 +87,11 @@
       if (isK) { pendingKanji = gtext; return; }
       if (pendingKanji !== null) {
         var anchorChar = kataToHiraChar(gtext[0]);
-        var minStart = hiraPos + Math.max(1, pendingKanji.length);
+        var minMora = 0;
+        for (var ci = 0; ci < pendingKanji.length; ci++) {
+          minMora += KANJI_MIN_MORA[pendingKanji[ci]] || 1;
+        }
+        var minStart = hiraPos + Math.max(1, minMora);
         var idx = hira.indexOf(anchorChar, minStart);
         if (idx === -1) idx = hira.indexOf(anchorChar, hiraPos);
         if (idx === -1) {
