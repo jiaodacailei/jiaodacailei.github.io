@@ -159,6 +159,13 @@
     savePending();
     if (currentIcon) currentIcon.classList.add("has-pending");
     window.PageRenderer.rerenderCardContent(currentCard, s);
+    // rerenderCardContent() 只更新卡片显示的 HTML/data-blanks 属性，不会
+    // 重新搭填空练习模式的输入框——那套 UI 是 listening-page.js 在页面
+    // 刚加载时按当时的 data-blanks 建好的，不会自动感知后续的修改（真实
+    // 反馈"改完JS数据后，马上不能生效，需要reload页面才生效"）。这里改完
+    // 之后单独喊它对这一张卡片重新搭一遍。没有 window.BlankMode（比如
+    // 这句没有 blanks，或者页面版本较旧还没这个 hook）就跳过，不报错。
+    if (window.BlankMode) window.BlankMode.refreshCard(currentCard);
     closeEditor();
   });
 

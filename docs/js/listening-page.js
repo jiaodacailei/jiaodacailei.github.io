@@ -317,6 +317,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (!player.active || player.audios[player.idx] !== a) return;
       a.currentTime = 0;
       safePlay(a);
+      // updateMiniPlayer() 在 prepareAudioSrc() 之前已经调用过一次（让加载
+      // 状态尽快反映到迷你播放器上），但那时候 a.play() 还没真的调用，
+      // audio.paused 仍然是 true，播放/暂停按钮会错误地显示成"播放"图标
+      // （明明已经在播）。play() 调用本身是同步把 paused 置为 false 的
+      // （不用等返回的 Promise resolve），这里再调一次才能让按钮图标跟
+      // 上真实状态。
+      updateMiniPlayer();
       startWordHighlight();
     });
   }
@@ -394,6 +401,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     function doIt() {
       audio.currentTime = t;
       safePlay(audio);
+      // play() 本身同步把 audio.paused 置为 false（不用等返回的 Promise
+      // resolve），这里在真正调用 play() 之后立刻刷新一次迷你播放器，
+      // 播放/暂停按钮图标才能跟上真实状态——调用方不知道这个函数内部是
+      // 立刻执行还是要等 loadedmetadata 才执行，不能指望调用方自己在
+      // 外面调一次就够。
+      updateMiniPlayer();
     }
     if (audio.readyState >= 1) {
       doIt();
@@ -466,6 +479,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           if (!player.active || player.audios[player.idx] !== a) return;
           a.currentTime = player.rangeStart;
           safePlay(a);
+          updateMiniPlayer();
           startWordHighlight();
         });
         return;
@@ -1051,7 +1065,22 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     localStorage.setItem(BLANK_DONE_KEY, JSON.stringify(blankDone));
   }
 
-  document.querySelectorAll(".seg-card").forEach(function(card) {
+  // 拆成具名函数（不是直接内联在 forEach 回调里）是为了编辑模式能在改完
+  // 一句的 blanks 之后单独对这一张卡片重新调用一遍——之前这段代码只在
+  // 页面刚加载时对当时存在的 .seg-card 跑一次 forEach，编辑模式改了
+  // data-blanks 之后不会自动重新执行，填空练习模式的输入框/正确答案还是
+  // 编辑前的旧内容，必须刷新整个页面才能生效（真实反馈"改完JS数据后，
+  // 马上不能生效，需要reload页面才生效"）。见文件末尾 window.BlankMode
+  // 的说明。
+  function setupBlankForCard(card) {
+    // 这张卡片可能是"重新设置"（编辑模式改完内容后再调一次），先把上一轮
+    // 建的 .seg-ja-blank 克隆和相关状态清掉，不然会在原有输入框旁边又长出
+    // 一套新的、新旧两份重叠显示。
+    var oldClone = card.querySelector(".seg-ja-blank");
+    if (oldClone) oldClone.remove();
+    card.classList.remove("has-blank", "blank-revealed");
+    delete card._blank;
+
     var segJa = card.querySelector(".seg-ja");
     var notes = card.querySelector(".seg-notes");
     if (!segJa || !card.dataset.blanks) return;
@@ -1118,6 +1147,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return t.node.nodeType === 3 || (t.node.nodeType === 1 && !t.node.querySelector("ruby"));
     }
     var consumedNodes = [];
+    // 一句可能不止一个空，用户反馈"输入回车应该把这句所有空都比对一次，
+    // 而不是只比对当前空"——收集这句里每个空自己的 input/answer/resolve，
+    // 键盘事件触发时才能把它们一起处理，不是只处理触发事件的那一个。
+    var blankEntries = [];
     ranges.forEach(function(range, blankIdx) {
       var overlapping = cloneTokens.filter(function(t) {
         return t.start < range.end && t.end > range.start && consumedNodes.indexOf(t.node) === -1;
@@ -1200,10 +1233,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         blankDone[blankId] = ok;
         saveBlankDone();
       }
+      blankEntries.push({ input: input, answer: answer, resolve: resolve });
+      // 这句里任意一个空按回车，都把这句所有还没提交过的空一起比对一遍
+      // （不是只比对触发事件的这一个）——填空练习通常一句挖好几个空，
+      // 用户习惯打完最后一个空直接回车提交整句，不想逐个空分别回车。
       input.addEventListener("keydown", function(e) {
-        if (e.key !== "Enter" || input.disabled) return;
+        if (e.key !== "Enter") return;
         e.preventDefault();
-        resolve(input.value.trim() === answer);
+        blankEntries.forEach(function(entry) {
+          if (!entry.input.disabled) {
+            entry.resolve(entry.input.value.trim() === entry.answer);
+          }
+        });
       });
       input.parentNode.insertBefore(redoBtn, input.nextSibling);
       blankResets.push(function() {
@@ -1230,7 +1271,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         card.classList.remove("blank-revealed");
       }
     };
-  });
+  }
+  document.querySelectorAll(".seg-card").forEach(setupBlankForCard);
+
+  // 编辑模式（docs/js/edit-mode.js）改完一句的 blanks 之后，调这个方法
+  // 单独刷新那一张卡片的填空练习 UI，不用整页刷新——跟 window.PageRenderer
+  // 是同一个设计思路（page-renderer.js 也是这样暴露 rerenderCardContent
+  // 给编辑模式用的）。
+  window.BlankMode = { refreshCard: setupBlankForCard };
 
   // ---- 设置面板：清除默写/填空进度——默写/填空各自独立一个按钮，只清
   //      对应模式自己的 localStorage 记录 + 把所有卡片打回初始未作答状态，
@@ -1554,6 +1602,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       quizPrompt.innerHTML = '<div class="quiz-hint-text">听发音，写出假名</div>';
       quizPlayBtn.style.display = "";
       quizAudio.src = audioSrcFor(q.word);
+      // 题目一出现就自动放一遍，不用用户先手动点▶——这道题本来就是"听音频
+      // 写假名"，音频是题目本身的一部分，不放的话用户还得先点一下才能
+      // 开始做题。▶ 按钮仍然保留，用来重听。play() 是由"点确认/下一题"这
+      // 类真实点击事件触发的 showQuestion() 调用出来的，带着真实用户手势，
+      // 不会被自动播放策略拦截；万一个别浏览器仍然拒绝，静默忽略就行——
+      // ▶ 按钮本来就在，用户自己点一下也一样能听。
+      quizAudio.currentTime = 0;
+      quizAudio.play().catch(function() {});
     } else if (q.type === "zh2kana") {
       quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + q.word.zh + '</div>';
     } else {
