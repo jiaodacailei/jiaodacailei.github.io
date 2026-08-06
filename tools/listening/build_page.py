@@ -703,6 +703,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>{title}</title>
+<link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/css/listening-page.css">
 </head>
 <body>
@@ -814,6 +815,7 @@ SHELL_TEMPLATE = '''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>{title}</title>
+<link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/css/listening-page.css">
 </head>
 <body>
