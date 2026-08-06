@@ -570,7 +570,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "君",
-                  "kana": "くん",
+                  "kana": "きみ",
                   "t": 4.5
                 },
                 {
@@ -680,7 +680,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "李",
-                  "kana": "すもも",
+                  "kana": "り",
                   "t": 1.76
                 },
                 {
@@ -882,7 +882,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "李",
-                  "kana": "すもも",
+                  "kana": "り",
                   "t": 2.92
                 },
                 {
@@ -1150,7 +1150,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "君",
-                  "kana": "くん",
+                  "kana": "きみ",
                   "t": 4.08
                 },
                 {
@@ -2223,7 +2223,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "歳",
-                  "kana": "とし",
+                  "kana": "さい",
                   "t": 6.52
                 },
                 {
@@ -2275,7 +2275,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "歳",
-                  "kana": "とし",
+                  "kana": "さい",
                   "t": 11.36
                 },
                 {
@@ -2311,7 +2311,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "歳",
-                  "kana": "とし",
+                  "kana": "さい",
                   "t": 15.08
                 },
                 {
