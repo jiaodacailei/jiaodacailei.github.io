@@ -5094,7 +5094,7 @@ window.LESSON_DATA = {
                   "kana": "もんめ"
                 }
               ],
-              "zh": "〜問目 第〜题，第〜个问题",
+              "zh": "第〜题，第〜个问题",
               "notes": "",
               "blanks": [],
               "audio": "audio/seg-127.mp3"
@@ -5387,7 +5387,7 @@ window.LESSON_DATA = {
                   "kana": "いない"
                 }
               ],
-              "zh": "〜以内 〜以内",
+              "zh": "〜以内",
               "notes": "",
               "blanks": [],
               "audio": "audio/seg-144.mp3"
