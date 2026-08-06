@@ -194,8 +194,18 @@
     });
 
     exportBtn.addEventListener("click", function () {
+      // "t"（跟读高亮时间戳）在 build_page.py 原始生成的 data.js 里是 Python
+      // float，哪怕值本身是整数，json.dump 也会写成 "0.0" 不是 "0"。JS 的
+      // JSON.stringify 不区分 int/float，同样的整数值会被写成 "0"——直接导出
+      // 会让这些位置在 git diff 里显得"改过"，其实数值完全没变，只是格式跟
+      // 原始文件不一致。这里把整数形式的 "t" 值补回 ".0" 后缀，让导出格式
+      // 跟 build_page.py 的输出保持一致，避免纯格式噪音混进真实内容的 diff。
+      var json = JSON.stringify(DATA, null, 2).replace(
+        /"t": (-?\d+)([,\n])/g,
+        '"t": $1.0$2'
+      );
       var blob = new Blob(
-        ["window.LESSON_DATA = " + JSON.stringify(DATA, null, 2) + ";\n"],
+        ["window.LESSON_DATA = " + json + ";\n"],
         { type: "application/javascript" }
       );
       var a = document.createElement("a");
