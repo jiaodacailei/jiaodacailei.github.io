@@ -1088,8 +1088,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     try { blankTexts = JSON.parse(card.dataset.blanks); } catch (e) { blankTexts = null; }
     if (!blankTexts || !blankTexts.length) return;
 
-    // 在原文的克隆上动手（不碰真正的 .seg-ja，跟读高亮/切模式回退都还是原样）
-    var clone = segJa.cloneNode(true);
+    // 在原文的克隆上动手（不碰真正的 .seg-ja，跟读高亮/切模式回退都还是原样）。
+    // 生词卡片本身只有孤立的一个词，没有上下文——data-quiz-sentence 存在时
+    // （build_page.py 从单词测试的例句反推出来的，见 sentence_to_data()），
+    // 挖空的底稿改用这句例句的纯文本，不用卡片自己的 .seg-ja（那样等于把
+    // 整个词都挖空，没有意义）。例句是纯文本、没有逐词假名注音结构，直接
+    // 塞成一个文本节点即可，baseTokens() 本来就支持纯文本节点。
+    var quizSentence = card.dataset.quizSentence;
+    var clone = quizSentence ? document.createElement("div") : segJa.cloneNode(true);
+    if (quizSentence) clone.textContent = quizSentence;
     clone.className = "seg-ja-blank";
     var cloneTokens = baseTokens(clone);
     var plain = cloneTokens.map(function(t) { return t.text; }).join("");

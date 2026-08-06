@@ -182,9 +182,16 @@
     if (s.blanks && s.blanks.length) {
       blanksAttr = ' data-blanks="' + esc(JSON.stringify(s.blanks)) + '"';
     }
+    // 生词卡片自己只有孤立的一个词，没有上下文句子——"填空"模式下借用
+    // 单词测试里现成的例句+挖空位置（build_page.py 的 sentence_to_data()
+    // 从 quiz_data 反推出来的），quizSentence 存在时优先用这句而不是卡片
+    // 自己的 .seg-ja 当挖空底稿，见 listening-page.js 的 setupBlankForCard()。
+    var quizSentenceAttr = s.quizSentence
+      ? ' data-quiz-sentence="' + esc(s.quizSentence) + '"'
+      : "";
 
     return (
-      '<div class="' + cardClass + '" id="card-a' + s.id + '"' + blanksAttr + ">" +
+      '<div class="' + cardClass + '" id="card-a' + s.id + '"' + blanksAttr + quizSentenceAttr + ">" +
         speakerHtml +
         '<p class="seg-ja">' + jaHtml + "</p>" +
         '<p class="seg-zh">' + zh + "</p>" + notesHtml +

@@ -967,7 +967,7 @@ def _group_by_mondai_question(sentences, questions):
     return by_mondai
 
 
-def sentence_to_data(s, audio_rel):
+def sentence_to_data(s, audio_rel, quiz_by_id=None):
     """把一句 sentence 转成 data-driven 页面用的结构化数据（page-renderer.js
     渲染 .seg-card 用）——跟 sentence_card_html() 是同一份信息，只是不拼成
     HTML 字符串，改成前端能直接用的 dict。char_times 的绝对时间戳→音频文件
@@ -999,16 +999,33 @@ def sentence_to_data(s, audio_rel):
             tokens = [{"text": text}]
     else:
         tokens = tokenize_ja(s["text"])
-    return {
+    blanks = s.get("blanks") or []
+    quiz_sentence = None
+    # 生词卡片本身只有孤立的一个词，没有上下文——切到"填空"练习模式时，
+    # 与其把整个词自己挖空（等于直接把卡片内容全部藏起来，没有意义），不如
+    # 借用单词测试里已经准备好的例句+挖空位置（quiz_data 里同一个 id 的
+    # `sentence`/`blank` 字段，跟单词测试自己的"填空题"题型用的是同一份
+    # 数据）。真实需求：用户反馈"生词的填空模式，能不能采用对应单词测试中
+    # 的填空题"——生词条目本来就没有自己的 `blanks`（一直是空数组），这里
+    # 用 quiz 例句反推出来，不会跟内容作者手写的 `blanks` 冲突。
+    if quiz_by_id and not blanks:
+        quiz_entry = quiz_by_id.get(s["id"])
+        if quiz_entry and quiz_entry.get("sentence") and quiz_entry.get("blank"):
+            blanks = [quiz_entry["blank"]]
+            quiz_sentence = quiz_entry["sentence"]
+    result = {
         "id": s["id"],
         "speaker": s.get("speaker"),
         "speakerKana": s.get("speaker_kana"),
         "tokens": tokens,
         "zh": s["zh"],
         "notes": s.get("notes") or "",
-        "blanks": s.get("blanks") or [],
+        "blanks": blanks,
         "audio": f"{audio_rel}seg-{s['id']:03d}.mp3",
     }
+    if quiz_sentence:
+        result["quizSentence"] = quiz_sentence
+    return result
 
 
 def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, audio_rel, quiz_data=None):
@@ -1016,6 +1033,7 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
     数据在浏览器里渲染出页面骨架（tab栏/侧栏目录/mondai-section/question-block/
     seg-card），结构上跟 build_sections_html() 生成的 HTML 是一一对应的。"""
     by_mondai = _group_by_mondai_question(sentences, questions)
+    quiz_by_id = {q["id"]: q for q in quiz_data} if quiz_data else None
     tabs = [
         {
             "mondai": mrec["mondai"],
@@ -1024,7 +1042,7 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
                     "question": qrec["question"],
                     "overview": qrec["overview"],
                     "answer": qrec["answer"],
-                    "sentences": [sentence_to_data(s, audio_rel) for s in qrec["sentences"]],
+                    "sentences": [sentence_to_data(s, audio_rel, quiz_by_id) for s in qrec["sentences"]],
                 }
                 for qrec in mrec["questions"]
             ],

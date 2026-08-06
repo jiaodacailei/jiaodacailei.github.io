@@ -73,7 +73,13 @@ def check_data_driven(data_js_path):
                 if not blanks:
                     continue
                 total_with_blanks += 1
-                plain = "".join(t["text"] for t in s.get("tokens", []))
+                # 生词卡片的 blanks 可能是从单词测试例句反推出来的（build_page.py
+                # 的 sentence_to_data() 设的 quizSentence 字段）——这种情况下
+                # blanks 挖的是例句里的活用形，不是卡片自己 tokens 拼出来的
+                # 词典基本形，要对着 quizSentence 校验，不能对着卡片自己的
+                # 原文校验（那样会把"改まって"跟"改まる"这种正常的活用形
+                # 差异误报成"blanks 打错字"）。
+                plain = s.get("quizSentence") or "".join(t["text"] for t in s.get("tokens", []))
                 for text in blanks:
                     total_blanks += 1
                     if text not in plain:

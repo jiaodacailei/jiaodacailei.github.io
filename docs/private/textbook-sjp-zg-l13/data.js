@@ -3188,8 +3188,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 诚恳，特意",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-032.mp3"
+              "blanks": [
+                "折り入って"
+              ],
+              "audio": "audio/seg-032.mp3",
+              "quizSentence": "実は，折り入ってお願いしたいことがあるんですが……。"
             },
             {
               "id": 33,
@@ -3206,8 +3209,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 郑重其事，庄重",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-033.mp3"
+              "blanks": [
+                "改まって"
+              ],
+              "audio": "audio/seg-033.mp3",
+              "quizSentence": "どうしたの？改まって。"
             },
             {
               "id": 34,
@@ -3221,8 +3227,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 自信，信心",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-034.mp3"
+              "blanks": [
+                "自信"
+              ],
+              "audio": "audio/seg-034.mp3",
+              "quizSentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。"
             },
             {
               "id": 35,
@@ -3236,8 +3245,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[代] 你",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-035.mp3"
+              "blanks": [
+                "君"
+              ],
+              "audio": "audio/seg-035.mp3",
+              "quizSentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。"
             },
             {
               "id": 36,
@@ -3254,8 +3266,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 请求；信赖",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-036.mp3"
+              "blanks": [
+                "頼み"
+              ],
+              "audio": "audio/seg-036.mp3",
+              "quizSentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。"
             },
             {
               "id": 37,
@@ -3279,8 +3294,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 答应，接受；承担",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-037.mp3"
+              "blanks": [
+                "引き受ける"
+              ],
+              "audio": "audio/seg-037.mp3",
+              "quizSentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。"
             },
             {
               "id": 38,
@@ -3293,8 +3311,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 也许，或许，可能",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-038.mp3"
+              "blanks": [
+                "もしかして"
+              ],
+              "audio": "audio/seg-038.mp3",
+              "quizSentence": "もしかして，上海の李さんも来るの？"
             },
             {
               "id": 39,
@@ -3307,8 +3328,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 无论如何也",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-039.mp3"
+              "blanks": [
+                "どうしても"
+              ],
+              "audio": "audio/seg-039.mp3",
+              "quizSentence": "いいえ。今回のプロジェクトが忙しくて，どうしても中国を離れられないそうです。"
             },
             {
               "id": 40,
@@ -3325,8 +3349,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 遇见，碰上",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-040.mp3"
+              "blanks": [
+                "出会った"
+              ],
+              "audio": "audio/seg-040.mp3",
+              "quizSentence": "それはよかった。何と言っても，上海は，君と町子さんが出会った思い出の場所だからね。"
             }
           ]
         },
@@ -3347,8 +3374,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 装束；样子；姿态",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-041.mp3"
+              "blanks": [
+                "格好"
+              ],
+              "audio": "audio/seg-041.mp3",
+              "quizSentence": "この格好で出かけるのは、ちょっと恥ずかしい。"
             },
             {
               "id": 42,
@@ -3362,8 +3392,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 装置，设备",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-042.mp3"
+              "blanks": [
+                "装置"
+              ],
+              "audio": "audio/seg-042.mp3",
+              "quizSentence": "この工場には最新の装置が導入されている。"
             },
             {
               "id": 43,
@@ -3377,8 +3410,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 晚饭，晚餐",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-043.mp3"
+              "blanks": [
+                "夕飯"
+              ],
+              "audio": "audio/seg-043.mp3",
+              "quizSentence": "今日の夕飯は何にしましょうか。"
             },
             {
               "id": 44,
@@ -3391,8 +3427,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 汉堡牛肉饼",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-044.mp3"
+              "blanks": [
+                "ハンバーグ"
+              ],
+              "audio": "audio/seg-044.mp3",
+              "quizSentence": "子供たちはハンバーグが大好きだ。"
             },
             {
               "id": 45,
@@ -3405,8 +3444,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 也许，或许，可能",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-045.mp3"
+              "blanks": [
+                "もしかすると"
+              ],
+              "audio": "audio/seg-045.mp3",
+              "quizSentence": "もしかすると、彼は今日来ないかもしれない。"
             },
             {
               "id": 46,
@@ -3423,8 +3465,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 醉，喝醉",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-046.mp3"
+              "blanks": [
+                "酔う"
+              ],
+              "audio": "audio/seg-046.mp3",
+              "quizSentence": "彼はお酒に酔うとよく歌を歌う。"
             },
             {
               "id": 47,
@@ -3438,8 +3483,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 鱼贝类，鳞介类",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-047.mp3"
+              "blanks": [
+                "魚介類"
+              ],
+              "audio": "audio/seg-047.mp3",
+              "quizSentence": "この店は新鮮な魚介類を使った料理が評判だ。"
             },
             {
               "id": 48,
@@ -3456,8 +3504,11 @@ window.LESSON_DATA = {
               ],
               "zh": "不好意思",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-048.mp3"
+              "blanks": [
+                "悪いけど"
+              ],
+              "audio": "audio/seg-048.mp3",
+              "quizSentence": "悪いけど、先に帰らせてもらうよ。"
             }
           ]
         },
@@ -3478,8 +3529,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 商品开发",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-049.mp3"
+              "blanks": [
+                "商品開発"
+              ],
+              "audio": "audio/seg-049.mp3",
+              "quizSentence": "彼は入社してから、ずっと商品開発を担当している。"
             },
             {
               "id": 50,
@@ -3493,8 +3547,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 东西食品公司",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-050.mp3"
+              "blanks": [
+                "東西食品"
+              ],
+              "audio": "audio/seg-050.mp3",
+              "quizSentence": "東西食品は来月新しい飲料を発売する予定だ。"
             },
             {
               "id": 51,
@@ -3511,8 +3568,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 带口信",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-051.mp3"
+              "blanks": [
+                "伝言する"
+              ],
+              "audio": "audio/seg-051.mp3",
+              "quizSentence": "課長は外出中ですが、何か伝言することがありますか。"
             },
             {
               "id": 52,
@@ -3526,8 +3586,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 出版社",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-052.mp3"
+              "blanks": [
+                "出版社"
+              ],
+              "audio": "audio/seg-052.mp3",
+              "quizSentence": "彼女は大手出版社に就職した。"
             },
             {
               "id": 53,
@@ -3544,8 +3607,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 出版",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-053.mp3"
+              "blanks": [
+                "出版される"
+              ],
+              "audio": "audio/seg-053.mp3",
+              "quizSentence": "来年、彼の新しい小説が出版される予定だ。"
             },
             {
               "id": 54,
@@ -3562,8 +3628,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 善后，整理，收拾",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-054.mp3"
+              "blanks": [
+                "後方づけ"
+              ],
+              "audio": "audio/seg-054.mp3",
+              "quizSentence": "パーティーが終わったら，みんなで後方づけをしましょう。"
             },
             {
               "id": 55,
@@ -3580,8 +3649,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 电视台",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-055.mp3"
+              "blanks": [
+                "テレビ局"
+              ],
+              "audio": "audio/seg-055.mp3",
+              "quizSentence": "彼女は将来テレビ局で働きたいと思っている。"
             },
             {
               "id": 56,
@@ -3605,8 +3677,11 @@ window.LESSON_DATA = {
               ],
               "zh": "商量，征求意见",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-056.mp3"
+              "blanks": [
+                "相談に乗る"
+              ],
+              "audio": "audio/seg-056.mp3",
+              "quizSentence": "困ったことがあったら、いつでも相談に乗るよ。"
             }
           ]
         },
@@ -3627,8 +3702,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 统计",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-057.mp3"
+              "blanks": [
+                "統計"
+              ],
+              "audio": "audio/seg-057.mp3",
+              "quizSentence": "2005年の統計によると，世界の人口は約65億人で，前の年より約7,550万人も増えている。"
             },
             {
               "id": 58,
@@ -3645,8 +3723,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 减少",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-058.mp3"
+              "blanks": [
+                "減少している"
+              ],
+              "audio": "audio/seg-058.mp3",
+              "quizSentence": "それに対して，日本の人口は約1億2,775万人で，前の年から約1万人も減少している。"
             },
             {
               "id": 59,
@@ -3660,8 +3741,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 现象",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-059.mp3"
+              "blanks": [
+                "現象"
+              ],
+              "audio": "audio/seg-059.mp3",
+              "quizSentence": "こうした現象を「少子化」と呼んでいるが，この傾向は今後も続いていくと予測されている。"
             },
             {
               "id": 60,
@@ -3675,8 +3759,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 趋势，倾向",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-060.mp3"
+              "blanks": [
+                "傾向"
+              ],
+              "audio": "audio/seg-060.mp3",
+              "quizSentence": "例えば，結婚年齢が遅くなる「晩婚化」の傾向は，年々強まっている。"
             },
             {
               "id": 61,
@@ -3690,8 +3777,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 背景，背景形势",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-061.mp3"
+              "blanks": [
+                "背景"
+              ],
+              "audio": "audio/seg-061.mp3",
+              "quizSentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。"
             },
             {
               "id": 62,
@@ -3705,8 +3795,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 生孩子",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-062.mp3"
+              "blanks": [
+                "出産"
+              ],
+              "audio": "audio/seg-062.mp3",
+              "quizSentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。"
             },
             {
               "id": 63,
@@ -3720,8 +3813,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 育儿，抚育",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-063.mp3"
+              "blanks": [
+                "育児"
+              ],
+              "audio": "audio/seg-063.mp3",
+              "quizSentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。"
             },
             {
               "id": 64,
@@ -3738,8 +3834,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 对，对于",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-064.mp3"
+              "blanks": [
+                "対する"
+              ],
+              "audio": "audio/seg-064.mp3",
+              "quizSentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。"
             },
             {
               "id": 65,
@@ -3753,8 +3852,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 晚婚",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-065.mp3"
+              "blanks": [
+                "晩婚"
+              ],
+              "audio": "audio/seg-065.mp3",
+              "quizSentence": "最近は晩婚の人が増えている。"
             },
             {
               "id": 66,
@@ -3771,8 +3873,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 抑制，控制，节制",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-066.mp3"
+              "blanks": [
+                "控える"
+              ],
+              "audio": "audio/seg-066.mp3",
+              "quizSentence": "高年齢になると出産を控える傾向が強まり，1人の女性が出産する子供の数を示す「出生率」が下がる。"
             },
             {
               "id": 67,
@@ -3786,8 +3891,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 出生，诞生",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-067.mp3"
+              "blanks": [
+                "出生"
+              ],
+              "audio": "audio/seg-067.mp3",
+              "quizSentence": "この書類には出生の年月日を記入してください。"
             },
             {
               "id": 68,
@@ -3800,8 +3908,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 牵涉；连接；排列",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-068.mp3"
+              "blanks": [
+                "つながっている"
+              ],
+              "audio": "audio/seg-068.mp3",
+              "quizSentence": "それが少子化の原因につながっている。"
             },
             {
               "id": 69,
@@ -3815,8 +3926,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 上涨，上升",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-069.mp3"
+              "blanks": [
+                "上昇"
+              ],
+              "audio": "audio/seg-069.mp3",
+              "quizSentence": "また，物価の上昇，高額な税金，住宅問題などのために，結婚をしても子供を作らない夫婦が増えている。"
             },
             {
               "id": 70,
@@ -3830,8 +3944,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 金额，数量",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-070.mp3"
+              "blanks": [
+                "額"
+              ],
+              "audio": "audio/seg-070.mp3",
+              "quizSentence": "今月の支出は予想より少ない額で済んだ。"
             },
             {
               "id": 71,
@@ -3845,8 +3962,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 住房问题，住宅问题",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-071.mp3"
+              "blanks": [
+                "住宅問題"
+              ],
+              "audio": "audio/seg-071.mp3",
+              "quizSentence": "また，物価の上昇，高額な税金，住宅問題などのために，結婚をしても子供を作らない夫婦が増えている。"
             },
             {
               "id": 72,
@@ -3860,8 +3980,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 意愿，意志，意向",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-072.mp3"
+              "blanks": [
+                "意志"
+              ],
+              "audio": "audio/seg-072.mp3",
+              "quizSentence": "自分の意志で結婚しない人も増えており，「非婚率」も上がっている。"
             },
             {
               "id": 73,
@@ -3875,8 +3998,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 不结婚；非婚，没结婚",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-073.mp3"
+              "blanks": [
+                "非婚"
+              ],
+              "audio": "audio/seg-073.mp3",
+              "quizSentence": "非婚を選ぶ人の割合が年々増えている。"
             },
             {
               "id": 74,
@@ -3890,8 +4016,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 一年；年间，年代",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-074.mp3"
+              "blanks": [
+                "年間"
+              ],
+              "audio": "audio/seg-074.mp3",
+              "quizSentence": "2003年の年間出産数は，1973年の約半分に減った。"
             },
             {
               "id": 75,
@@ -3905,8 +4034,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 光阴，时间，年月，岁月",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-075.mp3"
+              "blanks": [
+                "年月"
+              ],
+              "audio": "audio/seg-075.mp3",
+              "quizSentence": "しかし，人々の意識が簡単に変わるわけはなく，結果が出るまでには，長い年月が必要だろう。"
             },
             {
               "id": 76,
@@ -3923,8 +4055,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜时，〜的时候",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-076.mp3"
+              "blanks": [
+                "時"
+              ],
+              "audio": "audio/seg-076.mp3",
+              "quizSentence": "出発時には、必ずパスポートを持ってきてください。"
             },
             {
               "id": 77,
@@ -3941,8 +4076,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜数，〜的数量",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-077.mp3"
+              "blanks": [
+                "数"
+              ],
+              "audio": "audio/seg-077.mp3",
+              "quizSentence": "このアンケートの回答数はまだ集計中だ。"
             }
           ]
         },
@@ -3963,8 +4101,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 煤，煤炭",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-078.mp3"
+              "blanks": [
+                "石炭"
+              ],
+              "audio": "audio/seg-078.mp3",
+              "quizSentence": "昔はどの家庭も石炭で暖を取っていた。"
             },
             {
               "id": 79,
@@ -3978,8 +4119,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 唯一方向；唯一手段",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-079.mp3"
+              "blanks": [
+                "一途"
+              ],
+              "audio": "audio/seg-079.mp3",
+              "quizSentence": "彼の病状は悪化の一途をたどっている。"
             },
             {
               "id": 80,
@@ -3992,8 +4136,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 发展；走向追溯",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-080.mp3"
+              "blanks": [
+                "たどっている"
+              ],
+              "audio": "audio/seg-080.mp3",
+              "quizSentence": "彼の病状は悪化の一途をたどっている。"
             },
             {
               "id": 81,
@@ -4007,8 +4154,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 日元贬值",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-081.mp3"
+              "blanks": [
+                "円安"
+              ],
+              "audio": "audio/seg-081.mp3",
+              "quizSentence": "円安の影響で、輸入品の値段が上がっている。"
             },
             {
               "id": 82,
@@ -4022,8 +4172,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 进口食品",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-082.mp3"
+              "blanks": [
+                "輸入食品"
+              ],
+              "audio": "audio/seg-082.mp3",
+              "quizSentence": "このスーパーには輸入食品のコーナーがある。"
             },
             {
               "id": 83,
@@ -4040,8 +4193,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 价格上涨，涨价",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-083.mp3"
+              "blanks": [
+                "値上がり"
+              ],
+              "audio": "audio/seg-083.mp3",
+              "quizSentence": "最近、野菜の値上がりが続いている。"
             },
             {
               "id": 84,
@@ -4058,8 +4214,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 改善",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-084.mp3"
+              "blanks": [
+                "改善する"
+              ],
+              "audio": "audio/seg-084.mp3",
+              "quizSentence": "会社は労働環境を改善するために新しい制度を導入した。"
             },
             {
               "id": 85,
@@ -4076,8 +4235,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 留（头发），拉长，延长",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-085.mp3"
+              "blanks": [
+                "伸ばす"
+              ],
+              "audio": "audio/seg-085.mp3",
+              "quizSentence": "彼女は髪を伸ばすことにした。"
             },
             {
               "id": 86,
@@ -4090,8 +4252,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 算盘",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-086.mp3"
+              "blanks": [
+                "そろばん"
+              ],
+              "audio": "audio/seg-086.mp3",
+              "quizSentence": "昔の子供はそろばんの使い方を習っていた。"
             },
             {
               "id": 87,
@@ -4105,8 +4270,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 不景气，萧条",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-087.mp3"
+              "blanks": [
+                "不況"
+              ],
+              "audio": "audio/seg-087.mp3",
+              "quizSentence": "不況のせいで、就職先を見つけるのが難しい。"
             },
             {
               "id": 88,
@@ -4120,8 +4288,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 长处，优点",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-088.mp3"
+              "blanks": [
+                "長所"
+              ],
+              "audio": "audio/seg-088.mp3",
+              "quizSentence": "彼の長所は、どんな仕事にも真剣に取り組むところだ。"
             },
             {
               "id": 89,
@@ -4135,8 +4306,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 短处，弱点",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-089.mp3"
+              "blanks": [
+                "短所"
+              ],
+              "audio": "audio/seg-089.mp3",
+              "quizSentence": "自分の短所を知ることも大切だ。"
             },
             {
               "id": 90,
@@ -4150,8 +4324,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 维修不良，维修状况差",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-090.mp3"
+              "blanks": [
+                "整備不良"
+              ],
+              "audio": "audio/seg-090.mp3",
+              "quizSentence": "整備不良が原因で事故が起きた。"
             },
             {
               "id": 91,
@@ -4165,8 +4342,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] （道路）维修，整修；配备，配齐",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-091.mp3"
+              "blanks": [
+                "整備"
+              ],
+              "audio": "audio/seg-091.mp3",
+              "quizSentence": "この道路は現在整備が進められている。"
             },
             {
               "id": 92,
@@ -4180,8 +4360,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 批判，批评，评论",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-092.mp3"
+              "blanks": [
+                "批判"
+              ],
+              "audio": "audio/seg-092.mp3",
+              "quizSentence": "その発言は多くの人から批判を受けた。"
             },
             {
               "id": 93,
@@ -4195,8 +4378,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 谢意，礼仪，礼貌，礼节",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-093.mp3"
+              "blanks": [
+                "礼"
+              ],
+              "audio": "audio/seg-093.mp3",
+              "quizSentence": "お世話になった先生に礼を言いに行った。"
             },
             {
               "id": 94,
@@ -4213,8 +4399,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 申诉，诉说，呼吁",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-094.mp3"
+              "blanks": [
+                "訴えた"
+              ],
+              "audio": "audio/seg-094.mp3",
+              "quizSentence": "彼女は不当な扱いを受けたと訴えた。"
             },
             {
               "id": 95,
@@ -4231,8 +4420,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 帮助，援助，支持",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-095.mp3"
+              "blanks": [
+                "援助する"
+              ],
+              "audio": "audio/seg-095.mp3",
+              "quizSentence": "政府は被災地を援助するための予算を組んだ。"
             },
             {
               "id": 96,
@@ -4246,8 +4438,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 体验，经验",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-096.mp3"
+              "blanks": [
+                "体験"
+              ],
+              "audio": "audio/seg-096.mp3",
+              "quizSentence": "この旅行は忘れられない体験になった。"
             },
             {
               "id": 97,
@@ -4261,8 +4456,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 每年",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-097.mp3"
+              "blanks": [
+                "毎年"
+              ],
+              "audio": "audio/seg-097.mp3",
+              "quizSentence": "彼は毎年家族で旅行に行く。"
             },
             {
               "id": 98,
@@ -4276,8 +4474,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 天天，每天，日子",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-098.mp3"
+              "blanks": [
+                "日々"
+              ],
+              "audio": "audio/seg-098.mp3",
+              "quizSentence": "忙しい日々が続いている。"
             },
             {
               "id": 99,
@@ -4291,8 +4492,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 月月，每月",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-099.mp3"
+              "blanks": [
+                "月々"
+              ],
+              "audio": "audio/seg-099.mp3",
+              "quizSentence": "月々の家賃は8万円だ。"
             },
             {
               "id": 100,
@@ -4306,8 +4510,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 情况，状况",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-100.mp3"
+              "blanks": [
+                "状況"
+              ],
+              "audio": "audio/seg-100.mp3",
+              "quizSentence": "現在の状況を詳しく説明してください。"
             },
             {
               "id": 101,
@@ -4321,8 +4528,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 收入，所得",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-101.mp3"
+              "blanks": [
+                "収入"
+              ],
+              "audio": "audio/seg-101.mp3",
+              "quizSentence": "彼は収入の一部を貯金に回している。"
             },
             {
               "id": 102,
@@ -4336,8 +4546,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 德川家康",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-102.mp3"
+              "blanks": [
+                "徳川家康"
+              ],
+              "audio": "audio/seg-102.mp3",
+              "quizSentence": "徳川家康は江戸幕府を開いた人物だ。"
             },
             {
               "id": 103,
@@ -4354,8 +4567,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜量",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-103.mp3"
+              "blanks": [
+                "量"
+              ],
+              "audio": "audio/seg-103.mp3",
+              "quizSentence": "今日の宿題は量が多い。"
             },
             {
               "id": 104,
@@ -4372,8 +4588,11 @@ window.LESSON_DATA = {
               ],
               "zh": "不〜，非〜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-104.mp3"
+              "blanks": [
+                "不"
+              ],
+              "audio": "audio/seg-104.mp3",
+              "quizSentence": "この機械は不良品だった。"
             }
           ]
         },
@@ -4394,8 +4613,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 肥胖",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-105.mp3"
+              "blanks": [
+                "肥満"
+              ],
+              "audio": "audio/seg-105.mp3",
+              "quizSentence": "運動不足は肥満の原因になる。"
             },
             {
               "id": 106,
@@ -4409,8 +4631,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 件数",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-106.mp3"
+              "blanks": [
+                "件数"
+              ],
+              "audio": "audio/seg-106.mp3",
+              "quizSentence": "今月の事故の件数は去年より減った。"
             },
             {
               "id": 107,
@@ -4424,8 +4649,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 退学",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-107.mp3"
+              "blanks": [
+                "退学"
+              ],
+              "audio": "audio/seg-107.mp3",
+              "quizSentence": "彼は経済的な理由で退学することになった。"
             },
             {
               "id": 108,
@@ -4438,8 +4666,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 高潮，热潮",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-108.mp3"
+              "blanks": [
+                "ブーム"
+              ],
+              "audio": "audio/seg-108.mp3",
+              "quizSentence": "最近、健康志向のブームが続いている。"
             },
             {
               "id": 109,
@@ -4453,8 +4684,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 权利",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-109.mp3"
+              "blanks": [
+                "権利"
+              ],
+              "audio": "audio/seg-109.mp3",
+              "quizSentence": "誰にでも教育を受ける権利がある。"
             },
             {
               "id": 110,
@@ -4471,8 +4705,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 废气，废烟气",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-110.mp3"
+              "blanks": [
+                "排気ガス"
+              ],
+              "audio": "audio/seg-110.mp3",
+              "quizSentence": "排気ガスは大気汚染の原因の一つだ。"
             },
             {
               "id": 111,
@@ -4485,8 +4722,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 上下班高峰时间",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-111.mp3"
+              "blanks": [
+                "ラッシュアワー"
+              ],
+              "audio": "audio/seg-111.mp3",
+              "quizSentence": "ラッシュアワーの電車はいつも混んでいる。"
             },
             {
               "id": 112,
@@ -4500,8 +4740,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 混乱，拥挤，混杂",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-112.mp3"
+              "blanks": [
+                "混雑"
+              ],
+              "audio": "audio/seg-112.mp3",
+              "quizSentence": "週末の駅は混雑している。"
             },
             {
               "id": 113,
@@ -4514,8 +4757,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 宠物",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-113.mp3"
+              "blanks": [
+                "ペット"
+              ],
+              "audio": "audio/seg-113.mp3",
+              "quizSentence": "彼女はペットとして猫を飼っている。"
             },
             {
               "id": 114,
@@ -4529,8 +4775,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 爱，爱情",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-114.mp3"
+              "blanks": [
+                "愛情"
+              ],
+              "audio": "audio/seg-114.mp3",
+              "quizSentence": "両親は子供に深い愛情を注いでいる。"
             },
             {
               "id": 115,
@@ -4544,8 +4793,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 政治",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-115.mp3"
+              "blanks": [
+                "政治"
+              ],
+              "audio": "audio/seg-115.mp3",
+              "quizSentence": "若者の政治への関心が高まっている。"
             },
             {
               "id": 116,
@@ -4559,8 +4811,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 感觉",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-116.mp3"
+              "blanks": [
+                "感覚"
+              ],
+              "audio": "audio/seg-116.mp3",
+              "quizSentence": "彼は色に対する感覚が鋭い。"
             },
             {
               "id": 117,
@@ -4574,8 +4829,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 日中，日本和中国",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-117.mp3"
+              "blanks": [
+                "日中"
+              ],
+              "audio": "audio/seg-117.mp3",
+              "quizSentence": "日中の文化交流はますます盛んになっている。"
             },
             {
               "id": 118,
@@ -4589,8 +4847,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 外交",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-118.mp3"
+              "blanks": [
+                "外交"
+              ],
+              "audio": "audio/seg-118.mp3",
+              "quizSentence": "彼は長年外交の仕事に携わってきた。"
             },
             {
               "id": 119,
@@ -4604,8 +4865,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 一晚，一夜，一宿",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-119.mp3"
+              "blanks": [
+                "一晩"
+              ],
+              "audio": "audio/seg-119.mp3",
+              "quizSentence": "彼らは一晩かけてレポートを書き上げた。"
             },
             {
               "id": 120,
@@ -4622,8 +4886,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 结构；计划，方法",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-120.mp3"
+              "blanks": [
+                "仕組み"
+              ],
+              "audio": "audio/seg-120.mp3",
+              "quizSentence": "この装置の仕組みを説明してください。"
             }
           ]
         }
