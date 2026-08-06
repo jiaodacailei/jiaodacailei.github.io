@@ -193,7 +193,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "入",
-                  "kana": "はい",
+                  "kana": "い",
                   "t": 1.2
                 },
                 {
@@ -1469,7 +1469,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "人",
-                  "kana": "ひと",
+                  "kana": "にん",
                   "t": 4.94
                 },
                 {

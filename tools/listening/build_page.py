@@ -155,7 +155,16 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     # pykakasi 会把"第"跟紧跟着的阿拉伯数字合并成一个 token（"第２"作为一个
     # token，不是"第"+"２"两个），整串 isdigit() 会因为含有"第"字而判 False，
     # 漏掉"第２位"这种真实场景，必须看 prev_orig 的最后一个字符是不是数字。
-    prev_ends_with_digit = bool(prev_orig) and prev_orig[-1].isdigit()
+    # 汉字数量单位（万/億/兆……）同样算"数字"——真实案例（textbook-sjp-zg-l13，
+    # 人口统计课文"65億人"）：pykakasi 自己对"人"的默认读音本来就是对的
+    # （にん，紧跟在"億"后面的计数语境），但这条规则原来只认阿拉伯数字，
+    # "億"的最后一个字符不是数字，`prev_ends_with_digit` 判成 False，反而把
+    # pykakasi 已经猜对的にん覆盖回错误的ひと——**这条规则设计的初衷是"补救
+    # pykakasi 对孤立单字人的默认误判"，结果在这个场景里适得其反地把正确
+    # 默认值改错了**，用户在编辑模式里手动改回にん才发现。
+    prev_ends_with_digit = bool(prev_orig) and (
+        prev_orig[-1].isdigit() or prev_orig[-1] in "十百千万億兆"
+    )
     # "1人"/"2人"是不规则读法ひとり/ふたり（不是常规的いちにん/ににん），只有
     # 汉数字写法"一人"/"二人"pykakasi 自己的词典本来就读对（会整体合并成一个
     # token，不会拆成"一"+"人"两段，不受这条规则影响），阿拉伯数字写法"1人"/
