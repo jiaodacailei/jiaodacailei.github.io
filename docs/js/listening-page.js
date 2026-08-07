@@ -1521,6 +1521,20 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var quizResetErrors = document.getElementById("quizResetErrors");
   var quizAudio = new Audio();
 
+  // "听音频写假名"这道题的音频跟句卡片的跟读音频一样是 preload="none"（new
+  // Audio() 默认懒加载），第一次播放到真的出声之间可能有读取延迟——沿用
+  // .seg-card.loading 那一套经验：不能只靠 waiting 事件（对"压根还没加载过"
+  // 的第一次尝试触发不够及时），必须在真正触发播放的这几个入口（题目一出现
+  // 自动播、点▶重听）同步先标记 loading，再交给 playing/pause/error 这几个
+  // 可靠的原生事件负责摘掉。
+  function setQuizAudioLoading(loading) {
+    quizPlayBtn.classList.toggle("loading", loading);
+  }
+  quizAudio.addEventListener("waiting", function() { setQuizAudioLoading(true); });
+  quizAudio.addEventListener("playing", function() { setQuizAudioLoading(false); });
+  quizAudio.addEventListener("pause", function() { setQuizAudioLoading(false); });
+  quizAudio.addEventListener("error", function() { setQuizAudioLoading(false); });
+
   [quizInput, quizCheck, quizNext, quizPlayBtn, quizResetErrors].forEach(function(el) {
     el.addEventListener("click", function(e) { e.stopPropagation(); });
   });
@@ -1616,7 +1630,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 不会被自动播放策略拦截；万一个别浏览器仍然拒绝，静默忽略就行——
       // ▶ 按钮本来就在，用户自己点一下也一样能听。
       quizAudio.currentTime = 0;
-      quizAudio.play().catch(function() {});
+      setQuizAudioLoading(true);
+      // catch 里也要摘掉 loading——play() 被拒绝（比如自动播放策略拦截）不会
+      // 触发 playing/pause/error 里任何一个原生事件，不摘的话转圈会一直留着。
+      quizAudio.play().catch(function() { setQuizAudioLoading(false); });
     } else if (q.type === "zh2kana") {
       quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + q.word.zh + '</div>';
     } else {
@@ -1666,7 +1683,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (e.key === "Enter") { e.preventDefault(); doCheck(); }
   });
   quizNext.addEventListener("click", function() { qi++; render(); });
-  quizPlayBtn.addEventListener("click", function() { quizAudio.currentTime = 0; quizAudio.play(); });
+  quizPlayBtn.addEventListener("click", function() {
+    quizAudio.currentTime = 0;
+    setQuizAudioLoading(true);
+    quizAudio.play().catch(function() { setQuizAudioLoading(false); });
+  });
   quizResetErrors.addEventListener("click", function() {
     errors = {};
     localStorage.setItem(stateKeys().error, JSON.stringify(errors));

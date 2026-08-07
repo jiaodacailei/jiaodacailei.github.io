@@ -592,9 +592,21 @@ body.mode-blank #blankProgressReset { display: inline-block; }
 .quiz-play-btn {
   border: 1px solid var(--blue-light); background: var(--blue-xlight); color: var(--blue-dark);
   border-radius: 999px; padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 10px; position: relative;
 }
 .quiz-play-btn:hover { background: var(--blue-light); }
+/* 跟 .seg-card.loading 同一套读取反馈（复用它的 seg-loading-spin 关键帧）——
+   听音频写假名这道题的音频同样是懒加载，第一次点到真的出声之间可能有延迟，
+   之前这段等待期没有任何区别于"点击没反应"的提示。"▶ 播放发音"是按钮的
+   真实文字（不是 ::after 伪元素内容，跟 seg-card 那个纯装饰的 ▶ 提示不同），
+   所以这里用 ::before 在文字左边插一个转圈，同时把文字整体调暗，不遮挡/
+   替换原有文字。 */
+.quiz-play-btn.loading { opacity: .6; cursor: wait; padding-left: 34px; }
+.quiz-play-btn.loading::before {
+  content: ""; position: absolute; left: 14px; top: 50%; margin-top: -6px;
+  width: 12px; height: 12px; border: 2px solid var(--blue-light); border-top-color: var(--blue-dark);
+  border-radius: 50%; animation: seg-loading-spin .7s linear infinite;
+}
 .quiz-input-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .quiz-input {
   flex: 1; min-width: 160px; padding: 8px 12px; border: 1px solid var(--border);
