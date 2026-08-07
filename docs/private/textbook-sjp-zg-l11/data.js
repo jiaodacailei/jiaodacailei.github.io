@@ -2654,8 +2654,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 一心",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-036.mp3"
+              "blanks": [
+                "一心"
+              ],
+              "audio": "audio/seg-036.mp3",
+              "quizSentence": "王：あのポスター，張一心ですね。"
             },
             {
               "id": 37,
@@ -2669,8 +2672,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 新作品，新创作",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-037.mp3"
+              "blanks": [
+                "新作"
+              ],
+              "audio": "audio/seg-037.mp3",
+              "quizSentence": "担当者：ええ。新作映画の「朋友」が今週公開されたばかりです。"
             },
             {
               "id": 38,
@@ -2687,8 +2693,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 公映，公开，开映；开放",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-038.mp3"
+              "blanks": [
+                "公開される"
+              ],
+              "audio": "audio/seg-038.mp3",
+              "quizSentence": "この映画は来月公開される予定だ。"
             },
             {
               "id": 39,
@@ -2702,8 +2711,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 票房，公演，演出，上映",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-039.mp3"
+              "blanks": [
+                "興行"
+              ],
+              "audio": "audio/seg-039.mp3",
+              "quizSentence": "興行成績は現在のところ第２位ですが，来週はトップになる見込みです。"
             },
             {
               "id": 40,
@@ -2716,8 +2728,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 第一位，首位，第一名",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-040.mp3"
+              "blanks": [
+                "トップ"
+              ],
+              "audio": "audio/seg-040.mp3",
+              "quizSentence": "興行成績は現在のところ第２位ですが，来週はトップになる見込みです。"
             },
             {
               "id": 41,
@@ -2734,8 +2749,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 预料，估计；可能性",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-041.mp3"
+              "blanks": [
+                "見込み"
+              ],
+              "audio": "audio/seg-041.mp3",
+              "quizSentence": "興行成績は現在のところ第２位ですが，来週はトップになる見込みです。"
             },
             {
               "id": 42,
@@ -2752,8 +2770,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 主演",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-042.mp3"
+              "blanks": [
+                "主演する"
+              ],
+              "audio": "audio/seg-042.mp3",
+              "quizSentence": "担当者：はい。彼が主演する映画は，アクションでも恋愛ドラマでも，必ず当たります。"
             },
             {
               "id": 43,
@@ -2766,8 +2787,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 动作片，武打剧；动作",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-043.mp3"
+              "blanks": [
+                "アクション"
+              ],
+              "audio": "audio/seg-043.mp3",
+              "quizSentence": "担当者：はい。彼が主演する映画は，アクションでも恋愛ドラマでも，必ず当たります。"
             },
             {
               "id": 44,
@@ -2787,8 +2811,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 成功，走运",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-044.mp3"
+              "blanks": [
+                "当たる"
+              ],
+              "audio": "audio/seg-044.mp3",
+              "quizSentence": "この宝くじ、当たるといいですね。"
             },
             {
               "id": 45,
@@ -2805,8 +2832,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 评价",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-045.mp3"
+              "blanks": [
+                "評価した"
+              ],
+              "audio": "audio/seg-045.mp3",
+              "quizSentence": "先生は彼の努力を高く評価した。"
             },
             {
               "id": 46,
@@ -2826,8 +2856,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 高涨，提高",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-046.mp3"
+              "blanks": [
+                "高まって"
+              ],
+              "audio": "audio/seg-046.mp3",
+              "quizSentence": "最近、健康への関心が高まっている。"
             },
             {
               "id": 47,
@@ -2840,8 +2873,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[连] 这么说来，这么说",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-047.mp3"
+              "blanks": [
+                "そうすると"
+              ],
+              "audio": "audio/seg-047.mp3",
+              "quizSentence": "王：そうすると，外国のものだから人気があるというわけではないんですね。"
             },
             {
               "id": 48,
@@ -2854,8 +2890,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 缘故，理由，原因",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-048.mp3"
+              "blanks": [
+                "わけ"
+              ],
+              "audio": "audio/seg-048.mp3",
+              "quizSentence": "王：そうすると，外国のものだから人気があるというわけではないんですね。"
             },
             {
               "id": 49,
@@ -2872,8 +2911,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 区别，区分",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-049.mp3"
+              "blanks": [
+                "区別する"
+              ],
+              "audio": "audio/seg-049.mp3",
+              "quizSentence": "本物と偽物を区別するのは難しい。"
             },
             {
               "id": 50,
@@ -2900,8 +2942,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 接受，采纳",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-050.mp3"
+              "blanks": [
+                "受け入れた"
+              ],
+              "audio": "audio/seg-050.mp3",
+              "quizSentence": "彼は新しい意見を素直に受け入れた。"
             },
             {
               "id": 51,
@@ -2918,8 +2963,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[代] 他们",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-051.mp3"
+              "blanks": [
+                "彼ら"
+              ],
+              "audio": "audio/seg-051.mp3",
+              "quizSentence": "彼らは，映画にしても音楽にしても，いいものならすぐに受け入れます。"
             },
             {
               "id": 52,
@@ -2932,8 +2980,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 抓住，掌握住",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-052.mp3"
+              "blanks": [
+                "つかむ"
+              ],
+              "audio": "audio/seg-052.mp3",
+              "quizSentence": "じゃあ，彼らの心をつかむには，どうすればいいんでしょうか。"
             },
             {
               "id": 53,
@@ -2950,8 +3001,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 口碑，口头互传，口头推荐",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-053.mp3"
+              "blanks": [
+                "口コミ"
+              ],
+              "audio": "audio/seg-053.mp3",
+              "quizSentence": "担当者：ええ。今の若者は，テレビＣＭより，同世代の人の口コミを信じます。"
             },
             {
               "id": 54,
@@ -2965,8 +3019,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 电影，影像",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-054.mp3"
+              "blanks": [
+                "映像"
+              ],
+              "audio": "audio/seg-054.mp3",
+              "quizSentence": "映像でも音楽でも食べ物でも，本当にいいものを提供すれば，口コミで広がっていくはずです。"
             },
             {
               "id": 55,
@@ -2983,8 +3040,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 提供",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-055.mp3"
+              "blanks": [
+                "提供して"
+              ],
+              "audio": "audio/seg-055.mp3",
+              "quizSentence": "このホテルは無料の朝食を提供している。"
             },
             {
               "id": 56,
@@ -3004,8 +3064,11 @@ window.LESSON_DATA = {
               ],
               "zh": "感觉，觉得，好像",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-056.mp3"
+              "blanks": [
+                "気がする"
+              ],
+              "audio": "audio/seg-056.mp3",
+              "quizSentence": "なんだか今日はいいことが起きる気がする。"
             },
             {
               "id": 57,
@@ -3019,8 +3082,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜们，〜等",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-057.mp3"
+              "blanks": [
+                "子供ら"
+              ],
+              "audio": "audio/seg-057.mp3",
+              "quizSentence": "子供らが公園で元気に遊んでいる。"
             },
             {
               "id": 58,
@@ -3037,8 +3103,11 @@ window.LESSON_DATA = {
               ],
               "zh": "同〜，相同〜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-058.mp3"
+              "blanks": [
+                "同"
+              ],
+              "audio": "audio/seg-058.mp3",
+              "quizSentence": "担当者：ええ。今の若者は，テレビＣＭより，同世代の人の口コミを信じます。"
             }
           ]
         },
@@ -3059,8 +3128,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 真的，真话，真实，事实",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-059.mp3"
+              "blanks": [
+                "真実"
+              ],
+              "audio": "audio/seg-059.mp3",
+              "quizSentence": "彼が話したことは真実だった。"
             },
             {
               "id": 60,
@@ -3074,8 +3146,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 方针，方向",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-060.mp3"
+              "blanks": [
+                "方針"
+              ],
+              "audio": "audio/seg-060.mp3",
+              "quizSentence": "会社は新しい方針を決めた。"
             },
             {
               "id": 61,
@@ -3089,8 +3164,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 退休，退休年龄",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-061.mp3"
+              "blanks": [
+                "定年"
+              ],
+              "audio": "audio/seg-061.mp3",
+              "quizSentence": "父は来年定年を迎える。"
             },
             {
               "id": 62,
@@ -3104,8 +3182,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] GDP，国内生产总值",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-062.mp3"
+              "blanks": [
+                "GDP"
+              ],
+              "audio": "audio/seg-062.mp3",
+              "quizSentence": "この国のGDPは年々増えている。"
             },
             {
               "id": 63,
@@ -3122,8 +3203,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 超过，超出",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-063.mp3"
+              "blanks": [
+                "抜いて"
+              ],
+              "audio": "audio/seg-063.mp3",
+              "quizSentence": "彼は最後の一人を抜いて一位になった。"
             },
             {
               "id": 64,
@@ -3136,8 +3220,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 很快，一下子；忽然，骤然",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-064.mp3"
+              "blanks": [
+                "さっと"
+              ],
+              "audio": "audio/seg-064.mp3",
+              "quizSentence": "彼はさっと立ち上がって出て行った。"
             },
             {
               "id": 65,
@@ -3150,8 +3237,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 非常畅销，大受欢迎",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-065.mp3"
+              "blanks": [
+                "ヒットして"
+              ],
+              "audio": "audio/seg-065.mp3",
+              "quizSentence": "この曲は若者の間でヒットしている。"
             },
             {
               "id": 66,
@@ -3164,8 +3254,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 衣橱，衣柜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-066.mp3"
+              "blanks": [
+                "たんす"
+              ],
+              "audio": "audio/seg-066.mp3",
+              "quizSentence": "服はたんすにしまってください。"
             },
             {
               "id": 67,
@@ -3185,8 +3278,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 提高，抬高",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-067.mp3"
+              "blanks": [
+                "高める"
+              ],
+              "audio": "audio/seg-067.mp3",
+              "quizSentence": "運動は集中力を高める。"
             },
             {
               "id": 68,
@@ -3206,8 +3302,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 扩大；传播，遍及",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-068.mp3"
+              "blanks": [
+                "広まった"
+              ],
+              "audio": "audio/seg-068.mp3",
+              "quizSentence": "そのうわさはすぐに広まった。"
             },
             {
               "id": 69,
@@ -3227,8 +3326,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 推广；扩大",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-069.mp3"
+              "blanks": [
+                "広める"
+              ],
+              "audio": "audio/seg-069.mp3",
+              "quizSentence": "会社は新商品を広めるために宣伝した。"
             },
             {
               "id": 70,
@@ -3248,8 +3350,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 强烈起来，强硬起来",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-070.mp3"
+              "blanks": [
+                "強まって"
+              ],
+              "audio": "audio/seg-070.mp3",
+              "quizSentence": "台風が近づき、風が強まってきた。"
             },
             {
               "id": 71,
@@ -3269,8 +3374,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 加强，增强",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-071.mp3"
+              "blanks": [
+                "強める"
+              ],
+              "audio": "audio/seg-071.mp3",
+              "quizSentence": "政府は規制を強める方針だ。"
             },
             {
               "id": 72,
@@ -3290,8 +3398,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 变弱，衰弱",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-072.mp3"
+              "blanks": [
+                "弱まった"
+              ],
+              "audio": "audio/seg-072.mp3",
+              "quizSentence": "雨は夜になって弱まった。"
             },
             {
               "id": 73,
@@ -3311,8 +3422,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 弱化，减弱",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-073.mp3"
+              "blanks": [
+                "弱めて"
+              ],
+              "audio": "audio/seg-073.mp3",
+              "quizSentence": "エアコンの風を弱めてください。"
             },
             {
               "id": 74,
@@ -3332,8 +3446,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 加深，变深",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-074.mp3"
+              "blanks": [
+                "深まって"
+              ],
+              "audio": "audio/seg-074.mp3",
+              "quizSentence": "二人の友情は年々深まっている。"
             },
             {
               "id": 75,
@@ -3347,8 +3464,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 节约",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-075.mp3"
+              "blanks": [
+                "節約"
+              ],
+              "audio": "audio/seg-075.mp3",
+              "quizSentence": "毎月お金を節約している。"
             },
             {
               "id": 76,
@@ -3365,8 +3485,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 基督教",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-076.mp3"
+              "blanks": [
+                "キリスト教"
+              ],
+              "audio": "audio/seg-076.mp3",
+              "quizSentence": "彼女はキリスト教を信じている。"
             },
             {
               "id": 77,
@@ -3380,8 +3503,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 传教士",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-077.mp3"
+              "blanks": [
+                "宣教師"
+              ],
+              "audio": "audio/seg-077.mp3",
+              "quizSentence": "その宣教師は日本語がとても上手だ。"
             },
             {
               "id": 78,
@@ -3401,8 +3527,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 冲淡；稀释；淡化",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-078.mp3"
+              "blanks": [
+                "薄めて"
+              ],
+              "audio": "audio/seg-078.mp3",
+              "quizSentence": "コーヒーを水で薄めて飲んだ。"
             },
             {
               "id": 79,
@@ -3415,8 +3544,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 规则，章程",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-079.mp3"
+              "blanks": [
+                "ルール"
+              ],
+              "audio": "audio/seg-079.mp3",
+              "quizSentence": "試合の前にルールを確認しましょう。"
             },
             {
               "id": 80,
@@ -3430,8 +3562,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 川田",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-080.mp3"
+              "blanks": [
+                "川田"
+              ],
+              "audio": "audio/seg-080.mp3",
+              "quizSentence": "川田さんは私の大学の同級生です。"
             },
             {
               "id": 81,
@@ -3445,8 +3580,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 线",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-081.mp3"
+              "blanks": [
+                "線"
+              ],
+              "audio": "audio/seg-081.mp3",
+              "quizSentence": "紙に線を引いてください。"
             },
             {
               "id": 82,
@@ -3470,8 +3608,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 田地；稻田，水田（也作「田」）",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-082.mp3"
+              "blanks": [
+                "田んぼ"
+              ],
+              "audio": "audio/seg-082.mp3",
+              "quizSentence": "田んぼで稲が育っている。"
             },
             {
               "id": 83,
@@ -3484,8 +3625,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 通过；穿过，穿通",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-083.mp3"
+              "blanks": [
+                "とおした"
+              ],
+              "audio": "audio/seg-083.mp3",
+              "quizSentence": "彼は最後まで自分の意見をとおした。"
             },
             {
               "id": 84,
@@ -3498,8 +3642,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 宣传媒介，大众传媒",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-084.mp3"
+              "blanks": [
+                "マスコミ"
+              ],
+              "audio": "audio/seg-084.mp3",
+              "quizSentence": "この事件はマスコミに大きく取り上げられた。"
             },
             {
               "id": 85,
@@ -3516,8 +3663,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜教",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-085.mp3"
+              "blanks": [
+                "教"
+              ],
+              "audio": "audio/seg-085.mp3",
+              "quizSentence": "彼はイスラム教を信じている。"
             }
           ]
         },
@@ -3541,8 +3691,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 下降，降低",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-086.mp3"
+              "blanks": [
+                "低下して"
+              ],
+              "audio": "audio/seg-086.mp3",
+              "quizSentence": "視力が低下してきた。"
             },
             {
               "id": 87,
@@ -3555,8 +3708,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 早晚，反正",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-087.mp3"
+              "blanks": [
+                "いずれ"
+              ],
+              "audio": "audio/seg-087.mp3",
+              "quizSentence": "いずれこの問題も解決するだろう。"
             },
             {
               "id": 88,
@@ -3570,8 +3726,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 前列，排前面；上位，上座",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-088.mp3"
+              "blanks": [
+                "上位"
+              ],
+              "audio": "audio/seg-088.mp3",
+              "quizSentence": "彼女はテストでいつも上位に入る。"
             },
             {
               "id": 89,
@@ -3585,8 +3744,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 疏忽，麻痹",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-089.mp3"
+              "blanks": [
+                "油断して"
+              ],
+              "audio": "audio/seg-089.mp3",
+              "quizSentence": "油断していると事故が起きやすい。"
             },
             {
               "id": 90,
@@ -3603,8 +3765,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 韩国电视剧",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-090.mp3"
+              "blanks": [
+                "韓国ドラマ"
+              ],
+              "audio": "audio/seg-090.mp3",
+              "quizSentence": "母は韓国ドラマが大好きだ。"
             },
             {
               "id": 91,
@@ -3618,8 +3783,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 化妆品",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-091.mp3"
+              "blanks": [
+                "化粧品"
+              ],
+              "audio": "audio/seg-091.mp3",
+              "quizSentence": "この化粧品は肌に優しい。"
             },
             {
               "id": 92,
@@ -3632,8 +3800,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 国际象棋",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-092.mp3"
+              "blanks": [
+                "チェス"
+              ],
+              "audio": "audio/seg-092.mp3",
+              "quizSentence": "父とよくチェスをする。"
             },
             {
               "id": 93,
@@ -3647,8 +3818,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 日本象棋",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-093.mp3"
+              "blanks": [
+                "将棋"
+              ],
+              "audio": "audio/seg-093.mp3",
+              "quizSentence": "祖父は将棋が得意だ。"
             },
             {
               "id": 94,
@@ -3662,8 +3836,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 围棋",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-094.mp3"
+              "blanks": [
+                "碁"
+              ],
+              "audio": "audio/seg-094.mp3",
+              "quizSentence": "おじいさんと碁を打つのが好きだ。"
             },
             {
               "id": 95,
@@ -3677,8 +3854,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 俳句，俳诗",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-095.mp3"
+              "blanks": [
+                "俳句"
+              ],
+              "audio": "audio/seg-095.mp3",
+              "quizSentence": "日本語の授業で俳句を作った。"
             },
             {
               "id": 96,
@@ -3695,8 +3875,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 损害，伤害",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-096.mp3"
+              "blanks": [
+                "壊して"
+              ],
+              "audio": "audio/seg-096.mp3",
+              "quizSentence": "弟がおもちゃを壊してしまった。"
             },
             {
               "id": 97,
@@ -3723,8 +3906,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 卖完，售罄",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-097.mp3"
+              "blanks": [
+                "売り切れて"
+              ],
+              "audio": "audio/seg-097.mp3",
+              "quizSentence": "人気の商品はすぐ売り切れてしまう。"
             },
             {
               "id": 98,
@@ -3741,8 +3927,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 辞职",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-098.mp3"
+              "blanks": [
+                "退職する"
+              ],
+              "audio": "audio/seg-098.mp3",
+              "quizSentence": "彼は今月末に退職する予定だ。"
             },
             {
               "id": 99,
@@ -3756,8 +3945,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 流行歌曲",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-099.mp3"
+              "blanks": [
+                "歌謡曲"
+              ],
+              "audio": "audio/seg-099.mp3",
+              "quizSentence": "祖母は昔の歌謡曲をよく歌う。"
             },
             {
               "id": 100,
@@ -3771,8 +3963,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 交流",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-100.mp3"
+              "blanks": [
+                "交流"
+              ],
+              "audio": "audio/seg-100.mp3",
+              "quizSentence": "留学生と交流する機会が増えた。"
             }
           ]
         },
@@ -3793,8 +3988,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 着迷，入迷",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-101.mp3"
+              "blanks": [
+                "夢中"
+              ],
+              "audio": "audio/seg-101.mp3",
+              "quizSentence": "日本に来た外国人は，電車などでサラリーマンが夢中になって漫画を読んでいる光景を見て驚くという。"
             },
             {
               "id": 102,
@@ -3808,8 +4006,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 情景，景象，光景",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-102.mp3"
+              "blanks": [
+                "光景"
+              ],
+              "audio": "audio/seg-102.mp3",
+              "quizSentence": "日本に来た外国人は，電車などでサラリーマンが夢中になって漫画を読んでいる光景を見て驚くという。"
             },
             {
               "id": 103,
@@ -3823,8 +4024,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 成年人，大人",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-103.mp3"
+              "blanks": [
+                "成人"
+              ],
+              "audio": "audio/seg-103.mp3",
+              "quizSentence": "日本の漫画は，子供向けから成人向けまで，対象の年代ごとにさまざまな種類がある。"
             },
             {
               "id": 104,
@@ -3844,8 +4048,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 关于，有关",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-104.mp3"
+              "blanks": [
+                "関する"
+              ],
+              "audio": "audio/seg-104.mp3",
+              "quizSentence": "会社員の生活や，経済に関するものなど，大人にしか楽しめない内容の漫画も多くある。"
             },
             {
               "id": 105,
@@ -3858,8 +4065,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 蜡笔小新",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-105.mp3"
+              "blanks": [
+                "クレヨンしんちゃん"
+              ],
+              "audio": "audio/seg-105.mp3",
+              "quizSentence": "近年，中国では「クレヨンしんちゃん」「ドラえもん」「ちびまる子ちゃん」などの漫画が子供だけでなく大人からも人気を集めている。"
             },
             {
               "id": 106,
@@ -3872,8 +4082,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 机器猫",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-106.mp3"
+              "blanks": [
+                "ドラえもん"
+              ],
+              "audio": "audio/seg-106.mp3",
+              "quizSentence": "近年，中国では「クレヨンしんちゃん」「ドラえもん」「ちびまる子ちゃん」などの漫画が子供だけでなく大人からも人気を集めている。"
             },
             {
               "id": 107,
@@ -3893,8 +4106,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 樱桃小丸子",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-107.mp3"
+              "blanks": [
+                "ちびまる子ちゃん"
+              ],
+              "audio": "audio/seg-107.mp3",
+              "quizSentence": "近年，中国では「クレヨンしんちゃん」「ドラえもん」「ちびまる子ちゃん」などの漫画が子供だけでなく大人からも人気を集めている。"
             },
             {
               "id": 108,
@@ -3911,8 +4127,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 铁臂阿童木",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-108.mp3"
+              "blanks": [
+                "鉄腕アトム"
+              ],
+              "audio": "audio/seg-108.mp3",
+              "quizSentence": "日本で最初のテレビアニメは1963年の「鉄腕アトム」だ。"
             },
             {
               "id": 109,
@@ -3926,8 +4145,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 图像质量，画面质量",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-109.mp3"
+              "blanks": [
+                "画質"
+              ],
+              "audio": "audio/seg-109.mp3",
+              "quizSentence": "漫画をアニメ化したものだが，その画質は今とは比べものにならないほど悪かった。"
             },
             {
               "id": 110,
@@ -3947,8 +4169,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 比较的事物",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-110.mp3"
+              "blanks": [
+                "比べもの"
+              ],
+              "audio": "audio/seg-110.mp3",
+              "quizSentence": "漫画をアニメ化したものだが，その画質は今とは比べものにならないほど悪かった。"
             },
             {
               "id": 111,
@@ -3965,8 +4190,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 数码技术，数字技术",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-111.mp3"
+              "blanks": [
+                "デジタル技術"
+              ],
+              "audio": "audio/seg-111.mp3",
+              "quizSentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。"
             },
             {
               "id": 112,
@@ -3979,8 +4207,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 栩栩如生，生动；生气勃勃",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-112.mp3"
+              "blanks": [
+                "いきいき"
+              ],
+              "audio": "audio/seg-112.mp3",
+              "quizSentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。"
             },
             {
               "id": 113,
@@ -4004,8 +4235,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 诞生，创作出，产生",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-113.mp3"
+              "blanks": [
+                "生み出して"
+              ],
+              "audio": "audio/seg-113.mp3",
+              "quizSentence": "この会社は次々に新しい製品を生み出している。"
             },
             {
               "id": 114,
@@ -4022,8 +4256,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 电视节目",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-114.mp3"
+              "blanks": [
+                "テレビ番組"
+              ],
+              "audio": "audio/seg-114.mp3",
+              "quizSentence": "「ドラえもん」「クレヨンしんちゃん」などの漫画も，テレビ番組用にアニメ化され，高視聴率を獲得した。"
             },
             {
               "id": 115,
@@ -4037,8 +4274,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 收视率",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-115.mp3"
+              "blanks": [
+                "視聴率"
+              ],
+              "audio": "audio/seg-115.mp3",
+              "quizSentence": "「ドラえもん」「クレヨンしんちゃん」などの漫画も，テレビ番組用にアニメ化され，高視聴率を獲得した。"
             },
             {
               "id": 116,
@@ -4055,8 +4295,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 获得",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-116.mp3"
+              "blanks": [
+                "獲得した"
+              ],
+              "audio": "audio/seg-116.mp3",
+              "quizSentence": "彼は大会で優勝を獲得した。"
             },
             {
               "id": 117,
@@ -4069,8 +4312,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 后来，不久；大约",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-117.mp3"
+              "blanks": [
+                "やがて"
+              ],
+              "audio": "audio/seg-117.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 118,
@@ -4084,8 +4330,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 尖端，先进",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-118.mp3"
+              "blanks": [
+                "先端"
+              ],
+              "audio": "audio/seg-118.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 119,
@@ -4099,8 +4348,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 电影院",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-119.mp3"
+              "blanks": [
+                "映画館"
+              ],
+              "audio": "audio/seg-119.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 120,
@@ -4113,8 +4365,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 屏幕，银幕，银屏",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-120.mp3"
+              "blanks": [
+                "スクリーン"
+              ],
+              "audio": "audio/seg-120.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 121,
@@ -4131,8 +4386,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 登场，出场",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-121.mp3"
+              "blanks": [
+                "登場する"
+              ],
+              "audio": "audio/seg-121.mp3",
+              "quizSentence": "新しいキャラクターが物語に登場する。"
             },
             {
               "id": 122,
@@ -4146,8 +4404,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 娱乐",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-122.mp3"
+              "blanks": [
+                "娯楽"
+              ],
+              "audio": "audio/seg-122.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 123,
@@ -4161,8 +4422,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 艺术",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-123.mp3"
+              "blanks": [
+                "芸術"
+              ],
+              "audio": "audio/seg-123.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 124,
@@ -4176,8 +4440,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 接二连三，接踵而来",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-124.mp3"
+              "blanks": [
+                "次々"
+              ],
+              "audio": "audio/seg-124.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 125,
@@ -4208,8 +4475,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 千与千寻",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-125.mp3"
+              "blanks": [
+                "千と千尋の神隠し"
+              ],
+              "audio": "audio/seg-125.mp3",
+              "quizSentence": "2001年に公開された「千と千尋の神隠し」は，その豊かな想像力と高い表現力が世界的にも高く評価された。"
             },
             {
               "id": 126,
@@ -4226,8 +4496,11 @@ window.LESSON_DATA = {
               ],
               "zh": "热衷，入迷，沉醉",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-126.mp3"
+              "blanks": [
+                "夢中になって"
+              ],
+              "audio": "audio/seg-126.mp3",
+              "quizSentence": "彼はゲームに夢中になっている。"
             },
             {
               "id": 127,
@@ -4247,8 +4520,11 @@ window.LESSON_DATA = {
               ],
               "zh": "不能相提并论，不可同日而语",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-127.mp3"
+              "blanks": [
+                "比べものにならない"
+              ],
+              "audio": "audio/seg-127.mp3",
+              "quizSentence": "漫画をアニメ化したものだが，その画質は今とは比べものにならないほど悪かった。"
             },
             {
               "id": 128,
@@ -4265,8 +4541,11 @@ window.LESSON_DATA = {
               ],
               "zh": "之后，其后",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-128.mp3"
+              "blanks": [
+                "その後"
+              ],
+              "audio": "audio/seg-128.mp3",
+              "quizSentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。"
             },
             {
               "id": 129,
@@ -4286,8 +4565,11 @@ window.LESSON_DATA = {
               ],
               "zh": "适合〜，面向〜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-129.mp3"
+              "blanks": [
+                "向け"
+              ],
+              "audio": "audio/seg-129.mp3",
+              "quizSentence": "日本の漫画は，子供向けから成人向けまで，対象の年代ごとにさまざまな種類がある。"
             },
             {
               "id": 130,
@@ -4304,8 +4586,11 @@ window.LESSON_DATA = {
               ],
               "zh": "高〜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-130.mp3"
+              "blanks": [
+                "高"
+              ],
+              "audio": "audio/seg-130.mp3",
+              "quizSentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。"
             },
             {
               "id": 131,
@@ -4322,8 +4607,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜率",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-131.mp3"
+              "blanks": [
+                "率"
+              ],
+              "audio": "audio/seg-131.mp3",
+              "quizSentence": "「ドラえもん」「クレヨンしんちゃん」などの漫画も，テレビ番組用にアニメ化され，高視聴率を獲得した。"
             },
             {
               "id": 132,
@@ -4340,8 +4628,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜性",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-132.mp3"
+              "blanks": [
+                "性"
+              ],
+              "audio": "audio/seg-132.mp3",
+              "quizSentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。"
             },
             {
               "id": 133,
@@ -4358,8 +4649,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜力",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-133.mp3"
+              "blanks": [
+                "力"
+              ],
+              "audio": "audio/seg-133.mp3",
+              "quizSentence": "2001年に公開された「千と千尋の神隠し」は，その豊かな想像力と高い表現力が世界的にも高く評価された。"
             }
           ]
         },
@@ -4386,8 +4680,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 追赶；紧接着，紧跟着",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-134.mp3"
+              "blanks": [
+                "追いかけて"
+              ],
+              "audio": "audio/seg-134.mp3",
+              "quizSentence": "犬が猫を追いかけている。"
             },
             {
               "id": 135,
@@ -4401,8 +4698,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 风景，景象；情景",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-135.mp3"
+              "blanks": [
+                "風景"
+              ],
+              "audio": "audio/seg-135.mp3",
+              "quizSentence": "山の上からの風景はとても美しい。"
             },
             {
               "id": 136,
@@ -4426,8 +4726,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 截止，期限，届满",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-136.mp3"
+              "blanks": [
+                "締め切り"
+              ],
+              "audio": "audio/seg-136.mp3",
+              "quizSentence": "レポートの締め切りは明日だ。"
             },
             {
               "id": 137,
@@ -4444,8 +4747,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 向，朝，对",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-137.mp3"
+              "blanks": [
+                "向けた"
+              ],
+              "audio": "audio/seg-137.mp3",
+              "quizSentence": "彼はカメラを空に向けた。"
             },
             {
               "id": 138,
@@ -4462,8 +4768,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 向，朝；适合，对路",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-138.mp3"
+              "blanks": [
+                "向いている"
+              ],
+              "audio": "audio/seg-138.mp3",
+              "quizSentence": "この仕事は彼に向いていると思う。"
             },
             {
               "id": 139,
@@ -4476,8 +4785,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 枕头",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-139.mp3"
+              "blanks": [
+                "まくら"
+              ],
+              "audio": "audio/seg-139.mp3",
+              "quizSentence": "まくらが高すぎて眠れない。"
             },
             {
               "id": 140,
@@ -4490,8 +4802,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 覆盖物，外皮，套子",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-140.mp3"
+              "blanks": [
+                "カバー"
+              ],
+              "audio": "audio/seg-140.mp3",
+              "quizSentence": "本にカバーをかけた。"
             },
             {
               "id": 141,
@@ -4511,8 +4826,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 相关，有关",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-141.mp3"
+              "blanks": [
+                "関連する"
+              ],
+              "audio": "audio/seg-141.mp3",
+              "quizSentence": "この二つの事件は関連するかもしれない。"
             },
             {
               "id": 142,
@@ -4529,8 +4847,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 手续",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-142.mp3"
+              "blanks": [
+                "手続き"
+              ],
+              "audio": "audio/seg-142.mp3",
+              "quizSentence": "入学の手続きを済ませた。"
             },
             {
               "id": 143,
@@ -4544,8 +4865,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 专业书",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-143.mp3"
+              "blanks": [
+                "専門書"
+              ],
+              "audio": "audio/seg-143.mp3",
+              "quizSentence": "図書館で専門書を借りた。"
             },
             {
               "id": 144,
@@ -4558,8 +4882,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 德国",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-144.mp3"
+              "blanks": [
+                "ドイツ"
+              ],
+              "audio": "audio/seg-144.mp3",
+              "quizSentence": "来年ドイツへ留学するつもりだ。"
             },
             {
               "id": 145,
@@ -4573,8 +4900,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 考察，视察",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-145.mp3"
+              "blanks": [
+                "視察した"
+              ],
+              "audio": "audio/seg-145.mp3",
+              "quizSentence": "市長は工場を視察した。"
             },
             {
               "id": 146,
@@ -4591,8 +4921,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 俄语",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-146.mp3"
+              "blanks": [
+                "ロシア語"
+              ],
+              "audio": "audio/seg-146.mp3",
+              "quizSentence": "彼女はロシア語を勉強している。"
             },
             {
               "id": 147,
@@ -4605,8 +4938,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[代] 那家伙，那小子",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-147.mp3"
+              "blanks": [
+                "あいつ"
+              ],
+              "audio": "audio/seg-147.mp3",
+              "quizSentence": "あいつはいつも遅刻する。"
             },
             {
               "id": 148,
@@ -4620,8 +4956,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 朋友，伙伴，同事",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-148.mp3"
+              "blanks": [
+                "仲間"
+              ],
+              "audio": "audio/seg-148.mp3",
+              "quizSentence": "彼らは大学時代からの仲間だ。"
             },
             {
               "id": 149,
@@ -4638,8 +4977,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 背叛，违背",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-149.mp3"
+              "blanks": [
+                "裏切る"
+              ],
+              "audio": "audio/seg-149.mp3",
+              "quizSentence": "彼は友人を裏切るような人ではない。"
             },
             {
               "id": 150,
@@ -4652,8 +4994,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[连] 而且，并且",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-150.mp3"
+              "blanks": [
+                "そのうえ"
+              ],
+              "audio": "audio/seg-150.mp3",
+              "quizSentence": "この店は安い。そのうえ、味もいい。"
             },
             {
               "id": 151,
@@ -4670,8 +5015,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 之后，其后",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-151.mp3"
+              "blanks": [
+                "その後"
+              ],
+              "audio": "audio/seg-151.mp3",
+              "quizSentence": "会議が終わって、その後食事に行った。"
             },
             {
               "id": 152,
@@ -4691,8 +5039,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 看见，看到",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-152.mp3"
+              "blanks": [
+                "見かけた"
+              ],
+              "audio": "audio/seg-152.mp3",
+              "quizSentence": "駅で昔の友人を見かけた。"
             },
             {
               "id": 153,
@@ -4706,8 +5057,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 公害",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-153.mp3"
+              "blanks": [
+                "公害"
+              ],
+              "audio": "audio/seg-153.mp3",
+              "quizSentence": "工場が原因で公害が発生した。"
             },
             {
               "id": 154,
@@ -4721,8 +5075,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 再发生；重新发作",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-154.mp3"
+              "blanks": [
+                "再発"
+              ],
+              "audio": "audio/seg-154.mp3",
+              "quizSentence": "病気の再発を防ぐために運動している。"
             },
             {
               "id": 155,
@@ -4736,8 +5093,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 表情",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-155.mp3"
+              "blanks": [
+                "表情"
+              ],
+              "audio": "audio/seg-155.mp3",
+              "quizSentence": "彼女は嬉しそうな表情を見せた。"
             },
             {
               "id": 156,
@@ -4758,8 +5118,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 树叶",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-156.mp3"
+              "blanks": [
+                "木の葉"
+              ],
+              "audio": "audio/seg-156.mp3",
+              "quizSentence": "秋になると木の葉が色づく。"
             },
             {
               "id": 157,
@@ -4773,8 +5136,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 水槽，注水槽",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-157.mp3"
+              "blanks": [
+                "水槽"
+              ],
+              "audio": "audio/seg-157.mp3",
+              "quizSentence": "水槽で魚を飼っている。"
             },
             {
               "id": 158,
@@ -4788,8 +5154,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 放映，上映",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-158.mp3"
+              "blanks": [
+                "上映"
+              ],
+              "audio": "audio/seg-158.mp3",
+              "quizSentence": "この映画は来週から上映される。"
             },
             {
               "id": 159,
@@ -4802,8 +5171,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 名牌，品牌，牌子",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-159.mp3"
+              "blanks": [
+                "ブランド"
+              ],
+              "audio": "audio/seg-159.mp3",
+              "quizSentence": "彼女は有名なブランドのバッグを持っている。"
             },
             {
               "id": 160,
@@ -4820,8 +5192,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 方便食品，速食",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-160.mp3"
+              "blanks": [
+                "インスタント食品"
+              ],
+              "audio": "audio/seg-160.mp3",
+              "quizSentence": "忙しい時はインスタント食品をよく食べる。"
             },
             {
               "id": 161,
@@ -4835,8 +5210,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 集中",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-161.mp3"
+              "blanks": [
+                "集中"
+              ],
+              "audio": "audio/seg-161.mp3",
+              "quizSentence": "勉強に集中したいので静かにしてください。"
             },
             {
               "id": 162,
@@ -4850,8 +5228,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 说服",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-162.mp3"
+              "blanks": [
+                "説得して"
+              ],
+              "audio": "audio/seg-162.mp3",
+              "quizSentence": "母を説得して旅行に行かせてもらった。"
             },
             {
               "id": 163,
@@ -4865,8 +5246,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 火力，火势",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-163.mp3"
+              "blanks": [
+                "火力"
+              ],
+              "audio": "audio/seg-163.mp3",
+              "quizSentence": "火力を強めて肉を焼いた。"
             },
             {
               "id": 164,
@@ -4880,8 +5264,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 人力",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-164.mp3"
+              "blanks": [
+                "人力"
+              ],
+              "audio": "audio/seg-164.mp3",
+              "quizSentence": "この作業はまだ人力に頼っている。"
             },
             {
               "id": 165,
@@ -4895,8 +5282,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 学力，学习实力",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-165.mp3"
+              "blanks": [
+                "学力"
+              ],
+              "audio": "audio/seg-165.mp3",
+              "quizSentence": "学力を伸ばすために毎日勉強している。"
             },
             {
               "id": 166,
@@ -4916,8 +5306,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 提高，抬高",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-166.mp3"
+              "blanks": [
+                "上げる"
+              ],
+              "audio": "audio/seg-166.mp3",
+              "quizSentence": "先生は彼の成績を上げるために特別指導をした。"
             },
             {
               "id": 167,
@@ -4937,8 +5330,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜适合",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-167.mp3"
+              "blanks": [
+                "向き"
+              ],
+              "audio": "audio/seg-167.mp3",
+              "quizSentence": "この仕事は初心者向きだ。"
             }
           ]
         },
@@ -4959,8 +5355,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 幼儿，婴儿",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-168.mp3"
+              "blanks": [
+                "幼児"
+              ],
+              "audio": "audio/seg-168.mp3",
+              "quizSentence": "この公園は幼児向けの遊具が多い。"
             },
             {
               "id": 169,
@@ -4974,8 +5373,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 科学家",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-169.mp3"
+              "blanks": [
+                "科学者"
+              ],
+              "audio": "audio/seg-169.mp3",
+              "quizSentence": "彼は世界的に有名な科学者だ。"
             },
             {
               "id": 170,
@@ -4989,8 +5391,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 行为，行动",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-170.mp3"
+              "blanks": [
+                "行動する"
+              ],
+              "audio": "audio/seg-170.mp3",
+              "quizSentence": "彼はいつも慎重に行動する。"
             },
             {
               "id": 171,
@@ -5004,8 +5409,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 玩笑，戏言，笑话",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-171.mp3"
+              "blanks": [
+                "冗談"
+              ],
+              "audio": "audio/seg-171.mp3",
+              "quizSentence": "それは冗談ですよね。"
             },
             {
               "id": 172,
@@ -5022,8 +5430,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 发，分发，散发",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-172.mp3"
+              "blanks": [
+                "配布した"
+              ],
+              "audio": "audio/seg-172.mp3",
+              "quizSentence": "先生はプリントを学生に配布した。"
             },
             {
               "id": 173,
@@ -5040,8 +5451,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 生存",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-173.mp3"
+              "blanks": [
+                "生存できる"
+              ],
+              "audio": "audio/seg-173.mp3",
+              "quizSentence": "この動物は極寒の地でも生存できる。"
             },
             {
               "id": 174,
@@ -5055,8 +5469,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 海水",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-174.mp3"
+              "blanks": [
+                "海水"
+              ],
+              "audio": "audio/seg-174.mp3",
+              "quizSentence": "海水を飲むことはできない。"
             },
             {
               "id": 175,
@@ -5069,8 +5486,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 矿物质",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-175.mp3"
+              "blanks": [
+                "ミネラル"
+              ],
+              "audio": "audio/seg-175.mp3",
+              "quizSentence": "この水にはミネラルが豊富に含まれている。"
             },
             {
               "id": 176,
@@ -5087,8 +5507,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[形1] 贫穷，穷苦",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-176.mp3"
+              "blanks": [
+                "貧しい"
+              ],
+              "audio": "audio/seg-176.mp3",
+              "quizSentence": "彼は貧しい家庭で育った。"
             },
             {
               "id": 177,
@@ -5102,8 +5525,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 土地",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-177.mp3"
+              "blanks": [
+                "土地"
+              ],
+              "audio": "audio/seg-177.mp3",
+              "quizSentence": "この土地は農業に向いている。"
             },
             {
               "id": 178,
@@ -5120,8 +5546,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 休闲用品，娱乐用品",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-178.mp3"
+              "blanks": [
+                "レジャー用品"
+              ],
+              "audio": "audio/seg-178.mp3",
+              "quizSentence": "夏になるとレジャー用品がよく売れる。"
             },
             {
               "id": 179,
@@ -5135,8 +5564,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 活力，生气，朝气",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-179.mp3"
+              "blanks": [
+                "活気"
+              ],
+              "audio": "audio/seg-179.mp3",
+              "quizSentence": "この商店街はいつも活気にあふれている。"
             }
           ]
         }

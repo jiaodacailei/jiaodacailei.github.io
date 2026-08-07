@@ -3852,8 +3852,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 到底，终于",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-055.mp3"
+              "blanks": [
+                "いよいよ"
+              ],
+              "audio": "audio/seg-055.mp3",
+              "quizSentence": "いよいよ明日帰国ですね。"
             },
             {
               "id": 56,
@@ -3867,8 +3870,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 方言，地方话",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-056.mp3"
+              "blanks": [
+                "方言"
+              ],
+              "audio": "audio/seg-056.mp3",
+              "quizSentence": "また中国語も1つではなく，かなりの数の方言が存在する。"
             },
             {
               "id": 57,
@@ -3882,8 +3888,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 繁华区，繁华街，商业区",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-057.mp3"
+              "blanks": [
+                "繁華街"
+              ],
+              "audio": "audio/seg-057.mp3",
+              "quizSentence": "繁華街の方に行かなかったせいかな。"
             },
             {
               "id": 58,
@@ -3896,8 +3905,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 南街（大阪市南部商业繁华区名称）",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-058.mp3"
+              "blanks": [
+                "ミナミ"
+              ],
+              "audio": "audio/seg-058.mp3",
+              "quizSentence": "今から，ミナミに飲みに行きませんか。"
             },
             {
               "id": 59,
@@ -3914,8 +3926,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 同行，一起去",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-059.mp3"
+              "blanks": [
+                "同行できない"
+              ],
+              "audio": "audio/seg-059.mp3",
+              "quizSentence": "あのう…，実は，来月の取材には，わたしは同行できないんです。"
             },
             {
               "id": 60,
@@ -3929,8 +3944,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 婚宴，喜宴",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-060.mp3"
+              "blanks": [
+                "披露宴"
+              ],
+              "audio": "audio/seg-060.mp3",
+              "quizSentence": "もしよかったら，披露宴に出てくれませんか。"
             },
             {
               "id": 61,
@@ -3947,8 +3965,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 高兴地，非常愿意地",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-061.mp3"
+              "blanks": [
+                "喜んで"
+              ],
+              "audio": "audio/seg-061.mp3",
+              "quizSentence": "では，喜んで出席させていただきます。"
             },
             {
               "id": 62,
@@ -3961,8 +3982,11 @@ window.LESSON_DATA = {
               ],
               "zh": "你的意思是，怎么说",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-062.mp3"
+              "blanks": [
+                "というと"
+              ],
+              "audio": "audio/seg-062.mp3",
+              "quizSentence": "というと？"
             },
             {
               "id": 63,
@@ -3975,8 +3999,11 @@ window.LESSON_DATA = {
               ],
               "zh": "谢谢，多谢（大阪方言）",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-063.mp3"
+              "blanks": [
+                "おおきに"
+              ],
+              "audio": "audio/seg-063.mp3",
+              "quizSentence": "いやあ，大阪だから，「おおきに」とか「あかん」とか，もっと大阪の方言が聞けると思っていたんですが，あまり耳にしませんでした。"
             },
             {
               "id": 64,
@@ -3989,8 +4016,11 @@ window.LESSON_DATA = {
               ],
               "zh": "不行，不可以（大阪方言）",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-064.mp3"
+              "blanks": [
+                "あかん"
+              ],
+              "audio": "audio/seg-064.mp3",
+              "quizSentence": "いやあ，大阪だから，「おおきに」とか「あかん」とか，もっと大阪の方言が聞けると思っていたんですが，あまり耳にしませんでした。"
             },
             {
               "id": 65,
@@ -4007,8 +4037,11 @@ window.LESSON_DATA = {
               ],
               "zh": "听到",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-065.mp3"
+              "blanks": [
+                "耳にしませんでした"
+              ],
+              "audio": "audio/seg-065.mp3",
+              "quizSentence": "いやあ，大阪だから，「おおきに」とか「あかん」とか，もっと大阪の方言が聞けると思っていたんですが，あまり耳にしませんでした。"
             },
             {
               "id": 66,
@@ -4021,8 +4054,11 @@ window.LESSON_DATA = {
               ],
               "zh": "有违您的好意，承蒙特意（邀请），却……",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-066.mp3"
+              "blanks": [
+                "せっかくですけれど"
+              ],
+              "audio": "audio/seg-066.mp3",
+              "quizSentence": "せっかくですけれど，今日は遠慮しておきます。"
             },
             {
               "id": 67,
@@ -4039,8 +4075,11 @@ window.LESSON_DATA = {
               ],
               "zh": "算了，不用了",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-067.mp3"
+              "blanks": [
+                "遠慮しておきます"
+              ],
+              "audio": "audio/seg-067.mp3",
+              "quizSentence": "せっかくですけれど，今日は遠慮しておきます。"
             },
             {
               "id": 68,
@@ -4053,8 +4092,11 @@ window.LESSON_DATA = {
               ],
               "zh": "恭贺，恭喜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-068.mp3"
+              "blanks": [
+                "おめでとうございます"
+              ],
+              "audio": "audio/seg-068.mp3",
+              "quizSentence": "それは，おめでとうございます。"
             },
             {
               "id": 69,
@@ -4068,8 +4110,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜方言，〜口音",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-069.mp3"
+              "blanks": [
+                "弁"
+              ],
+              "audio": "audio/seg-069.mp3",
+              "quizSentence": "大阪弁がたっぷり聞けますよ。"
             }
           ]
         },
@@ -4090,8 +4135,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 公用电话",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-070.mp3"
+              "blanks": [
+                "公衆電話"
+              ],
+              "audio": "audio/seg-070.mp3",
+              "quizSentence": "駅前に公衆電話があります。"
             },
             {
               "id": 71,
@@ -4105,8 +4153,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 雷",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-071.mp3"
+              "blanks": [
+                "雷"
+              ],
+              "audio": "audio/seg-071.mp3",
+              "quizSentence": "昨夜は雷がひどかったです。"
             },
             {
               "id": 72,
@@ -4130,8 +4181,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 挑剔；好恶",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-072.mp3"
+              "blanks": [
+                "好き嫌い"
+              ],
+              "audio": "audio/seg-072.mp3",
+              "quizSentence": "食べ物の好き嫌いが激しいです。"
             },
             {
               "id": 73,
@@ -4148,8 +4202,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 登山，爬山",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-073.mp3"
+              "blanks": [
+                "山登り"
+              ],
+              "audio": "audio/seg-073.mp3",
+              "quizSentence": "週末はよく山登りに行きます。"
             },
             {
               "id": 74,
@@ -4166,8 +4223,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 写，作，制作",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-074.mp3"
+              "blanks": [
+                "作成しました"
+              ],
+              "audio": "audio/seg-074.mp3",
+              "quizSentence": "会議の資料を作成しました。"
             },
             {
               "id": 75,
@@ -4184,8 +4244,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 宣布，公布，公开",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-075.mp3"
+              "blanks": [
+                "披露する"
+              ],
+              "audio": "audio/seg-075.mp3",
+              "quizSentence": "新しい商品を披露することになりました。"
             },
             {
               "id": 76,
@@ -4202,8 +4265,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 改变，变更，更改",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-076.mp3"
+              "blanks": [
+                "変更する"
+              ],
+              "audio": "audio/seg-076.mp3",
+              "quizSentence": "予定を変更することにしました。"
             },
             {
               "id": 77,
@@ -4220,8 +4286,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 再，重新",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-077.mp3"
+              "blanks": [
+                "改めて"
+              ],
+              "audio": "audio/seg-077.mp3",
+              "quizSentence": "改めてご連絡いたします。"
             },
             {
               "id": 78,
@@ -4235,8 +4304,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 身体状况，健康状态",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-078.mp3"
+              "blanks": [
+                "体調"
+              ],
+              "audio": "audio/seg-078.mp3",
+              "quizSentence": "最近、体調がよくありません。"
             },
             {
               "id": 79,
@@ -4253,8 +4325,11 @@ window.LESSON_DATA = {
               ],
               "zh": "看到，看见",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-079.mp3"
+              "blanks": [
+                "目にします"
+              ],
+              "audio": "audio/seg-079.mp3",
+              "quizSentence": "最近よく彼のニュースを目にします。"
             },
             {
               "id": 80,
@@ -4278,8 +4353,11 @@ window.LESSON_DATA = {
               ],
               "zh": "按您所说，如您所说",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-080.mp3"
+              "blanks": [
+                "お言葉に甘えて"
+              ],
+              "audio": "audio/seg-080.mp3",
+              "quizSentence": "お言葉に甘えて、遠慮なくいただきます。"
             }
           ]
         },
@@ -4300,8 +4378,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 伊豆",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-081.mp3"
+              "blanks": [
+                "伊豆"
+              ],
+              "audio": "audio/seg-081.mp3",
+              "quizSentence": "夏休みに伊豆へ旅行に行きました。"
             },
             {
               "id": 82,
@@ -4315,8 +4396,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 赛马",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-082.mp3"
+              "blanks": [
+                "競馬"
+              ],
+              "audio": "audio/seg-082.mp3",
+              "quizSentence": "父は競馬が好きです。"
             },
             {
               "id": 83,
@@ -4330,8 +4414,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 名作，杰作",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-083.mp3"
+              "blanks": [
+                "名作"
+              ],
+              "audio": "audio/seg-083.mp3",
+              "quizSentence": "これは映画史に残る名作です。"
             },
             {
               "id": 84,
@@ -4345,8 +4432,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] DVD机；数字光盘",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-084.mp3"
+              "blanks": [
+                "DVD"
+              ],
+              "audio": "audio/seg-084.mp3",
+              "quizSentence": "このDVDはとても面白いです。"
             },
             {
               "id": 85,
@@ -4360,8 +4450,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 村上春树",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-085.mp3"
+              "blanks": [
+                "村上春樹"
+              ],
+              "audio": "audio/seg-085.mp3",
+              "quizSentence": "村上春樹の小説を読んだことがありますか。"
             },
             {
               "id": 86,
@@ -4375,8 +4468,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 冷气设备，冷气空调",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-086.mp3"
+              "blanks": [
+                "冷房"
+              ],
+              "audio": "audio/seg-086.mp3",
+              "quizSentence": "夏は冷房をつけて寝ます。"
             },
             {
               "id": 87,
@@ -4390,8 +4486,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 入场，进场",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-087.mp3"
+              "blanks": [
+                "入場"
+              ],
+              "audio": "audio/seg-087.mp3",
+              "quizSentence": "入場は午後6時からです。"
             },
             {
               "id": 88,
@@ -4408,8 +4507,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 拒绝，谢绝；预先通知",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-088.mp3"
+              "blanks": [
+                "断りました"
+              ],
+              "audio": "audio/seg-088.mp3",
+              "quizSentence": "その誘いを断りました。"
             },
             {
               "id": 89,
@@ -4423,8 +4525,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 酷暑，炎热",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-089.mp3"
+              "blanks": [
+                "猛暑"
+              ],
+              "audio": "audio/seg-089.mp3",
+              "quizSentence": "今年の夏は猛暑が続いています。"
             },
             {
               "id": 90,
@@ -4441,8 +4546,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 不足，不够，短缺",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-090.mp3"
+              "blanks": [
+                "不足する"
+              ],
+              "audio": "audio/seg-090.mp3",
+              "quizSentence": "睡眠が不足すると体に悪いです。"
             },
             {
               "id": 91,
@@ -4456,8 +4564,11 @@ window.LESSON_DATA = {
               ],
               "zh": "有点〜，觉得〜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-091.mp3"
+              "blanks": [
+                "気味"
+              ],
+              "audio": "audio/seg-091.mp3",
+              "quizSentence": "最近、風邪気味です。"
             }
           ]
         },
@@ -4478,8 +4589,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 通用语，普通话",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-092.mp3"
+              "blanks": [
+                "共通語"
+              ],
+              "audio": "audio/seg-092.mp3",
+              "quizSentence": "共通語（東京方言）では，「箸」は「は」を高く，「し」を低く言う（①）。"
             },
             {
               "id": 93,
@@ -4493,8 +4607,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 民族；种族",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-093.mp3"
+              "blanks": [
+                "民族"
+              ],
+              "audio": "audio/seg-093.mp3",
+              "quizSentence": "この国にはさまざまな民族が住んでいます。"
             },
             {
               "id": 94,
@@ -4511,8 +4628,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 不一样，不同",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-094.mp3"
+              "blanks": [
+                "異なっている"
+              ],
+              "audio": "audio/seg-094.mp3",
+              "quizSentence": "中国は多民族国家で，民族によって使用する言語が異なっている。"
             },
             {
               "id": 95,
@@ -4526,8 +4646,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 语法",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-095.mp3"
+              "blanks": [
+                "文法"
+              ],
+              "audio": "audio/seg-095.mp3",
+              "quizSentence": "それぞれの方言は発音も文法も語彙も大きく違っている。"
             },
             {
               "id": 96,
@@ -4540,8 +4663,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 声调，重音",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-096.mp3"
+              "blanks": [
+                "アクセント"
+              ],
+              "audio": "audio/seg-096.mp3",
+              "quizSentence": "まず，発音やアクセントの違いがある。"
             },
             {
               "id": 97,
@@ -4555,8 +4681,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 关西",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-097.mp3"
+              "blanks": [
+                "関西"
+              ],
+              "audio": "audio/seg-097.mp3",
+              "quizSentence": "一方，京都など関西地方では，「箸」は「はし（②）」，「橋」のほうは「はし（①）」と発音する。"
             },
             {
               "id": 98,
@@ -4570,8 +4699,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 误解，误会",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-098.mp3"
+              "blanks": [
+                "誤解"
+              ],
+              "audio": "audio/seg-098.mp3",
+              "quizSentence": "方言の違いによってこんな誤解が起きることもある。"
             },
             {
               "id": 99,
@@ -4588,8 +4720,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 投，扔，掷",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-099.mp3"
+              "blanks": [
+                "投げる"
+              ],
+              "audio": "audio/seg-099.mp3",
+              "quizSentence": "これは「捨てる」という意味だが，方言を知らない人が「これをなげて」と言われて，「投げる」だと解釈して，ごみを投げ返して怒られたという話がある。"
             },
             {
               "id": 100,
@@ -4606,8 +4741,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 解释，说明",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-100.mp3"
+              "blanks": [
+                "解釈して"
+              ],
+              "audio": "audio/seg-100.mp3",
+              "quizSentence": "これは「捨てる」という意味だが，方言を知らない人が「これをなげて」と言われて，「投げる」だと解釈して，ごみを投げ返して怒られたという話がある。"
             },
             {
               "id": 101,
@@ -4631,8 +4769,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 扔回去，投回去",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-101.mp3"
+              "blanks": [
+                "投げ返して"
+              ],
+              "audio": "audio/seg-101.mp3",
+              "quizSentence": "これは「捨てる」という意味だが，方言を知らない人が「これをなげて」と言われて，「投げる」だと解釈して，ごみを投げ返して怒られたという話がある。"
             },
             {
               "id": 102,
@@ -4649,8 +4790,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 保管，管理",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-102.mp3"
+              "blanks": [
+                "保管してしまった"
+              ],
+              "audio": "audio/seg-102.mp3",
+              "quizSentence": "やはり「捨てる」という意味だが，これを「保管して」と聞き間違えて，要らないものを大切に保管してしまったという話もある。"
             },
             {
               "id": 103,
@@ -4664,8 +4808,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 听错，误听",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-103.mp3"
+              "blanks": [
+                "聞き間違えて"
+              ],
+              "audio": "audio/seg-103.mp3",
+              "quizSentence": "やはり「捨てる」という意味だが，これを「保管して」と聞き間違えて，要らないものを大切に保管してしまったという話もある。"
             },
             {
               "id": 104,
@@ -4682,8 +4829,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 渗透，渗入",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-104.mp3"
+              "blanks": [
+                "浸透している"
+              ],
+              "audio": "audio/seg-104.mp3",
+              "quizSentence": "現在では，ラジオやテレビでは東京の言葉を基本にした共通語が使われ，地方の日常生活にも共通語が浸透している。"
             },
             {
               "id": 105,
@@ -4697,8 +4847,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜方言，〜方言",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-105.mp3"
+              "blanks": [
+                "方言"
+              ],
+              "audio": "audio/seg-105.mp3",
+              "quizSentence": "共通語（東京方言）では，「箸」は「は」を高く，「し」を低く言う（①）。"
             },
             {
               "id": 106,
@@ -4712,8 +4865,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜地方，〜地区",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-106.mp3"
+              "blanks": [
+                "地方"
+              ],
+              "audio": "audio/seg-106.mp3",
+              "quizSentence": "一方，京都など関西地方では，「箸」は「はし（②）」，「橋」のほうは「はし（①）」と発音する。"
             }
           ]
         },
@@ -4737,8 +4893,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 独立",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-107.mp3"
+              "blanks": [
+                "独立しました"
+              ],
+              "audio": "audio/seg-107.mp3",
+              "quizSentence": "彼は去年、会社から独立しました。"
             },
             {
               "id": 108,
@@ -4755,8 +4914,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 陈述，叙述，说明",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-108.mp3"
+              "blanks": [
+                "述べて"
+              ],
+              "audio": "audio/seg-108.mp3",
+              "quizSentence": "自分の意見を述べてください。"
             },
             {
               "id": 109,
@@ -4770,8 +4932,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 当日，当天",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-109.mp3"
+              "blanks": [
+                "当日"
+              ],
+              "audio": "audio/seg-109.mp3",
+              "quizSentence": "当日は9時に集合してください。"
             },
             {
               "id": 110,
@@ -4785,8 +4950,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 应酬，接待",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-110.mp3"
+              "blanks": [
+                "応対"
+              ],
+              "audio": "audio/seg-110.mp3",
+              "quizSentence": "電話の応対はとても丁寧でした。"
             },
             {
               "id": 111,
@@ -4800,8 +4968,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 机场",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-111.mp3"
+              "blanks": [
+                "飛行場"
+              ],
+              "audio": "audio/seg-111.mp3",
+              "quizSentence": "飛行場まで迎えに行きます。"
             },
             {
               "id": 112,
@@ -4818,8 +4989,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 志愿者活动",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-112.mp3"
+              "blanks": [
+                "ボランティア活動"
+              ],
+              "audio": "audio/seg-112.mp3",
+              "quizSentence": "学生時代、よくボランティア活動に参加しました。"
             },
             {
               "id": 113,
@@ -4833,8 +5007,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 贝壳",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-113.mp3"
+              "blanks": [
+                "貝殻"
+              ],
+              "audio": "audio/seg-113.mp3",
+              "quizSentence": "浜辺で貝殻を拾いました。"
             },
             {
               "id": 114,
@@ -4848,8 +5025,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 长野县",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-114.mp3"
+              "blanks": [
+                "長野県"
+              ],
+              "audio": "audio/seg-114.mp3",
+              "quizSentence": "長野県は自然が豊かです。"
             },
             {
               "id": 115,
@@ -4863,8 +5043,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] （日本的）近畿地区",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-115.mp3"
+              "blanks": [
+                "近畿"
+              ],
+              "audio": "audio/seg-115.mp3",
+              "quizSentence": "近畿地方には大阪や京都があります。"
             },
             {
               "id": 116,
@@ -4878,8 +5061,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] （日本的）中部地区",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-116.mp3"
+              "blanks": [
+                "中部"
+              ],
+              "audio": "audio/seg-116.mp3",
+              "quizSentence": "中部地方には名古屋があります。"
             },
             {
               "id": 117,
@@ -4893,8 +5079,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] （日本的）中国地区",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-117.mp3"
+              "blanks": [
+                "中国"
+              ],
+              "audio": "audio/seg-117.mp3",
+              "quizSentence": "日本の中国地方には広島や岡山があります。"
             },
             {
               "id": 118,
@@ -4908,8 +5097,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] （日本的）四国地区",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-118.mp3"
+              "blanks": [
+                "四国"
+              ],
+              "audio": "audio/seg-118.mp3",
+              "quizSentence": "四国には香川や愛媛があります。"
             },
             {
               "id": 119,
@@ -4926,8 +5118,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 后悔",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-119.mp3"
+              "blanks": [
+                "後悔しています"
+              ],
+              "audio": "audio/seg-119.mp3",
+              "quizSentence": "あのとき言わなくて後悔しています。"
             },
             {
               "id": 120,
@@ -4951,8 +5146,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 写错",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-120.mp3"
+              "blanks": [
+                "書き間違えました"
+              ],
+              "audio": "audio/seg-120.mp3",
+              "quizSentence": "急いでいたので、名前を書き間違えました。"
             },
             {
               "id": 121,
@@ -4976,8 +5174,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 说错",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-121.mp3"
+              "blanks": [
+                "言い間違えました"
+              ],
+              "audio": "audio/seg-121.mp3",
+              "quizSentence": "緊張して、名前を言い間違えました。"
             },
             {
               "id": 122,
@@ -5001,8 +5202,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 顶嘴；反复说",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-122.mp3"
+              "blanks": [
+                "言い返しました"
+              ],
+              "audio": "audio/seg-122.mp3",
+              "quizSentence": "彼は先生に言い返しました。"
             },
             {
               "id": 123,
@@ -5026,8 +5230,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 反问；反复问",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-123.mp3"
+              "blanks": [
+                "聞き返しました"
+              ],
+              "audio": "audio/seg-123.mp3",
+              "quizSentence": "よく聞こえなかったので、聞き返しました。"
             },
             {
               "id": 124,
@@ -5051,8 +5258,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 回想，反省；再考虑一遍，重新考虑",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-124.mp3"
+              "blanks": [
+                "思い返す"
+              ],
+              "audio": "audio/seg-124.mp3",
+              "quizSentence": "あのときのことを思い返すと、恥ずかしいです。"
             },
             {
               "id": 125,
@@ -5066,8 +5276,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 宿舍长",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-125.mp3"
+              "blanks": [
+                "寮長"
+              ],
+              "audio": "audio/seg-125.mp3",
+              "quizSentence": "彼は寮長を務めています。"
             },
             {
               "id": 126,
@@ -5081,8 +5294,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 关门时间",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-126.mp3"
+              "blanks": [
+                "門限"
+              ],
+              "audio": "audio/seg-126.mp3",
+              "quizSentence": "この寮の門限は10時です。"
             },
             {
               "id": 127,
@@ -5096,8 +5312,11 @@ window.LESSON_DATA = {
               ],
               "zh": "第〜题，第〜个问题",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-127.mp3"
+              "blanks": [
+                "問目"
+              ],
+              "audio": "audio/seg-127.mp3",
+              "quizSentence": "これは3問目の質問です。"
             },
             {
               "id": 128,
@@ -5110,8 +5329,11 @@ window.LESSON_DATA = {
               ],
               "zh": "各处，到处",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-128.mp3"
+              "blanks": [
+                "あちらこちら"
+              ],
+              "audio": "audio/seg-128.mp3",
+              "quizSentence": "あちらこちら探しましたが、見つかりませんでした。"
             }
           ]
         },
@@ -5132,8 +5354,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 国籍",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-129.mp3"
+              "blanks": [
+                "国籍"
+              ],
+              "audio": "audio/seg-129.mp3",
+              "quizSentence": "彼の国籍はどこですか。"
             },
             {
               "id": 130,
@@ -5147,8 +5372,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 教育",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-130.mp3"
+              "blanks": [
+                "教育"
+              ],
+              "audio": "audio/seg-130.mp3",
+              "quizSentence": "子供の教育に力を入れています。"
             },
             {
               "id": 131,
@@ -5162,8 +5390,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 教材",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-131.mp3"
+              "blanks": [
+                "教材"
+              ],
+              "audio": "audio/seg-131.mp3",
+              "quizSentence": "この教材はとても分かりやすいです。"
             },
             {
               "id": 132,
@@ -5177,8 +5408,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 高中",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-132.mp3"
+              "blanks": [
+                "高等学校"
+              ],
+              "audio": "audio/seg-132.mp3",
+              "quizSentence": "彼は高等学校の教師です。"
             },
             {
               "id": 133,
@@ -5192,8 +5426,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 进入，打入，挤进",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-133.mp3"
+              "blanks": [
+                "進出しました"
+              ],
+              "audio": "audio/seg-133.mp3",
+              "quizSentence": "その会社は海外市場に進出しました。"
             },
             {
               "id": 134,
@@ -5207,8 +5444,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 加强，强化",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-134.mp3"
+              "blanks": [
+                "強化する"
+              ],
+              "audio": "audio/seg-134.mp3",
+              "quizSentence": "セキュリティを強化する必要があります。"
             },
             {
               "id": 135,
@@ -5222,8 +5462,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 题目，课题",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-135.mp3"
+              "blanks": [
+                "課題"
+              ],
+              "audio": "audio/seg-135.mp3",
+              "quizSentence": "今日の課題を終わらせました。"
             },
             {
               "id": 136,
@@ -5244,8 +5487,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 我国",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-136.mp3"
+              "blanks": [
+                "我が国"
+              ],
+              "audio": "audio/seg-136.mp3",
+              "quizSentence": "我が国の経済は成長しています。"
             },
             {
               "id": 137,
@@ -5258,8 +5504,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 页，页码",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-137.mp3"
+              "blanks": [
+                "ページ"
+              ],
+              "audio": "audio/seg-137.mp3",
+              "quizSentence": "このページを見てください。"
             },
             {
               "id": 138,
@@ -5276,8 +5525,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 登记，注册",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-138.mp3"
+              "blanks": [
+                "登録する"
+              ],
+              "audio": "audio/seg-138.mp3",
+              "quizSentence": "このサイトに登録する必要があります。"
             },
             {
               "id": 139,
@@ -5291,8 +5543,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 污染",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-139.mp3"
+              "blanks": [
+                "汚染"
+              ],
+              "audio": "audio/seg-139.mp3",
+              "quizSentence": "大気汚染が深刻になっています。"
             },
             {
               "id": 140,
@@ -5306,8 +5561,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 渔业，水产业",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-140.mp3"
+              "blanks": [
+                "漁業"
+              ],
+              "audio": "audio/seg-140.mp3",
+              "quizSentence": "この町は漁業が盛んです。"
             },
             {
               "id": 141,
@@ -5324,8 +5582,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 支付，付款",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-141.mp3"
+              "blanks": [
+                "支払いました"
+              ],
+              "audio": "audio/seg-141.mp3",
+              "quizSentence": "代金を支払いました。"
             },
             {
               "id": 142,
@@ -5349,8 +5610,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 取消，作废，撤销",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-142.mp3"
+              "blanks": [
+                "取り消しました"
+              ],
+              "audio": "audio/seg-142.mp3",
+              "quizSentence": "予約を取り消しました。"
             },
             {
               "id": 143,
@@ -5374,8 +5638,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 约会，碰头",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-143.mp3"
+              "blanks": [
+                "待ち合わせましょう"
+              ],
+              "audio": "audio/seg-143.mp3",
+              "quizSentence": "駅前で待ち合わせましょう。"
             },
             {
               "id": 144,
@@ -5389,8 +5656,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜以内",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-144.mp3"
+              "blanks": [
+                "以内"
+              ],
+              "audio": "audio/seg-144.mp3",
+              "quizSentence": "1時間以内に戻ります。"
             }
           ]
         }

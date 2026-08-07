@@ -2723,8 +2723,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 日程，日程表",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-036.mp3"
+              "blanks": [
+                "スケジュール"
+              ],
+              "audio": "audio/seg-036.mp3",
+              "quizSentence": "こちらこそ、お世話になります。スケジュール表、ありがとうございます。"
             },
             {
               "id": 37,
@@ -2737,8 +2740,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[形2] (日程)紧密，紧张；困难；硬，坚固",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-037.mp3"
+              "blanks": [
+                "ハード"
+              ],
+              "audio": "audio/seg-037.mp3",
+              "quizSentence": "滞在期間中に、できるだけたくさんの取材ができるよう予定を立てました。ちょっとハード過ぎますか。"
             },
             {
               "id": 38,
@@ -2751,8 +2757,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[形1] 没有的事儿，哪里的话",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-038.mp3"
+              "blanks": [
+                "とんでもない"
+              ],
+              "audio": "audio/seg-038.mp3",
+              "quizSentence": "「手伝ってくれてありがとうございます」「いいえ、とんでもないです」"
             },
             {
               "id": 39,
@@ -2765,8 +2774,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 时装，时尚，流行",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-039.mp3"
+              "blanks": [
+                "ファッション"
+              ],
+              "audio": "audio/seg-039.mp3",
+              "quizSentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。"
             },
             {
               "id": 40,
@@ -2780,8 +2792,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 观光胜地，旅游胜地",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-040.mp3"
+              "blanks": [
+                "観光地"
+              ],
+              "audio": "audio/seg-040.mp3",
+              "quizSentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。"
             },
             {
               "id": 41,
@@ -2798,8 +2813,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 包含，算上",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-041.mp3"
+              "blanks": [
+                "入れて"
+              ],
+              "audio": "audio/seg-041.mp3",
+              "quizSentence": "それから、水曜日だけは予定を入れていません。もしよかったら、その日、有馬温泉に寄ってみませんか。"
             },
             {
               "id": 42,
@@ -2813,8 +2831,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 有马温泉",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-042.mp3"
+              "blanks": [
+                "有馬温泉"
+              ],
+              "audio": "audio/seg-042.mp3",
+              "quizSentence": "それから、水曜日だけは予定を入れていません。もしよかったら、その日、有馬温泉に寄ってみませんか。"
             },
             {
               "id": 43,
@@ -2827,8 +2848,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 放松，轻松；悠闲自在，悠然自得",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-043.mp3"
+              "blanks": [
+                "のんびり"
+              ],
+              "audio": "audio/seg-043.mp3",
+              "quizSentence": "ええ。1日くらいのんびりしたほうがいいと思って…。"
             },
             {
               "id": 44,
@@ -2842,8 +2866,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 老板娘，女主人，女掌柜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-044.mp3"
+              "blanks": [
+                "女将"
+              ],
+              "audio": "audio/seg-044.mp3",
+              "quizSentence": "旅館に着くと、女将が出迎えてくれた。"
             },
             {
               "id": 45,
@@ -2863,8 +2890,11 @@ window.LESSON_DATA = {
               ],
               "zh": "承蒙关照",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-045.mp3"
+              "blanks": [
+                "お世話になります"
+              ],
+              "audio": "audio/seg-045.mp3",
+              "quizSentence": "こちらこそ、お世話になります。スケジュール表、ありがとうございます。"
             },
             {
               "id": 46,
@@ -2877,8 +2907,11 @@ window.LESSON_DATA = {
               ],
               "zh": "没有的事儿，哪儿的话",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-046.mp3"
+              "blanks": [
+                "とんでもありません"
+              ],
+              "audio": "audio/seg-046.mp3",
+              "quizSentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。"
             },
             {
               "id": 47,
@@ -2895,8 +2928,11 @@ window.LESSON_DATA = {
               ],
               "zh": "感兴趣",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-047.mp3"
+              "blanks": [
+                "関心のある"
+              ],
+              "audio": "audio/seg-047.mp3",
+              "quizSentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。"
             },
             {
               "id": 48,
@@ -2913,8 +2949,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜位，〜名",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-048.mp3"
+              "blanks": [
+                "名様"
+              ],
+              "audio": "audio/seg-048.mp3",
+              "quizSentence": "はい、20日の水曜日、2名様で、ご1泊ですね。少々お待ちくださいませ。"
             },
             {
               "id": 49,
@@ -2931,8 +2970,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜餐",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-049.mp3"
+              "blanks": [
+                "食"
+              ],
+              "audio": "audio/seg-049.mp3",
+              "quizSentence": "はい、ご用意できます。1泊2食付きで、お一人様16,000円になりますが、よろしいですか。"
             },
             {
               "id": 50,
@@ -2952,8 +2994,11 @@ window.LESSON_DATA = {
               ],
               "zh": "帯〜，附送〜",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-050.mp3"
+              "blanks": [
+                "付き"
+              ],
+              "audio": "audio/seg-050.mp3",
+              "quizSentence": "はい、ご用意できます。1泊2食付きで、お一人様16,000円になりますが、よろしいですか。"
             }
           ]
         },
@@ -2974,8 +3019,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 房间已满，无空房间，满员",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-051.mp3"
+              "blanks": [
+                "満室"
+              ],
+              "audio": "audio/seg-051.mp3",
+              "quizSentence": "人気のホテルなので、週末はいつも満室だ。"
             },
             {
               "id": 52,
@@ -2989,8 +3037,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[形2] 静养，安静",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-052.mp3"
+              "blanks": [
+                "安静"
+              ],
+              "audio": "audio/seg-052.mp3",
+              "quizSentence": "医者に安静にするよう言われた。"
             },
             {
               "id": 53,
@@ -3003,8 +3054,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 围裙",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-053.mp3"
+              "blanks": [
+                "エプロン"
+              ],
+              "audio": "audio/seg-053.mp3",
+              "quizSentence": "母は料理をするとき、いつもエプロンをつける。"
             },
             {
               "id": 54,
@@ -3021,8 +3075,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 扫除，清扫",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-054.mp3"
+              "blanks": [
+                "清掃する"
+              ],
+              "audio": "audio/seg-054.mp3",
+              "quizSentence": "毎朝、社員が交代でオフィスを清掃する。"
             },
             {
               "id": 55,
@@ -3039,8 +3096,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 计划，安排，编制，编排",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-055.mp3"
+              "blanks": [
+                "組んで"
+              ],
+              "audio": "audio/seg-055.mp3",
+              "quizSentence": "来月の出張のスケジュールを組んでおいた。"
             },
             {
               "id": 56,
@@ -3053,8 +3113,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 偶然，碰巧",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-056.mp3"
+              "blanks": [
+                "たまたま"
+              ],
+              "audio": "audio/seg-056.mp3",
+              "quizSentence": "駅でたまたま昔の同僚に会った。"
             },
             {
               "id": 57,
@@ -3068,8 +3131,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 一次，一遍，一度",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-057.mp3"
+              "blanks": [
+                "一度"
+              ],
+              "audio": "audio/seg-057.mp3",
+              "quizSentence": "この本は一度読んだことがある。"
             },
             {
               "id": 58,
@@ -3086,8 +3152,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 来(我)公司",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-058.mp3"
+              "blanks": [
+                "来社する"
+              ],
+              "audio": "audio/seg-058.mp3",
+              "quizSentence": "明日、取引先の方が来社する予定だ。"
             },
             {
               "id": 59,
@@ -3104,8 +3173,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 合作，协作，配合",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-059.mp3"
+              "blanks": [
+                "協力する"
+              ],
+              "audio": "audio/seg-059.mp3",
+              "quizSentence": "このプロジェクトは全員が協力することで成功した。"
             },
             {
               "id": 60,
@@ -3119,8 +3191,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 瓶，坛，罐，缸",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-060.mp3"
+              "blanks": [
+                "壷"
+              ],
+              "audio": "audio/seg-060.mp3",
+              "quizSentence": "台所の棚に古い壷が置いてある。"
             },
             {
               "id": 61,
@@ -3137,8 +3212,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 试穿",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-061.mp3"
+              "blanks": [
+                "試着する"
+              ],
+              "audio": "audio/seg-061.mp3",
+              "quizSentence": "買う前に必ず試着することにしている。"
             },
             {
               "id": 62,
@@ -3168,8 +3246,11 @@ window.LESSON_DATA = {
               ],
               "zh": "恭〜，敬〜(自谦)",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-062.mp3"
+              "blanks": [
+                "申し上げます"
+              ],
+              "audio": "audio/seg-062.mp3",
+              "quizSentence": "この度はご来社いただき、心より御礼申し上げます。"
             },
             {
               "id": 63,
@@ -3183,8 +3264,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[专] 札幌",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-063.mp3"
+              "blanks": [
+                "札幌"
+              ],
+              "audio": "audio/seg-063.mp3",
+              "quizSentence": "来月、出張で札幌へ行くことになった。"
             },
             {
               "id": 64,
@@ -3198,8 +3282,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 单程",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-064.mp3"
+              "blanks": [
+                "片道"
+              ],
+              "audio": "audio/seg-064.mp3",
+              "quizSentence": "家から会社まで、片道1時間かかる。"
             },
             {
               "id": 65,
@@ -3213,8 +3300,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 光，光亮，光线",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-065.mp3"
+              "blanks": [
+                "光"
+              ],
+              "audio": "audio/seg-065.mp3",
+              "quizSentence": "窓から朝の光が差し込んでいる。"
             },
             {
               "id": 66,
@@ -3231,8 +3321,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 发信号，递暗号",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-066.mp3"
+              "blanks": [
+                "合図して"
+              ],
+              "audio": "audio/seg-066.mp3",
+              "quizSentence": "出発の準備ができたら、手を上げて合図してください。"
             },
             {
               "id": 67,
@@ -3246,8 +3339,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 算数",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-067.mp3"
+              "blanks": [
+                "算数"
+              ],
+              "audio": "audio/seg-067.mp3",
+              "quizSentence": "弟は算数のテストで満点を取った。"
             },
             {
               "id": 68,
@@ -3264,8 +3360,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 解，解答，解明",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-068.mp3"
+              "blanks": [
+                "解く"
+              ],
+              "audio": "audio/seg-068.mp3",
+              "quizSentence": "この問題を解くのに30分もかかった。"
             },
             {
               "id": 69,
@@ -3279,8 +3378,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 表示，指示，表明",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-069.mp3"
+              "blanks": [
+                "表示"
+              ],
+              "audio": "audio/seg-069.mp3",
+              "quizSentence": "商品には必ず価格を表示しなければならない。"
             },
             {
               "id": 70,
@@ -3297,8 +3399,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 罗马字",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-070.mp3"
+              "blanks": [
+                "ローマ字"
+              ],
+              "audio": "audio/seg-070.mp3",
+              "quizSentence": "名前をローマ字で書いてください。"
             },
             {
               "id": 71,
@@ -3312,8 +3417,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 满足，满意",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-071.mp3"
+              "blanks": [
+                "満足"
+              ],
+              "audio": "audio/seg-071.mp3",
+              "quizSentence": "今の生活に満足している。"
             }
           ]
         },
@@ -3334,8 +3442,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 大国，强国",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-072.mp3"
+              "blanks": [
+                "大国"
+              ],
+              "audio": "audio/seg-072.mp3",
+              "quizSentence": "日本は経済大国の一つだ。"
             },
             {
               "id": 73,
@@ -3349,8 +3460,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 全国",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-073.mp3"
+              "blanks": [
+                "全国"
+              ],
+              "audio": "audio/seg-073.mp3",
+              "quizSentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。"
             },
             {
               "id": 74,
@@ -3364,8 +3478,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 温泉胜地",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-074.mp3"
+              "blanks": [
+                "温泉地"
+              ],
+              "audio": "audio/seg-074.mp3",
+              "quizSentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。"
             },
             {
               "id": 75,
@@ -3382,8 +3499,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 总计，共计",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-075.mp3"
+              "blanks": [
+                "延べ"
+              ],
+              "audio": "audio/seg-075.mp3",
+              "quizSentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。"
             },
             {
               "id": 76,
@@ -3397,8 +3517,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 地下，地里",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-076.mp3"
+              "blanks": [
+                "地中"
+              ],
+              "audio": "audio/seg-076.mp3",
+              "quizSentence": "温泉といえば、地中から湧き出る温かいお湯のことだと思っている人も多い。"
             },
             {
               "id": 77,
@@ -3422,8 +3545,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 喷涌，喷出，涌出",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-077.mp3"
+              "blanks": [
+                "湧き出る"
+              ],
+              "audio": "audio/seg-077.mp3",
+              "quizSentence": "温泉といえば、地中から湧き出る温かいお湯のことだと思っている人も多い。"
             },
             {
               "id": 78,
@@ -3437,8 +3563,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 特定，规定",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-078.mp3"
+              "blanks": [
+                "規定"
+              ],
+              "audio": "audio/seg-078.mp3",
+              "quizSentence": "しかし、冷たい水でも、規定の成分を含んでいれば温泉という。"
             },
             {
               "id": 79,
@@ -3455,8 +3584,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 包含，含有",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-079.mp3"
+              "blanks": [
+                "含んで"
+              ],
+              "audio": "audio/seg-079.mp3",
+              "quizSentence": "しかし、冷たい水でも、規定の成分を含んでいれば温泉という。"
             },
             {
               "id": 80,
@@ -3470,8 +3602,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[形2] 透明",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-080.mp3"
+              "blanks": [
+                "透明"
+              ],
+              "audio": "audio/seg-080.mp3",
+              "quizSentence": "温泉の色は、透明なものから白く濁ったものや青色をしたものまでさまざまである。"
             },
             {
               "id": 81,
@@ -3488,8 +3623,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 混浊，污浊",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-081.mp3"
+              "blanks": [
+                "濁った"
+              ],
+              "audio": "audio/seg-081.mp3",
+              "quizSentence": "温泉の色は、透明なものから白く濁ったものや青色をしたものまでさまざまである。"
             },
             {
               "id": 82,
@@ -3503,8 +3641,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 神经痛",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-082.mp3"
+              "blanks": [
+                "神経痛"
+              ],
+              "audio": "audio/seg-082.mp3",
+              "quizSentence": "また、成分の違いによって、神経痛や皮膚病、高血圧などいろいろな病気に効くといわれている。"
             },
             {
               "id": 83,
@@ -3518,8 +3659,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 皮肤病",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-083.mp3"
+              "blanks": [
+                "皮膚病"
+              ],
+              "audio": "audio/seg-083.mp3",
+              "quizSentence": "また、成分の違いによって、神経痛や皮膚病、高血圧などいろいろな病気に効くといわれている。"
             },
             {
               "id": 84,
@@ -3533,8 +3677,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 高血压",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-084.mp3"
+              "blanks": [
+                "高血圧"
+              ],
+              "audio": "audio/seg-084.mp3",
+              "quizSentence": "また、成分の違いによって、神経痛や皮膚病、高血圧などいろいろな病気に効くといわれている。"
             },
             {
               "id": 85,
@@ -3548,8 +3695,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 治疗",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-085.mp3"
+              "blanks": [
+                "治療"
+              ],
+              "audio": "audio/seg-085.mp3",
+              "quizSentence": "かつて、温泉は病気やけがの治療に使われていた。"
             },
             {
               "id": 86,
@@ -3566,8 +3716,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 换，改变",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-086.mp3"
+              "blanks": [
+                "変えて"
+              ],
+              "audio": "audio/seg-086.mp3",
+              "quizSentence": "今は、環境を変えてのんびりするために利用する人がほとんどだ。"
             },
             {
               "id": 87,
@@ -3581,8 +3734,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 露天浴池",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-087.mp3"
+              "blanks": [
+                "露天風呂"
+              ],
+              "audio": "audio/seg-087.mp3",
+              "quizSentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。"
             },
             {
               "id": 88,
@@ -3595,8 +3751,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[形2] 满……，充分，足够",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-088.mp3"
+              "blanks": [
+                "たっぷり"
+              ],
+              "audio": "audio/seg-088.mp3",
+              "quizSentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。"
             },
             {
               "id": 89,
@@ -3609,8 +3768,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 浸泡，泡澡",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-089.mp3"
+              "blanks": [
+                "つかった"
+              ],
+              "audio": "audio/seg-089.mp3",
+              "quizSentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。"
             },
             {
               "id": 90,
@@ -3623,8 +3785,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 放松，松弛；轻松",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-090.mp3"
+              "blanks": [
+                "リラックス"
+              ],
+              "audio": "audio/seg-090.mp3",
+              "quizSentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。"
             },
             {
               "id": 91,
@@ -3641,8 +3806,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动2] 招徕，吸引",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-091.mp3"
+              "blanks": [
+                "集める"
+              ],
+              "audio": "audio/seg-091.mp3",
+              "quizSentence": "温泉地では、お客を集めるための工夫をしている。"
             },
             {
               "id": 92,
@@ -3659,8 +3827,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 住宿，投宿",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-092.mp3"
+              "blanks": [
+                "宿泊する"
+              ],
+              "audio": "audio/seg-092.mp3",
+              "quizSentence": "例えば、宿泊する人以外がホテルや旅館の入浴施設を有料で使用できる「日帰り温泉」がある。"
             },
             {
               "id": 93,
@@ -3674,8 +3845,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 洗浴设施",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-093.mp3"
+              "blanks": [
+                "入浴施設"
+              ],
+              "audio": "audio/seg-093.mp3",
+              "quizSentence": "例えば、宿泊する人以外がホテルや旅館の入浴施設を有料で使用できる「日帰り温泉」がある。"
             },
             {
               "id": 94,
@@ -3692,8 +3866,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 当天往返",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-094.mp3"
+              "blanks": [
+                "日帰り"
+              ],
+              "audio": "audio/seg-094.mp3",
+              "quizSentence": "例えば、宿泊する人以外がホテルや旅館の入浴施設を有料で使用できる「日帰り温泉」がある。"
             },
             {
               "id": 95,
@@ -3707,8 +3884,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 洗浴，入浴",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-095.mp3"
+              "blanks": [
+                "入浴"
+              ],
+              "audio": "audio/seg-095.mp3",
+              "quizSentence": "また銭湯といって、安い値段で入浴できる施設もある。"
             },
             {
               "id": 96,
@@ -3722,8 +3902,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 设施，设备",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-096.mp3"
+              "blanks": [
+                "施設"
+              ],
+              "audio": "audio/seg-096.mp3",
+              "quizSentence": "最近では「日帰り入浴」専用の施設も増えてきている。"
             },
             {
               "id": 97,
@@ -3737,8 +3920,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 公共澡堂，洗浴中心",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-097.mp3"
+              "blanks": [
+                "銭湯"
+              ],
+              "audio": "audio/seg-097.mp3",
+              "quizSentence": "また銭湯といって、安い値段で入浴できる施設もある。"
             },
             {
               "id": 98,
@@ -3752,8 +3938,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 时候，时期",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-098.mp3"
+              "blanks": [
+                "ころ"
+              ],
+              "audio": "audio/seg-098.mp3",
+              "quizSentence": "銭湯とは、多くの家にお風呂がなかったころに作られた入浴施設のことだ。"
             },
             {
               "id": 99,
@@ -3770,8 +3959,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 超级洗浴中心",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-099.mp3"
+              "blanks": [
+                "スーパー銭湯"
+              ],
+              "audio": "audio/seg-099.mp3",
+              "quizSentence": "現在ではその数も少なくなってきているが、最近では、「スーパー銭湯」が出てきて人気を集めている。"
             },
             {
               "id": 100,
@@ -3784,8 +3976,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 按摩",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-100.mp3"
+              "blanks": [
+                "マッサージ"
+              ],
+              "audio": "audio/seg-100.mp3",
+              "quizSentence": "普通の銭湯より値段は高いが、いろいろな種類のお風呂やマッサージ、エステなどがあり、1日中楽しめる。"
             },
             {
               "id": 101,
@@ -3798,8 +3993,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 美容，全身美容",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-101.mp3"
+              "blanks": [
+                "エステ"
+              ],
+              "audio": "audio/seg-101.mp3",
+              "quizSentence": "普通の銭湯より値段は高いが、いろいろな種類のお風呂やマッサージ、エステなどがあり、1日中楽しめる。"
             },
             {
               "id": 102,
@@ -3816,8 +4014,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 享受，欣赏",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-102.mp3"
+              "blanks": [
+                "楽しめる"
+              ],
+              "audio": "audio/seg-102.mp3",
+              "quizSentence": "普通の銭湯より値段は高いが、いろいろな種類のお風呂やマッサージ、エステなどがあり、1日中楽しめる。"
             },
             {
               "id": 103,
@@ -3830,8 +4031,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[连体] 一点点，有点，稍微",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-103.mp3"
+              "blanks": [
+                "ちょっとした"
+              ],
+              "audio": "audio/seg-103.mp3",
+              "quizSentence": "「スーパー銭湯」は忙しい人たちのちょっとしたいやしの場になっているのだ。"
             },
             {
               "id": 104,
@@ -3844,8 +4048,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 安慰，享受；医治，治疗",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-104.mp3"
+              "blanks": [
+                "いやし"
+              ],
+              "audio": "audio/seg-104.mp3",
+              "quizSentence": "「スーパー銭湯」は忙しい人たちのちょっとしたいやしの場になっているのだ。"
             },
             {
               "id": 105,
@@ -3862,8 +4069,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜千万",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-105.mp3"
+              "blanks": [
+                "千万"
+              ],
+              "audio": "audio/seg-105.mp3",
+              "quizSentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。"
             }
           ]
         },
@@ -3884,8 +4094,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 公交车站，车站，公共汽车站",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-106.mp3"
+              "blanks": [
+                "停留所"
+              ],
+              "audio": "audio/seg-106.mp3",
+              "quizSentence": "バスの停留所はこの先にあります。"
             },
             {
               "id": 107,
@@ -3898,8 +4111,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 恰好，正合适",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-107.mp3"
+              "blanks": [
+                "ぴったり"
+              ],
+              "audio": "audio/seg-107.mp3",
+              "quizSentence": "このサイズの服が私にぴったりだ。"
             },
             {
               "id": 108,
@@ -3912,8 +4128,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 溜滑，滑溜，光滑",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-108.mp3"
+              "blanks": [
+                "つるつる"
+              ],
+              "audio": "audio/seg-108.mp3",
+              "quizSentence": "この床は磨かれていてつるつるしている。"
             },
             {
               "id": 109,
@@ -3927,8 +4146,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 试验，实验",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-109.mp3"
+              "blanks": [
+                "実験"
+              ],
+              "audio": "audio/seg-109.mp3",
+              "quizSentence": "理科の授業で実験をした。"
             },
             {
               "id": 110,
@@ -3942,8 +4164,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 洪水",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-110.mp3"
+              "blanks": [
+                "洪水"
+              ],
+              "audio": "audio/seg-110.mp3",
+              "quizSentence": "大雨で川が氾濫し、洪水が起きた。"
             },
             {
               "id": 111,
@@ -3960,8 +4185,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 冲走，冲刷",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-111.mp3"
+              "blanks": [
+                "流して"
+              ],
+              "audio": "audio/seg-111.mp3",
+              "quizSentence": "使ったコップは水で流してから片付けてください。"
             },
             {
               "id": 112,
@@ -3974,8 +4202,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 牛排",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-112.mp3"
+              "blanks": [
+                "ステーキ"
+              ],
+              "audio": "audio/seg-112.mp3",
+              "quizSentence": "誕生日にレストランでステーキを食べた。"
             },
             {
               "id": 113,
@@ -3988,8 +4219,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 菜，菜肴",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-113.mp3"
+              "blanks": [
+                "おかず"
+              ],
+              "audio": "audio/seg-113.mp3",
+              "quizSentence": "今日の晩ご飯のおかずは魚だ。"
             },
             {
               "id": 114,
@@ -4006,8 +4240,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 完全，全然",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-114.mp3"
+              "blanks": [
+                "全く"
+              ],
+              "audio": "audio/seg-114.mp3",
+              "quizSentence": "彼の言うことは全く分からない。"
             },
             {
               "id": 115,
@@ -4021,8 +4258,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 范围",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-115.mp3"
+              "blanks": [
+                "範囲"
+              ],
+              "audio": "audio/seg-115.mp3",
+              "quizSentence": "試験の範囲はまだ発表されていない。"
             },
             {
               "id": 116,
@@ -4036,8 +4276,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 食品原材料",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-116.mp3"
+              "blanks": [
+                "食材"
+              ],
+              "audio": "audio/seg-116.mp3",
+              "quizSentence": "新鮮な食材を使って料理を作った。"
             },
             {
               "id": 117,
@@ -4051,8 +4294,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 松蘑，松茸",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-117.mp3"
+              "blanks": [
+                "松茸"
+              ],
+              "audio": "audio/seg-117.mp3",
+              "quizSentence": "秋になると松茸を使った料理が人気になる。"
             },
             {
               "id": 118,
@@ -4066,8 +4312,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 原因",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-118.mp3"
+              "blanks": [
+                "原因"
+              ],
+              "audio": "audio/seg-118.mp3",
+              "quizSentence": "事故の原因はまだ分かっていない。"
             },
             {
               "id": 119,
@@ -4080,8 +4329,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 医治，治疗",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-119.mp3"
+              "blanks": [
+                "いやして"
+              ],
+              "audio": "audio/seg-119.mp3",
+              "quizSentence": "温かいお風呂は一日の疲れをいやしてくれる。"
             },
             {
               "id": 120,
@@ -4098,8 +4350,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 香味，芳香",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-120.mp3"
+              "blanks": [
+                "香り"
+              ],
+              "audio": "audio/seg-120.mp3",
+              "quizSentence": "このコーヒーはいい香りがする。"
             },
             {
               "id": 121,
@@ -4116,8 +4371,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜所，〜站",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-121.mp3"
+              "blanks": [
+                "所"
+              ],
+              "audio": "audio/seg-121.mp3",
+              "quizSentence": "分からないことがあったら、案内所で聞いてください。"
             },
             {
               "id": 122,
@@ -4134,8 +4392,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜年制",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-122.mp3"
+              "blanks": [
+                "年制"
+              ],
+              "audio": "audio/seg-122.mp3",
+              "quizSentence": "この大学は4年制です。"
             },
             {
               "id": 123,
@@ -4148,8 +4409,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 维生素，维他命",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-123.mp3"
+              "blanks": [
+                "ビタミン"
+              ],
+              "audio": "audio/seg-123.mp3",
+              "quizSentence": "野菜にはビタミンがたくさん含まれている。"
             },
             {
               "id": 124,
@@ -4166,8 +4430,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 预防",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-124.mp3"
+              "blanks": [
+                "予防する"
+              ],
+              "audio": "audio/seg-124.mp3",
+              "quizSentence": "風邪を予防するために、手をよく洗っている。"
             },
             {
               "id": 125,
@@ -4191,8 +4458,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动1] 重整，重建",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-125.mp3"
+              "blanks": [
+                "立て直す"
+              ],
+              "audio": "audio/seg-125.mp3",
+              "quizSentence": "会社の経営を立て直すために、新しい社長が任命された。"
             },
             {
               "id": 126,
@@ -4209,8 +4479,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[动3] 维持，保持",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-126.mp3"
+              "blanks": [
+                "維持する"
+              ],
+              "audio": "audio/seg-126.mp3",
+              "quizSentence": "健康を維持するために、毎日運動している。"
             },
             {
               "id": 127,
@@ -4224,8 +4497,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 体重",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-127.mp3"
+              "blanks": [
+                "体重"
+              ],
+              "audio": "audio/seg-127.mp3",
+              "quizSentence": "最近、体重が少し増えた。"
             },
             {
               "id": 128,
@@ -4238,8 +4514,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 文件，档案，卷宗",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-128.mp3"
+              "blanks": [
+                "ファイル"
+              ],
+              "audio": "audio/seg-128.mp3",
+              "quizSentence": "大事な書類はファイルにまとめておいた。"
             },
             {
               "id": 129,
@@ -4253,8 +4532,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 日期，年月日",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-129.mp3"
+              "blanks": [
+                "日付"
+              ],
+              "audio": "audio/seg-129.mp3",
+              "quizSentence": "この書類には日付を書き忘れている。"
             },
             {
               "id": 130,
@@ -4268,8 +4550,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 肌肤",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-130.mp3"
+              "blanks": [
+                "肌"
+              ],
+              "audio": "audio/seg-130.mp3",
+              "quizSentence": "冬は肌が乾燥しやすい。"
             },
             {
               "id": 131,
@@ -4283,8 +4568,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 地区",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-131.mp3"
+              "blanks": [
+                "地区"
+              ],
+              "audio": "audio/seg-131.mp3",
+              "quizSentence": "この地区は昔から農業が盛んだ。"
             },
             {
               "id": 132,
@@ -4298,8 +4586,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[副] 相当，很，颇",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-132.mp3"
+              "blanks": [
+                "相当"
+              ],
+              "audio": "audio/seg-132.mp3",
+              "quizSentence": "この仕事を終わらせるには相当な時間がかかりそうだ。"
             },
             {
               "id": 133,
@@ -4313,8 +4604,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 公司内",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-133.mp3"
+              "blanks": [
+                "社内"
+              ],
+              "audio": "audio/seg-133.mp3",
+              "quizSentence": "この情報は社内だけで共有されている。"
             },
             {
               "id": 134,
@@ -4328,8 +4622,11 @@ window.LESSON_DATA = {
               ],
               "zh": "[名] 天才",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-134.mp3"
+              "blanks": [
+                "天才"
+              ],
+              "audio": "audio/seg-134.mp3",
+              "quizSentence": "彼はピアノの天才だと言われている。"
             },
             {
               "id": 135,
@@ -4346,8 +4643,11 @@ window.LESSON_DATA = {
               ],
               "zh": "〜先生，〜女士，〜夫人",
               "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-135.mp3"
+              "blanks": [
+                "氏"
+              ],
+              "audio": "audio/seg-135.mp3",
+              "quizSentence": "田中氏がこのプロジェクトの責任者だ。"
             }
           ]
         }
