@@ -80,7 +80,7 @@ if hasattr(sys.stdout, "reconfigure"):
 # 不是穷举——这些是最常见的"训读/音读/量词读音"随上下文剧烈变化的单字，
 # 每一课教材几乎都会反复出现，遇到新的常见误读字（发现方式：人工听音频/读
 # 已知正确翻译时觉得读音不对）就往这里加。
-DANGER_KANJI = set("人月日方上下中分時気家物目手口力名音色間位歳君")
+DANGER_KANJI = set("人月日方上下中分時気家物目手口力名音色間位歳君後次")
 
 _RUBY_RE = re.compile(r"<ruby>([^<]+)<rt>([^<]+)</rt></ruby>")
 
@@ -96,10 +96,19 @@ def _scan_live_text(text, show_all):
     for line in text.split("\n"):
         tokens = _kks.convert(line)
         prev_orig = None
+        line_offset = 0
         row = []
         for i, t in enumerate(tokens):
             orig = t["orig"]
             hira = t["hira"]
+            tok_len = len(orig)
+            # 跟 build_page.py 的 tokenize_ja() 用同一条 next_char 计算方式——
+            # 有些订正规则（比如"後にして"这个惯用语）要看这个 token 后面紧跟
+            # 的原文字符才能判断，不传 next_char 会导致这类规则在这个审核脚本
+            # 里显示成"没生效"，误导人工复核（规则在真正生成页面时是生效的，
+            # 只是这个复现逻辑漏传了这个参数）。
+            next_char = line[line_offset + tok_len] if line_offset + tok_len < len(line) else ""
+            line_offset += tok_len
             overridden = False
             if orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
@@ -108,7 +117,7 @@ def _scan_live_text(text, show_all):
                 hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
                 overridden = True
             else:
-                new_hira = _resolve_hira(orig, hira, prev_orig)
+                new_hira = _resolve_hira(orig, hira, prev_orig, next_char)
                 if new_hira != hira:
                     hira = new_hira
                     overridden = True
