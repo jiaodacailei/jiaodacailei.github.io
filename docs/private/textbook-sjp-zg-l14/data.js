@@ -82,7 +82,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "よ",
-                  "t": 0.82
+                  "t": 0.8
                 },
                 {
                   "text": "く",
@@ -158,7 +158,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 1.59
+                  "t": 1.61
                 },
                 {
                   "text": "日",
@@ -192,7 +192,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "い",
-                  "t": 2.61
+                  "t": 2.63
                 },
                 {
                   "text": "ません",
@@ -228,7 +228,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "そんな",
-                  "t": 1.14
+                  "t": 1.18
                 },
                 {
                   "text": "あ",
@@ -301,7 +301,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "ありがとうございます",
-                  "t": 0.49
+                  "t": 0.51
                 },
                 {
                   "text": "。"
@@ -319,23 +319,23 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "では",
-                  "t": 0.3
+                  "t": 0.28
                 },
                 {
                   "text": "，"
                 },
                 {
                   "text": "お",
-                  "t": 0.5
+                  "t": 0.48
                 },
                 {
                   "text": "邪魔",
                   "kana": "じゃま",
-                  "t": 0.68
+                  "t": 0.66
                 },
                 {
                   "text": "します",
-                  "t": 0.8
+                  "t": 0.78
                 },
                 {
                   "text": "。"
@@ -364,14 +364,14 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "れ",
-                  "t": 0.33
+                  "t": 0.37
                 },
                 {
                   "text": "，"
                 },
                 {
                   "text": "つ",
-                  "t": 0.63
+                  "t": 0.65
                 },
                 {
                   "text": "ま",
@@ -468,7 +468,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "かった",
-                  "t": 2.04
+                  "t": 2.06
                 },
                 {
                   "text": "の",
@@ -498,7 +498,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "え",
-                  "t": 0.24
+                  "t": 0.22
                 },
                 {
                   "text": "，"
@@ -506,32 +506,32 @@ window.LESSON_DATA = {
                 {
                   "text": "本当",
                   "kana": "ほんとう",
-                  "t": 0.24
+                  "t": 0.22
                 },
                 {
                   "text": "に",
-                  "t": 0.64
+                  "t": 0.62
                 },
                 {
                   "text": "気持",
                   "kana": "きも",
-                  "t": 0.86
+                  "t": 0.84
                 },
                 {
                   "text": "ち",
-                  "t": 1.08
+                  "t": 1.06
                 },
                 {
                   "text": "だけ",
-                  "t": 1.2
+                  "t": 1.18
                 },
                 {
                   "text": "です",
-                  "t": 1.3
+                  "t": 1.28
                 },
                 {
                   "text": "から",
-                  "t": 1.56
+                  "t": 1.52
                 },
                 {
                   "text": "。"
@@ -554,59 +554,59 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.52
+                  "t": 0.58
                 },
                 {
                   "text": "お",
-                  "t": 0.68
+                  "t": 0.74
                 },
                 {
                   "text": "好",
                   "kana": "す",
-                  "t": 0.78
+                  "t": 0.84
                 },
                 {
                   "text": "き",
-                  "t": 0.9
+                  "t": 0.96
                 },
                 {
                   "text": "な",
-                  "t": 0.98
+                  "t": 1.04
                 },
                 {
                   "text": "福建",
                   "kana": "ふっけん",
-                  "t": 1.16
+                  "t": 1.22
                 },
                 {
                   "text": "省",
                   "kana": "しょう",
-                  "t": 1.52
+                  "t": 1.58
                 },
                 {
                   "text": "の",
-                  "t": 1.68
+                  "t": 1.74
                 },
                 {
                   "text": "ウ",
-                  "t": 1.84
+                  "t": 1.9
                 },
                 {
                   "text": "ーロ",
-                  "t": 1.94
+                  "t": 2.0
                 },
                 {
                   "text": "ン",
-                  "t": 2.02
+                  "t": 2.08
                 },
                 {
                   "text": "茶",
                   "kana": "ちゃ",
-                  "t": 2.12
+                  "t": 2.18
                 },
                 {
                   "text": "です",
-                  "t": 2.18
+                  "t": 2.24
                 },
                 {
                   "text": "。"
@@ -682,7 +682,7 @@ window.LESSON_DATA = {
                 {
                   "text": "遠慮",
                   "kana": "えんりょ",
-                  "t": 0.8
+                  "t": 0.82
                 },
                 {
                   "text": "なく",
@@ -690,7 +690,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "いただ",
-                  "t": 1.38
+                  "t": 1.36
                 },
                 {
                   "text": "く",
@@ -758,25 +758,25 @@ window.LESSON_DATA = {
                 {
                   "text": "広告",
                   "kana": "こうこく",
-                  "t": 0.0
+                  "t": 0.07
                 },
                 {
                   "text": "代理店",
                   "kana": "だいりてん",
-                  "t": 0.3
+                  "t": 0.44
                 },
                 {
                   "text": "の",
-                  "t": 0.64
+                  "t": 0.78
                 },
                 {
                   "text": "仕事",
                   "kana": "しごと",
-                  "t": 0.78
+                  "t": 0.92
                 },
                 {
                   "text": "は",
-                  "t": 1.04
+                  "t": 1.18
                 },
                 {
                   "text": "？"
@@ -794,59 +794,59 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "はい",
-                  "t": 0.38
+                  "t": 0.41
                 },
                 {
                   "text": "，"
                 },
                 {
                   "text": "と",
-                  "t": 0.68
+                  "t": 0.69
                 },
                 {
                   "text": "て",
-                  "t": 0.98
+                  "t": 0.97
                 },
                 {
                   "text": "も",
-                  "t": 1.04
+                  "t": 1.03
                 },
                 {
                   "text": "や",
-                  "t": 1.12
+                  "t": 1.11
                 },
                 {
                   "text": "り",
-                  "t": 1.22
+                  "t": 1.21
                 },
                 {
                   "text": "が",
-                  "t": 1.34
+                  "t": 1.33
                 },
                 {
                   "text": "い",
-                  "t": 1.36
+                  "t": 1.35
                 },
                 {
                   "text": "を",
-                  "t": 1.44
+                  "t": 1.43
                 },
                 {
                   "text": "感",
                   "kana": "かん",
-                  "t": 1.58
+                  "t": 1.57
                 },
                 {
                   "text": "じ",
-                  "t": 1.58
+                  "t": 1.57
                 },
                 {
                   "text": "て",
-                  "t": 1.74
+                  "t": 1.71
                 },
                 {
                   "text": "います",
-                  "t": 1.88
+                  "t": 1.87
                 },
                 {
                   "text": "。"
@@ -897,11 +897,11 @@ window.LESSON_DATA = {
                 {
                   "text": "短",
                   "kana": "みじ",
-                  "t": 1.99
+                  "t": 2.13
                 },
                 {
                   "text": "かった",
-                  "t": 2.23
+                  "t": 2.29
                 },
                 {
                   "text": "です",
@@ -924,7 +924,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "も",
-                  "t": 3.89
+                  "t": 3.91
                 },
                 {
                   "text": "多",
@@ -954,7 +954,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "んだ",
-                  "t": 4.67
+                  "t": 4.65
                 },
                 {
                   "text": "よう",
@@ -1005,7 +1005,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "かった",
-                  "t": 0.52
+                  "t": 0.5
                 },
                 {
                   "text": "。"
@@ -1112,9 +1112,101 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "。"
+                },
+                {
+                  "text": "金子",
+                  "kana": "かねこ",
+                  "t": 0.75
+                },
+                {
+                  "text": "君",
+                  "kana": "きみ",
+                  "t": 1.21
+                },
+                {
+                  "text": "や",
+                  "t": 1.37
+                },
+                {
+                  "text": "高橋",
+                  "kana": "たかはし",
+                  "t": 1.57
+                },
+                {
+                  "text": "さん",
+                  "t": 1.97
+                },
+                {
+                  "text": "と",
+                  "t": 2.13
+                },
+                {
+                  "text": "は",
+                  "t": 2.31
+                },
+                {
+                  "text": "，"
+                },
+                {
+                  "text": "明日",
+                  "kana": "あした",
+                  "t": 2.87
+                },
+                {
+                  "text": "の",
+                  "t": 3.11
+                },
+                {
+                  "text": "夜",
+                  "kana": "よる",
+                  "t": 3.23
+                },
+                {
+                  "text": "，"
+                },
+                {
+                  "text": "い",
+                  "t": 3.45
+                },
+                {
+                  "text": "っし",
+                  "t": 3.75
+                },
+                {
+                  "text": "ょに",
+                  "t": 3.83
+                },
+                {
+                  "text": "食事",
+                  "kana": "しょくじ",
+                  "t": 3.97
+                },
+                {
+                  "text": "する",
+                  "t": 4.29
+                },
+                {
+                  "text": "約束",
+                  "kana": "やくそく",
+                  "t": 4.45
+                },
+                {
+                  "text": "を",
+                  "t": 4.79
+                },
+                {
+                  "text": "して",
+                  "t": 4.93
+                },
+                {
+                  "text": "います",
+                  "t": 5.07
+                },
+                {
+                  "text": "。"
                 }
               ],
-              "zh": "有啊！",
+              "zh": "有啊！已经和金子、高桥他们约好了明晚一起吃饭。",
               "notes": "",
               "blanks": [],
               "audio": "audio/seg-019.mp3"
@@ -1127,128 +1219,25 @@ window.LESSON_DATA = {
                 {
                   "text": "金子",
                   "kana": "かねこ",
-                  "t": -0.26
-                },
-                {
-                  "text": "君",
-                  "kana": "きみ",
-                  "t": 0.2
-                },
-                {
-                  "text": "や",
-                  "t": 0.36
-                },
-                {
-                  "text": "高橋",
-                  "kana": "たかはし",
-                  "t": 0.56
-                },
-                {
-                  "text": "さん",
-                  "t": 0.96
-                },
-                {
-                  "text": "と",
-                  "t": 1.12
-                },
-                {
-                  "text": "は",
-                  "t": 1.3
-                },
-                {
-                  "text": "，"
-                },
-                {
-                  "text": "明日",
-                  "kana": "あした",
-                  "t": 1.84
-                },
-                {
-                  "text": "の",
-                  "t": 2.1
-                },
-                {
-                  "text": "夜",
-                  "kana": "よる",
-                  "t": 2.22
-                },
-                {
-                  "text": "，"
-                },
-                {
-                  "text": "い",
-                  "t": 2.44
-                },
-                {
-                  "text": "っし",
-                  "t": 2.74
-                },
-                {
-                  "text": "ょに",
-                  "t": 2.82
-                },
-                {
-                  "text": "食事",
-                  "kana": "しょくじ",
-                  "t": 2.96
-                },
-                {
-                  "text": "する",
-                  "t": 3.28
-                },
-                {
-                  "text": "約束",
-                  "kana": "やくそく",
-                  "t": 3.44
-                },
-                {
-                  "text": "を",
-                  "t": 3.78
-                },
-                {
-                  "text": "して",
-                  "t": 3.92
-                },
-                {
-                  "text": "います",
-                  "t": 4.06
-                },
-                {
-                  "text": "。"
-                }
-              ],
-              "zh": "已经和金子、高桥他们约好了明晚一起吃饭。",
-              "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-020.mp3"
-            },
-            {
-              "id": 21,
-              "speaker": "王",
-              "speakerKana": "おう",
-              "tokens": [
-                {
-                  "text": "金子",
-                  "kana": "かねこ",
                   "t": 0.0
                 },
                 {
                   "text": "君",
                   "kana": "きみ",
-                  "t": 0.74
+                  "t": 0.82
                 },
                 {
                   "text": "は",
-                  "t": 0.92
+                  "t": 1.0
                 },
                 {
                   "text": "旅行代理店",
                   "kana": "りょこうだいりてん",
-                  "t": 1.06
+                  "t": 1.14
                 },
                 {
                   "text": "に",
-                  "t": 1.82
+                  "t": 1.92
                 },
                 {
                   "text": "，"
@@ -1256,54 +1245,54 @@ window.LESSON_DATA = {
                 {
                   "text": "高橋",
                   "kana": "たかはし",
-                  "t": 3.06
+                  "t": 3.14
                 },
                 {
                   "text": "さん",
-                  "t": 3.32
+                  "t": 3.4
                 },
                 {
                   "text": "は",
-                  "t": 3.46
+                  "t": 3.54
                 },
                 {
                   "text": "化粧品",
                   "kana": "けしょうひん",
-                  "t": 3.58
+                  "t": 3.66
                 },
                 {
                   "text": "の",
-                  "t": 4.0
+                  "t": 4.08
                 },
                 {
                   "text": "会社",
                   "kana": "かいしゃ",
-                  "t": 4.12
+                  "t": 4.2
                 },
                 {
                   "text": "に",
-                  "t": 4.32
+                  "t": 4.4
                 },
                 {
                   "text": "勤",
                   "kana": "つと",
-                  "t": 4.46
+                  "t": 4.54
                 },
                 {
                   "text": "めて",
-                  "t": 4.62
+                  "t": 4.7
                 },
                 {
                   "text": "いる",
-                  "t": 4.76
+                  "t": 4.84
                 },
                 {
                   "text": "そう",
-                  "t": 4.9
+                  "t": 4.98
                 },
                 {
                   "text": "です",
-                  "t": 5.06
+                  "t": 5.16
                 },
                 {
                   "text": "。"
@@ -1312,7 +1301,7 @@ window.LESSON_DATA = {
               "zh": "听说金子在旅行社，高桥在化妆品公司工作。",
               "notes": "「〜そうです」＝听说……（传闻）。",
               "blanks": [],
-              "audio": "audio/seg-021.mp3"
+              "audio": "audio/seg-020.mp3"
             }
           ]
         },
@@ -1322,7 +1311,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 22,
+              "id": 21,
               "speaker": "王",
               "speakerKana": "おう",
               "tokens": [
@@ -1366,10 +1355,10 @@ window.LESSON_DATA = {
               "zh": "老师，我这就告辞了。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-022.mp3"
+              "audio": "audio/seg-021.mp3"
             },
             {
-              "id": 23,
+              "id": 22,
               "speaker": "後藤",
               "speakerKana": "ごとう",
               "tokens": [
@@ -1392,29 +1381,33 @@ window.LESSON_DATA = {
               "zh": "是吗？",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-023.mp3"
+              "audio": "audio/seg-022.mp3"
             },
             {
-              "id": 24,
+              "id": 23,
               "speaker": "後藤",
               "speakerKana": "ごとう",
               "tokens": [
                 {
-                  "text": "まだ",
+                  "text": "ま",
                   "t": 0.0
+                },
+                {
+                  "text": "だ",
+                  "t": 0.2
                 },
                 {
                   "text": "大丈夫",
                   "kana": "だいじょうぶ",
-                  "t": 0.7
+                  "t": 0.5
                 },
                 {
                   "text": "だ",
-                  "t": 1.14
+                  "t": 0.78
                 },
                 {
                   "text": "ろう",
-                  "t": 1.36
+                  "t": 1.0
                 },
                 {
                   "text": "。"
@@ -1423,76 +1416,65 @@ window.LESSON_DATA = {
               "zh": "还可以〈再坐一会儿〉嘛！",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-024.mp3"
+              "audio": "audio/seg-023.mp3"
             },
             {
-              "id": 25,
+              "id": 24,
               "speaker": "王",
               "speakerKana": "おう",
               "tokens": [
                 {
                   "text": "いい",
-                  "t": 0.22
+                  "t": 0.0
                 },
                 {
                   "text": "え",
-                  "t": 0.26
+                  "t": 0.3
                 },
                 {
                   "text": "。"
-                }
-              ],
-              "zh": "不不，",
-              "notes": "",
-              "blanks": [],
-              "audio": "audio/seg-025.mp3"
-            },
-            {
-              "id": 26,
-              "speaker": "王",
-              "speakerKana": "おう",
-              "tokens": [
+                },
                 {
                   "text": "もう",
-                  "t": 0.0
+                  "t": 0.3
                 },
                 {
                   "text": "夜",
                   "kana": "よる",
-                  "t": 0.36
+                  "t": 0.66
                 },
                 {
                   "text": "も",
-                  "t": 0.56
+                  "t": 0.86
                 },
                 {
                   "text": "遅",
                   "kana": "おそ",
-                  "t": 0.74
+                  "t": 1.02
                 },
                 {
                   "text": "い",
-                  "t": 0.86
+                  "t": 1.16
                 },
                 {
                   "text": "です",
-                  "t": 0.96
+                  "t": 1.26
                 },
                 {
                   "text": "から",
-                  "t": 1.14
+                  "t": 1.44
                 },
                 {
                   "text": "。"
                 }
               ],
-              "zh": "已经很晚了。",
+              "zh": "不不，已经很晚了。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-026.mp3"
+              "audio": "audio/seg-024.mp3"
             },
             {
-              "id": 27,
+              "id": 25,
               "speaker": "後藤",
               "speakerKana": "ごとう",
               "tokens": [
@@ -1502,7 +1484,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "か",
-                  "t": 0.62
+                  "t": 0.72
                 },
                 {
                   "text": "。"
@@ -1511,10 +1493,10 @@ window.LESSON_DATA = {
               "zh": "那，",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-027.mp3"
+              "audio": "audio/seg-025.mp3"
             },
             {
-              "id": 28,
+              "id": 26,
               "speaker": "後藤",
               "speakerKana": "ごとう",
               "tokens": [
@@ -1558,10 +1540,10 @@ window.LESSON_DATA = {
               "zh": "也就不好强留你了，",
               "notes": "「無理を言う」＝不讲理，提出无理要求。",
               "blanks": [],
-              "audio": "audio/seg-028.mp3"
+              "audio": "audio/seg-026.mp3"
             },
             {
-              "id": 29,
+              "id": 27,
               "speaker": "後藤",
               "speakerKana": "ごとう",
               "tokens": [
@@ -1573,23 +1555,23 @@ window.LESSON_DATA = {
                 {
                   "text": "君",
                   "kana": "きみ",
-                  "t": 0.26
+                  "t": 0.52
                 },
                 {
                   "text": "た",
-                  "t": 0.48
+                  "t": 0.72
                 },
                 {
                   "text": "ち",
-                  "t": 0.54
+                  "t": 0.82
                 },
                 {
                   "text": "に",
-                  "t": 0.68
+                  "t": 0.94
                 },
                 {
                   "text": "よろしく",
-                  "t": 0.92
+                  "t": 1.18
                 },
                 {
                   "text": "。"
@@ -1598,16 +1580,16 @@ window.LESSON_DATA = {
               "zh": "请代我向金子他们问好。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-029.mp3"
+              "audio": "audio/seg-027.mp3"
             },
             {
-              "id": 30,
+              "id": 28,
               "speaker": "王",
               "speakerKana": "おう",
               "tokens": [
                 {
                   "text": "はい",
-                  "t": 0.57
+                  "t": 0.0
                 },
                 {
                   "text": "。"
@@ -1616,10 +1598,10 @@ window.LESSON_DATA = {
               "zh": "好的。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-030.mp3"
+              "audio": "audio/seg-028.mp3"
             },
             {
-              "id": 31,
+              "id": 29,
               "speaker": "王",
               "speakerKana": "おう",
               "tokens": [
@@ -1652,10 +1634,10 @@ window.LESSON_DATA = {
               "zh": "今天谢谢老师了，",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-031.mp3"
+              "audio": "audio/seg-029.mp3"
             },
             {
-              "id": 32,
+              "id": 30,
               "speaker": "王",
               "speakerKana": "おう",
               "tokens": [
@@ -1666,7 +1648,7 @@ window.LESSON_DATA = {
                 {
                   "text": "邪魔",
                   "kana": "じゃま",
-                  "t": 0.48
+                  "t": 0.5
                 },
                 {
                   "text": "しました",
@@ -1679,7 +1661,7 @@ window.LESSON_DATA = {
               "zh": "打扰了。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-032.mp3"
+              "audio": "audio/seg-030.mp3"
             }
           ]
         }
@@ -1694,7 +1676,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 33,
+              "id": 31,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -1716,10 +1698,10 @@ window.LESSON_DATA = {
               "zh": "日本的求职活动",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-033.mp3"
+              "audio": "audio/seg-031.mp3"
             },
             {
-              "id": 34,
+              "id": 32,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -1795,10 +1777,10 @@ window.LESSON_DATA = {
               "zh": "面试是发表意见的场所，而不是照本宣科的地方。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-034.mp3"
+              "audio": "audio/seg-032.mp3"
             },
             {
-              "id": 35,
+              "id": 33,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -1901,10 +1883,10 @@ window.LESSON_DATA = {
               "zh": "在陈述择业愿望和动机以及做自我宣传时，不要完全照着简历上写的说。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-035.mp3"
+              "audio": "audio/seg-033.mp3"
             },
             {
-              "id": 36,
+              "id": 34,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -1975,10 +1957,10 @@ window.LESSON_DATA = {
               "zh": "从踏入公司办公楼直到离开，都属于录用考试。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-036.mp3"
+              "audio": "audio/seg-034.mp3"
             },
             {
-              "id": 37,
+              "id": 35,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2068,10 +2050,10 @@ window.LESSON_DATA = {
               "zh": "在接待处的说话方式以及在等候室的态度等都会成为评价的内容。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-037.mp3"
+              "audio": "audio/seg-035.mp3"
             },
             {
-              "id": 38,
+              "id": 36,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2126,10 +2108,10 @@ window.LESSON_DATA = {
               "zh": "面试时第一印象非常重要。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-038.mp3"
+              "audio": "audio/seg-036.mp3"
             },
             {
-              "id": 39,
+              "id": 37,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2182,7 +2164,7 @@ window.LESSON_DATA = {
               "zh": "要注意服装整洁而正式。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-039.mp3"
+              "audio": "audio/seg-037.mp3"
             }
           ]
         },
@@ -2192,7 +2174,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 40,
+              "id": 38,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2294,10 +2276,10 @@ window.LESSON_DATA = {
               "zh": "这是为学生求职活动写的求职指南的一部分。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-040.mp3"
+              "audio": "audio/seg-038.mp3"
             },
             {
-              "id": 41,
+              "id": 39,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2446,10 +2428,10 @@ window.LESSON_DATA = {
               "zh": "每年的新学期开始时，在街上都能看到穿着求职服装的学生。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-041.mp3"
+              "audio": "audio/seg-039.mp3"
             },
             {
-              "id": 42,
+              "id": 40,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2650,10 +2632,10 @@ window.LESSON_DATA = {
               "zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-042.mp3"
+              "audio": "audio/seg-040.mp3"
             },
             {
-              "id": 43,
+              "id": 41,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2770,10 +2752,10 @@ window.LESSON_DATA = {
               "zh": "虽说就业冰河期已经过去，但也并非轻易就能进入自己所期望的公司。",
               "notes": "「〜といっても」＝虽说……，尽管……。",
               "blanks": [],
-              "audio": "audio/seg-043.mp3"
+              "audio": "audio/seg-041.mp3"
             },
             {
-              "id": 44,
+              "id": 42,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2961,10 +2943,10 @@ window.LESSON_DATA = {
               "zh": "受日本年轻人青睐的职业有银行、出版社、汽车公司等，但是真正能进入自己心仪的公司工作的人只是很少的一部分。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-044.mp3"
+              "audio": "audio/seg-042.mp3"
             },
             {
-              "id": 45,
+              "id": 43,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3048,10 +3030,10 @@ window.LESSON_DATA = {
               "zh": "就业活动，首先要做的是选择自己瞩目的行业的公司。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-045.mp3"
+              "audio": "audio/seg-043.mp3"
             },
             {
-              "id": 46,
+              "id": 44,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3168,10 +3150,10 @@ window.LESSON_DATA = {
               "zh": "通过浏览公司网页或登门拜访，报名参加录用考试。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-046.mp3"
+              "audio": "audio/seg-044.mp3"
             },
             {
-              "id": 47,
+              "id": 45,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3253,10 +3235,10 @@ window.LESSON_DATA = {
               "zh": "近来也可以通过电脑从网上报名。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-047.mp3"
+              "audio": "audio/seg-045.mp3"
             },
             {
-              "id": 48,
+              "id": 46,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3369,10 +3351,10 @@ window.LESSON_DATA = {
               "zh": "求职者必须参加初试、再试、三试等层层选拔，",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-048.mp3"
+              "audio": "audio/seg-046.mp3"
             },
             {
-              "id": 49,
+              "id": 47,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3467,10 +3449,10 @@ window.LESSON_DATA = {
               "zh": "多数情况下，面试也不止一次，而是三番五次地进行。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-049.mp3"
+              "audio": "audio/seg-047.mp3"
             },
             {
-              "id": 50,
+              "id": 48,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3553,10 +3535,10 @@ window.LESSON_DATA = {
               "zh": "只有通过了这些考试才可能获得内定。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-050.mp3"
+              "audio": "audio/seg-048.mp3"
             },
             {
-              "id": 51,
+              "id": 49,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3692,7 +3674,7 @@ window.LESSON_DATA = {
               "zh": "学生们总是尽可能早地开始准备求职活动，为能进入心仪的公司而努力。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-051.mp3"
+              "audio": "audio/seg-049.mp3"
             }
           ]
         }
@@ -3707,7 +3689,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 52,
+              "id": 50,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3721,11 +3703,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "恩師"
               ],
-              "audio": "audio/seg-052.mp3",
+              "audio": "audio/seg-050.mp3",
               "quizSentence": "後藤先生は，王さんの大学時代の恩師です。"
             },
             {
-              "id": 53,
+              "id": 51,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3739,11 +3721,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "後藤さん"
               ],
-              "audio": "audio/seg-053.mp3",
+              "audio": "audio/seg-051.mp3",
               "quizSentence": "後藤さんは，大学で王さんを教えていた先生です。"
             },
             {
-              "id": 54,
+              "id": 52,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3760,11 +3742,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "上がって"
               ],
-              "audio": "audio/seg-054.mp3",
+              "audio": "audio/seg-052.mp3",
               "quizSentence": "まあ，まあ，そんなあいさつは後にして，とにかく上がって。"
             },
             {
-              "id": 55,
+              "id": 53,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3778,11 +3760,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "福建省"
               ],
-              "audio": "audio/seg-055.mp3",
+              "audio": "audio/seg-053.mp3",
               "quizSentence": "先生がお好きな福建省のウーロン茶です。"
             },
             {
-              "id": 56,
+              "id": 54,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3796,11 +3778,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "広告代理店"
               ],
-              "audio": "audio/seg-056.mp3",
+              "audio": "audio/seg-054.mp3",
               "quizSentence": "広告代理店の仕事は？"
             },
             {
-              "id": 57,
+              "id": 55,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3813,11 +3795,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "やりがい"
               ],
-              "audio": "audio/seg-057.mp3",
+              "audio": "audio/seg-055.mp3",
               "quizSentence": "はい，とてもやりがいを感じています。"
             },
             {
-              "id": 58,
+              "id": 56,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3831,11 +3813,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "金子君たちに"
               ],
-              "audio": "audio/seg-058.mp3",
+              "audio": "audio/seg-056.mp3",
               "quizSentence": "金子君たちによろしく。"
             },
             {
-              "id": 59,
+              "id": 57,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3849,11 +3831,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "高橋さんとは"
               ],
-              "audio": "audio/seg-059.mp3",
-              "quizSentence": "金子君や高橋さんとは，明日の夜，いっしょに食事する約束をしています。"
+              "audio": "audio/seg-057.mp3",
+              "quizSentence": "ええ。金子君や高橋さんとは，明日の夜，いっしょに食事する約束をしています。"
             },
             {
-              "id": 60,
+              "id": 58,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3867,11 +3849,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "旅行代理店"
               ],
-              "audio": "audio/seg-060.mp3",
+              "audio": "audio/seg-058.mp3",
               "quizSentence": "金子君は旅行代理店に，高橋さんは化粧品の会社に勤めているそうです。"
             },
             {
-              "id": 61,
+              "id": 59,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3888,11 +3870,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "勤めている"
               ],
-              "audio": "audio/seg-061.mp3",
+              "audio": "audio/seg-059.mp3",
               "quizSentence": "金子君は旅行代理店に，高橋さんは化粧品の会社に勤めているそうです。"
             },
             {
-              "id": 62,
+              "id": 60,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3905,11 +3887,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "まあ，まあ"
               ],
-              "audio": "audio/seg-062.mp3",
+              "audio": "audio/seg-060.mp3",
               "quizSentence": "まあ，まあ，そんなあいさつは後にして，とにかく上がって。"
             },
             {
-              "id": 63,
+              "id": 61,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3926,11 +3908,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "後にして"
               ],
-              "audio": "audio/seg-063.mp3",
+              "audio": "audio/seg-061.mp3",
               "quizSentence": "まあ，まあ，そんなあいさつは後にして，とにかく上がって。"
             },
             {
-              "id": 64,
+              "id": 62,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3943,11 +3925,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "つまらないものですが"
               ],
-              "audio": "audio/seg-064.mp3",
+              "audio": "audio/seg-062.mp3",
               "quizSentence": "これ，つまらないものですが……。"
             },
             {
-              "id": 65,
+              "id": 63,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3971,11 +3953,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "気を使わなくて"
               ],
-              "audio": "audio/seg-065.mp3",
+              "audio": "audio/seg-063.mp3",
               "quizSentence": "あれ，そんなに気を使わなくてよかったのに。"
             },
             {
-              "id": 66,
+              "id": 64,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3999,11 +3981,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "無理も言えない"
               ],
-              "audio": "audio/seg-066.mp3",
+              "audio": "audio/seg-064.mp3",
               "quizSentence": "じゃあ，無理も言えないな。"
             },
             {
-              "id": 67,
+              "id": 65,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4016,7 +3998,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "働きがい"
               ],
-              "audio": "audio/seg-067.mp3",
+              "audio": "audio/seg-065.mp3",
               "quizSentence": "働きがいのある仕事を見つけたいです。"
             }
           ]
@@ -4027,7 +4009,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 68,
+              "id": 66,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4040,11 +4022,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "チャンス"
               ],
-              "audio": "audio/seg-068.mp3",
+              "audio": "audio/seg-066.mp3",
               "quizSentence": "面接はいいチャンスだから，しっかり準備しましょう。"
             },
             {
-              "id": 69,
+              "id": 67,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4058,11 +4040,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "快晴"
               ],
-              "audio": "audio/seg-069.mp3",
+              "audio": "audio/seg-067.mp3",
               "quizSentence": "今日は快晴で，就職活動日和だ。"
             },
             {
-              "id": 70,
+              "id": 68,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4076,11 +4058,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "奥様"
               ],
-              "audio": "audio/seg-070.mp3",
+              "audio": "audio/seg-068.mp3",
               "quizSentence": "後藤先生の奥様も，玄関まで迎えに来てくれた。"
             },
             {
-              "id": 71,
+              "id": 69,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4093,11 +4075,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ごめんください"
               ],
-              "audio": "audio/seg-071.mp3",
+              "audio": "audio/seg-069.mp3",
               "quizSentence": "「ごめんください。」と言って，家に入った。"
             },
             {
-              "id": 72,
+              "id": 70,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4110,11 +4092,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "よくいらっしゃいました"
               ],
-              "audio": "audio/seg-072.mp3",
+              "audio": "audio/seg-070.mp3",
               "quizSentence": "「よくいらっしゃいました。」と後藤さんは言った。"
             },
             {
-              "id": 73,
+              "id": 71,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4134,11 +4116,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ほんの気持ちですが"
               ],
-              "audio": "audio/seg-073.mp3",
+              "audio": "audio/seg-071.mp3",
               "quizSentence": "これはほんの気持ちですが，どうぞ。"
             },
             {
-              "id": 74,
+              "id": 72,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4162,11 +4144,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "お口に合う"
               ],
-              "audio": "audio/seg-074.mp3",
+              "audio": "audio/seg-072.mp3",
               "quizSentence": "この料理，お口に合うといいのですが。"
             },
             {
-              "id": 75,
+              "id": 73,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4200,11 +4182,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "お口に合うかどうか分かりませんが"
               ],
-              "audio": "audio/seg-075.mp3",
+              "audio": "audio/seg-073.mp3",
               "quizSentence": "お口に合うかどうか分かりませんが，どうぞ召し上がってください。"
             },
             {
-              "id": 76,
+              "id": 74,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4228,11 +4210,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "何のお構いもできませんで"
               ],
-              "audio": "audio/seg-076.mp3",
+              "audio": "audio/seg-074.mp3",
               "quizSentence": "何のお構いもできませんで，失礼いたしました。"
             },
             {
-              "id": 77,
+              "id": 75,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4245,7 +4227,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "まだいいじゃありませんか"
               ],
-              "audio": "audio/seg-077.mp3",
+              "audio": "audio/seg-075.mp3",
               "quizSentence": "もう帰るんですか。まだいいじゃありませんか。"
             }
           ]
@@ -4256,7 +4238,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 78,
+              "id": 76,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4270,11 +4252,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "好意"
               ],
-              "audio": "audio/seg-078.mp3",
+              "audio": "audio/seg-076.mp3",
               "quizSentence": "彼女の好意を無駄にしたくない。"
             },
             {
-              "id": 79,
+              "id": 77,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4291,11 +4273,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "幸せ"
               ],
-              "audio": "audio/seg-079.mp3",
+              "audio": "audio/seg-077.mp3",
               "quizSentence": "希望の会社に就職できて，とても幸せです。"
             },
             {
-              "id": 80,
+              "id": 78,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4312,7 +4294,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "無駄にしない"
               ],
-              "audio": "audio/seg-080.mp3",
+              "audio": "audio/seg-078.mp3",
               "quizSentence": "時間を無駄にしないでください。"
             }
           ]
@@ -4323,7 +4305,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 81,
+              "id": 79,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4337,11 +4319,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "就職活動"
               ],
-              "audio": "audio/seg-081.mp3",
+              "audio": "audio/seg-079.mp3",
               "quizSentence": "就職活動は，まず希望する職種の会社を選択することから始まる。"
             },
             {
-              "id": 82,
+              "id": 80,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4355,11 +4337,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "志望動機"
               ],
-              "audio": "audio/seg-082.mp3",
+              "audio": "audio/seg-080.mp3",
               "quizSentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。"
             },
             {
-              "id": 83,
+              "id": 81,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4375,11 +4357,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "自己PR"
               ],
-              "audio": "audio/seg-083.mp3",
+              "audio": "audio/seg-081.mp3",
               "quizSentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。"
             },
             {
-              "id": 84,
+              "id": 82,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4393,11 +4375,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "履歴書"
               ],
-              "audio": "audio/seg-084.mp3",
+              "audio": "audio/seg-082.mp3",
               "quizSentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。"
             },
             {
-              "id": 85,
+              "id": 83,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4410,11 +4392,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "そのまま"
               ],
-              "audio": "audio/seg-085.mp3",
+              "audio": "audio/seg-083.mp3",
               "quizSentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。"
             },
             {
-              "id": 86,
+              "id": 84,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4428,11 +4410,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "採用試験"
               ],
-              "audio": "audio/seg-086.mp3",
+              "audio": "audio/seg-084.mp3",
               "quizSentence": "会社の建物に入り，出るまでが採用試験である。"
             },
             {
-              "id": 87,
+              "id": 85,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4446,11 +4428,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "清潔感"
               ],
-              "audio": "audio/seg-087.mp3",
+              "audio": "audio/seg-085.mp3",
               "quizSentence": "清潔感のあるきちんとした服装をすること。"
             },
             {
-              "id": 88,
+              "id": 86,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4464,11 +4446,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "服装"
               ],
-              "audio": "audio/seg-088.mp3",
+              "audio": "audio/seg-086.mp3",
               "quizSentence": "清潔感のあるきちんとした服装をすること。"
             },
             {
-              "id": 89,
+              "id": 87,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4482,11 +4464,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "一部"
               ],
-              "audio": "audio/seg-089.mp3",
+              "audio": "audio/seg-087.mp3",
               "quizSentence": "これは，就職活動をする学生のために書かれたガイドブックの一部である。"
             },
             {
-              "id": 90,
+              "id": 88,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4500,11 +4482,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "新学期"
               ],
-              "audio": "audio/seg-090.mp3",
+              "audio": "audio/seg-088.mp3",
               "quizSentence": "毎年，新学期が始まるころから，街にリクルートスーツを着た学生たちの姿が見られるようになる。"
             },
             {
-              "id": 91,
+              "id": 89,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4517,11 +4499,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "リクルートスーツ"
               ],
-              "audio": "audio/seg-091.mp3",
+              "audio": "audio/seg-089.mp3",
               "quizSentence": "毎年，新学期が始まるころから，街にリクルートスーツを着た学生たちの姿が見られるようになる。"
             },
             {
-              "id": 92,
+              "id": 90,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4535,11 +4517,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "姿"
               ],
-              "audio": "audio/seg-092.mp3",
+              "audio": "audio/seg-090.mp3",
               "quizSentence": "毎年，新学期が始まるころから，街にリクルートスーツを着た学生たちの姿が見られるようになる。"
             },
             {
-              "id": 93,
+              "id": 91,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4553,11 +4535,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "際"
               ],
-              "audio": "audio/seg-093.mp3",
+              "audio": "audio/seg-091.mp3",
               "quizSentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。"
             },
             {
-              "id": 94,
+              "id": 92,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4571,11 +4553,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "男女"
               ],
-              "audio": "audio/seg-094.mp3",
+              "audio": "audio/seg-092.mp3",
               "quizSentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。"
             },
             {
-              "id": 95,
+              "id": 93,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4592,11 +4574,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "問わず"
               ],
-              "audio": "audio/seg-095.mp3",
+              "audio": "audio/seg-093.mp3",
               "quizSentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。"
             },
             {
-              "id": 96,
+              "id": 94,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4610,11 +4592,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "黒"
               ],
-              "audio": "audio/seg-096.mp3",
+              "audio": "audio/seg-094.mp3",
               "quizSentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。"
             },
             {
-              "id": 97,
+              "id": 95,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4628,11 +4610,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "紺色"
               ],
-              "audio": "audio/seg-097.mp3",
+              "audio": "audio/seg-095.mp3",
               "quizSentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。"
             },
             {
-              "id": 98,
+              "id": 96,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4646,11 +4628,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "灰色"
               ],
-              "audio": "audio/seg-098.mp3",
+              "audio": "audio/seg-096.mp3",
               "quizSentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。"
             },
             {
-              "id": 99,
+              "id": 97,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4664,11 +4646,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "氷河期"
               ],
-              "audio": "audio/seg-099.mp3",
+              "audio": "audio/seg-097.mp3",
               "quizSentence": "就職の氷河期は過ぎたといっても，希望する会社に簡単に就職できるわけではない。"
             },
             {
-              "id": 100,
+              "id": 98,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4682,11 +4664,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "職種"
               ],
-              "audio": "audio/seg-100.mp3",
+              "audio": "audio/seg-098.mp3",
               "quizSentence": "日本の若者に人気のある職種は，銀行や出版社，自動車メーカーなどだが，自分の希望する会社に就職できる人は，ごく一部しかいない。"
             },
             {
-              "id": 101,
+              "id": 99,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4702,11 +4684,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "自動車メーカー"
               ],
-              "audio": "audio/seg-101.mp3",
+              "audio": "audio/seg-099.mp3",
               "quizSentence": "日本の若者に人気のある職種は，銀行や出版社，自動車メーカーなどだが，自分の希望する会社に就職できる人は，ごく一部しかいない。"
             },
             {
-              "id": 102,
+              "id": 100,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4719,11 +4701,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ごく"
               ],
-              "audio": "audio/seg-102.mp3",
+              "audio": "audio/seg-100.mp3",
               "quizSentence": "日本の若者に人気のある職種は，銀行や出版社，自動車メーカーなどだが，自分の希望する会社に就職できる人は，ごく一部しかいない。"
             },
             {
-              "id": 103,
+              "id": 101,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4740,11 +4722,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "選択する"
               ],
-              "audio": "audio/seg-103.mp3",
+              "audio": "audio/seg-101.mp3",
               "quizSentence": "就職活動は，まず希望する職種の会社を選択することから始まる。"
             },
             {
-              "id": 104,
+              "id": 102,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4768,11 +4750,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "申し込み"
               ],
-              "audio": "audio/seg-104.mp3",
+              "audio": "audio/seg-102.mp3",
               "quizSentence": "会社のホームページを見たり，会社を訪問したりして採用試験の申し込みをする。"
             },
             {
-              "id": 105,
+              "id": 103,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4789,11 +4771,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "突破して"
               ],
-              "audio": "audio/seg-105.mp3",
+              "audio": "audio/seg-103.mp3",
               "quizSentence": "これらの試験を突破して初めて内定をもらうことになる。"
             },
             {
-              "id": 106,
+              "id": 104,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4807,11 +4789,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "内定"
               ],
-              "audio": "audio/seg-106.mp3",
+              "audio": "audio/seg-104.mp3",
               "quizSentence": "これらの試験を突破して初めて内定をもらうことになる。"
             },
             {
-              "id": 107,
+              "id": 105,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4828,11 +4810,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "少しでも"
               ],
-              "audio": "audio/seg-107.mp3",
+              "audio": "audio/seg-105.mp3",
               "quizSentence": "学生たちは，少しでも早い時期から就職活動の準備を始めて，希望の会社に就職できるよう努力している。"
             },
             {
-              "id": 108,
+              "id": 106,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4845,7 +4827,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "1次"
               ],
-              "audio": "audio/seg-108.mp3",
+              "audio": "audio/seg-106.mp3",
               "quizSentence": "1次試験，2次試験，3次試験とたくさんの試験を受けなければならない。"
             }
           ]
@@ -4856,7 +4838,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 109,
+              "id": 107,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4869,11 +4851,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "うがい"
               ],
-              "audio": "audio/seg-109.mp3",
+              "audio": "audio/seg-107.mp3",
               "quizSentence": "外から帰ったら，うがいと手洗いをしましょう。"
             },
             {
-              "id": 110,
+              "id": 108,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4890,11 +4872,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "手洗い"
               ],
-              "audio": "audio/seg-110.mp3",
+              "audio": "audio/seg-108.mp3",
               "quizSentence": "外から帰ったら，うがいと手洗いをしましょう。"
             },
             {
-              "id": 111,
+              "id": 109,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4911,11 +4893,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "焦らないで"
               ],
-              "audio": "audio/seg-111.mp3",
+              "audio": "audio/seg-109.mp3",
               "quizSentence": "就職活動がうまくいかなくても，焦らないでください。"
             },
             {
-              "id": 112,
+              "id": 110,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4932,11 +4914,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "上京する"
               ],
-              "audio": "audio/seg-112.mp3",
+              "audio": "audio/seg-110.mp3",
               "quizSentence": "大学卒業後，彼は上京することにした。"
             },
             {
-              "id": 113,
+              "id": 111,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4960,11 +4942,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "お別れ会"
               ],
-              "audio": "audio/seg-113.mp3",
+              "audio": "audio/seg-111.mp3",
               "quizSentence": "来週，友達のお別れ会があります。"
             },
             {
-              "id": 114,
+              "id": 112,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4978,11 +4960,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "事前"
               ],
-              "audio": "audio/seg-114.mp3",
+              "audio": "audio/seg-112.mp3",
               "quizSentence": "面接の前に，事前に準備しておいたほうがいい。"
             },
             {
-              "id": 115,
+              "id": 113,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4996,11 +4978,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "昼夜"
               ],
-              "audio": "audio/seg-115.mp3",
+              "audio": "audio/seg-113.mp3",
               "quizSentence": "彼は昼夜を問わず，就職活動に励んでいる。"
             },
             {
-              "id": 116,
+              "id": 114,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5014,11 +4996,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "性別"
               ],
-              "audio": "audio/seg-116.mp3",
+              "audio": "audio/seg-114.mp3",
               "quizSentence": "この仕事は性別を問わず，応募できます。"
             },
             {
-              "id": 117,
+              "id": 115,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5032,11 +5014,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "納期"
               ],
-              "audio": "audio/seg-117.mp3",
+              "audio": "audio/seg-115.mp3",
               "quizSentence": "納期までに，レポートを提出してください。"
             },
             {
-              "id": 118,
+              "id": 116,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5053,11 +5035,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "茶色い"
               ],
-              "audio": "audio/seg-118.mp3",
+              "audio": "audio/seg-116.mp3",
               "quizSentence": "彼女は茶色いスーツを着ている。"
             },
             {
-              "id": 119,
+              "id": 117,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5070,11 +5052,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "グレー"
               ],
-              "audio": "audio/seg-119.mp3",
+              "audio": "audio/seg-117.mp3",
               "quizSentence": "グレーのスーツも面接には合う。"
             },
             {
-              "id": 120,
+              "id": 118,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5087,11 +5069,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ブラック"
               ],
-              "audio": "audio/seg-120.mp3",
+              "audio": "audio/seg-118.mp3",
               "quizSentence": "彼はブラックのネクタイを選んだ。"
             },
             {
-              "id": 121,
+              "id": 119,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5105,11 +5087,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "少量"
               ],
-              "audio": "audio/seg-121.mp3",
+              "audio": "audio/seg-119.mp3",
               "quizSentence": "少量のお酒なら，飲んでもいいです。"
             },
             {
-              "id": 122,
+              "id": 120,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5123,11 +5105,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "微量"
               ],
-              "audio": "audio/seg-122.mp3",
+              "audio": "audio/seg-120.mp3",
               "quizSentence": "この薬には微量の成分しか入っていない。"
             },
             {
-              "id": 123,
+              "id": 121,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5141,11 +5123,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "多量"
               ],
-              "audio": "audio/seg-123.mp3",
+              "audio": "audio/seg-121.mp3",
               "quizSentence": "多量の水を飲むようにしています。"
             },
             {
-              "id": 124,
+              "id": 122,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5159,7 +5141,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "価値"
               ],
-              "audio": "audio/seg-124.mp3",
+              "audio": "audio/seg-122.mp3",
               "quizSentence": "この経験は，とても価値があると思います。"
             }
           ]
@@ -5170,7 +5152,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 125,
+              "id": 123,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5183,11 +5165,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "エルニーニョ"
               ],
-              "audio": "audio/seg-125.mp3",
+              "audio": "audio/seg-123.mp3",
               "quizSentence": "エルニーニョ現象が世界の天気に影響している。"
             },
             {
-              "id": 126,
+              "id": 124,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5204,11 +5186,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ペルー沖"
               ],
-              "audio": "audio/seg-126.mp3",
+              "audio": "audio/seg-124.mp3",
               "quizSentence": "ペルー沖の海面温度が上昇している。"
             },
             {
-              "id": 127,
+              "id": 125,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5222,11 +5204,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "海面"
               ],
-              "audio": "audio/seg-127.mp3",
+              "audio": "audio/seg-125.mp3",
               "quizSentence": "ペルー沖の海面温度が上昇している。"
             },
             {
-              "id": 128,
+              "id": 126,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5240,11 +5222,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "異常"
               ],
-              "audio": "audio/seg-128.mp3",
+              "audio": "audio/seg-126.mp3",
               "quizSentence": "今年の夏は異常に暑い。"
             },
             {
-              "id": 129,
+              "id": 127,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5257,11 +5239,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ノック"
               ],
-              "audio": "audio/seg-129.mp3",
+              "audio": "audio/seg-127.mp3",
               "quizSentence": "部屋に入る前に，ノックをしてください。"
             },
             {
-              "id": 130,
+              "id": 128,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5278,11 +5260,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "隠れた"
               ],
-              "audio": "audio/seg-130.mp3",
+              "audio": "audio/seg-128.mp3",
               "quizSentence": "彼は木の後ろに隠れた。"
             },
             {
-              "id": 131,
+              "id": 129,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5296,11 +5278,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "身長"
               ],
-              "audio": "audio/seg-131.mp3",
+              "audio": "audio/seg-129.mp3",
               "quizSentence": "面接の申込書に，身長を書く欄がある。"
             },
             {
-              "id": 132,
+              "id": 130,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5314,11 +5296,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "条件"
               ],
-              "audio": "audio/seg-132.mp3",
+              "audio": "audio/seg-130.mp3",
               "quizSentence": "希望の条件に合う会社を探しています。"
             },
             {
-              "id": 133,
+              "id": 131,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5332,11 +5314,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "資格"
               ],
-              "audio": "audio/seg-133.mp3",
+              "audio": "audio/seg-131.mp3",
               "quizSentence": "この資格があれば，就職に有利です。"
             },
             {
-              "id": 134,
+              "id": 132,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5350,11 +5332,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "有利"
               ],
-              "audio": "audio/seg-134.mp3",
+              "audio": "audio/seg-132.mp3",
               "quizSentence": "この資格があれば，就職に有利です。"
             },
             {
-              "id": 135,
+              "id": 133,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5371,11 +5353,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "重視する"
               ],
-              "audio": "audio/seg-135.mp3",
+              "audio": "audio/seg-133.mp3",
               "quizSentence": "面接では，第一印象を重視する会社が多い。"
             },
             {
-              "id": 136,
+              "id": 134,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5388,11 +5370,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ただ"
               ],
-              "audio": "audio/seg-136.mp3",
+              "audio": "audio/seg-134.mp3",
               "quizSentence": "特別な理由はなく，ただ緊張しているだけです。"
             },
             {
-              "id": 137,
+              "id": 135,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5406,11 +5388,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "面接試験"
               ],
-              "audio": "audio/seg-137.mp3",
+              "audio": "audio/seg-135.mp3",
               "quizSentence": "来週，面接試験を受ける予定です。"
             },
             {
-              "id": 138,
+              "id": 136,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5423,11 +5405,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ありがたさ"
               ],
-              "audio": "audio/seg-138.mp3",
+              "audio": "audio/seg-136.mp3",
               "quizSentence": "働けることのありがたさを感じています。"
             },
             {
-              "id": 139,
+              "id": 137,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5440,7 +5422,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "18歳未満"
               ],
-              "audio": "audio/seg-139.mp3",
+              "audio": "audio/seg-137.mp3",
               "quizSentence": "18歳未満の方は，応募できません。"
             }
           ]
@@ -5450,7 +5432,7 @@ window.LESSON_DATA = {
   ],
   "quiz": [
     {
-      "id": 52,
+      "id": 50,
       "text": "恩師",
       "kana": "おんし",
       "zh": "[名] 恩师，老师",
@@ -5460,7 +5442,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 53,
+      "id": 51,
       "text": "後藤",
       "kana": "ごとう",
       "zh": "[专] 后藤",
@@ -5470,7 +5452,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 54,
+      "id": 52,
       "text": "上がる",
       "kana": "あがる",
       "zh": "[动1] 进（屋），上（楼）",
@@ -5480,7 +5462,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 55,
+      "id": 53,
       "text": "福建省",
       "kana": "ふっけんしょう",
       "zh": "[专] 福建省",
@@ -5490,7 +5472,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 56,
+      "id": 54,
       "text": "広告代理店",
       "kana": "こうこくだいりてん",
       "zh": "[名] 广告公司",
@@ -5500,7 +5482,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 57,
+      "id": 55,
       "text": "やりがい",
       "kana": "やりがい",
       "zh": "[名] 值得做，做的价值",
@@ -5510,7 +5492,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 58,
+      "id": 56,
       "text": "金子",
       "kana": "かねこ",
       "zh": "[专] 金子",
@@ -5520,17 +5502,17 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 59,
+      "id": 57,
       "text": "高橋",
       "kana": "たかはし",
       "zh": "[专] 高桥",
-      "sentence": "金子君や高橋さんとは，明日の夜，いっしょに食事する約束をしています。",
-      "sentence_zh": "已经和金子、高桥他们约好了明晚一起吃饭。",
+      "sentence": "ええ。金子君や高橋さんとは，明日の夜，いっしょに食事する約束をしています。",
+      "sentence_zh": "有啊！已经和金子、高桥他们约好了明晚一起吃饭。",
       "blank": "高橋さんとは",
       "category": "dialogue"
     },
     {
-      "id": 60,
+      "id": 58,
       "text": "旅行代理店",
       "kana": "りょこうだいりてん",
       "zh": "[名] 旅行社，旅游代理公司",
@@ -5540,7 +5522,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 61,
+      "id": 59,
       "text": "勤める",
       "kana": "つとめる",
       "zh": "[动2] 工作，做事",
@@ -5550,7 +5532,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 62,
+      "id": 60,
       "text": "まあ，まあ",
       "kana": "まあ，まあ",
       "zh": "行了行了",
@@ -5560,7 +5542,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 63,
+      "id": 61,
       "text": "後にする",
       "kana": "あとにする",
       "zh": "待会儿，放在后面，推后",
@@ -5570,7 +5552,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 64,
+      "id": 62,
       "text": "つまらないものですが",
       "kana": "つまらないものですが",
       "zh": "一点小意思，不是什么值钱的东西……",
@@ -5580,7 +5562,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 65,
+      "id": 63,
       "text": "気を使う",
       "kana": "きをつかう",
       "zh": "费心，用心，留意，顾虑",
@@ -5590,7 +5572,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 66,
+      "id": 64,
       "text": "無理を言う",
       "kana": "むりをいう",
       "zh": "不讲理；提出无理要求",
@@ -5600,7 +5582,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 67,
+      "id": 65,
       "text": "〜がい",
       "kana": "〜がい",
       "zh": "〜的意义，〜的价值",
@@ -5610,7 +5592,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 68,
+      "id": 66,
       "text": "チャンス",
       "kana": "チャンス",
       "zh": "[名] 机会，机遇",
@@ -5620,7 +5602,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 69,
+      "id": 67,
       "text": "快晴",
       "kana": "かいせい",
       "zh": "[名] 大晴天，晴朗，好天气",
@@ -5630,7 +5612,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 70,
+      "id": 68,
       "text": "奥様",
       "kana": "おくさま",
       "zh": "[名] 尊夫人，（您）太太",
@@ -5640,7 +5622,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 71,
+      "id": 69,
       "text": "ごめんください",
       "kana": "ごめんください",
       "zh": "有人在家吗",
@@ -5650,7 +5632,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 72,
+      "id": 70,
       "text": "よくいらっしゃいました",
       "kana": "よくいらっしゃいました",
       "zh": "欢迎光临",
@@ -5660,7 +5642,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 73,
+      "id": 71,
       "text": "ほんの気持ちですが",
       "kana": "ほんのきもちですが",
       "zh": "一点点心意",
@@ -5670,7 +5652,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 74,
+      "id": 72,
       "text": "口に合う",
       "kana": "くちにあう",
       "zh": "合口味",
@@ -5680,7 +5662,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 75,
+      "id": 73,
       "text": "お口に合うかどうか分かりませんが",
       "kana": "おくちにあうかどうかわかりませんが",
       "zh": "不知道合不合您的口味",
@@ -5690,7 +5672,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 76,
+      "id": 74,
       "text": "何のお構いもできませんで",
       "kana": "なんのおかまいもできませんで",
       "zh": "没什么招待您的",
@@ -5700,7 +5682,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 77,
+      "id": 75,
       "text": "まだいいじゃありませんか",
       "kana": "まだいいじゃありませんか",
       "zh": "时间还早嘛，不是还早吗",
@@ -5710,7 +5692,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 78,
+      "id": 76,
       "text": "好意",
       "kana": "こうい",
       "zh": "[名] 好意，美意",
@@ -5720,7 +5702,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 79,
+      "id": 77,
       "text": "幸せ",
       "kana": "しあわせ",
       "zh": "[形2] 幸福，幸运",
@@ -5730,7 +5712,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 80,
+      "id": 78,
       "text": "無駄にする",
       "kana": "むだにする",
       "zh": "浪费，徒劳",
@@ -5740,7 +5722,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 81,
+      "id": 79,
       "text": "就職活動",
       "kana": "しゅうしょくかつどう",
       "zh": "[名] 求职活动",
@@ -5750,7 +5732,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 82,
+      "id": 80,
       "text": "志望動機",
       "kana": "しぼうどうき",
       "zh": "[名] 志愿动机，志愿理由",
@@ -5760,7 +5742,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 83,
+      "id": 81,
       "text": "自己PR",
       "kana": "じこピーアール",
       "zh": "[名] 自我宣传",
@@ -5770,7 +5752,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 84,
+      "id": 82,
       "text": "履歴書",
       "kana": "りれきしょ",
       "zh": "[名] 简历，履历",
@@ -5780,7 +5762,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 85,
+      "id": 83,
       "text": "そのまま",
       "kana": "そのまま",
       "zh": "[名] 就照原样，就那样",
@@ -5790,7 +5772,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 86,
+      "id": 84,
       "text": "採用試験",
       "kana": "さいようしけん",
       "zh": "[名] 录用考试",
@@ -5800,7 +5782,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 87,
+      "id": 85,
       "text": "清潔",
       "kana": "せいけつ",
       "zh": "[形2] 整洁，干净；清洁",
@@ -5810,7 +5792,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 88,
+      "id": 86,
       "text": "服装",
       "kana": "ふくそう",
       "zh": "[名] 服装",
@@ -5820,7 +5802,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 89,
+      "id": 87,
       "text": "一部",
       "kana": "いちぶ",
       "zh": "[名] 一部分",
@@ -5830,7 +5812,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 90,
+      "id": 88,
       "text": "学期",
       "kana": "がっき",
       "zh": "[名] 学期",
@@ -5840,7 +5822,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 91,
+      "id": 89,
       "text": "リクルートスーツ",
       "kana": "リクルートスーツ",
       "zh": "[名] 求职服装，求职套装",
@@ -5850,7 +5832,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 92,
+      "id": 90,
       "text": "姿",
       "kana": "すがた",
       "zh": "[名] 打扮，装束；姿态，姿势",
@@ -5860,7 +5842,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 93,
+      "id": 91,
       "text": "際",
       "kana": "さい",
       "zh": "[名] 时候，时机",
@@ -5870,7 +5852,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 94,
+      "id": 92,
       "text": "男女",
       "kana": "だんじょ",
       "zh": "[名] 男女",
@@ -5880,7 +5862,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 95,
+      "id": 93,
       "text": "問う",
       "kana": "とう",
       "zh": "[动1] 问，打听",
@@ -5890,7 +5872,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 96,
+      "id": 94,
       "text": "黒",
       "kana": "くろ",
       "zh": "[名] 黑，黑色",
@@ -5900,7 +5882,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 97,
+      "id": 95,
       "text": "紺",
       "kana": "こん",
       "zh": "[名] 藏青，深蓝",
@@ -5910,7 +5892,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 98,
+      "id": 96,
       "text": "灰色",
       "kana": "はいいろ",
       "zh": "[名] 灰色；暗淡",
@@ -5920,7 +5902,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 99,
+      "id": 97,
       "text": "氷河期",
       "kana": "ひょうがき",
       "zh": "[名] 冰河期",
@@ -5930,7 +5912,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 100,
+      "id": 98,
       "text": "職種",
       "kana": "しょくしゅ",
       "zh": "[名] 职业种类",
@@ -5940,7 +5922,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 101,
+      "id": 99,
       "text": "自動車メーカー",
       "kana": "じどうしゃメーカー",
       "zh": "[名] 汽车公司",
@@ -5950,7 +5932,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 102,
+      "id": 100,
       "text": "ごく",
       "kana": "ごく",
       "zh": "[副] 极，最，非常",
@@ -5960,7 +5942,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 103,
+      "id": 101,
       "text": "選択する",
       "kana": "せんたくする",
       "zh": "[动3] 选择",
@@ -5970,7 +5952,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 104,
+      "id": 102,
       "text": "申し込み",
       "kana": "もうしこみ",
       "zh": "[名] 报名，申请；提议",
@@ -5980,7 +5962,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 105,
+      "id": 103,
       "text": "突破する",
       "kana": "とっぱする",
       "zh": "[动3] 突破，冲破",
@@ -5990,7 +5972,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 106,
+      "id": 104,
       "text": "内定",
       "kana": "ないてい",
       "zh": "[名] 内定",
@@ -6000,7 +5982,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 107,
+      "id": 105,
       "text": "少しでも",
       "kana": "すこしでも",
       "zh": "尽可能",
@@ -6010,7 +5992,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 108,
+      "id": 106,
       "text": "〜次",
       "kana": "〜次",
       "zh": "〜次，〜回",
@@ -6020,7 +6002,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 109,
+      "id": 107,
       "text": "うがい",
       "kana": "うがい",
       "zh": "[名] 漱（口）",
@@ -6030,7 +6012,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 110,
+      "id": 108,
       "text": "手洗い",
       "kana": "てあらい",
       "zh": "[名] 洗手",
@@ -6040,7 +6022,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 111,
+      "id": 109,
       "text": "焦る",
       "kana": "あせる",
       "zh": "[动1] 焦急，急躁，着急",
@@ -6050,7 +6032,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 112,
+      "id": 110,
       "text": "上京する",
       "kana": "じょうきょうする",
       "zh": "[动3] 到东京去，进京",
@@ -6060,7 +6042,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 113,
+      "id": 111,
       "text": "お別れ会",
       "kana": "おわかれかい",
       "zh": "[名] 欢送会",
@@ -6070,7 +6052,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 114,
+      "id": 112,
       "text": "事前",
       "kana": "じぜん",
       "zh": "[名] 事前，事先",
@@ -6080,7 +6062,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 115,
+      "id": 113,
       "text": "昼夜",
       "kana": "ちゅうや",
       "zh": "[名] 昼夜",
@@ -6090,7 +6072,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 116,
+      "id": 114,
       "text": "性別",
       "kana": "せいべつ",
       "zh": "[名] 性别",
@@ -6100,7 +6082,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 117,
+      "id": 115,
       "text": "納期",
       "kana": "のうき",
       "zh": "[名] 交货时间，缴纳期限",
@@ -6110,7 +6092,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 118,
+      "id": 116,
       "text": "茶色い",
       "kana": "ちゃいろい",
       "zh": "[形1] 茶色",
@@ -6120,7 +6102,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 119,
+      "id": 117,
       "text": "グレー",
       "kana": "グレー",
       "zh": "[名] 灰色，鼠色",
@@ -6130,7 +6112,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 120,
+      "id": 118,
       "text": "ブラック",
       "kana": "ブラック",
       "zh": "[名] 黑色，黑",
@@ -6140,7 +6122,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 121,
+      "id": 119,
       "text": "少量",
       "kana": "しょうりょう",
       "zh": "[名] 少量",
@@ -6150,7 +6132,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 122,
+      "id": 120,
       "text": "微量",
       "kana": "びりょう",
       "zh": "[名] 微量",
@@ -6160,7 +6142,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 123,
+      "id": 121,
       "text": "多量",
       "kana": "たりょう",
       "zh": "[名] 大量",
@@ -6170,7 +6152,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 124,
+      "id": 122,
       "text": "価値",
       "kana": "かち",
       "zh": "[名] 价值",
@@ -6180,7 +6162,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 125,
+      "id": 123,
       "text": "エルニーニョ",
       "kana": "エルニーニョ",
       "zh": "[名] 厄尔尼诺",
@@ -6190,7 +6172,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 126,
+      "id": 124,
       "text": "ペルー沖",
       "kana": "ペルーおき",
       "zh": "[名] 秘鲁海上",
@@ -6200,7 +6182,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 127,
+      "id": 125,
       "text": "海面",
       "kana": "かいめん",
       "zh": "[名] 海面",
@@ -6210,7 +6192,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 128,
+      "id": 126,
       "text": "異常",
       "kana": "いじょう",
       "zh": "[形2] 异常",
@@ -6220,7 +6202,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 129,
+      "id": 127,
       "text": "ノック",
       "kana": "ノック",
       "zh": "[名] 敲门，敲打",
@@ -6230,7 +6212,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 130,
+      "id": 128,
       "text": "隠れる",
       "kana": "かくれる",
       "zh": "[动2] 躲藏，隐藏",
@@ -6240,7 +6222,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 131,
+      "id": 129,
       "text": "身長",
       "kana": "しんちょう",
       "zh": "[名] 身高，身长",
@@ -6250,7 +6232,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 132,
+      "id": 130,
       "text": "条件",
       "kana": "じょうけん",
       "zh": "[名] 条件，前提",
@@ -6260,7 +6242,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 133,
+      "id": 131,
       "text": "資格",
       "kana": "しかく",
       "zh": "[名] 资格，身分",
@@ -6270,7 +6252,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 134,
+      "id": 132,
       "text": "有利",
       "kana": "ゆうり",
       "zh": "[形2] 有利",
@@ -6280,7 +6262,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 135,
+      "id": 133,
       "text": "重視する",
       "kana": "じゅうしする",
       "zh": "[动3] 重视",
@@ -6290,7 +6272,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 136,
+      "id": 134,
       "text": "ただ",
       "kana": "ただ",
       "zh": "[副] 仅，只",
@@ -6300,7 +6282,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 137,
+      "id": 135,
       "text": "面接試験",
       "kana": "めんせつしけん",
       "zh": "[名] 面试考试",
@@ -6310,7 +6292,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 138,
+      "id": 136,
       "text": "ありがたさ",
       "kana": "ありがたさ",
       "zh": "[名] 宝贵，可贵，价值",
@@ -6320,7 +6302,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 139,
+      "id": 137,
       "text": "〜未満",
       "kana": "〜未満",
       "zh": "不满〜，不足〜",
