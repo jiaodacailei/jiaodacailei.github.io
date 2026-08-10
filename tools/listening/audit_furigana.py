@@ -14,34 +14,51 @@
 只能靠人工通读整页渲染结果去认，效率很低，容易漏看（这两个字都是极常见字，
 每一课都会反复出现好几次，读一遍很容易审美疲劳看走眼）。
 
-这个脚本补上"主动扫描"这一步，但**必须严格对应 `build_page.py` 实际渲染时
-读音的真实来源**，不能自己重新跑一遍 pykakasi 了事——`build_page.py` 里这一行
-是关键：`ja_html = ruby_html(s["text"], rel_char_times) if rel_char_times else
-s["furigana"]`，也就是说**只有带 `char_times`（会话/课文，需要跟读高亮）的
-句子才会现场跑 `ruby_html()`**；**生词条目这类没有 `char_times` 的，直接用
-`enriched.json` 里已经算好、存好的 `furigana` 字段**（来自 `build_vocab_from_
-wordlist.py`，读音可能来自词表里人工填的 `kana` 字段，不一定是 pykakasi 默认
-输出）。如果这个脚本对生词条目也无脑重新跑 pykakasi，会产生假阳性——真实
-案例：生词"〜力"当初已经人工订正成读りょく存进了 `furigana` 字段，但重新跑
-pykakasi 会得到默认的ちから，误报成"读音不对"，而实际页面渲染的是已经订正
-过的りょく，根本没有问题。所以这个脚本区分两种情况：**有 `char_times` 的句子
-——现场重跑跟 `ruby_html()` 完全同款的分词+订正表逻辑（直接 import 自
-`build_page.py`，避免两边逻辑长出分歧）；没有 `char_times`、已有 `furigana`
-字段的（生词表）——直接从这个字段的 `<ruby>字<rt>读音</rt></ruby>` 里正则
-抠出实际读音，不重新计算**。两种情况，凡是命中"高危字表"（`DANGER_KANJI`，
-**不是穷举**，遇到新的常见误读字往这里加）的字，都打印出来（句子级的带前后
-一两个 token 的上下文），人工只需要扫一遍这份几十行的短报告、确认每个读音
-在这句/这个词里对不对，比读整页 HTML 渲染结果快得多也准得多。
+这个脚本补上"主动扫描"这一步，但**必须严格对应 `build_page.py --data-driven`
+实际渲染时读音的真实来源**，不能自己重新跑一遍 pykakasi 了事，也不能相信
+`enriched.json` 里存的旧字段——`build_page.py` 的 `sentence_to_data()`（`--data-
+driven` 页面，也就是这个 skill 唯一用的路径）判断逻辑是：**有 `char_times`
+（会话/课文）——现场跑 `tokenize_ja(text, rel_char_times)`；没有 `char_times`
+但有 `kana` 字段（生词条目人工填过读音）——现场跑 `_split_kana_segments(text,
+kana)`；两者都没有——现场跑 `tokenize_ja(text)`（自动分词+订正表，没有跟读
+时间戳）**。**三种情况全部是"现场重新计算"，没有一种是直接读 `enriched.json`
+里存的 `furigana` 字段**——这个字段是更早期非 `--data-driven` 页面路径
+（`sentence_card_html()`）的产物，`--data-driven` 模式下 `build_page.py` 根本
+不读它。
+
+**这个脚本早期版本对生词条目走的是第四种逻辑：直接读 `furigana` 字段**（当
+时这个假设是对的，非 `--data-driven` 页面确实这样渲染）——`--data-driven`
+成为这个 skill 唯一用法之后，这个分支没有跟着更新，一直读一个渲染时根本
+用不到的字段，长期处于"看起来在审核、实际零覆盖"的状态，直到真实案例
+（textbook-sjp-zg-l14，"茶色い"）才暴露：这一课的生词表用的是"整段word-
+level转写+一次性`align_group()`对齐"这套自定义流程（`SKILL.md`"生词边界
+收紧"一节），从不调用 `build_vocab_from_wordlist.py`，从来没有填过
+`furigana` 字段——**88个生词条目的 `furigana` 全部是 `None`**，这个脚本
+（包括 `--all` 全量模式）对整个生词表的每一条都只返回空结果，报告里干净
+得像是"审过了、没问题"，实际上是**一整个 tab 从来没有被真正检查过**，
+"茶色い"读音被 `_split_kana_segments()` 内部的一个 mora 计数 bug 截断成
+"ちゃ"，从生成到用户发现之间的所有轮次"全量读音复核"全部没能发现——不是
+读漏了，是压根没读到任何数据。**即使 `furigana` 字段确实被填过的课
+（走标准 `build_vocab_from_wordlist.py` 流程的），这个字段也只是构建生词表
+那一刻的快照，跟 `sentence_to_data()` 真正现场调用的计算结果不保证一致**
+（比如后续任何一次给 `_split_kana_segments()`/`_resolve_hira()` 的订正规则
+改动，`furigana` 字段都不会跟着重算），本质上都是"审核的不是实际渲染出来
+的东西"这同一个问题，只是 l14 这次因为字段整体缺失而 100% 暴露。现在
+已改成跟句子分支一样"现场按 `sentence_to_data()` 的真实分支重新计算"，
+不再读这个字段（`_scan_vocab_entry()`）。
 
 **用法建议**：`enriched.json`（会话/课文/生词，组装完、跑 `build_page.py` 之前）
 都过一遍这个脚本，报告里每一条人工确认，读音不对：
   - 句子里的（有 char_times）——照 `build_page.py` 里 `_TOKEN_READING_OVERRIDES_
     BY_PREV`/`_UNCONDITIONAL` 的格式加一条订正（判断该用哪种模式见 `build_page.py`
     里两条已有注释的判断依据）。
-  - 生词条目的（无 char_times，走 `furigana` 字段）——回到词表源头（`vocab_words.
-    json`）给这一条加/改 `kana` 字段，重新跑 `build_vocab_from_wordlist.py`。
+  - 生词条目的（无 char_times）——有 `kana` 字段的回到词表源头改 `kana`；没有
+    `kana` 字段、走自动分词的，同句子分支一样加订正表条目。
 这个脚本**只负责发现疑似读音问题、不判断对错、不负责自动修**——报告里每一条
-都要人工用自己的日语知识核对，不能假设"命中高危字表=一定是错的"。
+都要人工用自己的日语知识核对，不能假设"命中高危字表=一定是错的"，**更不能
+假设"这个脚本对某个 tab 完全没输出=这个 tab 没问题"——先确认这个 tab 的条目
+真的被这个脚本处理过（比如临时加一行 print 数一下处理了多少条），再信任
+"零命中"这个结论**。
 
 ## `--all`：全量读音复核（不限于高危字表，真正的人工全审）
 
@@ -62,7 +79,6 @@ pykakasi 会得到默认的ちから，误报成"读音不对"，而实际页面
 """
 import sys
 import os
-import re
 import json
 import argparse
 
@@ -72,6 +88,9 @@ from build_page import (
     _TOKEN_READING_OVERRIDES_BY_PREV,
     _TOKEN_READING_OVERRIDES_UNCONDITIONAL,
     _resolve_hira,
+    _split_kana_segments,
+    _needs_kana_annotation,
+    tokenize_ja,
 )
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -81,8 +100,6 @@ if hasattr(sys.stdout, "reconfigure"):
 # 每一课教材几乎都会反复出现，遇到新的常见误读字（发现方式：人工听音频/读
 # 已知正确翻译时觉得读音不对）就往这里加。
 DANGER_KANJI = set("人月日方上下中分時気家物目手口力名音色間位歳君後次")
-
-_RUBY_RE = re.compile(r"<ruby>([^<]+)<rt>([^<]+)</rt></ruby>")
 
 
 def _has_kanji(s):
@@ -135,19 +152,33 @@ def _scan_live_text(text, show_all):
     return hits
 
 
-def _scan_prebaked_furigana(furigana_html, show_all, word_text=None):
-    """没有 char_times 的（生词表）——build_page.py 直接用这个字段，不重新
-    计算，读音真实来源可能是词表里人工填的 kana，不是 pykakasi 默认输出。"""
-    hits = []
-    pairs = _RUBY_RE.findall(furigana_html or "")
+def _scan_vocab_entry(s, show_all):
+    """没有 char_times 的（生词表）——严格复现 sentence_to_data() 的真实分支：
+    有 `kana` 字段（人工填过读音）就跑 `_split_kana_segments(text, kana)`，
+    没有就跑 `tokenize_ja(text)`（自动分词+订正表，跟句子分支同款逻辑，只是
+    没有 char_times 所以不产出跟读时间戳）——两条分支都是"现场重新计算"，
+    不读 `enriched.json` 里可能存在也可能是 None、且不保证跟当前 build_page.py
+    逻辑一致的 `furigana` 字段（历史教训见文件头部文档字符串）。"""
+    text = s.get("text", "")
+    if not text:
+        return []
+    kana = s.get("kana")
+    if kana and _needs_kana_annotation(text) and kana != text:
+        tokens = _split_kana_segments(text, kana)
+    elif kana:
+        tokens = [{"text": text}]
+    else:
+        tokens = tokenize_ja(text)
+    pairs = [(t["text"], t["kana"]) for t in tokens if t.get("kana")]
     if show_all:
         if pairs:
             row = " ".join(f"{o}[{h}]" for o, h in pairs)
-            hits.append(f"(vocab {word_text!r}): {row}")
-        return hits
+            return [f"(vocab {text!r}): {row}"]
+        return []
+    hits = []
     for orig, hira in pairs:
         if any(ch in DANGER_KANJI for ch in orig):
-            hits.append(f"[{orig}→{hira}] (生词表 furigana 字段)")
+            hits.append(f"[{orig}→{hira}] (生词表)")
     return hits
 
 
@@ -159,14 +190,18 @@ def main():
     args = ap.parse_args()
 
     total = 0
+    sentence_count = 0
+    vocab_count = 0
     for path in args.enriched_json:
         data = json.load(open(path, encoding="utf-8"))
         print(f"=== {path} ===")
         for s in sorted(data["sentences"], key=lambda s: s["id"]):
             if s.get("char_times"):
+                sentence_count += 1
                 hits = _scan_live_text(s["text"], args.all)
             else:
-                hits = _scan_prebaked_furigana(s.get("furigana"), args.all, s.get("text"))
+                vocab_count += 1
+                hits = _scan_vocab_entry(s, args.all)
             for h in hits:
                 total += 1
                 print(f"  #{s['id']}: {h}")
@@ -175,6 +210,12 @@ def main():
             "同一个字/词在本课内前后读音是否一致，尤其要留意）" if args.all \
             else "处高危字命中，逐条人工确认读音是否符合这句/这个词的实际语境"
     print(f"\n共 {total} {label}")
+    # 覆盖计数——不能只看上面的命中数就信"没问题"，先确认这两类条目真的都
+    # 被处理过（历史教训：曾经生词表 furigana 字段整体缺失，脚本对88个生词
+    # 条目全部返回空结果，报告"干净"得跟真的审过一样，见文件头部文档字符串）。
+    print(f"（本次共处理 {sentence_count} 句 + {vocab_count} 条生词——如果某个 tab "
+          f"理应有内容但这里的数字是0，先查是不是传错了文件，不要直接信任"
+          f"上面的命中数）")
 
 
 if __name__ == "__main__":
