@@ -70,9 +70,12 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
   5个生词的边界后重新跑 `build_page.py`，误以为只会重切这5个文件，实际
   89个生词文件全被打回未裁剪状态）。正确顺序：所有边界类修复都做完、
   确认不再需要整体重新跑 `build_page.py` 之后，`trim_clip_silence.py` 才作为
-  最后一步跑；如果生成完页面后又发现个别句子边界要改，改用直接 `ffmpeg -ss
-  -t` 手工切这几个文件（不经过 `cut_segments()`/`build_page.py`），不要为了
-  改一两句边界重新跑一遍整个 `build_page.py`。
+  最后一步跑；如果生成完页面后又发现个别句子边界要改，用共享工具
+  `tools/listening/recut_clips.py <combined音频> enriched_combined.json
+  docs/private/<slug> <id...>` 只重切这几个 `id` 对应的文件（不经过
+  `cut_segments()`/`build_page.py`），不要为了改一两句边界重新跑一遍整个
+  `build_page.py`；音频切完别忘了配套跑 `patch_sentence_tokens.py`（见下面
+  l14 案例）同步 `data.js` 里的跟读高亮时间戳，两者是分开的两步，缺一不可。
 - `docs/private/textbook-sjp-zg-l14/` — 《标准日本语》中级第14课（恩師、日本の
   就職活動，会话/课文/生词/単語テスト四个tab，88个生词条目）。**这一课的源
   材料app截图第一次自带了逐句中文翻译**（会话/课文每句日语下面直接印着对应
@@ -232,6 +235,17 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
      这种可能，再决定要不要继续深挖服务器端。确认是缓存问题时，建议用户
      用无痕窗口测试或者清除这个站点的 Storage，不要让这类"虚假的复现"
      牵着继续瞎改已经正确的边界。
+  7. **这一课踩完上面第4点"手动订正被静默覆盖"这个坑之后，把"维护一份
+     清单、每次全量重新对齐后照着清单挨个核对"这条教训直接落地成了工具**，
+     不再依赖记性：`tools/listening/apply_manual_overrides.py`（用法见上面
+     第4步"人工核实过的边界订正"）——清单本身就是脚本的输入（`manual_
+     overrides_<mondai>.json`，按 `text` 精确匹配），"照清单核对"变成
+     "重新跑一遍脚本"，不用人工挨个回忆判断。同时把这一课反复出现的"改完
+     边界之后现写一个几十行小脚本同步 `data.js` 的 `tokens`""改完边界之后
+     手工换算这一段在合并音频里的偏移量再拿 `ffmpeg -ss -t` 重切"这两个
+     一次性套路，分别抽成了 `tools/listening/patch_sentence_tokens.py`
+     （见"生成页面"一节）和 `tools/listening/recut_clips.py`（见"生词音频
+     静音裁剪"上方那条 l13 案例），下一课再遇到同类问题不用现写。
 
 ## 参数
 
@@ -394,6 +408,43 @@ notes 该怎么写解释就怎么写（可以用"AでもBでも"这种占位字�
 python tools/listening/refine_boundaries.py <这段音频> enriched_raw.json enriched_refined.json
 python tools/listening/validate_boundaries.py enriched_refined.json enriched_final.json
 ```
+
+#### 人工核实过的边界订正：`apply_manual_overrides.py`（后续每次重新跑 `refine_boundaries.py` 都要补跑）
+
+`refine_boundaries.py` 每次都是从头对整个题目分组重新对齐，不知道"这个位置
+之前用 RMS/word-level 人工核实过、有个更可信的订正值"这回事——这一课如果
+中途因为别的原因（合并/拆分句子、改了某句 `text`）要重新跑一遍 `refine_
+boundaries.py`，之前已经核实修好的边界会被这一次重新对齐悄悄覆盖回错误值。
+真实案例（textbook-sjp-zg-l14）：会话里两处已经用 RMS 核实修复过的边界
+（"王さん"开头/"これ"开头），因为后来要合并"ええ"/"いいえ"这两句触发了一次
+新的 `refine_boundaries.py`，在没人记得要回去重新核对的情况下被静默覆盖回
+原来的错误值，直到下一轮用户反馈才发现——用户当场指出"你有没有使用之前
+skill啊？感觉和之前的质量相比，差太远了"。
+
+做法：**每次改完一批边界、确认是真实bug并且用 RMS/word-level 核实过正确值
+之后，随手把这条订正记进这一课工作目录下的 `manual_overrides_<mondai>.json`**
+（不存在就新建，按 `text` 原文精确匹配，不是按 `id`——`id` 会在每次 resplit/
+合并之后重新编号，`text` 只要这句话没被拆分/合并/改写就不会变，是跨多轮
+重新生成依然稳定的锚点）：
+
+```json
+{
+  "これ，つまらないものですが……。": {"start": 21.60, "char_time_first": 21.65},
+  "あれ，そんなに気を使わなくてよかったのに。": {"end": 27.44, "char_time_last": 27.44}
+}
+```
+
+```bash
+python tools/listening/apply_manual_overrides.py enriched_refined.json manual_overrides_dialogue.json enriched_final.json
+```
+
+`start`/`end` 决定音频真正切在哪（最要紧的一项），`char_time_first`/`char_
+time_last` 可选，给了就精确覆盖跟读高亮第一个/最后一个字符的时间戳（不给
+只做"越界就夹回边界内"的保底处理，精度不如显式指定）。**放在 `validate_
+boundaries.py` 之后跑**（订正的是最终边界，不希望被 `validate_boundaries.py`
+的重叠裁剪逻辑又动一次）。之后哪怕这一课因为别的原因要重新跑一遍 `refine_
+boundaries.py`，也只需要在新的 `validate_boundaries.py` 输出上再跑一遍本
+脚本，之前核实过的订正就自动重新生效，不用凭记忆一条条回去重新核对。
 
 生词表：不跑 `refine_boundaries.py`（单词粒度不需要逐字符跟读高亮），但
 **必须**跑一遍收紧边界（见下面"生词边界收紧"），不能直接把 `transcribe.py`
@@ -587,7 +638,14 @@ page.py` 只生成一个精简的 `index.html`"壳"（密码门/tab栏/悬浮播
 改说话人），直接改 `data.js` 里对应字段就行，不用碰 HTML、也不用重新跑
 一遍生成流程**。`data.js` 里每句的 `tokens` 数组就是 `ruby_html()` 内部
 分词+读音订正的结果（`{"text":原文,"kana":读音,"t":跟读高亮时间戳}`），
-想订正某个字的读音，直接找到对应 token 改 `kana` 字段就行。
+想订正某个字的读音，直接找到对应 token 改 `kana` 字段就行。**但如果是边界
+（`start`/`end`/`char_times`）改了，`tokens` 里每个字/词的绝对时间戳 `t`
+也要跟着重算——`data.js` 是静态数据，`enriched_combined.json` 改了不会自动
+带动它更新**，用共享工具批量重算并原地覆盖，不用手改：
+
+```bash
+python tools/listening/patch_sentence_tokens.py docs/private/<slug>/data.js enriched_combined.json <id...>
+```
 
 ### 6a.（必须）单词测试 tab：填空/听音频写假名/中文写假名/日文写中文
 
