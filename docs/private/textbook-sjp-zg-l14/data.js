@@ -5032,7 +5032,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "茶色",
-                  "kana": "ちゃ"
+                  "kana": "ちゃいろ"
                 },
                 {
                   "text": "い"
