@@ -25,6 +25,11 @@ mp3`，边界改了不代表文件名变，但保持跟 `sentence_to_data()`
 
 会在 `data.js` 的所有 tab（不管是"会话""课文""生词"还是别的名字）里搜索匹配
 `id` 的句子，不需要预先知道这个 id 属于哪个 tab。
+
+跟 `build_lesson_data()` 一样，会先用整份 `enriched_combined.json` 构造
+"生词表读音映射"传给 `tokenize_ja()`（见该函数文档字符串）——如果被 patch
+的句子里有词跟生词表重名，直接复用生词表已经人工核实过的读音，不会退回
+pykakasi 的自动猜测，保证跟真实页面渲染逻辑一致。
 """
 import sys
 import os
@@ -47,6 +52,15 @@ def main():
 
     enriched = json.load(open(args.enriched_combined_json, encoding="utf-8"))
     by_id = {s["id"]: s for s in enriched["sentences"] if s["id"] in set(args.ids)}
+    # 跟 build_lesson_data() 的构造方式完全一致——会话/课文句子里如果有词
+    # 跟生词表重名，直接用生词表已经人工核实过的读音，见 tokenize_ja() 的
+    # vocab_readings 参数文档。用完整 enriched["sentences"]（不是只看
+    # by_id 这几条）构造，因为要复用的生词读音不一定就是这次改的这几个id。
+    vocab_readings = {
+        s["text"]: s["kana"]
+        for s in enriched["sentences"]
+        if not s.get("char_times") and s.get("kana")
+    }
 
     missing = [i for i in args.ids if i not in by_id]
     if missing:
@@ -67,9 +81,9 @@ def main():
                     char_times = es.get("char_times")
                     if char_times:
                         rel_char_times = [round(t - es["start"], 2) for t in char_times]
-                        s["tokens"] = tokenize_ja(es["text"], rel_char_times)
+                        s["tokens"] = tokenize_ja(es["text"], rel_char_times, vocab_readings)
                     else:
-                        s["tokens"] = tokenize_ja(es["text"])
+                        s["tokens"] = tokenize_ja(es["text"], vocab_readings=vocab_readings)
                     s["audio"] = f"audio/seg-{es['id']:03d}.mp3"
                     patched.append(s["id"])
 

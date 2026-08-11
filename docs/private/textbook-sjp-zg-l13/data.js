@@ -3122,7 +3122,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "年月",
-                  "kana": "としつき",
+                  "kana": "ねんげつ",
                   "t": 6.42
                 },
                 {

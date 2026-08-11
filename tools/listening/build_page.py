@@ -437,14 +437,30 @@ def _split_plain_by_char_times(text, times):
     return runs
 
 
-def tokenize_ja(text, char_times=None):
+def tokenize_ja(text, char_times=None, vocab_readings=None):
     """假名注音分词——把日语原文按 pykakasi 分词、套用读音订正表
-    （_TOKEN_READING_OVERRIDES_*/_resolve_hira）、拆分送假名（_split_kana_segments），
-    返回一个"扁平化 token 列表"，每个 token 是一个 dict：
+    （_TOKEN_READING_OVERRIDES_*/_resolve_hira），返回一个"扁平化 token 列表"，
+    每个 token 是一个 dict：
       {"text": 这个 token 的原文, "kana": 假名读音（可选，只在需要标注且跟 text
        不同时才有）, "t": 跟读高亮用的绝对时间戳（可选，只在传了 char_times 且
        这个 token 有实际可读内容时才有）}
     换行符单独表示成 {"text": "\\n"}（渲染时转成 <br>，不参与 ruby/高亮）。
+
+    `vocab_readings`（可选）：`{生词原文: 生词读音}` 映射——`jp-textbook-lesson`
+    skill 专用（其它复用这份 build_page.py 的 listening 系 skill 不传，行为
+    不变）。**如果一个词既出现在生词表里、又出现在会话/课文的句子里，两边的
+    注音必须一致，直接用生词表里已经人工核实过的读音，不能让 pykakasi 在
+    句子里重新猜一遍**——真实案例（textbook-sjp-zg-l13）："年月"这个词生词表
+    里读ねんげつ（人工核实过音频），但课文句子"長い年月が必要だろう"里
+    pykakasi 默认猜成としつき，两边不一致，之前误判成"这个词本来就有两种
+    合法读音"（类比"その後"的真歧义），用户指出这不是歧义，是该以生词表
+    读音为准。检查优先级放在 `_TOKEN_READING_OVERRIDES_*`/`_resolve_hira`
+    **之前**——生词表读音是这一课自己人工核实过的最高优先级来源，不应该被
+    通用规则表覆盖。只做**整个 pykakasi 分词结果**（`orig`）跟生词原文的精确
+    匹配，不做子串/跨词匹配——生词表里的多字词组合（比如"無理を言う"这种
+    动词短语）如果被 pykakasi 拆成好几个 token，这条精确匹配不会生效，这类
+    情况仍然要靠 `_TOKEN_READING_OVERRIDES_*` 手动加规则，是已知的窄覆盖
+    范围，不是这个功能要解决的场景（真的撞到了再扩展匹配逻辑）。
 
     这是原来 ruby_html() 的核心逻辑，拆出来单独返回结构化数据（而不是直接拼好
     的 HTML 字符串）——data-driven 页面（--data-driven，见 build_lesson_data()）
@@ -468,7 +484,9 @@ def tokenize_ja(text, char_times=None):
             tok_len = len(orig)
             next_char = line[line_offset + tok_len] if line_offset + tok_len < len(line) else ""
             line_offset += tok_len
-            if orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
+            if vocab_readings and orig in vocab_readings:
+                hira = vocab_readings[orig]
+            elif orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
             elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
                 hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
@@ -1026,7 +1044,7 @@ def _group_by_mondai_question(sentences, questions):
     return by_mondai
 
 
-def sentence_to_data(s, audio_rel, quiz_by_id=None):
+def sentence_to_data(s, audio_rel, quiz_by_id=None, vocab_readings=None):
     """把一句 sentence 转成 data-driven 页面用的结构化数据（page-renderer.js
     渲染 .seg-card 用）——跟 sentence_card_html() 是同一份信息，只是不拼成
     HTML 字符串，改成前端能直接用的 dict。char_times 的绝对时间戳→音频文件
@@ -1049,7 +1067,7 @@ def sentence_to_data(s, audio_rel, quiz_by_id=None):
     char_times = s.get("char_times")
     rel_char_times = [round(t - s["start"], 2) for t in char_times] if char_times else None
     if rel_char_times:
-        tokens = tokenize_ja(s["text"], rel_char_times)
+        tokens = tokenize_ja(s["text"], rel_char_times, vocab_readings)
     elif s.get("kana"):
         text, kana = s["text"], s["kana"]
         if _needs_kana_annotation(text) and kana != text:
@@ -1057,7 +1075,7 @@ def sentence_to_data(s, audio_rel, quiz_by_id=None):
         else:
             tokens = [{"text": text}]
     else:
-        tokens = tokenize_ja(s["text"])
+        tokens = tokenize_ja(s["text"], vocab_readings=vocab_readings)
     blanks = s.get("blanks") or []
     quiz_sentence = None
     # 生词卡片本身只有孤立的一个词，没有上下文——切到"填空"练习模式时，
@@ -1093,6 +1111,15 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
     seg-card），结构上跟 build_sections_html() 生成的 HTML 是一一对应的。"""
     by_mondai = _group_by_mondai_question(sentences, questions)
     quiz_by_id = {q["id"]: q for q in quiz_data} if quiz_data else None
+    # 生词表读音映射（原文→读音），供会话/课文句子里跟生词表重名的词直接
+    # 复用生词表已经人工核实过的读音，见 tokenize_ja() 的 vocab_readings
+    # 参数文档——只收有 kana 字段的生词条目（没填 kana 的说明没人工核实过，
+    # 不该被当成权威来源反过来纠正句子里 pykakasi 自己的猜测）。
+    vocab_readings = {
+        s["text"]: s["kana"]
+        for s in sentences
+        if not s.get("char_times") and s.get("kana")
+    }
     tabs = [
         {
             "mondai": mrec["mondai"],
@@ -1101,7 +1128,10 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
                     "question": qrec["question"],
                     "overview": qrec["overview"],
                     "answer": qrec["answer"],
-                    "sentences": [sentence_to_data(s, audio_rel, quiz_by_id) for s in qrec["sentences"]],
+                    "sentences": [
+                        sentence_to_data(s, audio_rel, quiz_by_id, vocab_readings)
+                        for s in qrec["sentences"]
+                    ],
                 }
                 for qrec in mrec["questions"]
             ],

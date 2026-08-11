@@ -106,9 +106,11 @@ def _has_kanji(s):
     return any("一" <= ch <= "鿿" for ch in s)
 
 
-def _scan_live_text(text, show_all):
-    """有 char_times 的句子——build_page.py 现场跑 ruby_html()，这里重现同一套
-    分词+订正表逻辑（不是重新发明一套，直接复用 build_page.py 的表和 _kks）。"""
+def _scan_live_text(text, show_all, vocab_readings=None):
+    """有 char_times 的句子——build_page.py 现场跑 tokenize_ja()，这里重现同一套
+    分词+订正表逻辑（不是重新发明一套，直接复用 build_page.py 的表和 _kks）。
+    `vocab_readings` 见 `tokenize_ja()` 文档字符串——跟真实渲染路径一样，检查
+    优先级放在 `_TOKEN_READING_OVERRIDES_*`/`_resolve_hira` 之前。"""
     hits = []
     for line in text.split("\n"):
         tokens = _kks.convert(line)
@@ -127,7 +129,10 @@ def _scan_live_text(text, show_all):
             next_char = line[line_offset + tok_len] if line_offset + tok_len < len(line) else ""
             line_offset += tok_len
             overridden = False
-            if orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
+            if vocab_readings and orig in vocab_readings:
+                hira = vocab_readings[orig]
+                overridden = True
+            elif orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
                 overridden = True
             elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
@@ -194,11 +199,18 @@ def main():
     vocab_count = 0
     for path in args.enriched_json:
         data = json.load(open(path, encoding="utf-8"))
+        # 跟 build_lesson_data() 的 vocab_readings 构造方式完全一致——只收有
+        # kana 字段的生词条目，见 tokenize_ja() 文档字符串。
+        vocab_readings = {
+            s["text"]: s["kana"]
+            for s in data["sentences"]
+            if not s.get("char_times") and s.get("kana")
+        }
         print(f"=== {path} ===")
         for s in sorted(data["sentences"], key=lambda s: s["id"]):
             if s.get("char_times"):
                 sentence_count += 1
-                hits = _scan_live_text(s["text"], args.all)
+                hits = _scan_live_text(s["text"], args.all, vocab_readings)
             else:
                 vocab_count += 1
                 hits = _scan_vocab_entry(s, args.all)
