@@ -1564,7 +1564,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 变化）算，不是按当次刷新后剩下的队列长度算——不然刷新恢复进度之后，进度
   // 条会从一个奇怪的小分母重新数起（比如剩 385 题就显示"1 / 385"），显得之前
   // 做过的全部作废了。
-  function doneCountThisRound() { return TOTAL_THIS_ROUND - queue.length; }
+  // 一道题只有真的答对过才算"这一轮做完"（markDone 只在答对时调用，见
+  // doCheck()）——答错的题会被重新塞回队列末尾，直到答对为止都不会计进
+  // completed，所以不能再用"TOTAL_THIS_ROUND - queue.length"这种基于队列
+  // 长度的算法（队列长度现在会因为重新塞回答错的题而变化，跟"已完成数"
+  // 脱钩了），改成直接数 completed 里有多少个 key 落在这一轮的范围（scope+
+  // category）内。
+  function doneCountThisRound() {
+    var n = 0;
+    scopedAllItems().forEach(function(item) {
+      if (completed[errKey(item.word.id, item.type)]) n++;
+    });
+    return n;
+  }
 
   // 进度条格式："当前题号/本轮总题数(累计错误次数)"，括号里的错误数是红色——
   // 不是本轮的错误数，是从有记录以来累计的错误次数，点"清除使用记录"才清零。
@@ -1575,11 +1587,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
   // 判错之后立刻刷新括号里的错误数（不调用 render()，那会连题目状态一起重置）
   function refreshProgress() {
-    if (qi >= queue.length) { quizProgress.innerHTML = progressHtml(TOTAL_THIS_ROUND); return; }
-    quizProgress.innerHTML = progressHtml(doneCountThisRound() + qi + 1);
+    quizProgress.innerHTML = progressHtml(Math.min(doneCountThisRound() + 1, TOTAL_THIS_ROUND));
   }
 
   function render() {
+    // 跳过队列里已经答对过的题——答错的题会被重新塞进队列末尾等着重考
+    // （见 doCheck()），如果同一道题后来又被答对了，之前排在后面、还没
+    // 轮到的旧副本要跳过，不然会重复出这道已经过关的题。
+    while (qi < queue.length && completed[errKey(queue[qi].word.id, queue[qi].type)]) qi++;
+
     if (TOTAL_THIS_ROUND === 0) {
       // "仅错题"范围下，还没有任何累计错误——不是"这一轮做完了"，是压根没题可做
       quizCard.style.display = "none";
@@ -1597,7 +1613,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
     quizCard.style.display = "";
     quizDone.style.display = "none";
-    quizProgress.innerHTML = progressHtml(doneCountThisRound() + qi + 1);
+    quizProgress.innerHTML = progressHtml(Math.min(doneCountThisRound() + 1, TOTAL_THIS_ROUND));
 
     if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
 
@@ -1672,8 +1688,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (resolved) return;
     var q = queue[qi];
     var ok = checkAnswer(q, quizInput.value);
+    if (ok) {
+      // 只有真的答对才算这一轮做完这道题——答错的话不调用 markDone()，
+      // 而是把这道题重新塞进队列末尾，之后还会再考一次，一直考到答对为止
+      // （用户明确要求："要保证当前这一轮的所有题目都做对，如果没有作对
+      // 的题目，就继续放出来做，直到做完"）。塞到末尾而不是紧接着下一题，
+      // 是为了错题跟别的题目之间隔开一点，不会连续两次问同一道题。
+      markDone(q);
+    } else {
+      queue.push(q);
+    }
     if (!ok && !countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; refreshProgress(); }
-    markDone(q);
     var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
     markResolved(ok, ans);
   }
