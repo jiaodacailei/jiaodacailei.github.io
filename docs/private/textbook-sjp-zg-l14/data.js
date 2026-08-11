@@ -60,7 +60,9 @@ window.LESSON_DATA = {
               ],
               "zh": "后藤老师，好久不见。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "お久しぶり"
+              ],
               "audio": "audio/seg-001.mp3"
             },
             {
@@ -114,8 +116,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "小王，欢迎欢迎！",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜てくれる」＝（对方）为我做了……（授受动词，表示对方的行为使说话人受益）。",
+              "blanks": [
+                "来てくれた"
+              ],
               "audio": "audio/seg-002.mp3"
             },
             {
@@ -203,8 +207,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "在您难得的休息日来打扰您，真是过意不去。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「せっかく」＝特意，难得（表示付出了额外的努力/机会难得）。",
+              "blanks": [
+                "せっかく"
+              ],
               "audio": "audio/seg-003.mp3"
             },
             {
@@ -288,7 +294,7 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "行了行了，待会儿再客套，快先进屋吧！",
-              "notes": "",
+              "notes": "「Xを後にして」＝把X放到后面（先做别的事，X稍后再说/再做）。",
               "blanks": [
                 "後にして"
               ],
@@ -309,7 +315,9 @@ window.LESSON_DATA = {
               ],
               "zh": "谢谢！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ありがとうございます"
+              ],
               "audio": "audio/seg-005.mp3"
             },
             {
@@ -342,8 +350,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "那就打扰了。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「お邪魔します」＝打扰了（进入别人家/房间时的寒暄语）。",
+              "blanks": [
+                "お邪魔します"
+              ],
               "audio": "audio/seg-006.mp3"
             }
           ]
@@ -408,8 +418,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "这个嘛，是一点点心意……",
-              "notes": "",
-              "blanks": [],
+              "notes": "「つまらないものですが」＝一点小意思（送礼物时的自谦客套话，不是真的说东西不好）。",
+              "blanks": [
+                "つまらないものですが"
+              ],
               "audio": "audio/seg-007.mp3"
             },
             {
@@ -484,7 +496,9 @@ window.LESSON_DATA = {
               ],
               "zh": "哎呀，用不着这么费心的嘛！",
               "notes": "「気を使う」＝费心，用心，留意。",
-              "blanks": [],
+              "blanks": [
+                "気を使わなくて"
+              ],
               "audio": "audio/seg-008.mp3"
             },
             {
@@ -543,7 +557,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不是的，真的只是一点心意。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "気持ちだけ"
+              ],
               "audio": "audio/seg-009.mp3"
             },
             {
@@ -617,8 +633,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "这是老师喜欢的福建乌龙茶。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「お好きな」＝「好きな」的尊敬语（お+な形容词，尊敬对方的喜好）。",
+              "blanks": [
+                "お好きな"
+              ],
               "audio": "audio/seg-010.mp3"
             },
             {
@@ -652,7 +670,9 @@ window.LESSON_DATA = {
               ],
               "zh": "那太高兴了！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "うれしい"
+              ],
               "audio": "audio/seg-011.mp3"
             },
             {
@@ -709,8 +729,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "既然你特意带来，那我就不客气收下了。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「いただく」是「もらう」的自谦语，用于自己一方受到对方好意时。",
+              "blanks": [
+                "いただく"
+              ],
               "audio": "audio/seg-012.mp3"
             },
             {
@@ -750,8 +772,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "哎，怎么样啊？",
-              "notes": "",
-              "blanks": [],
+              "notes": "「ところで」＝对了（转换话题的连接词）。",
+              "blanks": [
+                "ところで"
+              ],
               "audio": "audio/seg-013.mp3"
             },
             {
@@ -788,7 +812,9 @@ window.LESSON_DATA = {
               ],
               "zh": "你在广告公司的工作？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "仕事"
+              ],
               "audio": "audio/seg-014.mp3"
             },
             {
@@ -858,7 +884,9 @@ window.LESSON_DATA = {
               ],
               "zh": "哦，我觉得很值得做。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "やりがいを感じています"
+              ],
               "audio": "audio/seg-015.mp3"
             },
             {
@@ -987,7 +1015,9 @@ window.LESSON_DATA = {
               ],
               "zh": "这次在日本采访也是，尽管时间很短，但是我感觉学到了许多东西。",
               "notes": "「〜ような気がする」＝感觉……，好像……。",
-              "blanks": [],
+              "blanks": [
+                "ような気がします"
+              ],
               "audio": "audio/seg-016.mp3"
             },
             {
@@ -1017,7 +1047,9 @@ window.LESSON_DATA = {
               ],
               "zh": "那就太好了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "よかった"
+              ],
               "audio": "audio/seg-017.mp3"
             },
             {
@@ -1102,7 +1134,9 @@ window.LESSON_DATA = {
               ],
               "zh": "对了，大学时代的朋友们现在还有联系吗？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "連絡がある"
+              ],
               "audio": "audio/seg-018.mp3"
             },
             {
@@ -1216,7 +1250,9 @@ window.LESSON_DATA = {
               ],
               "zh": "有啊！已经和金子、高桥他们约好了明晚一起吃饭。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "約束をしています"
+              ],
               "audio": "audio/seg-019.mp3"
             },
             {
@@ -1308,7 +1344,9 @@ window.LESSON_DATA = {
               ],
               "zh": "听说金子在旅行社，高桥在化妆品公司工作。",
               "notes": "「〜そうです」＝听说……（传闻）。",
-              "blanks": [],
+              "blanks": [
+                "勤めているそうです"
+              ],
               "audio": "audio/seg-020.mp3"
             }
           ]
@@ -1361,8 +1399,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "老师，我这就告辞了。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「そろそろ」＝差不多该……了（表示时候到了，该做某事/该告辞了）。",
+              "blanks": [
+                "そろそろ"
+              ],
               "audio": "audio/seg-021.mp3"
             },
             {
@@ -1388,7 +1428,9 @@ window.LESSON_DATA = {
               ],
               "zh": "是吗？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "そうかい"
+              ],
               "audio": "audio/seg-022.mp3"
             },
             {
@@ -1422,8 +1464,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "还可以〈再坐一会儿〉嘛！",
-              "notes": "",
-              "blanks": [],
+              "notes": "「だろう」＝大概……吧（表示说话人的推测）。",
+              "blanks": [
+                "だろう"
+              ],
               "audio": "audio/seg-023.mp3"
             },
             {
@@ -1478,7 +1522,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不不，已经很晚了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "夜も遅いですから"
+              ],
               "audio": "audio/seg-024.mp3"
             },
             {
@@ -1500,7 +1546,9 @@ window.LESSON_DATA = {
               ],
               "zh": "那，",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "そうか"
+              ],
               "audio": "audio/seg-025.mp3"
             },
             {
@@ -1547,7 +1595,9 @@ window.LESSON_DATA = {
               ],
               "zh": "也就不好强留你了，",
               "notes": "「無理を言う」＝不讲理，提出无理要求。",
-              "blanks": [],
+              "blanks": [
+                "無理も言えない"
+              ],
               "audio": "audio/seg-026.mp3"
             },
             {
@@ -1586,8 +1636,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "请代我向金子他们问好。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜によろしく」＝请代我向……问好。",
+              "blanks": [
+                "によろしく"
+              ],
               "audio": "audio/seg-027.mp3"
             },
             {
@@ -1605,7 +1657,9 @@ window.LESSON_DATA = {
               ],
               "zh": "好的。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "はい"
+              ],
               "audio": "audio/seg-028.mp3"
             },
             {
@@ -1640,8 +1694,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "今天谢谢老师了，",
-              "notes": "",
-              "blanks": [],
+              "notes": "「ありがとうございました」（过去式）用于事情/交流结束时的道谢，跟当场道谢用的「ありがとうございます」（现在式）不同。",
+              "blanks": [
+                "ありがとうございました"
+              ],
               "audio": "audio/seg-029.mp3"
             },
             {
@@ -1667,8 +1723,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "打扰了。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「お邪魔しました」（过去式）是离开时说的，跟进门时说的「お邪魔します」（现在式）刚好对应。",
+              "blanks": [
+                "お邪魔しました"
+              ],
               "audio": "audio/seg-030.mp3"
             }
           ]
@@ -1705,7 +1763,9 @@ window.LESSON_DATA = {
               ],
               "zh": "日本的求职活动",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "就職活動"
+              ],
               "audio": "audio/seg-031.mp3"
             },
             {
@@ -1783,8 +1843,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "面试是发表意见的场所，而不是照本宣科的地方。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「である」的て形「であり」：书面语里连接两个判断句（……是……，而……）。",
+              "blanks": [
+                "であり"
+              ],
               "audio": "audio/seg-032.mp3"
             },
             {
@@ -1890,7 +1952,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在陈述择业愿望和动机以及做自我宣传时，不要完全照着简历上写的说。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "話すのはよくない"
+              ],
               "audio": "audio/seg-033.mp3"
             },
             {
@@ -1963,8 +2027,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "从踏入公司办公楼直到离开，都属于录用考试。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜までが」＝直到……为止都算（划定范围，强调终点也包含在内）。",
+              "blanks": [
+                "までが"
+              ],
               "audio": "audio/seg-034.mp3"
             },
             {
@@ -2057,7 +2123,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在接待处的说话方式以及在等候室的态度等都会成为评价的内容。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "評価の対象になる"
+              ],
               "audio": "audio/seg-035.mp3"
             },
             {
@@ -2114,8 +2182,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "面试时第一印象非常重要。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「である」：书面语系表判断，正式文章/说明文常用，相当于口语的「だ」。",
+              "blanks": [
+                "である"
+              ],
               "audio": "audio/seg-036.mp3"
             },
             {
@@ -2170,8 +2240,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "要注意服装整洁而正式。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜すること」＝要……（用「動詞辞書形+こと」代替命令形，常见于说明书/注意事项等书面指示）。",
+              "blanks": [
+                "すること"
+              ],
               "audio": "audio/seg-037.mp3"
             }
           ]
@@ -2282,8 +2354,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "这是为学生求职活动写的求职指南的一部分。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜れる/られる」（被动）：「書かれた」＝被写的，由……写的。",
+              "blanks": [
+                "書かれた"
+              ],
               "audio": "audio/seg-038.mp3"
             },
             {
@@ -2434,8 +2508,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "每年的新学期开始时，在街上都能看到穿着求职服装的学生。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜ようになる」＝变得……，达到……的状态（表示状态的变化）。",
+              "blanks": [
+                "ようになる"
+              ],
               "audio": "audio/seg-039.mp3"
             },
             {
@@ -2638,8 +2714,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜を問わず」＝不论……，不分……。",
+              "blanks": [
+                "を問わず"
+              ],
               "audio": "audio/seg-040.mp3"
             },
             {
@@ -2759,7 +2837,9 @@ window.LESSON_DATA = {
               ],
               "zh": "虽说就业冰河期已经过去，但也并非轻易就能进入自己所期望的公司。",
               "notes": "「〜といっても」＝虽说……，尽管……。",
-              "blanks": [],
+              "blanks": [
+                "過ぎたといっても"
+              ],
               "audio": "audio/seg-041.mp3"
             },
             {
@@ -2949,8 +3029,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "受日本年轻人青睐的职业有银行、出版社、汽车公司等，但是真正能进入自己心仪的公司工作的人只是很少的一部分。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜しかいない」＝只有……（而已），仅仅……（後接否定，强调数量少）。",
+              "blanks": [
+                "しかいない"
+              ],
               "audio": "audio/seg-042.mp3"
             },
             {
@@ -3036,8 +3118,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "就业活动，首先要做的是选择自己瞩目的行业的公司。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜ことから始まる」＝从……开始。",
+              "blanks": [
+                "ことから始まる"
+              ],
               "audio": "audio/seg-043.mp3"
             },
             {
@@ -3156,8 +3240,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "通过浏览公司网页或登门拜访，报名参加录用考试。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜たり〜たりする」＝又……又……，有时……有时……（列举具有代表性的几个动作/状态）。",
+              "blanks": [
+                "訪問したりして"
+              ],
               "audio": "audio/seg-044.mp3"
             },
             {
@@ -3241,8 +3327,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "近来也可以通过电脑从网上报名。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜こともできる」＝也可以……（表示除了主要方式之外，还有别的可能性）。",
+              "blanks": [
+                "こともできる"
+              ],
               "audio": "audio/seg-045.mp3"
             },
             {
@@ -3357,8 +3445,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "求职者必须参加初试、再试、三试等层层选拔，",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜なければならない」＝必须……。",
+              "blanks": [
+                "なければならない"
+              ],
               "audio": "audio/seg-046.mp3"
             },
             {
@@ -3455,8 +3545,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "多数情况下，面试也不止一次，而是三番五次地进行。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜だけでなく」＝不仅……（而且……）。",
+              "blanks": [
+                "だけでなく"
+              ],
               "audio": "audio/seg-047.mp3"
             },
             {
@@ -3541,8 +3633,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "只有通过了这些考试才可能获得内定。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜て初めて」＝……之后才（首次）……（强调只有在前项成立之后，后项才会发生）。",
+              "blanks": [
+                "て初めて"
+              ],
               "audio": "audio/seg-048.mp3"
             },
             {
@@ -3680,8 +3774,10 @@ window.LESSON_DATA = {
                 }
               ],
               "zh": "学生们总是尽可能早地开始准备求职活动，为能进入心仪的公司而努力。",
-              "notes": "",
-              "blanks": [],
+              "notes": "「〜ができるよう（に）」＝为了能够……（表示目的）。",
+              "blanks": [
+                "できるよう"
+              ],
               "audio": "audio/seg-049.mp3"
             }
           ]
