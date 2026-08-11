@@ -264,6 +264,15 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     # 后面几乎总有停顿标点，口语接续用法后面直接是下一个词，没有标点。
     if orig == "後" and prev_orig == "その" and next_char in ("，", "、"):
         return "ご"
+    # "数"孤立成词（尤其紧跟在"の"后面，"子供の数"这种"…的数量"用法）该读かず，
+    # pykakasi 默认也是かず，这个场景本来就是对的。但直接接在另一个汉字词
+    # 后面、中间没有"の"分隔，构成"X数"这种统计学/技术性复合词时该读すう
+    # （比如"出産数"=しゅっさんすう）——真实案例（textbook-sjp-zg-l13，
+    # "年間出産数"）：一开始沿用了pykakasi的默认かず，没意识到"出産"+"数"
+    # 这种紧贴复合词跟"子供の数"是不同的构词方式，读音也不一样，用户指出
+    # 才发现。用"prev_orig 是不是以汉字结尾、且不是"の""判断。
+    if orig == "数" and prev_orig and prev_orig != "の" and _is_kanji(prev_orig[-1]):
+        return "すう"
     return hira
 
 

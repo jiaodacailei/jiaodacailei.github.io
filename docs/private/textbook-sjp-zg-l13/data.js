@@ -2860,7 +2860,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "数",
-                  "kana": "かず",
+                  "kana": "すう",
                   "t": 2.18
                 },
                 {
