@@ -2987,7 +2987,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "行",
-                  "kana": "い",
+                  "kana": "おこな",
                   "t": 3.37
                 },
                 {

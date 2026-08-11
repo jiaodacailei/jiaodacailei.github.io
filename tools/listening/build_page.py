@@ -273,6 +273,19 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     # 才发现。用"prev_orig 是不是以汉字结尾、且不是"の""判断。
     if orig == "数" and prev_orig and prev_orig != "の" and _is_kanji(prev_orig[-1]):
         return "すう"
+    # "行"开头的活用形（行って/行った……）pykakasi 有时默认按"行く"（いく，
+    # "去"）读，但"Xを行う"（おこなう，"进行/举行X"）这个及物动词用法在
+    # 教材课文里更常见——真实案例（textbook-sjp-zg-l13，"取り組みを行って
+    # いる"）：读成いっている是错的，该读おこなっている。用"紧跟在助词
+    # "を"后面"这个信号区分（"を行く"不成立，"に/へ行く"才是"去"的用法，
+    # "を"后面几乎总是"行う"）。**必须先判断 pykakasi 的默认读音是不是真的
+    # 猜成了いく这条错误分支（hira 开头是"い"）才处理**——pykakasi 对
+    # "行い"（ます形词干，比如"行います"）这类活用形本来就默认猜对成
+    # おこない，这种情况不能再套用"替换第一个假名"的逻辑，会把已经正确
+    # 的おこない错误地拼成おこなこない（真实踩过一次，"試験を行います"
+    # 测试用例暴露的）。
+    if orig.startswith("行") and prev_orig == "を" and hira.startswith("い"):
+        return "おこな" + hira[1:]
     return hira
 
 
