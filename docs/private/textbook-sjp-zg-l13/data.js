@@ -3679,7 +3679,7 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "後方",
+                  "text": "後片",
                   "kana": "あとかた"
                 },
                 {
@@ -3689,10 +3689,10 @@ window.LESSON_DATA = {
               "zh": "[名] 善后，整理，收拾",
               "notes": "",
               "blanks": [
-                "後方づけ"
+                "後片づけ"
               ],
               "audio": "audio/seg-054.mp3",
-              "quizSentence": "パーティーが終わったら，みんなで後方づけをしましょう。"
+              "quizSentence": "パーティーが終わったら，みんなで後片づけをしましょう。"
             },
             {
               "id": 55,
@@ -5180,12 +5180,12 @@ window.LESSON_DATA = {
     },
     {
       "id": 54,
-      "text": "後方づけ",
+      "text": "後片づけ",
       "kana": "あとかたづけ",
       "zh": "[名] 善后，整理，收拾",
-      "sentence": "パーティーが終わったら，みんなで後方づけをしましょう。",
+      "sentence": "パーティーが終わったら，みんなで後片づけをしましょう。",
       "sentence_zh": "聚会结束后，大家一起来收拾一下吧。",
-      "blank": "後方づけ",
+      "blank": "後片づけ",
       "category": "other"
     },
     {
