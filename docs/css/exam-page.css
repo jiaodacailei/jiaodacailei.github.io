@@ -24,14 +24,18 @@
 }
 
 .exam-passage-sentence {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4em;
   margin: 0.35em 0;
   line-height: 2;
-  cursor: pointer;
-}
-.exam-passage-sentence:hover {
-  background: rgba(0, 0, 0, 0.03);
+  padding: 0.1em 0.3em;
   border-radius: 4px;
 }
+.exam-passage-sentence:has(.playing) {
+  background: rgba(58, 108, 246, 0.08);
+}
+.exam-passage-text { flex: 1; }
 
 .exam-question {
   margin: 1em 0;
@@ -70,7 +74,6 @@
   margin-top: 0.15em;
 }
 .exam-play-btn:hover { opacity: 0.85; }
-.exam-play-btn.playing { background: #e0912b; }
 
 .exam-stem-word {
   font-size: 1.1em;
@@ -129,6 +132,55 @@
   font-size: 0.8em;
 }
 .exam-option-play:hover { color: var(--accent, #3a6cf6); }
+
+.exam-inline-play {
+  flex: none;
+  width: 1.5em;
+  height: 1.5em;
+  margin-top: 0.15em;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--muted, #888);
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.exam-inline-play:hover { color: var(--accent, #3a6cf6); }
+
+/* 播放前/中反馈——跟 listening-page.css 的 .seg-card.loading/.quiz-play-btn.loading
+   同一套规则：preload="none" 的音频第一次点到真出声之间可能有读取延迟，点击
+   那一刻必须立刻有视觉反应（转圈），不能让用户以为点击没生效；真正开始出声
+   （playing事件）才换成"正在播放"高亮。三种播放入口（题干▶/选项🔊/文章句🔊）
+   共用同一套 class 名，样式统一处理。 */
+.exam-play-btn.loading,
+.exam-option-play.loading,
+.exam-inline-play.loading {
+  position: relative;
+  color: transparent !important;
+  background: var(--accent, #3a6cf6);
+  opacity: 0.55;
+  cursor: wait;
+}
+.exam-option-play.loading,
+.exam-inline-play.loading { background: transparent; }
+.exam-play-btn.loading::after,
+.exam-option-play.loading::after,
+.exam-inline-play.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0.9em; height: 0.9em;
+  margin: -0.45em 0 0 -0.45em;
+  border: 2px solid rgba(58, 108, 246, 0.25);
+  border-top-color: var(--accent, #3a6cf6);
+  border-radius: 50%;
+  animation: exam-loading-spin 0.7s linear infinite;
+}
+@keyframes exam-loading-spin { to { transform: rotate(360deg); } }
+
+.exam-play-btn.playing { background: #e0912b; }
+.exam-option-play.playing,
+.exam-inline-play.playing { color: #e0912b; }
 
 /* 复习模式：正确/错误配色 */
 .exam-question.review .exam-option { cursor: default; }

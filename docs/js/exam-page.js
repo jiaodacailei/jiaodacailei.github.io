@@ -36,21 +36,60 @@
   }
 
   // ---- 播放器：单个共享 <audio>，同一时间只放一个 ----
+  // 跟 listening-page.js 的 .seg-card.loading/.playing 同一套反馈规则：点击
+  // 那一刻同步加 .loading（不等任何异步事件，保证点击必有反应），真正开始
+  // 出声（playing事件）摘掉loading、加playing；暂停/播完/出错都摘掉两个
+  // class 回到闲置态——不能只加 .playing 不管 loading，preload="none" 的
+  // 音频第一次点到真出声之间有读取延迟，没有loading反馈会让人以为点击没
+  // 生效（这个页面550条短音频都是这种情况，反馈更要明显）。
   var player = new Audio();
-  var activeBtn = null;
-  function stopPlayback() {
-    player.pause();
-    if (activeBtn) activeBtn.classList.remove("playing");
-    activeBtn = null;
+  var activeEl = null;
+  var stallTimer = null;
+  function clearStallTimer() {
+    if (stallTimer) { clearTimeout(stallTimer); stallTimer = null; }
   }
-  function playAudio(src, btn) {
-    if (activeBtn === btn) { stopPlayback(); return; }
+  function clearActiveClasses() {
+    if (activeEl) activeEl.classList.remove("playing", "loading");
+  }
+  function stopPlayback() {
+    clearStallTimer();
+    player.pause();
+    clearActiveClasses();
+    activeEl = null;
+  }
+  function playAudio(src, el) {
+    if (activeEl === el) { stopPlayback(); return; }
     stopPlayback();
     player.src = src;
-    player.play().catch(function () {});
-    if (btn) { btn.classList.add("playing"); activeBtn = btn; }
+    activeEl = el;
+    if (el) el.classList.add("loading");
+    player.play().catch(function () {
+      if (el) el.classList.remove("loading");
+    });
+    // 兜底：正常情况 loading 会在几百毫秒内被 playing/error 事件摘掉，网络卡顿
+    // 也有 waiting 事件重新加回来——但如果音频资源本身有问题（编码坏掉、服务器
+    // 挂了却没返回明确 error）导致 play() 的 promise 一直不 resolve/reject、
+    // 也不触发 playing/error，loading 转圈会没有尽头地转下去，用户会以为点击
+    // 还在等，实际上已经没救了。8秒还没真正出声就判定为播放失败，交回闲置态。
+    clearStallTimer();
+    stallTimer = setTimeout(function () {
+      if (activeEl === el) stopPlayback();
+    }, 8000);
   }
+  // 不监听 pause 事件调用 stopPlayback——pause() 本身就是 stopPlayback()/
+  // playAudio() 内部会调用的动作，监听 pause 再调回 stopPlayback 会在"停旧的
+  // 播新的"这个动作中间形成事件时序上的重入（旧的 pause 事件可能在 activeEl
+  // 已经切换到新目标之后才触发，误清掉新目标刚加上的状态）。ended/error 是
+  // 真正需要响应的"播放自然结束/失败"信号，不存在这个重入问题。
+  player.addEventListener("waiting", function () {
+    if (activeEl) { activeEl.classList.add("loading"); activeEl.classList.remove("playing"); }
+  });
+  player.addEventListener("playing", function () {
+    clearStallTimer();
+    if (activeEl) { activeEl.classList.remove("loading"); activeEl.classList.add("playing"); }
+  });
   player.addEventListener("ended", stopPlayback);
+  player.addEventListener("error", stopPlayback);
 
   // ---- 作答状态：qid -> 选中的选项序号，本地持久化，刷新不丢 ----
   var answers = {};
@@ -70,8 +109,11 @@
   function passageHtml(sentences) {
     if (!sentences || !sentences.length) return "";
     var rows = sentences.map(function (s, i) {
-      return '<div class="exam-passage-sentence" data-audio="' + esc(s.audio) + '">' +
-        renderTokensHtml(s.tokens) + "</div>";
+      var playBtn = s.audio
+        ? '<button class="exam-inline-play" data-audio="' + esc(s.audio) + '" title="読み上げ">🔊</button>'
+        : "";
+      return '<div class="exam-passage-sentence">' + playBtn +
+        '<span class="exam-passage-text">' + renderTokensHtml(s.tokens) + "</span></div>";
     }).join("");
     return '<div class="exam-passage">' + rows + "</div>";
   }
@@ -173,17 +215,11 @@
 
   // ---- 事件委托 ----
   root.addEventListener("click", function (e) {
-    var playBtn = e.target.closest(".exam-play-btn, .exam-option-play");
+    var playBtn = e.target.closest(".exam-play-btn, .exam-option-play, .exam-inline-play");
     if (playBtn) {
       e.stopPropagation();
       var src = playBtn.getAttribute("data-audio");
       if (src) playAudio(src, playBtn);
-      return;
-    }
-    var passageSentence = e.target.closest(".exam-passage-sentence");
-    if (passageSentence) {
-      var psrc = passageSentence.getAttribute("data-audio");
-      if (psrc) playAudio(psrc, null);
       return;
     }
     if (submitted) return;
