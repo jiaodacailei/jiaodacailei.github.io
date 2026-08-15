@@ -27,6 +27,13 @@
     (tokens || []).forEach(function (tok) {
       if (tok.text === "\n") { parts.push("<br>"); return; }
       var text = esc(tok.text);
+      if (tok.blank) {
+        // 交卷前的挖空/画线原文——即使这段文字本身含汉字（比如問題1画线的
+        // 目标词"倒さない"），也绝对不能注音，注了音等于把读音答案写在题面
+        // 上，这是这个token专门不走<ruby>分支、只加下划线样式的原因。
+        parts.push('<span class="exam-blank">' + text + "</span>");
+        return;
+      }
       var inner = tok.kana && tok.kana !== tok.text
         ? "<ruby>" + text + "<rt>" + esc(tok.kana) + "</rt></ruby>"
         : text;
@@ -106,16 +113,30 @@
   // ---- 渲染 ----
   var root = document.getElementById("examRoot");
 
+  function passageSentenceRow(s) {
+    var playBtn = s.audio
+      ? '<button class="exam-inline-play" data-audio="' + esc(s.audio) + '" title="読み上げ">🔊</button>'
+      : "";
+    return '<div class="exam-passage-sentence">' + playBtn +
+      '<span class="exam-passage-text">' + renderTokensHtml(s.tokens) + "</span></div>";
+  }
+
+  // 単一版本の文章（問題10〜14——原文本来就没有挖空，交卷前后都是同一份，
+  // 不存在剧透问题，音频从一开始就能听）。
   function passageHtml(sentences) {
     if (!sentences || !sentences.length) return "";
-    var rows = sentences.map(function (s, i) {
-      var playBtn = s.audio
-        ? '<button class="exam-inline-play" data-audio="' + esc(s.audio) + '" title="読み上げ">🔊</button>'
-        : "";
-      return '<div class="exam-passage-sentence">' + playBtn +
-        '<span class="exam-passage-text">' + renderTokensHtml(s.tokens) + "</span></div>";
-    }).join("");
-    return '<div class="exam-passage">' + rows + "</div>";
+    return '<div class="exam-passage">' + sentences.map(passageSentenceRow).join("") + "</div>";
+  }
+
+  // 問題9専用：交卷前只显示原始段落（48/49/50/51占位符原样保留，不给音频），
+  // 交卷后（.exam-submitted）切换成填好4个空的完整段落+音频+跟读高亮——一次
+  // 性填完的段落会同时剧透4道题，绝不能在交卷前就展示。
+  function passageDualHtml(blankSentences, filledSentences) {
+    if (!filledSentences || !filledSentences.length) return "";
+    var blankHtml = (blankSentences || []).map(passageSentenceRow).join("");
+    var filledHtml = filledSentences.map(passageSentenceRow).join("");
+    return '<div class="exam-passage exam-passage-blank">' + blankHtml + "</div>" +
+      '<div class="exam-passage exam-passage-filled">' + filledHtml + "</div>";
   }
 
   function stemHtml(q) {
@@ -129,8 +150,17 @@
       return '<div class="exam-stem-row"><span>' + esc(q.stemInstruction) + "</span></div>";
     }
     if (q.stem) {
-      return '<div class="exam-stem-row"><button class="exam-play-btn" data-audio="' +
+      // 交卷前只显示stemBlank（原始挖空/画线题干，没有播放按钮——填好答案的
+      // 音频这时候放出来，等于直接把答案念给用户听）；交卷后切换成填好正确
+      // 答案的完整句，这时候才有播放按钮，音频/对齐数据一直都在，只是延后
+      // 展示。两版都渲染进DOM，靠.exam-submitted这个body class做CSS显隐
+      // 切换，不用交卷时重新渲染DOM。
+      var blankHtml = q.stemBlank
+        ? '<div class="exam-stem-row exam-stem-blank"><span>' + renderTokensHtml(q.stemBlank.tokens) + "</span></div>"
+        : "";
+      var filledHtml = '<div class="exam-stem-row exam-stem-filled"><button class="exam-play-btn" data-audio="' +
         esc(q.stem.audio) + '">▶</button><span>' + renderTokensHtml(q.stem.tokens) + "</span></div>";
+      return blankHtml + filledHtml;
     }
     return "";
   }
@@ -166,7 +196,10 @@
 
   function blockHtml(block) {
     var qsHtml = block.questions.map(questionHtml).join("");
-    return '<div class="exam-block">' + passageHtml(block.passageSentences) + qsHtml + "</div>";
+    var passage = block.is_mondai9
+      ? passageDualHtml(block.passageSentencesBlank, block.passageSentences)
+      : passageHtml(block.passageSentences);
+    return '<div class="exam-block">' + passage + qsHtml + "</div>";
   }
 
   function mondaiSectionHtml(m, idx) {
@@ -252,6 +285,11 @@
     if (submitted) return;
     submitted = true;
     stopPlayback();
+    // 题干/問題9段落的挖空→填好答案 这个切换是全局一次性的（不像每道题的
+    // 对错标记那样按题分别处理），交卷本来就是整份卷子一起交，不存在"这题
+    // 交了那题还没交"的中间状态，直接在body上打一个class，CSS统一处理
+    // 所有.exam-stem-blank/.exam-passage-blank的显隐切换。
+    document.body.classList.add("exam-submitted");
     var total = 0, correct = 0;
     var perMondai = {};
     DATA.mondaiList.forEach(function (m) {

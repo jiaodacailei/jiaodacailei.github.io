@@ -37,6 +37,27 @@
 }
 .exam-passage-text { flex: 1; }
 
+/* 挖空/画线原文（問題1〜5/7画线目标词、問題3/4/7括号、問題9段落里的48/49/
+   50/51占位符）——交卷前只显示这个版本，不给音频，绝不能顺带注音（会把
+   读音答案写在题面上，见 exam-page.js 的 renderTokensHtml 对 blank token
+   的特殊处理）。 */
+.exam-blank {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+/* 交卷前后切换：默认显示"挖空版"，隐藏"填好答案版"；交卷（body加
+   .exam-submitted）之后反过来。両版本从渲染时就都在DOM里，只是CSS显隐，
+   不用交卷时重新拼HTML。.exam-stem-row本身是flex布局（播放按钮+文字并排），
+   显示时要用display:flex而不是block，不然按钮会掉到文字下面一行。 */
+.exam-stem-filled,
+.exam-passage-filled { display: none; }
+.exam-submitted .exam-stem-blank,
+.exam-submitted .exam-passage-blank { display: none; }
+.exam-submitted .exam-stem-filled { display: flex; }
+.exam-submitted .exam-passage-filled { display: block; }
+
 .exam-question {
   margin: 1em 0;
   padding: 0.9em 1em;
