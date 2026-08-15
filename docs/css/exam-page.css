@@ -1,0 +1,214 @@
+/* N2真题模考页面专用样式——跟 listening-page.css 共用密码门/sticky-header/
+   tab-bar 那套基础样式，这里只加"选择题作答/判分/复习"这部分独有的样式。 */
+
+.exam-mondai-instruction {
+  color: var(--muted, #666);
+  font-size: 0.95em;
+  margin: 0 0 1em;
+  padding: 0.6em 0.9em;
+  background: var(--card-bg, #f7f7f9);
+  border-radius: 8px;
+}
+
+.exam-block {
+  margin-bottom: 2em;
+  padding-bottom: 1.2em;
+  border-bottom: 1px solid var(--border, #e5e5e5);
+}
+
+.exam-passage {
+  background: var(--card-bg, #f7f7f9);
+  border-radius: 10px;
+  padding: 0.9em 1.1em;
+  margin-bottom: 1em;
+}
+
+.exam-passage-sentence {
+  margin: 0.35em 0;
+  line-height: 2;
+  cursor: pointer;
+}
+.exam-passage-sentence:hover {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.exam-question {
+  margin: 1em 0;
+  padding: 0.9em 1em;
+  border: 1px solid var(--border, #e5e5e5);
+  border-radius: 10px;
+}
+
+.exam-question-num {
+  font-weight: 600;
+  color: var(--accent, #3a6cf6);
+  margin-right: 0.4em;
+}
+
+.exam-stem-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  line-height: 2;
+  margin-bottom: 0.7em;
+}
+
+.exam-play-btn {
+  flex: none;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent, #3a6cf6);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15em;
+}
+.exam-play-btn:hover { opacity: 0.85; }
+.exam-play-btn.playing { background: #e0912b; }
+
+.exam-stem-word {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.exam-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.exam-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.55em 0.8em;
+  border: 1.5px solid var(--border, #ddd);
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--bg, #fff);
+  transition: border-color 0.15s, background 0.15s;
+}
+.exam-option:hover { border-color: var(--accent, #3a6cf6); }
+.exam-option.selected {
+  border-color: var(--accent, #3a6cf6);
+  background: rgba(58, 108, 246, 0.08);
+}
+.exam-option-num {
+  flex: none;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  border: 1.5px solid var(--border, #ccc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85em;
+  color: var(--muted, #666);
+}
+.exam-option.selected .exam-option-num {
+  border-color: var(--accent, #3a6cf6);
+  background: var(--accent, #3a6cf6);
+  color: #fff;
+}
+.exam-option-text { flex: 1; line-height: 1.7; }
+.exam-option-play {
+  flex: none;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--muted, #888);
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.exam-option-play:hover { color: var(--accent, #3a6cf6); }
+
+/* 复习模式：正确/错误配色 */
+.exam-question.review .exam-option { cursor: default; }
+.exam-question.review .exam-option.correct-answer {
+  border-color: #2e9e5b;
+  background: rgba(46, 158, 91, 0.08);
+}
+.exam-question.review .exam-option.wrong-selected {
+  border-color: #d64545;
+  background: rgba(214, 69, 69, 0.08);
+}
+.exam-question.review .exam-option.correct-answer .exam-option-num {
+  border-color: #2e9e5b;
+  background: #2e9e5b;
+  color: #fff;
+}
+.exam-question.review .exam-option.wrong-selected .exam-option-num {
+  border-color: #d64545;
+  background: #d64545;
+  color: #fff;
+}
+
+.exam-explanation {
+  margin-top: 0.7em;
+  padding: 0.7em 0.9em;
+  background: var(--card-bg, #f7f7f9);
+  border-left: 3px solid var(--accent, #3a6cf6);
+  border-radius: 4px;
+  font-size: 0.95em;
+  line-height: 1.7;
+  white-space: pre-line;
+  display: none;
+}
+.exam-question.review .exam-explanation { display: block; }
+
+.exam-unanswered-mark {
+  color: #d64545;
+  font-size: 0.85em;
+  margin-left: 0.5em;
+}
+
+/* 底部交卷条 */
+.exam-submit-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg, #fff);
+  border-top: 1px solid var(--border, #e5e5e5);
+  padding: 0.8em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  z-index: 20;
+}
+.exam-progress-text { color: var(--muted, #666); font-size: 0.9em; }
+.exam-submit-btn {
+  background: var(--accent, #3a6cf6);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6em 1.4em;
+  font-size: 1em;
+  cursor: pointer;
+}
+.exam-submit-btn:hover { opacity: 0.9; }
+.exam-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.exam-score-banner {
+  display: none;
+  margin: 1em;
+  padding: 1em 1.2em;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(58,108,246,0.12), rgba(46,158,91,0.12));
+  text-align: center;
+}
+.exam-score-banner.show { display: block; }
+.exam-score-num { font-size: 1.8em; font-weight: 700; color: var(--accent, #3a6cf6); }
+
+.exam-mondai-score {
+  font-size: 0.85em;
+  color: var(--muted, #666);
+  margin-left: 0.6em;
+}
