@@ -56,6 +56,7 @@ occurrences.json 里人工核实过的 `src`（会话/课文里真实出现的�
 """
 import sys
 import os
+import re
 import json
 import argparse
 
@@ -71,10 +72,39 @@ def norm_id(raw_id):
     return s[1:] if s.startswith("a") else s
 
 
-def _is_pure_katakana(text):
-    return bool(text) and all(
-        "゠" <= ch <= "ヿ" for ch in text
+_KATAKANA_RUN_RE = re.compile(r"[゠-ヿー]+")
+
+
+def _kata_run_to_hira(run):
+    # 长音符"ー"（U+30FC）片假名/平假名共用同一个字符，不能按平行区块0x60的
+    # 固定偏移量去移——那样会移到一个不相干的组合用声调符号上（U+309C，
+    # "半浊音符"），不是合法的平假名字符。真实转写产出的平假名结果（比如
+    # "ハンバーグ"→"はんばーぐ"）"ー"本来就是原样保留、没有跟着变换的，这里
+    # 复现同一条规则，"ー"永远原样返回，只转换真正的片假名字母本身。
+    return "".join(
+        chr(ord(ch) - 0x60) if "゠" <= ch <= "ヶ" else ch
+        for ch in run
     )
+
+
+def _fix_katakana_in_kana(text, kana):
+    """通用版保护，不限于"整个词都是片假名"——"テレビ局""口コミ"这类片假名+
+    汉字混合词同样会中招：混合词里片假名部分被连着汉字一起转写成了全平假名
+    （比如"テレビ局"被存成"てれびきょく"，正确应该是"テレビきょく"——"局"
+    的读音きょく没问题，但"テレビ"不该被转换）。做法：把 text 里每一段连续
+    片假名单独转成对应平假名，如果这段平假名确实作为子串出现在 kana 里，
+    说明这段片假名被错误转写了，换回原始片假名；只在能精确定位到子串时才
+    替换，找不到就不动那一段（保守，不确定就不改，避免误伤真的另有规律的
+    读音）。"""
+    fixed = kana
+    changed = False
+    for m in _KATAKANA_RUN_RE.finditer(text):
+        run = m.group(0)
+        hira_run = _kata_run_to_hira(run)
+        if hira_run != run and hira_run in fixed:
+            fixed = fixed.replace(hira_run, run, 1)
+            changed = True
+    return fixed, changed
 
 
 def kana_for(word):
@@ -96,12 +126,18 @@ def kana_for(word):
         # 假名"/"根据中文写假名"这两类题型的标准答案会变成平假名——用户照着
         # 原文老老实实打片假名反而被判错。片假名外来语的"假名读音"就是它自己，
         # 不存在另一套平假名读法，显式 kana 如果是纯片假名词条转成的平假名，
-        # 直接纠正回原文，不静默保留错误值。
+        # 直接纠正回原文，不静默保留错误值。这条保护起初只查"整个词是不是纯
+        # 片假名"，后来发现"テレビ局""口コミ""キリスト教""排気ガス"这类片假名+
+        # 汉字混合词同样会中招（片假名部分单独也被转写成了平假名，汉字部分的
+        # 读音反而是对的）——纯片假名只是这类问题的一个特例，`_fix_katakana_
+        # in_kana()` 是通用版：不管词里有没有汉字，只要某一段连续片假名被错误
+        # 转写成对应平假名、且能在 kana 里精确定位到，就换回来，覆盖两种场景。
         kana = word["kana"]
-        if _is_pure_katakana(word["text"]) and kana != word["text"]:
-            print(f"警告：词条 {word['text']!r} 是纯片假名，显式 kana={kana!r} "
-                  f"被当成误转写纠正回 {word['text']!r}")
-            return word["text"]
+        fixed_kana, changed = _fix_katakana_in_kana(word["text"], kana)
+        if changed:
+            print(f"警告：词条 {word['text']!r} 里的片假名部分在显式 kana={kana!r} "
+                  f"里被错误转写成了平假名，纠正为 {fixed_kana!r}")
+            return fixed_kana
         return kana
     if "/" in word["text"]:
         raise ValueError(
