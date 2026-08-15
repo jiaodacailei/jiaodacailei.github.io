@@ -1435,9 +1435,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var advanceDelay = parseInt(localStorage.getItem(DELAY_KEY) || "3", 10);
 
   var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh"];
+  // 用户反馈这个小药丸标签太不起眼，四种题型说的其实是"要写出什么格式的
+  // 答案"，重点是格式那几个字（假名/中文意思/填空），不是"根据中文""听音频"
+  // 这些前置条件——把重点部分包一层 span 用高亮色区分开，前面的部分保持
+  // 原本的蓝色。textContent 改成 innerHTML 配套这个改动。
   var TYPE_LABELS = {
-    blank: "填空题", audio2kana: "听音频写假名",
-    zh2kana: "根据中文写假名", ja2zh: "根据单词写中文意思"
+    blank: "<span class=\"quiz-type-highlight\">填空</span>题",
+    audio2kana: "听音频写<span class=\"quiz-type-highlight\">假名</span>",
+    zh2kana: "根据中文写<span class=\"quiz-type-highlight\">假名</span>",
+    ja2zh: "根据单词写<span class=\"quiz-type-highlight\">中文意思</span>"
   };
   var KANJI_RE = /[一-鿿]/;
   // 词性标签（"[名]"「[动3]」之类）是词典抄来的，不算释义内容，判分前先去掉，
@@ -1620,7 +1626,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var q = queue[qi];
     resolved = false;
     countedWrong = false;
-    quizTypeLabel.textContent = TYPE_LABELS[q.type];
+    quizTypeLabel.innerHTML = TYPE_LABELS[q.type];
     quizInput.value = "";
     quizInput.disabled = false;
     quizStatus.textContent = "";

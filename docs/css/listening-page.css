@@ -583,6 +583,10 @@ body.mode-blank #blankProgressReset { display: inline-block; }
   display: inline-block; font-size: 11px; font-weight: 700; color: var(--blue-dark);
   background: var(--blue-xlight); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px;
 }
+/* 题型标签里"要写出什么格式的答案"这几个字（假名/中文意思/填空）用暖色跟
+   前面的蓝色区分开，这才是用户扫一眼要抓的重点，不是"根据中文""听音频"
+   这些前置条件。 */
+.quiz-type-highlight { color: #b45309; }
 .quiz-prompt { min-height: 48px; margin-bottom: 10px; }
 .quiz-ja { font-size: 18px; line-height: 1.6; }
 .quiz-zh-hint { color: var(--text-muted); font-size: 13px; font-style: italic; margin-top: 6px; }
