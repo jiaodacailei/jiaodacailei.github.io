@@ -71,6 +71,12 @@ def norm_id(raw_id):
     return s[1:] if s.startswith("a") else s
 
 
+def _is_pure_katakana(text):
+    return bool(text) and all(
+        "゠" <= ch <= "ヿ" for ch in text
+    )
+
+
 def kana_for(word):
     """没有显式 kana 覆盖时，走跟生词卡片显示furigana完全同一条转换路径（同一个
     pykakasi 实例 + 同一张手动订正表），不能简单退化成 word["text"] 本身——这是
@@ -83,7 +89,20 @@ def kana_for(word):
     唯一读音，这类词条必须显式提供 kana，这里直接报错提醒，不去猜一个大概率
     错误的拼接结果。"""
     if "kana" in word:
-        return word["kana"]
+        # 显式提供的 kana 也要过一遍片假名保护——真实踩过的坑（textbook-sjp-
+        # zg-l13）：词表来源（这一课走的是不调用 build_vocab_from_wordlist.py
+        # 的自定义生词流程）给"ハンバーグ"这类纯片假名词条也无差别填了 kana，
+        # 填成了转写出来的平假名"はんばーぐ"，这里直接透传的话，"听音频写
+        # 假名"/"根据中文写假名"这两类题型的标准答案会变成平假名——用户照着
+        # 原文老老实实打片假名反而被判错。片假名外来语的"假名读音"就是它自己，
+        # 不存在另一套平假名读法，显式 kana 如果是纯片假名词条转成的平假名，
+        # 直接纠正回原文，不静默保留错误值。
+        kana = word["kana"]
+        if _is_pure_katakana(word["text"]) and kana != word["text"]:
+            print(f"警告：词条 {word['text']!r} 是纯片假名，显式 kana={kana!r} "
+                  f"被当成误转写纠正回 {word['text']!r}")
+            return word["text"]
+        return kana
     if "/" in word["text"]:
         raise ValueError(
             f"词条 {word['text']!r} 带 '/' 二选一符号（比如敬语'お/ご'前缀），"
