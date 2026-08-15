@@ -168,6 +168,18 @@ exam-page.js：`stemHtml()`/`passageDualHtml()`把两个版本都渲染进DOM，
 假名原文、問題3括号原样、問題8占位符原样（不是排好的答案）、問題9段落
 含48占位符不含答案文字、交卷后正确切换成完整句——全部通过。
 
+**但这轮验证有一个真实盲区被用户截图抓到了**：jsdom不会真的解析/应用CSS
+级联，`smoke4.js`只检查了DOM里两份内容对不对、body有没有加`exam-submitted`
+class，从没检查过"挖空版真的可见、填好答案版真的隐藏"这个最终视觉效果——
+CSS本身有个真实bug：`.exam-stem-filled { display: none; }`写在文件前面，
+后面的`.exam-stem-row { display: flex; }`跟它specificity完全一样（都是单个
+class选择器），级联平局时后写的赢，`.exam-stem-row`赢了，`display:none`
+根本没生效，交卷前挖空版和填好答案版**同时显示**，答案原封不动摆在题面上
+——jsdom测试全绿，实际打开是错的。改成`.exam-stem-row.exam-stem-filled`
+复合选择器提高specificity后，在真实Chrome里用截图核实过交卷前/交卷后两个
+状态都正确。**教训：涉及CSS class显隐切换的功能，光测DOM结构/class不够，
+必须真的截图/看渲染结果核实一遍，jsdom测试通过不代表视觉效果对**。
+
 ## 待办 / 已知限制
 
 - 只做了2020年12月这一套（试点），其余19套（2011-2020其中18套有PDF+音频，

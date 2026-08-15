@@ -49,14 +49,21 @@
 
 /* 交卷前后切换：默认显示"挖空版"，隐藏"填好答案版"；交卷（body加
    .exam-submitted）之后反过来。両版本从渲染时就都在DOM里，只是CSS显隐，
-   不用交卷时重新拼HTML。.exam-stem-row本身是flex布局（播放按钮+文字并排），
-   显示时要用display:flex而不是block，不然按钮会掉到文字下面一行。 */
-.exam-stem-filled,
-.exam-passage-filled { display: none; }
-.exam-submitted .exam-stem-blank,
-.exam-submitted .exam-passage-blank { display: none; }
-.exam-submitted .exam-stem-filled { display: flex; }
-.exam-submitted .exam-passage-filled { display: block; }
+   不用交卷时重新拼HTML。
+
+   踩过的坑：这组规则第一版用的是单个class选择器（.exam-stem-filled），
+   跟下面.exam-stem-row（同样设了display）specificity完全一样，级联平局时
+   谁写在后面谁赢——.exam-stem-row当时写在这组规则后面，赢了，导致
+   display:none根本没生效，交卷前"填好答案版"和"挖空版"同时显示，直接把
+   答案摆在题面上（真实bug，用户截图抓到的）。改成
+   .exam-stem-row.exam-stem-filled这种复合选择器，specificity天然更高，
+   不管这组规则写在文件里的哪个位置都能稳定赢，不用再小心翼翼维护顺序。 */
+.exam-stem-row.exam-stem-filled,
+.exam-passage.exam-passage-filled { display: none; }
+.exam-submitted .exam-stem-row.exam-stem-blank,
+.exam-submitted .exam-passage.exam-passage-blank { display: none; }
+.exam-submitted .exam-stem-row.exam-stem-filled { display: flex; }
+.exam-submitted .exam-passage.exam-passage-filled { display: block; }
 
 .exam-question {
   margin: 1em 0;
