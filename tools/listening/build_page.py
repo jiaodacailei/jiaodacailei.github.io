@@ -84,6 +84,14 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
     # "5日"是日期特殊读法いつか（不是ごにち），跟"20日"→はつか同一类坑，只在
     # "5"后面才触发，不影响"1日"(いちにち)/"3日"(みっか)这些其它数字+日的组合。
     ("5", "日"): "いつか",
+    # "名字+君"（くん，人名后缀）真的出现了——_UNCONDITIONAL 表里"君"→きみ的
+    # 注释当初写"真遇到'名字+君(くん)'这种搭配再改成按prev_orig判断的条件
+    # 规则，不要未卜先知地先加"，真实案例（textbook-sjp-zg-l15）："金子君も
+    # 高橋さんも""王君も元気そうね"里的"君"紧跟在人名"金子"/"王"后面，是
+    # くん后缀用法，不是きみ代词，被无条件覆盖规则误判成了きみ。只覆盖这一课
+    # 出现过的具体人名，不猜测/未卜先知地覆盖其它可能的人名。
+    ("金子", "君"): "くん",
+    ("王", "君"): "くん",
 }
 # _split_kana_segments() 定位"汉字读音在哪结束、送假名从哪开始"时，靠"这个
 # 汉字至少占几拍"这个下限往后跳过对应字符数再搜索送假名的锚点字符（见那个
@@ -255,6 +263,25 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     # 2次試験，3次試験"）：三处全部被读成つぎ，是错的。
     if orig == "次" and prev_ends_with_digit:
         return "じ"
+    # "人前"（〜人份儿，量词）紧跟在数字后面时该读にんまえ（"３人前"=さんにん
+    # まえ），pykakasi 默认给孤立的"人前"读ひとまえ（"人前で"＝"在人前/当众"
+    # 这个独立名词用法的读音，跟"人/位/間/歳/次"是同一类"孤立单字默认读音 vs
+    # 紧跟数字时的量词读音"坑）。真实案例（textbook-sjp-zg-l15，"「水炊き」を
+    # ３人前"）：被读成ひとまえ，是错的；生词表里"〜人前"这个词条本身已经靠
+    # 显式 kana 字段人工订正过，这条补的是会话原句里同一个词遇到具体数字
+    # "３"时也要读对。
+    if orig == "人前" and prev_ends_with_digit:
+        return "にんまえ"
+    # "ご飯"该读ごはん，pykakasi 把"ご"（美化接头词）跟前面的て形动词合并成一个
+    # token（比如"調理して"+"ご"→"してご"一个token），孤立的"飯"字默认读めし
+    # （"飯を食う"这种口语单字用法），拼出来是"…してごめし"，是错的。不能用
+    # prev_orig=="ご"这种精确匹配（真实案例里prev_orig是"してご"，不是"ご"单独
+    # 成词），改用"prev_orig是不是以'ご'结尾"判断，覆盖"Xしてご飯""するご飯"
+    # 这类前面接着别的内容、"ご"被并入前一个token尾部的场景。真实案例
+    # （textbook-sjp-zg-l15，"調理してご飯に載せた料理"×2）：两处都被读成
+    # めし，拼出"ごめし"。
+    if orig == "飯" and prev_orig and prev_orig.endswith("ご"):
+        return "はん"
     # "その後"是个歧义词，两个读音都是常见的正确用法，不能像"その日"那样无条件
     # 覆盖：そのご（书面语，"之后/其后"，常作句首连接副词用，后面接逗号停顿——
     # 比如课文里"その後，デジタル技術の開発が進むとともに…"）vs そのあと（口语，
@@ -486,10 +513,14 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
             line_offset += tok_len
             if vocab_readings and orig in vocab_readings:
                 hira = vocab_readings[orig]
+            elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
+                # BY_PREV 必须先于 UNCONDITIONAL 检查——"君"同时出现在两张表
+                # 里（UNCONDITIONAL 默认きみ，BY_PREV 对"金子"/"王"之后的
+                # "君"覆盖成くん），UNCONDITIONAL 先命中的话 BY_PREV 永远
+                # 轮不到，更具体的条件规则理应优先于宽泛的无条件规则。
+                hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
             elif orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
-            elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
-                hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
             else:
                 hira = _resolve_hira(orig, hira, prev_orig, next_char)
             prev_orig = orig

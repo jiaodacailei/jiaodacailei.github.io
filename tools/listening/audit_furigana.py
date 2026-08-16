@@ -132,11 +132,14 @@ def _scan_live_text(text, show_all, vocab_readings=None):
             if vocab_readings and orig in vocab_readings:
                 hira = vocab_readings[orig]
                 overridden = True
+            elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
+                # 跟 build_page.py 的 tokenize_ja() 同一顺序：BY_PREV 先于
+                # UNCONDITIONAL 检查（"君"同时在两张表里，UNCONDITIONAL 先
+                # 命中的话 BY_PREV 永远轮不到）。
+                hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
+                overridden = True
             elif orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
-                overridden = True
-            elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
-                hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
                 overridden = True
             else:
                 new_hira = _resolve_hira(orig, hira, prev_orig, next_char)
