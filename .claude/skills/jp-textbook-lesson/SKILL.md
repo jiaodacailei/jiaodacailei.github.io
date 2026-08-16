@@ -1045,6 +1045,91 @@ python tools/listening/audit_boundaries_rms.py \
 word-level转写交叉核实），核实前务必先读一遍**。这一步不是
 `verify_clips.py` 的替代，是补充——两个都要跑，分别覆盖不同类型的 bug。
 
+#### 会话/课文/生词全部边界：`audit_boundaries_quietpoint.py` 算法级检测（必须，替代"人工核实 audit_boundaries_rms.py 的可疑点"这一步里最不可靠的部分）
+
+真实案例（textbook-sjp-zg-l15，发布后连续三轮用户反馈"尾音过长/头音
+被吞"）：`audit_boundaries_rms.py` 标记出可疑边界之后，按它文档字符串
+建议的"用 word-level 转写交叉核实"，多次得出错误结论——① 转写时间戳
+本身系统性偏晚/偏早（同一个"それ"字，narrow window转写在不同切点全部
+报成"从这里开始"，跟真实起音差了0.1秒以上都不报警）；②"两段响-静-响
+的双峰"形状被误判成"两个不同句子各自的起振"，实际是同一个词内部促音
+っ天然带的短暂停顿（"決して"），改错方向反而更糟。**这些坑不是这一课
+独有的，是"用语言模型的时间戳去验证语言模型自己切出来的边界"这个方法
+本身的结构性缺陷**——两者共享同一套偏差来源，容易互相"印证"出错误结论。
+
+`tools/listening/audit_boundaries_quietpoint.py` 换一个不依赖转写文本的
+判据：纯用能量剖面回答"这个边界之前一小段时间内，音频有没有真正安静
+下来过、安静到几点几秒"，物理测量不会有语言模型那种系统性偏差。**这一步
+现在是必做项，跟 `verify_clips.py`/`audit_boundaries_rms.py` 同等级别**，
+而且**必须覆盖会话/课文/生词全部tab**（不只是`audit_boundaries_rms.py`
+原来只覆盖会话/课文这两类"有多句题目分组"的材料）：
+
+```bash
+python tools/listening/audit_boundaries_quietpoint.py \
+  tools/listening/work/<slug>/enriched_dialogue_final.json <会话原始音频> \
+  --report tools/listening/work/<slug>/quietpoint_dialogue.txt
+python tools/listening/audit_boundaries_quietpoint.py \
+  tools/listening/work/<slug>/enriched_text_final.json <课文原始音频> \
+  --report tools/listening/work/<slug>/quietpoint_text.txt
+python tools/listening/audit_boundaries_quietpoint.py \
+  tools/listening/work/<slug>/enriched_vocab_final.json <生词原始音频> \
+  --report tools/listening/work/<slug>/quietpoint_vocab.txt
+```
+
+（跟 `audit_boundaries_rms.py` 一样，传各自的 `enriched_*_final.json` +
+各自的原始音频，不要传合并后的 `enriched_combined.json`。）
+
+**生词表尤其容易大规模命中，不是例外情况**：真实案例里 104 个生词零
+间隔首尾相连，一次扫描 103 个内部边界，**96 个都命中**（多数偏晚
+0.1~0.3秒，少数超过40dB的剧烈跳变）。根因是 `refine_boundaries.py` 的
+`biased_split_time()` 计算切分点时，虽然设计上"偏向让下一个词/句多分到
+停顿"，但计算基准（前一个词/句的 Whisper 词级结束时间戳）本身经常系统性
+偏晚——这不是这一个函数的 bug，是"相信 Whisper 自己给的词尾时间戳"这个
+前提在生词表这种零间隔连续朗读材料上格外不成立（自然停顿本来就短，
+系统性偏差占比更明显）。**任何用 `align_group()` 对齐过的生词表都可能
+受影响，不只是这一课**——以后每一课生词表生成完，这一步都不能省，不能
+假设"这次的语速/录音条件跟上次不一样，应该没事"。
+
+命中之后可以放心 `--fix` 批量修正（不用像手工改边界那样逐条先人工核实
+再动手）——新边界=独立测量出的真实安静点+0.02秒缓冲，这个新边界**只
+可能落在已经确认安静的位置**，不可能反过来切进上一句/上一词还在响的
+真实内容里，最坏情况只是多给下一句/下一词留了一点点无害的静音缓冲，
+不会制造新的内容丢失，所以批量修正的风险跟"人工估一个大概值就动手"完全
+不是同一个量级。`--fix` 只改 `start`/`end`，句子（不是生词）如果带
+`char_times` 不会跟着重算，改完还是要照常走 `recut_clips.py` +
+`patch_sentence_tokens.py`（生词条目没有 `char_times`，只需要
+`recut_clips.py`）。
+
+**改完不能只信这个工具自己报告"改好了"，还要做下面这一步终验**：
+
+#### 拼接相邻已发布 clip 整体转写——目前发现的最可靠终验方法
+
+真实案例（textbook-sjp-zg-l15）：修复过程里反复出现"以为改对了、其实
+方向错了或者幅度不够"的情况，包括同一处边界被连续判断了三四轮才收敛。
+最终稳定下来靠的是同一个方法：**把两个相邻的、已经发布的 `seg-NNN.mp3`
+文件直接拼接（`ffmpeg -f concat`）成一个文件，整体喂给 Whisper 转写**，
+不依赖任何"猜边界在哪、猜这段该算哪一句"的假设——转写结果里，下一句
+的第一个词出现在拼接后时间轴的哪个位置，直接跟"上一个clip自己的真实
+时长"（`ffprobe -show_entries format=duration`，不要用自己写的
+`ffmpeg -i` 探测脚本，见下面这条坑）比较：如果那个词出现的时间点早于
+上一个clip的真实时长，说明这个词的开头被上一个clip偷走了一部分。这个
+方法比"孤立转写单个clip"（短clip转写本身不可靠，详见"常见坑"）、也比
+"narrow window转写猜起始点"（同一个词在不同窗口切法下能给出相差0.1秒
+以上的不同起始时间估计）都更可信——因为它测的是"已经发布的真实文件"，
+不是"某种假设下重新切出来的窗口"。**generate 页面之后，凡是
+`audit_boundaries_quietpoint.py --fix` 批量改过的边界，都应该抽样用
+这个方法做终验**（不用每一处都测，测覆盖到修改最密集的几个题目分组/
+生词表分段即可），而不是只信任自动化工具自己的报告。
+
+**配套的一个工具坑**：自己写的"用 `ffmpeg -i` 读 stderr 里的 Duration
+行解析时长"的方法，比 `ffprobe -show_entries format=duration` 系统性
+偏大约0.02~0.04秒（mp3容器本身的编码器延迟/填充导致，`ffmpeg -i` 报的
+是容器层时长）。真实案例：这个偏差一度让排查者误以为某处边界还差
+0.04秒没修干净，差点对一个已经修对的边界又多改一次——**凡是要精确
+比较"clip真实时长"的场合，一律用 `ffprobe -show_entries format=duration
+-of default=noprint_wrappers=1:nokey=1`，不要自己写 `ffmpeg -i` 解析
+stderr 的土办法**。
+
 ### 6c. 做了单词测试 tab 的话：校验 quiz 里的 id 跟真实音频对不对得上（必须）
 
 ```bash
