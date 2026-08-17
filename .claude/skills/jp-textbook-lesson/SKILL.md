@@ -1130,6 +1130,49 @@ python tools/listening/audit_boundaries_quietpoint.py \
 -of default=noprint_wrappers=1:nokey=1`，不要自己写 `ffmpeg -i` 解析
 stderr 的土办法**。
 
+#### 用户想自己手动拖边界的话：`boundary_editor.html`（人工核实比算法猜更可信时用）
+
+真实案例（textbook-sjp-zg-l15）：某一轮用户反馈的边界问题排查下来发现
+是浏览器缓存，不是真实bug——但排查过程也暴露出一个更根本的问题：**这一课
+反复出现"渐进式上升、没有干净静音点"这种边界（`いいね`→`そうしよう`
+是典型例子），RMS 算法的"最低点+固定阈值"判据在这类边界上天然不可靠，
+人耳/人眼一眼就能看出真实起振点在哪，但算法容易在噪声里找错参照点**。
+用户因此提出：与其继续让我用算法/转写去猜，不如直接给一个能拖拽波形、
+边听边定位的网页工具，改完导出JSON给我落地。这不是"偷懒少验证"，是
+承认这类边界本身就该由人耳判断，比自动化更可信。
+
+用法（两步，工具都在 `tools/listening/`）：
+
+```bash
+# 1. 生成这个tab的编辑器数据——从当前已发布的 data.js + audio/ 出发
+#    （不依赖任何work目录里可能过期的 enriched.json），拼出一份连续音频
+#    + 每条的精确边界，输出到 tools/listening/work/<slug>/boundary_editor_<tab>/
+python tools/listening/build_boundary_editor.py docs/private/<slug> <tab的mondai名，比如"会话"/"生词">
+
+# 本地起服务器打开（fetch 本地文件在 file:// 下会被浏览器拦截，必须走 http）：
+npx http-server tools/listening/work/<slug>/boundary_editor_<tab> -p 8080
+# 浏览器开 http://127.0.0.1:8080/boundary_editor.html，拖拽/试听改完，
+# 点左下角"导出改动"，JSON 会自动复制到剪贴板，用户粘贴回对话
+
+# 2. 用户把JSON贴回来之后，落地：
+python tools/listening/apply_boundary_edits.py docs/private/<slug> <粘贴内容存成的json文件>
+```
+
+`apply_boundary_edits.py` 只根据"新边界改到了哪"重切受影响的
+`seg-NNN.mp3`（源音频是第1步生成的同一份 `merged.mp3`，保证跟用户在
+编辑器里听到/拖到的内容完全一致，不会出现"重切用的音频跟编辑时不是
+同一份"这种偏差），如果这个tab的句子带 `tokens[].t` 跟读高亮时间戳
+（会话/课文有，生词没有，`manifest.json` 的 `hasTokenTiming` 字段区分），
+还会自动把因为"起点变了"需要平移的 token 时间戳同步进 `data.js`。
+**跑完这个脚本依然要走一遍 SKILL.md 规定的最终验证**（`audit_
+boundaries_quietpoint.py` + 拼接转写）——这个脚本只保证"忠实执行了
+用户标的新边界"，不检查新边界本身选得对不对，那是人工在编辑器里
+听着定的，工具不替用户做这个判断。
+
+工具设计上刻意没做成公开页面的一部分（不进 `docs/private/`，只在
+`tools/listening/work/` 下临时生成），因为编辑能力不该暴露给猜到密码
+就能进来的任何访客——这是本地开发工具，只通过本地 http 服务器访问。
+
 ### 6c. 做了单词测试 tab 的话：校验 quiz 里的 id 跟真实音频对不对得上（必须）
 
 ```bash
