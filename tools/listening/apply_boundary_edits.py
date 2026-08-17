@@ -183,10 +183,15 @@ def main():
                 note = "  [警告：data.js 里没找到这个id，token时间戳没能同步]"
             else:
                 delta = round(new_start - old_start, 3)
+                # token.t 是"相对clip起点的本地偏移"；clip起点往后挪 delta（delta>0），
+                # 同一段真实内容的本地偏移量要跟着往前减 delta，不是加——
+                # 加号是反的，会把跟读高亮整体往错误方向搬（真实案例：textbook-sjp-zg-l15
+                # 课文id33，正确应该落在~0.02s附近，加号版本算出1.73/2.61，验证时直接跟
+                # RMS量出来的真实起振点对不上，靠这个交叉核对才揪出来）
                 for tok in s.get("tokens", []):
                     if "t" in tok:
-                        tok["t"] = round(tok["t"] + delta, 2)
-                note = f"  [token时间戳整体平移 {delta:+.3f}s]"
+                        tok["t"] = round(tok["t"] - delta, 2)
+                note = f"  [token时间戳整体平移 {-delta:+.3f}s]"
         print(f"  id {sid}: [{old_start:.3f},{old_end:.3f}] -> [{new_start:.3f},{new_end:.3f}]{note}")
 
     if has_token_timing:
