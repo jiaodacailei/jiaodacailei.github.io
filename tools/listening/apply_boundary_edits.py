@@ -16,15 +16,21 @@ token 时间戳同步进 `data.js`。
     "slug": "textbook-sjp-zg-l15",
     "tab": "会话",
     "edits": [
-      {"beforeId": 13, "afterId": 14, "newBoundary": 29.98},
+      {"id": 30, "end": 76.30},
+      {"id": 31, "start": 76.30},
       ...
     ]
   }
 
-每条 edit 只描述"这一个边界改到了哪"，不用调用方自己换算受影响的两个
-id 各自新的 start/end——脚本从 `manifest.json` 里已经算好的原始边界
-出发，把全部 edits 应用一遍，再统一算出这一轮总共有哪些 id 的 start
-或 end 真的变了（同一个 id 左右两侧都被单独编辑到也能正确处理）。
+每条 edit 只描述"这个 id 自己的 start/end 改到了哪"（只带真正拖动过
+的那个字段，没拖过的字段不出现），**两句之间允许留空隙**——`start`/
+`end` 是每句自己独立的属性，不要求相邻两句的"前一句end"跟"后一句
+start"必须相等，这是编辑器特意的设计（用户反馈过："如果两句之间空白
+很多，岂不是空白必须放入某句中去"——旧版本把一个边界值同时当成两句
+共用的唯一切点，确实有这个问题，新版本改成两个独立值，中间可以留白，
+谁都不占）。脚本从 `manifest.json` 里的原始 start/end 出发，用同一个
+id 的多条 edit（同一句的 start 和 end 可能出现在不同 edit 里）叠加
+出每个受影响 id 最终的 [start, end]。
 
 跑完之后**仍然要走 SKILL.md 规定的最终验证**（`audit_boundaries_
 quietpoint.py` + 拼接转写）——这个脚本只保证"按你标的新边界忠实切"，
@@ -122,15 +128,17 @@ def main():
 
     missing_ids = []
     for e in edits:
-        bid, aid, nb = e["beforeId"], e["afterId"], e["newBoundary"]
-        if bid not in by_id or aid not in by_id:
-            missing_ids.append((bid, aid))
+        sid = e["id"]
+        if sid not in by_id:
+            missing_ids.append(sid)
             continue
-        by_id[bid]["end"] = nb
-        by_id[aid]["start"] = nb
+        if "start" in e:
+            by_id[sid]["start"] = e["start"]
+        if "end" in e:
+            by_id[sid]["end"] = e["end"]
 
     if missing_ids:
-        print(f"FAIL: 这些边界引用的 id 在 manifest 里找不到（先重新生成一遍 manifest 再改）: {missing_ids}")
+        print(f"FAIL: 这些 edit 引用的 id 在 manifest 里找不到（先重新生成一遍 manifest 再改）: {missing_ids}")
         sys.exit(1)
 
     touched_ids = sorted({
