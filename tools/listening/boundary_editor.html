@@ -137,6 +137,8 @@
         <button id="play-after">▶ 边界后0.8s</button>
         <button id="play-loop">🔁 循环边界附近</button>
         <button id="play-stop">⏹ 停止</button>
+        <button id="enable-audio">🔊 启用音频/测试音（先点这个）</button>
+        <span id="audio-status" style="color:var(--dim);font-size:12px"></span>
       </div>
       <div id="nudge-group">
         <span class="sep">|</span>
@@ -158,6 +160,10 @@
       <button id="reset-btn">↺ 重置这一处</button>
     </div>
     <div id="hint">
+      如果完全听不到声音：先点上面的"启用音频/测试音"——浏览器要求先有一次点击才允许播放声音，
+      这个按钮顺便放一个测试蜂鸣音，能听到就说明播放本身没问题（再听不到边界音频就是别的原因，
+      比如边界本身选得不对/太靠近静音区）；听不到蜂鸣音就是系统音量/输出设备/网页标签页静音的问题，
+      跟这个页面本身无关，检查一下浏览器标签页有没有小喇叭静音图标、系统音量、输出设备选对没有。<br>
       拖动画布中的竖线（或直接点击画布定位）来移动边界；<kbd>←</kbd>/<kbd>→</kbd> 微调 0.01s，
       <kbd>Shift</kbd>+<kbd>←</kbd>/<kbd>→</kbd> 微调 0.05s；<kbd>↑</kbd>/<kbd>↓</kbd> 切换上/下一个边界；
       <kbd>空格</kbd> 循环播放边界附近；黄色虚线是原始边界位置，蓝色实线是当前（可能已改）位置。
@@ -370,23 +376,52 @@
     }
   }
 
-  function playRange(t0, t1, loop) {
+  function updateAudioStatus(extra) {
+    const el = $('#audio-status');
+    if (el) el.textContent = `AudioContext: ${actx.state}` + (extra ? `  ${extra}` : '');
+  }
+  actx.addEventListener('statechange', () => updateAudioStatus());
+
+  async function playRange(t0, t1, loop) {
     stopPlayback();
-    if (actx.state === 'suspended') actx.resume();
+    if (actx.state !== 'running') {
+      try { await actx.resume(); } catch (e) { updateAudioStatus('resume()失败: ' + e.message); return; }
+    }
+    updateAudioStatus();
     t0 = Math.max(0, t0);
     t1 = Math.min(buffer.duration, t1);
     if (t1 <= t0) return;
-    const src = actx.createBufferSource();
-    src.buffer = buffer;
-    if (loop) {
-      src.loop = true;
-      src.loopStart = t0;
-      src.loopEnd = t1;
-      src.start(0, t0);
-    } else {
-      src.start(0, t0, t1 - t0);
+    try {
+      const src = actx.createBufferSource();
+      src.buffer = buffer;
+      if (loop) {
+        src.loop = true;
+        src.loopStart = t0;
+        src.loopEnd = t1;
+        src.start(0, t0);
+      } else {
+        src.start(0, t0, t1 - t0);
+      }
+      currentSource = src;
+    } catch (e) {
+      updateAudioStatus('播放失败: ' + e.message);
     }
-    currentSource = src;
+  }
+
+  async function playTestTone() {
+    stopPlayback();
+    if (actx.state !== 'running') {
+      try { await actx.resume(); } catch (e) { updateAudioStatus('resume()失败: ' + e.message); return; }
+    }
+    updateAudioStatus('播放测试音…（440Hz 蜂鸣0.3秒，听不到就是系统/浏览器音量或输出设备的问题，不是这个页面的bug）');
+    const osc = actx.createOscillator();
+    const gain = actx.createGain();
+    gain.gain.value = 0.2;
+    osc.frequency.value = 440;
+    osc.connect(gain).connect(actx.destination);
+    osc.start();
+    osc.stop(actx.currentTime + 0.3);
+    osc.onended = () => updateAudioStatus();
   }
 
   // --- events ---
@@ -406,6 +441,7 @@
     const b = currentB(); if (b) playRange(b.current - 0.4, b.current + 0.4, true);
   });
   $('#play-stop').addEventListener('click', stopPlayback);
+  $('#enable-audio').addEventListener('click', playTestTone);
 
   $('#nudge-back').addEventListener('click', () => nudge(-0.01));
   $('#nudge-fwd').addEventListener('click', () => nudge(0.01));
@@ -482,6 +518,7 @@
 
   $('#loading').style.display = 'none';
   $('#app').style.display = 'flex';
+  updateAudioStatus();
   renderList();
   if (boundaries.length) selectBoundary(0);
 })().catch(err => {
