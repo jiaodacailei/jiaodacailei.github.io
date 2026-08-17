@@ -43,7 +43,7 @@
   .b-row:hover { background: #2c2f36; }
   .b-row.selected { background: #2f3f57; border-left: 3px solid var(--accent); }
   .b-row .ids { font-size: 11px; color: var(--dim); }
-  .b-row .text { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .b-row .text { font-size: 13px; white-space: normal; word-break: break-word; line-height: 1.4; }
   .b-row .time-line { font-size: 11px; display: flex; justify-content: space-between; gap: 8px; }
   .b-row .time-line .edge-start { color: var(--accent); }
   .b-row .time-line .edge-end { color: var(--accent2); }
@@ -66,16 +66,18 @@
   #canvas-wrap { padding: 16px; }
   #wave-stage { position: relative; }
   canvas { width: 100%; height: 220px; background: #101114; border-radius: 6px; display: block; }
+  #edge-toolbar {
+    position: absolute; top: 4px; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 4px; z-index: 2;
+  }
   .edge-nudge-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    width: 30px; height: 44px; padding: 0; font-size: 18px; line-height: 1; z-index: 2;
+    width: 26px; height: 26px; padding: 0; font-size: 14px; line-height: 1;
     background: rgba(41,44,51,0.92); border: 1px solid var(--accent); color: var(--accent);
   }
   .edge-nudge-btn:hover { background: var(--accent); color: #04121f; }
   #edge-label {
-    position: absolute; top: 6px; transform: translateX(-50%);
     background: rgba(16,17,20,0.9); color: var(--accent); font-size: 12px; font-weight: 600;
-    padding: 2px 7px; border-radius: 4px; white-space: nowrap; pointer-events: none; z-index: 2;
+    padding: 2px 7px; border-radius: 4px; white-space: nowrap; pointer-events: none;
     border: 1px solid var(--accent);
   }
   #time-readout {
@@ -148,9 +150,13 @@
     <div id="canvas-wrap">
       <div id="wave-stage">
         <canvas id="wave" width="1200" height="220"></canvas>
-        <button id="edge-nudge-left" class="edge-nudge-btn" title="边界往前 0.01s（Shift+点=0.05s）">‹</button>
-        <button id="edge-nudge-right" class="edge-nudge-btn" title="边界往后 0.01s（Shift+点=0.05s）">›</button>
-        <div id="edge-label">-</div>
+        <div id="edge-toolbar">
+          <button id="edge-nudge-left-big" class="edge-nudge-btn" title="边界往前 0.05s">«</button>
+          <button id="edge-nudge-left" class="edge-nudge-btn" title="边界往前 0.01s">‹</button>
+          <div id="edge-label">-</div>
+          <button id="edge-nudge-right" class="edge-nudge-btn" title="边界往后 0.01s">›</button>
+          <button id="edge-nudge-right-big" class="edge-nudge-btn" title="边界往后 0.05s">»</button>
+        </div>
       </div>
       <div id="time-readout">
         <span id="win-start">-</span>
@@ -197,9 +203,9 @@
       （结束点），互不影响，改一句的边界不会动到别的句子。上面"前边界/后边界"选哪个，
       拖动画布、方向键微调、数字输入框改的就是本句的哪一个；画布上灰色的线是相邻那句
       挨着这一侧的边界，只用来参考两句间隔多大（不能拖，本句的边界不能拖过去跟它重叠，
-      但可以留出空隙——那段空白谁都不属于，用"播放邻近空白"能听）。<b>蓝线上方的数字
-      就是当前边界的精确时间，紧贴蓝线两侧的 ‹ › 按钮直接微调（点=0.01s，按住Shift点=
-      0.05s），不用来回看下面的输入框</b>。<kbd>←</kbd>/<kbd>→</kbd>
+      但可以留出空隙——那段空白谁都不属于，用"播放邻近空白"能听）。<b>蓝线顶部跟着这条线
+      走的一排按钮，中间数字是当前边界的精确时间，两侧 « ‹ › » 依次是往前/后 0.05s、
+      0.01s，不用来回看下面的输入框</b>。<kbd>←</kbd>/<kbd>→</kbd>
       微调 0.01s，<kbd>Shift</kbd>+<kbd>←</kbd>/<kbd>→</kbd> 微调 0.05s，<kbd>↑</kbd>/<kbd>↓</kbd>
       切换上/下一句，<kbd>Tab</kbd> 切换前/后边界，<kbd>空格</kbd> 循环播放。黄色虚线是这条
       边界的原始位置，改完点左下角"导出改动"。
@@ -399,14 +405,13 @@
     ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
     ctx.lineWidth = 1;
 
-    // 把左右微调按钮和当前位置标签定位到这条线的显示像素坐标上
+    // 把微调按钮工具条定位到这条线顶部、水平居中对齐
     // （canvas内部分辨率是1200x220，显示宽度是CSS响应式的100%，两者要换算）
     const dispX = (cx / w) * canvas.clientWidth;
-    const leftBtn = $('#edge-nudge-left'), rightBtn = $('#edge-nudge-right'), label = $('#edge-label');
-    leftBtn.style.left = Math.max(0, dispX - 36) + 'px';
-    rightBtn.style.left = Math.min(canvas.clientWidth - 30, dispX + 6) + 'px';
-    label.style.left = Math.min(Math.max(dispX, 24), canvas.clientWidth - 24) + 'px';
-    label.textContent = activeValue().toFixed(3) + 's';
+    const toolbar = $('#edge-toolbar');
+    $('#edge-label').textContent = activeValue().toFixed(3) + 's';
+    const half = toolbar.offsetWidth / 2 || 85;
+    toolbar.style.left = Math.min(Math.max(dispX, half), canvas.clientWidth - half) + 'px';
   }
 
   function setEdge(t) {
@@ -526,8 +531,10 @@
   $('#nudge-fwd').addEventListener('click', () => nudge(0.01));
   $('#nudge-back-big').addEventListener('click', () => nudge(-0.05));
   $('#nudge-fwd-big').addEventListener('click', () => nudge(0.05));
-  $('#edge-nudge-left').addEventListener('click', (e) => nudge(e.shiftKey ? -0.05 : -0.01));
-  $('#edge-nudge-right').addEventListener('click', (e) => nudge(e.shiftKey ? 0.05 : 0.01));
+  $('#edge-nudge-left').addEventListener('click', () => nudge(-0.01));
+  $('#edge-nudge-right').addEventListener('click', () => nudge(0.01));
+  $('#edge-nudge-left-big').addEventListener('click', () => nudge(-0.05));
+  $('#edge-nudge-right-big').addEventListener('click', () => nudge(0.05));
   $('#boundary-input').addEventListener('change', (e) => setEdge(parseFloat(e.target.value)));
   $('#reset-btn').addEventListener('click', () => {
     const s = curS();
