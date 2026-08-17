@@ -394,6 +394,7 @@
     try {
       const src = actx.createBufferSource();
       src.buffer = buffer;
+      src.connect(actx.destination);
       if (loop) {
         src.loop = true;
         src.loopStart = t0;
