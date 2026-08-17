@@ -200,10 +200,13 @@
       这个按钮顺便放一个测试蜂鸣音，能听到就说明播放本身没问题；听不到蜂鸣音就是系统音量/
       输出设备/网页标签页静音的问题，跟这个页面本身无关。<br>
       <b>左边列表按句子导航，每句自己有两个完全独立的参数</b>——前边界（开始点）和后边界
-      （结束点），互不影响，改一句的边界不会动到别的句子。上面"前边界/后边界"选哪个，
-      拖动画布、方向键微调、数字输入框改的就是本句的哪一个；画布上灰色的线是相邻那句
-      挨着这一侧的边界，只用来参考两句间隔多大（不能拖，本句的边界不能拖过去跟它重叠，
-      但可以留出空隙——那段空白谁都不属于，用"播放邻近空白"能听）。<b>蓝线顶部跟着这条线
+      （结束点），是两个不同的数字，不会因为改了这句就自动改成别的句子的值。上面
+      "前边界/后边界"选哪个，拖动画布、方向键微调、数字输入框改的就是本句的哪一个；
+      画布上灰色的线是相邻那句挨着这一侧的边界，只用来参考两句间隔多大——两句之间
+      可以留出空隙（那段空白谁都不属于，用"播放邻近空白"能听），也可以拖过去贴上邻居，
+      **拖得更过分、想侵占到邻居的内容里，邻居贴着这一侧的边界会被一起推着走**（不会
+      真的产生重叠，只会把邻居也顺带往后/前挤，邻居的另一侧边界不受影响），拖到邻居
+      自己也被压缩到最短才会真正拖不动。<b>蓝线顶部跟着这条线
       走的一排按钮，中间数字是当前边界的精确时间，两侧 « ‹ › » 依次是往前/后 0.05s、
       0.01s，不用来回看下面的输入框</b>。<kbd>←</kbd>/<kbd>→</kbd>
       微调 0.01s，<kbd>Shift</kbd>+<kbd>←</kbd>/<kbd>→</kbd> 微调 0.05s，<kbd>↑</kbd>/<kbd>↓</kbd>
@@ -419,14 +422,21 @@
     if (!s) return;
     if (activeEdge === 'start') {
       const nb = neighborBefore();
-      const lo = nb ? nb.curEnd : 0;
+      // 下限是邻居自己的前边界（+0.01s留一点最短时长），不是邻居的后边界——
+      // 拖过邻居当前的后边界时，把邻居的后边界也一起推过去（ripple），
+      // 直到邻居自己也被压缩到最短，才真正拖不动
+      const lo = nb ? nb.curStart + 0.01 : 0;
       const hi = s.curEnd - 0.01;
-      s.curStart = Math.min(Math.max(t, lo), hi);
+      const newStart = Math.min(Math.max(t, lo), hi);
+      s.curStart = newStart;
+      if (nb && newStart < nb.curEnd) nb.curEnd = newStart;
     } else {
       const na = neighborAfter();
       const lo = s.curStart + 0.01;
-      const hi = na ? na.curStart : buffer.duration;
-      s.curEnd = Math.min(Math.max(t, lo), hi);
+      const hi = na ? na.curEnd - 0.01 : buffer.duration;
+      const newEnd = Math.min(Math.max(t, lo), hi);
+      s.curEnd = newEnd;
+      if (na && newEnd > na.curStart) na.curStart = newEnd;
     }
     syncBoundaryInput();
     draw();
