@@ -45,15 +45,14 @@
   .b-row .ids { font-size: 11px; color: var(--dim); }
   .b-row .text { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .b-row .time-line { font-size: 11px; display: flex; justify-content: space-between; gap: 8px; }
-  .b-row .time-line .edge-left { color: var(--accent); }
-  .b-row .time-line .edge-right { color: var(--accent2); }
+  .b-row .time-line .edge-start { color: var(--accent); }
+  .b-row .time-line .edge-end { color: var(--accent2); }
   .b-row.modified .time-line { font-weight: 600; }
   .b-row .gap-note { font-size: 10px; color: var(--dim); }
-  .b-row .gap-note.nonzero { color: var(--modified); }
   #edge-select { display: flex; gap: 6px; }
   #edge-select button { flex: 1; }
-  #edge-select button.active-left { background: var(--accent); color: #04121f; border-color: var(--accent); }
-  #edge-select button.active-right { background: var(--accent2); color: #201200; border-color: var(--accent2); }
+  #edge-select button.active-start { background: var(--accent); color: #04121f; border-color: var(--accent); }
+  #edge-select button.active-end { background: var(--accent2); color: #201200; border-color: var(--accent2); }
   #export-bar { padding: 10px 12px; border-top: 1px solid var(--border); }
   #export-bar button { width: 100%; }
   #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -130,7 +129,7 @@
   </div>
   <div id="main">
     <div id="main-header">
-      <div class="label" id="pair-label">选一个边界开始</div>
+      <div class="label" id="pair-label">选一句开始</div>
       <div class="meta" id="pair-sub"></div>
     </div>
     <div id="canvas-wrap">
@@ -142,13 +141,12 @@
     </div>
     <div id="controls">
       <div id="edge-select">
-        <button id="select-left">● 编辑左边界（上一句的结束点）</button>
-        <button id="select-right">○ 编辑右边界（下一句的开始点）</button>
+        <button id="select-start">● 前边界（本句开始点）</button>
+        <button id="select-end">○ 后边界（本句结束点）</button>
       </div>
       <div id="play-group">
-        <button id="play-before">◀ 播放上一句（完整）</button>
-        <button id="play-after">▶ 播放下一句（完整）</button>
-        <button id="play-gap">🈳 播放中间空白</button>
+        <button id="play-cur">▶ 播放本句</button>
+        <button id="play-gap">🈳 播放邻近空白</button>
         <button id="play-loop">🔁 循环当前边界附近</button>
         <button id="play-stop">⏹ 停止</button>
         <button id="enable-audio">🔊 启用音频/测试音（先点这个）</button>
@@ -171,19 +169,20 @@
         <button data-zoom="2.5">2.5s</button>
       </div>
       <span class="sep">|</span>
-      <button id="reset-btn">↺ 重置这两个边界</button>
+      <button id="reset-btn">↺ 重置当前这条边界</button>
     </div>
     <div id="hint">
       如果完全听不到声音：先点上面的"启用音频/测试音"——浏览器要求先有一次点击才允许播放声音，
       这个按钮顺便放一个测试蜂鸣音，能听到就说明播放本身没问题；听不到蜂鸣音就是系统音量/
       输出设备/网页标签页静音的问题，跟这个页面本身无关。<br>
-      <b>每个边界点其实是两个独立的值</b>：蓝色线是"上一句的结束点"，橙色线是"下一句的开始点"——
-      两句之间如果本来就有停顿，这两个值不需要相等，中间那段可以谁都不要（两句都不包含它），
-      不是必须把停顿硬塞给某一句。上面的"编辑左边界/右边界"选哪个，拖动画布、方向键微调、
-      数字输入框改的就是哪一个；点画布上离哪条线更近就拖哪条线（离得很近分不清的时候，
-      以上面选中的那个为准）。<kbd>←</kbd>/<kbd>→</kbd> 微调 0.01s，<kbd>Shift</kbd>+<kbd>←</kbd>/
-      <kbd>→</kbd> 微调 0.05s，<kbd>↑</kbd>/<kbd>↓</kbd> 切换上/下一个边界，<kbd>空格</kbd> 循环播放，
-      <kbd>Tab</kbd> 切换编辑左/右边界。黄色虚线是原始位置，改完点左下角"导出改动"。
+      <b>左边列表按句子导航，每句自己有两个完全独立的参数</b>——前边界（开始点）和后边界
+      （结束点），互不影响，改一句的边界不会动到别的句子。上面"前边界/后边界"选哪个，
+      拖动画布、方向键微调、数字输入框改的就是本句的哪一个；画布上灰色的线是相邻那句
+      挨着这一侧的边界，只用来参考两句间隔多大（不能拖，本句的边界不能拖过去跟它重叠，
+      但可以留出空隙——那段空白谁都不属于，用"播放邻近空白"能听）。<kbd>←</kbd>/<kbd>→</kbd>
+      微调 0.01s，<kbd>Shift</kbd>+<kbd>←</kbd>/<kbd>→</kbd> 微调 0.05s，<kbd>↑</kbd>/<kbd>↓</kbd>
+      切换上/下一句，<kbd>Tab</kbd> 切换前/后边界，<kbd>空格</kbd> 循环播放。黄色虚线是这条
+      边界的原始位置，改完点左下角"导出改动"。
     </div>
   </div>
 </div>
@@ -213,57 +212,44 @@
   const channelData = buffer.getChannelData(0);
   const sampleRate = buffer.sampleRate;
 
-  // 每句自己独立的 curStart/curEnd（可拖拽）；start/end 是只读的原始值，永不修改
+  // 每句自己独立的 curStart/curEnd（可拖拽），互相不影响；start/end 是只读的原始值，永不修改
   const sentences = manifest.sentences.map(s => ({ ...s, curStart: s.start, curEnd: s.end }));
-  // gaps[i] = sentences[i]（左，贡献 curEnd）和 sentences[i+1]（右，贡献 curStart）之间的间隙
-  const gaps = [];
-  for (let i = 0; i < sentences.length - 1; i++) {
-    gaps.push({ leftIdx: i, rightIdx: i + 1 });
-  }
 
-  let selected = gaps.length ? 0 : -1;
-  let activeEdge = 'left'; // 'left' | 'right' —— 拖拽/方向键/数字输入框当前操作哪一侧
+  let selected = sentences.length ? 0 : -1; // 句子下标（不是"边界"/"间隙"下标）
+  let activeEdge = 'start'; // 'start' | 'end' —— 当前编辑的是本句的前边界还是后边界
   let windowHalf = 0.6;
-  let dragEdge = null; // 'left' | 'right' | null
+  let dragging = false;
   let currentSource = null;
 
   $('#title').textContent = `${manifest.slug} / ${manifest.tab}`;
-  $('#subtitle').textContent = `${sentences.length} 条，${gaps.length} 个间隙，总时长 ${manifest.totalDuration.toFixed(1)}s`;
+  $('#subtitle').textContent = `${sentences.length} 句，总时长 ${manifest.totalDuration.toFixed(1)}s`;
 
-  function leftS(g) { return sentences[g.leftIdx]; }
-  function rightS(g) { return sentences[g.rightIdx]; }
   function isModified(s) {
     return Math.abs(s.curStart - s.start) > 0.0005 || Math.abs(s.curEnd - s.end) > 0.0005;
   }
-  function gapModified(g) {
-    return Math.abs(leftS(g).curEnd - leftS(g).end) > 0.0005 ||
-           Math.abs(rightS(g).curStart - rightS(g).start) > 0.0005;
-  }
-  function gapSize(g) { return rightS(g).curStart - leftS(g).curEnd; }
+  function neighborBefore() { return selected > 0 ? sentences[selected - 1] : null; }
+  function neighborAfter() { return selected < sentences.length - 1 ? sentences[selected + 1] : null; }
 
   function renderList() {
     const q = $('#jump-input').value.trim().replace(/^#/, '');
     const list = $('#boundary-list');
     list.innerHTML = '';
-    gaps.forEach((g, i) => {
-      const l = leftS(g), r = rightS(g);
+    sentences.forEach((s, i) => {
       if (q) {
-        const hay = `${l.id} ${r.id} ${l.text} ${r.text}`;
+        const hay = `${s.id} ${s.text}`;
         if (!hay.includes(q)) return;
       }
-      const gs = gapSize(g);
       const row = document.createElement('div');
-      row.className = 'b-row' + (i === selected ? ' selected' : '') + (gapModified(g) ? ' modified' : '');
+      row.className = 'b-row' + (i === selected ? ' selected' : '') + (isModified(s) ? ' modified' : '');
       row.innerHTML = `
-        <div class="ids">#${l.id} → #${r.id}</div>
-        <div class="text">${escapeHtml(l.text)} → ${escapeHtml(r.text)}</div>
+        <div class="ids">#${s.id}</div>
+        <div class="text">${escapeHtml(s.text)}</div>
         <div class="time-line">
-          <span class="edge-left">左${l.curEnd.toFixed(2)}s</span>
-          <span class="edge-right">右${r.curStart.toFixed(2)}s</span>
+          <span class="edge-start">前${s.curStart.toFixed(2)}s</span>
+          <span class="edge-end">后${s.curEnd.toFixed(2)}s</span>
         </div>
-        <div class="gap-note${gs > 0.005 ? ' nonzero' : ''}">间隙 ${gs >= 0 ? gs.toFixed(2) : '重叠!'}s</div>
       `;
-      row.addEventListener('click', () => selectGap(i));
+      row.addEventListener('click', () => selectSentence(i));
       list.appendChild(row);
     });
     updateExportCount();
@@ -273,9 +259,9 @@
     return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
-  function selectGap(i) {
+  function selectSentence(i) {
     selected = i;
-    activeEdge = 'left';
+    activeEdge = 'start';
     syncBoundaryInput();
     renderList();
     scrollSelectedIntoView();
@@ -287,40 +273,42 @@
     if (rows.length) rows[0].scrollIntoView({ block: 'nearest' });
   }
 
-  function curGap() { return selected >= 0 ? gaps[selected] : null; }
-  function activeValue(g) { return activeEdge === 'left' ? leftS(g).curEnd : rightS(g).curStart; }
+  function curS() { return selected >= 0 ? sentences[selected] : null; }
+  function activeValue() { const s = curS(); if (!s) return 0; return activeEdge === 'start' ? s.curStart : s.curEnd; }
 
   function syncBoundaryInput() {
-    const g = curGap();
-    $('#boundary-input').value = g ? activeValue(g).toFixed(3) : '';
-    $('#select-left').classList.toggle('active-left', activeEdge === 'left');
-    $('#select-right').classList.toggle('active-right', activeEdge === 'right');
+    $('#boundary-input').value = curS() ? activeValue().toFixed(3) : '';
+    $('#select-start').classList.toggle('active-start', activeEdge === 'start');
+    $('#select-end').classList.toggle('active-end', activeEdge === 'end');
   }
 
   function draw() {
-    const g = curGap();
+    const s = curS();
     const canvas = $('#wave');
     const ctx = canvas.getContext('2d');
     const w = canvas.width, h = canvas.height;
     ctx.clearRect(0, 0, w, h);
-    if (!g) {
-      $('#pair-label').textContent = '选一个间隙开始';
+    if (!s) {
+      $('#pair-label').textContent = '选一句开始';
       $('#pair-sub').textContent = '';
       return;
     }
-    const l = leftS(g), r = rightS(g);
-    $('#pair-label').innerHTML =
-      `#${l.id} <span class="dim">"${escapeHtml(l.text)}"</span> → ` +
-      `#${r.id} <span class="dim">"${escapeHtml(r.text)}"</span>`;
-    const gs = gapSize(g);
-    $('#pair-sub').textContent = gs > 0.005
-      ? `两句之间留了 ${gs.toFixed(2)}s 空白，不属于任何一句（可以点"播放中间空白"确认这段真的是静音）`
-      : (gs < -0.005 ? `警告：左右边界重叠了 ${(-gs).toFixed(2)}s，会导致两句共享同一段音频内容，通常不应该这样` : '左右边界紧贴（间隙为0），跟原来的行为一样');
+    $('#pair-label').innerHTML = `#${s.id} <span class="dim">"${escapeHtml(s.text)}"</span>`;
 
-    const center = (l.curEnd + r.curStart) / 2;
-    const half = Math.max(windowHalf, Math.abs(r.curStart - l.curEnd) / 2 + 0.15);
-    const winStart = Math.max(0, center - half);
-    const winEnd = Math.min(buffer.duration, center + half);
+    const nb = neighborBefore(), na = neighborAfter();
+    // 相邻那句挨着这一侧的边界，只用来参照，不能拖
+    const neighborEdge = activeEdge === 'start' ? (nb ? nb.curEnd : 0) : (na ? na.curStart : buffer.duration);
+    const gap = activeEdge === 'start' ? (s.curStart - neighborEdge) : (neighborEdge - s.curEnd);
+    if (gap > 0.005) {
+      $('#pair-sub').textContent = `本句${activeEdge === 'start' ? '前边界' : '后边界'}跟相邻那句之间留了 ${gap.toFixed(2)}s 空白，` +
+        `不属于任何一句（可以点"播放邻近空白"确认这段真的是静音）`;
+    } else {
+      $('#pair-sub').textContent = `本句${activeEdge === 'start' ? '前边界' : '后边界'}跟相邻那句紧贴（间隙为0）`;
+    }
+
+    const center = activeValue();
+    const winStart = Math.max(0, center - windowHalf);
+    const winEnd = Math.min(buffer.duration, center + windowHalf);
     $('#win-start').textContent = winStart.toFixed(2) + 's';
     $('#win-end').textContent = winEnd.toFixed(2) + 's';
 
@@ -352,62 +340,59 @@
 
     function timeToX(t) { return ((t - winStart) / (winEnd - winStart)) * w; }
 
-    // shaded gap region (belongs to neither sentence)
-    if (gs > 0.001) {
-      const x0 = timeToX(l.curEnd), x1 = timeToX(r.curStart);
+    // shaded gap region between this edge and the neighboring sentence's touching edge
+    if (gap > 0.001) {
+      const a = activeEdge === 'start' ? neighborEdge : s.curEnd;
+      const b = activeEdge === 'start' ? s.curStart : neighborEdge;
+      const x0 = timeToX(a), x1 = timeToX(b);
       ctx.fillStyle = 'rgba(255,255,255,0.06)';
       ctx.fillRect(x0, 0, Math.max(1, x1 - x0), h);
     }
 
-    // original positions (dashed amber) if changed
-    if (Math.abs(l.curEnd - l.end) > 0.0005 && l.end >= winStart && l.end <= winEnd) {
-      const x = timeToX(l.end);
-      ctx.strokeStyle = '#ffce54'; ctx.setLineDash([5, 4]);
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); ctx.setLineDash([]);
-    }
-    if (Math.abs(r.curStart - r.start) > 0.0005 && r.start >= winStart && r.start <= winEnd) {
-      const x = timeToX(r.start);
+    // original position of the active edge (dashed amber) if changed
+    const origVal = activeEdge === 'start' ? s.start : s.end;
+    if (Math.abs(activeValue() - origVal) > 0.0005 && origVal >= winStart && origVal <= winEnd) {
+      const x = timeToX(origVal);
       ctx.strokeStyle = '#ffce54'; ctx.setLineDash([5, 4]);
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); ctx.setLineDash([]);
     }
 
-    // left edge (blue) / right edge (orange) — offset by 1px each when nearly coincident so both stay visible
-    let xL = timeToX(Math.min(Math.max(l.curEnd, winStart), winEnd));
-    let xR = timeToX(Math.min(Math.max(r.curStart, winStart), winEnd));
-    if (Math.abs(xL - xR) < 2) { xL -= 1; xR += 1; }
+    // neighbor's touching edge (faint gray, reference only)
+    if (neighborEdge >= winStart && neighborEdge <= winEnd) {
+      const x = timeToX(neighborEdge);
+      ctx.strokeStyle = '#666';
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+
+    // this sentence's OTHER edge, for orientation (how long the clip currently is)
+    const otherVal = activeEdge === 'start' ? s.curEnd : s.curStart;
+    if (otherVal >= winStart && otherVal <= winEnd) {
+      const x = timeToX(otherVal);
+      ctx.strokeStyle = '#3a4048';
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+
+    // active edge (blue, draggable)
+    const cx = timeToX(Math.min(Math.max(activeValue(), winStart), winEnd));
     ctx.strokeStyle = '#4da3ff';
-    ctx.lineWidth = activeEdge === 'left' ? 3 : 2;
-    ctx.beginPath(); ctx.moveTo(xL, 0); ctx.lineTo(xL, h); ctx.stroke();
-    ctx.strokeStyle = '#ff9f43';
-    ctx.lineWidth = activeEdge === 'right' ? 3 : 2;
-    ctx.beginPath(); ctx.moveTo(xR, 0); ctx.lineTo(xR, h); ctx.stroke();
+    ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, h); ctx.stroke();
     ctx.lineWidth = 1;
-
-    // faint markers for this sentence pair's OTHER edges (own start of l, own end of r), for context
-    if (l.curStart >= winStart && l.curStart <= winEnd) {
-      const x = timeToX(l.curStart);
-      ctx.strokeStyle = '#555';
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-    }
-    if (r.curEnd >= winStart && r.curEnd <= winEnd) {
-      const x = timeToX(r.curEnd);
-      ctx.strokeStyle = '#555';
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-    }
   }
 
-  function setEdge(which, t) {
-    const g = curGap();
-    if (!g) return;
-    const l = leftS(g), r = rightS(g);
-    if (which === 'left') {
-      const lo = l.curStart + 0.01;
-      const hi = r.curStart;
-      l.curEnd = Math.min(Math.max(t, lo), hi);
+  function setEdge(t) {
+    const s = curS();
+    if (!s) return;
+    if (activeEdge === 'start') {
+      const nb = neighborBefore();
+      const lo = nb ? nb.curEnd : 0;
+      const hi = s.curEnd - 0.01;
+      s.curStart = Math.min(Math.max(t, lo), hi);
     } else {
-      const lo = l.curEnd;
-      const hi = r.curEnd - 0.01;
-      r.curStart = Math.min(Math.max(t, lo), hi);
+      const na = neighborAfter();
+      const lo = s.curStart + 0.01;
+      const hi = na ? na.curStart : buffer.duration;
+      s.curEnd = Math.min(Math.max(t, lo), hi);
     }
     syncBoundaryInput();
     draw();
@@ -416,9 +401,8 @@
   }
 
   function nudge(delta) {
-    const g = curGap();
-    if (!g) return;
-    setEdge(activeEdge, activeValue(g) + delta);
+    if (!curS()) return;
+    setEdge(activeValue() + delta);
   }
 
   function stopPlayback() {
@@ -484,81 +468,69 @@
     btn.addEventListener('click', () => { windowHalf = parseFloat(btn.dataset.zoom); draw(); });
   });
 
-  $('#play-before').addEventListener('click', () => {
-    const g = curGap(); if (g) { const l = leftS(g); playRange(l.curStart, l.curEnd, false); }
-  });
-  $('#play-after').addEventListener('click', () => {
-    const g = curGap(); if (g) { const r = rightS(g); playRange(r.curStart, r.curEnd, false); }
+  $('#play-cur').addEventListener('click', () => {
+    const s = curS(); if (s) playRange(s.curStart, s.curEnd, false);
   });
   $('#play-gap').addEventListener('click', () => {
-    const g = curGap(); if (g) { const l = leftS(g), r = rightS(g); if (r.curStart > l.curEnd) playRange(l.curEnd, r.curStart, false); }
+    const s = curS(); if (!s) return;
+    const nb = neighborBefore(), na = neighborAfter();
+    if (activeEdge === 'start') {
+      const edge = nb ? nb.curEnd : 0;
+      if (s.curStart > edge + 0.001) playRange(edge, s.curStart, false);
+    } else {
+      const edge = na ? na.curStart : buffer.duration;
+      if (edge > s.curEnd + 0.001) playRange(s.curEnd, edge, false);
+    }
   });
   $('#play-loop').addEventListener('click', () => {
-    const g = curGap(); if (g) { const l = leftS(g), r = rightS(g); playRange(l.curEnd - 0.3, r.curStart + 0.3, true); }
+    if (curS()) playRange(activeValue() - 0.4, activeValue() + 0.4, true);
   });
   $('#play-stop').addEventListener('click', stopPlayback);
   $('#enable-audio').addEventListener('click', playTestTone);
 
-  $('#select-left').addEventListener('click', () => { activeEdge = 'left'; syncBoundaryInput(); draw(); });
-  $('#select-right').addEventListener('click', () => { activeEdge = 'right'; syncBoundaryInput(); draw(); });
+  $('#select-start').addEventListener('click', () => { activeEdge = 'start'; syncBoundaryInput(); draw(); });
+  $('#select-end').addEventListener('click', () => { activeEdge = 'end'; syncBoundaryInput(); draw(); });
 
   $('#nudge-back').addEventListener('click', () => nudge(-0.01));
   $('#nudge-fwd').addEventListener('click', () => nudge(0.01));
   $('#nudge-back-big').addEventListener('click', () => nudge(-0.05));
   $('#nudge-fwd-big').addEventListener('click', () => nudge(0.05));
-  $('#boundary-input').addEventListener('change', (e) => setEdge(activeEdge, parseFloat(e.target.value)));
+  $('#boundary-input').addEventListener('change', (e) => setEdge(parseFloat(e.target.value)));
   $('#reset-btn').addEventListener('click', () => {
-    const g = curGap();
-    if (g) {
-      leftS(g).curEnd = leftS(g).end;
-      rightS(g).curStart = rightS(g).start;
+    const s = curS();
+    if (s) {
+      if (activeEdge === 'start') s.curStart = s.start; else s.curEnd = s.end;
       syncBoundaryInput(); draw(); renderList();
     }
   });
 
   const canvas = $('#wave');
-  function xToTime(x, g) {
+  function xToTime(x) {
     const rect = canvas.getBoundingClientRect();
     const relX = ((x - rect.left) / rect.width) * canvas.width;
-    const l = leftS(g), r = rightS(g);
-    const center = (l.curEnd + r.curStart) / 2;
-    const half = Math.max(windowHalf, Math.abs(r.curStart - l.curEnd) / 2 + 0.15);
-    const winStart = Math.max(0, center - half);
-    const winEnd = Math.min(buffer.duration, center + half);
+    const winStart = Math.max(0, activeValue() - windowHalf);
+    const winEnd = Math.min(buffer.duration, activeValue() + windowHalf);
     return winStart + (relX / canvas.width) * (winEnd - winStart);
   }
   canvas.addEventListener('mousedown', (e) => {
-    const g = curGap(); if (!g) return;
-    const l = leftS(g), r = rightS(g);
-    const rect = canvas.getBoundingClientRect();
-    const clickX = (e.clientX - rect.left) / rect.width * canvas.width;
-    const center = (l.curEnd + r.curStart) / 2;
-    const half = Math.max(windowHalf, Math.abs(r.curStart - l.curEnd) / 2 + 0.15);
-    const winStart = Math.max(0, center - half);
-    const winEnd = Math.min(buffer.duration, center + half);
-    const timeToX = (t) => ((t - winStart) / (winEnd - winStart)) * canvas.width;
-    const xL = timeToX(l.curEnd), xR = timeToX(r.curStart);
-    // 离得很近（<8px）分不清楚就按当前选中的编辑对象来，避免误抓另一条线
-    dragEdge = Math.abs(xL - xR) < 8 ? activeEdge : (Math.abs(clickX - xL) <= Math.abs(clickX - xR) ? 'left' : 'right');
-    activeEdge = dragEdge;
-    syncBoundaryInput();
-    setEdge(dragEdge, xToTime(e.clientX, g));
+    if (!curS()) return;
+    dragging = true;
+    setEdge(xToTime(e.clientX));
   });
   window.addEventListener('mousemove', (e) => {
-    if (dragEdge) { const g = curGap(); if (g) setEdge(dragEdge, xToTime(e.clientX, g)); }
+    if (dragging) setEdge(xToTime(e.clientX));
   });
-  window.addEventListener('mouseup', () => { dragEdge = null; });
+  window.addEventListener('mouseup', () => { dragging = false; });
 
   window.addEventListener('keydown', (e) => {
     if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
     if (e.key === 'ArrowLeft') { nudge(e.shiftKey ? -0.05 : -0.01); e.preventDefault(); }
     else if (e.key === 'ArrowRight') { nudge(e.shiftKey ? 0.05 : 0.01); e.preventDefault(); }
-    else if (e.key === 'ArrowUp') { if (selected > 0) selectGap(selected - 1); e.preventDefault(); }
-    else if (e.key === 'ArrowDown') { if (selected < gaps.length - 1) selectGap(selected + 1); e.preventDefault(); }
-    else if (e.key === 'Tab') { activeEdge = activeEdge === 'left' ? 'right' : 'left'; syncBoundaryInput(); draw(); e.preventDefault(); }
+    else if (e.key === 'ArrowUp') { if (selected > 0) selectSentence(selected - 1); e.preventDefault(); }
+    else if (e.key === 'ArrowDown') { if (selected < sentences.length - 1) selectSentence(selected + 1); e.preventDefault(); }
+    else if (e.key === 'Tab') { activeEdge = activeEdge === 'start' ? 'end' : 'start'; syncBoundaryInput(); draw(); e.preventDefault(); }
     else if (e.key === ' ') {
-      const g = curGap();
-      if (g) { const l = leftS(g), r = rightS(g); playRange(l.curEnd - 0.3, r.curStart + 0.3, true); }
+      if (curS()) playRange(activeValue() - 0.4, activeValue() + 0.4, true);
       e.preventDefault();
     }
     else if (e.key === 'Escape') { stopPlayback(); }
@@ -603,7 +575,7 @@
   $('#app').style.display = 'flex';
   updateAudioStatus();
   renderList();
-  if (gaps.length) selectGap(0);
+  if (sentences.length) selectSentence(0);
 })().catch(err => {
   document.body.innerHTML = '<div style="padding:24px;color:#ff5f5f;font-family:monospace">加载失败: ' +
     (err && err.message ? err.message : err) +
