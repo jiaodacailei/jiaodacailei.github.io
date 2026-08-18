@@ -580,8 +580,9 @@
     else if (e.key === 'ArrowDown') { if (selected < sentences.length - 1) selectSentence(selected + 1); e.preventDefault(); }
     else if (e.key === 'Tab') { activeEdge = activeEdge === 'start' ? 'end' : 'start'; syncBoundaryInput(); draw(); e.preventDefault(); }
     else if (e.key === ' ') {
-      if (curS()) playRange(activeValue() - 0.4, activeValue() + 0.4, true);
       e.preventDefault();
+      if (e.repeat) return; // 按住不放时操作系统会持续发送keydown，不能每次都重新从头播放
+      if (curS()) playRange(activeValue() - 0.4, activeValue() + 0.4, true);
     }
     else if (e.key === 'Escape') { stopPlayback(); }
   });
