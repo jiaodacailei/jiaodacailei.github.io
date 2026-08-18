@@ -66,24 +66,19 @@ def sentence_text(s):
     return "".join(t.get("text", "") for t in s.get("tokens", []))
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("slug_dir", help="docs/private/<slug>")
-    ap.add_argument("tab", help='tab的mondai名，比如 "会话"/"课文"/"生词"')
-    ap.add_argument("--out", default=None)
-    args = ap.parse_args()
-
-    slug_dir = args.slug_dir.rstrip("/\\")
-    slug = os.path.basename(slug_dir)
+def build_editor_data(slug_dir, tab_name, out_dir):
+    """核心逻辑，CLI（下面的 main()）和 boundary_editor_server.py（每次 /apply
+    成功之后自动调用，让 work 目录里的 manifest/merged.mp3 始终反映最新发布状态）
+    共用。出错抛 RuntimeError，返回写好的 manifest dict。"""
+    slug = os.path.basename(slug_dir.rstrip("/\\"))
     data = load_lesson_data(slug_dir)
 
-    tabs = [t for t in data["tabs"] if t.get("mondai") == args.tab]
+    tabs = [t for t in data["tabs"] if t.get("mondai") == tab_name]
     if not tabs:
         available = [t.get("mondai") for t in data["tabs"]]
-        print(f"FAIL: 找不到 mondai=={args.tab!r} 的 tab，这一课实际有: {available}")
-        sys.exit(1)
+        raise RuntimeError(f"找不到 mondai=={tab_name!r} 的 tab，这一课实际有: {available}")
     tab = tabs[0]
-    has_token_timing = args.tab != "生词"  # 生词条目没有 tokens[].t，见脚本文档字符串
+    has_token_timing = tab_name != "生词"  # 生词条目没有 tokens[].t，见脚本文档字符串
 
     sentences = []
     for q in tab["questions"]:
@@ -91,13 +86,8 @@ def main():
             sentences.append(s)
     sentences.sort(key=lambda s: s["id"])
     if not sentences:
-        print("FAIL: 这个tab没有任何句子/条目")
-        sys.exit(1)
+        raise RuntimeError("这个tab没有任何句子/条目")
 
-    audio_dir = os.path.join(slug_dir, "audio")
-    out_dir = args.out or os.path.join(
-        "tools", "listening", "work", slug, f"boundary_editor_{args.tab}"
-    )
     os.makedirs(out_dir, exist_ok=True)
 
     list_path = os.path.join(out_dir, "concat_list.txt")
@@ -124,10 +114,6 @@ def main():
             })
             cur += dur
 
-    if missing:
-        print(f"警告：{len(missing)} 条没有音频文件被跳过（id: {missing}），"
-              f"这些不会出现在编辑器里")
-
     merged_path = os.path.join(out_dir, "merged.mp3")
     subprocess.run(
         [FFMPEG, "-y", "-f", "concat", "-safe", "0", "-i", os.path.abspath(list_path),
@@ -135,15 +121,15 @@ def main():
         capture_output=True
     )
     if not os.path.exists(merged_path) or os.path.getsize(merged_path) < 1000:
-        print("FAIL: merged.mp3 没生成成功，检查上面 concat_list.txt 里的路径是否都存在")
-        sys.exit(1)
+        raise RuntimeError("merged.mp3 没生成成功，检查 concat_list.txt 里的路径是否都存在")
 
     manifest = {
         "slug": slug,
-        "tab": args.tab,
+        "tab": tab_name,
         "hasTokenTiming": has_token_timing,
         "totalDuration": round(cur, 3),
         "sentences": manifest_sentences,
+        "missingIds": missing,
     }
     manifest_path = os.path.join(out_dir, "manifest.json")
     json.dump(manifest, open(manifest_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
@@ -151,13 +137,39 @@ def main():
     html_src = os.path.join(os.path.dirname(os.path.abspath(__file__)), "boundary_editor.html")
     if os.path.exists(html_src):
         shutil.copy(html_src, os.path.join(out_dir, "boundary_editor.html"))
-    else:
-        print(f"警告：{html_src} 不存在，只生成了数据，还没有编辑器页面本身")
 
-    print(f"生成完成：{len(manifest_sentences)} 条，总时长 {cur:.1f}s")
+    return manifest
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("slug_dir", help="docs/private/<slug>")
+    ap.add_argument("tab", help='tab的mondai名，比如 "会话"/"课文"/"生词"')
+    ap.add_argument("--out", default=None)
+    args = ap.parse_args()
+
+    slug_dir = args.slug_dir.rstrip("/\\")
+    slug = os.path.basename(slug_dir)
+    out_dir = args.out or os.path.join(
+        "tools", "listening", "work", slug, f"boundary_editor_{args.tab}"
+    )
+
+    try:
+        manifest = build_editor_data(slug_dir, args.tab, out_dir)
+    except RuntimeError as e:
+        print(f"FAIL: {e}")
+        sys.exit(1)
+
+    if manifest["missingIds"]:
+        print(f"警告：{len(manifest['missingIds'])} 条没有音频文件被跳过（id: {manifest['missingIds']}），"
+              f"这些不会出现在编辑器里")
+
+    print(f"生成完成：{len(manifest['sentences'])} 条，总时长 {manifest['totalDuration']:.1f}s")
     print(f"输出目录：{out_dir}")
     print(f"本地起服务器打开：npx http-server \"{out_dir}\" -p 8080 然后浏览器开 "
           f"http://127.0.0.1:8080/boundary_editor.html")
+    print(f"（或者用新的一体化服务器：python tools/listening/boundary_editor_server.py "
+          f"{slug_dir} {args.tab}，网页里点“保存”能直接落地，不用再导出JSON手动处理）")
 
 
 if __name__ == "__main__":

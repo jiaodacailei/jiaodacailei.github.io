@@ -115,6 +115,7 @@
   }
   #export-box h2 { margin: 0 0 8px; font-size: 15px; }
   #export-box p { color: var(--dim); font-size: 12px; margin: 0 0 8px; }
+  #save-status:not(:empty) { color: var(--text); font-weight: 600; }
   #export-text {
     flex: 1; background: #101114; color: #d6ffd6; border: 1px solid var(--border);
     border-radius: 6px; padding: 8px; font-family: monospace; font-size: 12px; min-height: 200px;
@@ -221,10 +222,13 @@
 <div id="export-modal">
   <div id="export-box">
     <h2>导出 JSON</h2>
-    <p>全选复制下面的内容，粘贴回对话里给 Claude 处理（已尝试自动复制到剪贴板）。</p>
+    <p id="save-hint">如果是用 <code>boundary_editor_server.py</code> 打开的（不是普通
+      <code>http-server</code>），点"保存到项目文件"直接落地，不用再复制粘贴。</p>
+    <p id="save-status"></p>
     <textarea id="export-text" readonly></textarea>
     <div id="export-actions">
       <span id="copy-status"></span>
+      <button id="save-btn" class="primary">💾 保存到项目文件</button>
       <button id="copy-btn">复制</button>
       <button id="close-export">关闭</button>
     </div>
@@ -600,18 +604,23 @@
     $('#export-btn').disabled = n === 0;
   }
 
-  $('#export-btn').addEventListener('click', () => {
+  function buildEditsPayload() {
     const edits = sentences.filter(isModified).map(s => {
       const e = { id: s.id };
       if (Math.abs(s.curStart - s.start) > 0.0005) e.start = Math.round(s.curStart * 1000) / 1000;
       if (Math.abs(s.curEnd - s.end) > 0.0005) e.end = Math.round(s.curEnd * 1000) / 1000;
       return e;
     });
-    const payload = { slug: manifest.slug, tab: manifest.tab, edits };
+    return { slug: manifest.slug, tab: manifest.tab, edits };
+  }
+
+  $('#export-btn').addEventListener('click', () => {
+    const payload = buildEditsPayload();
     const text = JSON.stringify(payload, null, 2);
     $('#export-text').value = text;
     $('#export-modal').classList.add('open');
     $('#copy-status').textContent = '';
+    $('#save-status').textContent = '';
     navigator.clipboard.writeText(text).then(() => {
       $('#copy-status').textContent = '已复制到剪贴板';
     }).catch(() => {
@@ -626,6 +635,31 @@
       document.execCommand('copy');
       $('#copy-status').textContent = '已复制（execCommand 回退）';
     });
+  });
+  $('#save-btn').addEventListener('click', async () => {
+    const payload = buildEditsPayload();
+    if (!payload.edits.length) { $('#save-status').textContent = '没有改动可保存'; return; }
+    $('#save-btn').disabled = true;
+    $('#save-status').textContent = '保存中…';
+    try {
+      const resp = await fetch('/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await resp.json();
+      if (!resp.ok || !result.ok) {
+        throw new Error(result.error || `HTTP ${resp.status}`);
+      }
+      $('#save-status').textContent =
+        `✅ 已保存 ${result.touched.length} 处改动到项目文件${result.data_js_updated ? '（含跟读高亮同步）' : ''}，2秒后刷新页面…`;
+      setTimeout(() => location.reload(), 2000);
+    } catch (e) {
+      $('#save-status').textContent =
+        `❌ 保存失败：${e.message}——如果是用普通 http-server 打开的（没有 /apply 接口），` +
+        `改用下面"复制"按钮把JSON发给Claude处理。`;
+      $('#save-btn').disabled = false;
+    }
   });
   $('#close-export').addEventListener('click', () => $('#export-modal').classList.remove('open'));
 

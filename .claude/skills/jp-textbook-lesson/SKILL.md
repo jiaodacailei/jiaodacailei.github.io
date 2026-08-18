@@ -1182,31 +1182,44 @@ start/end改到了哪"（见下面脚本内的文档字符串），两句间可�
 两个数字依然是分开存的，只是这一次交互会同时改两个数字（而不是像
 最早那版bug那样，两个数字从设计上就被强制永远相等）。
 
+**优先用这个一体化服务器，不用再走"导出JSON→粘贴回对话→Claude手动跑
+脚本"这一圈**（真实反馈：用户直接问"为什么不能直接反应到项目文件里，
+还要再发一次给你"——原来的两步流程只是因为 `npx http-server` 是纯静态
+文件服务器，网页JS没有文件系统写权限、也没法跑ffmpeg，不是必须如此）：
+
 ```bash
-# 1. 生成这个tab的编辑器数据——从当前已发布的 data.js + audio/ 出发
-#    （不依赖任何work目录里可能过期的 enriched.json），拼出一份连续音频
-#    + 每条的精确边界，输出到 tools/listening/work/<slug>/boundary_editor_<tab>/
-python tools/listening/build_boundary_editor.py docs/private/<slug> <tab的mondai名，比如"会话"/"生词">
-
-# 本地起服务器打开（fetch 本地文件在 file:// 下会被浏览器拦截，必须走 http）：
-npx http-server tools/listening/work/<slug>/boundary_editor_<tab> -p 8080
-# 浏览器开 http://127.0.0.1:8080/boundary_editor.html，拖拽/试听改完，
-# 点左下角"导出改动"，JSON 会自动复制到剪贴板，用户粘贴回对话
-
-# 2. 用户把JSON贴回来之后，落地：
-python tools/listening/apply_boundary_edits.py docs/private/<slug> <粘贴内容存成的json文件>
+python tools/listening/boundary_editor_server.py docs/private/<slug> <tab的mondai名，比如"会话"/"生词">
+# 首次跑会自动生成一份 manifest.json/merged.mp3（等价于先跑一遍
+# build_boundary_editor.py），然后在本地起服务器。浏览器开
+# http://127.0.0.1:8080/boundary_editor.html，拖拽/试听改完，点左下角
+# "导出改动"→"💾 保存到项目文件"，直接落地到 seg-NNN.mp3/data.js，
+# 成功后网页自动刷新、可以无缝接着改下一批，全程不用再经过对话。
 ```
 
-`apply_boundary_edits.py` 只根据"新边界改到了哪"重切受影响的
-`seg-NNN.mp3`（源音频是第1步生成的同一份 `merged.mp3`，保证跟用户在
-编辑器里听到/拖到的内容完全一致，不会出现"重切用的音频跟编辑时不是
-同一份"这种偏差），如果这个tab的句子带 `tokens[].t` 跟读高亮时间戳
-（会话/课文有，生词没有，`manifest.json` 的 `hasTokenTiming` 字段区分），
-还会自动把因为"起点变了"需要平移的 token 时间戳同步进 `data.js`。
-**跑完这个脚本依然要走一遍 SKILL.md 规定的最终验证**（`audit_
-boundaries_quietpoint.py` + 拼接转写）——这个脚本只保证"忠实执行了
-用户标的新边界"，不检查新边界本身选得对不对，那是人工在编辑器里
-听着定的，工具不替用户做这个判断。
+只监听 `127.0.0.1`，不会暴露给局域网/公网，跟直接在本机跑任何脚本是
+同一个信任级别。`build_boundary_editor.py`/`apply_boundary_edits.py`
+两个脚本已经重构成"核心逻辑函数 + 薄CLI包装"，`boundary_editor_server.py`
+的 `POST /apply` 接口直接调用同一份 `apply_edits()`/`build_editor_data()`
+函数，没有另外维护一套逻辑——**如果只是临时想用旧的手动两步流程（比如
+没装 Node/npx，或者想在改动落地前自己先过一遍眼），`build_boundary_
+editor.py` + `npx http-server` + `apply_boundary_edits.py` 三个独立脚本
+依然保留、行为不变，网页里"复制JSON"这个按钮也还在，两条路都能走通**。
+
+`apply_edits()` 只根据"新边界改到了哪"重切受影响的 `seg-NNN.mp3`（源
+音频是同一份 `merged.mp3`，保证跟用户在编辑器里听到/拖到的内容完全
+一致），如果这个tab的句子带 `tokens[].t` 跟读高亮时间戳（会话/课文有，
+生词没有），还会自动把因为"起点变了"需要平移的 token 时间戳同步进
+`data.js`。
+
+**关于落地之后要不要走 SKILL.md 规定的最终验证（`audit_boundaries_
+quietpoint.py` + 拼接转写）——这一条不是固定答案，取决于用户明确表态**：
+早期几轮（`textbook-sjp-zg-l15` 这次的会话/课文/生词全部 tab）用户导出
+过来的 edits 都补做了一轮时长核对+RMS峰值扫描+拼接转写才提交；但后来
+用户直接说"不需要验证了，我人工改的比你准，而且反复测试过"——**这之后
+的轮次不再自动补验证，用户已经明确要求跳过**，收到"保存"成功的信号后
+直接 commit+push。**这是这个用户对自己反复听过、亲手拖过的边界给出的
+信任表态，不代表以后每一课都默认可以跳过**——新用户/新课如果没有被
+明确要求过，还是按老规矩先验证一轮，除非对方也主动这样说。
 
 工具设计上刻意没做成公开页面的一部分（不进 `docs/private/`，只在
 `tools/listening/work/` 下临时生成），因为编辑能力不该暴露给猜到密码

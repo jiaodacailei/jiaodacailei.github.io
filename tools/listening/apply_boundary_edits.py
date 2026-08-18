@@ -91,37 +91,28 @@ def find_sentence(data, tab_name, sid):
     return None
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("slug_dir", help="docs/private/<slug>")
-    ap.add_argument("edits_json", help="boundary_editor.html 导出的 json 文件路径")
-    ap.add_argument("--work-dir", default=None,
-                     help="manifest.json/merged.mp3 所在目录，默认 tools/listening/work/<slug>/"
-                          "boundary_editor_<tab>/（只有当 build_boundary_editor.py 当初用了自定义 "
-                          "--out 才需要传这个）")
-    args = ap.parse_args()
+def apply_edits(slug_dir, work_dir, payload):
+    """核心逻辑，CLI（下面的 main()）和 boundary_editor_server.py 共用。
 
-    slug_dir = args.slug_dir.rstrip("/\\")
-    slug = os.path.basename(slug_dir)
-    payload = json.load(open(args.edits_json, encoding="utf-8"))
+    返回 dict: {"touched": [{"id":, "old_start":, "old_end":, "new_start":,
+    "new_end":, "token_shift": 或 None}, ...], "data_js_updated": bool}
+    出错抛异常（RuntimeError），调用方决定怎么呈现。
+    """
+    slug = os.path.basename(slug_dir.rstrip("/\\"))
     tab = payload["tab"]
     edits = payload["edits"]
     if not edits:
-        print("edits 是空的，没有要处理的改动")
-        return
+        return {"touched": [], "data_js_updated": False, "message": "edits 是空的，没有要处理的改动"}
 
-    work_dir = args.work_dir or os.path.join("tools", "listening", "work", slug, f"boundary_editor_{tab}")
     manifest_path = os.path.join(work_dir, "manifest.json")
     merged_path = os.path.join(work_dir, "merged.mp3")
     if not os.path.exists(manifest_path) or not os.path.exists(merged_path):
-        print(f"FAIL: 找不到 {manifest_path} 或 {merged_path}——先跑 build_boundary_editor.py "
-              f"{slug_dir} {tab} 重新生成一份，再打开编辑器改（不要用一份已经不在了的旧 manifest）")
-        sys.exit(1)
+        raise RuntimeError(
+            f"找不到 {manifest_path} 或 {merged_path}——先跑 build_boundary_editor.py "
+            f"{slug_dir} {tab} 重新生成一份，再打开编辑器改（不要用一份已经不在了的旧 manifest）"
+        )
 
     manifest = json.load(open(manifest_path, encoding="utf-8"))
-    if manifest.get("slug") != slug or manifest.get("tab") != tab:
-        print(f"警告：manifest 里记录的是 {manifest.get('slug')}/{manifest.get('tab')}，"
-              f"跟传入的 {slug}/{tab} 不一致，继续按传入参数处理")
 
     by_id = {s["id"]: dict(s) for s in manifest["sentences"]}  # 当前(=编辑前)的 start/end
     original_by_id = {s["id"]: (s["start"], s["end"]) for s in manifest["sentences"]}
@@ -138,16 +129,14 @@ def main():
             by_id[sid]["end"] = e["end"]
 
     if missing_ids:
-        print(f"FAIL: 这些 edit 引用的 id 在 manifest 里找不到（先重新生成一遍 manifest 再改）: {missing_ids}")
-        sys.exit(1)
+        raise RuntimeError(f"这些 edit 引用的 id 在 manifest 里找不到（先重新生成一遍 manifest 再改）: {missing_ids}")
 
     touched_ids = sorted({
         sid for sid, (ostart, oend) in original_by_id.items()
         if by_id[sid]["start"] != ostart or by_id[sid]["end"] != oend
     })
     if not touched_ids:
-        print("所有 edits 应用后跟原始边界一样，没有需要重切的文件")
-        return
+        return {"touched": [], "data_js_updated": False, "message": "所有 edits 应用后跟原始边界一样，没有需要重切的文件"}
 
     audio_dir = os.path.join(slug_dir, "audio")
     example_file = None
@@ -161,13 +150,12 @@ def main():
     data, _ = load_lesson_data(slug_dir)
     has_token_timing = manifest.get("hasTokenTiming", tab != "生词")
 
-    print(f"共 {len(touched_ids)} 个 id 需要重切: {touched_ids}")
+    touched_report = []
     for sid in touched_ids:
         old_start, old_end = original_by_id[sid]
         new_start, new_end = by_id[sid]["start"], by_id[sid]["end"]
         if new_end <= new_start:
-            print(f"FAIL: id {sid} 算出来的新区间 [{new_start}, {new_end}] 不合法（起点>=终点），中止")
-            sys.exit(1)
+            raise RuntimeError(f"id {sid} 算出来的新区间 [{new_start}, {new_end}] 不合法（起点>=终点），中止")
         out = os.path.join(audio_dir, f"seg-{sid:03d}.mp3")
         subprocess.run(
             [FFMPEG, "-y", "-ss", str(new_start), "-t", str(new_end - new_start),
@@ -176,11 +164,11 @@ def main():
              out],
             capture_output=True
         )
-        note = ""
+        token_shift = None
         if has_token_timing and abs(new_start - old_start) > 0.0005:
             s = find_sentence(data, tab, sid)
             if s is None:
-                note = "  [警告：data.js 里没找到这个id，token时间戳没能同步]"
+                token_shift = "警告：data.js 里没找到这个id，token时间戳没能同步"
             else:
                 delta = round(new_start - old_start, 3)
                 # token.t 是"相对clip起点的本地偏移"；clip起点往后挪 delta（delta>0），
@@ -191,11 +179,56 @@ def main():
                 for tok in s.get("tokens", []):
                     if "t" in tok:
                         tok["t"] = round(tok["t"] - delta, 2)
-                note = f"  [token时间戳整体平移 {-delta:+.3f}s]"
-        print(f"  id {sid}: [{old_start:.3f},{old_end:.3f}] -> [{new_start:.3f},{new_end:.3f}]{note}")
+                token_shift = round(-delta, 3)
+        touched_report.append({
+            "id": sid, "old_start": old_start, "old_end": old_end,
+            "new_start": new_start, "new_end": new_end, "token_shift": token_shift,
+        })
 
+    data_js_updated = False
     if has_token_timing:
         save_lesson_data(slug_dir, data)
+        data_js_updated = True
+
+    return {"touched": touched_report, "data_js_updated": data_js_updated, "message": None}
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("slug_dir", help="docs/private/<slug>")
+    ap.add_argument("edits_json", help="boundary_editor.html 导出的 json 文件路径")
+    ap.add_argument("--work-dir", default=None,
+                     help="manifest.json/merged.mp3 所在目录，默认 tools/listening/work/<slug>/"
+                          "boundary_editor_<tab>/（只有当 build_boundary_editor.py 当初用了自定义 "
+                          "--out 才需要传这个）")
+    args = ap.parse_args()
+
+    slug_dir = args.slug_dir.rstrip("/\\")
+    slug = os.path.basename(slug_dir)
+    payload = json.load(open(args.edits_json, encoding="utf-8"))
+    tab = payload["tab"]
+    work_dir = args.work_dir or os.path.join("tools", "listening", "work", slug, f"boundary_editor_{tab}")
+
+    try:
+        result = apply_edits(slug_dir, work_dir, payload)
+    except RuntimeError as e:
+        print(f"FAIL: {e}")
+        sys.exit(1)
+
+    if result["message"]:
+        print(result["message"])
+        return
+
+    print(f"共 {len(result['touched'])} 个 id 需要重切: {[t['id'] for t in result['touched']]}")
+    for t in result["touched"]:
+        note = ""
+        if t["token_shift"] is not None:
+            note = f"  [警告：{t['token_shift']}]" if isinstance(t["token_shift"], str) \
+                else f"  [token时间戳整体平移 {t['token_shift']:+.3f}s]"
+        print(f"  id {t['id']}: [{t['old_start']:.3f},{t['old_end']:.3f}] -> "
+              f"[{t['new_start']:.3f},{t['new_end']:.3f}]{note}")
+
+    if result["data_js_updated"]:
         print("data.js 已更新（token时间戳同步）")
 
     print("\n完成。接下来仍需按 SKILL.md 走一遍最终验证（RMS + 拼接转写）再提交。")
