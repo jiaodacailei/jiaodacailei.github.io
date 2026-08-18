@@ -55,6 +55,7 @@
   #edge-select button.active-end { background: var(--accent2); color: #201200; border-color: var(--accent2); }
   #export-bar { padding: 10px 12px; border-top: 1px solid var(--border); }
   #export-bar button { width: 100%; }
+  #export-bar #export-btn { margin-top: 6px; font-size: 12px; }
   #autosave-status { font-size: 12px; color: var(--dim); margin-bottom: 6px; min-height: 16px; }
   #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
   #main-header {
@@ -116,7 +117,6 @@
   }
   #export-box h2 { margin: 0 0 8px; font-size: 15px; }
   #export-box p { color: var(--dim); font-size: 12px; margin: 0 0 8px; }
-  #save-status:not(:empty) { color: var(--text); font-weight: 600; }
   #export-text {
     flex: 1; background: #101114; color: #d6ffd6; border: 1px solid var(--border);
     border-radius: 6px; padding: 8px; font-family: monospace; font-size: 12px; min-height: 200px;
@@ -160,7 +160,8 @@
     <div id="boundary-list"></div>
     <div id="export-bar">
       <div id="autosave-status"></div>
-      <button class="primary" id="export-btn">导出改动 (0)</button>
+      <button class="primary" id="save-main-btn">💾 保存 (0)</button>
+      <button id="export-btn">复制 JSON</button>
     </div>
   </div>
   <div id="main">
@@ -234,8 +235,9 @@
       切换上/下一句，<kbd>Tab</kbd> 切换前/后边界，<kbd>空格</kbd> 单次播放整句（检查
       两头有没有切对整体听一遍最直接，跟点侧栏这一句效果一样）；想循环反复听某一条
       边界切得准不准，用"循环当前边界附近"那个按钮（只绕着这一条边界前后0.4秒）。
-      黄色虚线是这条边界的原始位置——<b>改动会在停手约0.7秒后自动保存到项目文件</b>，
-      不用手动点"导出改动"，除非想手动复制JSON。
+      黄色虚线是这条边界的原始位置——改完一批之后点左下角<b>"💾 保存"</b>直接落地到
+      项目文件（每点一次保存服务器都要重新拼音频、有点耗时，建议攒够一批改动再点，
+      不用每改一下就点一次）；只是想复制JSON自己处理，用旁边"复制 JSON"。
     </div>
   </div>
 </div>
@@ -243,13 +245,11 @@
 <div id="export-modal">
   <div id="export-box">
     <h2>导出 JSON</h2>
-    <p id="save-hint">如果是用 <code>boundary_editor_server.py</code> 打开的（不是普通
-      <code>http-server</code>），点"保存到项目文件"直接落地，不用再复制粘贴。</p>
-    <p id="save-status"></p>
+    <p id="save-hint">左下角"💾 保存"按钮会直接落地到项目文件，这里只是给需要手动
+      复制JSON的场合用（比如旧版静态服务器、或者想自己检查一遍改动内容）。</p>
     <textarea id="export-text" readonly></textarea>
     <div id="export-actions">
       <span id="copy-status"></span>
-      <button id="save-btn" class="primary">💾 保存到项目文件</button>
       <button id="copy-btn">复制</button>
       <button id="close-export">关闭</button>
     </div>
@@ -337,8 +337,7 @@
   let windowHalf = 0.6;
   let dragging = false;
   let currentSource = null;
-  let autoSaveTimer = null;
-  let autoSaveInFlight = false;
+  let autoSaveInFlight = false; // 名字沿用，但现在是"保存"按钮点击后的进行中标记，不是自动触发
 
   $('#title').textContent = `${manifest.slug} / ${manifest.tab}`;
   $('#subtitle').textContent = `${sentences.length} 句，总时长 ${manifest.totalDuration.toFixed(1)}s`;
@@ -534,7 +533,6 @@
     draw();
     renderList();
     scrollSelectedIntoView();
-    scheduleAutoSave();
   }
 
   function nudge(delta) {
@@ -542,7 +540,7 @@
     setEdge(activeValue() + delta);
   }
 
-  function setAutoSaveStatus(text, fadeAfterMs) {
+  function setSaveStatus(text, fadeAfterMs) {
     const el = $('#autosave-status');
     if (!el) return;
     el.textContent = text;
@@ -552,19 +550,17 @@
     }
   }
 
-  function scheduleAutoSave() {
-    if (!isDynamicServer) return; // 旧版静态服务器没有 /apply，保持手动导出JSON那一套
-    clearTimeout(autoSaveTimer);
-    setAutoSaveStatus('● 有未保存的改动…');
-    autoSaveTimer = setTimeout(doAutoSave, 700);
-  }
-
-  async function doAutoSave() {
+  // 点"保存"手动触发，不再是改一下就自动存一次——每次保存服务器都要重新拼
+  // 整个tab的merged.mp3、重新走一遍ffmpeg切N个clip，改一下存一下会很慢，
+  // 用户反馈过"改动之后重新加载太慢了"，改成攒够一批改动自己找时机点保存
+  async function saveNow() {
+    if (!isDynamicServer) { $('#export-btn').click(); return; } // 旧版静态服务器没有 /apply，退回复制JSON那条路
     const payload = buildEditsPayload();
-    if (!payload.edits.length) { setAutoSaveStatus(''); return; }
-    if (autoSaveInFlight) { autoSaveTimer = setTimeout(doAutoSave, 300); return; } // 上一次还没完，稍后重试
+    if (!payload.edits.length) { setSaveStatus('没有改动可保存', 1500); return; }
+    if (autoSaveInFlight) return; // 保存正在进行中，避免重复点击并发两次请求
     autoSaveInFlight = true;
-    setAutoSaveStatus('💾 保存中…');
+    $('#save-main-btn').disabled = true;
+    setSaveStatus('💾 保存中…');
     try {
       const resp = await fetch('/apply', {
         method: 'POST',
@@ -575,7 +571,7 @@
       if (!resp.ok || !result.ok) throw new Error(result.error || `HTTP ${resp.status}`);
       // 落地成功之后，服务器会用重切完的新音频重新拼一份 merged.mp3——每句的
       // start/end 是"相对这份merged.mp3的绝对偏移"，重新拼过一次之后所有句子
-      // 的绝对偏移全部跟着变了（不只是被改过的那几句），不能只把改过的这几句
+      // 的绝对偏移全部跟着变了（不只是被改过的那几句）。不能只把改过的这几句
       // 的 start/end 在本地悄悄patch成curStart/curEnd就当作同步完了——那样后面
       // 继续编辑算出来的新边界，用的还是保存前那份旧merged.mp3的坐标系，跟
       // 服务器保存后真实的坐标系对不上，会切错（真实案例：这么patch了一次之后
@@ -583,10 +579,11 @@
       // 唯一安全的做法是老老实实刷新页面，重新拉一份服务器刚生成的新 manifest。
       const s = curS();
       if (s) sessionStorage.setItem('boundary_editor_last_id', String(s.id));
-      setAutoSaveStatus('✅ 已自动保存到项目文件，刷新中…');
+      setSaveStatus(`✅ 已保存 ${result.touched.length} 处改动，刷新中…`);
       setTimeout(() => location.reload(), 500);
     } catch (e) {
-      setAutoSaveStatus('❌ 自动保存失败: ' + e.message + '（用下面"导出改动"手动处理）');
+      setSaveStatus('❌ 保存失败: ' + e.message);
+      $('#save-main-btn').disabled = false;
     } finally {
       autoSaveInFlight = false;
     }
@@ -742,7 +739,8 @@
 
   function updateExportCount() {
     const n = sentences.filter(isModified).length;
-    $('#export-btn').textContent = `导出改动 (${n})`;
+    $('#save-main-btn').textContent = `💾 保存 (${n})`;
+    $('#save-main-btn').disabled = n === 0;
     $('#export-btn').disabled = n === 0;
   }
 
@@ -756,13 +754,14 @@
     return { slug: manifest.slug, tab: manifest.tab, edits };
   }
 
+  $('#save-main-btn').addEventListener('click', saveNow);
+
   $('#export-btn').addEventListener('click', () => {
     const payload = buildEditsPayload();
     const text = JSON.stringify(payload, null, 2);
     $('#export-text').value = text;
     $('#export-modal').classList.add('open');
     $('#copy-status').textContent = '';
-    $('#save-status').textContent = '';
     navigator.clipboard.writeText(text).then(() => {
       $('#copy-status').textContent = '已复制到剪贴板';
     }).catch(() => {
@@ -778,42 +777,15 @@
       $('#copy-status').textContent = '已复制（execCommand 回退）';
     });
   });
-  $('#save-btn').addEventListener('click', async () => {
-    const payload = buildEditsPayload();
-    if (!payload.edits.length) { $('#save-status').textContent = '没有改动可保存'; return; }
-    $('#save-btn').disabled = true;
-    $('#save-status').textContent = '保存中…';
-    try {
-      const resp = await fetch('/apply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const result = await resp.json();
-      if (!resp.ok || !result.ok) {
-        throw new Error(result.error || `HTTP ${resp.status}`);
-      }
-      $('#save-status').textContent =
-        `✅ 已保存 ${result.touched.length} 处改动到项目文件${result.data_js_updated ? '（含跟读高亮同步）' : ''}，2秒后刷新页面…`;
-      const s = curS();
-      if (s) sessionStorage.setItem('boundary_editor_last_id', String(s.id));
-      setTimeout(() => location.reload(), 2000);
-    } catch (e) {
-      $('#save-status').textContent =
-        `❌ 保存失败：${e.message}——如果是用普通 http-server 打开的（没有 /apply 接口），` +
-        `改用下面"复制"按钮把JSON发给Claude处理。`;
-      $('#save-btn').disabled = false;
-    }
-  });
   $('#close-export').addEventListener('click', () => $('#export-modal').classList.remove('open'));
 
   $('#loading').style.display = 'none';
   $('#app').style.display = 'flex';
   updateAudioStatus();
   renderList();
-  // 自动保存/手动保存之后都会整页刷新（保存后服务器坐标系整个rebase过，
-  // 本地状态没法安全地不刷新就同步，见 doAutoSave 里的注释）——刷新前记的
-  // 这个id尽量让用户回到刚才在编辑的那一句，不用重新翻列表找
+  // 保存之后会整页刷新（保存后服务器坐标系整个rebase过，本地状态没法
+  // 安全地不刷新就同步，见 saveNow() 里的注释）——刷新前记的这个id尽量
+  // 让用户回到刚才在编辑的那一句，不用重新翻列表找
   const lastId = sessionStorage.getItem('boundary_editor_last_id');
   sessionStorage.removeItem('boundary_editor_last_id');
   const restoreIdx = lastId ? sentences.findIndex(s => String(s.id) === lastId) : -1;

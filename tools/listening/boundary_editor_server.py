@@ -47,7 +47,11 @@ from urllib.parse import urlparse, parse_qs
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    # 关键：line_buffering=True，不然stdout重定向到文件时是全缓冲，日志攒在
+    # 内存里可能几十条才落一次盘——真实踩过的坑：进程正常跑着的时候查日志文件
+    # 一直是空的，误以为"没收到过这个请求"，其实是缓冲区还没冲下去，跟请求
+    # 有没有真的发生是两回事，靠这份日志做取证完全靠不住
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace", line_buffering=True)
 
 from apply_boundary_edits import apply_edits
 from build_boundary_editor import build_editor_data, load_lesson_data
@@ -161,13 +165,19 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             payload = json.loads(body)
             slug, tab = payload["slug"], payload["tab"]
+            # 默认的 HTTP access log 只记路径（POST /apply 本身不带参数，
+            # 真正的 slug/tab/edits 都在 body 里），不单独记一行的话，事后
+            # 想查"到底是哪一课被存了、存了什么"完全没法追溯——真实踩过的坑
+            print(f"[apply] slug={slug} tab={tab} edits={payload.get('edits')}")
             result = apply_edits(slug_dir_of(slug), work_dir_of(slug, tab), payload)
+            print(f"[apply] slug={slug} tab={tab} 落地完成，touched={[t['id'] for t in result['touched']]}")
             if result["touched"]:
                 # 落地成功，立刻刷新这个 slug+tab 的 work 目录，下次 GET
                 # manifest.json 或者切回这一课都不会读到过期状态
                 build_editor_data(slug_dir_of(slug), tab, work_dir_of(slug, tab))
             self._json(200, {"ok": True, **result})
         except Exception as e:
+            print(f"[apply] 失败: {e}")
             self._json(500, {"ok": False, "error": str(e)})
 
 
