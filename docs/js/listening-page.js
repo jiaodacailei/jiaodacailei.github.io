@@ -669,6 +669,31 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       });
     }
   }
+
+  // 清除本地音频缓存——真实反馈"能不能有一个清除 storage 的按钮"：内容
+  // 更新后音频/data.js 在服务器端已经是最新的，但这份 Cache Storage 缓存
+  // （见文件前面 AUDIO_CACHE_NAME 那段说明）按 URL 为键、不会因为服务器
+  // 内容变了自动失效，此前只能靠逐条点卡片上的 ✓ 标记清、或者教用户去
+  // devtools 手动清 Storage。这里在设置面板加一个全局按钮，清完整个
+  // Cache Storage 之后直接刷新页面——比在原地手动回滚每条 audio 的
+  // src/badge 状态更简单可靠，也顺带绕开了 data.js 之类可能还没过期的
+  // 常规 HTTP 缓存（刷新会重新发条件请求）。
+  if (audioCacheSupported) {
+    var cacheSettingsPanel = document.getElementById("settingsPanel");
+    if (cacheSettingsPanel) {
+      var cacheResetGroup = document.createElement("div");
+      cacheResetGroup.className = "settings-group settings-group-cache-reset";
+      cacheResetGroup.innerHTML =
+        '<div class="settings-label">音声キャッシュ</div>' +
+        '<div class="settings-options">' +
+          '<button type="button" class="settings-reset-btn" id="audioCacheReset">清除本地缓存并刷新</button>' +
+        "</div>";
+      cacheSettingsPanel.appendChild(cacheResetGroup);
+      document.getElementById("audioCacheReset").addEventListener("click", function() {
+        caches.delete(AUDIO_CACHE_NAME).then(function() { location.reload(); });
+      });
+    }
+  }
 })();
 
 // ── Tab 切换：問題1~5，点击后只显示该大题内容 + 对应的小题导航 ──
