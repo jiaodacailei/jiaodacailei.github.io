@@ -1188,22 +1188,39 @@ start/end改到了哪"（见下面脚本内的文档字符串），两句间可�
 文件服务器，网页JS没有文件系统写权限、也没法跑ffmpeg，不是必须如此）：
 
 ```bash
-python tools/listening/boundary_editor_server.py docs/private/<slug> <tab的mondai名，比如"会话"/"生词">
-# 首次跑会自动生成一份 manifest.json/merged.mp3（等价于先跑一遍
-# build_boundary_editor.py），然后在本地起服务器。浏览器开
-# http://127.0.0.1:8080/boundary_editor.html，拖拽/试听改完，点左下角
-# "导出改动"→"💾 保存到项目文件"，直接落地到 seg-NNN.mp3/data.js，
-# 成功后网页自动刷新、可以无缝接着改下一批，全程不用再经过对话。
+python tools/listening/boundary_editor_server.py --port 8080
+# 单进程，服务 docs/private/ 下所有课程（自动扫描），不用为每一课/每个
+# tab 单独起一个进程占一个端口。浏览器直接开
+# http://127.0.0.1:8080/boundary_editor.html——不带参数会看到课程/tab
+# 选择器，点了之后整页跳转到 ?slug=<课程>&tab=<mondai名>；也可以直接把
+# 这个完整URL发给用户或存成书签，下次不用再选。拖拽/试听改完，点左下角
+# "导出改动"→"💾 保存到项目文件"，直接落地到 seg-NNN.mp3/data.js，成功后
+# 网页自动刷新、可以无缝接着改下一批。侧栏标题右上角"🔀 切换"按钮能随时
+# 跳回选择器换另一课/另一个tab，不用手动改URL。
 ```
+
+**这是这个工具第二次因为用户反馈改版**：第一版是"一个进程绑死一个
+slug+tab，换课程要重新起进程换端口"，用户直接问"能不能url中带上课程的
+标识，方便我切换课程"——改成现在这版单进程、URL query string 驱动、
+`GET /lessons` 现场扫 `docs/private/` 生成选择器，`GET /manifest.json`/
+`GET /merged.mp3` 都带 `?slug=&tab=` 现场解析该给哪一课的数据，`POST
+/apply` 本来就是body里带slug/tab，天然不用改。**编辑器页面本身
+(`boundary_editor.html`) 现在直接从 `tools/listening/` 目录提供，不用
+再像早期那样每次编辑都往每个 `work/<slug>/boundary_editor_<tab>/` 目录
+里复制一份、改完代码还要手动同步三份**——这也是"单进程动态服务"顺带
+解决的一个维护负担，早期那套"改完html要sync到3个tab目录"的流程已经
+不需要了。
 
 只监听 `127.0.0.1`，不会暴露给局域网/公网，跟直接在本机跑任何脚本是
 同一个信任级别。`build_boundary_editor.py`/`apply_boundary_edits.py`
 两个脚本已经重构成"核心逻辑函数 + 薄CLI包装"，`boundary_editor_server.py`
-的 `POST /apply` 接口直接调用同一份 `apply_edits()`/`build_editor_data()`
-函数，没有另外维护一套逻辑——**如果只是临时想用旧的手动两步流程（比如
-没装 Node/npx，或者想在改动落地前自己先过一遍眼），`build_boundary_
-editor.py` + `npx http-server` + `apply_boundary_edits.py` 三个独立脚本
-依然保留、行为不变，网页里"复制JSON"这个按钮也还在，两条路都能走通**。
+的路由直接调用同一份 `apply_edits()`/`build_editor_data()` 函数，没有
+另外维护一套逻辑——**如果只是临时想用旧的手动两步流程（比如没装
+Node/npx，或者想在改动落地前自己先过一遍眼），`build_boundary_editor.py`
++ `npx http-server` + `apply_boundary_edits.py` 三个独立脚本依然保留、
+行为不变（`boundary_editor.html` 会自动探测 `/lessons` 路由存不存在来
+判断是新版动态服务器还是旧版静态文件服务器，两种都兼容，不用额外配置），
+网页里"复制JSON"这个按钮也还在，两条路都能走通**。
 
 `apply_edits()` 只根据"新边界改到了哪"重切受影响的 `seg-NNN.mp3`（源
 音频是同一份 `merged.mp3`，保证跟用户在编辑器里听到/拖到的内容完全

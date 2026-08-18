@@ -125,14 +125,32 @@
   #copy-status { color: #7ee787; font-size: 12px; align-self: center; margin-right: auto; }
   #loading { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center;
     justify-content: center; font-size: 16px; color: var(--dim); z-index: 5; }
+  #picker { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: flex-start;
+    justify-content: center; z-index: 6; overflow-y: auto; padding: 40px 16px; }
+  #picker-box { width: 640px; max-width: 100%; }
+  #picker-box h1 { font-size: 20px; margin: 0 0 16px; }
+  .lesson-card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; margin-bottom: 12px; }
+  .lesson-card .lesson-title { font-size: 15px; margin-bottom: 8px; }
+  .lesson-card .lesson-slug { color: var(--dim); font-size: 11px; font-weight: normal; margin-left: 6px; }
+  .lesson-card .tab-btns { display: flex; gap: 6px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
 <div id="loading">加载中…</div>
+<div id="picker" style="display:none">
+  <div id="picker-box">
+    <h1>选一课</h1>
+    <div id="picker-list">加载课程列表…</div>
+  </div>
+</div>
 <div id="app" style="display:none">
   <div id="sidebar">
     <div id="sidebar-header">
-      <h1 id="title">-</h1>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+        <h1 id="title">-</h1>
+        <button id="switch-lesson-btn" title="切换课程/tab" style="flex-shrink:0;padding:3px 8px;font-size:11px">🔀 切换</button>
+      </div>
       <div class="meta" id="subtitle">-</div>
     </div>
     <div id="jump-row">
@@ -239,8 +257,69 @@
 (async function () {
   const $ = (sel) => document.querySelector(sel);
 
-  const manifest = await fetch('manifest.json').then(r => r.json());
-  const audioBuf = await fetch('merged.mp3').then(r => r.arrayBuffer());
+  async function showPicker() {
+    $('#loading').style.display = 'none';
+    $('#picker').style.display = 'flex';
+    const list = $('#picker-list');
+    try {
+      const data = await fetch('/lessons').then(r => r.json());
+      list.innerHTML = '';
+      (data.lessons || []).forEach(l => {
+        const card = document.createElement('div');
+        card.className = 'lesson-card';
+        const titleEl = document.createElement('div');
+        titleEl.className = 'lesson-title';
+        titleEl.textContent = l.title;
+        const slugEl = document.createElement('span');
+        slugEl.className = 'lesson-slug';
+        slugEl.textContent = l.slug;
+        titleEl.appendChild(slugEl);
+        const btnRow = document.createElement('div');
+        btnRow.className = 'tab-btns';
+        l.tabs.forEach(t => {
+          const btn = document.createElement('button');
+          btn.textContent = t;
+          btn.addEventListener('click', () => {
+            location.href = `boundary_editor.html?slug=${encodeURIComponent(l.slug)}&tab=${encodeURIComponent(t)}`;
+          });
+          btnRow.appendChild(btn);
+        });
+        card.appendChild(titleEl);
+        card.appendChild(btnRow);
+        list.appendChild(card);
+      });
+      if (!data.lessons || !data.lessons.length) list.textContent = '没找到任何课程（docs/private/ 下没有带 data.js 的目录？）';
+    } catch (e) {
+      list.textContent = '加载课程列表失败: ' + e.message;
+    }
+  }
+
+  const params = new URLSearchParams(location.search);
+  let slug = params.get('slug');
+  let tab = params.get('tab');
+
+  // 探测是新版单进程动态服务器（boundary_editor_server.py）还是旧版
+  // 每个work目录各起一份的静态文件服务器（build_boundary_editor.py +
+  // npx http-server）——旧版没有 /lessons 这个路由，两种服务器都要兼容
+  let isDynamicServer = false;
+  try {
+    const r = await fetch('/lessons');
+    isDynamicServer = r.ok;
+  } catch (e) { /* 旧版静态服务器，忽略 */ }
+
+  if (isDynamicServer) {
+    $('#switch-lesson-btn').addEventListener('click', () => { location.href = 'boundary_editor.html'; });
+    if (!slug || !tab) {
+      await showPicker();
+      return; // 停在选择页，等用户点了课程/tab 再整页跳转过去
+    }
+  } else {
+    $('#switch-lesson-btn').style.display = 'none';
+  }
+
+  const qs = isDynamicServer ? `?slug=${encodeURIComponent(slug)}&tab=${encodeURIComponent(tab)}` : '';
+  const manifest = await fetch(`manifest.json${qs}`).then(r => r.json());
+  const audioBuf = await fetch(`merged.mp3${qs}`).then(r => r.arrayBuffer());
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   const actx = new AudioCtx();
   const buffer = await actx.decodeAudioData(audioBuf);

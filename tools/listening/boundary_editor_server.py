@@ -1,97 +1,194 @@
 # -*- coding: utf-8 -*-
 """
 用法：
-  python boundary_editor_server.py <docs/private/<slug>> <tab的mondai名>
-      [--out <工作目录，默认同 build_boundary_editor.py>] [--port 8080]
+  python boundary_editor_server.py [--port 8080] [--root .]
 
-共享工具（`jp-textbook-lesson` 用）：`build_boundary_editor.py` +
-`boundary_editor.html` + `apply_boundary_edits.py` 那一套"人工拖边界"
-流程原来要走"网页导出JSON→人工复制粘贴回对话→Claude手动跑脚本落地"
-这一圈，纯粹是因为网页是用 `npx http-server` 起的静态文件服务器，浏览器
-里的JS没有文件系统写权限、也没法直接跑ffmpeg——**用户明确问过"为什么
-不能直接反应到项目文件里，还要再发一次给你"，这个脚本就是answer**：
-把静态文件服务器换成这一个，多加一个 `POST /apply` 接口，网页里点"保存"
-直接 `fetch` 过来，接口在本地直接调 `apply_boundary_edits.apply_edits()`
-落地音频+data.js，成功后立刻用 `build_boundary_editor.build_editor_data()`
-把 `manifest.json`/`merged.mp3` 刷新成最新发布状态，网页收到成功响应后
-自动刷新页面，可以无缝继续编辑下一批——全程不需要再经过对话。
+共享工具（`jp-textbook-lesson` 用）：一体化本地服务器，单进程服务全部课程，
+浏览器 URL 里带 `?slug=<课程>&tab=<mondai名>` 就能切换要编辑哪一课的哪个
+tab，不用每换一课就重新起一个进程/占一个新端口（真实反馈：用户直接问
+"能不能url中带上课程的标识，方便我切换课程"）。
 
-只监听 127.0.0.1，跟直接在本机跑任何脚本是同一个信任级别，不会暴露给
-局域网/公网。
+跟旧版（每个进程绑死一个 slug+tab，启动时传参数）的区别：
+  旧：python boundary_editor_server.py docs/private/<slug> <tab> --port 8080
+      只服务这一个 slug+tab，换课程要另开一个进程换个端口。
+  新：python boundary_editor_server.py --port 8080
+      单进程，`GET /manifest.json?slug=X&tab=Y`/`GET /merged.mp3?slug=X&tab=Y`
+      /`POST /apply`（body 里已经带 slug/tab）全部动态解析，浏览器直接改
+      URL 的 query string 就能切换，不用重启进程。
 
-首次跑这个脚本时会顺带生成一次 `manifest.json`/`merged.mp3`（等价于先跑
-一遍 `build_boundary_editor.py`），不用分两步。
+路由：
+  GET  /                          重定向到 /boundary_editor.html
+  GET  /boundary_editor.html      编辑器页面本身（跟 slug/tab 无关，纯静态）
+  GET  /lessons                   扫 docs/private/ 下有 data.js 的目录，
+                                   返回 [{"slug":, "title":, "tabs":[...]}]
+                                   给页面里的课程切换器用
+  GET  /manifest.json?slug=&tab=  现场用 build_editor_data() 重新生成
+                                   （保证永远反映当前已发布状态，不会有
+                                   "work目录缓存过期"的问题），返回JSON
+  GET  /merged.mp3?slug=&tab=     跟上面配套生成的同一份音频（页面先
+                                   fetch manifest.json 再 fetch 这个，
+                                   顺序保证了这时候文件已经写好）
+  POST /apply                     body 是 boundary_editor.html 导出的
+                                   {slug, tab, edits} 原样格式，调用
+                                   apply_boundary_edits.apply_edits() 落地，
+                                   成功后立刻重新生成对应 work 目录
+
+只监听 127.0.0.1，不会暴露给局域网/公网。
 """
 import sys
 import os
+import re
 import json
+import glob
 import http.server
 import socketserver
 import argparse
+from urllib.parse import urlparse, parse_qs
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from apply_boundary_edits import apply_edits
-from build_boundary_editor import build_editor_data
+from build_boundary_editor import build_editor_data, load_lesson_data
+
+REPO_ROOT = None  # 启动时设成 --root 的绝对路径
 
 
-def make_handler(slug_dir, tab_name, work_dir):
-    class Handler(http.server.SimpleHTTPRequestHandler):
-        def log_message(self, fmt, *args):
-            print(f"[server] {self.address_string()} " + (fmt % args))
+def slug_dir_of(slug):
+    return os.path.join(REPO_ROOT, "docs", "private", slug)
 
-        def do_POST(self):
-            if self.path != "/apply":
-                self.send_response(404)
-                self.end_headers()
-                return
-            length = int(self.headers.get("Content-Length", 0))
-            body = self.rfile.read(length)
+
+def work_dir_of(slug, tab):
+    return os.path.join(REPO_ROOT, "tools", "listening", "work", slug, f"boundary_editor_{tab}")
+
+
+def discover_lessons():
+    private_dir = os.path.join(REPO_ROOT, "docs", "private")
+    out = []
+    for entry in sorted(os.listdir(private_dir)):
+        slug_dir = os.path.join(private_dir, entry)
+        data_js = os.path.join(slug_dir, "data.js")
+        if not os.path.isfile(data_js):
+            continue
+        try:
+            data = load_lesson_data(slug_dir)
+        except Exception:
+            continue
+        tabs = [t.get("mondai") for t in data.get("tabs", []) if t.get("mondai")]
+        if not tabs:
+            continue
+        out.append({"slug": entry, "title": data.get("title") or entry, "tabs": tabs})
+    return out
+
+
+class Handler(http.server.BaseHTTPRequestHandler):
+    def log_message(self, fmt, *args):
+        print(f"[server] {self.address_string()} " + (fmt % args))
+
+    def _json(self, status, obj):
+        body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _file(self, path, content_type):
+        if not os.path.exists(path):
+            self._json(404, {"ok": False, "error": f"not found: {path}"})
+            return
+        with open(path, "rb") as f:
+            body = f.read()
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_GET(self):
+        parsed = urlparse(self.path)
+        qs = parse_qs(parsed.query)
+        path = parsed.path
+
+        if path == "/" or path == "":
+            self.send_response(302)
+            self.send_header("Location", "/boundary_editor.html")
+            self.end_headers()
+            return
+
+        if path == "/boundary_editor.html":
+            html_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "boundary_editor.html")
+            self._file(html_path, "text/html; charset=utf-8")
+            return
+
+        if path == "/lessons":
             try:
-                payload = json.loads(body)
-                result = apply_edits(slug_dir, work_dir, payload)
-                if result["touched"]:
-                    # 落地成功，立刻重新生成一份反映最新状态的 manifest/merged.mp3，
-                    # 网页刷新后能无缝继续编辑，不用再手动跑 build_boundary_editor.py
-                    build_editor_data(slug_dir, tab_name, work_dir)
-                self.send_response(200)
-                self.send_header("Content-Type", "application/json; charset=utf-8")
-                self.end_headers()
-                self.wfile.write(json.dumps({"ok": True, **result}, ensure_ascii=False).encode("utf-8"))
+                self._json(200, {"ok": True, "lessons": discover_lessons()})
             except Exception as e:
-                self.send_response(500)
-                self.send_header("Content-Type", "application/json; charset=utf-8")
-                self.end_headers()
-                self.wfile.write(json.dumps({"ok": False, "error": str(e)}, ensure_ascii=False).encode("utf-8"))
+                self._json(500, {"ok": False, "error": str(e)})
+            return
 
-    return Handler
+        if path == "/manifest.json":
+            slug, tab = qs.get("slug", [None])[0], qs.get("tab", [None])[0]
+            if not slug or not tab:
+                self._json(400, {"ok": False, "error": "缺 slug 或 tab 参数"})
+                return
+            try:
+                manifest = build_editor_data(slug_dir_of(slug), tab, work_dir_of(slug, tab))
+                self._json(200, manifest)
+            except Exception as e:
+                self._json(500, {"ok": False, "error": str(e)})
+            return
+
+        if path == "/merged.mp3":
+            slug, tab = qs.get("slug", [None])[0], qs.get("tab", [None])[0]
+            if not slug or not tab:
+                self._json(400, {"ok": False, "error": "缺 slug 或 tab 参数"})
+                return
+            self._file(os.path.join(work_dir_of(slug, tab), "merged.mp3"), "audio/mpeg")
+            return
+
+        self._json(404, {"ok": False, "error": "not found"})
+
+    def do_POST(self):
+        if self.path != "/apply":
+            self._json(404, {"ok": False, "error": "not found"})
+            return
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length)
+        try:
+            payload = json.loads(body)
+            slug, tab = payload["slug"], payload["tab"]
+            result = apply_edits(slug_dir_of(slug), work_dir_of(slug, tab), payload)
+            if result["touched"]:
+                # 落地成功，立刻刷新这个 slug+tab 的 work 目录，下次 GET
+                # manifest.json 或者切回这一课都不会读到过期状态
+                build_editor_data(slug_dir_of(slug), tab, work_dir_of(slug, tab))
+            self._json(200, {"ok": True, **result})
+        except Exception as e:
+            self._json(500, {"ok": False, "error": str(e)})
 
 
 def main():
+    global REPO_ROOT
     ap = argparse.ArgumentParser()
-    ap.add_argument("slug_dir", help="docs/private/<slug>")
-    ap.add_argument("tab", help='tab的mondai名，比如 "会话"/"课文"/"生词"')
-    ap.add_argument("--out", default=None, help="工作目录，默认 tools/listening/work/<slug>/boundary_editor_<tab>/")
+    ap.add_argument("--root", default=".", help="仓库根目录（含 docs/、tools/），默认当前目录")
     ap.add_argument("--port", type=int, default=8080)
     args = ap.parse_args()
 
-    slug_dir = os.path.abspath(args.slug_dir.rstrip("/\\"))
-    slug = os.path.basename(slug_dir)
-    work_dir = os.path.abspath(args.out or os.path.join(
-        "tools", "listening", "work", slug, f"boundary_editor_{args.tab}"
-    ))
+    REPO_ROOT = os.path.abspath(args.root)
+    if not os.path.isdir(os.path.join(REPO_ROOT, "docs", "private")):
+        print(f"FAIL: {REPO_ROOT} 下没有 docs/private/，--root 传对了吗？")
+        sys.exit(1)
 
-    print(f"生成/刷新一份最新的编辑数据到 {work_dir} ...")
-    manifest = build_editor_data(slug_dir, args.tab, work_dir)
-    print(f"就绪：{len(manifest['sentences'])} 条，总时长 {manifest['totalDuration']:.1f}s")
+    lessons = discover_lessons()
+    print(f"发现 {len(lessons)} 门课程：{', '.join(l['slug'] for l in lessons)}")
 
-    os.chdir(work_dir)
-    handler = make_handler(slug_dir, args.tab, work_dir)
-    with socketserver.TCPServer(("127.0.0.1", args.port), handler) as httpd:
-        print(f"浏览器打开 http://127.0.0.1:{args.port}/boundary_editor.html")
-        print(f"点“保存到项目文件”会直接落地到 {slug_dir}，不用再导出JSON")
+    with socketserver.TCPServer(("127.0.0.1", args.port), Handler) as httpd:
+        print(f"浏览器打开 http://127.0.0.1:{args.port}/boundary_editor.html?slug=<课程slug>&tab=<mondai名>")
+        print("不带参数打开会看到课程/tab选择器")
         print("Ctrl+C 停止")
         try:
             httpd.serve_forever()
