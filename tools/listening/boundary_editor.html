@@ -210,7 +210,9 @@
       走的一排按钮，中间数字是当前边界的精确时间，两侧 « ‹ › » 依次是往前/后 0.05s、
       0.01s，不用来回看下面的输入框</b>。<kbd>←</kbd>/<kbd>→</kbd>
       微调 0.01s，<kbd>Shift</kbd>+<kbd>←</kbd>/<kbd>→</kbd> 微调 0.05s，<kbd>↑</kbd>/<kbd>↓</kbd>
-      切换上/下一句，<kbd>Tab</kbd> 切换前/后边界，<kbd>空格</kbd> 循环播放。黄色虚线是这条
+      切换上/下一句，<kbd>Tab</kbd> 切换前/后边界，<kbd>空格</kbd> 循环播放整句（检查
+      两头有没有切对整体听一遍最直接）；只想单独确认某一条边界切得准不准，用
+      "循环当前边界附近"那个按钮（只绕着这一条边界前后0.4秒）。黄色虚线是这条
       边界的原始位置，改完点左下角"导出改动"。
     </div>
   </div>
@@ -582,7 +584,12 @@
     else if (e.key === ' ') {
       e.preventDefault();
       if (e.repeat) return; // 按住不放时操作系统会持续发送keydown，不能每次都重新从头播放
-      if (curS()) playRange(activeValue() - 0.4, activeValue() + 0.4, true);
+      // 循环播放整句/整个词（curStart~curEnd），不是只绕着当前这一条边界的±0.4s——
+      // 词条本来就短的话（比如"こっち"只有0.68s），±0.4s的边界窗口根本包不住整个词，
+      // 会出现"只听到前半段就循环重来"的现象。想单独检查某一条边界切得准不准，
+      // 用"循环当前边界附近"那个按钮。
+      const s = curS();
+      if (s) playRange(s.curStart, s.curEnd, true);
     }
     else if (e.key === 'Escape') { stopPlayback(); }
   });
