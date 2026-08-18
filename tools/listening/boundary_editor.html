@@ -380,6 +380,8 @@
     renderList();
     scrollSelectedIntoView();
     draw();
+    const s = curS();
+    if (s) playRange(s.curStart, s.curEnd, false); // 选中就立刻单次播放一遍，不用再单独点播放按钮
   }
 
   function scrollSelectedIntoView() {
@@ -591,6 +593,13 @@
   }
 
   // --- events ---
+  // 点任何按钮/侧栏句子行，先把当前正在播放的停掉——用 capture 阶段保证
+  // 这个先于按钮自己的 click 处理器执行；播放类按钮自己的 handler 里也会
+  // 调 stopPlayback()（这时候已经停过，是空操作），不会互相冲突
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('button, .b-row')) stopPlayback();
+  }, true);
+
   $('#jump-input').addEventListener('input', renderList);
 
   document.querySelectorAll('#zoom-group button[data-zoom]').forEach(btn => {
