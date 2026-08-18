@@ -1102,6 +1102,49 @@ python tools/listening/audit_boundaries_quietpoint.py \
 
 **改完不能只信这个工具自己报告"改好了"，还要做下面这一步终验**：
 
+#### 全部边界跑一遍波形图人工目视扫描（必须，覆盖数值脚本会漏检的点）
+
+真实背景（textbook-sjp-zg-l14）：用户自己在 `boundary_editor.html` 里
+肉眼看波形拖边界，又快又准；同一批边界我这边全程只跑数值化的代理
+（RMS 能量数组、Whisper 词级时间戳），结果判断错了好几处——包括把
+"命中比例只有5~10%"当成"可忽略"直接跳过，后来证实用户耳朵能听出来。
+根因不是"我看不到波形"（`ffmpeg` 能把任意一段音频渲染成波形图，Claude
+Code 的 Read 工具本身能读图），而是校验流程习惯性地只跑数值脚本吐一个
+统计结论，没有像人眼那样直接生成图去看——数值摘要会丢掉波形图上一眼
+就能抓到的形状特征（陡峭起落沿、双峰、短促应答词的独立小凸起）。**更
+关键的问题**：`audit_boundaries_rms.py`/`audit_boundaries_quietpoint.py`
+这类数值脚本只能告诉你"这些点看起来可疑"，本身会漏检——漏掉的点永远
+不会被人工核实到，只核实"脚本标出来的可疑点"天然覆盖不全。
+
+`tools/listening/render_boundary_waveforms.py`（真实案例 textbook-sjp-
+zg-l15 试跑过：会话88秒/课文114秒/生词182秒，共162个边界点，只用17张
+图——每张图25秒窗口、覆盖多个边界——就能全部看完，比逐条边界单独出图
+少一个数量级）把这个思路倒过来：不先筛可疑点再挑着看，而是把整段音频
+渲染成一批带边界竖线标记（绿=start、红=纯end、黑=共享边界）的波形图，
+覆盖全部时长：
+
+```bash
+python tools/listening/render_boundary_waveforms.py \
+  tools/listening/work/<slug>/enriched_dialogue_final.json <会话原始音频> \
+  tools/listening/work/<slug>/waveform_check_dialogue
+python tools/listening/render_boundary_waveforms.py \
+  tools/listening/work/<slug>/enriched_text_final.json <课文原始音频> \
+  tools/listening/work/<slug>/waveform_check_text
+python tools/listening/render_boundary_waveforms.py \
+  tools/listening/work/<slug>/enriched_vocab_final.json <生词原始音频> \
+  tools/listening/work/<slug>/waveform_check_vocab
+```
+
+（跟 `audit_boundaries_rms.py` 一样，传各自的 `enriched_*_final.json` +
+各自的原始音频，不要传合并后的 `enriched_combined.json`。）**生成后必须
+用 Read 工具把每一张图都看一遍**，脚本本身不做任何自动判断，人眼扫每
+一条竖线是否卡在能量陡升/陡降沿上——这一步是有意让"我看图判断"尽量
+贴近用户在编辑器里肉眼拖边界的判断方式，不是"脚本自动核实"的替代品。
+不替代 `audit_boundaries_rms.py`/`audit_boundaries_quietpoint.py`/
+word-level交叉转写/下面的拼接终验，是额外补上"数值脚本会漏检"这个盲区，
+四种方法一起才算完整覆盖。密集材料（生词表零间隔连读）如果标签重叠到
+看不清，加 `--width` 或调小 `--window-sec` 换取更高时间分辨率。
+
 #### 拼接相邻已发布 clip 整体转写——目前发现的最可靠终验方法
 
 真实案例（textbook-sjp-zg-l15）：修复过程里反复出现"以为改对了、其实
