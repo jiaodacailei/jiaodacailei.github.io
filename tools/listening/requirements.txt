@@ -1,3 +1,5 @@
 faster-whisper
 pykakasi
 imageio-ffmpeg
+sudachipy
+sudachidict_core

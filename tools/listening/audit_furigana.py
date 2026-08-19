@@ -90,6 +90,8 @@ from build_page import (
     _resolve_hira,
     _split_kana_segments,
     _needs_kana_annotation,
+    _sudachi_line_tokens,
+    _sudachi_reading_for_span,
     tokenize_ja,
 )
 
@@ -114,6 +116,7 @@ def _scan_live_text(text, show_all, vocab_readings=None):
     hits = []
     for line in text.split("\n"):
         tokens = _kks.convert(line)
+        sudachi_tokens = _sudachi_line_tokens(line)
         prev_orig = None
         prev2_orig = None
         line_offset = 0
@@ -122,6 +125,7 @@ def _scan_live_text(text, show_all, vocab_readings=None):
             orig = t["orig"]
             hira = t["hira"]
             tok_len = len(orig)
+            tok_start = line_offset
             # 跟 build_page.py 的 tokenize_ja() 用同一条 next_char 计算方式——
             # 有些订正规则（比如"後にして"这个惯用语）要看这个 token 后面紧跟
             # 的原文字符才能判断，不传 next_char 会导致这类规则在这个审核脚本
@@ -147,6 +151,18 @@ def _scan_live_text(text, show_all, vocab_readings=None):
                 if new_hira != hira:
                     hira = new_hira
                     overridden = True
+                else:
+                    # 跟 tokenize_ja() 同一条 SudachiPy 交叉核对兜底——只在
+                    # pykakasi 的原始猜测没被任何手写规则改过时才生效，见
+                    # build_page.py 里 `_sudachi_reading_for_span()` 上方的
+                    # 详细说明。这一步漏做的话，审核报告会显示 pykakasi 的
+                    # 原始（可能错误的）读音，但页面真正渲染时其实已经被
+                    # SudachiPy 交叉核对纠正过了——误导人工复核，让人以为
+                    # 这里有问题去手动加订正表，实际已经自动修好了。
+                    sudachi_hira = _sudachi_reading_for_span(sudachi_tokens, tok_start, tok_start + tok_len)
+                    if sudachi_hira and sudachi_hira != hira:
+                        hira = sudachi_hira
+                        overridden = True
             if show_all:
                 if _has_kanji(orig) and hira != orig:
                     row.append(f"{orig}[{hira}]")

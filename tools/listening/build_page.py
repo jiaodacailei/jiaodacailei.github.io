@@ -35,6 +35,17 @@ import subprocess
 import imageio_ffmpeg
 import pykakasi
 
+try:
+    from sudachipy import tokenizer as _sudachi_tokenizer_mod, dictionary as _sudachi_dictionary_mod
+    _sudachi_tok = _sudachi_dictionary_mod.Dictionary().create()
+    _sudachi_mode = _sudachi_tokenizer_mod.Tokenizer.SplitMode.C
+except Exception:
+    # sudachipy 没装的环境（比如临时脚本/CI）不应该直接崩溃——这一层只是给
+    # pykakasi 兜底默认读音做交叉核对的"锦上添花"，不是必需依赖，装不了就
+    # 退化成纯 pykakasi（跟这个交叉核对功能加入之前的行为完全一样）。
+    _sudachi_tok = None
+    _sudachi_mode = None
+
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 _kks = pykakasi.kakasi()
 
@@ -400,6 +411,77 @@ def _kata_to_hira_char(ch):
     return ch
 
 
+# ============================================================
+# SudachiPy 交叉核对——pykakasi 的默认读音兜底不可靠，见 _resolve_hira() 里
+# 逐条积累的"人/位/間/歳/次/人前"这类坑：每一条都是先有真实bug，再手写一条
+# 规则去覆盖，这条路径永远走不完（这个 skill 反复踩过"短"→みじか这类新坑，
+# 每次都是"孤立单字默认读音在特定上下文里其实要变"这同一个模式的新实例）。
+#
+# 真实测试对比过（不是猜的）：SudachiPy（正确的形态素分析器，理解动词/
+# 形容词变形规则，不是简单的字符转换）对同一批坑（人/位/短い类词干+かった
+# 过去式/入って/千尋这类专有名词/出生率）**不需要手动订正表就能给对**——
+# 但 SudachiPy 也不是完美的（比如"その間"孤立测试给ま而不是あいだ、"万人"
+# 给ばんにん而不是まんにん、"20日"这类数字+日的特殊读法两边都不对、
+# "行く/行う"这类语义级歧义两边都测不出来），换工具不能替代人工核对，只能
+# 降低"每次都要靠用户听出来才发现"这类坑的发生率。
+#
+# 集成方式：**不改动 pykakasi 的分词边界**（char_times 高亮对齐依赖这个
+# 边界，改了风险太大），只在"这个 token 该配什么读音"这一步加一层交叉
+# 核对——对整行文本单独跑一次 SudachiPy 分词，按字符区间跟 pykakasi 的
+# token 对齐，如果某个 pykakasi token 的字符区间正好被一个或几个连续的
+# SudachiPy token 完整覆盖（没有缝隙/越界），就把 SudachiPy 给出的读音
+# 当"更可信的默认值"候选。**只在 _resolve_hira() 之后仍然是 pykakasi 原始
+# 猜测（没有被任何手写规则改过）时才会用到这个候选**——已经被
+# vocab_readings/_TOKEN_READING_OVERRIDES_*/`_resolve_hira()`任何一层
+# 手工订正过的读音，可信度天然高于"两个工具谁的默认值更准"这种交叉核对，
+# 不应该被这一层覆盖。
+def _sudachi_line_tokens(line):
+    """对一整行文本跑一次 SudachiPy 分词，返回 [(begin, end, hira), ...]
+    （字符区间 + 对应假名读音，片假名读音已转换成平假名）。SudachiPy 不可用
+    或者这一行触发了内部异常（没见过，但不能让整个生成流程因为一个可选的
+    交叉核对功能崩掉）时返回空列表，上层据此直接跳过交叉核对、退回纯
+    pykakasi 行为。"""
+    if _sudachi_tok is None:
+        return []
+    try:
+        morphs = _sudachi_tok.tokenize(line, _sudachi_mode)
+    except Exception:
+        return []
+    out = []
+    for m in morphs:
+        reading = m.reading_form()
+        if not reading:
+            continue
+        hira = "".join(_kata_to_hira_char(ch) for ch in reading)
+        out.append((m.begin(), m.end(), hira))
+    return out
+
+
+def _sudachi_reading_for_span(sudachi_tokens, start, end):
+    """从 `_sudachi_line_tokens()` 的结果里找出字符区间 [start,end) 对应的
+    读音——要求一个或几个连续 SudachiPy token 的区间**精确拼出** [start,end)
+    （首尾对齐、中间没有缝隙），拼不齐（SudachiPy 在这个位置切词的方式跟
+    pykakasi 不一样）就返回 None，交给调用方安全地跳过交叉核对，不猜测。"""
+    parts = []
+    cursor = start
+    for b, e, hira in sudachi_tokens:
+        if e <= cursor:
+            continue
+        if b > cursor:
+            return None  # 缝隙：SudachiPy 在这个位置没有精确对齐的token
+        if b >= end:
+            break
+        if b != cursor:
+            return None
+        parts.append(hira)
+        cursor = e
+        if cursor >= end:
+            break
+    if cursor != end or not parts:
+        return None
+    return "".join(parts)
+
+
 def _split_kana_segments(orig, hira):
     """把一个"汉字+送假名"混合 token 拆成交替的 [{"text":汉字串,"kana":读音}, {"text":
     送假名串}, ...] 段列表——正确的排版规范是只给每一段连续汉字标注读音，中间/
@@ -611,6 +693,7 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
     char_idx = 0
     for li, line in enumerate(lines):
         tokens = _kks.convert(line)
+        sudachi_tokens = _sudachi_line_tokens(line)
         prev_orig = None
         prev2_orig = None
         line_offset = 0
@@ -618,6 +701,7 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
             orig = t['orig']
             hira = t['hira']
             tok_len = len(orig)
+            tok_start = line_offset
             next_char = line[line_offset + tok_len] if line_offset + tok_len < len(line) else ""
             line_offset += tok_len
             if vocab_readings and orig in vocab_readings:
@@ -631,7 +715,25 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
             elif orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
             else:
-                hira = _resolve_hira(orig, hira, prev_orig, next_char, prev2_orig)
+                resolved = _resolve_hira(orig, hira, prev_orig, next_char, prev2_orig)
+                if resolved != hira:
+                    # `_resolve_hira()` 命中了某条手写规则，已经是人工验证过的
+                    # 结果，可信度高于"两个工具谁的默认值更准"这种交叉核对，
+                    # 不再去问 SudachiPy。
+                    hira = resolved
+                else:
+                    # 走到这里说明这个 token 的读音还是 pykakasi 的原始猜测，
+                    # 没有被任何一层手工规则改过——用 SudachiPy 对同一个字符
+                    # 区间的读音做交叉核对，能对齐（见 _sudachi_reading_for_
+                    # span() 的对齐要求）且两边读音不一致时，优先信 SudachiPy
+                    # （真实测试过：人/位/短い类词干+かった过去式/入って/
+                    # 千尋这类专有名词，SudachiPy 不需要手写规则就能给对，见
+                    # 这段代码上方的详细说明）。对不齐（SudachiPy 切词方式在
+                    # 这个位置跟 pykakasi 不一样）或两边一致就保持 pykakasi
+                    # 的原始结果不变，不引入没把握的改动。
+                    sudachi_hira = _sudachi_reading_for_span(sudachi_tokens, tok_start, tok_start + tok_len)
+                    if sudachi_hira and sudachi_hira != hira:
+                        hira = sudachi_hira
             prev2_orig = prev_orig
             prev_orig = orig
             # 这个 token 自己的逐字符时间戳切片（跟 orig 等长，越界的位置填
