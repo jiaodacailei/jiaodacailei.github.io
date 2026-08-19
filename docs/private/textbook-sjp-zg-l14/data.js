@@ -928,7 +928,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "短",
-                  "kana": "みじ",
+                  "kana": "みじか",
                   "t": 1.72
                 },
                 {
