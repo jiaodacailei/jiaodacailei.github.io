@@ -26,6 +26,7 @@
 private/<slug>/ 访问。
 """
 import os
+import re
 import json
 import html
 import hashlib
@@ -131,6 +132,25 @@ _KANJI_MIN_MORA = {
 
 _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
     "入っ": "はいっ",
+    # pykakasi 自己的转换bug，不是本文件"汉字读音怎么切分"这层逻辑的问题——
+    # "短い"（词干"短"训读みじか，3拍，以か结尾）的过去式"短かった"，正确
+    # 发音是"みじか"+"かった"＝みじかかった（か连续出现两次，"高かった"
+    # "近かった"这类"词干本身以か结尾的形容词"过去式都有这个双か现象）。
+    # 但 pykakasi 把"短かった"切成"短かっ"+"た"两个token时，给"短かっ"的
+    # hira只有"みじかっ"（4个字符，比正确的"みじかかっ"少了一个か）——
+    # 这是 pykakasi 库自己算漏的一拍，不是切分算法的问题：不管切分逻辑
+    # 多聪明，都不可能从一个本身就漏了一个字符的hira字符串里切出正确答案
+    # （真实踩过的坑：一开始误以为是"低く"/"茶色い"同一类"送假名锚点定位
+    # 撞车"的坑，往_KANJI_MIN_MORA表里加了"短":3，测试时手滑拿一个自己
+    # 编造的"短かった"当输入、而不是真实句子里pykakasi实际产出的token
+    # "短かっ"，结果测试"通过"掩盖了真正的问题——直到跟真实句子重新核对
+    # 才发现pykakasi给这个具体token的hira本身就是错的，跟_KANJI_MIN_MORA
+    # 表完全无关）。这里直接覆盖这个具体token的hira为正确值，从源头把
+    # pykakasi的错误数据订正掉，之后正常走`_split_kana_segments()`就能
+    # 正确切出"短[みじか]かった"。目前只在"短かっ"这一个真实撞到的token
+    # 上验证过，"高かっ"这类同构词理论上有同一个bug（pykakasi给"たかっ"
+    # 也漏了一拍），但站内还没有真实句子用到，暂不预防性收录，真遇到再加。
+    "短かっ": "みじかかっ",
     # "出生率"pykakasi 默认整词读しゅっせいりつ，但这个统计学术语该读
     # しゅっしょうりつ（跟"出生"单独成词时的读音しゅっしょう一致）——真实
     # 案例（textbook-sjp-zg-l13）：生词条目"出生"（人工核实过音频，确实读
@@ -444,44 +464,71 @@ def _split_kana_segments(orig, hira):
     # l14 的截图用的又是 U+301C——两种写法在真实素材里都出现过，必须都当
     # 占位符处理，不能只认一种。
     filtered = [g for g in groups if g[0] or g[1] not in ("〜", "～")]
-    kanji_readings = []
-    hira_pos = 0
-    pending_kanji = None
+
+    # **不再用"跳过N拍再往前搜"这种启发式**——真实案例反复证明这条路线是
+    # 死胡同："低"→ひく（2拍）、"色"→いろ（2拍）、"短"→みじか（3拍）……
+    # 每次踩坑都是"给这个具体的字往 _KANJI_MIN_MORA 表里加一条特例"，但
+    # 日语训读读音本身就有无数2拍以上的常见字（高/安/細/太/近/遠/早/重/
+    # 軽/強/弱/深/浅/広/狭/厚/薄……），把它们一个一个枚举进表里永远枚举
+    # 不完，表本身的存在就意味着"没被枚举到的字继续错"。
+    #
+    # 改用整个 token 一次性锚定匹配：非汉字组的文字本身是已知的假名原文
+    # （逐字符照抄进 hira，不需要猜），把它们当成正则表达式里的**字面量**，
+    # 汉字组则用非贪婪 `(.+?)` 占位，拼成一个覆盖整个 orig 的正则，一次性
+    # 对 hira 做锚定匹配（^...$，必须吃掉整个字符串，不能只匹配前缀）——
+    # 非贪婪 + 末尾锚定会自然地让每个汉字组"尽量往短了猜"，直到后面所有
+    # 字面量锚点都能对上剩余字符串为止，不需要事先知道任何一个字有几拍。
+    # 用"短かった"验证这个算法：pattern=`(.+?)かった`（"かった"是已知的
+    # 送假名字面量），hira="みじかかった"——尝试捕获1个字符"み"，剩余
+    # "じかかった"对不上字面量"かった"（对不齐也对不上长度）；试2个字符
+    # "みじ"，剩余"かかった"（4字）还是跟"かった"（3字）长度对不上；试3个
+    # 字符"みじか"，剩余"かった"正好精确等于字面量——匹配成功，汉字组读音
+    # 正确解出"みじか"，全程没有用到任何"短该有几拍"的先验知识。
+    pattern_parts = []
     for is_kanji, gtext in filtered:
         if is_kanji:
-            pending_kanji = gtext
-            continue
+            pattern_parts.append("(.+?)")
+        else:
+            # hira 里片假名部分已经被转换成平假名（片假名/平假名同一套
+            # 假名的两种写法，逐字符一一对应），字面量必须用转换后的版本
+            # 才能匹配上，见 _kata_to_hira_char() 的文档。
+            literal = "".join(_kata_to_hira_char(ch) for ch in gtext)
+            pattern_parts.append(re.escape(literal))
+    pattern = "^" + "".join(pattern_parts) + "$"
+    m = re.match(pattern, hira)
+
+    kanji_readings = []
+    if m:
+        kanji_readings = list(m.groups())
+    else:
+        # 兜底：极少数场景（读音订正表把某个字的读音改得跟其它字符对不上、
+        # 或者这个 token 本身就有算法覆盖不到的特殊结构）整体正则锚定匹配
+        # 失败——退回旧版"跳过 N 拍再搜索"的启发式（_KANJI_MIN_MORA 只在
+        # 这个兜底分支里还有用），总比崩溃或者整段不标注音强；这类兜底
+        # 触发的情况应该人工核实，不是这个函数该默默"修好"的。
+        hira_pos = 0
+        pending_kanji = None
+        for is_kanji, gtext in filtered:
+            if is_kanji:
+                pending_kanji = gtext
+                continue
+            if pending_kanji is not None:
+                anchor_char = _kata_to_hira_char(gtext[0])
+                min_mora = sum(_KANJI_MIN_MORA.get(ch, 1) for ch in pending_kanji)
+                min_start = hira_pos + max(1, min_mora)
+                idx = hira.find(anchor_char, min_start)
+                if idx == -1:
+                    idx = hira.find(anchor_char, hira_pos)
+                if idx == -1:
+                    kanji_readings.append(None)
+                    idx = hira_pos
+                else:
+                    kanji_readings.append(hira[hira_pos:idx])
+                hira_pos = idx
+                pending_kanji = None
+            hira_pos += len(gtext)
         if pending_kanji is not None:
-            # 找这段送假名的第一个字符在 hira 里的位置，来定位前一段汉字读音的
-            # 结束点——不能直接从 hira_pos 开始裸搜，每个汉字至少占几拍（默认
-            # 假设1拍，_KANJI_MIN_MORA 表里登记过的字用登记的拍数，见那张表的
-            # 注释），搜索起点至少要跳过这些拍数对应的字符数，否则送假名首字符
-            # 如果刚好和汉字读音的某一拍相同（比如"聞き"，聞→き，紧跟着送假名
-            # 也是"き"，hira="ききまちが"；或者"低く"，低→ひく最后一拍是"く"，
-            # 紧跟着送假名也是"く"），裸搜索会在还没跳过这个字真实读音之前就
-            # 撞见这个假字符，误判读音提前结束。真实案例（textbook-sjp-zg-l12，
-            # "聞き間違える"/"低く"）：前者"聞"丢了读音、"間違"读音里多了个
-            # "き"；后者"低"的注音被错误截断成"ひ"（正确应为"ひく"）。
-            anchor_char = _kata_to_hira_char(gtext[0])
-            min_mora = sum(_KANJI_MIN_MORA.get(ch, 1) for ch in pending_kanji)
-            min_start = hira_pos + max(1, min_mora)
-            idx = hira.find(anchor_char, min_start)
-            if idx == -1:
-                idx = hira.find(anchor_char, hira_pos)
-            if idx == -1:
-                # 兜底：hira 里找不到这个假名字符（读音订正表把读音改得跟表面
-                # 字符对不上之类的边界情况），放弃细分，保守地不给这段汉字注音，
-                # 总比崩掉强——真出现这种情况应该是订正表本身有问题，需要人工
-                # 回头核实，不是这个函数该默默"修好"的。
-                kanji_readings.append(None)
-                idx = hira_pos
-            else:
-                kanji_readings.append(hira[hira_pos:idx])
-            hira_pos = idx
-            pending_kanji = None
-        hira_pos += len(gtext)
-    if pending_kanji is not None:
-        kanji_readings.append(hira[hira_pos:] or None)
+            kanji_readings.append(hira[hira_pos:] or None)
 
     segments = []
     ki = 0
