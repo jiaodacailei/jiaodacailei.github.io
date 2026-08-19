@@ -115,6 +115,7 @@ def _scan_live_text(text, show_all, vocab_readings=None):
     for line in text.split("\n"):
         tokens = _kks.convert(line)
         prev_orig = None
+        prev2_orig = None
         line_offset = 0
         row = []
         for i, t in enumerate(tokens):
@@ -142,7 +143,7 @@ def _scan_live_text(text, show_all, vocab_readings=None):
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
                 overridden = True
             else:
-                new_hira = _resolve_hira(orig, hira, prev_orig, next_char)
+                new_hira = _resolve_hira(orig, hira, prev_orig, next_char, prev2_orig)
                 if new_hira != hira:
                     hira = new_hira
                     overridden = True
@@ -154,6 +155,7 @@ def _scan_live_text(text, show_all, vocab_readings=None):
                 after = tokens[i + 1]["orig"] if i + 1 < len(tokens) else ""
                 tag = " (订正表已生效)" if overridden else ""
                 hits.append(f"...{before}[{orig}→{hira}]{after}...{tag}")
+            prev2_orig = prev_orig
             prev_orig = orig
         if show_all and row:
             hits.append(" ".join(row) + f"   full=「{line}」")

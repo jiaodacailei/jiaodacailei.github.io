@@ -92,6 +92,13 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
     # 出现过的具体人名，不猜测/未卜先知地覆盖其它可能的人名。
     ("金子", "君"): "くん",
     ("王", "君"): "くん",
+    # 人名"王風"（这一课的speaker，中国人姓名，姓"王"读おう）——"風"作为
+    # 这个人名的名字部分该读ふう（音读，跟中文姓名转写进日语时姓名两个字
+    # 都用音读是同一类做法，跟"李"→り同一类专有名词读音坑），pykakasi 给
+    # 孤立的"風"字默认训读かぜ（"风"这个普通名词的读音，不是这里的人名
+    # 用法）。只在紧跟在这一课确认过的姓氏"王"后面时触发，不无条件覆盖
+    # 其它上下文里独立出现的"風"字（那些多数确实该读かぜ）。
+    ("王", "風"): "ふう",
 }
 # _split_kana_segments() 定位"汉字读音在哪结束、送假名从哪开始"时，靠"这个
 # 汉字至少占几拍"这个下限往后跳过对应字符数再搜索送假名的锚点字符（见那个
@@ -166,10 +173,21 @@ _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
     # 就是作为人名出现），跟"千尋"→"ちひろ"同一类必须无条件覆盖的专有名词
     # 读音坑，没有"李"该读すもも的真实场景。
     "李": "り",
+    # 四字熟语"白頭偕老"（=中文"白头偕老"）该整体用音读はくとうかいろう，
+    # pykakasi 把"白頭"当成训读复合词読しろがしら（"白发苍苍的头/老者"这个
+    # 罕见训读词），但这里是从中文成语直接借用的四字熟语，跟"偕老"（かいろう，
+    # pykakasi 本身已经读对）搭配时"白頭"必须同样用音读はくとう（类比
+    # "白頭鷲"=はくとうわし"白头鹰"，"白頭"作为构词成分几乎总是音读はくとう，
+    # 没有找到这个成语场景下该读しろがしら的真实用法，可以放心无条件覆盖）。
+    "白頭": "はくとう",
+    # "組に"（"400組に対して"，"組"作为量词表示"对/组"）该读くみに，pykakasi
+    # 给出了错误读音くに（"組"单独训读该是くみ，没有くに这个读音，是转换
+    # 时的具体 bug，不是上下文歧义）。
+    "組に": "くみに",
 }
 
 
-def _resolve_hira(orig, hira, prev_orig, next_char=None):
+def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     """`_TOKEN_READING_OVERRIDES_*` 处理"固定搭配"（触发条件是具体的某个
     prev_orig 字面值），但"人"这个字的正确读音规律更通用，值得单独写一条规则
     而不是不断往字典里加案例——孤立成词的"人"（不是"外国人""成人""大人""人気"
@@ -256,6 +274,21 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     # 判断是不是这个惯用语，不影响"後に，"这类真正表示"之后"的独立副词用法。
     if orig == "後に" and next_char == "し":
         return "あとに"
+    # "〜の後には"（"…之后，通常会…"，描述一般流程/惯例）该读あとに，跟上面
+    # "後にして/にした/にします"是同一个惯用倾向的延伸——真实案例
+    # （textbook-sjp-zg-l16，"結婚式の後には普通，披露宴を行う。"）：pykakasi
+    # 默认给孤立的"後に"读のちに（更偏书面/文语的"之后"），但这句是描述一般
+    # 流程的说明文，口语化的あとに更自然、更符合教材这个语境。
+    if orig == "後に" and next_char == "は":
+        return "あとに"
+    # "N分の1"（分数，"N分之1"）该读ぶん，pykakasi 默认给孤立的"分"字读ふん
+    # （分钟量词，比如"5分"=ごふん才对）——真实案例（textbook-sjp-zg-l16，
+    # "1994年の3分の1""ホテルと結婚式場が4分の3"）：两处"N分の"都被读成ふんの，
+    # 是错的。跟"人/位/間/歳/次/人前"是同一类"孤立单字默认读音 vs 特定搭配读音"
+    # 坑，只在紧跟数字、且后面紧跟着"の"（分数专用结构）时触发，不影响"5分"
+    # 单独表示分钟的场景（那种后面不会紧跟"の"）。
+    if orig == "分" and prev_ends_with_digit and next_char == "の":
+        return "ぶん"
     # "1次/2次/3次"这类"数字+次"表示"第N次/第N轮"时该读じ（一次試験=いちじしけん），
     # 跟"人/位/間/歳"是同一类坑：孤立的"次"字 pykakasi 默认给つぎ（"次の駅"这种
     # 表示"下一个"的独立名词用法确实读つぎ，但那时前面不会紧跟数字），紧跟在
@@ -311,7 +344,21 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None):
     # おこない，这种情况不能再套用"替换第一个假名"的逻辑，会把已经正确
     # 的おこない错误地拼成おこなこない（真实踩过一次，"試験を行います"
     # 测试用例暴露的）。
-    if orig.startswith("行") and prev_orig == "を" and hira.startswith("い"):
+    # "Xに対して行った〜"（"针对X进行的〜"，比如"400組に対して行ったアンケート"
+    # ＝"针对400对夫妇进行的问卷调查"）里的"行った"同样该读おこなった，不是
+    # いった（"行く"过去式）——这种"行った"直接后置修饰名词（"行った
+    # アンケート"＝"进行的问卷调查"），前面没有紧跟"を"（宾语"アンケート"在
+    # 后面而不是前面），原有"を+行"这条规则覆盖不到。pykakasi 把"対して"拆成
+    # "対し"+"て"两个 token，"行った"紧跟的 prev_orig 是"て"，必须再往前看
+    # 一个 token（prev2_orig=="対し"）才能跟"食べて行く"这类"Vて+行く=继续
+    # 做某事去"的正常用法（那种 prev_orig 同样是"て"，但 prev2_orig 是别的
+    # 动词而不是"対し"）区分开，不能只用 prev_orig=="て" 这么宽泛的条件（会
+    # 误伤"食べて行く"这类真的该读いく的场景）。真实案例
+    # （textbook-sjp-zg-l16，"ある出版社が…夫婦400組に対して行ったアンケート
+    # の結果"）：读成いった说不通语义（"去做的问卷调查"不成立），该是
+    # "进行的问卷调查"。
+    if (orig.startswith("行") and hira.startswith("い")
+            and (prev_orig == "を" or (prev_orig == "て" and prev2_orig == "対し"))):
         return "おこな" + hira[1:]
     return hira
 
@@ -382,7 +429,15 @@ def _split_kana_segments(orig, hira):
         # 没有送假名可当定位锚点）——都没法按分段对齐，整体当一段注音。
         return [{"text": orig, "kana": hira}]
 
-    filtered = [g for g in groups if g[0] or g[1] != "〜"]
+    # 占位符"〜"在不同来源里可能是两个视觉上几乎一样、但 Unicode 码位不同的
+    # 字符：U+301C（WAVE DASH，日文原生波浪线）和 U+FF5E（FULLWIDTH TILDE，
+    # 全角波浪号）——真实案例（textbook-sjp-zg-l16，"～分の～"）：这一课抄录
+    # 时用的是 U+FF5E，只按 U+301C 过滤会漏判，"～"被当成普通非汉字组处理，
+    # 送假名定位算法在它身上裸搜索假名字符，把"分"的读音错误地算成了"ん"
+    # （"ぶんの"里"の"和"～"都不是要找的字符，最终退化成只剩最后一个字符）。
+    # l14 的截图用的又是 U+301C——两种写法在真实素材里都出现过，必须都当
+    # 占位符处理，不能只认一种。
+    filtered = [g for g in groups if g[0] or g[1] not in ("〜", "～")]
     kanji_readings = []
     hira_pos = 0
     pending_kanji = None
@@ -504,6 +559,7 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
     for li, line in enumerate(lines):
         tokens = _kks.convert(line)
         prev_orig = None
+        prev2_orig = None
         line_offset = 0
         for t in tokens:
             orig = t['orig']
@@ -522,7 +578,8 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
             elif orig in _TOKEN_READING_OVERRIDES_UNCONDITIONAL:
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
             else:
-                hira = _resolve_hira(orig, hira, prev_orig, next_char)
+                hira = _resolve_hira(orig, hira, prev_orig, next_char, prev2_orig)
+            prev2_orig = prev_orig
             prev_orig = orig
             # 这个 token 自己的逐字符时间戳切片（跟 orig 等长，越界的位置填
             # None）——之前只挑第一个字符的时间戳给整个 token 用，这里保留

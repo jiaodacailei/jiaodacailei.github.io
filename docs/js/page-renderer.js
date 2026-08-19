@@ -78,7 +78,11 @@
     // 把占位段交错拼回去（不能在第一遍顺手拼，"〜"可能出现在待定汉字读音
     // **结算之前**，比如"同〜"，"同"的读音要等到整个 orig 处理完才结算，
     // 这时候如果顺手把"〜"也塞进 segments，输出顺序会变成"〜"排在"同"前面）。
-    var filtered = groups.filter(function (g) { return g[0] || g[1] !== "〜"; });
+    // 占位符"〜"可能是 U+301C（WAVE DASH）或 U+FF5E（FULLWIDTH TILDE）两种
+    // 视觉相似但码位不同的字符（真实案例 textbook-sjp-zg-l16 用了后者），
+    // 两种都要当占位符处理，见 build_page.py 里 _split_kana_segments() 的
+    // 同款修复（两处逻辑必须保持同步）。
+    var filtered = groups.filter(function (g) { return g[0] || (g[1] !== "〜" && g[1] !== "～"); });
     var kanjiReadings = [];
     var hiraPos = 0;
     var pendingKanji = null;
