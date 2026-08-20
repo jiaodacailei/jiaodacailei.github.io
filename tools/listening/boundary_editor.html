@@ -77,6 +77,14 @@
   #main-header .label { font-size: 15px; }
   #main-header .label .dim { color: var(--dim); font-weight: normal; }
   #main-header .meta { flex-basis: 100%; color: var(--dim); font-size: 12px; }
+  #clause-preview:not(:empty) {
+    background: #1c2430; border: 1px solid var(--border); border-radius: 6px;
+    padding: 8px 10px; margin-top: 6px; font-size: 14px; color: var(--text);
+    line-height: 1.6;
+  }
+  #clause-preview .side-label { color: var(--dim); font-size: 11px; }
+  #clause-preview .left-text { color: var(--accent); font-weight: 600; }
+  #clause-preview .right-text { color: var(--accent2); font-weight: 600; }
   #canvas-wrap { padding: 16px; }
   #wave-stage { position: relative; }
   canvas { width: 100%; height: 220px; background: #101114; border-radius: 6px; display: block; }
@@ -180,6 +188,7 @@
     <div id="main-header">
       <div class="label" id="pair-label">选一句开始</div>
       <div class="meta" id="pair-sub"></div>
+      <div class="meta" id="clause-preview"></div>
     </div>
     <div id="canvas-wrap">
       <div id="wave-stage">
@@ -260,9 +269,12 @@
       跟前/后边界一样拖画布/方向键/输入框微调；<b>"＋ 插入分句边界"点一下就
       直接新增一个</b>（插在当前最大的一段空档正中间，自动选中、画布自动居中
       显示，不用先想清楚该点哪，插完直接跟改前/后边界一样拖/微调到准确位置），
-      "🗑 删除此分句边界"删掉当前选中的这一个。分句边界改动
-      **不会重切音频**（只是同一段 clip 内部的标记，不影响 clip 本身切多长），
-      保存起来比改前/后边界快很多。
+      "🗑 删除此分句边界"删掉当前选中的这一个。<b>分句的文字本身不能直接编辑</b>
+      （是照真实读音时间戳算出来的，不是独立存的字段）——新建一个分句边界该
+      拖到哪，靠画布上方那个深色小框实时预览："照当前位置，左边会是……右边
+      会是……"，跟着拖动一起刷新，看文字刚好在你想要的地方断开就对了，不用
+      凭空猜音频位置。分句边界改动**不会重切音频**（只是同一段 clip 内部的
+      标记，不影响 clip 本身切多长），保存起来比改前/后边界快很多。
     </div>
   </div>
 </div>
@@ -537,6 +549,7 @@
     if (!s) {
       $('#pair-label').textContent = '选一句开始';
       $('#pair-sub').textContent = '';
+      $('#clause-preview').innerHTML = '';
       return;
     }
     $('#pair-label').innerHTML = `#${s.id} <span class="dim">"${escapeHtml(s.text)}"</span>`;
@@ -559,6 +572,22 @@
         `不属于任何一句（可以点"播放邻近空白"确认这段真的是静音）`;
     } else {
       $('#pair-sub').textContent = `本句${activeEdge === 'start' ? '前边界' : '后边界'}跟相邻那句紧贴（间隙为0）`;
+    }
+
+    // 分句文字不能直接编辑（是照 timedTokens 的真实时间戳算出来的，不是
+    // 独立存储的字段），新建/拖动一个分句边界时，"这个位置会把文字切成什么样"
+    // 只能靠这个实时预览来判断，不是凭空猜音频位置——拖的时候这里跟着every
+    // mousemove 一起刷新，看着文字刚好在想要的地方断开就对了。只在分句模式下
+    // 显示，其它模式（前/后边界）不需要。
+    if (isClause) {
+      const segs = clauseTexts(s);
+      const leftText = segs ? (segs[activeClauseIdx] || '（空）') : '';
+      const rightText = segs ? (segs[activeClauseIdx + 1] || '（空）') : '';
+      $('#clause-preview').innerHTML =
+        `<span class="side-label">照当前位置，左边会是：</span>"<span class="left-text">${escapeHtml(leftText)}</span>"　` +
+        `<span class="side-label">右边会是：</span>"<span class="right-text">${escapeHtml(rightText)}</span>"`;
+    } else {
+      $('#clause-preview').innerHTML = '';
     }
 
     const center = activeValue();
