@@ -120,8 +120,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-002.mp3",
               "clauseBounds": [
-                1.14,
-                3.45
+                1.14
               ]
             },
             {
@@ -311,7 +310,6 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-004.mp3",
               "clauseBounds": [
-                0.08,
                 2.24,
                 3.09,
                 3.64,
@@ -414,8 +412,6 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-005.mp3",
               "clauseBounds": [
-                1.18,
-                4.08,
                 5.01
               ]
             },
@@ -578,10 +574,7 @@ window.LESSON_DATA = {
               "zh": "好的，那我马上去预订旅馆。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-009.mp3",
-              "clauseBounds": [
-                1.24
-              ]
+              "audio": "audio/seg-009.mp3"
             }
           ]
         },
@@ -681,10 +674,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "んですが"
               ],
-              "audio": "audio/seg-011.mp3",
-              "clauseBounds": [
-                1.37
-              ]
+              "audio": "audio/seg-011.mp3"
             },
             {
               "id": 12,
@@ -792,11 +782,7 @@ window.LESSON_DATA = {
                 "なんですが",
                 "でしょうか"
               ],
-              "audio": "audio/seg-013.mp3",
-              "clauseBounds": [
-                1.1,
-                2.65
-              ]
+              "audio": "audio/seg-013.mp3"
             },
             {
               "id": 14,
@@ -897,12 +883,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "お待ちくださいませ"
               ],
-              "audio": "audio/seg-014.mp3",
-              "clauseBounds": [
-                0.57,
-                2.68,
-                3.91
-              ]
+              "audio": "audio/seg-014.mp3"
             },
             {
               "id": 15,
@@ -1018,7 +999,6 @@ window.LESSON_DATA = {
               "audio": "audio/seg-015.mp3",
               "clauseBounds": [
                 1.1,
-                5.17,
                 9.69
               ]
             },
@@ -1052,10 +1032,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "結構です"
               ],
-              "audio": "audio/seg-016.mp3",
-              "clauseBounds": [
-                0.92
-              ]
+              "audio": "audio/seg-016.mp3"
             },
             {
               "id": 17,
@@ -1119,10 +1096,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "かしこまりました"
               ],
-              "audio": "audio/seg-017.mp3",
-              "clauseBounds": [
-                2.44
-              ]
+              "audio": "audio/seg-017.mp3"
             }
           ]
         }
@@ -1262,8 +1236,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-018.mp3",
               "clauseBounds": [
-                0.97,
-                4.25
+                0.87
               ]
             },
             {
@@ -1367,10 +1340,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "といえば"
               ],
-              "audio": "audio/seg-019.mp3",
-              "clauseBounds": [
-                1.49
-              ]
+              "audio": "audio/seg-019.mp3"
             },
             {
               "id": 20,
@@ -1453,11 +1423,7 @@ window.LESSON_DATA = {
                 "でも",
                 "という"
               ],
-              "audio": "audio/seg-020.mp3",
-              "clauseBounds": [
-                1.19,
-                2.91
-              ]
+              "audio": "audio/seg-020.mp3"
             },
             {
               "id": 21,
@@ -1532,10 +1498,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "から"
               ],
-              "audio": "audio/seg-021.mp3",
-              "clauseBounds": [
-                2.16
-              ]
+              "audio": "audio/seg-021.mp3"
             },
             {
               "id": 22,
@@ -1629,12 +1592,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "によって"
               ],
-              "audio": "audio/seg-022.mp3",
-              "clauseBounds": [
-                2.14,
-                4.04,
-                6.61
-              ]
+              "audio": "audio/seg-022.mp3"
             }
           ]
         },
@@ -1703,10 +1661,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "かつて"
               ],
-              "audio": "audio/seg-023.mp3",
-              "clauseBounds": [
-                0.78
-              ]
+              "audio": "audio/seg-023.mp3"
             },
             {
               "id": 24,
@@ -1955,9 +1910,7 @@ window.LESSON_DATA = {
               "audio": "audio/seg-026.mp3",
               "clauseBounds": [
                 1.2,
-                2.73,
-                4.79,
-                8.84
+                4.79
               ]
             }
           ]
@@ -2025,10 +1978,7 @@ window.LESSON_DATA = {
               "zh": "各温泉胜地都想方设法招揽游客。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-027.mp3",
-              "clauseBounds": [
-                1.51
-              ]
+              "audio": "audio/seg-027.mp3"
             },
             {
               "id": 28,
@@ -2149,10 +2099,7 @@ window.LESSON_DATA = {
                 "以外が",
                 "日帰り温泉"
               ],
-              "audio": "audio/seg-028.mp3",
-              "clauseBounds": [
-                1.57
-              ]
+              "audio": "audio/seg-028.mp3"
             },
             {
               "id": 29,
@@ -2268,10 +2215,7 @@ window.LESSON_DATA = {
               "zh": "还有“泡汤+午餐”“泡汤+客房休息”等各种套餐，专为没有时间住宿的客人准备。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-029.mp3",
-              "clauseBounds": [
-                8.37
-              ]
+              "audio": "audio/seg-029.mp3"
             },
             {
               "id": 30,
@@ -2421,7 +2365,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-031.mp3",
               "clauseBounds": [
-                2.77
+                2.73
               ]
             },
             {
@@ -2617,10 +2561,7 @@ window.LESSON_DATA = {
               "zh": "如今这类设施数量已经减少，但最近出现的“超级钱汤”却很受欢迎。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-033.mp3",
-              "clauseBounds": [
-                4.43
-              ]
+              "audio": "audio/seg-033.mp3"
             },
             {
               "id": 34,
@@ -2742,7 +2683,6 @@ window.LESSON_DATA = {
               "audio": "audio/seg-034.mp3",
               "clauseBounds": [
                 4.02,
-                7.37,
                 9.02
               ]
             },

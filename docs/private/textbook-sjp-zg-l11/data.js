@@ -73,10 +73,7 @@ window.LESSON_DATA = {
               "zh": "王：那张海报上是张一心吧。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-002.mp3",
-              "clauseBounds": [
-                1.24
-              ]
+              "audio": "audio/seg-002.mp3"
             },
             {
               "id": 3,
@@ -226,10 +223,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "見込みです"
               ],
-              "audio": "audio/seg-004.mp3",
-              "clauseBounds": [
-                4.37
-              ]
+              "audio": "audio/seg-004.mp3"
             },
             {
               "id": 5,
@@ -309,8 +303,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-005.mp3",
               "clauseBounds": [
-                3.86,
-                4.82
+                3.86
               ]
             },
             {
@@ -412,8 +405,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-006.mp3",
               "clauseBounds": [
-                3.02,
-                5.15
+                3.02
               ]
             }
           ]
@@ -729,10 +721,7 @@ window.LESSON_DATA = {
                 "そうすると",
                 "というわけではない"
               ],
-              "audio": "audio/seg-012.mp3",
-              "clauseBounds": [
-                1.84
-              ]
+              "audio": "audio/seg-012.mp3"
             }
           ]
         },
@@ -810,10 +799,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "ような気がします"
               ],
-              "audio": "audio/seg-013.mp3",
-              "clauseBounds": [
-                0.77
-              ]
+              "audio": "audio/seg-013.mp3"
             },
             {
               "id": 14,
@@ -891,8 +877,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-014.mp3",
               "clauseBounds": [
-                1.01,
-                3.31
+                1.01
               ]
             },
             {
@@ -1009,8 +994,8 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-016.mp3",
               "clauseBounds": [
-                2.07,
-                3.99
+                2.01,
+                3.95
               ]
             },
             {
@@ -1049,10 +1034,7 @@ window.LESSON_DATA = {
               "zh": "负责人：嗯……这个问题很难回答呢。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-017.mp3",
-              "clauseBounds": [
-                1.08
-              ]
+              "audio": "audio/seg-017.mp3"
             },
             {
               "id": 18,
@@ -1125,7 +1107,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-019.mp3",
               "clauseBounds": [
-                1.96
+                1.93
               ]
             },
             {
@@ -1231,11 +1213,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "より"
               ],
-              "audio": "audio/seg-020.mp3",
-              "clauseBounds": [
-                2.81,
-                4.6
-              ]
+              "audio": "audio/seg-020.mp3"
             },
             {
               "id": 21,
@@ -1333,11 +1311,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "はずです"
               ],
-              "audio": "audio/seg-021.mp3",
-              "clauseBounds": [
-                2.71,
-                5.45
-              ]
+              "audio": "audio/seg-021.mp3"
             },
             {
               "id": 22,
@@ -1535,10 +1509,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "という"
               ],
-              "audio": "audio/seg-024.mp3",
-              "clauseBounds": [
-                2.44
-              ]
+              "audio": "audio/seg-024.mp3"
             },
             {
               "id": 25,
@@ -1754,8 +1725,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-026.mp3",
               "clauseBounds": [
-                3.32,
-                6.01
+                3.32
               ]
             },
             {
@@ -1833,8 +1803,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-027.mp3",
               "clauseBounds": [
-                2.34,
-                4.58
+                4.53
               ]
             },
             {
@@ -2291,8 +2260,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-032.mp3",
               "clauseBounds": [
-                1.27,
-                4.9
+                1.25
               ]
             },
             {
@@ -2405,8 +2373,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-033.mp3",
               "clauseBounds": [
-                4.26,
-                7.36
+                4.26
               ]
             }
           ]
@@ -2709,10 +2676,7 @@ window.LESSON_DATA = {
               "zh": "2001年上映的《千与千寻》，凭借其丰富的想象力和高超的表现力在世界范围内也获得了很高的评价。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-035.mp3",
-              "clauseBounds": [
-                6.54
-              ]
+              "audio": "audio/seg-035.mp3"
             }
           ]
         }

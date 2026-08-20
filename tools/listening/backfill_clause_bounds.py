@@ -87,7 +87,7 @@ class _Args:
     search_front = 0.4
     frame_ms = 5
     min_rise = 6.0
-    quiet_ceiling = -28.0  # 见 compute_clause_bounds.py 文档字符串里对这个默认值改动的详细说明
+    quiet_ceiling = -33.0  # 见 compute_clause_bounds.py 文档字符串里对这个默认值改动的详细说明
     margin = -0.02  # 见 compute_clause_bounds.py 文档字符串里对这个默认值改动的详细说明
 
 
@@ -177,9 +177,19 @@ def main():
         for i, rough_t, reason in skipped:
             rough_t_str = f'{rough_t:.2f}' if rough_t is not None else 'None'
             lines.append(f'         跳过第{i}处逗号 (rough_t={rough_t_str}): {reason}')
-        if args.fix and bounds:
+        if args.fix:
             s = id_to_sentence[entry["id"]]
-            s["clauseBounds"] = [round(t - entry["start"], 2) for t in bounds]
+            # bounds 为空也要写（清掉旧值）——不然重新跑一遍算法把某句的判断从
+            # "有把握"改成"没把握"（比如调整过阈值之后），旧的 clauseBounds
+            # 会留在 data.js 里没人清，看着像是"还在用"，实际早就不是当前算法
+            # 会给出的结果了（真实案例：quiet_ceiling 从 -28 收紧到 -33 之后，
+            # l16会话第19句"山田さん，お幸せに。"新算法已经不再给这个逗号找
+            # 边界，但因为这里以前是"bounds 非空才写"，旧的 [0.85] 一直没被
+            # 清掉，同一句话在编辑器里显示的仍然是收紧之前的错误边界）。
+            if bounds:
+                s["clauseBounds"] = [round(t - entry["start"], 2) for t in bounds]
+            else:
+                s.pop("clauseBounds", None)
             fixed_ids.append(entry["id"])
 
     summary = f"共{len(synth_sentences)}句，{total_commas}处逗号，找到{total_bounds}处确信分句边界"
