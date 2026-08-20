@@ -121,7 +121,10 @@ window.LESSON_DATA = {
               "zh": "下次的采访是2周后吧。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-003.mp3"
+              "audio": "audio/seg-003.mp3",
+              "clauseBounds": [
+                2.29
+              ]
             },
             {
               "id": 4,
@@ -277,7 +280,11 @@ window.LESSON_DATA = {
                 "てみないと",
                 "分からない"
               ],
-              "audio": "audio/seg-006.mp3"
+              "audio": "audio/seg-006.mp3",
+              "clauseBounds": [
+                1.09,
+                2.33
+              ]
             },
             {
               "id": 7,
@@ -481,7 +488,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "と思っていたんですが"
               ],
-              "audio": "audio/seg-008.mp3"
+              "audio": "audio/seg-008.mp3",
+              "clauseBounds": [
+                5.29,
+                8.89
+              ]
             },
             {
               "id": 9,
@@ -598,7 +609,10 @@ window.LESSON_DATA = {
               "zh": "啊，对了。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-011.mp3"
+              "audio": "audio/seg-011.mp3",
+              "clauseBounds": [
+                1.23
+              ]
             },
             {
               "id": 12,
@@ -662,7 +676,10 @@ window.LESSON_DATA = {
               "zh": "现在要不要去南街喝一杯？",
               "notes": "「ミナミ」是大阪市南部的商业繁华区名称（与「キタ」北区相对）。",
               "blanks": [],
-              "audio": "audio/seg-012.mp3"
+              "audio": "audio/seg-012.mp3",
+              "clauseBounds": [
+                0.85
+              ]
             },
             {
               "id": 13,
@@ -788,7 +805,10 @@ window.LESSON_DATA = {
                 "せっかく",
                 "しておきます"
               ],
-              "audio": "audio/seg-014.mp3"
+              "audio": "audio/seg-014.mp3",
+              "clauseBounds": [
+                2.2
+              ]
             },
             {
               "id": 15,
@@ -909,7 +929,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "その代わり"
               ],
-              "audio": "audio/seg-016.mp3"
+              "audio": "audio/seg-016.mp3",
+              "clauseBounds": [
+                0.96,
+                2.75
+              ]
             }
           ]
         },
@@ -1034,7 +1058,11 @@ window.LESSON_DATA = {
               "zh": "呃……其实，下个月的采访我没法一起去了。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-017.mp3"
+              "audio": "audio/seg-017.mp3",
+              "clauseBounds": [
+                0.93,
+                1.52
+              ]
             },
             {
               "id": 18,
@@ -1165,7 +1193,12 @@ window.LESSON_DATA = {
               "blanks": [
                 "というのは"
               ],
-              "audio": "audio/seg-020.mp3"
+              "audio": "audio/seg-020.mp3",
+              "clauseBounds": [
+                1.28,
+                2.38,
+                3.64
+              ]
             },
             {
               "id": 21,
@@ -1401,7 +1434,10 @@ window.LESSON_DATA = {
               "zh": "如果方便的话，能不能来参加我的婚宴？",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-026.mp3"
+              "audio": "audio/seg-026.mp3",
+              "clauseBounds": [
+                1.03
+              ]
             },
             {
               "id": 27,
@@ -1490,7 +1526,10 @@ window.LESSON_DATA = {
                 "ちょうど",
                 "間です"
               ],
-              "audio": "audio/seg-027.mp3"
+              "audio": "audio/seg-027.mp3",
+              "clauseBounds": [
+                2.68
+              ]
             },
             {
               "id": 28,
@@ -1604,7 +1643,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "させていただきます"
               ],
-              "audio": "audio/seg-030.mp3"
+              "audio": "audio/seg-030.mp3",
+              "clauseBounds": [
+                0.12
+              ]
             },
             {
               "id": 31,
@@ -1783,7 +1825,10 @@ window.LESSON_DATA = {
               "zh": "因为这是我第一次参加日本的婚礼，让我更加期待这次的东京采访了。",
               "notes": "「〜のは初めてなので」：因为是第一次……。「ますます楽しみになりました」：变得越来越期待了。",
               "blanks": [],
-              "audio": "audio/seg-034.mp3"
+              "audio": "audio/seg-034.mp3",
+              "clauseBounds": [
+                3.14
+              ]
             }
           ]
         }
@@ -1920,7 +1965,10 @@ window.LESSON_DATA = {
                 "によって",
                 "異なっている"
               ],
-              "audio": "audio/seg-036.mp3"
+              "audio": "audio/seg-036.mp3",
+              "clauseBounds": [
+                5.72
+              ]
             },
             {
               "id": 37,
@@ -2005,7 +2053,10 @@ window.LESSON_DATA = {
               "zh": "而且中文也不是只有一种，存在相当数量的方言。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-037.mp3"
+              "audio": "audio/seg-037.mp3",
+              "clauseBounds": [
+                5.13
+              ]
             },
             {
               "id": 38,
@@ -2213,7 +2264,13 @@ window.LESSON_DATA = {
                 "においても",
                 "による"
               ],
-              "audio": "audio/seg-039.mp3"
+              "audio": "audio/seg-039.mp3",
+              "clauseBounds": [
+                4.86,
+                5.45,
+                6.79,
+                8.31
+              ]
             }
           ]
         },
@@ -2283,7 +2340,10 @@ window.LESSON_DATA = {
               "zh": "首先，存在发音和声调上的差异。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-040.mp3"
+              "audio": "audio/seg-040.mp3",
+              "clauseBounds": [
+                1.26
+              ]
             },
             {
               "id": 41,
@@ -2508,7 +2568,10 @@ window.LESSON_DATA = {
               "zh": "虽然还有别的意思，这里先就这两个意思来考虑一下。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-043.mp3"
+              "audio": "audio/seg-043.mp3",
+              "clauseBounds": [
+                3.92
+              ]
             },
             {
               "id": 44,
@@ -2930,7 +2993,10 @@ window.LESSON_DATA = {
               "zh": "另一方面，在京都等关西地区，「箸」读成「はし（②，低高调）」，而「橋」则读成「はし（①，高低调）」，正好相反。",
               "notes": "「一方」：另一方面（对照前文，引出相反/对比的情况）。",
               "blanks": [],
-              "audio": "audio/seg-047.mp3"
+              "audio": "audio/seg-047.mp3",
+              "clauseBounds": [
+                3.83
+              ]
             },
             {
               "id": 48,
@@ -3023,7 +3089,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ことになる"
               ],
-              "audio": "audio/seg-048.mp3"
+              "audio": "audio/seg-048.mp3",
+              "clauseBounds": [
+                4.4
+              ]
             }
           ]
         },
@@ -3184,7 +3253,10 @@ window.LESSON_DATA = {
               "zh": "比如说，东北地区有「なげる」这样一个方言词。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-050.mp3"
+              "audio": "audio/seg-050.mp3",
+              "clauseBounds": [
+                2.09
+              ]
             },
             {
               "id": 51,
@@ -3419,7 +3491,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "だと解釈して"
               ],
-              "audio": "audio/seg-051.mp3"
+              "audio": "audio/seg-051.mp3",
+              "clauseBounds": [
+                5.02,
+                13.89
+              ]
             },
             {
               "id": 52,
@@ -3484,7 +3560,10 @@ window.LESSON_DATA = {
               "zh": "另外，关西地区有「ほかす」这样一个方言词。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-052.mp3"
+              "audio": "audio/seg-052.mp3",
+              "clauseBounds": [
+                2.85
+              ]
             },
             {
               "id": 53,
@@ -3663,7 +3742,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "と聞き間違えて"
               ],
-              "audio": "audio/seg-053.mp3"
+              "audio": "audio/seg-053.mp3",
+              "clauseBounds": [
+                3.16,
+                7.13
+              ]
             }
           ]
         },
@@ -3827,7 +3910,11 @@ window.LESSON_DATA = {
                 "を基本にした",
                 "浸透している"
               ],
-              "audio": "audio/seg-054.mp3"
+              "audio": "audio/seg-054.mp3",
+              "clauseBounds": [
+                1.88,
+                9.04
+              ]
             }
           ]
         }

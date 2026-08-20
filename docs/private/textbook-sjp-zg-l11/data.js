@@ -73,7 +73,10 @@ window.LESSON_DATA = {
               "zh": "王：那张海报上是张一心吧。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-002.mp3"
+              "audio": "audio/seg-002.mp3",
+              "clauseBounds": [
+                1.26
+              ]
             },
             {
               "id": 3,
@@ -223,7 +226,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "見込みです"
               ],
-              "audio": "audio/seg-004.mp3"
+              "audio": "audio/seg-004.mp3",
+              "clauseBounds": [
+                4.39
+              ]
             },
             {
               "id": 5,
@@ -301,7 +307,10 @@ window.LESSON_DATA = {
               "zh": "王：张一心在中国是大明星，没想到在日本人气也这么高啊。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-005.mp3"
+              "audio": "audio/seg-005.mp3",
+              "clauseBounds": [
+                3.88
+              ]
             },
             {
               "id": 6,
@@ -400,7 +409,11 @@ window.LESSON_DATA = {
                 "でも",
                 "当たり"
               ],
-              "audio": "audio/seg-006.mp3"
+              "audio": "audio/seg-006.mp3",
+              "clauseBounds": [
+                3.04,
+                5.17
+              ]
             }
           ]
         },
@@ -512,7 +525,10 @@ window.LESSON_DATA = {
               "zh": "负责人：嗯，这一个月里上映了3部中国电影。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-008.mp3"
+              "audio": "audio/seg-008.mp3",
+              "clauseBounds": [
+                0.83
+              ]
             },
             {
               "id": 9,
@@ -667,7 +683,10 @@ window.LESSON_DATA = {
                 "そうそう",
                 "高ま"
               ],
-              "audio": "audio/seg-011.mp3"
+              "audio": "audio/seg-011.mp3",
+              "clauseBounds": [
+                4.02
+              ]
             },
             {
               "id": 12,
@@ -709,7 +728,10 @@ window.LESSON_DATA = {
                 "そうすると",
                 "というわけではない"
               ],
-              "audio": "audio/seg-012.mp3"
+              "audio": "audio/seg-012.mp3",
+              "clauseBounds": [
+                1.86
+              ]
             }
           ]
         },
@@ -787,7 +809,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ような気がします"
               ],
-              "audio": "audio/seg-013.mp3"
+              "audio": "audio/seg-013.mp3",
+              "clauseBounds": [
+                0.79
+              ]
             },
             {
               "id": 14,
@@ -863,7 +888,11 @@ window.LESSON_DATA = {
                 "にしても",
                 "にしても"
               ],
-              "audio": "audio/seg-014.mp3"
+              "audio": "audio/seg-014.mp3",
+              "clauseBounds": [
+                1.03,
+                3.33
+              ]
             },
             {
               "id": 15,
@@ -977,7 +1006,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "には"
               ],
-              "audio": "audio/seg-016.mp3"
+              "audio": "audio/seg-016.mp3",
+              "clauseBounds": [
+                2.09,
+                4.01
+              ]
             },
             {
               "id": 17,
@@ -1015,7 +1048,10 @@ window.LESSON_DATA = {
               "zh": "负责人：嗯……这个问题很难回答呢。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-017.mp3"
+              "audio": "audio/seg-017.mp3",
+              "clauseBounds": [
+                1.1
+              ]
             },
             {
               "id": 18,
@@ -1086,7 +1122,10 @@ window.LESSON_DATA = {
               "zh": "王：真正好的东西，是吗？",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-019.mp3"
+              "audio": "audio/seg-019.mp3",
+              "clauseBounds": [
+                1.98
+              ]
             },
             {
               "id": 20,
@@ -1191,7 +1230,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "より"
               ],
-              "audio": "audio/seg-020.mp3"
+              "audio": "audio/seg-020.mp3",
+              "clauseBounds": [
+                2.83,
+                4.62
+              ]
             },
             {
               "id": 21,
@@ -1289,7 +1332,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "はずです"
               ],
-              "audio": "audio/seg-021.mp3"
+              "audio": "audio/seg-021.mp3",
+              "clauseBounds": [
+                2.73,
+                5.47
+              ]
             },
             {
               "id": 22,
@@ -1487,7 +1534,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "という"
               ],
-              "audio": "audio/seg-024.mp3"
+              "audio": "audio/seg-024.mp3",
+              "clauseBounds": [
+                2.46
+              ]
             },
             {
               "id": 25,
@@ -1584,7 +1634,11 @@ window.LESSON_DATA = {
                 "向け",
                 "向け"
               ],
-              "audio": "audio/seg-025.mp3"
+              "audio": "audio/seg-025.mp3",
+              "clauseBounds": [
+                2.6,
+                5.58
+              ]
             },
             {
               "id": 26,
@@ -1697,7 +1751,11 @@ window.LESSON_DATA = {
                 "にしか",
                 "ない"
               ],
-              "audio": "audio/seg-026.mp3"
+              "audio": "audio/seg-026.mp3",
+              "clauseBounds": [
+                3.34,
+                6.03
+              ]
             },
             {
               "id": 27,
@@ -1772,7 +1830,11 @@ window.LESSON_DATA = {
               "zh": "另一方面，即便是面向儿童的漫画，大人也能乐在其中的也不少。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-027.mp3"
+              "audio": "audio/seg-027.mp3",
+              "clauseBounds": [
+                2.36,
+                4.6
+              ]
             },
             {
               "id": 28,
@@ -1896,7 +1958,10 @@ window.LESSON_DATA = {
               "zh": "近年来，在中国，《蜡笔小新》《哆啦A梦》《樱桃小丸子》等漫画不仅受到孩子们的喜爱，也深受大人的欢迎。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-028.mp3"
+              "audio": "audio/seg-028.mp3",
+              "clauseBounds": [
+                1.3
+              ]
             }
           ]
         },
@@ -2118,7 +2183,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ものにならないほど"
               ],
-              "audio": "audio/seg-031.mp3"
+              "audio": "audio/seg-031.mp3",
+              "clauseBounds": [
+                2.61
+              ]
             },
             {
               "id": 32,
@@ -2220,7 +2288,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "とともに"
               ],
-              "audio": "audio/seg-032.mp3"
+              "audio": "audio/seg-032.mp3",
+              "clauseBounds": [
+                1.29,
+                4.91
+              ]
             },
             {
               "id": 33,
@@ -2330,7 +2402,11 @@ window.LESSON_DATA = {
               "zh": "《哆啦A梦》《蜡笔小新》等漫画也被制作成电视动画节目，获得了很高的收视率。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-033.mp3"
+              "audio": "audio/seg-033.mp3",
+              "clauseBounds": [
+                4.28,
+                7.38
+              ]
             }
           ]
         },
@@ -2478,7 +2554,11 @@ window.LESSON_DATA = {
               "zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-034.mp3"
+              "audio": "audio/seg-034.mp3",
+              "clauseBounds": [
+                1.05,
+                8.69
+              ]
             }
           ]
         },
@@ -2628,7 +2708,10 @@ window.LESSON_DATA = {
               "zh": "2001年上映的《千与千寻》，凭借其丰富的想象力和高超的表现力在世界范围内也获得了很高的评价。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-035.mp3"
+              "audio": "audio/seg-035.mp3",
+              "clauseBounds": [
+                6.54
+              ]
             }
           ]
         }

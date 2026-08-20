@@ -96,7 +96,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ご結婚おめでとうございます"
               ],
-              "audio": "audio/seg-002.mp3"
+              "audio": "audio/seg-002.mp3",
+              "clauseBounds": [
+                0.84,
+                2.13
+              ]
             },
             {
               "id": 3,
@@ -198,7 +202,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ご紹介いただきました"
               ],
-              "audio": "audio/seg-003.mp3"
+              "audio": "audio/seg-003.mp3",
+              "clauseBounds": [
+                0.53,
+                2.07
+              ]
             },
             {
               "id": 4,
@@ -311,7 +319,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "しております"
               ],
-              "audio": "audio/seg-004.mp3"
+              "audio": "audio/seg-004.mp3",
+              "clauseBounds": [
+                1.78,
+                4.41
+              ]
             },
             {
               "id": 5,
@@ -420,7 +432,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "それまで"
               ],
-              "audio": "audio/seg-005.mp3"
+              "audio": "audio/seg-005.mp3",
+              "clauseBounds": [
+                2.78
+              ]
             },
             {
               "id": 6,
@@ -560,7 +575,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "として"
               ],
-              "audio": "audio/seg-006.mp3"
+              "audio": "audio/seg-006.mp3",
+              "clauseBounds": [
+                1.91,
+                4.84
+              ]
             },
             {
               "id": 7,
@@ -810,7 +829,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "言葉どおりの"
               ],
-              "audio": "audio/seg-009.mp3"
+              "audio": "audio/seg-009.mp3",
+              "clauseBounds": [
+                1.13
+              ]
             },
             {
               "id": 10,
@@ -875,7 +897,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "どうかお幸せに"
               ],
-              "audio": "audio/seg-010.mp3"
+              "audio": "audio/seg-010.mp3",
+              "clauseBounds": [
+                0.78,
+                2.06
+              ]
             }
           ]
         },
@@ -950,7 +976,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "どうもありがとうございました"
               ],
-              "audio": "audio/seg-012.mp3"
+              "audio": "audio/seg-012.mp3",
+              "clauseBounds": [
+                0.1
+              ]
             },
             {
               "id": 13,
@@ -1038,7 +1067,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "なんだか緊張して"
               ],
-              "audio": "audio/seg-013.mp3"
+              "audio": "audio/seg-013.mp3",
+              "clauseBounds": [
+                1.21,
+                2.41
+              ]
             },
             {
               "id": 14,
@@ -1086,7 +1119,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "感激しました"
               ],
-              "audio": "audio/seg-014.mp3"
+              "audio": "audio/seg-014.mp3",
+              "clauseBounds": [
+                0.72
+              ]
             },
             {
               "id": 15,
@@ -1181,7 +1217,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ながら"
               ],
-              "audio": "audio/seg-015.mp3"
+              "audio": "audio/seg-015.mp3",
+              "clauseBounds": [
+                1.54
+              ]
             },
             {
               "id": 16,
@@ -1226,7 +1265,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "お元気ですか"
               ],
-              "audio": "audio/seg-016.mp3"
+              "audio": "audio/seg-016.mp3",
+              "clauseBounds": [
+                0.63
+              ]
             },
             {
               "id": 17,
@@ -1597,7 +1639,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "頑張ります"
               ],
-              "audio": "audio/seg-023.mp3"
+              "audio": "audio/seg-023.mp3",
+              "clauseBounds": [
+                0.34
+              ]
             },
             {
               "id": 24,
@@ -1685,7 +1730,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "また，お会いしましょう"
               ],
-              "audio": "audio/seg-025.mp3"
+              "audio": "audio/seg-025.mp3",
+              "clauseBounds": [
+                0.39
+              ]
             }
           ]
         }
@@ -1808,7 +1856,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "さまざまなスタイル"
               ],
-              "audio": "audio/seg-027.mp3"
+              "audio": "audio/seg-027.mp3",
+              "clauseBounds": [
+                1.7
+              ]
             },
             {
               "id": 28,
@@ -1996,7 +2047,12 @@ window.LESSON_DATA = {
               "blanks": [
                 "一般的なものだろう"
               ],
-              "audio": "audio/seg-028.mp3"
+              "audio": "audio/seg-028.mp3",
+              "clauseBounds": [
+                1.08,
+                5.03,
+                9.23
+              ]
             }
           ]
         },
@@ -2137,7 +2193,10 @@ window.LESSON_DATA = {
                 "からといって",
                 "とは限らない"
               ],
-              "audio": "audio/seg-029.mp3"
+              "audio": "audio/seg-029.mp3",
+              "clauseBounds": [
+                3.98
+              ]
             },
             {
               "id": 30,
@@ -2371,7 +2430,12 @@ window.LESSON_DATA = {
               "blanks": [
                 "自分の好みで"
               ],
-              "audio": "audio/seg-030.mp3"
+              "audio": "audio/seg-030.mp3",
+              "clauseBounds": [
+                2.62,
+                6.04,
+                10.52
+              ]
             },
             {
               "id": 31,
@@ -2524,7 +2588,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "設けられている"
               ],
-              "audio": "audio/seg-031.mp3"
+              "audio": "audio/seg-031.mp3",
+              "clauseBounds": [
+                2.83,
+                5.61
+              ]
             },
             {
               "id": 32,
@@ -2607,7 +2675,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "海外で挙式をする"
               ],
-              "audio": "audio/seg-032.mp3"
+              "audio": "audio/seg-032.mp3",
+              "clauseBounds": [
+                1.01
+              ]
             }
           ]
         },
@@ -2773,7 +2844,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "まとめたものである"
               ],
-              "audio": "audio/seg-033.mp3"
+              "audio": "audio/seg-033.mp3",
+              "clauseBounds": [
+                1.5
+              ]
             },
             {
               "id": 34,
@@ -2898,7 +2972,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "とともに変わってきている"
               ],
-              "audio": "audio/seg-034.mp3"
+              "audio": "audio/seg-034.mp3",
+              "clauseBounds": [
+                1.29
+              ]
             },
             {
               "id": 35,
@@ -3125,7 +3202,12 @@ window.LESSON_DATA = {
               "blanks": [
                 "のに対して"
               ],
-              "audio": "audio/seg-035.mp3"
+              "audio": "audio/seg-035.mp3",
+              "clauseBounds": [
+                13.28,
+                14.4,
+                18.56
+              ]
             },
             {
               "id": 36,
@@ -3263,7 +3345,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "3分の1まで減少した"
               ],
-              "audio": "audio/seg-036.mp3"
+              "audio": "audio/seg-036.mp3",
+              "clauseBounds": [
+                1.06,
+                5.9
+              ]
             },
             {
               "id": 37,
@@ -3371,7 +3457,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "このように"
               ],
-              "audio": "audio/seg-037.mp3"
+              "audio": "audio/seg-037.mp3",
+              "clauseBounds": [
+                1.08,
+                3.79
+              ]
             }
           ]
         },
@@ -3438,7 +3528,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "披露宴を行う"
               ],
-              "audio": "audio/seg-038.mp3"
+              "audio": "audio/seg-038.mp3",
+              "clauseBounds": [
+                2.37
+              ]
             },
             {
               "id": 39,
@@ -3538,7 +3631,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "招いて行うパーティー"
               ],
-              "audio": "audio/seg-039.mp3"
+              "audio": "audio/seg-039.mp3",
+              "clauseBounds": [
+                1.17,
+                3.02
+              ]
             },
             {
               "id": 40,
@@ -3652,7 +3749,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "4分の3近くを占めていた"
               ],
-              "audio": "audio/seg-040.mp3"
+              "audio": "audio/seg-040.mp3",
+              "clauseBounds": [
+                1.4
+              ]
             },
             {
               "id": 41,

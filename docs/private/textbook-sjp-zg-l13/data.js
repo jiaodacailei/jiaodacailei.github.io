@@ -133,7 +133,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "お忙しいところ"
               ],
-              "audio": "audio/seg-002.mp3"
+              "audio": "audio/seg-002.mp3",
+              "clauseBounds": [
+                1.4,
+                3.99
+              ]
             },
             {
               "id": 3,
@@ -169,7 +173,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "何だい"
               ],
-              "audio": "audio/seg-003.mp3"
+              "audio": "audio/seg-003.mp3",
+              "clauseBounds": [
+                0.95
+              ]
             },
             {
               "id": 4,
@@ -262,7 +269,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "折り入って"
               ],
-              "audio": "audio/seg-004.mp3"
+              "audio": "audio/seg-004.mp3",
+              "clauseBounds": [
+                1.22
+              ]
             },
             {
               "id": 5,
@@ -640,7 +650,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "引き受ける"
               ],
-              "audio": "audio/seg-009.mp3"
+              "audio": "audio/seg-009.mp3",
+              "clauseBounds": [
+                0.82,
+                4.2
+              ]
             },
             {
               "id": 10,
@@ -733,7 +747,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "もしかして"
               ],
-              "audio": "audio/seg-011.mp3"
+              "audio": "audio/seg-011.mp3",
+              "clauseBounds": [
+                1.08
+              ]
             },
             {
               "id": 12,
@@ -859,7 +876,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "離れられない"
               ],
-              "audio": "audio/seg-012.mp3"
+              "audio": "audio/seg-012.mp3",
+              "clauseBounds": [
+                2.93
+              ]
             },
             {
               "id": 13,
@@ -951,7 +971,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "会いたかった"
               ],
-              "audio": "audio/seg-013.mp3"
+              "audio": "audio/seg-013.mp3",
+              "clauseBounds": [
+                0.78,
+                2.7
+              ]
             },
             {
               "id": 14,
@@ -1113,7 +1137,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ことになりました"
               ],
-              "audio": "audio/seg-014.mp3"
+              "audio": "audio/seg-014.mp3",
+              "clauseBounds": [
+                0.87,
+                5.12
+              ]
             },
             {
               "id": 15,
@@ -1247,7 +1275,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "何と言っても"
               ],
-              "audio": "audio/seg-015.mp3"
+              "audio": "audio/seg-015.mp3",
+              "clauseBounds": [
+                2.9,
+                3.94
+              ]
             }
           ]
         }
@@ -1425,7 +1457,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "一方だが"
               ],
-              "audio": "audio/seg-017.mp3"
+              "audio": "audio/seg-017.mp3",
+              "clauseBounds": [
+                3.14
+              ]
             },
             {
               "id": 18,
@@ -1586,7 +1621,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "によると"
               ],
-              "audio": "audio/seg-018.mp3"
+              "audio": "audio/seg-018.mp3",
+              "clauseBounds": [
+                2.34,
+                5.61
+              ]
             },
             {
               "id": 19,
@@ -1730,7 +1769,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "それに対して"
               ],
-              "audio": "audio/seg-019.mp3"
+              "audio": "audio/seg-019.mp3",
+              "clauseBounds": [
+                1.26,
+                6.33
+              ]
             }
           ]
         },
@@ -1845,7 +1888,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ことにある"
               ],
-              "audio": "audio/seg-020.mp3"
+              "audio": "audio/seg-020.mp3",
+              "clauseBounds": [
+                1.73
+              ]
             },
             {
               "id": 21,
@@ -1978,7 +2024,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "と予測されている"
               ],
-              "audio": "audio/seg-021.mp3"
+              "audio": "audio/seg-021.mp3",
+              "clauseBounds": [
+                3.92
+              ]
             }
           ]
         },
@@ -2098,7 +2147,12 @@ window.LESSON_DATA = {
               "blanks": [
                 "に対する"
               ],
-              "audio": "audio/seg-022.mp3"
+              "audio": "audio/seg-022.mp3",
+              "clauseBounds": [
+                2.24,
+                2.73,
+                3.82
+              ]
             },
             {
               "id": 23,
@@ -2202,7 +2256,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "強まっている"
               ],
-              "audio": "audio/seg-023.mp3"
+              "audio": "audio/seg-023.mp3",
+              "clauseBounds": [
+                0.83,
+                4.67
+              ]
             },
             {
               "id": 24,
@@ -2377,7 +2435,12 @@ window.LESSON_DATA = {
               "blanks": [
                 "であった"
               ],
-              "audio": "audio/seg-024.mp3"
+              "audio": "audio/seg-024.mp3",
+              "clauseBounds": [
+                2.76,
+                7.75,
+                12.3
+              ]
             },
             {
               "id": 25,
@@ -2540,7 +2603,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "になると"
               ],
-              "audio": "audio/seg-025.mp3"
+              "audio": "audio/seg-025.mp3",
+              "clauseBounds": [
+                3.94
+              ]
             },
             {
               "id": 26,
@@ -2760,7 +2826,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "結婚をしても"
               ],
-              "audio": "audio/seg-027.mp3"
+              "audio": "audio/seg-027.mp3",
+              "clauseBounds": [
+                0.63,
+                1.89,
+                3.23,
+                5.62
+              ]
             },
             {
               "id": 28,
@@ -2970,7 +3042,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "に減った"
               ],
-              "audio": "audio/seg-029.mp3"
+              "audio": "audio/seg-029.mp3",
+              "clauseBounds": [
+                2.94
+              ]
             },
             {
               "id": 30,
@@ -3212,7 +3287,12 @@ window.LESSON_DATA = {
                 "わけはなく",
                 "結果が出るまでには"
               ],
-              "audio": "audio/seg-031.mp3"
+              "audio": "audio/seg-031.mp3",
+              "clauseBounds": [
+                0.96,
+                4.35,
+                5.76
+              ]
             }
           ]
         }

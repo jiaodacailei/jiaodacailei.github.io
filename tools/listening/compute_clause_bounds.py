@@ -6,7 +6,7 @@
       [--min-rise 6] [--quiet-ceiling -38] [--margin 0.0]
       [--fix] [--report report.txt]
 
-给会话/课文的每一句（有 char_times 的句子）按逗号（"，"）位置计算句内分句
+给会话/课文的每一句（有 char_times 的句子）按逗号（"，"/"、"）位置计算句内分句
 边界（`clauseBounds`），供前端"选段复读"功能精确定位到小句起止时间——
 `char_times`/`.tw[data-t]` 是跟读高亮用的，本来就容许 0.1~0.3 秒误差
 （标点字符的时间戳还是插值猜的，不是真实测量），直接拿它当播放切割点会
@@ -32,8 +32,13 @@
 `clauseBounds` 里的分句点数量可能比这句原文里的逗号数量少，这是设计如此，
 不是 bug。
 
-只处理"，"（全角逗号）——这批教材统一用这个标点分句，"、"（顿号）目前没在
-分句语义上出现过，真遇到再加。
+处理"，"（全角逗号）和"、"（日语読点）——这批教材两种写法都用过，不是同一
+课混用，是不同课整体倾向不同（真实案例：l10 全课统一用"、"，一个"，"都
+没有；l11~l16 全课统一用"，"，一个"、"都没有），当初以为只有"，"，第一次
+给l10~l16全体回填clauseBounds时才发现漏了l10——**这不是可以拍脑袋假设
+"这批教材都用同一种标点"的地方，新一课第一次跑这个脚本前，先用
+`text.count("，")`/`text.count("、")` 各自数一遍这一课实际用了哪种，不要
+凭前几课的经验想当然**。
 
 ## 运行位置
 
@@ -54,7 +59,14 @@ from audit_boundaries_quietpoint import rms_window
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-CLAUSE_PUNCT = "，"
+CLAUSE_PUNCT = "，、"
+
+
+def count_clause_punct(text):
+    """text.count(CLAUSE_PUNCT) 是数"，、"这个两字符子串出现几次，不是数
+    "文本里有几个属于这个集合的字符"——两者含义完全不同，用这个函数代替，
+    别在别处直接写 text.count(CLAUSE_PUNCT)。"""
+    return sum(text.count(ch) for ch in CLAUSE_PUNCT)
 
 
 def find_clause_bounds_for_sentence(audio_path, s, args):
@@ -71,6 +83,9 @@ def find_clause_bounds_for_sentence(audio_path, s, args):
         if i + 1 >= len(char_times):
             continue
         rough_t = char_times[i + 1]
+        if rough_t is None:
+            skipped.append((i, rough_t, "紧跟着的字符没有时间戳"))
+            continue
         lo = max(rough_t - args.search_back, s["start"] + 0.05)
         hi = min(rough_t + args.search_front, s["end"] - 0.05)
         if hi <= lo:
@@ -99,7 +114,21 @@ def find_clause_bounds_for_sentence(audio_path, s, args):
             skipped.append((i, rough_t, f"未找到确信停顿 rise={rise} min_db={min_db}"))
             continue
 
-        bounds.append(round(min_t + args.margin, 2))
+        new_bound = round(min_t + args.margin, 2)
+        # 两个相邻逗号各自的搜索窗口如果离得近、又重叠到同一个真实安静点上
+        # （比如"じゃあ，また，お会いしましょう"——"じゃあ"后面有一个明显停顿，
+        # "また"后面紧接着说，没有真实停顿——第二个逗号的窗口够到了第一个
+        # 停顿，会独立算出跟第一个逗号完全一样的边界），不能原样接受成两个
+        # 挨在一起（甚至完全重合）的分句点，那样中间会切出一段零长度/极短
+        # 的"小句"，没有实际意义。上一个已接受的边界跟这次算出来的新边界
+        # 离得太近（<0.15秒），说明这次这个逗号处很可能并没有独立于上一个
+        # 边界的真实停顿，直接跳过，不勉强产生一个贴在一起的假分句点。
+        if bounds and new_bound - bounds[-1] < 0.15:
+            skipped.append((i, rough_t, f"算出来的边界({new_bound})离上一个分句边界({bounds[-1]})太近，"
+                                         f"很可能是同一个停顿被两个逗号重复命中，跳过"))
+            continue
+
+        bounds.append(new_bound)
 
     return bounds, skipped
 
@@ -129,7 +158,7 @@ def main():
     for s in sentences:
         if not s.get("char_times"):
             continue
-        commas = s["text"].count(CLAUSE_PUNCT)
+        commas = count_clause_punct(s["text"])
         if commas == 0:
             continue
         bounds, skipped = find_clause_bounds_for_sentence(args.audio, s, args)
@@ -137,7 +166,8 @@ def main():
         total_bounds += len(bounds)
         lines.append(f'{s["id"]:4d} {s["text"][:30]:30s} 逗号{commas}处 -> clauseBounds={bounds}')
         for i, rough_t, reason in skipped:
-            lines.append(f'         跳过第{i}处逗号 (rough_t={rough_t:.2f}): {reason}')
+            rough_t_str = f'{rough_t:.2f}' if rough_t is not None else 'None'
+            lines.append(f'         跳过第{i}处逗号 (rough_t={rough_t_str}): {reason}')
         if args.fix:
             s["clauseBounds"] = bounds
 

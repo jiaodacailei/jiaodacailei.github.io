@@ -1168,14 +1168,23 @@ python tools/listening/audit_boundaries_quietpoint.py \
 用"，根因是 `char_times` 本来就只保证 0.1~0.3 秒的高亮容差（标点字符的
 时间戳还是插值猜的，不是真实测量），拿来当播放切割点精度不够。
 
-`tools/listening/compute_clause_bounds.py` 给每句话按逗号（"，"）位置
+`tools/listening/compute_clause_bounds.py` 给每句话按逗号（"，"/"、"）位置
 另算一份专门用于切割的 `clauseBounds`——复用 `audit_boundaries_quietpoint.
 py` 的响度剖面测量方法：逗号后一个字符的 `char_times` 只当粗略候选位置，
 在候选位置前后一个窗口内找真正的响度低点当精确切割点，找不到明显停顿的
 逗号（比如"赤か濃い紺色，灰色の…"这种快速列举）就不给这个逗号生成分句
-点，不勉强给一个不可靠的假边界。**在 `merge_sections.py` 合并之后、
-`build_page.py` 生成页面之前跑**（用合并后的坐标系，不用像
-`audit_boundaries_quietpoint.py` 那样按 section 分别跑）：
+点，不勉强给一个不可靠的假边界；两个相邻逗号各自算出来的边界如果离得太近
+（<0.15秒），说明大概率是同一个真实停顿被两个逗号重复命中（比如"じゃあ，
+また，お会いしましょう"——"じゃあ"后面有停顿，"また"后面紧接着说没有），
+只留第一个，不接受贴在一起甚至完全重合的两个假分句点。**在
+`merge_sections.py` 合并之后、`build_page.py` 生成页面之前跑**（用合并后
+的坐标系，不用像 `audit_boundaries_quietpoint.py` 那样按 section 分别跑）：
+
+**标点约定不能凭前几课的经验假设**（真实教训：给 l10~l16 一次性回填
+`clauseBounds` 时，一开始以为教材统一用"，"，直接漏了 l10——l10 全课句子
+统一用"、"（日语読点），一个"，"都没有，l11~l16 反过来全课统一用"，"，
+一个"、"都没有，不是同一课混用两种、是不同课整体倾向不同）。新一课第一次
+跑这个脚本前，先确认这一课实际用的是哪种标点。
 
 ```bash
 python tools/listening/compute_clause_bounds.py \
@@ -1202,11 +1211,21 @@ bounds` 属性（非 data-driven 页面），两条路径都支持。没跑过�
 
 如果后续要在编辑器里人工调整分句边界（比如脚本没找到某个真实停顿、或者
 想手动把一个长小句再切一刀），`build_boundary_editor.py`/`boundary_
-editor.html`/`apply_boundary_edits.py` 都已经支持——编辑器主面板"前边界/
-后边界"下面会多出"分句N"这一排按钮（跟前后边界同一套选中再拖的交互），
-"＋ 插入分句边界"/"🗑 删除此分句边界"两个按钮处理增删。**分句边界的改动
-不需要重切音频**（纯元数据，不影响 clip 本身切多长），保存起来比改
-前/后边界快很多。
+editor.html`/`apply_boundary_edits.py` 都已经支持——左边列表里每句话按当前
+分句边界拆成一块块可点的小句文字，直接点某一块就跳去编辑它的边界（不用先
+选中句子再去别处找按钮），"＋ 插入分句边界"点一下就直接在当前最大的一段
+空档正中间插入（自动选中、可以接着跟前/后边界一样拖/微调），"🗑 删除此
+分句边界"删掉当前选中的这个。**分句边界的改动不需要重切音频**（纯元数据，
+不影响 clip 本身切多长），保存起来比改前/后边界快很多。
+
+**已发布的课（`work/` 目录下原始 `enriched_combined.json`/合并音频可能已经
+清理，或者因为反复重新生成留了好几个互相矛盾的版本）想事后回填
+`clauseBounds`，不要去猜哪个旧文件才是最终版**——用
+`tools/listening/backfill_clause_bounds.py <slug> <mondai名> [--fix]`，
+直接从当前**已发布**的 `data.js`（`tokens[].t`）+ `audio/seg-NNN.mp3` 重建
+一份等价输入喂给同一套算法，不依赖任何 work 目录里可能过期的中间文件，
+永远反映真实线上状态（跟 `build_boundary_editor.py`/`reconstruct_and_
+audit.py` 是同一个思路）。
 
 #### 全部边界跑一遍波形图人工目视扫描（必须，覆盖数值脚本会漏检的点）
 

@@ -63,7 +63,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "お久しぶり"
               ],
-              "audio": "audio/seg-001.mp3"
+              "audio": "audio/seg-001.mp3",
+              "clauseBounds": [
+                1.19
+              ]
             },
             {
               "id": 2,
@@ -120,7 +123,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "来てくれた"
               ],
-              "audio": "audio/seg-002.mp3"
+              "audio": "audio/seg-002.mp3",
+              "clauseBounds": [
+                0.66
+              ]
             },
             {
               "id": 3,
@@ -298,7 +304,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "後にして"
               ],
-              "audio": "audio/seg-004.mp3"
+              "audio": "audio/seg-004.mp3",
+              "clauseBounds": [
+                0.61,
+                2.02
+              ]
             },
             {
               "id": 5,
@@ -354,7 +364,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "お邪魔します"
               ],
-              "audio": "audio/seg-006.mp3"
+              "audio": "audio/seg-006.mp3",
+              "clauseBounds": [
+                0.32
+              ]
             }
           ]
         },
@@ -422,7 +435,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "つまらないものですが"
               ],
-              "audio": "audio/seg-007.mp3"
+              "audio": "audio/seg-007.mp3",
+              "clauseBounds": [
+                0.54
+              ]
             },
             {
               "id": 8,
@@ -500,7 +516,10 @@ window.LESSON_DATA = {
                 "気を使わなくて",
                 "のに"
               ],
-              "audio": "audio/seg-008.mp3"
+              "audio": "audio/seg-008.mp3",
+              "clauseBounds": [
+                0.4
+              ]
             },
             {
               "id": 9,
@@ -562,7 +581,10 @@ window.LESSON_DATA = {
                 "気持ちだけ",
                 "から"
               ],
-              "audio": "audio/seg-009.mp3"
+              "audio": "audio/seg-009.mp3",
+              "clauseBounds": [
+                0.59
+              ]
             },
             {
               "id": 10,
@@ -735,7 +757,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "いただく"
               ],
-              "audio": "audio/seg-012.mp3"
+              "audio": "audio/seg-012.mp3",
+              "clauseBounds": [
+                0.91
+              ]
             },
             {
               "id": 13,
@@ -778,7 +803,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ところで"
               ],
-              "audio": "audio/seg-013.mp3"
+              "audio": "audio/seg-013.mp3",
+              "clauseBounds": [
+                0.11
+              ]
             },
             {
               "id": 14,
@@ -889,7 +917,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "やりがいを感じています"
               ],
-              "audio": "audio/seg-015.mp3"
+              "audio": "audio/seg-015.mp3",
+              "clauseBounds": [
+                0.44
+              ]
             },
             {
               "id": 16,
@@ -1020,7 +1051,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ような気がします"
               ],
-              "audio": "audio/seg-016.mp3"
+              "audio": "audio/seg-016.mp3",
+              "clauseBounds": [
+                2.98
+              ]
             },
             {
               "id": 17,
@@ -1140,7 +1174,11 @@ window.LESSON_DATA = {
                 "そうそう",
                 "連絡がある"
               ],
-              "audio": "audio/seg-018.mp3"
+              "audio": "audio/seg-018.mp3",
+              "clauseBounds": [
+                0.68,
+                2.49
+              ]
             },
             {
               "id": 19,
@@ -1256,7 +1294,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "約束をしています"
               ],
-              "audio": "audio/seg-019.mp3"
+              "audio": "audio/seg-019.mp3",
+              "clauseBounds": [
+                2.91,
+                3.71
+              ]
             },
             {
               "id": 20,
@@ -1350,7 +1392,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "勤めているそうです"
               ],
-              "audio": "audio/seg-020.mp3"
+              "audio": "audio/seg-020.mp3",
+              "clauseBounds": [
+                2.43
+              ]
             }
           ]
         },
@@ -1406,7 +1451,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "そろそろ"
               ],
-              "audio": "audio/seg-021.mp3"
+              "audio": "audio/seg-021.mp3",
+              "clauseBounds": [
+                0.62
+              ]
             },
             {
               "id": 22,
@@ -1601,7 +1649,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "無理も言えない"
               ],
-              "audio": "audio/seg-026.mp3"
+              "audio": "audio/seg-026.mp3",
+              "clauseBounds": [
+                0.4
+              ]
             },
             {
               "id": 27,
@@ -1851,7 +1902,10 @@ window.LESSON_DATA = {
                 "であり",
                 "ではない"
               ],
-              "audio": "audio/seg-032.mp3"
+              "audio": "audio/seg-032.mp3",
+              "clauseBounds": [
+                4.47
+              ]
             },
             {
               "id": 33,
@@ -1959,7 +2013,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "話すのはよくない"
               ],
-              "audio": "audio/seg-033.mp3"
+              "audio": "audio/seg-033.mp3",
+              "clauseBounds": [
+                3.01
+              ]
             },
             {
               "id": 34,
@@ -2035,7 +2092,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "までが"
               ],
-              "audio": "audio/seg-034.mp3"
+              "audio": "audio/seg-034.mp3",
+              "clauseBounds": [
+                3.54
+              ]
             },
             {
               "id": 35,
@@ -2362,7 +2422,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "書かれた"
               ],
-              "audio": "audio/seg-038.mp3"
+              "audio": "audio/seg-038.mp3",
+              "clauseBounds": [
+                0.96
+              ]
             },
             {
               "id": 39,
@@ -2516,7 +2579,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ようになる"
               ],
-              "audio": "audio/seg-039.mp3"
+              "audio": "audio/seg-039.mp3",
+              "clauseBounds": [
+                1.03,
+                3.69
+              ]
             },
             {
               "id": 40,
@@ -2724,7 +2791,13 @@ window.LESSON_DATA = {
                 "のことで",
                 "を問わず"
               ],
-              "audio": "audio/seg-040.mp3"
+              "audio": "audio/seg-040.mp3",
+              "clauseBounds": [
+                1.84,
+                5.57,
+                7.15,
+                9.63
+              ]
             },
             {
               "id": 41,
@@ -2847,7 +2920,10 @@ window.LESSON_DATA = {
                 "といっても",
                 "わけではない"
               ],
-              "audio": "audio/seg-041.mp3"
+              "audio": "audio/seg-041.mp3",
+              "clauseBounds": [
+                2.5
+              ]
             },
             {
               "id": 42,
@@ -3041,7 +3117,13 @@ window.LESSON_DATA = {
                 "だが",
                 "しかいない"
               ],
-              "audio": "audio/seg-042.mp3"
+              "audio": "audio/seg-042.mp3",
+              "clauseBounds": [
+                2.68,
+                4.99,
+                7.25,
+                10.0
+              ]
             },
             {
               "id": 43,
@@ -3130,7 +3212,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "ことから始まる"
               ],
-              "audio": "audio/seg-043.mp3"
+              "audio": "audio/seg-043.mp3",
+              "clauseBounds": [
+                2.28
+              ]
             },
             {
               "id": 44,
@@ -3253,7 +3338,10 @@ window.LESSON_DATA = {
                 "見たり",
                 "訪問したりして"
               ],
-              "audio": "audio/seg-044.mp3"
+              "audio": "audio/seg-044.mp3",
+              "clauseBounds": [
+                1.95
+              ]
             },
             {
               "id": 45,
@@ -3459,7 +3547,11 @@ window.LESSON_DATA = {
                 "と",
                 "なければならない"
               ],
-              "audio": "audio/seg-046.mp3"
+              "audio": "audio/seg-046.mp3",
+              "clauseBounds": [
+                0.97,
+                2.45
+              ]
             },
             {
               "id": 47,
@@ -3560,7 +3652,11 @@ window.LESSON_DATA = {
                 "だけでなく",
                 "と"
               ],
-              "audio": "audio/seg-047.mp3"
+              "audio": "audio/seg-047.mp3",
+              "clauseBounds": [
+                3.05,
+                3.89
+              ]
             },
             {
               "id": 48,
@@ -3791,7 +3887,11 @@ window.LESSON_DATA = {
                 "始めて",
                 "できるよう"
               ],
-              "audio": "audio/seg-049.mp3"
+              "audio": "audio/seg-049.mp3",
+              "clauseBounds": [
+                1.21,
+                5.79
+              ]
             }
           ]
         }

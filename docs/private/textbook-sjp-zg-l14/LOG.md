@@ -77,3 +77,15 @@
 不涉及边界/音频，不需要重新走生成流程。扫了全站已发布页面确认没有其它
 课程受影响（n2-exam-2020-12里也有一个"短"字条目，读たん，是单字/无送
 假名的场景，不触发这个坑）。
+
+## 补跑 compute_clause_bounds.py，回填"选段复读"用的句内分句边界
+
+同 l13 这次一起做的背景说明（选段复读重做，`clauseBounds` 字段用途）——
+这一课 `work/` 下 `enriched_combined.json` 有8个版本（2~8+原始），同样改用
+`tools/listening/backfill_clause_bounds.py` 从已发布 `data.js`+`audio/`
+直接重建输入，不猜哪个版本是最终版。
+
+会话：30句，21处逗号，找到19处确信边界（16句写入clauseBounds）。
+课文：19句，23处逗号，找到23处确信边界（13句写入clauseBounds）。
+报告见 `tools/listening/work/textbook-sjp-zg-l14/clause_backfill_{会话,课文}/report.txt`。
+跳过项抽查合理（同l13），直接 `--fix` 写回，未逐句听音频复核（理由同l13）。

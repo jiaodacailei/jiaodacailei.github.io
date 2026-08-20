@@ -608,3 +608,16 @@ Web Audio自己的`loopStart`/`loopEnd`处理循环，不会被系统自动重�
   这类"连续短词流"场景下Whisper的可靠性本来就低于自然句子（这一课
   以及此前几课已经反复验证过这个规律），不能作为"内容缺失"的证据；
   真正能确认内容是否缺失的是上面RMS峰值扫描，不是逐词核对转写文本。
+
+## 补跑 compute_clause_bounds.py，回填"选段复读"用的句内分句边界
+
+背景同l13/l14条目（选段复读重做，`clauseBounds` 字段用途）。这一课
+`work/textbook-sjp-zg-l15/` 下 `enriched_combined.json`/`combined.m4a` 还在，
+但为了跟其它几课处理方式一致（保证一定反映当前线上真实状态），统一改用
+`tools/listening/backfill_clause_bounds.py` 从已发布 `data.js`+`audio/`
+重建输入，没有直接用work目录里的旧文件。
+
+会话：31句，21处逗号，找到17处确信边界（14句写入clauseBounds）。
+课文：19句，23处逗号，找到19处确信边界（11句写入clauseBounds）。
+报告见 `tools/listening/work/textbook-sjp-zg-l15/clause_backfill_{会话,课文}/report.txt`。
+跳过项抽查合理，直接 `--fix` 写回，未逐句听音频复核（理由同l13）。

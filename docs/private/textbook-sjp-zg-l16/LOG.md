@@ -179,3 +179,21 @@ occurrence 避开）+authored_examples.json（51词人工补写例句）覆盖�
 tab 分类数量核对：全部296题(74词×4)、会话相关24题(6词×4)、课文相关68题
 (17词×4)，均对得上例句来源覆盖情况；填空题实测挖空位置正确（"その中でも，
 ____での「神前結婚式」…"正确挖空"神社"）。
+
+## 补跑 compute_clause_bounds.py，回填"选段复读"用的句内分句边界
+
+背景同l13/l14/l15条目（选段复读重做，`clauseBounds` 字段用途）。这一课是
+`compute_clause_bounds.py` 算法开发阶段的验证用例（直接用
+`work/textbook-sjp-zg-l16/enriched_combined.json`+`combined.m4a` 反复测试
+过，含一次真实bug修复：两个相邻逗号的搜索窗口重叠到同一个安静点时会算出
+完全重复的边界，比如"じゃあ，また，お会いしましょう"只有"じゃあ"后面有
+真实停顿，"また"后面紧跟着说——加了"新边界离上一个已接受边界<0.15秒就跳过"
+的去重判断）。这次为了跟其它几课流程一致，改用
+`tools/listening/backfill_clause_bounds.py`（从已发布 `data.js`+`audio/`
+重建，不依赖work目录）重新跑，验证过跟直接用原始 `enriched_combined.json`
++`combined.m4a` 跑的结果高度一致（对比过跳过的逗号、rise/min_db数值，
+只有音频编解码细节导致的0.1dB量级微小差异，判断/结论完全一样）。
+
+会话：25句，23处逗号，找到20处确信边界（14句写入clauseBounds）。
+课文：16句，25处逗号，找到24处确信边界（14句写入clauseBounds）。
+报告见 `tools/listening/work/textbook-sjp-zg-l16/clause_backfill_{会话,课文}/report.txt`。
