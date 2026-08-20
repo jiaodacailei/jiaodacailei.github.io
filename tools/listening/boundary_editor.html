@@ -731,24 +731,43 @@
   }
 
   // 点"+ 插入分句边界"直接插入，不需要先"进入插入模式"再去画布上找位置点——
-  // 新点插到当前最大的一段"还没被分句边界切开的空档"正中间（本句起止点也
-  // 算在内，没有任何分句边界时就是整句正中间），插入后立刻切换成选中这个
-  // 新点、画布也会自动以它为中心居中显示，接下来跟前/后边界完全一样，直接
-  // 拖画布/按方向键/改输入框精调，不用先摸清楚"该点哪"。
+  // 新点插到当前最大的一段"还没被分句边界切开的空档"里，插入后立刻切换成
+  // 选中这个新点、画布也会自动以它为中心居中显示，接下来跟前/后边界完全
+  // 一样，直接拖画布/按方向键/改输入框精调，不用先摸清楚"该点哪"。
+  //
+  // 落点不能直接取这段空档的几何正中间——真实案例：l14课文第38句
+  // "これは，就職活動をする学生のために書かれたガイドブックの一部である。"，
+  // 默认落点选中的空档响度数值上确实偏安静，但那段安静其实是"れた"这个词
+  // 自己发音过程里"た"字爆破前的闭塞段（清音塞音发音本身就包含一小段真实
+  // 静音，不是词与词之间的停顿），正中间正好切在"れた"念到一半的地方——
+  // 响度剖面分不出"两个词之间的真停顿"和"某个字发音过程里必然经过的闭塞段"，
+  // 两者长得一模一样。改成优先贴着 timedTokens 里真实存在的词边界走：在这段
+  // 空档内，找哪个词的开始时间最接近空档正中间，落点定在这个词开始之前一点，
+  // 保证新边界至少落在两个不同词之间，不会切进某一个词自己发音的过程里。
+  // 空档内一个词都没有（少见，比如本来就是静音空档）才退回几何正中间。
   function insertClauseDefault() {
     const s = curS();
     if (!s) return;
     const points = [s.curStart, ...s.curClauseBounds.slice().sort((a, b) => a - b), s.curEnd];
-    let bestGap = -1, bestMid = (s.curStart + s.curEnd) / 2;
+    let bestGap = -1, gapLo = s.curStart, gapHi = s.curEnd;
     for (let i = 0; i < points.length - 1; i++) {
       const gap = points[i + 1] - points[i];
-      if (gap > bestGap) { bestGap = gap; bestMid = (points[i] + points[i + 1]) / 2; }
+      if (gap > bestGap) { bestGap = gap; gapLo = points[i]; gapHi = points[i + 1]; }
     }
-    bestMid = Math.round(bestMid * 1000) / 1000;
-    s.curClauseBounds.push(bestMid);
+    const mid = (gapLo + gapHi) / 2;
+    const toksInGap = (s.timedTokens || []).filter(t => t.t !== null && t.t > gapLo && t.t < gapHi);
+    let newBound;
+    if (toksInGap.length) {
+      const nearest = toksInGap.reduce((a, b) => Math.abs(b.t - mid) < Math.abs(a.t - mid) ? b : a);
+      newBound = Math.min(Math.max(nearest.t - 0.02, gapLo + 0.02), gapHi - 0.02);
+    } else {
+      newBound = mid;
+    }
+    newBound = Math.round(newBound * 1000) / 1000;
+    s.curClauseBounds.push(newBound);
     s.curClauseBounds.sort((a, b) => a - b);
     activeEdge = 'clause';
-    activeClauseIdx = s.curClauseBounds.indexOf(bestMid);
+    activeClauseIdx = s.curClauseBounds.indexOf(newBound);
     syncBoundaryInput();
     draw();
     renderList();
