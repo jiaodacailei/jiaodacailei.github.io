@@ -3,7 +3,7 @@
 用法：
   python compute_clause_bounds.py <enriched_combined.json> <合并后的音频>
       [--search-back 0.4] [--search-front 0.4] [--frame-ms 5]
-      [--min-rise 6] [--quiet-ceiling -38] [--margin 0.0]
+      [--min-rise 6] [--quiet-ceiling -28] [--margin 0.0]
       [--fix] [--report report.txt]
 
 给会话/课文的每一句（有 char_times 的句子）按逗号（"，"/"、"）位置计算句内分句
@@ -31,6 +31,21 @@
 只会让"选段复读"切进相邻小句的内容里，比完全不切分更糟。这意味着
 `clauseBounds` 里的分句点数量可能比这句原文里的逗号数量少，这是设计如此，
 不是 bug。
+
+**`--quiet-ceiling` 默认值不能直接照抄 `audit_boundaries_quietpoint.py`
+的经验**（那个工具默认关注的是"两句之间"的死空气，真实案例测过能到
+-45~-57dB）——第一版直接照抄成 `-38`，结果给 l10~l16 全体回填时，10处
+"未找到确信停顿"的跳过，`rise` 全部在16.4~25.4dB（远超 `--min-rise`默认
+的6，是很明确的响度骤降，不是"说话中相对没那么响的一瞬间"），但
+`min_db` 全部落在-30.2~-37.7 之间，被 `-38` 挡在外面。**句内逗号处的
+停顿本质上不是"两句之间的死空气"，是连续说话中间的一口气/短暂停顿，
+呼吸声/环境底噪不会完全消失，天然到不了-45dB这种量级，用同一个绝对
+阈值是张冠李戴**——已经改成 `-28`（覆盖了目前观察到的全部真实停顿案例，
+仍然保留一定安全边际，不是直接关掉这个判据）。如果以后新一课又出现
+"rise很高但被quiet-ceiling挡住"的情况，先看rise是不是也明显（这个信号
+本身已经足够可靠，因为高rise要求窗口里必须真的出现过响亮说话的内容，
+不是两边都安静的噪声波动），再考虑要不要继续调这个默认值，不要不看
+数据直接改。
 
 处理"，"（全角逗号）和"、"（日语読点）——这批教材两种写法都用过，不是同一
 课混用，是不同课整体倾向不同（真实案例：l10 全课统一用"、"，一个"，"都
@@ -142,7 +157,7 @@ def main():
     ap.add_argument("--search-front", type=float, default=0.4)
     ap.add_argument("--min-rise", type=float, default=6.0,
                      help="quiet_min 比候选位置响度低出这个值（dB）才算找到真实停顿")
-    ap.add_argument("--quiet-ceiling", type=float, default=-38.0,
+    ap.add_argument("--quiet-ceiling", type=float, default=-28.0,
                      help="quiet_min 自己的响度必须低于这个值（dB）才算真的安静")
     ap.add_argument("--margin", type=float, default=0.0)
     ap.add_argument("--fix", action="store_true", help="把结果写回 enriched_json 的 clauseBounds 字段")

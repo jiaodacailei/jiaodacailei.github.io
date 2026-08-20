@@ -134,7 +134,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "久しぶり"
               ],
-              "audio": "audio/seg-004.mp3"
+              "audio": "audio/seg-004.mp3",
+              "clauseBounds": [
+                0.6
+              ]
             },
             {
               "id": 5,
@@ -1176,6 +1179,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-022.mp3",
               "clauseBounds": [
+                1.75,
                 2.89,
                 4.68
               ]

@@ -217,7 +217,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "せっかく"
               ],
-              "audio": "audio/seg-003.mp3"
+              "audio": "audio/seg-003.mp3",
+              "clauseBounds": [
+                1.39
+              ]
             },
             {
               "id": 4,

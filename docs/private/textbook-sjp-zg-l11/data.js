@@ -309,7 +309,8 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-005.mp3",
               "clauseBounds": [
-                3.88
+                3.88,
+                4.84
               ]
             },
             {

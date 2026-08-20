@@ -490,6 +490,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-008.mp3",
               "clauseBounds": [
+                1.51,
                 5.29,
                 8.89
               ]
@@ -525,7 +526,10 @@ window.LESSON_DATA = {
               "zh": "这么说来，也是呢。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-009.mp3"
+              "audio": "audio/seg-009.mp3",
+              "clauseBounds": [
+                1.3
+              ]
             },
             {
               "id": 10,
@@ -1061,7 +1065,8 @@ window.LESSON_DATA = {
               "audio": "audio/seg-017.mp3",
               "clauseBounds": [
                 0.93,
-                1.52
+                1.52,
+                3.82
               ]
             },
             {
@@ -1283,7 +1288,10 @@ window.LESSON_DATA = {
               "zh": "那真是恭喜您了。",
               "notes": "",
               "blanks": [],
-              "audio": "audio/seg-023.mp3"
+              "audio": "audio/seg-023.mp3",
+              "clauseBounds": [
+                1.44
+              ]
             }
           ]
         },
