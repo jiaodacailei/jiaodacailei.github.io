@@ -64,7 +64,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-001.mp3",
               "clauseBounds": [
-                1.23
+                1.21
               ]
             },
             {
@@ -120,8 +120,8 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-002.mp3",
               "clauseBounds": [
-                1.16,
-                3.47
+                1.14,
+                3.45
               ]
             },
             {
@@ -210,7 +210,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-003.mp3",
               "clauseBounds": [
-                1.36
+                1.34
               ]
             },
             {
@@ -311,11 +311,11 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-004.mp3",
               "clauseBounds": [
-                0.1,
-                2.26,
-                3.11,
-                3.66,
-                4.17
+                0.08,
+                2.24,
+                3.09,
+                3.64,
+                4.15
               ]
             },
             {
@@ -414,9 +414,9 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-005.mp3",
               "clauseBounds": [
-                1.2,
-                4.1,
-                5.03
+                1.18,
+                4.08,
+                5.01
               ]
             },
             {
@@ -580,7 +580,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-009.mp3",
               "clauseBounds": [
-                1.26
+                1.24
               ]
             }
           ]
@@ -683,7 +683,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-011.mp3",
               "clauseBounds": [
-                1.4
+                1.37
               ]
             },
             {
@@ -727,7 +727,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-012.mp3",
               "clauseBounds": [
-                0.64
+                0.62
               ]
             },
             {
@@ -794,8 +794,8 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-013.mp3",
               "clauseBounds": [
-                1.12,
-                2.67
+                1.1,
+                2.65
               ]
             },
             {
@@ -899,9 +899,9 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-014.mp3",
               "clauseBounds": [
-                0.6,
-                2.7,
-                3.93
+                0.57,
+                2.68,
+                3.91
               ]
             },
             {
@@ -1017,9 +1017,9 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-015.mp3",
               "clauseBounds": [
-                1.12,
-                5.19,
-                9.71
+                1.1,
+                5.17,
+                9.69
               ]
             },
             {
@@ -1054,7 +1054,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-016.mp3",
               "clauseBounds": [
-                0.94
+                0.92
               ]
             },
             {
@@ -1121,7 +1121,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-017.mp3",
               "clauseBounds": [
-                2.46
+                2.44
               ]
             }
           ]
@@ -1262,8 +1262,8 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-018.mp3",
               "clauseBounds": [
-                0.99,
-                4.27
+                0.97,
+                4.25
               ]
             },
             {
@@ -1369,7 +1369,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-019.mp3",
               "clauseBounds": [
-                1.51
+                1.49
               ]
             },
             {
@@ -1455,8 +1455,8 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-020.mp3",
               "clauseBounds": [
-                1.21,
-                2.93
+                1.19,
+                2.91
               ]
             },
             {
@@ -1534,7 +1534,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-021.mp3",
               "clauseBounds": [
-                2.18
+                2.16
               ]
             },
             {
@@ -1631,9 +1631,9 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-022.mp3",
               "clauseBounds": [
-                2.16,
-                4.06,
-                6.63
+                2.14,
+                4.04,
+                6.61
               ]
             }
           ]
@@ -1705,7 +1705,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-023.mp3",
               "clauseBounds": [
-                0.8
+                0.78
               ]
             },
             {
@@ -1773,7 +1773,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-024.mp3",
               "clauseBounds": [
-                1.4
+                1.38
               ]
             },
             {
@@ -1954,10 +1954,10 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-026.mp3",
               "clauseBounds": [
-                1.22,
-                2.75,
-                4.81,
-                8.86
+                1.2,
+                2.73,
+                4.79,
+                8.84
               ]
             }
           ]
@@ -2027,7 +2027,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-027.mp3",
               "clauseBounds": [
-                1.53
+                1.51
               ]
             },
             {
@@ -2151,7 +2151,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-028.mp3",
               "clauseBounds": [
-                1.59
+                1.57
               ]
             },
             {
@@ -2270,7 +2270,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-029.mp3",
               "clauseBounds": [
-                8.39
+                8.37
               ]
             },
             {
@@ -2421,7 +2421,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-031.mp3",
               "clauseBounds": [
-                2.79
+                2.77
               ]
             },
             {
@@ -2508,7 +2508,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-032.mp3",
               "clauseBounds": [
-                1.64
+                1.62
               ]
             },
             {
@@ -2619,7 +2619,7 @@ window.LESSON_DATA = {
               "blanks": [],
               "audio": "audio/seg-033.mp3",
               "clauseBounds": [
-                4.45
+                4.43
               ]
             },
             {
@@ -2741,9 +2741,9 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-034.mp3",
               "clauseBounds": [
-                4.04,
-                7.39,
-                9.04
+                4.02,
+                7.37,
+                9.02
               ]
             },
             {

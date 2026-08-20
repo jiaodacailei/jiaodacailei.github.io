@@ -3,7 +3,7 @@
 用法：
   python compute_clause_bounds.py <enriched_combined.json> <合并后的音频>
       [--search-back 0.4] [--search-front 0.4] [--frame-ms 5]
-      [--min-rise 6] [--quiet-ceiling -28] [--margin 0.0]
+      [--min-rise 6] [--quiet-ceiling -28] [--margin -0.02]
       [--fix] [--report report.txt]
 
 给会话/课文的每一句（有 char_times 的句子）按逗号（"，"/"、"）位置计算句内分句
@@ -46,6 +46,21 @@
 本身已经足够可靠，因为高rise要求窗口里必须真的出现过响亮说话的内容，
 不是两边都安静的噪声波动），再考虑要不要继续调这个默认值，不要不看
 数据直接改。
+
+**`--margin` 默认改成 `-0.02`（往安静区间靠前一点），不是 `0`**——真实
+案例：l14会话第6句"では，お邪魔します。"，算出来的边界(10.28)其实已经
+落在真实安静区间里（人工核实过响度剖面，10.25~10.32这段确实是"では"
+说完到"お"开始之间的真实停顿），但"お"这个token自己的时间戳（10.27）
+比这个边界还早了0.01秒——这不是边界算错了，是"お"的时间戳本身有已知
+的0.1~0.3秒误差（跟`char_times`/`.tw[data-t]`的老问题同一个根），只是
+这次误差方向恰好让它显得"没跟着逗号切"，编辑器侧栏预览会把"お"分到前一
+个小句去，看着不对。**全量扫过一遍已发布的291处边界，21处（约7%）
+"边界后面紧跟着的下一个token时间戳"落在边界30毫秒以内**，都是同一类
+"看着没跟着切"的显示问题。往安静区间前段靠一点（而不是取安静区间的
+正中间或靠后）不只是为了让预览好看——**这个方向对播放本身也更安全**：
+"选段复读"循环起点往前挪一点，等于给下一个字开口前多留一点点停顿缓冲，
+不会有任何风险把内容切掉；反过来往后挪才会有切进下一个字开头的风险。
+两个理由都指向同一个方向，所以直接改默认值，不是单纯为了糊弄显示层。
 
 处理"，"（全角逗号）和"、"（日语読点）——这批教材两种写法都用过，不是同一
 课混用，是不同课整体倾向不同（真实案例：l10 全课统一用"、"，一个"，"都
@@ -129,7 +144,10 @@ def find_clause_bounds_for_sentence(audio_path, s, args):
             skipped.append((i, rough_t, f"未找到确信停顿 rise={rise} min_db={min_db}"))
             continue
 
-        new_bound = round(min_t + args.margin, 2)
+        # margin 可能是负的（往安静区间前段靠），min_t 本身已经贴着 lo/hi 夹出来的
+        # 安全窗口边缘时，加上 margin 有可能越界，夹回 [lo, hi] 内，不越过已经验证
+        # 过安全的搜索范围。
+        new_bound = round(min(max(min_t + args.margin, lo), hi), 2)
         # 两个相邻逗号各自的搜索窗口如果离得近、又重叠到同一个真实安静点上
         # （比如"じゃあ，また，お会いしましょう"——"じゃあ"后面有一个明显停顿，
         # "また"后面紧接着说，没有真实停顿——第二个逗号的窗口够到了第一个
@@ -159,7 +177,7 @@ def main():
                      help="quiet_min 比候选位置响度低出这个值（dB）才算找到真实停顿")
     ap.add_argument("--quiet-ceiling", type=float, default=-28.0,
                      help="quiet_min 自己的响度必须低于这个值（dB）才算真的安静")
-    ap.add_argument("--margin", type=float, default=0.0)
+    ap.add_argument("--margin", type=float, default=-0.02)
     ap.add_argument("--fix", action="store_true", help="把结果写回 enriched_json 的 clauseBounds 字段")
     ap.add_argument("--report", default=None)
     args = ap.parse_args()

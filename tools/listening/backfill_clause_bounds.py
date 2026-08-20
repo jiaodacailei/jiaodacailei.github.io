@@ -88,7 +88,7 @@ class _Args:
     frame_ms = 5
     min_rise = 6.0
     quiet_ceiling = -28.0  # 见 compute_clause_bounds.py 文档字符串里对这个默认值改动的详细说明
-    margin = 0.0
+    margin = -0.02  # 见 compute_clause_bounds.py 文档字符串里对这个默认值改动的详细说明
 
 
 def main():
