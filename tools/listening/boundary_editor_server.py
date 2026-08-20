@@ -171,8 +171,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             print(f"[apply] slug={slug} tab={tab} edits={payload.get('edits')}")
             result = apply_edits(slug_dir_of(slug), work_dir_of(slug, tab), payload)
             print(f"[apply] slug={slug} tab={tab} 落地完成，touched={[t['id'] for t in result['touched']]}, "
-                  f"clauseBoundsTouched={[t['id'] for t in result.get('clauseBoundsTouched', [])]}")
-            if result["touched"] or result.get("clauseBoundsTouched"):
+                  f"clauseBoundsTouched={[t['id'] for t in result.get('clauseBoundsTouched', [])]}, "
+                  f"tokenOverridesTouched={[t['id'] for t in result.get('tokenOverridesTouched', [])]}")
+            if result["touched"] or result.get("clauseBoundsTouched") or result.get("tokenOverridesTouched"):
                 # 落地成功，立刻刷新这个 slug+tab 的 work 目录，下次 GET
                 # manifest.json 或者切回这一课都不会读到过期状态——clauseBounds-only
                 # 的改动虽然不重切音频，但也会让缓存在 work 目录里的 manifest.json

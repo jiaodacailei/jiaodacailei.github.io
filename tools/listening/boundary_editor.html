@@ -61,6 +61,11 @@
   .clause-chip:hover { background: #33363d; }
   .clause-chip.active { background: var(--accent2); color: #201200; border-bottom-color: var(--accent2); }
   .clause-sep { color: var(--dim); margin: 0 1px; }
+  .tok { cursor: pointer; border-bottom: 1px dotted transparent; }
+  .tok:hover { border-bottom-color: var(--dim); }
+  .tok-static { cursor: default; color: var(--dim); }
+  .tok-static:hover { border-bottom-color: transparent; }
+  .tok-active { background: #a06fd6; color: #fff; border-radius: 2px; border-bottom-color: #a06fd6; }
   .gap-note {
     display: inline-block; margin-left: 6px; font-size: 10px; color: var(--modified);
     font-weight: 600;
@@ -274,7 +279,15 @@
       拖到哪，靠画布上方那个深色小框实时预览："照当前位置，左边会是……右边
       会是……"，跟着拖动一起刷新，看文字刚好在你想要的地方断开就对了，不用
       凭空猜音频位置。分句边界改动**不会重切音频**（只是同一段 clip 内部的
-      标记，不影响 clip 本身切多长），保存起来比改前/后边界快很多。
+      标记，不影响 clip 本身切多长），保存起来比改前/后边界快很多。<br>
+      <b>单个词自己的时间戳</b>：小句文字里每个词底下有个虚线下划线（标点等
+      没有自己独立时间戳的字不能点），<b>直接点这个词</b>就能单独编辑它自己
+      的读音时间——遇到"这个词的时间戳跟相邻词撞在一起/算错了，导致它明明
+      读音在后面却显示到前一个小句里"这种小瑕疵时用这个修，跟拖前/后边界一样
+      拖画布/方向键/输入框微调，只能在紧邻的前后两个（有时间戳的）词之间移动，
+      不会撞到别的词头上。<b>这个时间戳线上同时驱动"选段复读"的分句预览
+      和听力页播放时的跟读高亮</b>，改这里两处会一起修好，不是只影响这个
+      编辑器自己的显示。
     </div>
   </div>
 </div>
@@ -371,14 +384,21 @@
   // tools/listening/compute_clause_bounds.py），跟 curStart/curEnd 是同一个坐标系
   // （相对 merged.mp3 的绝对偏移），manifest.sentences[].clauseBounds 没有这个字段
   // 的句子（没跑过那个脚本，或者本来就是没有 char_times 的生词条目）初始化成空数组。
+  // curTimedTokens 同理——每个词自己的时间戳可能因为 char_times 插值坍缩而错误
+  // （真实案例：l14课文"して"和"初"被记成完全相同的时间戳，"初"实际该在哪要靠
+  // 人工听感核实），允许直接在编辑器里改这个词自己的 t，因为 tokens[].t 同时
+  // 也是听力页正常播放时"跟读高亮"的数据源，改这里两处会一起修好，不是只影响
+  // 分句预览这一处显示。
   const sentences = manifest.sentences.map(s => ({
     ...s, curStart: s.start, curEnd: s.end,
     curClauseBounds: (s.clauseBounds || []).slice(),
+    curTimedTokens: (s.timedTokens || []).map(t => ({...t})),
   }));
 
   let selected = sentences.length ? 0 : -1; // 句子下标（不是"边界"/"间隙"下标）
-  let activeEdge = 'start'; // 'start' | 'end' | 'clause' —— 当前编辑的是本句的前边界/后边界/第几个分句边界
+  let activeEdge = 'start'; // 'start' | 'end' | 'clause' | 'token' —— 当前编辑的是本句的前边界/后边界/第几个分句边界/第几个词自己的时间戳
   let activeClauseIdx = -1; // activeEdge === 'clause' 时，对应 curClauseBounds 的下标
+  let activeTokenIdx = -1; // activeEdge === 'token' 时，对应 curTimedTokens 的下标
   let windowHalf = 0.6;
   let dragging = false;
   let currentSource = null;
@@ -399,6 +419,14 @@
     if (orig.length !== cur.length) return true;
     return orig.some((t, i) => Math.abs(t - cur[i]) > 0.0005);
   }
+  function isTokenModified(s) {
+    if (!s.curTimedTokens) return false;
+    return s.curTimedTokens.some((tok, idx) => {
+      const orig = (s.timedTokens || [])[idx];
+      if (!orig || orig.t === null || orig.t === undefined) return false;
+      return Math.abs(tok.t - orig.t) > 0.0005;
+    });
+  }
   function neighborBefore() { return selected > 0 ? sentences[selected - 1] : null; }
   function neighborAfter() { return selected < sentences.length - 1 ? sentences[selected + 1] : null; }
 
@@ -416,17 +444,29 @@
   // 没到下一个分句边界，就继续算在"当前"这一段里，不管这个t具体是多少（哪怕
   // 是负数），没有t的token（比如换行符）也直接归到"当前"这一段，不会丢。
   function clauseTexts(s) {
-    if (!s.timedTokens || !s.timedTokens.length) return null;
+    const groups = clauseTokenGroups(s);
+    if (!groups) return null;
+    return groups.map(g => g.map(x => x.text).join('') || '…');
+  }
+
+  // 跟 clauseTexts() 同一套分组逻辑，但保留每个 token 自己在 curTimedTokens
+  // 里的下标——侧栏渲染分句块要把每个词单独包一层可点的 span（点单个词能
+  // 单独编辑这个词自己的时间戳，见 selectToken()），只返回拼好的字符串做
+  // 不到这件事。用 curTimedTokens（可编辑的副本）不是 timedTokens（只读原始
+  // 值）——改完某个词的时间戳，这里的分组要跟着立刻重算，不然改的效果自己
+  // 都看不出来。
+  function clauseTokenGroups(s) {
+    if (!s.curTimedTokens || !s.curTimedTokens.length) return null;
     const bounds = s.curClauseBounds.slice().sort((a, b) => a - b);
-    const segs = new Array(bounds.length + 1).fill('');
+    const groups = Array.from({ length: bounds.length + 1 }, () => []);
     let segIdx = 0;
-    s.timedTokens.forEach(tok => {
+    s.curTimedTokens.forEach((tok, idx) => {
       if (tok.t !== null && tok.t !== undefined) {
         while (segIdx < bounds.length && tok.t >= bounds[segIdx] - 0.001) segIdx++;
       }
-      segs[segIdx] += tok.text;
+      groups[segIdx].push({ text: tok.text, idx, t: tok.t });
     });
-    return segs.map(seg => seg || '…');
+    return groups;
   }
 
   function renderList() {
@@ -446,20 +486,34 @@
       // 直接跳去编辑那块的左边界（第1块点了跳去编辑"前边界"，因为第1块的
       // 左边就是整句的开始点）；没有分句边界时照旧显示整句纯文本，点哪里
       // 都是选中这句本身（保留原来"点这一行选中这一句"的行为）。
-      const segs = clauseTexts(s);
+      //
+      // 分句块内部每个真实词（有时间戳的）再单独包一层可点的span——点单个
+      // 词是编辑这个词自己的时间戳（见 selectToken()，真实案例：l14课文
+      // "して"和"初"被记成同一个时间戳，"初"显示错了位置，只能靠人工核实
+      // 后手动改这个词自己的t才能修好，不是改分句边界能解决的）。标点
+      // （逗号/句号，没有时间戳）不单独可点，点击会照旧冒泡给分句块自己，
+      // 效果还是跳到这块的边界——分句块本身的点击行为完全不变。
+      const groups = clauseTokenGroups(s);
       let textHtml;
-      if (segs && s.curClauseBounds.length > 0) {
-        textHtml = '<div class="text clause-chips">' + segs.map((seg, k) => {
+      if (groups) {
+        textHtml = '<div class="text clause-chips">' + groups.map((group, k) => {
           const isActive = i === selected &&
             ((k === 0 && activeEdge === 'start') || (k > 0 && activeEdge === 'clause' && activeClauseIdx === k - 1));
-          return `<span class="clause-chip${isActive ? ' active' : ''}" data-chip="${k}">${escapeHtml(seg)}</span>`;
+          const inner = group.map(tok => {
+            const editable = tok.t !== null && tok.t !== undefined;
+            const tokActive = editable && i === selected && activeEdge === 'token' && activeTokenIdx === tok.idx;
+            const cls = 'tok' + (editable ? '' : ' tok-static') + (tokActive ? ' tok-active' : '');
+            const attr = editable ? ` data-tok-idx="${tok.idx}"` : '';
+            return `<span class="${cls}"${attr}>${escapeHtml(tok.text)}</span>`;
+          }).join('') || '…';
+          return `<span class="clause-chip${isActive ? ' active' : ''}" data-chip="${k}">${inner}</span>`;
         }).join('<span class="clause-sep">｜</span>') + '</div>';
       } else {
         textHtml = `<div class="text">${escapeHtml(s.text)}</div>`;
       }
 
       row.innerHTML = `
-        <div class="ids">#${s.id}${clauseMod ? '<span class="gap-note">分句已改</span>' : ''}</div>
+        <div class="ids">#${s.id}${clauseMod ? '<span class="gap-note">分句已改</span>' : ''}${isTokenModified(s) ? '<span class="gap-note">读音时间已改</span>' : ''}</div>
         ${textHtml}
         <div class="time-line">
           <span class="edge-start">前${s.curStart.toFixed(2)}s</span>
@@ -478,6 +532,12 @@
           const range = [edges[k], edges[k + 1]];
           if (k === 0) selectSentenceAtEdge(i, 'start', -1, range);
           else selectSentenceAtEdge(i, 'clause', k - 1, range);
+        });
+      });
+      row.querySelectorAll('.tok[data-tok-idx]').forEach(tokEl => {
+        tokEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectToken(i, parseInt(tokEl.dataset.tokIdx, 10));
         });
       });
       list.appendChild(row);
@@ -502,6 +562,7 @@
     selected = i;
     activeEdge = edge;
     activeClauseIdx = clauseIdx;
+    activeTokenIdx = -1;
     syncBoundaryInput();
     renderList();
     renderClauseSelect();
@@ -511,6 +572,30 @@
     if (!s) return;
     const [t0, t1] = playRangeOverride || [s.curStart, s.curEnd];
     playRange(t0, t1, false);
+  }
+
+  // 点侧栏某个词，进入"编辑这个词自己的时间戳"模式——跟分句边界/前后边界
+  // 是同一套选中再拖的交互，只是编辑对象换成单个词的 t。播放范围取这个词
+  // 自己到下一个有时间戳的词之间（跳过没有t的标点），让人能只听这一个词，
+  // 判断它到底该在哪。
+  function selectToken(i, idx) {
+    selected = i;
+    activeEdge = 'token';
+    activeClauseIdx = -1;
+    activeTokenIdx = idx;
+    syncBoundaryInput();
+    renderList();
+    renderClauseSelect();
+    scrollSelectedIntoView();
+    draw();
+    const s = curS();
+    if (!s) return;
+    const toks = s.curTimedTokens;
+    let endT = s.curEnd;
+    for (let j = idx + 1; j < toks.length; j++) {
+      if (toks[j].t !== null && toks[j].t !== undefined) { endT = toks[j].t; break; }
+    }
+    playRange(toks[idx].t, endT, false);
   }
 
   function scrollSelectedIntoView() {
@@ -523,6 +608,7 @@
     const s = curS(); if (!s) return 0;
     if (activeEdge === 'start') return s.curStart;
     if (activeEdge === 'end') return s.curEnd;
+    if (activeEdge === 'token') return s.curTimedTokens[activeTokenIdx].t;
     return s.curClauseBounds[activeClauseIdx];
   }
 
@@ -555,18 +641,24 @@
     $('#pair-label').innerHTML = `#${s.id} <span class="dim">"${escapeHtml(s.text)}"</span>`;
 
     const nb = neighborBefore(), na = neighborAfter();
-    // 相邻那句挨着这一侧的边界，只用来参照，不能拖——分句边界没有"相邻句子"这个
-    // 概念（是同一句内部的分割点），gap/neighborEdge 相关逻辑对它不适用。
+    // 相邻那句挨着这一侧的边界，只用来参照，不能拖——分句边界/单词时间戳都没有
+    // "相邻句子"这个概念（都是同一句内部的点），gap/neighborEdge 相关逻辑对它们
+    // 都不适用。
     const isClause = activeEdge === 'clause';
-    const neighborEdge = isClause ? null
+    const isToken = activeEdge === 'token';
+    const neighborEdge = (isClause || isToken) ? null
       : (activeEdge === 'start' ? (nb ? nb.curEnd : 0) : (na ? na.curStart : buffer.duration));
-    const gap = isClause ? 0 : (activeEdge === 'start' ? (s.curStart - neighborEdge) : (neighborEdge - s.curEnd));
+    const gap = (isClause || isToken) ? 0 : (activeEdge === 'start' ? (s.curStart - neighborEdge) : (neighborEdge - s.curEnd));
     if (isClause) {
       const bounds = s.curClauseBounds;
       const lo = activeClauseIdx === 0 ? s.curStart : bounds[activeClauseIdx - 1];
       const hi = activeClauseIdx === bounds.length - 1 ? s.curEnd : bounds[activeClauseIdx + 1];
       $('#pair-sub').textContent = `本句第 ${activeClauseIdx + 1}/${bounds.length} 个分句边界，` +
         `左侧 ${lo.toFixed(2)}s ~ 右侧 ${hi.toFixed(2)}s 之间可拖动（"选段复读"精确定位小句用，见 compute_clause_bounds.py）`;
+    } else if (isToken) {
+      const toks = s.curTimedTokens;
+      $('#pair-sub').textContent = `正在编辑"${toks[activeTokenIdx].text}"这个词自己的时间戳——同时是` +
+        `"选段复读"分句预览和听力页跟读高亮共用的数据，改这里两处会一起修好`;
     } else if (gap > 0.005) {
       $('#pair-sub').textContent = `本句${activeEdge === 'start' ? '前边界' : '后边界'}跟相邻那句之间留了 ${gap.toFixed(2)}s 空白，` +
         `不属于任何一句（可以点"播放邻近空白"确认这段真的是静音）`;
@@ -586,6 +678,13 @@
       $('#clause-preview').innerHTML =
         `<span class="side-label">照当前位置，左边会是：</span>"<span class="left-text">${escapeHtml(leftText)}</span>"　` +
         `<span class="side-label">右边会是：</span>"<span class="right-text">${escapeHtml(rightText)}</span>"`;
+    } else if (isToken) {
+      const toks = s.curTimedTokens;
+      const before = toks.slice(Math.max(0, activeTokenIdx - 4), activeTokenIdx).map(t => t.text).join('');
+      const after = toks.slice(activeTokenIdx + 1, activeTokenIdx + 5).map(t => t.text).join('');
+      $('#clause-preview').innerHTML =
+        `<span class="side-label">上下文：</span>${escapeHtml(before)}` +
+        `<span class="left-text">【${escapeHtml(toks[activeTokenIdx].text)}】</span>${escapeHtml(after)}`;
     } else {
       $('#clause-preview').innerHTML = '';
     }
@@ -636,15 +735,36 @@
     // original position of the active edge (dashed amber) if changed —— 分句边界
     // 插入/删除之后下标跟原始数组对不上，不画这条参照线（用"重置"按钮整体复原）
     if (!isClause) {
-      const origVal = activeEdge === 'start' ? s.start : s.end;
-      if (Math.abs(activeValue() - origVal) > 0.0005 && origVal >= winStart && origVal <= winEnd) {
+      const origVal = isToken ? (s.timedTokens[activeTokenIdx] && s.timedTokens[activeTokenIdx].t)
+        : (activeEdge === 'start' ? s.start : s.end);
+      if (origVal !== null && origVal !== undefined &&
+          Math.abs(activeValue() - origVal) > 0.0005 && origVal >= winStart && origVal <= winEnd) {
         const x = timeToX(origVal);
         ctx.strokeStyle = '#ffce54'; ctx.setLineDash([5, 4]);
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); ctx.setLineDash([]);
       }
     }
 
-    if (!isClause) {
+    if (isToken) {
+      // 单词编辑模式下的参照线：本句自己的前后边界，以及前后相邻的、有时间戳的
+      // 词自己的位置——帮助判断这个词该往哪边挪、挪多少还留在合理范围内
+      ctx.strokeStyle = '#3a4048';
+      [s.curStart, s.curEnd].forEach(t => {
+        if (t >= winStart && t <= winEnd) {
+          const x = timeToX(t);
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+      });
+      ctx.strokeStyle = '#a06fd6';
+      s.curTimedTokens.forEach((tok, idx) => {
+        if (idx === activeTokenIdx) return;
+        if (tok.t === null || tok.t === undefined) return;
+        if (tok.t >= winStart && tok.t <= winEnd) {
+          const x = timeToX(tok.t);
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+      });
+    } else if (!isClause) {
       // neighbor's touching edge (faint gray, reference only)
       if (neighborEdge >= winStart && neighborEdge <= winEnd) {
         const x = timeToX(neighborEdge);
@@ -714,7 +834,7 @@
       const newEnd = Math.min(Math.max(t, lo), hi);
       s.curEnd = newEnd;
       if (na && newEnd > na.curStart) na.curStart = newEnd;
-    } else {
+    } else if (activeEdge === 'clause') {
       // 分句边界：只在"同一句内部相邻的两个点（或本句自己的起止）"之间夹住，
       // 不影响任何别的句子——没有 ripple 概念，因为分句边界本来就不是任何
       // 别的句子的属性。
@@ -722,6 +842,19 @@
       const lo = (activeClauseIdx === 0 ? s.curStart : bounds[activeClauseIdx - 1]) + 0.01;
       const hi = (activeClauseIdx === bounds.length - 1 ? s.curEnd : bounds[activeClauseIdx + 1]) - 0.01;
       bounds[activeClauseIdx] = Math.min(Math.max(t, lo), hi);
+    } else {
+      // 单个词自己的时间戳：只在"前后相邻的、有时间戳的词"之间夹住（没有t的
+      // 标点跳过不算），保证改完之后词的顺序还是跟原文一致，不会调换到别的
+      // 词前面去。
+      const toks = s.curTimedTokens;
+      let lo = s.curStart, hi = s.curEnd;
+      for (let j = activeTokenIdx - 1; j >= 0; j--) {
+        if (toks[j].t !== null && toks[j].t !== undefined) { lo = toks[j].t + 0.01; break; }
+      }
+      for (let j = activeTokenIdx + 1; j < toks.length; j++) {
+        if (toks[j].t !== null && toks[j].t !== undefined) { hi = toks[j].t - 0.01; break; }
+      }
+      toks[activeTokenIdx].t = Math.min(Math.max(t, lo), hi);
     }
     syncBoundaryInput();
     draw();
@@ -761,7 +894,7 @@
     const gapLo = segIdx === 0 ? s.curStart : bounds[segIdx - 1];
     const gapHi = segIdx >= bounds.length ? s.curEnd : bounds[segIdx];
     const mid = (gapLo + gapHi) / 2;
-    const toksInGap = (s.timedTokens || []).filter(t => t.t !== null && t.t > gapLo && t.t < gapHi);
+    const toksInGap = (s.curTimedTokens || []).filter(t => t.t !== null && t.t > gapLo && t.t < gapHi);
     let newBound;
     if (toksInGap.length) {
       const nearest = toksInGap.reduce((a, b) => Math.abs(b.t - mid) < Math.abs(a.t - mid) ? b : a);
@@ -955,7 +1088,10 @@
     if (!s) return;
     if (activeEdge === 'start') s.curStart = s.start;
     else if (activeEdge === 'end') s.curEnd = s.end;
-    else {
+    else if (activeEdge === 'token') {
+      const orig = (s.timedTokens || [])[activeTokenIdx];
+      if (orig && orig.t !== null && orig.t !== undefined) s.curTimedTokens[activeTokenIdx].t = orig.t;
+    } else {
       // 分句边界插入/删除之后下标跟原始数组对不上，"重置"整体复原这句的
       // 全部分句边界，不是只复原当前这一个点。
       s.curClauseBounds = (s.clauseBounds || []).slice();
@@ -992,7 +1128,13 @@
     else if (e.key === 'ArrowRight') { nudge(e.shiftKey ? 0.05 : 0.01); e.preventDefault(); }
     else if (e.key === 'ArrowUp') { if (selected > 0) selectSentence(selected - 1); e.preventDefault(); }
     else if (e.key === 'ArrowDown') { if (selected < sentences.length - 1) selectSentence(selected + 1); e.preventDefault(); }
-    else if (e.key === 'Tab') { activeEdge = activeEdge === 'start' ? 'end' : 'start'; syncBoundaryInput(); draw(); e.preventDefault(); }
+    else if (e.key === 'Tab') {
+      if (activeEdge === 'start' || activeEdge === 'end') {
+        activeEdge = activeEdge === 'start' ? 'end' : 'start';
+        syncBoundaryInput(); draw();
+      }
+      e.preventDefault();
+    }
     else if (e.key === ' ') {
       e.preventDefault();
       if (e.repeat) return; // 按住不放时操作系统会持续发送keydown，不能每次都重新从头播放
@@ -1005,19 +1147,28 @@
   });
 
   function updateExportCount() {
-    const n = sentences.filter(s => isModified(s) || isClauseModified(s)).length;
+    const n = sentences.filter(s => isModified(s) || isClauseModified(s) || isTokenModified(s)).length;
     $('#save-main-btn').textContent = `💾 保存 (${n})`;
     $('#save-main-btn').disabled = n === 0;
     $('#export-btn').disabled = n === 0;
   }
 
   function buildEditsPayload() {
-    const edits = sentences.filter(s => isModified(s) || isClauseModified(s)).map(s => {
+    const edits = sentences.filter(s => isModified(s) || isClauseModified(s) || isTokenModified(s)).map(s => {
       const e = { id: s.id };
       if (Math.abs(s.curStart - s.start) > 0.0005) e.start = Math.round(s.curStart * 1000) / 1000;
       if (Math.abs(s.curEnd - s.end) > 0.0005) e.end = Math.round(s.curEnd * 1000) / 1000;
       if (isClauseModified(s)) {
         e.clauseBounds = s.curClauseBounds.slice().sort((a, b) => a - b).map(t => Math.round(t * 1000) / 1000);
+      }
+      if (isTokenModified(s)) {
+        e.tokenOverrides = s.curTimedTokens
+          .map((tok, idx) => ({ tok, idx }))
+          .filter(({ tok, idx }) => {
+            const orig = (s.timedTokens || [])[idx];
+            return orig && orig.t !== null && orig.t !== undefined && Math.abs(tok.t - orig.t) > 0.0005;
+          })
+          .map(({ tok, idx }) => ({ idx, t: Math.round(tok.t * 1000) / 1000 }));
       }
       return e;
     });

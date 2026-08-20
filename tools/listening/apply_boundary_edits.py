@@ -19,6 +19,7 @@ token 时间戳同步进 `data.js`。
       {"id": 30, "end": 76.30},
       {"id": 31, "start": 76.30},
       {"id": 32, "clauseBounds": [82.10, 84.55]},
+      {"id": 48, "tokenOverrides": [{"idx": 12, "t": 34.98}]},
       ...
     ]
   }
@@ -45,6 +46,16 @@ token 时间戳同步进 `data.js`。
 算）。一个 id 如果这次没有显式带 `clauseBounds`、但 `start` 改了，已有的
 分句边界会按跟 `tokens[].t` 完全一样的方式整体平移（clip 起点往后挪
 delta，句内偏移量整体减 delta），不用每次改边界都重新标一遍分句点。
+
+`tokenOverrides`（单个词自己的读音时间戳——`boundary_editor.html` 里点某个
+词单独拖出来的订正，不是整句/整个分句的批量平移）：`[{"idx":, "t":}, ...]`，
+`idx` 是这个 id 在 `data.js` 里 `tokens` 数组的下标（跟 manifest 的
+`timedTokens` 下标一一对应），`t` 是跟 `clauseBounds` 同一个坐标系（相对
+`merged.mp3` 的绝对偏移，不是相对 clip 自己起点的本地偏移）。换算时用的
+也是这条 edit 应用之后的**新** start（同一批如果这句的起点也挪了，不用
+手动重算）。跟同一个 id 的整句起点平移（`touched_ids` 那段逻辑）会叠加
+时，顺序是**先按 delta 整体平移全部 token，再用这里的显式值覆盖被指名的
+那几个**——所以显式给的 `tokenOverrides` 值不会被那次整体平移二次偏移。
 
 跑完之后**仍然要走 SKILL.md 规定的最终验证**（`audit_boundaries_
 quietpoint.py` + 拼接转写）——这个脚本只保证"按你标的新边界忠实切"，
@@ -133,6 +144,7 @@ def apply_edits(slug_dir, work_dir, payload):
 
     missing_ids = []
     clause_edits_by_id = {}
+    token_edits_by_id = {}
     for e in edits:
         sid = e["id"]
         if sid not in by_id:
@@ -144,6 +156,8 @@ def apply_edits(slug_dir, work_dir, payload):
             by_id[sid]["end"] = e["end"]
         if "clauseBounds" in e:
             clause_edits_by_id[sid] = e["clauseBounds"]
+        if "tokenOverrides" in e:
+            token_edits_by_id[sid] = e["tokenOverrides"]
 
     if missing_ids:
         raise RuntimeError(f"这些 edit 引用的 id 在 manifest 里找不到（先重新生成一遍 manifest 再改）: {missing_ids}")
@@ -152,7 +166,7 @@ def apply_edits(slug_dir, work_dir, payload):
         sid for sid, (ostart, oend) in original_by_id.items()
         if by_id[sid]["start"] != ostart or by_id[sid]["end"] != oend
     })
-    if not touched_ids and not clause_edits_by_id:
+    if not touched_ids and not clause_edits_by_id and not token_edits_by_id:
         return {"touched": [], "data_js_updated": False, "message": "所有 edits 应用后跟原始状态一样，没有需要落地的改动"}
 
     data, _ = load_lesson_data(slug_dir)
@@ -225,13 +239,34 @@ def apply_edits(slug_dir, work_dir, payload):
                 s.pop("clauseBounds", None)
             clause_report.append({"id": sid, "clauseBounds": rel_bounds})
 
+    token_override_report = []
+    if has_token_timing:
+        for sid, overrides in token_edits_by_id.items():
+            s = find_sentence(data, tab, sid)
+            if s is None:
+                token_override_report.append({"id": sid, "error": "data.js 里没找到这个id，token时间戳没能同步"})
+                continue
+            new_start = by_id[sid]["start"]  # 同一批 edits 如果也挪了这句的起点，按挪动后的新起点换算
+            toks = s.get("tokens", [])
+            touched_idxs = []
+            for ov in overrides:
+                idx = ov["idx"]
+                if idx < 0 or idx >= len(toks):
+                    token_override_report.append({"id": sid, "error": f"token idx {idx} 超出范围（这句共{len(toks)}个token）"})
+                    continue
+                toks[idx]["t"] = round(ov["t"] - new_start, 2)
+                touched_idxs.append(idx)
+            if touched_idxs:
+                token_override_report.append({"id": sid, "tokenIdx": touched_idxs})
+
     data_js_updated = False
-    if has_token_timing and (touched_ids or clause_edits_by_id):
+    if has_token_timing and (touched_ids or clause_edits_by_id or token_edits_by_id):
         save_lesson_data(slug_dir, data)
         data_js_updated = True
 
     return {
         "touched": touched_report, "clauseBoundsTouched": clause_report,
+        "tokenOverridesTouched": token_override_report,
         "data_js_updated": data_js_updated, "message": None,
     }
 
@@ -270,6 +305,12 @@ def main():
                 else f"  [token时间戳整体平移 {t['token_shift']:+.3f}s]"
         print(f"  id {t['id']}: [{t['old_start']:.3f},{t['old_end']:.3f}] -> "
               f"[{t['new_start']:.3f},{t['new_end']:.3f}]{note}")
+
+    for t in result.get("tokenOverridesTouched", []):
+        if "error" in t:
+            print(f"  [警告] id {t['id']}: {t['error']}")
+        else:
+            print(f"  id {t['id']}: token idx {t['tokenIdx']} 时间戳已手动订正")
 
     if result["data_js_updated"]:
         print("data.js 已更新（token时间戳同步）")
