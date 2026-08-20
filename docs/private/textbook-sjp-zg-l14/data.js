@@ -497,7 +497,8 @@ window.LESSON_DATA = {
               "zh": "哎呀，用不着这么费心的嘛！",
               "notes": "「気を使う」＝费心，用心，留意。",
               "blanks": [
-                "気を使わなくて"
+                "気を使わなくて",
+                "のに"
               ],
               "audio": "audio/seg-008.mp3"
             },
@@ -558,7 +559,8 @@ window.LESSON_DATA = {
               "zh": "不是的，真的只是一点心意。",
               "notes": "",
               "blanks": [
-                "気持ちだけ"
+                "気持ちだけ",
+                "から"
               ],
               "audio": "audio/seg-009.mp3"
             },
@@ -671,7 +673,7 @@ window.LESSON_DATA = {
               "zh": "那太高兴了！",
               "notes": "",
               "blanks": [
-                "うれしい"
+                "うれしいな"
               ],
               "audio": "audio/seg-011.mp3"
             },
@@ -1135,6 +1137,7 @@ window.LESSON_DATA = {
               "zh": "对了，大学时代的朋友们现在还有联系吗？",
               "notes": "",
               "blanks": [
+                "そうそう",
                 "連絡がある"
               ],
               "audio": "audio/seg-018.mp3"
