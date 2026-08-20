@@ -3631,7 +3631,7 @@ window.LESSON_DATA = {
                 {
                   "text": "初",
                   "kana": "はじ",
-                  "t": 1.33
+                  "t": 2.07
                 },
                 {
                   "text": "めて",
@@ -3680,7 +3680,10 @@ window.LESSON_DATA = {
                 "て初めて",
                 "ことになる"
               ],
-              "audio": "audio/seg-048.mp3"
+              "audio": "audio/seg-048.mp3",
+              "clauseBounds": [
+                1.92
+              ]
             },
             {
               "id": 49,
@@ -3822,7 +3825,10 @@ window.LESSON_DATA = {
                 "始めて",
                 "できるよう"
               ],
-              "audio": "audio/seg-049.mp3"
+              "audio": "audio/seg-049.mp3",
+              "clauseBounds": [
+                5.55
+              ]
             }
           ]
         }
