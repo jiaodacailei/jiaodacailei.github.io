@@ -195,9 +195,15 @@
     var quizSentenceAttr = s.quizSentence
       ? ' data-quiz-sentence="' + esc(s.quizSentence) + '"'
       : "";
+    // 跟 build_page.py 的 sentence_card_html() 里 clause_bounds_attr 一一对应——
+    // 见 tools/listening/build_page.py 的 sentence_to_data() 注释。
+    var clauseBoundsAttr = "";
+    if (s.clauseBounds && s.clauseBounds.length) {
+      clauseBoundsAttr = ' data-clause-bounds="' + s.clauseBounds.join(",") + '"';
+    }
 
     return (
-      '<div class="' + cardClass + '" id="card-a' + s.id + '"' + blanksAttr + quizSentenceAttr + ">" +
+      '<div class="' + cardClass + '" id="card-a' + s.id + '"' + blanksAttr + quizSentenceAttr + clauseBoundsAttr + ">" +
         speakerHtml +
         '<p class="seg-ja">' + jaHtml + "</p>" +
         '<p class="seg-zh">' + zh + "</p>" + notesHtml +

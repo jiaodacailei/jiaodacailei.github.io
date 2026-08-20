@@ -170,10 +170,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
             # 想查"到底是哪一课被存了、存了什么"完全没法追溯——真实踩过的坑
             print(f"[apply] slug={slug} tab={tab} edits={payload.get('edits')}")
             result = apply_edits(slug_dir_of(slug), work_dir_of(slug, tab), payload)
-            print(f"[apply] slug={slug} tab={tab} 落地完成，touched={[t['id'] for t in result['touched']]}")
-            if result["touched"]:
+            print(f"[apply] slug={slug} tab={tab} 落地完成，touched={[t['id'] for t in result['touched']]}, "
+                  f"clauseBoundsTouched={[t['id'] for t in result.get('clauseBoundsTouched', [])]}")
+            if result["touched"] or result.get("clauseBoundsTouched"):
                 # 落地成功，立刻刷新这个 slug+tab 的 work 目录，下次 GET
-                # manifest.json 或者切回这一课都不会读到过期状态
+                # manifest.json 或者切回这一课都不会读到过期状态——clauseBounds-only
+                # 的改动虽然不重切音频，但也会让缓存在 work 目录里的 manifest.json
+                # 里的 clauseBounds 字段过期，同样要刷新（apply_edits() 自己读的
+                # 是这份缓存文件当"编辑前"的基准，不重新生成的话下一次 /apply
+                # 会拿着过期的 clauseBounds 基准去算，可能把已经保存过的改动覆盖掉）
                 build_editor_data(slug_dir_of(slug), tab, work_dir_of(slug, tab))
             self._json(200, {"ok": True, **result})
         except Exception as e:

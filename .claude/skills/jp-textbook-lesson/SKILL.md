@@ -1160,6 +1160,54 @@ python tools/listening/audit_boundaries_quietpoint.py \
 
 **改完不能只信这个工具自己报告"改好了"，还要做下面这一步终验**：
 
+#### 句内分句边界（"选段复读"精度）：`compute_clause_bounds.py`（会话/课文建议跑，生词表跳过）
+
+背景：`docs/js/listening-page.js` 的"选段复读"功能（跟读模式下选中一句话
+里的某个小句单独循环播放）早期直接拿单词的跟读高亮时间戳（`char_times`/
+`tokens[].t`）当选段起止点——真实反馈"选择的单词和发音对不上，基本不好
+用"，根因是 `char_times` 本来就只保证 0.1~0.3 秒的高亮容差（标点字符的
+时间戳还是插值猜的，不是真实测量），拿来当播放切割点精度不够。
+
+`tools/listening/compute_clause_bounds.py` 给每句话按逗号（"，"）位置
+另算一份专门用于切割的 `clauseBounds`——复用 `audit_boundaries_quietpoint.
+py` 的响度剖面测量方法：逗号后一个字符的 `char_times` 只当粗略候选位置，
+在候选位置前后一个窗口内找真正的响度低点当精确切割点，找不到明显停顿的
+逗号（比如"赤か濃い紺色，灰色の…"这种快速列举）就不给这个逗号生成分句
+点，不勉强给一个不可靠的假边界。**在 `merge_sections.py` 合并之后、
+`build_page.py` 生成页面之前跑**（用合并后的坐标系，不用像
+`audit_boundaries_quietpoint.py` 那样按 section 分别跑）：
+
+```bash
+python tools/listening/compute_clause_bounds.py \
+  tools/listening/work/<slug>/enriched_combined.json <合并后的音频> \
+  --report tools/listening/work/<slug>/clause_bounds_report.txt
+# 报告看着没问题（大多数逗号都找到了合理的分句点，少数被跳过的看着确实
+# 像快速列举没有真实停顿）再加 --fix 真正写回 clauseBounds 字段：
+python tools/listening/compute_clause_bounds.py \
+  tools/listening/work/<slug>/enriched_combined.json <合并后的音频> --fix
+```
+
+跑完 `--fix` 之后再走 `build_page.py`——`sentence_to_data()`/
+`sentence_card_html()` 会自动把 `clauseBounds` 换算成每句 clip 自己的
+相对时间，写进 `data.js`（data-driven 页面）或者烘焙成 `data-clause-
+bounds` 属性（非 data-driven 页面），两条路径都支持。没跑过这个脚本的
+句子（`clauseBounds` 缺失）"选段复读"会退化成"整句只有一个小句"（点哪个
+词都是选中并播放整句），不会报错，也不影响已发布的旧课。
+
+**这一步是可选的增强，不是必做项**——`clauseBounds` 缺失只是让"选段
+复读"精度退化到"按整句选"，不影响其它任何功能（跟读高亮、默写、填空
+都完全不依赖这个字段）。但只要这一课有会话/课文（带逗号的长句），跑一下
+成本很低（不需要额外转写，复用已经算好的 `char_times`），建议常规纳入
+流程，放在 `merge_sections.py` 之后、`build_page.py` 之前。
+
+如果后续要在编辑器里人工调整分句边界（比如脚本没找到某个真实停顿、或者
+想手动把一个长小句再切一刀），`build_boundary_editor.py`/`boundary_
+editor.html`/`apply_boundary_edits.py` 都已经支持——编辑器主面板"前边界/
+后边界"下面会多出"分句N"这一排按钮（跟前后边界同一套选中再拖的交互），
+"＋ 插入分句边界"/"🗑 删除此分句边界"两个按钮处理增删。**分句边界的改动
+不需要重切音频**（纯元数据，不影响 clip 本身切多长），保存起来比改
+前/后边界快很多。
+
 #### 全部边界跑一遍波形图人工目视扫描（必须，覆盖数值脚本会漏检的点）
 
 真实背景（textbook-sjp-zg-l14）：用户自己在 `boundary_editor.html` 里

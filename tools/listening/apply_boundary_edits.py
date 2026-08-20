@@ -18,19 +18,33 @@ token 时间戳同步进 `data.js`。
     "edits": [
       {"id": 30, "end": 76.30},
       {"id": 31, "start": 76.30},
+      {"id": 32, "clauseBounds": [82.10, 84.55]},
       ...
     ]
   }
 
-每条 edit 只描述"这个 id 自己的 start/end 改到了哪"（只带真正拖动过
-的那个字段，没拖过的字段不出现），**两句之间允许留空隙**——`start`/
-`end` 是每句自己独立的属性，不要求相邻两句的"前一句end"跟"后一句
-start"必须相等，这是编辑器特意的设计（用户反馈过："如果两句之间空白
-很多，岂不是空白必须放入某句中去"——旧版本把一个边界值同时当成两句
-共用的唯一切点，确实有这个问题，新版本改成两个独立值，中间可以留白，
-谁都不占）。脚本从 `manifest.json` 里的原始 start/end 出发，用同一个
-id 的多条 edit（同一句的 start 和 end 可能出现在不同 edit 里）叠加
-出每个受影响 id 最终的 [start, end]。
+每条 edit 只描述"这个 id 自己改到了哪"（只带真正改过的字段，没改过的
+字段不出现），**两句之间允许留空隙**——`start`/`end` 是每句自己独立的
+属性，不要求相邻两句的"前一句end"跟"后一句start"必须相等，这是编辑器
+特意的设计（用户反馈过："如果两句之间空白很多，岂不是空白必须放入
+某句中去"——旧版本把一个边界值同时当成两句共用的唯一切点，确实有这个
+问题，新版本改成两个独立值，中间可以留白，谁都不占）。脚本从
+`manifest.json` 里的原始 start/end 出发，用同一个 id 的多条 edit
+（同一句的 start 和 end 可能出现在不同 edit 里）叠加出每个受影响 id
+最终的 [start, end]。
+
+`clauseBounds`（跟读句内分句边界，`docs/js/listening-page.js`"选段复读"
+用来精确定位小句起止时间——见 `compute_clause_bounds.py`）**不需要重切
+音频**：分句边界只是同一个 clip 内部的一个纯元数据标记，不像 start/end
+那样决定音频文件切多长，改这个不触发 ffmpeg。给的是`manifest.json`同一个
+坐标系（相对 `merged.mp3` 的绝对偏移）下的完整新数组（不是增量），空数组
+表示这句没有（或者删光了）内部分句点，落地时换算成相对这句自己 clip 起点
+的偏移写回 `data.js` 的 `clauseBounds` 字段。跟同一条 edit 里的 `start`
+一起出现时，换算用的是这条 edit 应用之后的**新** start（如果句子本身的
+起点也在同一批改动里挪动了，分句边界数值不用跟着手动重算，脚本按新起点
+算）。一个 id 如果这次没有显式带 `clauseBounds`、但 `start` 改了，已有的
+分句边界会按跟 `tokens[].t` 完全一样的方式整体平移（clip 起点往后挪
+delta，句内偏移量整体减 delta），不用每次改边界都重新标一遍分句点。
 
 跑完之后**仍然要走 SKILL.md 规定的最终验证**（`audit_boundaries_
 quietpoint.py` + 拼接转写）——这个脚本只保证"按你标的新边界忠实切"，
@@ -118,6 +132,7 @@ def apply_edits(slug_dir, work_dir, payload):
     original_by_id = {s["id"]: (s["start"], s["end"]) for s in manifest["sentences"]}
 
     missing_ids = []
+    clause_edits_by_id = {}
     for e in edits:
         sid = e["id"]
         if sid not in by_id:
@@ -127,6 +142,8 @@ def apply_edits(slug_dir, work_dir, payload):
             by_id[sid]["start"] = e["start"]
         if "end" in e:
             by_id[sid]["end"] = e["end"]
+        if "clauseBounds" in e:
+            clause_edits_by_id[sid] = e["clauseBounds"]
 
     if missing_ids:
         raise RuntimeError(f"这些 edit 引用的 id 在 manifest 里找不到（先重新生成一遍 manifest 再改）: {missing_ids}")
@@ -135,62 +152,88 @@ def apply_edits(slug_dir, work_dir, payload):
         sid for sid, (ostart, oend) in original_by_id.items()
         if by_id[sid]["start"] != ostart or by_id[sid]["end"] != oend
     })
-    if not touched_ids:
-        return {"touched": [], "data_js_updated": False, "message": "所有 edits 应用后跟原始边界一样，没有需要重切的文件"}
-
-    audio_dir = os.path.join(slug_dir, "audio")
-    example_file = None
-    for sid in touched_ids:
-        p = os.path.join(audio_dir, f"seg-{sid:03d}.mp3")
-        if os.path.exists(p):
-            example_file = p
-            break
-    sr, ch, br = probe_format(example_file) if example_file else ("48000", "1", "128000")
+    if not touched_ids and not clause_edits_by_id:
+        return {"touched": [], "data_js_updated": False, "message": "所有 edits 应用后跟原始状态一样，没有需要落地的改动"}
 
     data, _ = load_lesson_data(slug_dir)
     has_token_timing = manifest.get("hasTokenTiming", tab != "生词")
 
+    # start/end 真的变了的 id 才需要重切音频（clauseBounds 是纯元数据，不
+    # 触发 ffmpeg——见脚本文档字符串）。
     touched_report = []
-    for sid in touched_ids:
-        old_start, old_end = original_by_id[sid]
-        new_start, new_end = by_id[sid]["start"], by_id[sid]["end"]
-        if new_end <= new_start:
-            raise RuntimeError(f"id {sid} 算出来的新区间 [{new_start}, {new_end}] 不合法（起点>=终点），中止")
-        out = os.path.join(audio_dir, f"seg-{sid:03d}.mp3")
-        subprocess.run(
-            [FFMPEG, "-y", "-ss", str(new_start), "-t", str(new_end - new_start),
-             "-i", os.path.abspath(merged_path),
-             "-ar", sr, "-ac", ch, "-b:a", f"{int(br) // 1000}k" if br.isdigit() else "128k",
-             out],
-            capture_output=True
-        )
-        token_shift = None
-        if has_token_timing and abs(new_start - old_start) > 0.0005:
+    if touched_ids:
+        audio_dir = os.path.join(slug_dir, "audio")
+        example_file = None
+        for sid in touched_ids:
+            p = os.path.join(audio_dir, f"seg-{sid:03d}.mp3")
+            if os.path.exists(p):
+                example_file = p
+                break
+        sr, ch, br = probe_format(example_file) if example_file else ("48000", "1", "128000")
+
+        for sid in touched_ids:
+            old_start, old_end = original_by_id[sid]
+            new_start, new_end = by_id[sid]["start"], by_id[sid]["end"]
+            if new_end <= new_start:
+                raise RuntimeError(f"id {sid} 算出来的新区间 [{new_start}, {new_end}] 不合法（起点>=终点），中止")
+            out = os.path.join(audio_dir, f"seg-{sid:03d}.mp3")
+            subprocess.run(
+                [FFMPEG, "-y", "-ss", str(new_start), "-t", str(new_end - new_start),
+                 "-i", os.path.abspath(merged_path),
+                 "-ar", sr, "-ac", ch, "-b:a", f"{int(br) // 1000}k" if br.isdigit() else "128k",
+                 out],
+                capture_output=True
+            )
+            token_shift = None
+            if has_token_timing and abs(new_start - old_start) > 0.0005:
+                s = find_sentence(data, tab, sid)
+                if s is None:
+                    token_shift = "警告：data.js 里没找到这个id，token时间戳没能同步"
+                else:
+                    delta = round(new_start - old_start, 3)
+                    # token.t 是"相对clip起点的本地偏移"；clip起点往后挪 delta（delta>0），
+                    # 同一段真实内容的本地偏移量要跟着往前减 delta，不是加——
+                    # 加号是反的，会把跟读高亮整体往错误方向搬（真实案例：textbook-sjp-zg-l15
+                    # 课文id33，正确应该落在~0.02s附近，加号版本算出1.73/2.61，验证时直接跟
+                    # RMS量出来的真实起振点对不上，靠这个交叉核对才揪出来）
+                    for tok in s.get("tokens", []):
+                        if "t" in tok:
+                            tok["t"] = round(tok["t"] - delta, 2)
+                    # clauseBounds 同样是"相对clip起点的本地偏移"，起点挪动时要跟着
+                    # 整体平移——除非这次 edits 里这个 id 也显式带了新的 clauseBounds
+                    # （下面单独处理，以显式值为准，不跟这里的平移叠加，避免重复计算）
+                    if sid not in clause_edits_by_id and s.get("clauseBounds"):
+                        s["clauseBounds"] = [round(t - delta, 2) for t in s["clauseBounds"]]
+                    token_shift = round(-delta, 3)
+            touched_report.append({
+                "id": sid, "old_start": old_start, "old_end": old_end,
+                "new_start": new_start, "new_end": new_end, "token_shift": token_shift,
+            })
+
+    clause_report = []
+    if has_token_timing:
+        for sid, manifest_bounds in clause_edits_by_id.items():
             s = find_sentence(data, tab, sid)
             if s is None:
-                token_shift = "警告：data.js 里没找到这个id，token时间戳没能同步"
+                clause_report.append({"id": sid, "error": "data.js 里没找到这个id，clauseBounds没能同步"})
+                continue
+            new_start = by_id[sid]["start"]  # 同一批 edits 如果也挪了这句的起点，按挪动后的新起点换算
+            rel_bounds = sorted(round(t - new_start, 2) for t in manifest_bounds)
+            if rel_bounds:
+                s["clauseBounds"] = rel_bounds
             else:
-                delta = round(new_start - old_start, 3)
-                # token.t 是"相对clip起点的本地偏移"；clip起点往后挪 delta（delta>0），
-                # 同一段真实内容的本地偏移量要跟着往前减 delta，不是加——
-                # 加号是反的，会把跟读高亮整体往错误方向搬（真实案例：textbook-sjp-zg-l15
-                # 课文id33，正确应该落在~0.02s附近，加号版本算出1.73/2.61，验证时直接跟
-                # RMS量出来的真实起振点对不上，靠这个交叉核对才揪出来）
-                for tok in s.get("tokens", []):
-                    if "t" in tok:
-                        tok["t"] = round(tok["t"] - delta, 2)
-                token_shift = round(-delta, 3)
-        touched_report.append({
-            "id": sid, "old_start": old_start, "old_end": old_end,
-            "new_start": new_start, "new_end": new_end, "token_shift": token_shift,
-        })
+                s.pop("clauseBounds", None)
+            clause_report.append({"id": sid, "clauseBounds": rel_bounds})
 
     data_js_updated = False
-    if has_token_timing:
+    if has_token_timing and (touched_ids or clause_edits_by_id):
         save_lesson_data(slug_dir, data)
         data_js_updated = True
 
-    return {"touched": touched_report, "data_js_updated": data_js_updated, "message": None}
+    return {
+        "touched": touched_report, "clauseBoundsTouched": clause_report,
+        "data_js_updated": data_js_updated, "message": None,
+    }
 
 
 def main():

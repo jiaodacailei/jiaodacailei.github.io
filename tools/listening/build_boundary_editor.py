@@ -106,12 +106,22 @@ def build_editor_data(slug_dir, tab_name, out_dir):
                 continue
             dur = ffprobe_duration(p)
             lf.write(f"file '{p.replace(chr(92), '/')}'\n")
-            manifest_sentences.append({
+            entry = {
                 "id": s["id"],
                 "text": sentence_text(s) or (s.get("blanks") or [""])[0],
                 "start": round(cur, 3),
                 "end": round(cur + dur, 3),
-            })
+            }
+            # clauseBounds：data.js 里存的是"相对这句自己 clip 起点"的偏移（跟
+            # tokens[].t 一个坐标系），这里换算成"相对 merged.mp3 的绝对偏移"（跟
+            # 这条 manifest 记录自己的 start/end 一个坐标系），编辑器画布才能直接
+            # 拿来用，不用再让前端自己心算坐标转换。没跑过 compute_clause_bounds.py
+            # 的句子（或者 生词 tab，本来就没有 char_times）没有这个字段，跟旧
+            # manifest 完全兼容。
+            clause_bounds = s.get("clauseBounds")
+            if clause_bounds:
+                entry["clauseBounds"] = [round(cur + t, 3) for t in clause_bounds]
+            manifest_sentences.append(entry)
             cur += dur
 
     merged_path = os.path.join(out_dir, "merged.mp3")

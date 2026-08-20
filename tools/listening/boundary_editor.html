@@ -53,6 +53,10 @@
   #edge-select button { flex: 1; }
   #edge-select button.active-start { background: var(--accent); color: #04121f; border-color: var(--accent); }
   #edge-select button.active-end { background: var(--accent2); color: #201200; border-color: var(--accent2); }
+  #clause-select { display: flex; gap: 6px; flex-wrap: wrap; }
+  #clause-select:empty { display: none; }
+  #clause-tools { display: flex; gap: 6px; }
+  #insert-clause-btn.active-start { background: var(--accent); color: #04121f; border-color: var(--accent); }
   #export-bar { padding: 10px 12px; border-top: 1px solid var(--border); }
   #export-bar button { width: 100%; }
   #export-bar #export-btn { margin-top: 6px; font-size: 12px; }
@@ -190,6 +194,11 @@
         <button id="select-start">● 前边界（本句开始点）</button>
         <button id="select-end">○ 后边界（本句结束点）</button>
       </div>
+      <div id="clause-select"></div>
+      <div id="clause-tools">
+        <button id="insert-clause-btn" title="点一下进入插入模式，再点波形图上要插入的位置">＋ 插入分句边界</button>
+        <button id="delete-clause-btn" title="删除当前选中的分句边界" disabled>🗑 删除此分句边界</button>
+      </div>
       <div id="play-group">
         <button id="play-cur">▶ 播放本句</button>
         <button id="play-gap">🈳 播放邻近空白</button>
@@ -237,7 +246,13 @@
       边界切得准不准，用"循环当前边界附近"那个按钮（只绕着这一条边界前后0.4秒）。
       黄色虚线是这条边界的原始位置——改完一批之后点左下角<b>"💾 保存"</b>直接落地到
       项目文件（每点一次保存服务器都要重新拼音频、有点耗时，建议攒够一批改动再点，
-      不用每改一下就点一次）；只是想复制JSON自己处理，用旁边"复制 JSON"。
+      不用每改一下就点一次）；只是想复制JSON自己处理，用旁边"复制 JSON"。<br>
+      <b>分句边界</b>（会话/课文才有，生词表没有）是"选段复读"精确定位小句起止用的
+      句内分割点，跟前/后边界是同一套操作方式——先点"分句N"选中要改哪一个（紫色线
+      是没在编辑的其它分句边界，只做参考），再拖画布/方向键微调；"＋ 插入分句边界"
+      点一下进入插入模式，再点画布上要插入的位置就新增一个（自动选中、可以接着微调），
+      "🗑 删除此分句边界"删掉当前选中的这一个。分句边界改动**不会重切音频**（只是
+      同一段 clip 内部的标记，不影响 clip 本身切多长），保存起来比改前/后边界快很多。
     </div>
   </div>
 </div>
@@ -329,11 +344,20 @@
   const channelData = buffer.getChannelData(0);
   const sampleRate = buffer.sampleRate;
 
-  // 每句自己独立的 curStart/curEnd（可拖拽），互相不影响；start/end 是只读的原始值，永不修改
-  const sentences = manifest.sentences.map(s => ({ ...s, curStart: s.start, curEnd: s.end }));
+  // 每句自己独立的 curStart/curEnd（可拖拽），互相不影响；start/end 是只读的原始值，永不修改。
+  // curClauseBounds 同理——句内分句边界（"选段复读"用来精确定位小句起止，见
+  // tools/listening/compute_clause_bounds.py），跟 curStart/curEnd 是同一个坐标系
+  // （相对 merged.mp3 的绝对偏移），manifest.sentences[].clauseBounds 没有这个字段
+  // 的句子（没跑过那个脚本，或者本来就是没有 char_times 的生词条目）初始化成空数组。
+  const sentences = manifest.sentences.map(s => ({
+    ...s, curStart: s.start, curEnd: s.end,
+    curClauseBounds: (s.clauseBounds || []).slice(),
+  }));
 
   let selected = sentences.length ? 0 : -1; // 句子下标（不是"边界"/"间隙"下标）
-  let activeEdge = 'start'; // 'start' | 'end' —— 当前编辑的是本句的前边界还是后边界
+  let activeEdge = 'start'; // 'start' | 'end' | 'clause' —— 当前编辑的是本句的前边界/后边界/第几个分句边界
+  let activeClauseIdx = -1; // activeEdge === 'clause' 时，对应 curClauseBounds 的下标
+  let insertingClause = false; // "+ 插入分句边界"按钮点开之后，下一次点画布就在那个位置插入
   let windowHalf = 0.6;
   let dragging = false;
   let currentSource = null;
@@ -341,9 +365,18 @@
 
   $('#title').textContent = `${manifest.slug} / ${manifest.tab}`;
   $('#subtitle').textContent = `${sentences.length} 句，总时长 ${manifest.totalDuration.toFixed(1)}s`;
+  // 生词条目没有 tokens[].t（没有跟读时间戳），天然也不会有句内分句这个概念，
+  // 整块"分句边界"相关UI都不出现，跟"选段复读"图标在这类卡片上不出现是同一个判断。
+  if (!manifest.hasTokenTiming) { $('#clause-tools').style.display = 'none'; }
 
   function isModified(s) {
     return Math.abs(s.curStart - s.start) > 0.0005 || Math.abs(s.curEnd - s.end) > 0.0005;
+  }
+  function isClauseModified(s) {
+    const orig = (s.clauseBounds || []).slice().sort((a, b) => a - b);
+    const cur = s.curClauseBounds.slice().sort((a, b) => a - b);
+    if (orig.length !== cur.length) return true;
+    return orig.some((t, i) => Math.abs(t - cur[i]) > 0.0005);
   }
   function neighborBefore() { return selected > 0 ? sentences[selected - 1] : null; }
   function neighborAfter() { return selected < sentences.length - 1 ? sentences[selected + 1] : null; }
@@ -358,7 +391,10 @@
         if (!hay.includes(q)) return;
       }
       const row = document.createElement('div');
-      row.className = 'b-row' + (i === selected ? ' selected' : '') + (isModified(s) ? ' modified' : '');
+      const clauseMod = isClauseModified(s);
+      row.className = 'b-row' + (i === selected ? ' selected' : '') + ((isModified(s) || clauseMod) ? ' modified' : '');
+      const clauseNote = s.curClauseBounds.length
+        ? `<div class="gap-note">分句边界 ${s.curClauseBounds.length} 处${clauseMod ? '（已改）' : ''}</div>` : '';
       row.innerHTML = `
         <div class="ids">#${s.id}</div>
         <div class="text">${escapeHtml(s.text)}</div>
@@ -366,6 +402,7 @@
           <span class="edge-start">前${s.curStart.toFixed(2)}s</span>
           <span class="edge-end">后${s.curEnd.toFixed(2)}s</span>
         </div>
+        ${clauseNote}
       `;
       row.addEventListener('click', () => selectSentence(i));
       list.appendChild(row);
@@ -380,8 +417,11 @@
   function selectSentence(i) {
     selected = i;
     activeEdge = 'start';
+    activeClauseIdx = -1;
+    insertingClause = false;
     syncBoundaryInput();
     renderList();
+    renderClauseSelect();
     scrollSelectedIntoView();
     draw();
     const s = curS();
@@ -394,12 +434,45 @@
   }
 
   function curS() { return selected >= 0 ? sentences[selected] : null; }
-  function activeValue() { const s = curS(); if (!s) return 0; return activeEdge === 'start' ? s.curStart : s.curEnd; }
+  function activeValue() {
+    const s = curS(); if (!s) return 0;
+    if (activeEdge === 'start') return s.curStart;
+    if (activeEdge === 'end') return s.curEnd;
+    return s.curClauseBounds[activeClauseIdx];
+  }
 
   function syncBoundaryInput() {
     $('#boundary-input').value = curS() ? activeValue().toFixed(3) : '';
     $('#select-start').classList.toggle('active-start', activeEdge === 'start');
     $('#select-end').classList.toggle('active-end', activeEdge === 'end');
+  }
+
+  // 分句边界（"选段复读"精确定位小句用的句内分割点）选择行——跟"前边界/
+  // 后边界"是同一套"先选中要编辑哪一个，再用画布/方向键/输入框改"的交互，
+  // 只是数量不固定（0~N个），按钮要按当前句子的 curClauseBounds 动态生成，
+  // 不能像前后边界那样写死在静态 HTML 里。只有带跟读时间戳的 tab（会话/
+  // 课文，manifest.hasTokenTiming）才显示这一整块——生词条目没有句内分句
+  // 这个概念。
+  function renderClauseSelect() {
+    const wrap = $('#clause-select');
+    if (!wrap) return;
+    if (!manifest.hasTokenTiming) { wrap.innerHTML = ''; return; }
+    const s = curS();
+    if (!s) { wrap.innerHTML = ''; return; }
+    const btns = s.curClauseBounds.map((t, i) => {
+      const active = activeEdge === 'clause' && activeClauseIdx === i ? ' style="background:var(--accent2);color:#201200;border-color:var(--accent2)"' : '';
+      return `<button data-clause-idx="${i}"${active}>分句${i + 1} ${t.toFixed(2)}s</button>`;
+    }).join('');
+    wrap.innerHTML = btns;
+    wrap.querySelectorAll('button[data-clause-idx]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeEdge = 'clause';
+        activeClauseIdx = parseInt(btn.dataset.clauseIdx, 10);
+        insertingClause = false;
+        syncBoundaryInput(); renderClauseSelect(); draw();
+      });
+    });
+    $('#delete-clause-btn').disabled = activeEdge !== 'clause';
   }
 
   function draw() {
@@ -416,10 +489,19 @@
     $('#pair-label').innerHTML = `#${s.id} <span class="dim">"${escapeHtml(s.text)}"</span>`;
 
     const nb = neighborBefore(), na = neighborAfter();
-    // 相邻那句挨着这一侧的边界，只用来参照，不能拖
-    const neighborEdge = activeEdge === 'start' ? (nb ? nb.curEnd : 0) : (na ? na.curStart : buffer.duration);
-    const gap = activeEdge === 'start' ? (s.curStart - neighborEdge) : (neighborEdge - s.curEnd);
-    if (gap > 0.005) {
+    // 相邻那句挨着这一侧的边界，只用来参照，不能拖——分句边界没有"相邻句子"这个
+    // 概念（是同一句内部的分割点），gap/neighborEdge 相关逻辑对它不适用。
+    const isClause = activeEdge === 'clause';
+    const neighborEdge = isClause ? null
+      : (activeEdge === 'start' ? (nb ? nb.curEnd : 0) : (na ? na.curStart : buffer.duration));
+    const gap = isClause ? 0 : (activeEdge === 'start' ? (s.curStart - neighborEdge) : (neighborEdge - s.curEnd));
+    if (isClause) {
+      const bounds = s.curClauseBounds;
+      const lo = activeClauseIdx === 0 ? s.curStart : bounds[activeClauseIdx - 1];
+      const hi = activeClauseIdx === bounds.length - 1 ? s.curEnd : bounds[activeClauseIdx + 1];
+      $('#pair-sub').textContent = `本句第 ${activeClauseIdx + 1}/${bounds.length} 个分句边界，` +
+        `左侧 ${lo.toFixed(2)}s ~ 右侧 ${hi.toFixed(2)}s 之间可拖动（"选段复读"精确定位小句用，见 compute_clause_bounds.py）`;
+    } else if (gap > 0.005) {
       $('#pair-sub').textContent = `本句${activeEdge === 'start' ? '前边界' : '后边界'}跟相邻那句之间留了 ${gap.toFixed(2)}s 空白，` +
         `不属于任何一句（可以点"播放邻近空白"确认这段真的是静音）`;
     } else {
@@ -461,7 +543,7 @@
     function timeToX(t) { return ((t - winStart) / (winEnd - winStart)) * w; }
 
     // shaded gap region between this edge and the neighboring sentence's touching edge
-    if (gap > 0.001) {
+    if (!isClause && gap > 0.001) {
       const a = activeEdge === 'start' ? neighborEdge : s.curEnd;
       const b = activeEdge === 'start' ? s.curStart : neighborEdge;
       const x0 = timeToX(a), x1 = timeToX(b);
@@ -469,27 +551,49 @@
       ctx.fillRect(x0, 0, Math.max(1, x1 - x0), h);
     }
 
-    // original position of the active edge (dashed amber) if changed
-    const origVal = activeEdge === 'start' ? s.start : s.end;
-    if (Math.abs(activeValue() - origVal) > 0.0005 && origVal >= winStart && origVal <= winEnd) {
-      const x = timeToX(origVal);
-      ctx.strokeStyle = '#ffce54'; ctx.setLineDash([5, 4]);
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); ctx.setLineDash([]);
+    // original position of the active edge (dashed amber) if changed —— 分句边界
+    // 插入/删除之后下标跟原始数组对不上，不画这条参照线（用"重置"按钮整体复原）
+    if (!isClause) {
+      const origVal = activeEdge === 'start' ? s.start : s.end;
+      if (Math.abs(activeValue() - origVal) > 0.0005 && origVal >= winStart && origVal <= winEnd) {
+        const x = timeToX(origVal);
+        ctx.strokeStyle = '#ffce54'; ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); ctx.setLineDash([]);
+      }
     }
 
-    // neighbor's touching edge (faint gray, reference only)
-    if (neighborEdge >= winStart && neighborEdge <= winEnd) {
-      const x = timeToX(neighborEdge);
-      ctx.strokeStyle = '#666';
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-    }
-
-    // this sentence's OTHER edge, for orientation (how long the clip currently is)
-    const otherVal = activeEdge === 'start' ? s.curEnd : s.curStart;
-    if (otherVal >= winStart && otherVal <= winEnd) {
-      const x = timeToX(otherVal);
+    if (!isClause) {
+      // neighbor's touching edge (faint gray, reference only)
+      if (neighborEdge >= winStart && neighborEdge <= winEnd) {
+        const x = timeToX(neighborEdge);
+        ctx.strokeStyle = '#666';
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      // this sentence's OTHER edge, for orientation (how long the clip currently is)
+      const otherVal = activeEdge === 'start' ? s.curEnd : s.curStart;
+      if (otherVal >= winStart && otherVal <= winEnd) {
+        const x = timeToX(otherVal);
+        ctx.strokeStyle = '#3a4048';
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+    } else {
+      // 分句编辑模式下的参照线：本句自己的前后边界（clip 起止），以及同一句
+      // 里其它没在编辑的分句边界——帮助判断当前拖的这个点跟其它已知点的相对位置
       ctx.strokeStyle = '#3a4048';
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      [s.curStart, s.curEnd].forEach(t => {
+        if (t >= winStart && t <= winEnd) {
+          const x = timeToX(t);
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+      });
+      ctx.strokeStyle = '#a06fd6';
+      s.curClauseBounds.forEach((t, i) => {
+        if (i === activeClauseIdx) return;
+        if (t >= winStart && t <= winEnd) {
+          const x = timeToX(t);
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+      });
     }
 
     // active edge (blue, draggable)
@@ -521,18 +625,65 @@
       const newStart = Math.min(Math.max(t, lo), hi);
       s.curStart = newStart;
       if (nb && newStart < nb.curEnd) nb.curEnd = newStart;
-    } else {
+    } else if (activeEdge === 'end') {
       const na = neighborAfter();
       const lo = s.curStart + 0.01;
       const hi = na ? na.curEnd - 0.01 : buffer.duration;
       const newEnd = Math.min(Math.max(t, lo), hi);
       s.curEnd = newEnd;
       if (na && newEnd > na.curStart) na.curStart = newEnd;
+    } else {
+      // 分句边界：只在"同一句内部相邻的两个点（或本句自己的起止）"之间夹住，
+      // 不影响任何别的句子——没有 ripple 概念，因为分句边界本来就不是任何
+      // 别的句子的属性。
+      const bounds = s.curClauseBounds;
+      const lo = (activeClauseIdx === 0 ? s.curStart : bounds[activeClauseIdx - 1]) + 0.01;
+      const hi = (activeClauseIdx === bounds.length - 1 ? s.curEnd : bounds[activeClauseIdx + 1]) - 0.01;
+      bounds[activeClauseIdx] = Math.min(Math.max(t, lo), hi);
     }
     syncBoundaryInput();
     draw();
     renderList();
+    renderClauseSelect();
     scrollSelectedIntoView();
+  }
+
+  // "+ 插入分句边界"按钮点开之后，在画布上点一下就在那个位置新增一个分句
+  // 边界（要求落在本句 curStart~curEnd 内部，且跟已有的分句边界/起止点至少
+  // 留 0.05s，避免一不小心点出两个几乎重合的点）。
+  function insertClauseAt(t) {
+    const s = curS();
+    if (!s) return;
+    const lo = s.curStart + 0.05, hi = s.curEnd - 0.05;
+    let clamped = Math.min(Math.max(t, lo), hi);
+    const taken = [s.curStart, s.curEnd, ...s.curClauseBounds];
+    if (taken.some(x => Math.abs(x - clamped) < 0.05)) {
+      setSaveStatus('这个位置离已有的边界太近了，换个位置点', 1800);
+      return;
+    }
+    s.curClauseBounds.push(clamped);
+    s.curClauseBounds.sort((a, b) => a - b);
+    activeEdge = 'clause';
+    activeClauseIdx = s.curClauseBounds.indexOf(clamped);
+    insertingClause = false;
+    $('#insert-clause-btn').classList.remove('active-start');
+    setSaveStatus('');
+    syncBoundaryInput();
+    draw();
+    renderList();
+    renderClauseSelect();
+  }
+
+  function deleteActiveClause() {
+    const s = curS();
+    if (!s || activeEdge !== 'clause') return;
+    s.curClauseBounds.splice(activeClauseIdx, 1);
+    activeEdge = 'start';
+    activeClauseIdx = -1;
+    syncBoundaryInput();
+    draw();
+    renderList();
+    renderClauseSelect();
   }
 
   function nudge(delta) {
@@ -665,7 +816,7 @@
     const s = curS(); if (s) playRange(s.curStart, s.curEnd, false);
   });
   $('#play-gap').addEventListener('click', () => {
-    const s = curS(); if (!s) return;
+    const s = curS(); if (!s || activeEdge === 'clause') return; // 分句边界没有"相邻句子间隙"这个概念
     const nb = neighborBefore(), na = neighborAfter();
     if (activeEdge === 'start') {
       const edge = nb ? nb.curEnd : 0;
@@ -695,11 +846,26 @@
   $('#boundary-input').addEventListener('change', (e) => setEdge(parseFloat(e.target.value)));
   $('#reset-btn').addEventListener('click', () => {
     const s = curS();
-    if (s) {
-      if (activeEdge === 'start') s.curStart = s.start; else s.curEnd = s.end;
-      syncBoundaryInput(); draw(); renderList();
+    if (!s) return;
+    if (activeEdge === 'start') s.curStart = s.start;
+    else if (activeEdge === 'end') s.curEnd = s.end;
+    else {
+      // 分句边界插入/删除之后下标跟原始数组对不上，"重置"整体复原这句的
+      // 全部分句边界，不是只复原当前这一个点。
+      s.curClauseBounds = (s.clauseBounds || []).slice();
+      activeEdge = 'start';
+      activeClauseIdx = -1;
     }
+    syncBoundaryInput(); draw(); renderList(); renderClauseSelect();
   });
+
+  $('#insert-clause-btn').addEventListener('click', () => {
+    if (!curS()) return;
+    insertingClause = !insertingClause;
+    $('#insert-clause-btn').classList.toggle('active-start', insertingClause);
+    setSaveStatus(insertingClause ? '在下面波形图上点一下要插入分句边界的位置…' : '', insertingClause ? 0 : 1);
+  });
+  $('#delete-clause-btn').addEventListener('click', deleteActiveClause);
 
   const canvas = $('#wave');
   function xToTime(x) {
@@ -711,6 +877,7 @@
   }
   canvas.addEventListener('mousedown', (e) => {
     if (!curS()) return;
+    if (insertingClause) { insertClauseAt(xToTime(e.clientX)); return; }
     dragging = true;
     setEdge(xToTime(e.clientX));
   });
@@ -738,17 +905,20 @@
   });
 
   function updateExportCount() {
-    const n = sentences.filter(isModified).length;
+    const n = sentences.filter(s => isModified(s) || isClauseModified(s)).length;
     $('#save-main-btn').textContent = `💾 保存 (${n})`;
     $('#save-main-btn').disabled = n === 0;
     $('#export-btn').disabled = n === 0;
   }
 
   function buildEditsPayload() {
-    const edits = sentences.filter(isModified).map(s => {
+    const edits = sentences.filter(s => isModified(s) || isClauseModified(s)).map(s => {
       const e = { id: s.id };
       if (Math.abs(s.curStart - s.start) > 0.0005) e.start = Math.round(s.curStart * 1000) / 1000;
       if (Math.abs(s.curEnd - s.end) > 0.0005) e.end = Math.round(s.curEnd * 1000) / 1000;
+      if (isClauseModified(s)) {
+        e.clauseBounds = s.curClauseBounds.slice().sort((a, b) => a - b).map(t => Math.round(t * 1000) / 1000);
+      }
       return e;
     });
     return { slug: manifest.slug, tab: manifest.tab, edits };

@@ -545,13 +545,23 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     });
   });
 
-  // ── 选段复读：跟读模式下选中一句话里连续的一段词，单独循环播放这一段 ──
+  // ── 选段复读：跟读模式下选中一句话里的一个或几个小句，单独循环播放这一段 ──
   // 只在带跟读时间戳（.tw[data-t]，来自会话/课文句子的 char_times）的卡片
   // 上出现——生词条目没有逐词时间戳，天然不会有任何 .tw[data-t]，图标不会
   // 被插入，不用额外传参区分。默认关闭（body 不带 repeat-mode-on 类时图标
   // 整体 CSS 隐藏），设置面板里的开关打开才显示，避免平时跟读模式下卡片
   // 右下角多一个不相关的图标。
-  var selectingCard = null, selectStart = null;
+  //
+  // 切割精度：不能直接拿单词的 data-t（跟读高亮用的时间戳，标点字符的
+  // 时间戳还是插值猜的，容许 0.1~0.3 秒误差）当播放范围的起止点——那是
+  // 这个功能重做之前"选中的单词和实际发音对不上"的根因。真正的切割点用
+  // 卡片自己的 data-clause-bounds（tools/listening/compute_clause_bounds.py
+  // 按逗号处的真实响度停顿算出来的精确时间戳，见该脚本文档），点击某个词
+  // 只是用来"确定点在哪个小句里"，播放范围永远取这个小句对应的
+  // data-clause-bounds 边界，不取被点中的词自己的 data-t。没跑过这个脚本
+  // 的旧课（data-clause-bounds 为空）退化成"整句只有一个小句"，行为等价于
+  // 以前"选中整句"的效果，不影响旧页面。
+  var selectingCard = null, selectStart = null;   // selectStart: {idx, startT, endT} 或 null
 
   // 去掉假名注音（<rt>）之后的原文纯文本——跟默写/填空模块里同名函数逻辑
   // 完全一样，但那份定义在文件后面另一个独立的 IIFE 里，闭包作用域够不到，
@@ -571,9 +581,43 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     document.querySelectorAll(".seg-card.seg-selecting").forEach(function(c) {
       c.classList.remove("seg-selecting");
     });
-    document.querySelectorAll(".tw.seg-range-pending, .tw.seg-range-selected").forEach(function(w) {
-      w.classList.remove("seg-range-pending", "seg-range-selected");
+    document.querySelectorAll(".tw.seg-range-selected").forEach(function(w) {
+      w.classList.remove("seg-range-selected");
     });
+  }
+
+  // 解析一张卡片的 data-clause-bounds（逗号分隔的相对时间字符串），没有这个
+  // 属性（旧课/单小句句子）时返回空数组，等价于"整句就是一个小句"。
+  function getClauseBounds(card) {
+    var attr = card.getAttribute("data-clause-bounds");
+    if (!attr) return [];
+    return attr.split(",").map(parseFloat).filter(function(t) { return !isNaN(t); });
+  }
+
+  // 给定某个词的时间戳，定位它落在第几个小句（0-based），返回这个小句自己
+  // 的起止时间（endT为null表示到整句结尾）——播放范围永远用这两个值，不用
+  // 被点中的词自己的 data-t，见文件前面的整体说明。
+  function clauseRangeAt(bounds, wt) {
+    var idx = 0;
+    for (var i = 0; i < bounds.length; i++) {
+      if (bounds[i] <= wt) { idx++; } else { break; }
+    }
+    var startT = idx === 0 ? 0 : bounds[idx - 1];
+    var endT = idx < bounds.length ? bounds[idx] : null;
+    return { idx: idx, startT: startT, endT: endT };
+  }
+
+  function wordsInRange(words, startT, endT) {
+    return words.filter(function(w) {
+      var t = parseFloat(w.getAttribute("data-t"));
+      return t >= startT - 0.001 && (endT === null || t < endT - 0.001);
+    });
+  }
+
+  function labelForWords(ws) {
+    var label = ws.map(function(x) { return plainTextOf(x); }).join("");
+    if (label.length > 20) { label = label.slice(0, 20) + "…"; }
+    return label;
   }
 
   var anyRepeatable = false;
@@ -581,6 +625,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var words = Array.from(card.querySelectorAll(".seg-ja .tw[data-t]"));
     if (!words.length) return;   // 生词条目/没有跟读时间戳的卡片不显示图标
     anyRepeatable = true;
+    var bounds = getClauseBounds(card);
 
     var icon = document.createElement("button");
     icon.type = "button";
@@ -594,8 +639,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     icon.textContent = "↻";
     icon.addEventListener("click", function(e) {
       e.stopPropagation();
-      // 同一张卡片已经点了起点、还在等点终点——再点一次图标视为取消，退回
-      // 中性状态，不重新进入选段中（要重新选，用户自己再点一次图标）。
+      // 同一张卡片已经选中了一个小句（不管有没有还在等第二次点击扩展）——
+      // 再点一次图标视为取消，退回中性状态（要重新选，用户自己再点一次
+      // 图标）。
       if (selectingCard === card && selectStart) {
         clearRangeSelection();
         return;
@@ -612,29 +658,50 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       w.addEventListener("click", function(e) {
         if (selectingCard !== card) return;   // 不在选段中，交给卡片自己的点击逻辑正常整句播放
         e.stopPropagation();
+        var wt = parseFloat(w.getAttribute("data-t"));
+        var range = clauseRangeAt(bounds, wt);
+        var audio = card.querySelector("audio");
+
         if (!selectStart) {
-          selectStart = w;
-          w.classList.add("seg-range-pending");
+          // 第一次点击：立即选中并播放这一个小句，不用等第二次点击——
+          // 卡片继续留在"选段中"状态（seg-selecting 不摘），允许接着点另一个
+          // 小句把范围扩展成"从这句到那句"，也可以直接点图标/别处结束。
+          selectStart = range;
+          document.querySelectorAll(".tw.seg-range-selected").forEach(function(x) {
+            x.classList.remove("seg-range-selected");
+          });
+          wordsInRange(words, range.startT, range.endT).forEach(function(x) {
+            x.classList.add("seg-range-selected");
+          });
+          playRange(audio, range.startT, range.endT, labelForWords(wordsInRange(words, range.startT, range.endT)));
           return;
         }
-        var startIdx = words.indexOf(selectStart);
-        var endIdx = words.indexOf(w);
-        if (startIdx > endIdx) { var tmp = startIdx; startIdx = endIdx; endIdx = tmp; }
 
-        selectStart.classList.remove("seg-range-pending");
-        for (var i = startIdx; i <= endIdx; i++) { words[i].classList.add("seg-range-selected"); }
+        if (range.idx === selectStart.idx) {
+          // 又点回同一个小句：重播这一句，不改变选中状态。
+          playRange(audio, selectStart.startT, selectStart.endT,
+            labelForWords(wordsInRange(words, selectStart.startT, selectStart.endT)));
+          return;
+        }
 
-        var startT = parseFloat(words[startIdx].getAttribute("data-t"));
-        var endT = endIdx + 1 < words.length ? parseFloat(words[endIdx + 1].getAttribute("data-t")) : null;
-        var label = words.slice(startIdx, endIdx + 1).map(function(x) { return plainTextOf(x); }).join("");
-        if (label.length > 20) { label = label.slice(0, 20) + "…"; }
+        // 第二次点击落在不同的小句：扩展成覆盖两个小句之间的连续范围
+        // （不管先后点的是前面还是后面那句，取小的当起点、大的当终点）。
+        var startIdx = Math.min(selectStart.idx, range.idx);
+        var endIdx = Math.max(selectStart.idx, range.idx);
+        var startT = startIdx === 0 ? 0 : bounds[startIdx - 1];
+        var endT = endIdx < bounds.length ? bounds[endIdx] : null;
+        var rangeWords = wordsInRange(words, startT, endT);
+
+        document.querySelectorAll(".tw.seg-range-selected").forEach(function(x) {
+          x.classList.remove("seg-range-selected");
+        });
+        rangeWords.forEach(function(x) { x.classList.add("seg-range-selected"); });
 
         card.classList.remove("seg-selecting");
         selectingCard = null;
         selectStart = null;
 
-        var audio = card.querySelector("audio");
-        playRange(audio, startT, endT, label);
+        playRange(audio, startT, endT, labelForWords(rangeWords));
       });
     });
   });

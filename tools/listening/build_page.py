@@ -914,8 +914,16 @@ def sentence_card_html(s, audio_rel):
     if s.get("blanks"):
         blanks_json = json.dumps(s["blanks"], ensure_ascii=False)
         blanks_attr = f' data-blanks="{html.escape(blanks_json)}"'
+    # data-clause-bounds：跟 data-driven 路径 sentence_to_data() 里的 clauseBounds
+    # 是同一份信息、同一个换算方式，只是这条路径直接烘焙进 HTML 属性，不经过
+    # data.js。见 sentence_to_data() 的注释。
+    clause_bounds_attr = ""
+    clause_bounds = s.get("clauseBounds")
+    if clause_bounds:
+        rel_bounds = [round(t - s["start"], 2) for t in clause_bounds]
+        clause_bounds_attr = f' data-clause-bounds="{",".join(str(t) for t in rel_bounds)}"'
     return f'''
-        <div class="{card_class}" id="card-a{s['id']}"{blanks_attr}>
+        <div class="{card_class}" id="card-a{s['id']}"{blanks_attr}{clause_bounds_attr}>
           {speaker_html}<p class="seg-ja">{ja_html}</p>
           <p class="seg-zh">{zh}</p>{notes_html}
           <audio id="a{s['id']}" preload="none" src="{audio_rel}seg-{s['id']:03d}.mp3"></audio>
@@ -1345,6 +1353,14 @@ def sentence_to_data(s, audio_rel, quiz_by_id=None, vocab_readings=None):
     }
     if quiz_sentence:
         result["quizSentence"] = quiz_sentence
+    # clauseBounds：句内分句边界（compute_clause_bounds.py 算出来的，逗号处
+    # 真实停顿的精确时间戳），供前端"选段复读"精确定位到小句起止——同样要从
+    # enriched.json 里的绝对时间换算成这句自己音频文件内部的相对时间，换算
+    # 方式跟 char_times 完全一样。没跑过 compute_clause_bounds.py 的句子
+    # （多数旧课）没有这个字段，前端会退回到"整句当一个选段"，不影响现有页面。
+    clause_bounds = s.get("clauseBounds")
+    if clause_bounds:
+        result["clauseBounds"] = [round(t - s["start"], 2) for t in clause_bounds]
     return result
 
 

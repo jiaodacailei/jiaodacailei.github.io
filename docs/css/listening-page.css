@@ -371,11 +371,9 @@ body.edit-mode.repeat-mode-on .seg-repeat-icon { right: 40px; }
    .tw 词根本看不见，图标留着只会是个点了也没法选词的死状态，直接隐藏。 */
 body.mode-dictate .seg-repeat-icon, body.mode-blank .seg-repeat-icon { display: none; }
 .seg-repeat-icon:hover { color: var(--blue); border-color: var(--blue-light); background: var(--blue-xlight); }
-/* 已点了起点、正在等待点终点——整张卡片边框换色提示"请点选终点词" */
+/* 选段中（点了图标之后，直到点掉/选完扩展范围为止）——整张卡片边框换色
+   提示"点一个词就播放这个小句，再点别的小句可以扩展范围" */
 .seg-card.seg-selecting { border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue-light); }
-/* 已点选的起点词，等待选终点时的样式（虚线下划线，跟 .tw-active 的实线
-   下划线区分开，避免误以为是正在播放） */
-.tw.seg-range-pending { border-bottom: 2px dashed var(--blue); padding-bottom: 1px; }
 /* 选段确定后，范围内所有词的持续高亮——之前用 --blue-xlight（#eff6ff，
    非常接近白色）几乎看不出来，尤其选完立刻开始播放、没有停下来看一眼的
    空档，用户反馈"选中状态直接消失了"，其实不是消失，是太浅根本看不清。
