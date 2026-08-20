@@ -121,6 +121,17 @@ def build_editor_data(slug_dir, tab_name, out_dir):
             clause_bounds = s.get("clauseBounds")
             if clause_bounds:
                 entry["clauseBounds"] = [round(cur + t, 3) for t in clause_bounds]
+            # timedTokens：每个 token 的原文+绝对时间戳（跟 clauseBounds 一个坐标系），
+            # 给编辑器前端按时间把这句话实际切成的几段小句文字还原出来显示——不能靠
+            # 数逗号猜（分句边界可能是人工在编辑器里插入/删除过的，跟原文标点已经
+            # 对不上），只有按真实 token 时间戳切才总是准的。没有 t 字段的 token
+            # （比如换行符）跳过，不参与拼接。
+            timed_tokens = [
+                {"text": t["text"], "t": round(cur + t["t"], 3)}
+                for t in s.get("tokens", []) if t.get("t") is not None
+            ]
+            if timed_tokens:
+                entry["timedTokens"] = timed_tokens
             manifest_sentences.append(entry)
             cur += dur
 

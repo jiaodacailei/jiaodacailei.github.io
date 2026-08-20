@@ -48,15 +48,23 @@
   .b-row .time-line .edge-start { color: var(--accent); }
   .b-row .time-line .edge-end { color: var(--accent2); }
   .b-row.modified .time-line { font-weight: 600; }
-  .b-row .gap-note { font-size: 10px; color: var(--dim); }
   #edge-select { display: flex; gap: 6px; }
   #edge-select button { flex: 1; }
   #edge-select button.active-start { background: var(--accent); color: #04121f; border-color: var(--accent); }
   #edge-select button.active-end { background: var(--accent2); color: #201200; border-color: var(--accent2); }
-  #clause-select { display: flex; gap: 6px; flex-wrap: wrap; }
-  #clause-select:empty { display: none; }
   #clause-tools { display: flex; gap: 6px; }
-  #insert-clause-btn.active-start { background: var(--accent); color: #04121f; border-color: var(--accent); }
+  .b-row .text.clause-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0; }
+  .clause-chip {
+    padding: 1px 4px; border-radius: 3px; cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .clause-chip:hover { background: #33363d; }
+  .clause-chip.active { background: var(--accent2); color: #201200; border-bottom-color: var(--accent2); }
+  .clause-sep { color: var(--dim); margin: 0 1px; }
+  .gap-note {
+    display: inline-block; margin-left: 6px; font-size: 10px; color: var(--modified);
+    font-weight: 600;
+  }
   #export-bar { padding: 10px 12px; border-top: 1px solid var(--border); }
   #export-bar button { width: 100%; }
   #export-bar #export-btn { margin-top: 6px; font-size: 12px; }
@@ -194,9 +202,8 @@
         <button id="select-start">● 前边界（本句开始点）</button>
         <button id="select-end">○ 后边界（本句结束点）</button>
       </div>
-      <div id="clause-select"></div>
       <div id="clause-tools">
-        <button id="insert-clause-btn" title="点一下进入插入模式，再点波形图上要插入的位置">＋ 插入分句边界</button>
+        <button id="insert-clause-btn" title="在当前最大的一段空档正中间插入一个新分句边界，插入后可以直接拖/微调到准确位置">＋ 插入分句边界</button>
         <button id="delete-clause-btn" title="删除当前选中的分句边界" disabled>🗑 删除此分句边界</button>
       </div>
       <div id="play-group">
@@ -248,11 +255,14 @@
       项目文件（每点一次保存服务器都要重新拼音频、有点耗时，建议攒够一批改动再点，
       不用每改一下就点一次）；只是想复制JSON自己处理，用旁边"复制 JSON"。<br>
       <b>分句边界</b>（会话/课文才有，生词表没有）是"选段复读"精确定位小句起止用的
-      句内分割点，跟前/后边界是同一套操作方式——先点"分句N"选中要改哪一个（紫色线
-      是没在编辑的其它分句边界，只做参考），再拖画布/方向键微调；"＋ 插入分句边界"
-      点一下进入插入模式，再点画布上要插入的位置就新增一个（自动选中、可以接着微调），
-      "🗑 删除此分句边界"删掉当前选中的这一个。分句边界改动**不会重切音频**（只是
-      同一段 clip 内部的标记，不影响 clip 本身切多长），保存起来比改前/后边界快很多。
+      句内分割点——左边列表里已经按当前分句边界拆成一块块小句文字，<b>直接点
+      左边某一块小句就跳过去编辑它的边界</b>（橙色高亮的是当前正在改的那一块），
+      跟前/后边界一样拖画布/方向键/输入框微调；<b>"＋ 插入分句边界"点一下就
+      直接新增一个</b>（插在当前最大的一段空档正中间，自动选中、画布自动居中
+      显示，不用先想清楚该点哪，插完直接跟改前/后边界一样拖/微调到准确位置），
+      "🗑 删除此分句边界"删掉当前选中的这一个。分句边界改动
+      **不会重切音频**（只是同一段 clip 内部的标记，不影响 clip 本身切多长），
+      保存起来比改前/后边界快很多。
     </div>
   </div>
 </div>
@@ -357,7 +367,6 @@
   let selected = sentences.length ? 0 : -1; // 句子下标（不是"边界"/"间隙"下标）
   let activeEdge = 'start'; // 'start' | 'end' | 'clause' —— 当前编辑的是本句的前边界/后边界/第几个分句边界
   let activeClauseIdx = -1; // activeEdge === 'clause' 时，对应 curClauseBounds 的下标
-  let insertingClause = false; // "+ 插入分句边界"按钮点开之后，下一次点画布就在那个位置插入
   let windowHalf = 0.6;
   let dragging = false;
   let currentSource = null;
@@ -381,6 +390,26 @@
   function neighborBefore() { return selected > 0 ? sentences[selected - 1] : null; }
   function neighborAfter() { return selected < sentences.length - 1 ? sentences[selected + 1] : null; }
 
+  // 按 curClauseBounds 把这句话实际切成的几段小句文字还原出来——不靠数逗号猜
+  // （分句边界可能被人工插入/删除过，跟原文标点位置已经对不上了），用
+  // timedTokens（每个 token 自己的绝对时间戳）按落在哪个区间来分组拼接，
+  // 永远反映"照当前这些分句边界切，实际会切出什么"。没有 timedTokens 的句子
+  // （生词条目，本来就没有分句这回事）返回 null，调用方按"不显示分句"处理。
+  function clauseTexts(s) {
+    if (!s.timedTokens || !s.timedTokens.length) return null;
+    const bounds = s.curClauseBounds.slice().sort((a, b) => a - b);
+    const edges = [s.curStart, ...bounds, s.curEnd];
+    const segs = [];
+    for (let i = 0; i < edges.length - 1; i++) {
+      const lo = edges[i], hi = edges[i + 1];
+      const text = s.timedTokens
+        .filter(t => t.t >= lo - 0.001 && t.t < hi - 0.001)
+        .map(t => t.text).join('');
+      segs.push(text || '…');
+    }
+    return segs;
+  }
+
   function renderList() {
     const q = $('#jump-input').value.trim().replace(/^#/, '');
     const list = $('#boundary-list');
@@ -393,18 +422,40 @@
       const row = document.createElement('div');
       const clauseMod = isClauseModified(s);
       row.className = 'b-row' + (i === selected ? ' selected' : '') + ((isModified(s) || clauseMod) ? ' modified' : '');
-      const clauseNote = s.curClauseBounds.length
-        ? `<div class="gap-note">分句边界 ${s.curClauseBounds.length} 处${clauseMod ? '（已改）' : ''}</div>` : '';
+
+      // 有分句边界（>=1个）就按小句拆开显示成一排可点的"分句块"，点哪块就
+      // 直接跳去编辑那块的左边界（第1块点了跳去编辑"前边界"，因为第1块的
+      // 左边就是整句的开始点）；没有分句边界时照旧显示整句纯文本，点哪里
+      // 都是选中这句本身（保留原来"点这一行选中这一句"的行为）。
+      const segs = clauseTexts(s);
+      let textHtml;
+      if (segs && s.curClauseBounds.length > 0) {
+        textHtml = '<div class="text clause-chips">' + segs.map((seg, k) => {
+          const isActive = i === selected &&
+            ((k === 0 && activeEdge === 'start') || (k > 0 && activeEdge === 'clause' && activeClauseIdx === k - 1));
+          return `<span class="clause-chip${isActive ? ' active' : ''}" data-chip="${k}">${escapeHtml(seg)}</span>`;
+        }).join('<span class="clause-sep">｜</span>') + '</div>';
+      } else {
+        textHtml = `<div class="text">${escapeHtml(s.text)}</div>`;
+      }
+
       row.innerHTML = `
-        <div class="ids">#${s.id}</div>
-        <div class="text">${escapeHtml(s.text)}</div>
+        <div class="ids">#${s.id}${clauseMod ? '<span class="gap-note">分句已改</span>' : ''}</div>
+        ${textHtml}
         <div class="time-line">
           <span class="edge-start">前${s.curStart.toFixed(2)}s</span>
           <span class="edge-end">后${s.curEnd.toFixed(2)}s</span>
         </div>
-        ${clauseNote}
       `;
       row.addEventListener('click', () => selectSentence(i));
+      row.querySelectorAll('.clause-chip').forEach(chip => {
+        chip.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const k = parseInt(chip.dataset.chip, 10);
+          if (k === 0) selectSentenceAtEdge(i, 'start', -1);
+          else selectSentenceAtEdge(i, 'clause', k - 1);
+        });
+      });
       list.appendChild(row);
     });
     updateExportCount();
@@ -415,10 +466,15 @@
   }
 
   function selectSentence(i) {
+    selectSentenceAtEdge(i, 'start', -1);
+  }
+
+  // 选中第 i 句，同时直接定位到要编辑的边界——点侧栏"分句块"就是靠这个跳转
+  // 到具体某个分句边界，不用先选中句子、再去别处找这个边界对应哪个按钮。
+  function selectSentenceAtEdge(i, edge, clauseIdx) {
     selected = i;
-    activeEdge = 'start';
-    activeClauseIdx = -1;
-    insertingClause = false;
+    activeEdge = edge;
+    activeClauseIdx = clauseIdx;
     syncBoundaryInput();
     renderList();
     renderClauseSelect();
@@ -447,32 +503,12 @@
     $('#select-end').classList.toggle('active-end', activeEdge === 'end');
   }
 
-  // 分句边界（"选段复读"精确定位小句用的句内分割点）选择行——跟"前边界/
-  // 后边界"是同一套"先选中要编辑哪一个，再用画布/方向键/输入框改"的交互，
-  // 只是数量不固定（0~N个），按钮要按当前句子的 curClauseBounds 动态生成，
-  // 不能像前后边界那样写死在静态 HTML 里。只有带跟读时间戳的 tab（会话/
-  // 课文，manifest.hasTokenTiming）才显示这一整块——生词条目没有句内分句
-  // 这个概念。
+  // 分句边界（"选段复读"精确定位小句用的句内分割点）选中哪一个，是靠点侧栏
+  // 那句话里的"分句块"直接跳转过去的（见 renderList()），这里只负责维护
+  // "删除此分句边界"按钮的可用状态——选中的是分句边界才能删。
   function renderClauseSelect() {
-    const wrap = $('#clause-select');
-    if (!wrap) return;
-    if (!manifest.hasTokenTiming) { wrap.innerHTML = ''; return; }
-    const s = curS();
-    if (!s) { wrap.innerHTML = ''; return; }
-    const btns = s.curClauseBounds.map((t, i) => {
-      const active = activeEdge === 'clause' && activeClauseIdx === i ? ' style="background:var(--accent2);color:#201200;border-color:var(--accent2)"' : '';
-      return `<button data-clause-idx="${i}"${active}>分句${i + 1} ${t.toFixed(2)}s</button>`;
-    }).join('');
-    wrap.innerHTML = btns;
-    wrap.querySelectorAll('button[data-clause-idx]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        activeEdge = 'clause';
-        activeClauseIdx = parseInt(btn.dataset.clauseIdx, 10);
-        insertingClause = false;
-        syncBoundaryInput(); renderClauseSelect(); draw();
-      });
-    });
-    $('#delete-clause-btn').disabled = activeEdge !== 'clause';
+    const btn = $('#delete-clause-btn');
+    if (btn) btn.disabled = activeEdge !== 'clause';
   }
 
   function draw() {
@@ -648,26 +684,25 @@
     scrollSelectedIntoView();
   }
 
-  // "+ 插入分句边界"按钮点开之后，在画布上点一下就在那个位置新增一个分句
-  // 边界（要求落在本句 curStart~curEnd 内部，且跟已有的分句边界/起止点至少
-  // 留 0.05s，避免一不小心点出两个几乎重合的点）。
-  function insertClauseAt(t) {
+  // 点"+ 插入分句边界"直接插入，不需要先"进入插入模式"再去画布上找位置点——
+  // 新点插到当前最大的一段"还没被分句边界切开的空档"正中间（本句起止点也
+  // 算在内，没有任何分句边界时就是整句正中间），插入后立刻切换成选中这个
+  // 新点、画布也会自动以它为中心居中显示，接下来跟前/后边界完全一样，直接
+  // 拖画布/按方向键/改输入框精调，不用先摸清楚"该点哪"。
+  function insertClauseDefault() {
     const s = curS();
     if (!s) return;
-    const lo = s.curStart + 0.05, hi = s.curEnd - 0.05;
-    let clamped = Math.min(Math.max(t, lo), hi);
-    const taken = [s.curStart, s.curEnd, ...s.curClauseBounds];
-    if (taken.some(x => Math.abs(x - clamped) < 0.05)) {
-      setSaveStatus('这个位置离已有的边界太近了，换个位置点', 1800);
-      return;
+    const points = [s.curStart, ...s.curClauseBounds.slice().sort((a, b) => a - b), s.curEnd];
+    let bestGap = -1, bestMid = (s.curStart + s.curEnd) / 2;
+    for (let i = 0; i < points.length - 1; i++) {
+      const gap = points[i + 1] - points[i];
+      if (gap > bestGap) { bestGap = gap; bestMid = (points[i] + points[i + 1]) / 2; }
     }
-    s.curClauseBounds.push(clamped);
+    bestMid = Math.round(bestMid * 1000) / 1000;
+    s.curClauseBounds.push(bestMid);
     s.curClauseBounds.sort((a, b) => a - b);
     activeEdge = 'clause';
-    activeClauseIdx = s.curClauseBounds.indexOf(clamped);
-    insertingClause = false;
-    $('#insert-clause-btn').classList.remove('active-start');
-    setSaveStatus('');
+    activeClauseIdx = s.curClauseBounds.indexOf(bestMid);
     syncBoundaryInput();
     draw();
     renderList();
@@ -859,12 +894,7 @@
     syncBoundaryInput(); draw(); renderList(); renderClauseSelect();
   });
 
-  $('#insert-clause-btn').addEventListener('click', () => {
-    if (!curS()) return;
-    insertingClause = !insertingClause;
-    $('#insert-clause-btn').classList.toggle('active-start', insertingClause);
-    setSaveStatus(insertingClause ? '在下面波形图上点一下要插入分句边界的位置…' : '', insertingClause ? 0 : 1);
-  });
+  $('#insert-clause-btn').addEventListener('click', insertClauseDefault);
   $('#delete-clause-btn').addEventListener('click', deleteActiveClause);
 
   const canvas = $('#wave');
@@ -877,7 +907,6 @@
   }
   canvas.addEventListener('mousedown', (e) => {
     if (!curS()) return;
-    if (insertingClause) { insertClauseAt(xToTime(e.clientX)); return; }
     dragging = true;
     setEdge(xToTime(e.clientX));
   });
