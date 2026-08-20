@@ -731,29 +731,35 @@
   }
 
   // 点"+ 插入分句边界"直接插入，不需要先"进入插入模式"再去画布上找位置点——
-  // 新点插到当前最大的一段"还没被分句边界切开的空档"里，插入后立刻切换成
-  // 选中这个新点、画布也会自动以它为中心居中显示，接下来跟前/后边界完全
-  // 一样，直接拖画布/按方向键/改输入框精调，不用先摸清楚"该点哪"。
+  // 新点插到**当前选中的这一段**里，插入后立刻切换成选中这个新点、画布也会
+  // 自动以它为中心居中显示，接下来跟前/后边界完全一样，直接拖画布/按方向键/
+  // 改输入框精调，不用先摸清楚"该点哪"。
   //
-  // 落点不能直接取这段空档的几何正中间——真实案例：l14课文第38句
+  // 落点必须限制在"当前选中的那一段"内，不能在全句范围内找最大空档——真实
+  // bug：之前是不管选中哪一段，都在全句里找最大的那个空档插入，用户选中第
+  // 一段再点插入，结果因为第二段的空档更大，新边界插到第二段里去了，看着
+  // 像是"把下一段分成了两句"，跟用户当前选中哪一段完全脱节。
+  //
+  // 落点也不能直接取这一段的几何正中间——真实案例：l14课文第38句
   // "これは，就職活動をする学生のために書かれたガイドブックの一部である。"，
-  // 默认落点选中的空档响度数值上确实偏安静，但那段安静其实是"れた"这个词
+  // 默认落点选中的位置响度数值上确实偏安静，但那段安静其实是"れた"这个词
   // 自己发音过程里"た"字爆破前的闭塞段（清音塞音发音本身就包含一小段真实
   // 静音，不是词与词之间的停顿），正中间正好切在"れた"念到一半的地方——
   // 响度剖面分不出"两个词之间的真停顿"和"某个字发音过程里必然经过的闭塞段"，
-  // 两者长得一模一样。改成优先贴着 timedTokens 里真实存在的词边界走：在这段
-  // 空档内，找哪个词的开始时间最接近空档正中间，落点定在这个词开始之前一点，
+  // 两者长得一模一样。改成优先贴着 timedTokens 里真实存在的词边界走：在这一
+  // 段内，找哪个词的开始时间最接近这一段正中间，落点定在这个词开始之前一点，
   // 保证新边界至少落在两个不同词之间，不会切进某一个词自己发音的过程里。
-  // 空档内一个词都没有（少见，比如本来就是静音空档）才退回几何正中间。
+  // 段内一个词都没有（少见，比如本来就是静音段）才退回几何正中间。
   function insertClauseDefault() {
     const s = curS();
     if (!s) return;
-    const points = [s.curStart, ...s.curClauseBounds.slice().sort((a, b) => a - b), s.curEnd];
-    let bestGap = -1, gapLo = s.curStart, gapHi = s.curEnd;
-    for (let i = 0; i < points.length - 1; i++) {
-      const gap = points[i + 1] - points[i];
-      if (gap > bestGap) { bestGap = gap; gapLo = points[i]; gapHi = points[i + 1]; }
-    }
+    const bounds = s.curClauseBounds.slice().sort((a, b) => a - b);
+    // 跟侧栏"点第几块分句块"的映射规则一致：chip 0 对应 activeEdge==='start'，
+    // chip k(>=1) 对应 activeEdge==='clause' && activeClauseIdx===k-1——反过来
+    // 推出"当前选中的是第几段"，segIdx 就是这一段自己的下标。
+    const segIdx = activeEdge === 'clause' ? activeClauseIdx + 1 : 0;
+    const gapLo = segIdx === 0 ? s.curStart : bounds[segIdx - 1];
+    const gapHi = segIdx >= bounds.length ? s.curEnd : bounds[segIdx];
     const mid = (gapLo + gapHi) / 2;
     const toksInGap = (s.timedTokens || []).filter(t => t.t !== null && t.t > gapLo && t.t < gapHi);
     let newBound;
