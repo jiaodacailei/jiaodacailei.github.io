@@ -125,10 +125,12 @@ def build_editor_data(slug_dir, tab_name, out_dir):
             # 给编辑器前端按时间把这句话实际切成的几段小句文字还原出来显示——不能靠
             # 数逗号猜（分句边界可能是人工在编辑器里插入/删除过的，跟原文标点已经
             # 对不上），只有按真实 token 时间戳切才总是准的。没有 t 字段的 token
-            # （比如换行符）跳过，不参与拼接。
+            # （比如换行符）也要保留（t 传 null），前端按"沿用上一个有时间戳的
+            # token所在的那一段"处理，不能在这里直接丢掉——丢了会导致这个 token
+            # 的文字整个从显示里消失（不是分错段，是彻底看不见）。
             timed_tokens = [
-                {"text": t["text"], "t": round(cur + t["t"], 3)}
-                for t in s.get("tokens", []) if t.get("t") is not None
+                {"text": t["text"], "t": round(cur + t["t"], 3) if t.get("t") is not None else None}
+                for t in s.get("tokens", [])
             ]
             if timed_tokens:
                 entry["timedTokens"] = timed_tokens

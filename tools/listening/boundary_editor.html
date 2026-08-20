@@ -395,19 +395,26 @@
   // timedTokens（每个 token 自己的绝对时间戳）按落在哪个区间来分组拼接，
   // 永远反映"照当前这些分句边界切，实际会切出什么"。没有 timedTokens 的句子
   // （生词条目，本来就没有分句这回事）返回 null，调用方按"不显示分句"处理。
+  //
+  // 不能用"每个token的t是否落在[lo,hi)区间内"这种按值过滤的写法——句子开头
+  // 一两个token的t经常因为插值误差落在curStart之前（负值，真实案例：
+  // l14会话第1句"後藤先生"，"後藤"的t是-0.33，比curStart还早），按值过滤会
+  // 让这种token哪个区间都进不去，直接从显示里消失（"後藤先生"只剩"先生"）。
+  // 改成顺序遍历，用一个只会前进不会后退的指针——每个token只要它自己的t还
+  // 没到下一个分句边界，就继续算在"当前"这一段里，不管这个t具体是多少（哪怕
+  // 是负数），没有t的token（比如换行符）也直接归到"当前"这一段，不会丢。
   function clauseTexts(s) {
     if (!s.timedTokens || !s.timedTokens.length) return null;
     const bounds = s.curClauseBounds.slice().sort((a, b) => a - b);
-    const edges = [s.curStart, ...bounds, s.curEnd];
-    const segs = [];
-    for (let i = 0; i < edges.length - 1; i++) {
-      const lo = edges[i], hi = edges[i + 1];
-      const text = s.timedTokens
-        .filter(t => t.t >= lo - 0.001 && t.t < hi - 0.001)
-        .map(t => t.text).join('');
-      segs.push(text || '…');
-    }
-    return segs;
+    const segs = new Array(bounds.length + 1).fill('');
+    let segIdx = 0;
+    s.timedTokens.forEach(tok => {
+      if (tok.t !== null && tok.t !== undefined) {
+        while (segIdx < bounds.length && tok.t >= bounds[segIdx] - 0.001) segIdx++;
+      }
+      segs[segIdx] += tok.text;
+    });
+    return segs.map(seg => seg || '…');
   }
 
   function renderList() {
@@ -452,8 +459,13 @@
         chip.addEventListener('click', (e) => {
           e.stopPropagation();
           const k = parseInt(chip.dataset.chip, 10);
-          if (k === 0) selectSentenceAtEdge(i, 'start', -1);
-          else selectSentenceAtEdge(i, 'clause', k - 1);
+          // 点哪块就放哪块自己的音频范围，不是整句——不然没法靠听声音确认
+          // 这一块的边界切得准不准，等于这个"点击直接跳转"的功能白做了。
+          const bounds = s.curClauseBounds.slice().sort((a, b) => a - b);
+          const edges = [s.curStart, ...bounds, s.curEnd];
+          const range = [edges[k], edges[k + 1]];
+          if (k === 0) selectSentenceAtEdge(i, 'start', -1, range);
+          else selectSentenceAtEdge(i, 'clause', k - 1, range);
         });
       });
       list.appendChild(row);
@@ -471,7 +483,10 @@
 
   // 选中第 i 句，同时直接定位到要编辑的边界——点侧栏"分句块"就是靠这个跳转
   // 到具体某个分句边界，不用先选中句子、再去别处找这个边界对应哪个按钮。
-  function selectSentenceAtEdge(i, edge, clauseIdx) {
+  // playRangeOverride: [startT, endT]，点分句块进来时传这块自己的范围（不传
+  // 就播整句）——点哪块就该放哪块自己的音频，不然没法靠听声音确认这一块
+  // 切得准不准，直接跳转选中就白做了。
+  function selectSentenceAtEdge(i, edge, clauseIdx, playRangeOverride) {
     selected = i;
     activeEdge = edge;
     activeClauseIdx = clauseIdx;
@@ -481,7 +496,9 @@
     scrollSelectedIntoView();
     draw();
     const s = curS();
-    if (s) playRange(s.curStart, s.curEnd, false); // 选中就立刻单次播放一遍，不用再单独点播放按钮
+    if (!s) return;
+    const [t0, t1] = playRangeOverride || [s.curStart, s.curEnd];
+    playRange(t0, t1, false);
   }
 
   function scrollSelectedIntoView() {
