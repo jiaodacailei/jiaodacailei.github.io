@@ -4983,7 +4983,7 @@ window.LESSON_DATA = {
               "zh": "〜次，〜回",
               "notes": "",
               "blanks": [
-                "1次"
+                "次"
               ],
               "audio": "audio/seg-106.mp3",
               "quizSentence": "1次試験，2次試験，3次試験とたくさんの試験を受けなければならない。"
@@ -5582,7 +5582,7 @@ window.LESSON_DATA = {
               "zh": "不满〜，不足〜",
               "notes": "",
               "blanks": [
-                "18歳未満"
+                "未満"
               ],
               "audio": "audio/seg-137.mp3",
               "quizSentence": "18歳未満の方は，応募できません。"
@@ -6160,7 +6160,7 @@ window.LESSON_DATA = {
       "zh": "〜次，〜回",
       "sentence": "1次試験，2次試験，3次試験とたくさんの試験を受けなければならない。",
       "sentence_zh": "求职者必须参加初试、再试、三试等层层选拔，",
-      "blank": "1次",
+      "blank": "次",
       "category": "text"
     },
     {
@@ -6470,7 +6470,7 @@ window.LESSON_DATA = {
       "zh": "不满〜，不足〜",
       "sentence": "18歳未満の方は，応募できません。",
       "sentence_zh": "未满18岁的人不能应聘。",
-      "blank": "18歳未満",
+      "blank": "未満",
       "category": "other"
     }
   ]
