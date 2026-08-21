@@ -1651,6 +1651,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return zh.replace(POS_RE, "").split(/[,，、;；]/).map(function(s) { return s.trim(); }).filter(Boolean);
   }
 
+  // 跟句卡片默写/填空模式（本文件另一个 IIFE 里的 stripPunct()）是同一份
+  // 逻辑，两边各自独立一份——单词测试"填空题"考的是这个词本身有没有记住，
+  // 不是标点符号打没打对，例句原文里的句读符号不该算进判分；两个 IIFE
+  // 之间没有共享作用域，没法直接复用那边的函数。
+  var QUIZ_PUNCT_RE = /[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'"]/g;
+  function quizStripPunct(s) {
+    return (s || "").replace(/[０-９Ａ-Ｚａ-ｚ]/g, function(ch) {
+      return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+    }).replace(QUIZ_PUNCT_RE, "");
+  }
+
   function checkAnswer(q, raw) {
     var v = raw.trim();
     // ja2zh（根据单词写中文意思）判分放宽成"包含"：只要某个可接受释义片段里
@@ -1658,6 +1669,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // （比如"担心"打成"担"也算抓住了意思），严格相等对这种简答式题目太苛刻。
     if (q.type === "ja2zh") {
       return !!v && zhSegments(q.word.zh).some(function(seg) { return seg.indexOf(v) !== -1; });
+    }
+    // blank（填空题，考的是例句里挖掉的这个词）按去除标点符号后的内容比较——
+    // 例句原文的 blank 摘出来的片段可能带着标点（比如句子结尾的"。"跟在
+    // blank 里、或者 blank 本身内部有逗号），用户没打这些标点是正常情况，
+    // 不该被判错。
+    if (q.type === "blank") {
+      return quizStripPunct(v) === quizStripPunct(answerFor(q));
     }
     return v === answerFor(q);
   }
