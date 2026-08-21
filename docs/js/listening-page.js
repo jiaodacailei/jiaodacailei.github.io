@@ -1679,14 +1679,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         return quizStripPunct(seg).indexOf(vStripped) !== -1;
       });
     }
-    // blank（填空题，考的是例句里挖掉的这个词）按去除标点符号后的内容比较——
-    // 例句原文的 blank 摘出来的片段可能带着标点（比如句子结尾的"。"跟在
-    // blank 里、或者 blank 本身内部有逗号），用户没打这些标点是正常情况，
-    // 不该被判错。
-    if (q.type === "blank") {
-      return quizStripPunct(v) === quizStripPunct(answerFor(q));
-    }
-    return v === answerFor(q);
+    // blank（填空题）/audio2kana（听音频写假名）/zh2kana（中文写假名）都按
+    // 去除标点符号后的内容比较——标准答案本身可能带着标点（blank 摘自例句
+    // 原文，可能带着句尾的"。"或者内部的逗号；kana 有些词条本身就是"まあ，
+    // まあ"这种带逗号的固定说法），用户没打这些标点是正常情况，不该被判错。
+    return quizStripPunct(v) === quizStripPunct(answerFor(q));
   }
 
   // 进度显示按"这一轮总题数"（TOTAL_THIS_ROUND，buildQueue() 里定，随 scope
