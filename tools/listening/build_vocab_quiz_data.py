@@ -133,6 +133,19 @@ def kana_for(word):
         # in_kana()` 是通用版：不管词里有没有汉字，只要某一段连续片假名被错误
         # 转写成对应平假名、且能在 kana 里精确定位到，就换回来，覆盖两种场景。
         kana = word["kana"]
+        # kana 跟 text 一字不差、但 text 含汉字——假名读音不可能跟汉字原文
+        # 长得一样，这不是真的读音，几乎一定是数据源头的笔误（真实案例：
+        # textbook-sjp-zg-l14"〜次"/"〜未満"两个词条被误填成 kana==text，
+        # 这里原来会原样透传，"听音频写假名"/"根据中文写假名"这两类题型的
+        # 标准答案因此变成了汉字原文本身，用户不管写什么都不可能判对；同一份
+        # 坏 kana 值另外还会传进 `_split_kana_segments()` 让生词卡片完全不
+        # 显示furigana，两处是同一个根——见 build_page.py 里同一条检查的
+        # 详细说明）。该留空这个字段，不该填成 text 本身。
+        if kana == word["text"] and any(_is_kanji(ch) for ch in word["text"]):
+            raise ValueError(
+                f"词条 {word['text']!r} 的 kana 字段跟 text 完全相同，但 text 含汉字——"
+                f"这不是真的读音，多半是笔误，应该留空这个字段让读音走自动转换/订正表"
+            )
         fixed_kana, changed = _fix_katakana_in_kana(word["text"], kana)
         if changed:
             print(f"警告：词条 {word['text']!r} 里的片假名部分在显式 kana={kana!r} "
