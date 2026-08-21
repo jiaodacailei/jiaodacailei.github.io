@@ -1336,13 +1336,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 这句里任意一个空按回车，都把这句所有还没提交过的空一起比对一遍
       // （不是只比对触发事件的这一个）——填空练习通常一句挖好几个空，
       // 用户习惯打完最后一个空直接回车提交整句，不想逐个空分别回车。
+      // 但必须这些还没提交过的空**全部**都写了内容才真正判定——空着的
+      // 空一按回车就被判错、直接亮出答案，等于没写就先看答案，练习失去
+      // 意义；改成只要还有空着的，回车什么都不做，让用户继续写。
       input.addEventListener("keydown", function(e) {
         if (e.key !== "Enter") return;
         e.preventDefault();
-        blankEntries.forEach(function(entry) {
-          if (!entry.input.disabled) {
-            entry.resolve(entry.input.value.trim() === entry.answer);
-          }
+        var pending = blankEntries.filter(function(entry) { return !entry.input.disabled; });
+        var allFilled = pending.every(function(entry) { return entry.input.value.trim() !== ""; });
+        if (!allFilled) return;
+        pending.forEach(function(entry) {
+          entry.resolve(entry.input.value.trim() === entry.answer);
         });
       });
       input.parentNode.insertBefore(redoBtn, input.nextSibling);
