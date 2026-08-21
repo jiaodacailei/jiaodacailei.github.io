@@ -2017,7 +2017,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "入",
-                  "kana": "い",
+                  "kana": "はい",
                   "t": 2.69
                 },
                 {

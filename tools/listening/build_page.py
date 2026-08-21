@@ -397,6 +397,15 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     if (orig.startswith("行") and hira.startswith("い")
             and (prev_orig == "を" or (prev_orig == "て" and prev2_orig == "対し"))):
         return "おこな" + hira[1:]
+    # "〜に入り"（"进入…"，五段动词"入る"はいる的连用形/ます形词干）该读はいり，
+    # pykakasi 把"入り"当成独立名词いり（"入る/出る"的名词化，比如"日の入り"
+    # =日落）处理，两个读音都真实存在，不能无条件覆盖。用"紧跟在助词"に"
+    # 后面"这个信号区分——"Xに入り"（"に"标记进入的目的地）几乎总是"入る"的
+    # 动词用法，跟"の日"→ひ同一类"用前置助词判断哪种词性/读音"的规律。真实
+    # 案例（textbook-sjp-zg-l14，"会社の建物に入り，出るまでが採用試験である。"）：
+    # 被读成いり，正确应为はいり。
+    if orig == "入り" and prev_orig == "に":
+        return "はいり"
     return hira
 
 
