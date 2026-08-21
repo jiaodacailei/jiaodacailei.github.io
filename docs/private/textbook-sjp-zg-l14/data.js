@@ -4973,7 +4973,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜次"
+                  "text": "〜"
+                },
+                {
+                  "text": "次",
+                  "kana": "じ"
                 }
               ],
               "zh": "〜次，〜回",
@@ -5568,7 +5572,11 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜未満"
+                  "text": "〜"
+                },
+                {
+                  "text": "未満",
+                  "kana": "みまん"
                 }
               ],
               "zh": "不满〜，不足〜",
@@ -6148,7 +6156,7 @@ window.LESSON_DATA = {
     {
       "id": 106,
       "text": "〜次",
-      "kana": "〜次",
+      "kana": "じ",
       "zh": "〜次，〜回",
       "sentence": "1次試験，2次試験，3次試験とたくさんの試験を受けなければならない。",
       "sentence_zh": "求职者必须参加初试、再试、三试等层层选拔，",
@@ -6458,7 +6466,7 @@ window.LESSON_DATA = {
     {
       "id": 137,
       "text": "〜未満",
-      "kana": "〜未満",
+      "kana": "みまん",
       "zh": "不满〜，不足〜",
       "sentence": "18歳未満の方は，応募できません。",
       "sentence_zh": "未满18岁的人不能应聘。",
