@@ -1667,8 +1667,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // ja2zh（根据单词写中文意思）判分放宽成"包含"：只要某个可接受释义片段里
     // 包含用户输入的内容就算对，不要求逐字对齐——用户可能只打了释义的一部分
     // （比如"担心"打成"担"也算抓住了意思），严格相等对这种简答式题目太苛刻。
+    // 释义片段和用户输入都先去掉标点符号再判断包含关系——释义片段里的括号
+    // （比如"进（屋）"）标记的是可省略的搭配宾语，中文词典这种写法本身就
+    // 表示"进"和"进屋"两种说法都对，但原来直接按原文逐字符判断包含，用户
+    // 去掉括号直接连写成"进屋"反而不是"进（屋）"的子串（括号字符本身卡在
+    // 中间），会被误判错。两边都去标点再比较，不用单独针对括号写规则。
     if (q.type === "ja2zh") {
-      return !!v && zhSegments(q.word.zh).some(function(seg) { return seg.indexOf(v) !== -1; });
+      if (!v) return false;
+      var vStripped = quizStripPunct(v);
+      return zhSegments(q.word.zh).some(function(seg) {
+        return quizStripPunct(seg).indexOf(vStripped) !== -1;
+      });
     }
     // blank（填空题，考的是例句里挖掉的这个词）按去除标点符号后的内容比较——
     // 例句原文的 blank 摘出来的片段可能带着标点（比如句子结尾的"。"跟在
