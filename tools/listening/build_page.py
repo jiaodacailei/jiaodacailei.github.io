@@ -342,6 +342,28 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # "３"时也要读对。
     if orig == "人前" and prev_ends_with_digit:
         return "にんまえ"
+    # "N本"（细长物量词，比如"29本"）读音随前面数字的结尾音变化（本＝ほん/
+    # ぼん/っぽん三种交替，跟"1本"＝いっぽん、"3本"＝さんぼん、"6本"＝
+    # ろっぽん、"8本"＝はっぽん这几个促音/浊音变化是同一套规则），"不变音、
+    # 老实读ほん"的这几个结尾数字（2/4/5/7/9）——真实案例（textbook-sjp-
+    # zg-l17，"せいぜい29本だったが，明の時代には459本に"）两处都被读成
+    # ぽん，是错的，该读きゅうほん（"9"结尾不发生促音/浊音变化）。**根因
+    # 排查时发现这条不是 pykakasi 自己猜错——pykakasi 给"本"的原始默认值
+    # 本来就是正确的"ほん"，是后面 SudachiPy 交叉核对那一步把它错误覆盖成
+    # "ぽん"的**：调用方原来靠"这个函数的返回值是否等于 pykakasi 默认值"
+    # 判断"有没有规则命中"，这条规则命中之后返回的答案恰好也是"ほん"（因为
+    # pykakasi 这次碰巧本来就猜对了），两边相等，调用方误判成"没有规则命中，
+    # 仍是 pykakasi 原始猜测"，于是继续拿去问 SudachiPy，而 SudachiPy 这个
+    # 位置给的是错误的"ぽん"，覆盖回了本来正确的答案。已经把"有没有命中"
+    # 的判断方式从"返回值是否变化"改成显式哨兵 `None`（这个函数末尾的兜底
+    # `return hira` 和两处调用方都一起改了，见各自改动点的说明）——这类
+    # "规则命中之后给出的答案恰好和 pykakasi 自己也猜对的默认值一样"，不是
+    # 这一条规则独有的风险，只在检测方式上修一次就能让以后新加的规则也不
+    # 再中招。只覆盖"结尾是2/4/5/7/9"这几个确定不变音的数字——1/3/6/8/
+    # 10/百/千这几个会变音的结尾规则更复杂（清濁/促音因十百千前缀还会再变
+    # 一次），目前没有真实反例，暂不覆盖。
+    if orig == "本" and prev_orig and prev_orig[-1] in "24579":
+        return "ほん"
     # "ご飯"该读ごはん，pykakasi 把"ご"（美化接头词）跟前面的て形动词合并成一个
     # token（比如"調理して"+"ご"→"してご"一个token），孤立的"飯"字默认读めし
     # （"飯を食う"这种口语单字用法），拼出来是"…してごめし"，是错的。不能用
@@ -406,7 +428,13 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # 被读成いり，正确应为はいり。
     if orig == "入り" and prev_orig == "に":
         return "はいり"
-    return hira
+    # 没有任何规则命中——返回 None（不是 hira）当"没命中"的显式信号，调用方
+    # 据此决定要不要继续问 SudachiPy 交叉核对。不能返回 hira 本身：如果某条
+    # 规则命中之后给出的正确答案恰好和 pykakasi 自己的默认猜测一样（真实
+    # 案例见上面"N本"那条规则的说明），调用方没法用"返回值是否等于 hira"
+    # 区分"规则命中、答案恰好和默认值相同"和"根本没有规则命中"，会把前者
+    # 误判成后者，继续拿去问 SudachiPy，可能被交叉核对的错误结果覆盖回去。
+    return None
 
 
 def _kata_to_hira_char(ch):
@@ -742,10 +770,13 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
                 hira = _TOKEN_READING_OVERRIDES_UNCONDITIONAL[orig]
             else:
                 resolved = _resolve_hira(orig, hira, prev_orig, next_char, prev2_orig)
-                if resolved != hira:
+                if resolved is not None:
                     # `_resolve_hira()` 命中了某条手写规则，已经是人工验证过的
                     # 结果，可信度高于"两个工具谁的默认值更准"这种交叉核对，
-                    # 不再去问 SudachiPy。
+                    # 不再去问 SudachiPy。用 `is not None` 而不是"resolved !=
+                    # hira"判断命中与否——后者会把"规则命中、但答案恰好和
+                    # pykakasi 自己的默认猜测一样"误判成"没命中"，真实案例见
+                    # `_resolve_hira()` 里"N本"那条规则的说明。
                     hira = resolved
                 else:
                     # 走到这里说明这个 token 的读音还是 pykakasi 的原始猜测，

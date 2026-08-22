@@ -148,7 +148,11 @@ def _scan_live_text(text, show_all, vocab_readings=None):
                 overridden = True
             else:
                 new_hira = _resolve_hira(orig, hira, prev_orig, next_char, prev2_orig)
-                if new_hira != hira:
+                if new_hira is not None:
+                    # 用 `is not None` 而不是"new_hira != hira"判断命中与否——
+                    # 后者会把"规则命中、但答案恰好和 pykakasi 自己的默认猜测
+                    # 一样"误判成"没命中"，见 build_page.py 里 `_resolve_hira()`
+                    # "N本"那条规则的说明，跟 tokenize_ja() 保持同一份判断逻辑。
                     hira = new_hira
                     overridden = True
                 else:
