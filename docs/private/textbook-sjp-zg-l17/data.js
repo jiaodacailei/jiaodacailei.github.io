@@ -2082,6 +2082,31 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
+                  "t": 0.68
+                },
+                {
+                  "text": "顔",
+                  "kana": "かお",
+                  "t": 0.92
+                }
+              ],
+              "zh": "北京的脸面（课程标题）",
+              "notes": "",
+              "blanks": [],
+              "audio": "audio/seg-032.mp3"
+            },
+            {
+              "id": 33,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "北京",
+                  "kana": "ぺきん",
+                  "t": 0.0
+                },
+                {
+                  "text": "の",
                   "t": 0.28
                 },
                 {
@@ -2161,10 +2186,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "市民の憩いの場である"
               ],
-              "audio": "audio/seg-032.mp3"
+              "audio": "audio/seg-033.mp3"
             },
             {
-              "id": 33,
+              "id": 34,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2251,7 +2276,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "でにぎわう"
               ],
-              "audio": "audio/seg-033.mp3",
+              "audio": "audio/seg-034.mp3",
               "clauseBounds": [
                 1.01
               ]
@@ -2264,7 +2289,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 34,
+              "id": 35,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2363,7 +2388,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "と呼ばれる"
               ],
-              "audio": "audio/seg-034.mp3"
+              "audio": "audio/seg-035.mp3"
             }
           ]
         },
@@ -2373,7 +2398,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 35,
+              "id": 36,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2472,13 +2497,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "さかのぼらなければならない"
               ],
-              "audio": "audio/seg-035.mp3",
+              "audio": "audio/seg-036.mp3",
               "clauseBounds": [
                 1.01
               ]
             },
             {
-              "id": 36,
+              "id": 37,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2618,13 +2643,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "守るため"
               ],
-              "audio": "audio/seg-036.mp3",
+              "audio": "audio/seg-037.mp3",
               "clauseBounds": [
                 4.53
               ]
             },
             {
-              "id": 37,
+              "id": 38,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2712,7 +2737,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "取り囲むように"
               ],
-              "audio": "audio/seg-037.mp3"
+              "audio": "audio/seg-038.mp3"
             }
           ]
         },
@@ -2722,7 +2747,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 38,
+              "id": 39,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2810,13 +2835,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "生活の場であった"
               ],
-              "audio": "audio/seg-038.mp3",
+              "audio": "audio/seg-039.mp3",
               "clauseBounds": [
                 1.27
               ]
             },
             {
-              "id": 39,
+              "id": 40,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2890,13 +2915,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "頻繁に開かれ"
               ],
-              "audio": "audio/seg-039.mp3",
+              "audio": "audio/seg-040.mp3",
               "clauseBounds": [
                 2.47
               ]
             },
             {
-              "id": 40,
+              "id": 41,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -2949,10 +2974,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "時には"
               ],
-              "audio": "audio/seg-040.mp3"
+              "audio": "audio/seg-041.mp3"
             },
             {
-              "id": 41,
+              "id": 42,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3032,10 +3057,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "役割によって"
               ],
-              "audio": "audio/seg-041.mp3"
+              "audio": "audio/seg-042.mp3"
             },
             {
-              "id": 42,
+              "id": 43,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3140,10 +3165,10 @@ window.LESSON_DATA = {
               "blanks": [
                 "書かれた看板"
               ],
-              "audio": "audio/seg-042.mp3"
+              "audio": "audio/seg-043.mp3"
             },
             {
-              "id": 43,
+              "id": 44,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3337,7 +3362,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "昔のままの名前"
               ],
-              "audio": "audio/seg-043.mp3",
+              "audio": "audio/seg-044.mp3",
               "clauseBounds": [
                 9.89
               ]
@@ -3350,7 +3375,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 44,
+              "id": 45,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3469,13 +3494,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "作られた当時"
               ],
-              "audio": "audio/seg-044.mp3",
+              "audio": "audio/seg-045.mp3",
               "clauseBounds": [
                 3.33
               ]
             },
             {
-              "id": 45,
+              "id": 46,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3548,13 +3573,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "庭を中心に"
               ],
-              "audio": "audio/seg-045.mp3",
+              "audio": "audio/seg-046.mp3",
               "clauseBounds": [
                 2.44
               ]
             },
             {
-              "id": 46,
+              "id": 47,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3658,7 +3683,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "改造しているところもある"
               ],
-              "audio": "audio/seg-046.mp3",
+              "audio": "audio/seg-047.mp3",
               "clauseBounds": [
                 1.0
               ]
@@ -3671,7 +3696,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 47,
+              "id": 48,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3843,13 +3868,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "せいぜい29本"
               ],
-              "audio": "audio/seg-047.mp3",
+              "audio": "audio/seg-048.mp3",
               "clauseBounds": [
                 8.25
               ]
             },
             {
-              "id": 48,
+              "id": 49,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -3992,7 +4017,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "とまでいわれたそうである"
               ],
-              "audio": "audio/seg-048.mp3"
+              "audio": "audio/seg-049.mp3"
             }
           ]
         },
@@ -4002,7 +4027,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 49,
+              "id": 50,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4108,13 +4133,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "減ってきてしまった"
               ],
-              "audio": "audio/seg-049.mp3",
+              "audio": "audio/seg-050.mp3",
               "clauseBounds": [
                 1.38
               ]
             },
             {
-              "id": 50,
+              "id": 51,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4198,13 +4223,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "残そうとする動き"
               ],
-              "audio": "audio/seg-050.mp3",
+              "audio": "audio/seg-051.mp3",
               "clauseBounds": [
                 1.4
               ]
             },
             {
-              "id": 51,
+              "id": 52,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4322,13 +4347,13 @@ window.LESSON_DATA = {
               "blanks": [
                 "保存することを決めた"
               ],
-              "audio": "audio/seg-051.mp3",
+              "audio": "audio/seg-052.mp3",
               "clauseBounds": [
                 4.8
               ]
             },
             {
-              "id": 52,
+              "id": 53,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4437,7 +4462,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "変革の時を迎えている"
               ],
-              "audio": "audio/seg-052.mp3"
+              "audio": "audio/seg-053.mp3"
             }
           ]
         }
@@ -4452,7 +4477,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 53,
+              "id": 54,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4466,11 +4491,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "成果"
               ],
-              "audio": "audio/seg-053.mp3",
+              "audio": "audio/seg-054.mp3",
               "quizSentence": "彼の研究はすばらしい成果を上げた。"
             },
             {
-              "id": 54,
+              "id": 55,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4484,11 +4509,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "以上"
               ],
-              "audio": "audio/seg-054.mp3",
+              "audio": "audio/seg-055.mp3",
               "quizSentence": "以上が，ホームページの「『金星』の故郷を探る」で取り上げる記事の一例です。"
             },
             {
-              "id": 55,
+              "id": 56,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4502,11 +4527,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "一例"
               ],
-              "audio": "audio/seg-055.mp3",
+              "audio": "audio/seg-056.mp3",
               "quizSentence": "以上が，ホームページの「『金星』の故郷を探る」で取り上げる記事の一例です。"
             },
             {
-              "id": 56,
+              "id": 57,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4523,11 +4548,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "お世辞"
               ],
-              "audio": "audio/seg-056.mp3",
+              "audio": "audio/seg-057.mp3",
               "quizSentence": "これはお世辞抜きでおもしろいですよ。"
             },
             {
-              "id": 57,
+              "id": 58,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4541,11 +4566,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "国内"
               ],
-              "audio": "audio/seg-057.mp3",
+              "audio": "audio/seg-058.mp3",
               "quizSentence": "でも，それは日本国内でのことですよ。"
             },
             {
-              "id": 58,
+              "id": 59,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4569,11 +4594,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "売り込む"
               ],
-              "audio": "audio/seg-058.mp3",
+              "audio": "audio/seg-059.mp3",
               "quizSentence": "新商品を若者に売り込むための宣伝を行った。"
             },
             {
-              "id": 59,
+              "id": 60,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4587,11 +4612,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "戦略"
               ],
-              "audio": "audio/seg-059.mp3",
+              "audio": "audio/seg-060.mp3",
               "quizSentence": "戦略の1つとして，若者をターゲットにするんです。"
             },
             {
-              "id": 60,
+              "id": 61,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4608,11 +4633,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "試飲する"
               ],
-              "audio": "audio/seg-060.mp3",
+              "audio": "audio/seg-061.mp3",
               "quizSentence": "こういったバーで「金星」のカクテルを試飲するキャンペーンを行ったらいかがですか。"
             },
             {
-              "id": 61,
+              "id": 62,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4626,11 +4651,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "敏感"
               ],
-              "audio": "audio/seg-061.mp3",
+              "audio": "audio/seg-062.mp3",
               "quizSentence": "若者は流行に敏感です。"
             },
             {
-              "id": 62,
+              "id": 63,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4644,11 +4669,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "間"
               ],
-              "audio": "audio/seg-062.mp3",
+              "audio": "audio/seg-063.mp3",
               "quizSentence": "若者たちの間でこのカクテルの人気が出たら，「金星」の売り上げにもつながるんじゃないでしょうか。"
             },
             {
-              "id": 63,
+              "id": 64,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4661,11 +4686,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "たいした"
               ],
-              "audio": "audio/seg-063.mp3",
+              "audio": "audio/seg-064.mp3",
               "quizSentence": "いえ，そんな…たいしたことではありません。"
             },
             {
-              "id": 64,
+              "id": 65,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4678,11 +4703,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ラベル"
               ],
-              "audio": "audio/seg-064.mp3",
+              "audio": "audio/seg-065.mp3",
               "quizSentence": "中国用のネーミングやラベルのデザインは，私どもで引き受けます。"
             },
             {
-              "id": 65,
+              "id": 66,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4698,7 +4723,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "私ども"
               ],
-              "audio": "audio/seg-065.mp3",
+              "audio": "audio/seg-066.mp3",
               "quizSentence": "私ども家族はみな元気です。"
             }
           ]
@@ -4709,7 +4734,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 66,
+              "id": 67,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4723,11 +4748,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "意外"
               ],
-              "audio": "audio/seg-066.mp3",
+              "audio": "audio/seg-067.mp3",
               "quizSentence": "その結果は意外なものだった。"
             },
             {
-              "id": 67,
+              "id": 68,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4741,11 +4766,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "案外"
               ],
-              "audio": "audio/seg-067.mp3",
+              "audio": "audio/seg-068.mp3",
               "quizSentence": "この問題は案外簡単だった。"
             },
             {
-              "id": 68,
+              "id": 69,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4762,11 +4787,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "賢い"
               ],
-              "audio": "audio/seg-068.mp3",
+              "audio": "audio/seg-069.mp3",
               "quizSentence": "彼女はとても賢い子供だ。"
             },
             {
-              "id": 69,
+              "id": 70,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4780,11 +4805,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "概略"
               ],
-              "audio": "audio/seg-069.mp3",
+              "audio": "audio/seg-070.mp3",
               "quizSentence": "会議の概略を説明します。"
             },
             {
-              "id": 70,
+              "id": 71,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4801,11 +4826,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "堅苦しい"
               ],
-              "audio": "audio/seg-070.mp3",
+              "audio": "audio/seg-071.mp3",
               "quizSentence": "そんな堅苦しいあいさつはやめましょう。"
             },
             {
-              "id": 71,
+              "id": 72,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4819,11 +4844,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "台湾"
               ],
-              "audio": "audio/seg-071.mp3",
+              "audio": "audio/seg-072.mp3",
               "quizSentence": "来月，台湾へ旅行に行くつもりです。"
             },
             {
-              "id": 72,
+              "id": 73,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4837,11 +4862,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "温暖"
               ],
-              "audio": "audio/seg-072.mp3",
+              "audio": "audio/seg-073.mp3",
               "quizSentence": "この地域は一年中温暖な気候だ。"
             },
             {
-              "id": 73,
+              "id": 74,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4855,11 +4880,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "気候"
               ],
-              "audio": "audio/seg-073.mp3",
+              "audio": "audio/seg-074.mp3",
               "quizSentence": "この町は気候がいいので，住みやすい。"
             },
             {
-              "id": 74,
+              "id": 75,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4883,11 +4908,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "飛び込んだ"
               ],
-              "audio": "audio/seg-074.mp3",
+              "audio": "audio/seg-075.mp3",
               "quizSentence": "子供たちはプールに飛び込んだ。"
             },
             {
-              "id": 75,
+              "id": 76,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4904,11 +4929,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "放って"
               ],
-              "audio": "audio/seg-075.mp3",
+              "audio": "audio/seg-076.mp3",
               "quizSentence": "そんなに大事な仕事を放っておいてはいけない。"
             },
             {
-              "id": 76,
+              "id": 77,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4932,11 +4957,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "投げ込んだ"
               ],
-              "audio": "audio/seg-076.mp3",
+              "audio": "audio/seg-077.mp3",
               "quizSentence": "彼はボールをかごに投げ込んだ。"
             },
             {
-              "id": 77,
+              "id": 78,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4960,11 +4985,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "放り込んで"
               ],
-              "audio": "audio/seg-077.mp3",
+              "audio": "audio/seg-078.mp3",
               "quizSentence": "かばんに教科書を放り込んで，家を出た。"
             },
             {
-              "id": 78,
+              "id": 79,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4988,11 +5013,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "持ち込む"
               ],
-              "audio": "audio/seg-078.mp3",
+              "audio": "audio/seg-079.mp3",
               "quizSentence": "飛行機に飲み物を持ち込むことはできません。"
             },
             {
-              "id": 79,
+              "id": 80,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5016,11 +5041,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "流れ込む"
               ],
-              "audio": "audio/seg-079.mp3",
+              "audio": "audio/seg-080.mp3",
               "quizSentence": "川の水が海に流れ込む。"
             },
             {
-              "id": 80,
+              "id": 81,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5044,11 +5069,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "潜り込んだ"
               ],
-              "audio": "audio/seg-080.mp3",
+              "audio": "audio/seg-081.mp3",
               "quizSentence": "猫が布団の中に潜り込んだ。"
             },
             {
-              "id": 81,
+              "id": 82,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5072,11 +5097,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "落ち込んでいる"
               ],
-              "audio": "audio/seg-081.mp3",
+              "audio": "audio/seg-082.mp3",
               "quizSentence": "試験に失敗して，すっかり落ち込んでいる。"
             },
             {
-              "id": 82,
+              "id": 83,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5090,11 +5115,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "少年"
               ],
-              "audio": "audio/seg-082.mp3",
+              "audio": "audio/seg-083.mp3",
               "quizSentence": "少年のころ，よくこの公園で遊んだ。"
             },
             {
-              "id": 83,
+              "id": 84,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5111,11 +5136,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "勉強になりました"
               ],
-              "audio": "audio/seg-083.mp3",
+              "audio": "audio/seg-084.mp3",
               "quizSentence": "先生のお話はとても勉強になりました。"
             },
             {
-              "id": 84,
+              "id": 85,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5132,11 +5157,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "名俳優"
               ],
-              "audio": "audio/seg-084.mp3",
+              "audio": "audio/seg-085.mp3",
               "quizSentence": "彼は名俳優として知られている。"
             },
             {
-              "id": 85,
+              "id": 86,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5156,7 +5181,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "詰め込んだ"
               ],
-              "audio": "audio/seg-085.mp3",
+              "audio": "audio/seg-086.mp3",
               "quizSentence": "資料を全部かばんに詰め込んだ。"
             }
           ]
@@ -5167,7 +5192,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 86,
+              "id": 87,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5181,11 +5206,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "見事な"
               ],
-              "audio": "audio/seg-086.mp3",
+              "audio": "audio/seg-087.mp3",
               "quizSentence": "彼女は見事な演技を見せた。"
             },
             {
-              "id": 87,
+              "id": 88,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5198,11 +5223,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "カロリー"
               ],
-              "audio": "audio/seg-087.mp3",
+              "audio": "audio/seg-088.mp3",
               "quizSentence": "このケーキはカロリーが高い。"
             },
             {
-              "id": 88,
+              "id": 89,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5219,11 +5244,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "見直した"
               ],
-              "audio": "audio/seg-088.mp3",
+              "audio": "audio/seg-089.mp3",
               "quizSentence": "計画をもう一度見直したほうがいい。"
             },
             {
-              "id": 89,
+              "id": 90,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5237,11 +5262,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "中高年"
               ],
-              "audio": "audio/seg-089.mp3",
+              "audio": "audio/seg-090.mp3",
               "quizSentence": "このイベントは中高年に人気がある。"
             },
             {
-              "id": 90,
+              "id": 91,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5255,11 +5280,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "携帯小説"
               ],
-              "audio": "audio/seg-090.mp3",
+              "audio": "audio/seg-091.mp3",
               "quizSentence": "最近，携帯小説を読む若者が増えている。"
             },
             {
-              "id": 91,
+              "id": 92,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5273,11 +5298,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "一時"
               ],
-              "audio": "audio/seg-091.mp3",
+              "audio": "audio/seg-092.mp3",
               "quizSentence": "雨は一時強く降った。"
             },
             {
-              "id": 92,
+              "id": 93,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5291,7 +5316,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "一時的な"
               ],
-              "audio": "audio/seg-092.mp3",
+              "audio": "audio/seg-093.mp3",
               "quizSentence": "これは一時的な問題にすぎない。"
             }
           ]
@@ -5302,7 +5327,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 93,
+              "id": 94,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5316,11 +5341,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "景山公園"
               ],
-              "audio": "audio/seg-093.mp3",
+              "audio": "audio/seg-094.mp3",
               "quizSentence": "北京のほぼ中心部にある景山公園は，市民の憩いの場である。"
             },
             {
-              "id": 94,
+              "id": 95,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5337,11 +5362,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "憩い"
               ],
-              "audio": "audio/seg-094.mp3",
+              "audio": "audio/seg-095.mp3",
               "quizSentence": "北京のほぼ中心部にある景山公園は，市民の憩いの場である。"
             },
             {
-              "id": 95,
+              "id": 96,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5354,11 +5379,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "カップル"
               ],
-              "audio": "audio/seg-095.mp3",
+              "audio": "audio/seg-096.mp3",
               "quizSentence": "休日には，若いカップルや家族連れ，旅行者でにぎわう。"
             },
             {
-              "id": 96,
+              "id": 97,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5375,11 +5400,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "家族連れ"
               ],
-              "audio": "audio/seg-096.mp3",
+              "audio": "audio/seg-097.mp3",
               "quizSentence": "休日には，若いカップルや家族連れ，旅行者でにぎわう。"
             },
             {
-              "id": 97,
+              "id": 98,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5393,11 +5418,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "周囲"
               ],
-              "audio": "audio/seg-097.mp3",
+              "audio": "audio/seg-098.mp3",
               "quizSentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。"
             },
             {
-              "id": 98,
+              "id": 99,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5411,11 +5436,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "路地"
               ],
-              "audio": "audio/seg-098.mp3",
+              "audio": "audio/seg-099.mp3",
               "quizSentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。"
             },
             {
-              "id": 99,
+              "id": 100,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5429,11 +5454,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "無数"
               ],
-              "audio": "audio/seg-099.mp3",
+              "audio": "audio/seg-100.mp3",
               "quizSentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。"
             },
             {
-              "id": 100,
+              "id": 101,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5450,11 +5475,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "存在する"
               ],
-              "audio": "audio/seg-100.mp3",
+              "audio": "audio/seg-101.mp3",
               "quizSentence": "この町には古い寺がたくさん存在する。"
             },
             {
-              "id": 101,
+              "id": 102,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5467,11 +5492,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "さかのぼる"
               ],
-              "audio": "audio/seg-101.mp3",
+              "audio": "audio/seg-102.mp3",
               "quizSentence": "この習慣は江戸時代までさかのぼることができる。"
             },
             {
-              "id": 102,
+              "id": 103,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5485,11 +5510,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "元"
               ],
-              "audio": "audio/seg-102.mp3",
+              "audio": "audio/seg-103.mp3",
               "quizSentence": "13世紀，元の時代に，敵から市民を守るため，石垣が作られ，その中に住宅が作られた。"
             },
             {
-              "id": 103,
+              "id": 104,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5503,11 +5528,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "敵"
               ],
-              "audio": "audio/seg-103.mp3",
+              "audio": "audio/seg-104.mp3",
               "quizSentence": "13世紀，元の時代に，敵から市民を守るため，石垣が作られ，その中に住宅が作られた。"
             },
             {
-              "id": 104,
+              "id": 105,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5521,11 +5546,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "石垣"
               ],
-              "audio": "audio/seg-104.mp3",
+              "audio": "audio/seg-105.mp3",
               "quizSentence": "13世紀，元の時代に，敵から市民を守るため，石垣が作られ，その中に住宅が作られた。"
             },
             {
-              "id": 105,
+              "id": 106,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5539,11 +5564,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "住居"
               ],
-              "audio": "audio/seg-105.mp3",
+              "audio": "audio/seg-106.mp3",
               "quizSentence": "この住居を取り囲むように通っているのが「胡同」である。"
             },
             {
-              "id": 106,
+              "id": 107,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5567,11 +5592,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "取り囲む"
               ],
-              "audio": "audio/seg-106.mp3",
+              "audio": "audio/seg-107.mp3",
               "quizSentence": "この住居を取り囲むように通っているのが「胡同」である。"
             },
             {
-              "id": 107,
+              "id": 108,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5585,11 +5610,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "朝市"
               ],
-              "audio": "audio/seg-107.mp3",
+              "audio": "audio/seg-108.mp3",
               "quizSentence": "路地には朝市が頻繁に開かれ，屋台が並ぶ。"
             },
             {
-              "id": 108,
+              "id": 109,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5603,11 +5628,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "頻繁"
               ],
-              "audio": "audio/seg-108.mp3",
+              "audio": "audio/seg-109.mp3",
               "quizSentence": "路地には朝市が頻繁に開かれ，屋台が並ぶ。"
             },
             {
-              "id": 109,
+              "id": 110,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5621,11 +5646,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "屋台"
               ],
-              "audio": "audio/seg-109.mp3",
+              "audio": "audio/seg-110.mp3",
               "quizSentence": "路地には朝市が頻繁に開かれ，屋台が並ぶ。"
             },
             {
-              "id": 110,
+              "id": 111,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5642,11 +5667,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "時には"
               ],
-              "audio": "audio/seg-110.mp3",
+              "audio": "audio/seg-111.mp3",
               "quizSentence": "時には自転車置き場にもなる。"
             },
             {
-              "id": 111,
+              "id": 112,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5667,11 +5692,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "自転車置き場"
               ],
-              "audio": "audio/seg-111.mp3",
+              "audio": "audio/seg-112.mp3",
               "quizSentence": "時には自転車置き場にもなる。"
             },
             {
-              "id": 112,
+              "id": 113,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5685,11 +5710,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "金銭"
               ],
-              "audio": "audio/seg-112.mp3",
+              "audio": "audio/seg-113.mp3",
               "quizSentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。"
             },
             {
-              "id": 113,
+              "id": 114,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5703,11 +5728,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "取引所"
               ],
-              "audio": "audio/seg-113.mp3",
+              "audio": "audio/seg-114.mp3",
               "quizSentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。"
             },
             {
-              "id": 114,
+              "id": 115,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5721,11 +5746,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "銭市胡同"
               ],
-              "audio": "audio/seg-114.mp3",
+              "audio": "audio/seg-115.mp3",
               "quizSentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。"
             },
             {
-              "id": 115,
+              "id": 116,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5739,11 +5764,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "刃物"
               ],
-              "audio": "audio/seg-115.mp3",
+              "audio": "audio/seg-116.mp3",
               "quizSentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。"
             },
             {
-              "id": 116,
+              "id": 117,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5760,11 +5785,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "研ぐ"
               ],
-              "audio": "audio/seg-116.mp3",
+              "audio": "audio/seg-117.mp3",
               "quizSentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。"
             },
             {
-              "id": 117,
+              "id": 118,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5778,11 +5803,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "職人"
               ],
-              "audio": "audio/seg-117.mp3",
+              "audio": "audio/seg-118.mp3",
               "quizSentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。"
             },
             {
-              "id": 118,
+              "id": 119,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5796,11 +5821,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "磨刀胡同"
               ],
-              "audio": "audio/seg-118.mp3",
+              "audio": "audio/seg-119.mp3",
               "quizSentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。"
             },
             {
-              "id": 119,
+              "id": 120,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5814,11 +5839,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "四合院"
               ],
-              "audio": "audio/seg-119.mp3",
+              "audio": "audio/seg-120.mp3",
               "quizSentence": "胡同が作られた当時，「四合院」と呼ばれる，中国の伝統的な家屋も作られた。"
             },
             {
-              "id": 120,
+              "id": 121,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5832,11 +5857,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "家屋"
               ],
-              "audio": "audio/seg-120.mp3",
+              "audio": "audio/seg-121.mp3",
               "quizSentence": "胡同が作られた当時，「四合院」と呼ばれる，中国の伝統的な家屋も作られた。"
             },
             {
-              "id": 121,
+              "id": 122,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5850,11 +5875,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "東西南北"
               ],
-              "audio": "audio/seg-121.mp3",
+              "audio": "audio/seg-122.mp3",
               "quizSentence": "東西南北の棟が，庭を中心に建てられている。"
             },
             {
-              "id": 122,
+              "id": 123,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5868,11 +5893,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "棟"
               ],
-              "audio": "audio/seg-122.mp3",
+              "audio": "audio/seg-123.mp3",
               "quizSentence": "東西南北の棟が，庭を中心に建てられている。"
             },
             {
-              "id": 123,
+              "id": 124,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5889,11 +5914,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "改造する"
               ],
-              "audio": "audio/seg-123.mp3",
+              "audio": "audio/seg-124.mp3",
               "quizSentence": "古い工場をレストランに改造する計画がある。"
             },
             {
-              "id": 124,
+              "id": 125,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5913,7 +5938,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "子供連れ"
               ],
-              "audio": "audio/seg-124.mp3",
+              "audio": "audio/seg-125.mp3",
               "quizSentence": "彼は子供連れで旅行に来た。"
             }
           ]
@@ -5924,7 +5949,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 125,
+              "id": 126,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5937,11 +5962,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "せいぜい"
               ],
-              "audio": "audio/seg-125.mp3",
+              "audio": "audio/seg-126.mp3",
               "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。"
             },
             {
-              "id": 126,
+              "id": 127,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5955,11 +5980,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "明"
               ],
-              "audio": "audio/seg-126.mp3",
+              "audio": "audio/seg-127.mp3",
               "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。"
             },
             {
-              "id": 127,
+              "id": 128,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5972,11 +5997,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "つなぐ"
               ],
-              "audio": "audio/seg-127.mp3",
+              "audio": "audio/seg-128.mp3",
               "quizSentence": "その長さから，北京の胡同をつなぐと「もう1つの万里の長城になる」とまでいわれたそうである。"
             },
             {
-              "id": 128,
+              "id": 129,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5993,11 +6018,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "動き"
               ],
-              "audio": "audio/seg-128.mp3",
+              "audio": "audio/seg-129.mp3",
               "quizSentence": "ただ，その一方，古い建物を残そうとする動きもある。"
             },
             {
-              "id": 129,
+              "id": 130,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6011,11 +6036,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "歴史文化保護区"
               ],
-              "audio": "audio/seg-129.mp3",
+              "audio": "audio/seg-130.mp3",
               "quizSentence": "北京市では25か所の歴史文化保護区を指定して，町並みを保存することを決めた。"
             },
             {
-              "id": 130,
+              "id": 131,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6032,11 +6057,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "指定した"
               ],
-              "audio": "audio/seg-130.mp3",
+              "audio": "audio/seg-131.mp3",
               "quizSentence": "先生は宿題の締め切りを指定した。"
             },
             {
-              "id": 131,
+              "id": 132,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6053,11 +6078,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "保存する"
               ],
-              "audio": "audio/seg-131.mp3",
+              "audio": "audio/seg-132.mp3",
               "quizSentence": "北京市では25か所の歴史文化保護区を指定して，町並みを保存することを決めた。"
             },
             {
-              "id": 132,
+              "id": 133,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6074,11 +6099,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "混在する"
               ],
-              "audio": "audio/seg-132.mp3",
+              "audio": "audio/seg-133.mp3",
               "quizSentence": "新しいものと古いものが混在する街北京は，今変革の時を迎えている。"
             },
             {
-              "id": 133,
+              "id": 134,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6092,11 +6117,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "変革"
               ],
-              "audio": "audio/seg-133.mp3",
+              "audio": "audio/seg-134.mp3",
               "quizSentence": "新しいものと古いものが混在する街北京は，今変革の時を迎えている。"
             },
             {
-              "id": 134,
+              "id": 135,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6116,11 +6141,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "3か所"
               ],
-              "audio": "audio/seg-134.mp3",
+              "audio": "audio/seg-135.mp3",
               "quizSentence": "この町には公園が3か所ある。"
             },
             {
-              "id": 135,
+              "id": 136,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6134,11 +6159,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "年配"
               ],
-              "audio": "audio/seg-135.mp3",
+              "audio": "audio/seg-136.mp3",
               "quizSentence": "年配の方にも使いやすいデザインだ。"
             },
             {
-              "id": 136,
+              "id": 137,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6152,11 +6177,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "旅"
               ],
-              "audio": "audio/seg-136.mp3",
+              "audio": "audio/seg-137.mp3",
               "quizSentence": "夏休みに一人で旅に出た。"
             },
             {
-              "id": 137,
+              "id": 138,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6170,11 +6195,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "夜空"
               ],
-              "audio": "audio/seg-137.mp3",
+              "audio": "audio/seg-138.mp3",
               "quizSentence": "夜空に星がきれいに輝いている。"
             },
             {
-              "id": 138,
+              "id": 139,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6191,11 +6216,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "見上げる"
               ],
-              "audio": "audio/seg-138.mp3",
+              "audio": "audio/seg-139.mp3",
               "quizSentence": "空を見上げると，満月が見えた。"
             },
             {
-              "id": 139,
+              "id": 140,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6209,11 +6234,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "先祖"
               ],
-              "audio": "audio/seg-139.mp3",
+              "audio": "audio/seg-140.mp3",
               "quizSentence": "この家は先祖代々続いている。"
             },
             {
-              "id": 140,
+              "id": 141,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6227,11 +6252,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "南東"
               ],
-              "audio": "audio/seg-140.mp3",
+              "audio": "audio/seg-141.mp3",
               "quizSentence": "その島は日本の南東に位置している。"
             },
             {
-              "id": 141,
+              "id": 142,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6245,11 +6270,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "北西"
               ],
-              "audio": "audio/seg-141.mp3",
+              "audio": "audio/seg-142.mp3",
               "quizSentence": "台風は北西に進んでいる。"
             },
             {
-              "id": 142,
+              "id": 143,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6263,11 +6288,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "北東"
               ],
-              "audio": "audio/seg-142.mp3",
+              "audio": "audio/seg-143.mp3",
               "quizSentence": "この村は町の北東にある。"
             },
             {
-              "id": 143,
+              "id": 144,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6281,7 +6306,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "南西"
               ],
-              "audio": "audio/seg-143.mp3",
+              "audio": "audio/seg-144.mp3",
               "quizSentence": "南西の空に雲が広がっている。"
             }
           ]
@@ -6292,7 +6317,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 144,
+              "id": 145,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6306,11 +6331,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "東南"
               ],
-              "audio": "audio/seg-144.mp3",
+              "audio": "audio/seg-145.mp3",
               "quizSentence": "この部屋は東南に窓があって明るい。"
             },
             {
-              "id": 145,
+              "id": 146,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6326,11 +6351,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "東南アジア"
               ],
-              "audio": "audio/seg-145.mp3",
+              "audio": "audio/seg-146.mp3",
               "quizSentence": "彼は東南アジアを旅行したことがある。"
             },
             {
-              "id": 146,
+              "id": 147,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6344,11 +6369,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "方角"
               ],
-              "audio": "audio/seg-146.mp3",
+              "audio": "audio/seg-147.mp3",
               "quizSentence": "地図を見ても，方角がよく分からない。"
             },
             {
-              "id": 147,
+              "id": 148,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6365,11 +6390,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "応募する"
               ],
-              "audio": "audio/seg-147.mp3",
+              "audio": "audio/seg-148.mp3",
               "quizSentence": "そのアルバイトに応募することにした。"
             },
             {
-              "id": 148,
+              "id": 149,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6383,11 +6408,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "蘇州"
               ],
-              "audio": "audio/seg-148.mp3",
+              "audio": "audio/seg-149.mp3",
               "quizSentence": "蘇州には美しい庭園がたくさんある。"
             },
             {
-              "id": 149,
+              "id": 150,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6400,11 +6425,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ベニス"
               ],
-              "audio": "audio/seg-149.mp3",
+              "audio": "audio/seg-150.mp3",
               "quizSentence": "ベニスは水の都として有名だ。"
             },
             {
-              "id": 150,
+              "id": 151,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6421,11 +6446,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "誇り"
               ],
-              "audio": "audio/seg-150.mp3",
+              "audio": "audio/seg-151.mp3",
               "quizSentence": "彼は自分の仕事に誇りを持っている。"
             },
             {
-              "id": 151,
+              "id": 152,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6442,11 +6467,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "彫った"
               ],
-              "audio": "audio/seg-151.mp3",
+              "audio": "audio/seg-152.mp3",
               "quizSentence": "職人が木に花の模様を彫った。"
             },
             {
-              "id": 152,
+              "id": 153,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6463,11 +6488,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "今にも"
               ],
-              "audio": "audio/seg-152.mp3",
+              "audio": "audio/seg-153.mp3",
               "quizSentence": "空が暗くなって，今にも雨が降りそうだ。"
             },
             {
-              "id": 153,
+              "id": 154,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6484,11 +6509,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "捕まった"
               ],
-              "audio": "audio/seg-153.mp3",
+              "audio": "audio/seg-154.mp3",
               "quizSentence": "犯人はすぐに警察に捕まった。"
             },
             {
-              "id": 154,
+              "id": 155,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6502,11 +6527,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "銃"
               ],
-              "audio": "audio/seg-154.mp3",
+              "audio": "audio/seg-155.mp3",
               "quizSentence": "この映画には銃を持った男が出てくる。"
             },
             {
-              "id": 155,
+              "id": 156,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6523,11 +6548,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "自殺する"
               ],
-              "audio": "audio/seg-155.mp3",
+              "audio": "audio/seg-156.mp3",
               "quizSentence": "SF映画の中で，主人公が自殺するシーンがある。"
             },
             {
-              "id": 156,
+              "id": 157,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6540,11 +6565,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "かご"
               ],
-              "audio": "audio/seg-156.mp3",
+              "audio": "audio/seg-157.mp3",
               "quizSentence": "かごの中にりんごがたくさん入っている。"
             },
             {
-              "id": 157,
+              "id": 158,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6558,11 +6583,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "塀"
               ],
-              "audio": "audio/seg-157.mp3",
+              "audio": "audio/seg-158.mp3",
               "quizSentence": "庭の周りに塀が立てられている。"
             },
             {
-              "id": 158,
+              "id": 159,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6576,11 +6601,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "地平線"
               ],
-              "audio": "audio/seg-158.mp3",
+              "audio": "audio/seg-159.mp3",
               "quizSentence": "地平線から太陽が昇ってきた。"
             },
             {
-              "id": 159,
+              "id": 160,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6594,11 +6619,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "泉"
               ],
-              "audio": "audio/seg-159.mp3",
+              "audio": "audio/seg-160.mp3",
               "quizSentence": "山の中できれいな泉を見つけた。"
             },
             {
-              "id": 160,
+              "id": 161,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6612,11 +6637,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "正確"
               ],
-              "audio": "audio/seg-160.mp3",
+              "audio": "audio/seg-161.mp3",
               "quizSentence": "時計の時間が正確かどうか確認した。"
             },
             {
-              "id": 161,
+              "id": 162,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6630,11 +6655,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "人工衛星"
               ],
-              "audio": "audio/seg-161.mp3",
+              "audio": "audio/seg-162.mp3",
               "quizSentence": "この国は初めて人工衛星の打ち上げに成功した。"
             },
             {
-              "id": 162,
+              "id": 163,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6648,11 +6673,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "人工"
               ],
-              "audio": "audio/seg-162.mp3",
+              "audio": "audio/seg-163.mp3",
               "quizSentence": "これは人工の湖で，自然にできたものではない。"
             },
             {
-              "id": 163,
+              "id": 164,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6676,11 +6701,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "打ち上げ"
               ],
-              "audio": "audio/seg-163.mp3",
+              "audio": "audio/seg-164.mp3",
               "quizSentence": "ロケットの打ち上げは来週の予定だ。"
             },
             {
-              "id": 164,
+              "id": 165,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6697,11 +6722,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "日当たり"
               ],
-              "audio": "audio/seg-164.mp3",
+              "audio": "audio/seg-165.mp3",
               "quizSentence": "この部屋は日当たりがよくて，暖かい。"
             },
             {
-              "id": 165,
+              "id": 166,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6718,11 +6743,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "植えた"
               ],
-              "audio": "audio/seg-165.mp3",
+              "audio": "audio/seg-166.mp3",
               "quizSentence": "庭に花の苗を植えた。"
             },
             {
-              "id": 166,
+              "id": 167,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6736,11 +6761,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "弁護士"
               ],
-              "audio": "audio/seg-166.mp3",
+              "audio": "audio/seg-167.mp3",
               "quizSentence": "彼女は将来，弁護士になりたいと言っている。"
             },
             {
-              "id": 167,
+              "id": 168,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6754,11 +6779,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "中華鍋"
               ],
-              "audio": "audio/seg-167.mp3",
+              "audio": "audio/seg-168.mp3",
               "quizSentence": "中華鍋で野菜を炒める。"
             },
             {
-              "id": 168,
+              "id": 169,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6771,11 +6796,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "コンロ"
               ],
-              "audio": "audio/seg-168.mp3",
+              "audio": "audio/seg-169.mp3",
               "quizSentence": "コンロの火を消してから，外出した。"
             },
             {
-              "id": 169,
+              "id": 170,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6792,11 +6817,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "欠かさない"
               ],
-              "audio": "audio/seg-169.mp3",
+              "audio": "audio/seg-170.mp3",
               "quizSentence": "彼は毎朝のジョギングを欠かさない。"
             },
             {
-              "id": 170,
+              "id": 171,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6810,11 +6835,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "城下町"
               ],
-              "audio": "audio/seg-170.mp3",
+              "audio": "audio/seg-171.mp3",
               "quizSentence": "この町は昔，城下町として栄えた。"
             },
             {
-              "id": 171,
+              "id": 172,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6828,11 +6853,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "城"
               ],
-              "audio": "audio/seg-171.mp3",
+              "audio": "audio/seg-172.mp3",
               "quizSentence": "この城は500年前に建てられた。"
             },
             {
-              "id": 172,
+              "id": 173,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6846,11 +6871,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "四方"
               ],
-              "audio": "audio/seg-172.mp3",
+              "audio": "audio/seg-173.mp3",
               "quizSentence": "山の頂上からは四方の景色が見渡せる。"
             },
             {
-              "id": 173,
+              "id": 174,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6864,11 +6889,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "塩分"
               ],
-              "audio": "audio/seg-173.mp3",
+              "audio": "audio/seg-174.mp3",
               "quizSentence": "塩分の取りすぎは体によくない。"
             },
             {
-              "id": 174,
+              "id": 175,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6882,11 +6907,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "献立"
               ],
-              "audio": "audio/seg-174.mp3",
+              "audio": "audio/seg-175.mp3",
               "quizSentence": "今晩の献立をまだ決めていない。"
             },
             {
-              "id": 175,
+              "id": 176,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6900,11 +6925,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "花壇"
               ],
-              "audio": "audio/seg-175.mp3",
+              "audio": "audio/seg-176.mp3",
               "quizSentence": "庭の花壇にチューリップを植えた。"
             },
             {
-              "id": 176,
+              "id": 177,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6917,11 +6942,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "ピンク"
               ],
-              "audio": "audio/seg-176.mp3",
+              "audio": "audio/seg-177.mp3",
               "quizSentence": "彼女はピンクの服がよく似合う。"
             },
             {
-              "id": 177,
+              "id": 178,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6935,11 +6960,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "紫"
               ],
-              "audio": "audio/seg-177.mp3",
+              "audio": "audio/seg-178.mp3",
               "quizSentence": "紫の花が庭に咲いている。"
             },
             {
-              "id": 178,
+              "id": 179,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6956,11 +6981,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "寄付した"
               ],
-              "audio": "audio/seg-178.mp3",
+              "audio": "audio/seg-179.mp3",
               "quizSentence": "彼は多額のお金を病院に寄付した。"
             },
             {
-              "id": 179,
+              "id": 180,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6977,11 +7002,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "幸い"
               ],
-              "audio": "audio/seg-179.mp3",
+              "audio": "audio/seg-180.mp3",
               "quizSentence": "幸い，けがはたいしたことがなかった。"
             },
             {
-              "id": 180,
+              "id": 181,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6998,11 +7023,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "徐々に"
               ],
-              "audio": "audio/seg-180.mp3",
+              "audio": "audio/seg-181.mp3",
               "quizSentence": "薬のおかげで，病気は徐々によくなっている。"
             },
             {
-              "id": 181,
+              "id": 182,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7015,11 +7040,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "コンクール"
               ],
-              "audio": "audio/seg-181.mp3",
+              "audio": "audio/seg-182.mp3",
               "quizSentence": "彼女はピアノのコンクールで優勝した。"
             },
             {
-              "id": 182,
+              "id": 183,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7036,11 +7061,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "入賞した"
               ],
-              "audio": "audio/seg-182.mp3",
+              "audio": "audio/seg-183.mp3",
               "quizSentence": "彼の作品はコンクールで入賞した。"
             },
             {
-              "id": 183,
+              "id": 184,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7054,11 +7079,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "便器"
               ],
-              "audio": "audio/seg-183.mp3",
+              "audio": "audio/seg-184.mp3",
               "quizSentence": "トイレの便器を新しいものに交換した。"
             },
             {
-              "id": 184,
+              "id": 185,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7075,11 +7100,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "沿って"
               ],
-              "audio": "audio/seg-184.mp3",
+              "audio": "audio/seg-185.mp3",
               "quizSentence": "この道は川に沿って続いている。"
             },
             {
-              "id": 185,
+              "id": 186,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7093,11 +7118,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "柳"
               ],
-              "audio": "audio/seg-185.mp3",
+              "audio": "audio/seg-186.mp3",
               "quizSentence": "川沿いに柳の木が並んでいる。"
             },
             {
-              "id": 186,
+              "id": 187,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7111,11 +7136,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "森"
               ],
-              "audio": "audio/seg-186.mp3",
+              "audio": "audio/seg-187.mp3",
               "quizSentence": "この森には珍しい鳥がたくさんいる。"
             },
             {
-              "id": 187,
+              "id": 188,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7129,11 +7154,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "不動産会社"
               ],
-              "audio": "audio/seg-187.mp3",
+              "audio": "audio/seg-188.mp3",
               "quizSentence": "彼は不動産会社に勤めている。"
             },
             {
-              "id": 188,
+              "id": 189,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7147,11 +7172,11 @@ window.LESSON_DATA = {
               "blanks": [
                 "抗議"
               ],
-              "audio": "audio/seg-188.mp3",
+              "audio": "audio/seg-189.mp3",
               "quizSentence": "市民たちはその計画に抗議の声を上げた。"
             },
             {
-              "id": 189,
+              "id": 190,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7171,7 +7196,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "海沿い"
               ],
-              "audio": "audio/seg-189.mp3",
+              "audio": "audio/seg-190.mp3",
               "quizSentence": "海沿いの道を散歩した。"
             }
           ]
@@ -7181,7 +7206,7 @@ window.LESSON_DATA = {
   ],
   "quiz": [
     {
-      "id": 53,
+      "id": 54,
       "text": "成果",
       "kana": "せいか",
       "zh": "[名] 成果，成就",
@@ -7191,7 +7216,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 54,
+      "id": 55,
       "text": "以上",
       "kana": "いじょう",
       "zh": "[名] 以上，超出",
@@ -7201,7 +7226,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 55,
+      "id": 56,
       "text": "一例",
       "kana": "いちれい",
       "zh": "[名] 一个例子",
@@ -7211,7 +7236,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 56,
+      "id": 57,
       "text": "お世辞",
       "kana": "おせじ",
       "zh": "[名] 恭维话，奉承话",
@@ -7221,7 +7246,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 57,
+      "id": 58,
       "text": "国内",
       "kana": "こくない",
       "zh": "[名] 国内",
@@ -7231,7 +7256,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 58,
+      "id": 59,
       "text": "売り込む",
       "kana": "うりこむ",
       "zh": "[动1] 销售，促销，推销",
@@ -7241,7 +7266,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 59,
+      "id": 60,
       "text": "戦略",
       "kana": "せんりゃく",
       "zh": "[名] 战略",
@@ -7251,7 +7276,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 60,
+      "id": 61,
       "text": "試飲する",
       "kana": "しいんする",
       "zh": "[动3] 试饮",
@@ -7261,7 +7286,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 61,
+      "id": 62,
       "text": "敏感",
       "kana": "びんかん",
       "zh": "[形2] 敏感，灵敏",
@@ -7271,7 +7296,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 62,
+      "id": 63,
       "text": "間",
       "kana": "あいだ",
       "zh": "[名] 当中，之间，期间",
@@ -7281,7 +7306,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 63,
+      "id": 64,
       "text": "たいした",
       "kana": "たいした",
       "zh": "[连体] 了不起的，惊人的",
@@ -7291,7 +7316,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 64,
+      "id": 65,
       "text": "ラベル",
       "kana": "ラベル",
       "zh": "[名] 标签",
@@ -7301,7 +7326,7 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
-      "id": 65,
+      "id": 66,
       "text": "〜ども",
       "kana": "ども",
       "zh": "〜们（自谦语）",
@@ -7311,7 +7336,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 66,
+      "id": 67,
       "text": "意外",
       "kana": "いがい",
       "zh": "[形2] 出乎意料，意外",
@@ -7321,7 +7346,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 67,
+      "id": 68,
       "text": "案外",
       "kana": "あんがい",
       "zh": "[副] 没想到，出乎意料",
@@ -7331,7 +7356,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 68,
+      "id": 69,
       "text": "賢い",
       "kana": "かしこい",
       "zh": "[形1] 聪明，伶俐",
@@ -7341,7 +7366,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 69,
+      "id": 70,
       "text": "概略",
       "kana": "がいりゃく",
       "zh": "[名] 概要，概略，梗概",
@@ -7351,7 +7376,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 70,
+      "id": 71,
       "text": "堅苦しい",
       "kana": "かたくるしい",
       "zh": "[形1] 一本正经，郑重其事",
@@ -7361,7 +7386,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 71,
+      "id": 72,
       "text": "台湾",
       "kana": "たいわん",
       "zh": "[专] 台湾",
@@ -7371,7 +7396,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 72,
+      "id": 73,
       "text": "温暖",
       "kana": "おんだん",
       "zh": "[形2] 温暖",
@@ -7381,7 +7406,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 73,
+      "id": 74,
       "text": "気候",
       "kana": "きこう",
       "zh": "[名] 气候",
@@ -7391,7 +7416,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 74,
+      "id": 75,
       "text": "飛び込む",
       "kana": "とびこむ",
       "zh": "[动1] 跳入，跳进",
@@ -7401,7 +7426,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 75,
+      "id": 76,
       "text": "放る",
       "kana": "ほうる",
       "zh": "[动1] 抛，扔；放弃，弃之不顾",
@@ -7411,7 +7436,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 76,
+      "id": 77,
       "text": "投げ込む",
       "kana": "なげこむ",
       "zh": "[动1] 投进，投入，扔进",
@@ -7421,7 +7446,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 77,
+      "id": 78,
       "text": "放り込む",
       "kana": "ほうりこむ",
       "zh": "[动1] 扔进，投入",
@@ -7431,7 +7456,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 78,
+      "id": 79,
       "text": "持ち込む",
       "kana": "もちこむ",
       "zh": "[动1] 带入，带进",
@@ -7441,7 +7466,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 79,
+      "id": 80,
       "text": "流れ込む",
       "kana": "ながれこむ",
       "zh": "[动1] 流入，流进",
@@ -7451,7 +7476,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 80,
+      "id": 81,
       "text": "潜り込む",
       "kana": "もぐりこむ",
       "zh": "[动1] 潜入，钻入；躲入",
@@ -7461,7 +7486,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 81,
+      "id": 82,
       "text": "落ち込む",
       "kana": "おちこむ",
       "zh": "[动1] 掉入，掉进",
@@ -7471,7 +7496,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 82,
+      "id": 83,
       "text": "少年",
       "kana": "しょうねん",
       "zh": "[名] 少年",
@@ -7481,7 +7506,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 83,
+      "id": 84,
       "text": "勉強になる",
       "kana": "べんきょうになる",
       "zh": "学到东西，有收获",
@@ -7491,7 +7516,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 84,
+      "id": 85,
       "text": "名〜",
       "kana": "めい",
       "zh": "名〜，著名〜",
@@ -7501,7 +7526,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 85,
+      "id": 86,
       "text": "〜込む",
       "kana": "こむ",
       "zh": "〜进，〜入",
@@ -7511,7 +7536,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 86,
+      "id": 87,
       "text": "見事",
       "kana": "みごと",
       "zh": "[形2] 精彩，出色",
@@ -7521,7 +7546,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 87,
+      "id": 88,
       "text": "カロリー",
       "kana": "カロリー",
       "zh": "[名] 热量，卡路里",
@@ -7531,7 +7556,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 88,
+      "id": 89,
       "text": "見直す",
       "kana": "みなおす",
       "zh": "[动1] 重看，重新审视，另眼相看",
@@ -7541,7 +7566,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 89,
+      "id": 90,
       "text": "中高年",
       "kana": "ちゅうこうねん",
       "zh": "[名] 中老年",
@@ -7551,7 +7576,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 90,
+      "id": 91,
       "text": "携帯小説",
       "kana": "けいたいしょうせつ",
       "zh": "[名] 手机小说",
@@ -7561,7 +7586,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 91,
+      "id": 92,
       "text": "一時",
       "kana": "いちじ",
       "zh": "[名] 一时，临时，暂时",
@@ -7571,7 +7596,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 92,
+      "id": 93,
       "text": "一時的",
       "kana": "いちじてき",
       "zh": "[形2] 一时的，临时的，暂时的",
@@ -7581,7 +7606,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 93,
+      "id": 94,
       "text": "景山公園",
       "kana": "けいざんこうえん",
       "zh": "[专] 景山公园",
@@ -7591,7 +7616,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 94,
+      "id": 95,
       "text": "憩い",
       "kana": "いこい",
       "zh": "[名] 休憩，休息",
@@ -7601,7 +7626,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 95,
+      "id": 96,
       "text": "カップル",
       "kana": "カップル",
       "zh": "[名] 一对儿，情侣",
@@ -7611,7 +7636,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 96,
+      "id": 97,
       "text": "家族連れ",
       "kana": "かぞくづれ",
       "zh": "[名] 带着家属，带着家人",
@@ -7621,7 +7646,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 97,
+      "id": 98,
       "text": "周囲",
       "kana": "しゅうい",
       "zh": "[名] 周围",
@@ -7631,7 +7656,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 98,
+      "id": 99,
       "text": "路地",
       "kana": "ろじ",
       "zh": "[名] 小巷，胡同",
@@ -7641,7 +7666,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 99,
+      "id": 100,
       "text": "無数",
       "kana": "むすう",
       "zh": "[名] 无数",
@@ -7651,7 +7676,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 100,
+      "id": 101,
       "text": "存在する",
       "kana": "そんざいする",
       "zh": "[动3] 存在",
@@ -7661,7 +7686,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 101,
+      "id": 102,
       "text": "さかのぼる",
       "kana": "さかのぼる",
       "zh": "[动1] 追溯，上溯",
@@ -7671,7 +7696,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 102,
+      "id": 103,
       "text": "元",
       "kana": "げん",
       "zh": "[名] 元代，元朝",
@@ -7681,7 +7706,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 103,
+      "id": 104,
       "text": "敵",
       "kana": "てき",
       "zh": "[名] 敌人，敌；对手，敌手",
@@ -7691,7 +7716,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 104,
+      "id": 105,
       "text": "石垣",
       "kana": "いしがき",
       "zh": "[名] 石墙，石围墙，石垣",
@@ -7701,7 +7726,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 105,
+      "id": 106,
       "text": "住居",
       "kana": "じゅうきょ",
       "zh": "[名] 住宅，住处，居住地，住址",
@@ -7711,7 +7736,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 106,
+      "id": 107,
       "text": "取り囲む",
       "kana": "とりかこむ",
       "zh": "[动1] 围绕，包围，围拢",
@@ -7721,7 +7746,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 107,
+      "id": 108,
       "text": "朝市",
       "kana": "あさいち",
       "zh": "[名] 早市，早摊",
@@ -7731,7 +7756,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 108,
+      "id": 109,
       "text": "頻繁",
       "kana": "ひんぱん",
       "zh": "[形2] 频繁",
@@ -7741,7 +7766,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 109,
+      "id": 110,
       "text": "屋台",
       "kana": "やたい",
       "zh": "[名] 地摊，货摊",
@@ -7751,7 +7776,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 110,
+      "id": 111,
       "text": "時には",
       "kana": "ときには",
       "zh": "[副] 有时",
@@ -7761,7 +7786,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 111,
+      "id": 112,
       "text": "自転車置き場",
       "kana": "じてんしゃおきば",
       "zh": "[名] 自行车存放处",
@@ -7771,7 +7796,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 112,
+      "id": 113,
       "text": "金銭",
       "kana": "きんせん",
       "zh": "[名] 银钱，钱，金钱，钱款",
@@ -7781,7 +7806,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 113,
+      "id": 114,
       "text": "取引所",
       "kana": "とりひきじょ",
       "zh": "[名] 交易所",
@@ -7791,7 +7816,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 114,
+      "id": 115,
       "text": "銭市胡同",
       "kana": "チェンシーフートン",
       "zh": "[专] 钱市胡同",
@@ -7801,7 +7826,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 115,
+      "id": 116,
       "text": "刃物",
       "kana": "はもの",
       "zh": "[名] 刀，刀具",
@@ -7811,7 +7836,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 116,
+      "id": 117,
       "text": "研ぐ",
       "kana": "とぐ",
       "zh": "[动1] 磨快；磨光亮；淘",
@@ -7821,7 +7846,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 117,
+      "id": 118,
       "text": "職人",
       "kana": "しょくにん",
       "zh": "[名] 工匠，手艺人",
@@ -7831,7 +7856,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 118,
+      "id": 119,
       "text": "磨刀胡同",
       "kana": "モータオフートン",
       "zh": "[专] 磨刀胡同",
@@ -7841,7 +7866,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 119,
+      "id": 120,
       "text": "四合院",
       "kana": "しごういん",
       "zh": "[名] 四合院",
@@ -7851,7 +7876,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 120,
+      "id": 121,
       "text": "家屋",
       "kana": "かおく",
       "zh": "[名] 房屋，住房",
@@ -7861,7 +7886,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 121,
+      "id": 122,
       "text": "東西南北",
       "kana": "とうざいなんぼく",
       "zh": "[名] 东南西北",
@@ -7871,7 +7896,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 122,
+      "id": 123,
       "text": "棟",
       "kana": "むね",
       "zh": "[名] 屋脊，房顶；大梁，脊檩",
@@ -7881,7 +7906,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 123,
+      "id": 124,
       "text": "改造する",
       "kana": "かいぞうする",
       "zh": "[动3] 改造，改建，改组",
@@ -7891,7 +7916,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 124,
+      "id": 125,
       "text": "〜連れ",
       "kana": "つれ",
       "zh": "带着〜",
@@ -7901,7 +7926,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 125,
+      "id": 126,
       "text": "せいぜい",
       "kana": "せいぜい",
       "zh": "[副] 最多，充其量；尽量，尽可能",
@@ -7911,7 +7936,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 126,
+      "id": 127,
       "text": "明",
       "kana": "みん",
       "zh": "[专] 明代，明朝",
@@ -7921,7 +7946,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 127,
+      "id": 128,
       "text": "つなぐ",
       "kana": "つなぐ",
       "zh": "[动1] 连接，拴，系",
@@ -7931,7 +7956,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 128,
+      "id": 129,
       "text": "動き",
       "kana": "うごき",
       "zh": "[名] 动作，动向",
@@ -7941,7 +7966,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 129,
+      "id": 130,
       "text": "歴史文化保護区",
       "kana": "れきしぶんかほごく",
       "zh": "[名] 历史文化保护区",
@@ -7951,7 +7976,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 130,
+      "id": 131,
       "text": "指定する",
       "kana": "していする",
       "zh": "[动3] 指定",
@@ -7961,7 +7986,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 131,
+      "id": 132,
       "text": "保存する",
       "kana": "ほぞんする",
       "zh": "[动3] 保存",
@@ -7971,7 +7996,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 132,
+      "id": 133,
       "text": "混在する",
       "kana": "こんざいする",
       "zh": "[动3] 并存，混在一起",
@@ -7981,7 +8006,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 133,
+      "id": 134,
       "text": "変革",
       "kana": "へんかく",
       "zh": "[名] 变革，改革，变化",
@@ -7991,7 +8016,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 134,
+      "id": 135,
       "text": "〜か所",
       "kana": "かところ",
       "zh": "〜处，〜个地方",
@@ -8001,7 +8026,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 135,
+      "id": 136,
       "text": "年配",
       "kana": "ねんぱい",
       "zh": "[名] 相当大年龄；年纪",
@@ -8011,7 +8036,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 136,
+      "id": 137,
       "text": "旅",
       "kana": "たび",
       "zh": "[名] 旅行，旅游",
@@ -8021,7 +8046,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 137,
+      "id": 138,
       "text": "夜空",
       "kana": "よぞら",
       "zh": "[名] 夜空",
@@ -8031,7 +8056,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 138,
+      "id": 139,
       "text": "見上げる",
       "kana": "みあげる",
       "zh": "[动2] 仰望，往上看",
@@ -8041,7 +8066,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 139,
+      "id": 140,
       "text": "先祖",
       "kana": "せんぞ",
       "zh": "[名] 先祖，祖先",
@@ -8051,7 +8076,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 140,
+      "id": 141,
       "text": "南東",
       "kana": "なんとう",
       "zh": "[名] 东南",
@@ -8061,7 +8086,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 141,
+      "id": 142,
       "text": "北西",
       "kana": "ほくせい",
       "zh": "[名] 西北",
@@ -8071,7 +8096,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 142,
+      "id": 143,
       "text": "北東",
       "kana": "ほくとう",
       "zh": "[名] 东北",
@@ -8081,7 +8106,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 143,
+      "id": 144,
       "text": "南西",
       "kana": "なんせい",
       "zh": "[名] 南西",
@@ -8091,7 +8116,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 144,
+      "id": 145,
       "text": "東南",
       "kana": "とうなん",
       "zh": "[名] 东南",
@@ -8101,7 +8126,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 145,
+      "id": 146,
       "text": "東南アジア",
       "kana": "とうなんアジア",
       "zh": "[专] 东南亚",
@@ -8111,7 +8136,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 146,
+      "id": 147,
       "text": "方角",
       "kana": "ほうがく",
       "zh": "[名] 角，角落",
@@ -8121,7 +8146,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 147,
+      "id": 148,
       "text": "応募する",
       "kana": "おうぼする",
       "zh": "[动3] 报名参加，应征；应募",
@@ -8131,7 +8156,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 148,
+      "id": 149,
       "text": "蘇州",
       "kana": "そしゅう",
       "zh": "[专] 苏州",
@@ -8141,7 +8166,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 149,
+      "id": 150,
       "text": "ベニス",
       "kana": "ベニス",
       "zh": "[专] 威尼斯",
@@ -8151,7 +8176,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 150,
+      "id": 151,
       "text": "誇り",
       "kana": "ほこり",
       "zh": "[名] 骄傲，自豪，自尊心",
@@ -8161,7 +8186,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 151,
+      "id": 152,
       "text": "彫る",
       "kana": "ほる",
       "zh": "[动1] 雕刻，雕，刻",
@@ -8171,7 +8196,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 152,
+      "id": 153,
       "text": "今にも",
       "kana": "いまにも",
       "zh": "[副] 眼看就要，马上",
@@ -8181,7 +8206,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 153,
+      "id": 154,
       "text": "捕まる",
       "kana": "つかまる",
       "zh": "[动1] 抓住，逮捕",
@@ -8191,7 +8216,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 154,
+      "id": 155,
       "text": "銃",
       "kana": "じゅう",
       "zh": "[名] 枪，步枪",
@@ -8201,7 +8226,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 155,
+      "id": 156,
       "text": "自殺する",
       "kana": "じさつする",
       "zh": "[动3] 自杀",
@@ -8211,7 +8236,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 156,
+      "id": 157,
       "text": "かご",
       "kana": "かご",
       "zh": "[名] 笼子，篮子，提篮",
@@ -8221,7 +8246,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 157,
+      "id": 158,
       "text": "塀",
       "kana": "へい",
       "zh": "[名] 墙，院墙，围墙，栅栏",
@@ -8231,7 +8256,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 158,
+      "id": 159,
       "text": "地平線",
       "kana": "ちへいせん",
       "zh": "[名] 地平线",
@@ -8241,7 +8266,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 159,
+      "id": 160,
       "text": "泉",
       "kana": "いずみ",
       "zh": "[名] 泉，泉水",
@@ -8251,7 +8276,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 160,
+      "id": 161,
       "text": "正確",
       "kana": "せいかく",
       "zh": "[形2] 正确",
@@ -8261,7 +8286,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 161,
+      "id": 162,
       "text": "人工衛星",
       "kana": "じんこうえいせい",
       "zh": "[名] 人造卫星",
@@ -8271,7 +8296,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 162,
+      "id": 163,
       "text": "人工",
       "kana": "じんこう",
       "zh": "[名] 人工",
@@ -8281,7 +8306,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 163,
+      "id": 164,
       "text": "打ち上げ",
       "kana": "うちあげ",
       "zh": "[名] 发射",
@@ -8291,7 +8316,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 164,
+      "id": 165,
       "text": "日当たり",
       "kana": "ひあたり",
       "zh": "[名] 向阳，向阳处",
@@ -8301,7 +8326,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 165,
+      "id": 166,
       "text": "植える",
       "kana": "うえる",
       "zh": "[动2] 种，植，栽",
@@ -8311,7 +8336,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 166,
+      "id": 167,
       "text": "弁護士",
       "kana": "べんごし",
       "zh": "[名] 律师，辩护律师",
@@ -8321,7 +8346,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 167,
+      "id": 168,
       "text": "中華鍋",
       "kana": "ちゅうかなべ",
       "zh": "[名] 中式双耳浅底锅",
@@ -8331,7 +8356,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 168,
+      "id": 169,
       "text": "コンロ",
       "kana": "コンロ",
       "zh": "[名] 小炉子",
@@ -8341,7 +8366,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 169,
+      "id": 170,
       "text": "欠かす",
       "kana": "かかす",
       "zh": "[动1] 缺，缺少",
@@ -8351,7 +8376,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 170,
+      "id": 171,
       "text": "城下町",
       "kana": "じょうかまち",
       "zh": "[名] （围绕诸侯居住地发展起来的）城市",
@@ -8361,7 +8386,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 171,
+      "id": 172,
       "text": "城",
       "kana": "しろ",
       "zh": "[名] 城，城堡",
@@ -8371,7 +8396,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 172,
+      "id": 173,
       "text": "四方",
       "kana": "しほう",
       "zh": "[名] 四方",
@@ -8381,7 +8406,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 173,
+      "id": 174,
       "text": "塩分",
       "kana": "えんぶん",
       "zh": "[名] 盐分",
@@ -8391,7 +8416,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 174,
+      "id": 175,
       "text": "献立",
       "kana": "こんだて",
       "zh": "[名] 食谱，菜谱",
@@ -8401,7 +8426,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 175,
+      "id": 176,
       "text": "花壇",
       "kana": "かだん",
       "zh": "[名] 花坛",
@@ -8411,7 +8436,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 176,
+      "id": 177,
       "text": "ピンク",
       "kana": "ピンク",
       "zh": "[名] 粉红色，桃红色",
@@ -8421,7 +8446,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 177,
+      "id": 178,
       "text": "紫",
       "kana": "むらさき",
       "zh": "[名] 紫，紫色",
@@ -8431,7 +8456,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 178,
+      "id": 179,
       "text": "寄付する",
       "kana": "きふする",
       "zh": "[动3] 捐助，捐赠",
@@ -8441,7 +8466,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 179,
+      "id": 180,
       "text": "幸い",
       "kana": "さいわい",
       "zh": "[形2] 幸运，荣幸；幸好",
@@ -8451,7 +8476,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 180,
+      "id": 181,
       "text": "徐々に",
       "kana": "じょじょに",
       "zh": "[副] 渐渐，逐步",
@@ -8461,7 +8486,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 181,
+      "id": 182,
       "text": "コンクール",
       "kana": "コンクール",
       "zh": "[名] 比赛会，竞赛会",
@@ -8471,7 +8496,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 182,
+      "id": 183,
       "text": "入賞する",
       "kana": "にゅうしょうする",
       "zh": "[动3] 获奖，得奖",
@@ -8481,7 +8506,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 183,
+      "id": 184,
       "text": "便器",
       "kana": "べんき",
       "zh": "[名] 便桶，便盆，便壶，马桶",
@@ -8491,7 +8516,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 184,
+      "id": 185,
       "text": "沿う",
       "kana": "そう",
       "zh": "[动1] 沿，顺",
@@ -8501,7 +8526,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 185,
+      "id": 186,
       "text": "柳",
       "kana": "やなぎ",
       "zh": "[名] 柳树",
@@ -8511,7 +8536,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 186,
+      "id": 187,
       "text": "森",
       "kana": "もり",
       "zh": "[名] 丛林，森林",
@@ -8521,7 +8546,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 187,
+      "id": 188,
       "text": "不動産会社",
       "kana": "ふどうさんがいしゃ",
       "zh": "[名] 房地产公司",
@@ -8531,7 +8556,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 188,
+      "id": 189,
       "text": "抗議",
       "kana": "こうぎ",
       "zh": "[名] 抗议",
@@ -8541,7 +8566,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 189,
+      "id": 190,
       "text": "〜沿い",
       "kana": "そい",
       "zh": "沿〜",
