@@ -503,7 +503,19 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
      server.py`的`/apply`只更新`audio/`和`data.js`，从来不会回写
      `enriched_combined.json`，这是这个双份数据源架构的固有缺口，
      每次要用`enriched_combined.json`做后续处理前，最好先用duration
-     比对（跟这次发现的方法一样）确认它没有过期。**
+     比对（跟这次发现的方法一样）确认它没有过期。**这条提醒真实违反过
+     一次（textbook-sjp-zg-l15）：只是想用`patch_sentence_tokens.py`
+     修一个纯文本/读音bug（"水炊き"注音重复显示き），觉得"只是改字不
+     改边界"就没检查`enriched_combined.json`是否过期，直接拿它的
+     `char_times`重新生成了`tokens`——`patch_sentence_tokens.py`是把
+     `text`和`t`（跟读高亮时间戳）绑在一起重新算的，不存在"只改文字、
+     时间戳不受影响"这种半吊子调用方式，工作文件一旦过期，看似无关的
+     文字类修复也会顺带引入时间戳漂移。修完之后跟"上一次published"的
+     diff发现新算出来的跟读时间戳普遍偏移了几十毫秒，即使这个量级不算
+     严重，也说明"只是改文字"的直觉是错的。**结论：任何调用
+     `patch_sentence_tokens.py`（不只是`recut_clips.py`）之前，都要
+     先做一次duration比对确认`enriched_combined.json`没过期，没有"这次
+     改动跟时间戳无关，可以跳过检查"这种例外。**
   6. **用户反馈生词表某个位置"完全错位，边界编辑器怎么拖都修不好"——
      这类反馈要优先怀疑"原始抄录顺序本身就错了"，不是边界问题**。这一课
      真实案例：`vocab_words.json`把"〜連れ"错误插入到了"改造する"和
