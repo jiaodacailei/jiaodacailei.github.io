@@ -2132,7 +2132,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "景山公園",
-                  "kana": "けいざんこうえん",
+                  "kana": "かげやまこうえん",
                   "t": 2.05
                 },
                 {
@@ -2296,20 +2296,20 @@ window.LESSON_DATA = {
                 {
                   "text": "公園",
                   "kana": "こうえん",
-                  "t": 0.06
+                  "t": 0.0
                 },
                 {
                   "text": "の",
-                  "t": 0.54
+                  "t": 0.48
                 },
                 {
                   "text": "周囲",
                   "kana": "しゅうい",
-                  "t": 0.82
+                  "t": 0.76
                 },
                 {
                   "text": "には",
-                  "t": 1.12
+                  "t": 1.06
                 },
                 {
                   "text": "「"
@@ -2317,67 +2317,67 @@ window.LESSON_DATA = {
                 {
                   "text": "胡同",
                   "kana": "ふーとん",
-                  "t": 2.06
+                  "t": 2.0
                 },
                 {
                   "text": "」"
                 },
                 {
                   "text": "と",
-                  "t": 2.52
+                  "t": 2.46
                 },
                 {
                   "text": "呼",
                   "kana": "よ",
-                  "t": 2.66
+                  "t": 2.6
                 },
                 {
                   "text": "ば",
-                  "t": 2.78
+                  "t": 2.72
                 },
                 {
                   "text": "れる",
-                  "t": 2.92
+                  "t": 2.86
                 },
                 {
                   "text": "狭",
                   "kana": "せま",
-                  "t": 3.28
+                  "t": 3.22
                 },
                 {
                   "text": "い",
-                  "t": 3.62
+                  "t": 3.56
                 },
                 {
                   "text": "路地",
                   "kana": "ろじ",
-                  "t": 3.8
+                  "t": 3.74
                 },
                 {
                   "text": "が",
-                  "t": 4.0
+                  "t": 3.94
                 },
                 {
                   "text": "無数",
                   "kana": "むすう",
-                  "t": 4.36
+                  "t": 4.3
                 },
                 {
                   "text": "に",
-                  "t": 4.78
+                  "t": 4.72
                 },
                 {
                   "text": "存在",
                   "kana": "そんざい",
-                  "t": 5.0
+                  "t": 4.94
                 },
                 {
                   "text": "して",
-                  "t": 5.36
+                  "t": 5.3
                 },
                 {
                   "text": "いる",
-                  "t": 5.62
+                  "t": 5.56
                 },
                 {
                   "text": "。"
@@ -2499,7 +2499,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-036.mp3",
               "clauseBounds": [
-                1.01
+                1.6
               ]
             },
             {
@@ -2509,12 +2509,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "13",
-                  "t": 0.04
+                  "t": 0.0
                 },
                 {
                   "text": "世紀",
                   "kana": "せいき",
-                  "t": 0.48
+                  "t": 0.44
                 },
                 {
                   "text": "，"
@@ -2522,20 +2522,20 @@ window.LESSON_DATA = {
                 {
                   "text": "元",
                   "kana": "もと",
-                  "t": 1.3
+                  "t": 1.26
                 },
                 {
                   "text": "の",
-                  "t": 1.6
+                  "t": 1.56
                 },
                 {
                   "text": "時代",
                   "kana": "じだい",
-                  "t": 1.82
+                  "t": 1.78
                 },
                 {
                   "text": "に",
-                  "t": 2.18
+                  "t": 2.14
                 },
                 {
                   "text": "，"
@@ -2543,33 +2543,33 @@ window.LESSON_DATA = {
                 {
                   "text": "敵",
                   "kana": "てき",
-                  "t": 2.88
+                  "t": 2.84
                 },
                 {
                   "text": "から",
-                  "t": 3.14
+                  "t": 3.1
                 },
                 {
                   "text": "市民",
                   "kana": "しみん",
-                  "t": 3.42
+                  "t": 3.38
                 },
                 {
                   "text": "を",
-                  "t": 3.76
+                  "t": 3.72
                 },
                 {
                   "text": "守",
                   "kana": "まも",
-                  "t": 3.9
+                  "t": 3.86
                 },
                 {
                   "text": "る",
-                  "t": 4.14
+                  "t": 4.1
                 },
                 {
                   "text": "ため",
-                  "t": 4.3
+                  "t": 4.26
                 },
                 {
                   "text": "，"
@@ -2577,62 +2577,62 @@ window.LESSON_DATA = {
                 {
                   "text": "石垣",
                   "kana": "いしがき",
-                  "t": 4.64
+                  "t": 4.6
                 },
                 {
                   "text": "が",
-                  "t": 5.16
+                  "t": 5.12
                 },
                 {
                   "text": "作",
                   "kana": "つく",
-                  "t": 5.42
+                  "t": 5.38
                 },
                 {
                   "text": "ら",
-                  "t": 5.64
+                  "t": 5.6
                 },
                 {
                   "text": "れ",
-                  "t": 5.78
+                  "t": 5.74
                 },
                 {
                   "text": "，"
                 },
                 {
                   "text": "その",
-                  "t": 6.42
+                  "t": 6.38
                 },
                 {
                   "text": "中",
                   "kana": "なか",
-                  "t": 6.68
+                  "t": 6.64
                 },
                 {
                   "text": "に",
-                  "t": 6.92
+                  "t": 6.88
                 },
                 {
                   "text": "住宅",
                   "kana": "じゅうたく",
-                  "t": 7.24
+                  "t": 7.2
                 },
                 {
                   "text": "が",
-                  "t": 7.56
+                  "t": 7.52
                 },
                 {
                   "text": "作",
                   "kana": "つく",
-                  "t": 7.84
+                  "t": 7.8
                 },
                 {
                   "text": "ら",
-                  "t": 8.06
+                  "t": 8.02
                 },
                 {
                   "text": "れた",
-                  "t": 8.2
+                  "t": 8.16
                 },
                 {
                   "text": "。"
@@ -2645,7 +2645,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-037.mp3",
               "clauseBounds": [
-                4.57
+                4.53
               ]
             },
             {
@@ -2837,7 +2837,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-039.mp3",
               "clauseBounds": [
-                1.27
+                1.9
               ]
             },
             {
@@ -2984,69 +2984,69 @@ window.LESSON_DATA = {
                 {
                   "text": "胡同",
                   "kana": "ふーとん",
-                  "t": 0.4
+                  "t": 0.41
                 },
                 {
                   "text": "には",
-                  "t": 0.54
+                  "t": 0.55
                 },
                 {
                   "text": "役割",
                   "kana": "やくわり",
-                  "t": 1.1
+                  "t": 1.11
                 },
                 {
                   "text": "に",
-                  "t": 1.62
+                  "t": 1.63
                 },
                 {
                   "text": "よ",
-                  "t": 1.88
+                  "t": 1.89
                 },
                 {
                   "text": "って",
-                  "t": 2.06
+                  "t": 2.07
                 },
                 {
                   "text": "さま",
-                  "t": 2.38
+                  "t": 2.39
                 },
                 {
                   "text": "ざ",
-                  "t": 2.68
+                  "t": 2.69
                 },
                 {
                   "text": "まな",
-                  "t": 2.84
+                  "t": 2.85
                 },
                 {
                   "text": "名前",
                   "kana": "なまえ",
-                  "t": 3.08
+                  "t": 3.09
                 },
                 {
                   "text": "が",
-                  "t": 3.4
+                  "t": 3.41
                 },
                 {
                   "text": "つ",
-                  "t": 3.62
+                  "t": 3.63
                 },
                 {
                   "text": "け",
-                  "t": 3.74
+                  "t": 3.75
                 },
                 {
                   "text": "ら",
-                  "t": 3.86
+                  "t": 3.87
                 },
                 {
                   "text": "れて",
-                  "t": 3.98
+                  "t": 3.99
                 },
                 {
                   "text": "いる",
-                  "t": 4.2
+                  "t": 4.21
                 },
                 {
                   "text": "。"
@@ -3195,7 +3195,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "取引所",
-                  "kana": "とりひきじょ",
+                  "kana": "とりひきしょ",
                   "t": 2.01
                 },
                 {
@@ -3496,7 +3496,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-045.mp3",
               "clauseBounds": [
-                3.33
+                3.83
               ]
             },
             {
@@ -3870,7 +3870,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-048.mp3",
               "clauseBounds": [
-                8.25
+                8.72
               ]
             },
             {
@@ -4483,7 +4483,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "成果",
-                  "kana": "せいか"
+                  "kana": "せいか",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 成果，成就",
@@ -4501,7 +4502,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "以上",
-                  "kana": "いじょう"
+                  "kana": "いじょう",
+                  "t": 0.47
                 }
               ],
               "zh": "[名] 以上，超出",
@@ -4519,7 +4521,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "一例",
-                  "kana": "いちれい"
+                  "kana": "いちれい",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 一个例子",
@@ -4536,11 +4539,13 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0.0
                 },
                 {
                   "text": "世辞",
-                  "kana": "せじ"
+                  "kana": "せじ",
+                  "t": 0.62
                 }
               ],
               "zh": "[名] 恭维话，奉承话",
@@ -4558,7 +4563,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "国内",
-                  "kana": "こくない"
+                  "kana": "こくない",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 国内",
@@ -4576,17 +4582,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "売",
-                  "kana": "う"
+                  "kana": "う",
+                  "t": 0.0
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 0.7
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.86
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.96
                 }
               ],
               "zh": "[动1] 销售，促销，推销",
@@ -4604,7 +4614,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "戦略",
-                  "kana": "せんりゃく"
+                  "kana": "せんりゃく",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 战略",
@@ -4622,10 +4633,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "試飲",
-                  "kana": "しいん"
+                  "kana": "しいん",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.92
                 }
               ],
               "zh": "[动3] 试饮",
@@ -4643,7 +4656,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "敏感",
-                  "kana": "びんかん"
+                  "kana": "びんかん",
+                  "t": 0.0
                 }
               ],
               "zh": "[形2] 敏感，灵敏",
@@ -4661,7 +4675,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "間",
-                  "kana": "あいだ"
+                  "kana": "あいだ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 当中，之间，期间",
@@ -4678,7 +4693,12 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "たいした"
+                  "text": "たい",
+                  "t": 0.0
+                },
+                {
+                  "text": "した",
+                  "t": 1.0
                 }
               ],
               "zh": "[连体] 了不起的，惊人的",
@@ -4695,7 +4715,16 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ラベル"
+                  "text": "ラ",
+                  "t": 0.0
+                },
+                {
+                  "text": "ベ",
+                  "t": 0.6
+                },
+                {
+                  "text": "ル",
+                  "t": 0.74
                 }
               ],
               "zh": "[名] 标签",
@@ -4715,7 +4744,8 @@ window.LESSON_DATA = {
                   "text": "〜"
                 },
                 {
-                  "text": "ども"
+                  "text": "ども",
+                  "t": 0.0
                 }
               ],
               "zh": "〜们（自谦语）",
@@ -4740,7 +4770,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "意外",
-                  "kana": "いがい"
+                  "kana": "いがい",
+                  "t": -1.02
                 }
               ],
               "zh": "[形2] 出乎意料，意外",
@@ -4758,7 +4789,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "案外",
-                  "kana": "あんがい"
+                  "kana": "あんがい",
+                  "t": 0.0
                 }
               ],
               "zh": "[副] 没想到，出乎意料",
@@ -4776,10 +4808,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "賢",
-                  "kana": "かしこ"
+                  "kana": "かしこ",
+                  "t": 0.0
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 0.66
                 }
               ],
               "zh": "[形1] 聪明，伶俐",
@@ -4797,7 +4831,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "概略",
-                  "kana": "がいりゃく"
+                  "kana": "がいりゃく",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 概要，概略，梗概",
@@ -4815,10 +4850,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "堅苦",
-                  "kana": "かたくる"
+                  "kana": "かたくる",
+                  "t": 0.24
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 1.08
                 }
               ],
               "zh": "[形1] 一本正经，郑重其事",
@@ -4836,7 +4873,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "台湾",
-                  "kana": "たいわん"
+                  "kana": "たいわん",
+                  "t": 0.0
                 }
               ],
               "zh": "[专] 台湾",
@@ -4854,7 +4892,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "温暖",
-                  "kana": "おんだん"
+                  "kana": "おんだん",
+                  "t": 0.0
                 }
               ],
               "zh": "[形2] 温暖",
@@ -4872,7 +4911,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "気候",
-                  "kana": "きこう"
+                  "kana": "きこう",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 气候",
@@ -4890,17 +4930,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "飛",
-                  "kana": "と"
+                  "kana": "と",
+                  "t": 0.0
                 },
                 {
-                  "text": "び"
+                  "text": "び",
+                  "t": 0.48
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.66
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.8
                 }
               ],
               "zh": "[动1] 跳入，跳进",
@@ -4918,10 +4962,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "放",
-                  "kana": "ほう"
+                  "kana": "ほう",
+                  "t": 0.0
                 },
                 {
-                  "text": "る"
+                  "text": "る",
+                  "t": 0.5
                 }
               ],
               "zh": "[动1] 抛，扔；放弃，弃之不顾",
@@ -4939,17 +4985,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "投",
-                  "kana": "な"
+                  "kana": "な",
+                  "t": 0.0
                 },
                 {
-                  "text": "げ"
+                  "text": "げ",
+                  "t": 0.44
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.62
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.8
                 }
               ],
               "zh": "[动1] 投进，投入，扔进",
@@ -4967,17 +5017,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "放",
-                  "kana": "ほう"
+                  "kana": "ほう",
+                  "t": 0.0
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 0.38
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.6
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.8
                 }
               ],
               "zh": "[动1] 扔进，投入",
@@ -4995,17 +5049,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "持",
-                  "kana": "も"
+                  "kana": "も",
+                  "t": 0.0
                 },
                 {
-                  "text": "ち"
+                  "text": "ち",
+                  "t": 0.3
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.52
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.62
                 }
               ],
               "zh": "[动1] 带入，带进",
@@ -5023,17 +5081,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "流",
-                  "kana": "なが"
+                  "kana": "なが",
+                  "t": 0.0
                 },
                 {
-                  "text": "れ"
+                  "text": "れ",
+                  "t": 0.46
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.7
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.88
                 }
               ],
               "zh": "[动1] 流入，流进",
@@ -5051,17 +5113,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "潜",
-                  "kana": "もぐ"
+                  "kana": "もぐ",
+                  "t": 0.0
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 0.38
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.64
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.8
                 }
               ],
               "zh": "[动1] 潜入，钻入；躲入",
@@ -5079,17 +5145,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "落",
-                  "kana": "お"
+                  "kana": "お",
+                  "t": 0.0
                 },
                 {
-                  "text": "ち"
+                  "text": "ち",
+                  "t": 0.26
                 },
                 {
                   "text": "込",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 0.5
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.64
                 }
               ],
               "zh": "[动1] 掉入，掉进",
@@ -5107,7 +5177,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "少年",
-                  "kana": "しょうねん"
+                  "kana": "しょうねん",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 少年",
@@ -5125,10 +5196,16 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "勉強",
-                  "kana": "べんきょう"
+                  "kana": "べんきょう",
+                  "t": 1.09
                 },
                 {
-                  "text": "になる"
+                  "text": "にな",
+                  "t": 1.91
+                },
+                {
+                  "text": "る",
+                  "t": 2.27
                 }
               ],
               "zh": "学到东西，有收获",
@@ -5146,7 +5223,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "名",
-                  "kana": "めい"
+                  "kana": "めい",
+                  "t": 0.0
                 },
                 {
                   "text": "〜"
@@ -5170,10 +5248,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "込",
-                  "kana": "ご"
+                  "kana": "ご",
+                  "t": 0.0
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 1.36
                 }
               ],
               "zh": "〜进，〜入",
@@ -5198,7 +5278,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "見事",
-                  "kana": "みごと"
+                  "kana": "みごと",
+                  "t": 0.0
                 }
               ],
               "zh": "[形2] 精彩，出色",
@@ -5215,7 +5296,20 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "カロリー"
+                  "text": "カ",
+                  "t": 0.0
+                },
+                {
+                  "text": "ロ",
+                  "t": 0.54
+                },
+                {
+                  "text": "リ",
+                  "t": 0.76
+                },
+                {
+                  "text": "ー",
+                  "t": 1.14
                 }
               ],
               "zh": "[名] 热量，卡路里",
@@ -5233,10 +5327,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "見直",
-                  "kana": "みなお"
+                  "kana": "みなお",
+                  "t": 0.0
                 },
                 {
-                  "text": "す"
+                  "text": "す",
+                  "t": 0.48
                 }
               ],
               "zh": "[动1] 重看，重新审视，另眼相看",
@@ -5254,7 +5350,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "中高年",
-                  "kana": "ちゅうこうねん"
+                  "kana": "ちゅうこうねん",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 中老年",
@@ -5271,8 +5368,14 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "携帯小説",
-                  "kana": "けいたいしょうせつ"
+                  "text": "携帯",
+                  "kana": "けいたい",
+                  "t": 0.0
+                },
+                {
+                  "text": "小説",
+                  "kana": "しょうせつ",
+                  "t": 0.84
                 }
               ],
               "zh": "[名] 手机小说",
@@ -5290,7 +5393,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "一時",
-                  "kana": "いちじ"
+                  "kana": "いちじ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 一时，临时，暂时",
@@ -5308,7 +5412,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "一時的",
-                  "kana": "いちじてき"
+                  "kana": "いちじてき",
+                  "t": 0.0
                 }
               ],
               "zh": "[形2] 一时的，临时的，暂时的",
@@ -5333,7 +5438,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "景山公園",
-                  "kana": "けいざんこうえん"
+                  "kana": "かげやまこうえん",
+                  "t": 0.0
                 }
               ],
               "zh": "[专] 景山公园",
@@ -5351,10 +5457,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "憩",
-                  "kana": "いこ"
+                  "kana": "いこ",
+                  "t": 0.0
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 0.68
                 }
               ],
               "zh": "[名] 休憩，休息",
@@ -5371,7 +5479,16 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "カップル"
+                  "text": "カ",
+                  "t": 0.0
+                },
+                {
+                  "text": "ップ",
+                  "t": 0.44
+                },
+                {
+                  "text": "ル",
+                  "t": 0.66
                 }
               ],
               "zh": "[名] 一对儿，情侣",
@@ -5389,10 +5506,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "家族連",
-                  "kana": "かぞくづ"
+                  "kana": "かぞくづ",
+                  "t": 0.0
                 },
                 {
-                  "text": "れ"
+                  "text": "れ",
+                  "t": 0.86
                 }
               ],
               "zh": "[名] 带着家属，带着家人",
@@ -5410,7 +5529,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "周囲",
-                  "kana": "しゅうい"
+                  "kana": "しゅうい",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 周围",
@@ -5428,7 +5548,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "路地",
-                  "kana": "ろじ"
+                  "kana": "ろじ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 小巷，胡同",
@@ -5446,7 +5567,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "無数",
-                  "kana": "むすう"
+                  "kana": "むすう",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 无数",
@@ -5464,10 +5586,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "存在",
-                  "kana": "そんざい"
+                  "kana": "そんざい",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.86
                 }
               ],
               "zh": "[动3] 存在",
@@ -5484,7 +5608,12 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "さかのぼる"
+                  "text": "さか",
+                  "t": 0.0
+                },
+                {
+                  "text": "のぼる",
+                  "t": 0.62
                 }
               ],
               "zh": "[动1] 追溯，上溯",
@@ -5502,7 +5631,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "元",
-                  "kana": "げん"
+                  "kana": "もと",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 元代，元朝",
@@ -5520,7 +5650,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "敵",
-                  "kana": "てき"
+                  "kana": "てき",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 敌人，敌；对手，敌手",
@@ -5538,7 +5669,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "石垣",
-                  "kana": "いしがき"
+                  "kana": "いしがき",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 石墙，石围墙，石垣",
@@ -5556,7 +5688,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "住居",
-                  "kana": "じゅうきょ"
+                  "kana": "じゅうきょ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 住宅，住处，居住地，住址",
@@ -5574,17 +5707,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "取",
-                  "kana": "と"
+                  "kana": "と",
+                  "t": 0.0
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 0.44
                 },
                 {
                   "text": "囲",
-                  "kana": "かこ"
+                  "kana": "かこ",
+                  "t": 0.62
                 },
                 {
-                  "text": "む"
+                  "text": "む",
+                  "t": 0.74
                 }
               ],
               "zh": "[动1] 围绕，包围，围拢",
@@ -5602,7 +5739,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "朝市",
-                  "kana": "あさいち"
+                  "kana": "あさいち",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 早市，早摊",
@@ -5620,7 +5758,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "頻繁",
-                  "kana": "ひんぱん"
+                  "kana": "ひんぱん",
+                  "t": 0.0
                 }
               ],
               "zh": "[形2] 频繁",
@@ -5638,7 +5777,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "屋台",
-                  "kana": "やたい"
+                  "kana": "やたい",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 地摊，货摊",
@@ -5656,10 +5796,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "時",
-                  "kana": "とき"
+                  "kana": "とき",
+                  "t": 0.0
                 },
                 {
-                  "text": "には"
+                  "text": "には",
+                  "t": 0.48
                 }
               ],
               "zh": "[副] 有时",
@@ -5676,15 +5818,23 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "自転車置",
-                  "kana": "じてんしゃお"
+                  "text": "自転車",
+                  "kana": "じてんしゃ",
+                  "t": 0.0
                 },
                 {
-                  "text": "き"
+                  "text": "置",
+                  "kana": "お",
+                  "t": 1.1
+                },
+                {
+                  "text": "き",
+                  "t": 1.34
                 },
                 {
                   "text": "場",
-                  "kana": "ば"
+                  "kana": "ば",
+                  "t": 1.46
                 }
               ],
               "zh": "[名] 自行车存放处",
@@ -5702,7 +5852,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "金銭",
-                  "kana": "きんせん"
+                  "kana": "きんせん",
+                  "t": 0.55
                 }
               ],
               "zh": "[名] 银钱，钱，金钱，钱款",
@@ -5720,7 +5871,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "取引所",
-                  "kana": "とりひきじょ"
+                  "kana": "とりひきしょ",
+                  "t": 0.51
                 }
               ],
               "zh": "[名] 交易所",
@@ -5737,8 +5889,19 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "銭市胡同",
-                  "kana": "チェンシーフートン"
+                  "text": "銭",
+                  "kana": "せん",
+                  "t": 0.53
+                },
+                {
+                  "text": "市",
+                  "kana": "し",
+                  "t": 1.17
+                },
+                {
+                  "text": "胡同",
+                  "kana": "ふーとん",
+                  "t": 1.57
                 }
               ],
               "zh": "[专] 钱市胡同",
@@ -5756,7 +5919,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "刃物",
-                  "kana": "はもの"
+                  "kana": "はもの",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 刀，刀具",
@@ -5774,10 +5938,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "研",
-                  "kana": "と"
+                  "kana": "と",
+                  "t": 0.43
                 },
                 {
-                  "text": "ぐ"
+                  "text": "ぐ",
+                  "t": 0.91
                 }
               ],
               "zh": "[动1] 磨快；磨光亮；淘",
@@ -5795,7 +5961,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "職人",
-                  "kana": "しょくにん"
+                  "kana": "しょくにん",
+                  "t": 0.51
                 }
               ],
               "zh": "[名] 工匠，手艺人",
@@ -5812,8 +5979,19 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "磨刀胡同",
-                  "kana": "モータオフートン"
+                  "text": "磨",
+                  "kana": "みがく",
+                  "t": 0.49
+                },
+                {
+                  "text": "刀",
+                  "kana": "とう",
+                  "t": 1.31
+                },
+                {
+                  "text": "胡同",
+                  "kana": "ふーとん",
+                  "t": 1.45
                 }
               ],
               "zh": "[专] 磨刀胡同",
@@ -5830,8 +6008,14 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "四合院",
-                  "kana": "しごういん"
+                  "text": "四合",
+                  "kana": "しごう",
+                  "t": 0.0
+                },
+                {
+                  "text": "院",
+                  "kana": "いん",
+                  "t": 0.4
                 }
               ],
               "zh": "[名] 四合院",
@@ -5849,7 +6033,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "家屋",
-                  "kana": "かおく"
+                  "kana": "かおく",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 房屋，住房",
@@ -5867,7 +6052,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "東西南北",
-                  "kana": "とうざいなんぼく"
+                  "kana": "とうざいなんぼく",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 东南西北",
@@ -5885,7 +6071,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "棟",
-                  "kana": "むね"
+                  "kana": "むね",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 屋脊，房顶；大梁，脊檩",
@@ -5903,10 +6090,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "改造",
-                  "kana": "かいぞう"
+                  "kana": "かいぞう",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.94
                 }
               ],
               "zh": "[动3] 改造，改建，改组",
@@ -5923,44 +6112,41 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "〜"
+                  "text": "せ",
+                  "t": 0.0
                 },
                 {
-                  "text": "連",
-                  "kana": "つ"
+                  "text": "いぜ",
+                  "t": 0.92
                 },
                 {
-                  "text": "れ"
-                }
-              ],
-              "zh": "带着〜",
-              "notes": "",
-              "blanks": [
-                "子供連れ"
-              ],
-              "audio": "audio/seg-125.mp3",
-              "quizSentence": "彼は子供連れで旅行に来た。"
-            }
-          ]
-        },
-        {
-          "question": "生词表4·语法与表达",
-          "overview": "",
-          "answer": "",
-          "sentences": [
-            {
-              "id": 126,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
-                {
-                  "text": "せいぜい"
+                  "text": "い",
+                  "t": 2.06
                 }
               ],
               "zh": "[副] 最多，充其量；尽量，尽可能",
               "notes": "",
               "blanks": [
                 "せいぜい"
+              ],
+              "audio": "audio/seg-125.mp3",
+              "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。"
+            },
+            {
+              "id": 126,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "明",
+                  "kana": "あきら",
+                  "t": 0.0
+                }
+              ],
+              "zh": "[专] 明代，明朝",
+              "notes": "",
+              "blanks": [
+                "明"
               ],
               "audio": "audio/seg-126.mp3",
               "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。"
@@ -5971,25 +6157,12 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "明",
-                  "kana": "みん"
-                }
-              ],
-              "zh": "[专] 明代，明朝",
-              "notes": "",
-              "blanks": [
-                "明"
-              ],
-              "audio": "audio/seg-127.mp3",
-              "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。"
-            },
-            {
-              "id": 128,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+                  "text": "つな",
+                  "t": 0.0
+                },
                 {
-                  "text": "つなぐ"
+                  "text": "ぐ",
+                  "t": 0.9
                 }
               ],
               "zh": "[动1] 连接，拴，系",
@@ -5997,20 +6170,22 @@ window.LESSON_DATA = {
               "blanks": [
                 "つなぐ"
               ],
-              "audio": "audio/seg-128.mp3",
+              "audio": "audio/seg-127.mp3",
               "quizSentence": "その長さから，北京の胡同をつなぐと「もう1つの万里の長城になる」とまでいわれたそうである。"
             },
             {
-              "id": 129,
+              "id": 128,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
                   "text": "動",
-                  "kana": "うご"
+                  "kana": "うご",
+                  "t": 0.0
                 },
                 {
-                  "text": "き"
+                  "text": "き",
+                  "t": 0.68
                 }
               ],
               "zh": "[名] 动作，动向",
@@ -6018,17 +6193,28 @@ window.LESSON_DATA = {
               "blanks": [
                 "動き"
               ],
-              "audio": "audio/seg-129.mp3",
+              "audio": "audio/seg-128.mp3",
               "quizSentence": "ただ，その一方，古い建物を残そうとする動きもある。"
             },
             {
-              "id": 130,
+              "id": 129,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "歴史文化保護区",
-                  "kana": "れきしぶんかほごく"
+                  "text": "歴史",
+                  "kana": "れきし",
+                  "t": 0.0
+                },
+                {
+                  "text": "文化",
+                  "kana": "ぶんか",
+                  "t": 0.62
+                },
+                {
+                  "text": "保護区",
+                  "kana": "ほごく",
+                  "t": 1.1
                 }
               ],
               "zh": "[名] 历史文化保护区",
@@ -6036,20 +6222,22 @@ window.LESSON_DATA = {
               "blanks": [
                 "歴史文化保護区"
               ],
-              "audio": "audio/seg-130.mp3",
+              "audio": "audio/seg-129.mp3",
               "quizSentence": "北京市では25か所の歴史文化保護区を指定して，町並みを保存することを決めた。"
             },
             {
-              "id": 131,
+              "id": 130,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
                   "text": "指定",
-                  "kana": "してい"
+                  "kana": "してい",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.6
                 }
               ],
               "zh": "[动3] 指定",
@@ -6057,20 +6245,22 @@ window.LESSON_DATA = {
               "blanks": [
                 "指定した"
               ],
-              "audio": "audio/seg-131.mp3",
+              "audio": "audio/seg-130.mp3",
               "quizSentence": "先生は宿題の締め切りを指定した。"
             },
             {
-              "id": 132,
+              "id": 131,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
                   "text": "保存",
-                  "kana": "ほぞん"
+                  "kana": "ほぞん",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.72
                 }
               ],
               "zh": "[动3] 保存",
@@ -6078,8 +6268,31 @@ window.LESSON_DATA = {
               "blanks": [
                 "保存する"
               ],
-              "audio": "audio/seg-132.mp3",
+              "audio": "audio/seg-131.mp3",
               "quizSentence": "北京市では25か所の歴史文化保護区を指定して，町並みを保存することを決めた。"
+            },
+            {
+              "id": 132,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "混在",
+                  "kana": "こんざい",
+                  "t": 0.0
+                },
+                {
+                  "text": "する",
+                  "t": 0.86
+                }
+              ],
+              "zh": "[动3] 并存，混在一起",
+              "notes": "",
+              "blanks": [
+                "混在する"
+              ],
+              "audio": "audio/seg-132.mp3",
+              "quizSentence": "新しいものと古いものが混在する街北京は，今変革の時を迎えている。"
             },
             {
               "id": 133,
@@ -6087,17 +6300,15 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "混在",
-                  "kana": "こんざい"
-                },
-                {
-                  "text": "する"
+                  "text": "変革",
+                  "kana": "へんかく",
+                  "t": -0.02
                 }
               ],
-              "zh": "[动3] 并存，混在一起",
+              "zh": "[名] 变革，改革，变化",
               "notes": "",
               "blanks": [
-                "混在する"
+                "変革"
               ],
               "audio": "audio/seg-133.mp3",
               "quizSentence": "新しいものと古いものが混在する街北京は，今変革の時を迎えている。"
@@ -6108,17 +6319,25 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "変革",
-                  "kana": "へんかく"
+                  "text": "〜"
+                },
+                {
+                  "text": "か",
+                  "t": 0.52
+                },
+                {
+                  "text": "所",
+                  "kana": "ところ",
+                  "t": 0.52
                 }
               ],
-              "zh": "[名] 变革，改革，变化",
+              "zh": "〜处，〜个地方",
               "notes": "",
               "blanks": [
-                "変革"
+                "3か所"
               ],
               "audio": "audio/seg-134.mp3",
-              "quizSentence": "新しいものと古いものが混在する街北京は，今変革の時を迎えている。"
+              "quizSentence": "この町には公園が3か所ある。"
             },
             {
               "id": 135,
@@ -6129,21 +6348,30 @@ window.LESSON_DATA = {
                   "text": "〜"
                 },
                 {
-                  "text": "か"
+                  "text": "連",
+                  "kana": "つ",
+                  "t": 0.0
                 },
                 {
-                  "text": "所",
-                  "kana": "ところ"
+                  "text": "れ",
+                  "t": 0.64
                 }
               ],
-              "zh": "〜处，〜个地方",
+              "zh": "带着〜",
               "notes": "",
               "blanks": [
-                "3か所"
+                "子供連れ"
               ],
               "audio": "audio/seg-135.mp3",
-              "quizSentence": "この町には公園が3か所ある。"
-            },
+              "quizSentence": "彼は子供連れで旅行に来た。"
+            }
+          ]
+        },
+        {
+          "question": "生词表4·语法与表达",
+          "overview": "",
+          "answer": "",
+          "sentences": [
             {
               "id": 136,
               "speaker": null,
@@ -6151,7 +6379,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "年配",
-                  "kana": "ねんぱい"
+                  "kana": "ねんぱい",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 相当大年龄；年纪",
@@ -6169,7 +6398,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "旅",
-                  "kana": "たび"
+                  "kana": "たび",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 旅行，旅游",
@@ -6187,7 +6417,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "夜空",
-                  "kana": "よぞら"
+                  "kana": "よぞら",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 夜空",
@@ -6205,10 +6436,16 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "見上",
-                  "kana": "みあ"
+                  "kana": "みあ",
+                  "t": 0.0
                 },
                 {
-                  "text": "げる"
+                  "text": "げ",
+                  "t": 0.66
+                },
+                {
+                  "text": "る",
+                  "t": 0.84
                 }
               ],
               "zh": "[动2] 仰望，往上看",
@@ -6226,7 +6463,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "先祖",
-                  "kana": "せんぞ"
+                  "kana": "せんぞ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 先祖，祖先",
@@ -6244,7 +6482,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "南東",
-                  "kana": "なんとう"
+                  "kana": "なんとう",
+                  "t": -0.02
                 }
               ],
               "zh": "[名] 东南",
@@ -6262,7 +6501,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "北西",
-                  "kana": "ほくせい"
+                  "kana": "ほくせい",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 西北",
@@ -6280,7 +6520,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "北東",
-                  "kana": "ほくとう"
+                  "kana": "ほくとう",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 东北",
@@ -6298,7 +6539,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "南西",
-                  "kana": "なんせい"
+                  "kana": "なんせい",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 南西",
@@ -6323,7 +6565,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "東南",
-                  "kana": "とうなん"
+                  "kana": "とうなん",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 东南",
@@ -6340,10 +6583,21 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "東南"
+                  "text": "東南",
+                  "kana": "とうなん",
+                  "t": 0.0
                 },
                 {
-                  "text": "アジア"
+                  "text": "ア",
+                  "t": 0.8
+                },
+                {
+                  "text": "ジ",
+                  "t": 1.1
+                },
+                {
+                  "text": "ア",
+                  "t": 1.2
                 }
               ],
               "zh": "[专] 东南亚",
@@ -6361,7 +6615,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "方角",
-                  "kana": "ほうがく"
+                  "kana": "ほうがく",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 角，角落",
@@ -6379,10 +6634,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "応募",
-                  "kana": "おうぼ"
+                  "kana": "おうぼ",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.74
                 }
               ],
               "zh": "[动3] 报名参加，应征；应募",
@@ -6400,7 +6657,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "蘇州",
-                  "kana": "そしゅう"
+                  "kana": "そしゅう",
+                  "t": 0.0
                 }
               ],
               "zh": "[专] 苏州",
@@ -6417,7 +6675,16 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ベニス"
+                  "text": "ベ",
+                  "t": 0.0
+                },
+                {
+                  "text": "ニ",
+                  "t": 0.56
+                },
+                {
+                  "text": "ス",
+                  "t": 0.8
                 }
               ],
               "zh": "[专] 威尼斯",
@@ -6435,10 +6702,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "誇",
-                  "kana": "ほこ"
+                  "kana": "ほこ",
+                  "t": 0.0
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 0.48
                 }
               ],
               "zh": "[名] 骄傲，自豪，自尊心",
@@ -6456,10 +6725,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "彫",
-                  "kana": "ほ"
+                  "kana": "ほ",
+                  "t": 0.0
                 },
                 {
-                  "text": "る"
+                  "text": "る",
+                  "t": 0.42
                 }
               ],
               "zh": "[动1] 雕刻，雕，刻",
@@ -6477,10 +6748,16 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "今",
-                  "kana": "いま"
+                  "kana": "いま",
+                  "t": 0.0
                 },
                 {
-                  "text": "にも"
+                  "text": "に",
+                  "t": 0.34
+                },
+                {
+                  "text": "も",
+                  "t": 0.64
                 }
               ],
               "zh": "[副] 眼看就要，马上",
@@ -6498,10 +6775,16 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "捕",
-                  "kana": "つか"
+                  "kana": "つか",
+                  "t": 0.0
                 },
                 {
-                  "text": "まる"
+                  "text": "ま",
+                  "t": 0.44
+                },
+                {
+                  "text": "る",
+                  "t": 0.66
                 }
               ],
               "zh": "[动1] 抓住，逮捕",
@@ -6519,7 +6802,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "銃",
-                  "kana": "じゅう"
+                  "kana": "じゅう",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 枪，步枪",
@@ -6537,10 +6821,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "自殺",
-                  "kana": "じさつ"
+                  "kana": "じさつ",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.78
                 }
               ],
               "zh": "[动3] 自杀",
@@ -6557,7 +6843,12 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "かご"
+                  "text": "か",
+                  "t": 0.09
+                },
+                {
+                  "text": "ご",
+                  "t": 0.79
                 }
               ],
               "zh": "[名] 笼子，篮子，提篮",
@@ -6575,7 +6866,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "塀",
-                  "kana": "へい"
+                  "kana": "へい",
+                  "t": 0.73
                 }
               ],
               "zh": "[名] 墙，院墙，围墙，栅栏",
@@ -6593,7 +6885,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "地平線",
-                  "kana": "ちへいせん"
+                  "kana": "ちへいせん",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 地平线",
@@ -6611,7 +6904,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "泉",
-                  "kana": "いずみ"
+                  "kana": "いずみ",
+                  "t": 1.11
                 }
               ],
               "zh": "[名] 泉，泉水",
@@ -6629,7 +6923,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "正確",
-                  "kana": "せいかく"
+                  "kana": "せいかく",
+                  "t": 0.4
                 }
               ],
               "zh": "[形2] 正确",
@@ -6647,7 +6942,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "人工衛星",
-                  "kana": "じんこうえいせい"
+                  "kana": "じんこうえいせい",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 人造卫星",
@@ -6665,7 +6961,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "人工",
-                  "kana": "じんこう"
+                  "kana": "じんこう",
+                  "t": -0.08
                 }
               ],
               "zh": "[名] 人工",
@@ -6683,17 +6980,21 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "打",
-                  "kana": "う"
+                  "kana": "う",
+                  "t": 0.0
                 },
                 {
-                  "text": "ち"
+                  "text": "ち",
+                  "t": 0.54
                 },
                 {
                   "text": "上",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 0.76
                 },
                 {
-                  "text": "げ"
+                  "text": "げ",
+                  "t": 0.88
                 }
               ],
               "zh": "[名] 发射",
@@ -6711,10 +7012,16 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "日当",
-                  "kana": "ひあ"
+                  "kana": "ひあ",
+                  "t": 0.0
                 },
                 {
-                  "text": "たり"
+                  "text": "た",
+                  "t": 0.56
+                },
+                {
+                  "text": "り",
+                  "t": 0.78
                 }
               ],
               "zh": "[名] 向阳，向阳处",
@@ -6732,10 +7039,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "植",
-                  "kana": "う"
+                  "kana": "う",
+                  "t": 0.0
                 },
                 {
-                  "text": "える"
+                  "text": "える",
+                  "t": 0.3
                 }
               ],
               "zh": "[动2] 种，植，栽",
@@ -6753,7 +7062,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "弁護士",
-                  "kana": "べんごし"
+                  "kana": "べんごし",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 律师，辩护律师",
@@ -6771,7 +7081,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "中華鍋",
-                  "kana": "ちゅうかなべ"
+                  "kana": "ちゅうかなべ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 中式双耳浅底锅",
@@ -6788,7 +7099,12 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "コンロ"
+                  "text": "コ",
+                  "t": 0.0
+                },
+                {
+                  "text": "ンロ",
+                  "t": 0.32
                 }
               ],
               "zh": "[名] 小炉子",
@@ -6806,10 +7122,16 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "欠",
-                  "kana": "か"
+                  "kana": "か",
+                  "t": 0.0
                 },
                 {
-                  "text": "かす"
+                  "text": "か",
+                  "t": 0.44
+                },
+                {
+                  "text": "す",
+                  "t": 0.68
                 }
               ],
               "zh": "[动1] 缺，缺少",
@@ -6827,7 +7149,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "城下町",
-                  "kana": "じょうかまち"
+                  "kana": "じょうかまち",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] （围绕诸侯居住地发展起来的）城市",
@@ -6845,7 +7168,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "城",
-                  "kana": "しろ"
+                  "kana": "しろ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 城，城堡",
@@ -6863,7 +7187,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "四方",
-                  "kana": "しほう"
+                  "kana": "しほう",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 四方",
@@ -6881,7 +7206,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "塩分",
-                  "kana": "えんぶん"
+                  "kana": "えんぶん",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 盐分",
@@ -6899,7 +7225,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "献立",
-                  "kana": "こんだて"
+                  "kana": "こんだて",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 食谱，菜谱",
@@ -6917,7 +7244,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "花壇",
-                  "kana": "かだん"
+                  "kana": "かだん",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 花坛",
@@ -6934,7 +7262,16 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ピンク"
+                  "text": "ピ",
+                  "t": 0.0
+                },
+                {
+                  "text": "ン",
+                  "t": 0.46
+                },
+                {
+                  "text": "ク",
+                  "t": 0.54
                 }
               ],
               "zh": "[名] 粉红色，桃红色",
@@ -6952,7 +7289,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "紫",
-                  "kana": "むらさき"
+                  "kana": "むらさき",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 紫，紫色",
@@ -6970,10 +7308,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "寄付",
-                  "kana": "きふ"
+                  "kana": "きふ",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 1.14
                 }
               ],
               "zh": "[动3] 捐助，捐赠",
@@ -6991,10 +7331,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "幸",
-                  "kana": "さいわ"
+                  "kana": "さいわ",
+                  "t": 0.0
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 0.7
                 }
               ],
               "zh": "[形2] 幸运，荣幸；幸好",
@@ -7012,10 +7354,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "徐々",
-                  "kana": "じょじょ"
+                  "kana": "じょじょ",
+                  "t": 0.0
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 0.46
                 }
               ],
               "zh": "[副] 渐渐，逐步",
@@ -7032,7 +7376,20 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "コンクール"
+                  "text": "コ",
+                  "t": 0.0
+                },
+                {
+                  "text": "ン",
+                  "t": 0.38
+                },
+                {
+                  "text": "ク",
+                  "t": 0.48
+                },
+                {
+                  "text": "ール",
+                  "t": 0.62
                 }
               ],
               "zh": "[名] 比赛会，竞赛会",
@@ -7050,10 +7407,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "入賞",
-                  "kana": "にゅうしょう"
+                  "kana": "にゅうしょう",
+                  "t": 0.0
                 },
                 {
-                  "text": "する"
+                  "text": "する",
+                  "t": 0.8
                 }
               ],
               "zh": "[动3] 获奖，得奖",
@@ -7071,7 +7430,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "便器",
-                  "kana": "べんき"
+                  "kana": "べんき",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 便桶，便盆，便壶，马桶",
@@ -7089,10 +7449,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "沿",
-                  "kana": "そ"
+                  "kana": "そ",
+                  "t": 0.0
                 },
                 {
-                  "text": "う"
+                  "text": "う",
+                  "t": 0.64
                 }
               ],
               "zh": "[动1] 沿，顺",
@@ -7110,7 +7472,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "柳",
-                  "kana": "やなぎ"
+                  "kana": "やなぎ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 柳树",
@@ -7128,7 +7491,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "森",
-                  "kana": "もり"
+                  "kana": "もり",
+                  "t": 2.17
                 }
               ],
               "zh": "[名] 丛林，森林",
@@ -7146,7 +7510,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "不動産会社",
-                  "kana": "ふどうさんがいしゃ"
+                  "kana": "ふどうさんがいしゃ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 房地产公司",
@@ -7164,7 +7529,8 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "抗議",
-                  "kana": "こうぎ"
+                  "kana": "こうぎ",
+                  "t": 0.0
                 }
               ],
               "zh": "[名] 抗议",
@@ -7185,10 +7551,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "沿",
-                  "kana": "そ"
+                  "kana": "そ",
+                  "t": 1.18
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 1.78
                 }
               ],
               "zh": "沿〜",
@@ -7917,16 +8285,6 @@ window.LESSON_DATA = {
     },
     {
       "id": 125,
-      "text": "〜連れ",
-      "kana": "つれ",
-      "zh": "带着〜",
-      "sentence": "彼は子供連れで旅行に来た。",
-      "sentence_zh": "他带着孩子来旅行了。",
-      "blank": "子供連れ",
-      "category": "other"
-    },
-    {
-      "id": 126,
       "text": "せいぜい",
       "kana": "せいぜい",
       "zh": "[副] 最多，充其量；尽量，尽可能",
@@ -7936,7 +8294,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 127,
+      "id": 126,
       "text": "明",
       "kana": "みん",
       "zh": "[专] 明代，明朝",
@@ -7946,7 +8304,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 128,
+      "id": 127,
       "text": "つなぐ",
       "kana": "つなぐ",
       "zh": "[动1] 连接，拴，系",
@@ -7956,7 +8314,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 129,
+      "id": 128,
       "text": "動き",
       "kana": "うごき",
       "zh": "[名] 动作，动向",
@@ -7966,7 +8324,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 130,
+      "id": 129,
       "text": "歴史文化保護区",
       "kana": "れきしぶんかほごく",
       "zh": "[名] 历史文化保护区",
@@ -7976,7 +8334,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 131,
+      "id": 130,
       "text": "指定する",
       "kana": "していする",
       "zh": "[动3] 指定",
@@ -7986,7 +8344,7 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
-      "id": 132,
+      "id": 131,
       "text": "保存する",
       "kana": "ほぞんする",
       "zh": "[动3] 保存",
@@ -7996,7 +8354,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 133,
+      "id": 132,
       "text": "混在する",
       "kana": "こんざいする",
       "zh": "[动3] 并存，混在一起",
@@ -8006,7 +8364,7 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 134,
+      "id": 133,
       "text": "変革",
       "kana": "へんかく",
       "zh": "[名] 变革，改革，变化",
@@ -8016,13 +8374,23 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
-      "id": 135,
+      "id": 134,
       "text": "〜か所",
       "kana": "かところ",
       "zh": "〜处，〜个地方",
       "sentence": "この町には公園が3か所ある。",
       "sentence_zh": "这个城市有三处公园。",
       "blank": "3か所",
+      "category": "other"
+    },
+    {
+      "id": 135,
+      "text": "〜連れ",
+      "kana": "つれ",
+      "zh": "带着〜",
+      "sentence": "彼は子供連れで旅行に来た。",
+      "sentence_zh": "他带着孩子来旅行了。",
+      "blank": "子供連れ",
       "category": "other"
     },
     {
