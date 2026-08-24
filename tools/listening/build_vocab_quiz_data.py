@@ -114,7 +114,11 @@ def kana_for(word):
 
     "〜"是词典抄来的占位符号（不对应实际发音，比如"〜食"读しょく，不读〜しょく），
     转换完之后要去掉，不然"听音频写假名"这类题型会要求用户连这个不发音的符号
-    也打出来。"/"表示"二选一"（比如"お/ご〜申し上げる"是"お…申し上げる"或
+    也打出来——**显式提供 kana 的分支跟这里的自动转换分支都要做这一步**，两个
+    码位（U+301C全角波浪线"〜"/U+FF5E全角代字号"～"）也都要处理，之前显式
+    kana 分支完全没做这一步、自动转换分支又只处理了 U+301C 一种码位，两处
+    都是真实踩过的坑（详见下面两个分支各自的注释）。"/"表示"二选一"（比如
+    "お/ご〜申し上げる"是"お…申し上げる"或
     "ご…申し上げる"两种说法，不是"お"和"ご"连着念的"おご…"），没法自动算出
     唯一读音，这类词条必须显式提供 kana，这里直接报错提醒，不去猜一个大概率
     错误的拼接结果。"""
@@ -150,8 +154,17 @@ def kana_for(word):
         if changed:
             print(f"警告：词条 {word['text']!r} 里的片假名部分在显式 kana={kana!r} "
                   f"里被错误转写成了平假名，纠正为 {fixed_kana!r}")
-            return fixed_kana
-        return kana
+            kana = fixed_kana
+        # 显式提供的 kana 也可能是从词典抄来的、原样带着占位符"〜"（比如
+        # "〜人前"抄成 kana="〜にんまえ"）——跟下面自动转换分支同一个道理，
+        # 这个符号不对应实际发音，留在标准答案里会导致"听音频写假名"这类
+        # 题型即使用户听着音频原样打出真实读音也判错（真实案例：textbook-
+        # sjp-zg-l15"〜人前"，用户听写"にんまえ"被判错，标准答案却是带着
+        # 占位符的"～にんまえ"）。之前只有下面自动转换分支会 `.replace()`
+        # 掉这个符号，显式 kana 分支从来没做过这一步，两条分支behavior不
+        # 一致本身就是bug。两种码位都要处理（U+301C全角波浪线/U+FF5E
+        # 全角代字号，见 `_split_kana_segments()` 同一条历史坑的说明）。
+        return kana.replace("〜", "").replace("～", "")
     if "/" in word["text"]:
         raise ValueError(
             f"词条 {word['text']!r} 带 '/' 二选一符号（比如敬语'お/ご'前缀），"
@@ -174,7 +187,7 @@ def kana_for(word):
             hira = _TOKEN_READING_OVERRIDES_BY_PREV[(prev_orig, orig)]
         prev_orig = orig
         parts.append(hira if any(_is_kanji(ch) for ch in orig) else orig)
-    return "".join(parts).replace("〜", "")
+    return "".join(parts).replace("〜", "").replace("～", "")
 
 
 def main():

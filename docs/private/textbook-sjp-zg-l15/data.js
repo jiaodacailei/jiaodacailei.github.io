@@ -5711,7 +5711,7 @@ window.LESSON_DATA = {
     {
       "id": 68,
       "text": "～人前",
-      "kana": "～にんまえ",
+      "kana": "にんまえ",
       "zh": "～人份儿，～份儿",
       "sentence": "よし，じゃあ，「水炊き」を３人前。",
       "sentence_zh": "好，那就来3个人的“鸡肉时蔬火锅”吧。",
@@ -6161,7 +6161,7 @@ window.LESSON_DATA = {
     {
       "id": 113,
       "text": "～店",
-      "kana": "～てん",
+      "kana": "てん",
       "zh": "～店",
       "sentence": "駅の近くに小さな店がある。",
       "sentence_zh": "车站附近有一家小店。",
@@ -6381,7 +6381,7 @@ window.LESSON_DATA = {
     {
       "id": 135,
       "text": "～組",
-      "kana": "～ぐみ",
+      "kana": "ぐみ",
       "zh": "～组",
       "sentence": "3人組で行動する。",
       "sentence_zh": "3人一组行动。",
