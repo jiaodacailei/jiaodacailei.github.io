@@ -182,8 +182,6 @@ body {
   padding-right: 8px; border-right: 1px solid var(--border);
 }
 .seg-speaker ruby rt { font-size: 8px; font-weight: 400; }
-body.mode-dictate .seg-speaker, body.mode-blank .seg-speaker { display: none; }
-body.mode-dictate .seg-card.has-speaker, body.mode-blank .seg-card.has-speaker { padding-left: 14px; }
 @media (max-width: 640px) { .seg-card.has-speaker { padding-left: 56px; } .seg-speaker { width: 40px; font-size: 11px; left: 10px; padding-right: 6px; } }
 .seg-ja { font-size: 16px; line-height: 2.2; margin: 0 24px 4px 0; }
 .seg-ja ruby rt { font-size: 10px; color: var(--text-muted); font-style: normal; }
