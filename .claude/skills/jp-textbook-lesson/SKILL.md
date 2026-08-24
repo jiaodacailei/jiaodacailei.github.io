@@ -473,6 +473,37 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
      不是真实内容）。判断"是不是这个bug"的标准动作：RMS看间隙里有没有
      真实语音能量（不是转写有没有输出文字——转写在长静音区会幻觉，靠谱
      的判据始终是能量剖面）。
+  5. **用户直接甩过来一份边界编辑器"复制JSON"导出的批量edits，里面的
+     `start`/`end`数值差点被直接当成`combined.m4a`的绝对时间写进
+     `enriched_combined.json`，险些酿成事故**——`boundary_editor.html`
+     导出的坐标系是"这个tab自己拼接出来的`merged.mp3`"的本地偏移（从0
+     开始），跟`enriched_combined.json`用的`combined.m4a`绝对时间完全
+     是两套不同的数字，量级可能看起来接近（这次是287~505 vs 32~248），
+     不会通过肉眼一眼看出量级明显不对来自动预警。第一次直接把edits里的
+     数值原样写进`enriched_combined.json`，结果id71的end(32.55)比它
+     自己的start(287.28)还小，产生了负时长——数值本身的荒谬程度才是
+     真正救命的信号，光靠"感觉像是差不多的坐标"判断不出问题。**正确
+     做法**：收到这类JSON永远走`apply_boundary_edits.py <docs/private/
+     slug> <edits.json>`这条路（必要时先用`build_boundary_editor.py`
+     重新生成一份新鲜的`manifest.json`，确保跟当前已发布状态一致），
+     不要手工往`enriched_combined.json`里套用这些数值——脚本内部从
+     `manifest.json`（同一个本地坐标系）出发做换算，直接对`docs/
+     private/<slug>/audio/`和`data.js`落地，全程不需要人工换算坐标系。
+     跑完之后如果还想让`enriched_combined.json`保持跟发布状态同步（给
+     后续`recut_clips.py`/`patch_sentence_tokens.py`用），要单独对每个
+     受影响id算"新旧本地时间的delta"，累加到`enriched_combined.json`
+     已有的绝对时间上——不能假设本地坐标和绝对坐标之间是一个固定不变
+     的常数偏移，跨越这一课已知的中文旁白空隙（比如会话id1标题和id2
+     "以上が"之间那4秒空白）本地坐标是连续拼接、没有这段空白的，常数
+     偏移在跨越这类空隙前后是不一样的，只能在同一段没有大间隙的连续
+     句子范围内假设常数偏移成立。**这次顺带发现`enriched_combined.json`
+     已经因为用户之前直接在边界编辑器网页上点"保存"的编辑（走
+     `boundary_editor_server.py`的`/apply`, 不经过我）而跟发布状态
+     不同步过至少两次（会话id2/3、课文id41/42）——`boundary_editor_
+     server.py`的`/apply`只更新`audio/`和`data.js`，从来不会回写
+     `enriched_combined.json`，这是这个双份数据源架构的固有缺口，
+     每次要用`enriched_combined.json`做后续处理前，最好先用duration
+     比对（跟这次发现的方法一样）确认它没有过期。**
 
 ## 参数
 

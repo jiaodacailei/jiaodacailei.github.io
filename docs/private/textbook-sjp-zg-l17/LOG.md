@@ -137,4 +137,19 @@
   生词/专有名词在句首位置系统性触发对齐算法的边界偏差"这种模式，一旦
   抓到第2次就该主动做全课扫描，而不是被动等用户一句一句挑出来。
 
+- 用户直接甩来一份生词表边界编辑器"复制JSON"导出的39处批量修改。差点
+  直接把里面的`start`/`end`数值当成`combined.m4a`绝对时间写进
+  `enriched_combined.json`——那份JSON的坐标系其实是"生词tab自己拼接
+  出来的`merged.mp3`"本地偏移，跟绝对时间是两套完全不同的数字。第一次
+  误用产生了`start>end`的荒谬负时长，改用`apply_boundary_edits.py`
+  （配合重新生成的`manifest.json`）正确落地，全部39处edits提交后跟
+  `enriched_combined.json`同步（补算本地delta累加到已有绝对时间）。
+  顺带用duration比对发现`enriched_combined.json`还有另外2处（会话
+  id2/id3、课文id41/id42）因为用户之前直接在边界编辑器网页上点"保存"
+  （走`boundary_editor_server.py`的`/apply`，不经过我）而跟发布状态
+  不同步，一并修好。这个"boundary_editor.html导出JSON是本地坐标系，
+  不能直接套用绝对坐标系"的坑，以及"`/apply`不会回写`enriched_
+  combined.json`导致的双份数据源同步缺口"，已经记进`jp-textbook-
+  lesson` skill文档。
+
 - 本课目前没有已知未处理的问题。
