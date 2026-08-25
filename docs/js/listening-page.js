@@ -1643,6 +1643,27 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   quizAudio.addEventListener("pause", function() { setQuizAudioLoading(false); });
   quizAudio.addEventListener("error", function() { setQuizAudioLoading(false); });
 
+  // 跟主播放器的 seekAndPlay() 是同一个坑，这个 IIFE 跟主播放器那个 IIFE
+  // 没有共享作用域，不能直接调用那边的函数，本地重开一份：刚给 quizAudio
+  // 换了新 src（题目一出现自动播）时 readyState 还是 0，这时候直接
+  // currentTime=0 再 play()，seek 落地的时机不确定，真实表现是开头一小段
+  // 被吞掉（跟主播放器"偶尔没声音"是同一个"seek 在 loadedmetadata 之前
+  // 不可靠"的根因，只是这里的表现是"截头"不是"整句没声音"）。等
+  // loadedmetadata 之后再 seek+play；已经加载过的（比如点▶重听同一题，
+  // src 没变过）readyState 已经 >=1，不用等，直接做。
+  function quizPlayFromStart() {
+    function doIt() {
+      quizAudio.currentTime = 0;
+      setQuizAudioLoading(true);
+      quizAudio.play().catch(function() { setQuizAudioLoading(false); });
+    }
+    if (quizAudio.readyState >= 1) {
+      doIt();
+    } else {
+      quizAudio.addEventListener("loadedmetadata", doIt, { once: true });
+    }
+  }
+
   [quizInput, quizCheck, quizNext, quizPlayBtn, quizResetErrors].forEach(function(el) {
     el.addEventListener("click", function(e) { e.stopPropagation(); });
   });
@@ -1777,11 +1798,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 类真实点击事件触发的 showQuestion() 调用出来的，带着真实用户手势，
       // 不会被自动播放策略拦截；万一个别浏览器仍然拒绝，静默忽略就行——
       // ▶ 按钮本来就在，用户自己点一下也一样能听。
-      quizAudio.currentTime = 0;
-      setQuizAudioLoading(true);
-      // catch 里也要摘掉 loading——play() 被拒绝（比如自动播放策略拦截）不会
-      // 触发 playing/pause/error 里任何一个原生事件，不摘的话转圈会一直留着。
-      quizAudio.play().catch(function() { setQuizAudioLoading(false); });
+      quizPlayFromStart();
     } else if (q.type === "zh2kana") {
       quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + q.word.zh + '</div>';
     } else {
@@ -1840,11 +1857,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (e.key === "Enter") { e.preventDefault(); doCheck(); }
   });
   quizNext.addEventListener("click", function() { qi++; render(); });
-  quizPlayBtn.addEventListener("click", function() {
-    quizAudio.currentTime = 0;
-    setQuizAudioLoading(true);
-    quizAudio.play().catch(function() { setQuizAudioLoading(false); });
-  });
+  quizPlayBtn.addEventListener("click", quizPlayFromStart);
   quizResetErrors.addEventListener("click", function() {
     errors = {};
     localStorage.setItem(stateKeys().error, JSON.stringify(errors));

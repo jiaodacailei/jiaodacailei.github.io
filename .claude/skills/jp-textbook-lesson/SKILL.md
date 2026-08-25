@@ -1958,6 +1958,25 @@ zg-l14，"短かった"注音被截断成"みじ"）
 
 ## 常见坑
 
+- **"单词测试"tab 的"听音频写假名"题，题目一出现自动播放时开头被吞掉一点，
+  但点▶手动重听是完整的**——真实案例（用户反馈）：`docs/js/listening-page.js`
+  里"单词测试"这个独立 IIFE 的 `quizAudio`（`new Audio()`，跟主播放器的
+  `<audio>` 不是同一个对象，两个 IIFE 之间也没有共享作用域）在题目渲染时
+  先 `quizAudio.src = 新音频` 再紧接着 `quizAudio.currentTime = 0; quizAudio.
+  play()`——刚换完 `src` 的瞬间 `readyState` 还是0（HAVE_NOTHING），这时候
+  设置/依赖 `currentTime` 的 seek 落地时机不确定，跟主播放器 `seekAndPlay()`
+  文档字符串里"偶尔没声音"是同一个"seek 在 loadedmetadata 之前不可靠"的根因，
+  只是这里的具体表现是"开头一小段被吞"而不是"整句没声音"——同一个根因在
+  不同调用场景下会有不同的失败表现，不能因为表现不一样就当成新问题排查。
+  点▶手动重听不会复现，是因为这时候 `src` 没变过、`readyState` 早就
+  `>=1`了，没有踩中这个时机窗口。**修法**：照抄 `seekAndPlay()` 的模式
+  （`readyState>=1` 就直接 seek+play，否则等一次性的 `loadedmetadata`
+  事件再做）在 quiz 这个 IIFE 里单独实现一份 `quizPlayFromStart()`（不能
+  跨 IIFE 直接调用主播放器那份，两边作用域独立），题目自动播和▶按钮手动播
+  两个入口统一改用这份函数。这类"设了 currentTime 但 readyState 还是0"
+  的坑，只要是"刚换 src 就紧接着 seek+play"这个模式，不管出现在哪个播放
+  入口都要用同一套"先查 readyState，不够就等 loadedmetadata"来处理，不能
+  假设"这个入口播放的音频比较短/本地缓存过所以没事"。
 - **两个连续朗读、中间没有真实停顿的词，边界之间可能出现一段"两边都不属于"
   的死区，卡掉后一个词的开头**——真实案例（textbook-sjp-zg-l10，生词表
   "たっぷり"/"つかる"）：真实录音里"たっぷり"读完紧接着就是"つかる"（word-level
