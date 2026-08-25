@@ -764,9 +764,14 @@ window.LESSON_DATA = {
                   "text": "「"
                 },
                 {
-                  "text": "水炊",
-                  "kana": "みずた",
+                  "text": "水",
+                  "kana": "みず",
                   "t": 2.38
+                },
+                {
+                  "text": "炊",
+                  "kana": "た",
+                  "t": 2.73
                 },
                 {
                   "text": "き",
@@ -820,9 +825,14 @@ window.LESSON_DATA = {
                   "text": "「"
                 },
                 {
-                  "text": "水炊",
-                  "kana": "みずた",
+                  "text": "水",
+                  "kana": "みず",
                   "t": 0.27
+                },
+                {
+                  "text": "炊",
+                  "kana": "た",
+                  "t": 0.46
                 },
                 {
                   "text": "き",
@@ -969,9 +979,14 @@ window.LESSON_DATA = {
                   "text": "「"
                 },
                 {
-                  "text": "水炊",
-                  "kana": "みずた",
+                  "text": "水",
+                  "kana": "みず",
                   "t": 1.39
+                },
+                {
+                  "text": "炊",
+                  "kana": "た",
+                  "t": 1.72
                 },
                 {
                   "text": "き",
@@ -3648,8 +3663,12 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "水炊",
-                  "kana": "みずた"
+                  "text": "水",
+                  "kana": "みず"
+                },
+                {
+                  "text": "炊",
+                  "kana": "た"
                 },
                 {
                   "text": "き"
