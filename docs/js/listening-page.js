@@ -1346,7 +1346,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         var allFilled = pending.every(function(entry) { return entry.input.value.trim() !== ""; });
         if (!allFilled) return;
         pending.forEach(function(entry) {
-          entry.resolve(entry.input.value.trim() === entry.answer);
+          // 跟默写模式同一个道理（见上面 stripPunct() 的注释）：挖空的原文
+          // 如果带标点（比如"「他人丼」という料理もある"这种挖空范围本身
+          // 就含引号），用户照着实际说的内容打、但省略了引号这类不影响
+          // 语义的标点，不应该被判错——填空考的是语法点/词汇本身记没记住，
+          // 不是标点符号打没打对。之前这里是裸 `===` 精确匹配，没有做这层
+          // 归一化。
+          entry.resolve(stripPunct(entry.input.value.trim()) === stripPunct(entry.answer));
         });
       });
       input.parentNode.insertBefore(redoBtn, input.nextSibling);
