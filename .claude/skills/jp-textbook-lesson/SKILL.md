@@ -1959,24 +1959,48 @@ zg-l14，"短かった"注音被截断成"みじ"）
 ## 常见坑
 
 - **"单词测试"tab 的"听音频写假名"题，题目一出现自动播放时开头被吞掉一点，
-  但点▶手动重听是完整的**——真实案例（用户反馈）：`docs/js/listening-page.js`
-  里"单词测试"这个独立 IIFE 的 `quizAudio`（`new Audio()`，跟主播放器的
-  `<audio>` 不是同一个对象，两个 IIFE 之间也没有共享作用域）在题目渲染时
-  先 `quizAudio.src = 新音频` 再紧接着 `quizAudio.currentTime = 0; quizAudio.
-  play()`——刚换完 `src` 的瞬间 `readyState` 还是0（HAVE_NOTHING），这时候
-  设置/依赖 `currentTime` 的 seek 落地时机不确定，跟主播放器 `seekAndPlay()`
-  文档字符串里"偶尔没声音"是同一个"seek 在 loadedmetadata 之前不可靠"的根因，
-  只是这里的具体表现是"开头一小段被吞"而不是"整句没声音"——同一个根因在
-  不同调用场景下会有不同的失败表现，不能因为表现不一样就当成新问题排查。
-  点▶手动重听不会复现，是因为这时候 `src` 没变过、`readyState` 早就
-  `>=1`了，没有踩中这个时机窗口。**修法**：照抄 `seekAndPlay()` 的模式
-  （`readyState>=1` 就直接 seek+play，否则等一次性的 `loadedmetadata`
-  事件再做）在 quiz 这个 IIFE 里单独实现一份 `quizPlayFromStart()`（不能
-  跨 IIFE 直接调用主播放器那份，两边作用域独立），题目自动播和▶按钮手动播
-  两个入口统一改用这份函数。这类"设了 currentTime 但 readyState 还是0"
-  的坑，只要是"刚换 src 就紧接着 seek+play"这个模式，不管出现在哪个播放
-  入口都要用同一套"先查 readyState，不够就等 loadedmetadata"来处理，不能
-  假设"这个入口播放的音频比较短/本地缓存过所以没事"。
+  但点▶手动重听是完整的**——真实案例（用户反馈，且反馈过两轮：第一次修法
+  没解决问题，第二次才真正修好，完整过程都值得记录，不只记最终答案）。
+  `docs/js/listening-page.js` 里"单词测试"这个独立 IIFE 的 `quizAudio`
+  （`new Audio()`，跟主播放器的 `<audio>` 不是同一个对象，两个 IIFE 之间
+  也没有共享作用域）在题目渲染时先 `quizAudio.src = 新音频` 再紧接着
+  `quizAudio.currentTime = 0; quizAudio.play()`。
+  **第一次修法（验证过无效，别重蹈覆辙）**：一开始类比主播放器
+  `seekAndPlay()`（文档字符串里记录过"偶尔没声音"是"seek 在 loadedmetadata
+  之前不可靠"），以为根因是"刚换完 src 瞬间 readyState 还是0，这时候 seek
+  落地时机不确定"，照抄那个模式改成"readyState>=1 就直接播，否则等一次
+  `loadedmetadata` 再播"。**用户反馈问题依旧**——之后用临时埋
+  `console.log`（直接改在页面自己的脚本里，不能用 javascript_exec 注入，
+  那是隔离世界，注入的 prototype patch/事件监听 页面自己的脚本看不见）
+  实测发现：不管是原来的"立刻 play()"还是改完的"等 loadedmetadata 再
+  play()"，从换 src 到真正开始播放这段时间里，浏览器对这个 MP3 实际
+  缓冲到的字节量都很有限——**"seek 时机"根本不是这个坑的根因，"边下载
+  边播"这个模式本身在缓冲不够时就先出声，才是真正的根因**，不管 play()
+  调用早一点晚一点，只要还是流式播放，缓冲不够这个问题都在。这条教训
+  跟"知道一个坑存在"不是一回事——`seekAndPlay()` 那条comment看着很像，
+  连修法都现成可以抄，**表面相似但根因不同的两个坑，不能只凭"symptom
+  长得像"就直接照搬别处的修法，改完得真去验证，不能因为"逻辑说得通"就
+  当作已经解决**。
+  **第二次修法（实际生效）**：既然根因是"流式播放边下载边播"，就不能靠
+  调整 play() 调用时机解决，得让"下载"和"播放"彻底分离——播放前先
+  `fetch()` 整个音频文件转成 `Blob`，`URL.createObjectURL()` 转出本地
+  blob: URL 再赋给 `audio.src`。blob: URL 指向的是已经完整躺在内存里的
+  数据，不存在"边下载边播"这个中间状态，assign 上去以后 readyState 立刻
+  到位，play() 吐出来的第一帧就是文件真正的开头。同一道题的 blob 缓存住
+  （`quizBlobCache`，key 是音频 URL），点▶重听不重新 fetch。题目自动播
+  和▶按钮手动重听两个入口统一改成调用这个新的 `quizLoadAndPlay(url)`。
+  **调试方法论的教训**：这次用 Claude in Chrome 的 `javascript_tool`
+  （隔离世界注入）验证音频播放行为完全测不出东西——不管是 monkey-patch
+  `HTMLMediaElement.prototype.play`（页面自己的脚本走的是主世界的
+  prototype，隔离世界patch不到同一个对象）还是直接 `new Audio()` 测试
+  （这次意外发现：这个自动化浏览器环境本身的媒体解码管线不工作，
+  `readyState` 永远卡在0、`paused` 却是 `false`，连本地 blob 播放都一样，
+  这是环境本身的限制，不是任何代码的bug），都得不到可信结果。**真正
+  有效的排查手段是把 `console.log` 直接写进页面自己的脚本文件里**（跟着
+  页面一起在主世界执行，`read_console_messages` 能读到），而不是指望
+  隔离世界的注入脚本能观测到主世界对象的状态。这类"自动化浏览器测不出
+  音频播放实际行为"的限制，以后遇到类似的音频时序/截断问题不要指望靠
+  browser automation 验证，改用"页面自己打日志+人工听感确认"。
 - **两个连续朗读、中间没有真实停顿的词，边界之间可能出现一段"两边都不属于"
   的死区，卡掉后一个词的开头**——真实案例（textbook-sjp-zg-l10，生词表
   "たっぷり"/"つかる"）：真实录音里"たっぷり"读完紧接着就是"つかる"（word-level

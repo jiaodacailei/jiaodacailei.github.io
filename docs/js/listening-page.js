@@ -1643,25 +1643,43 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   quizAudio.addEventListener("pause", function() { setQuizAudioLoading(false); });
   quizAudio.addEventListener("error", function() { setQuizAudioLoading(false); });
 
-  // 跟主播放器的 seekAndPlay() 是同一个坑，这个 IIFE 跟主播放器那个 IIFE
-  // 没有共享作用域，不能直接调用那边的函数，本地重开一份：刚给 quizAudio
-  // 换了新 src（题目一出现自动播）时 readyState 还是 0，这时候直接
-  // currentTime=0 再 play()，seek 落地的时机不确定，真实表现是开头一小段
-  // 被吞掉（跟主播放器"偶尔没声音"是同一个"seek 在 loadedmetadata 之前
-  // 不可靠"的根因，只是这里的表现是"截头"不是"整句没声音"）。等
-  // loadedmetadata 之后再 seek+play；已经加载过的（比如点▶重听同一题，
-  // src 没变过）readyState 已经 >=1，不用等，直接做。
-  function quizPlayFromStart() {
-    function doIt() {
+  // 之前试过"刚换src就currentTime=0再play()，等readyState/loadedmetadata
+  // 之后再播"这个思路（照抄主播放器seekAndPlay()的模式），实测没有解决
+  // 问题——真正验证下来，题目一出现自动播这个入口，从换src到play()几乎是
+  // 同一个事件循环tick里发生的，这时候不管是立刻play()还是等loadedmetadata
+  // 再play()，播放开始时浏览器对这段MP3实际缓冲到的字节都还很有限，
+  // 从网络流式播放本身没法保证"seek到0之后吐出来的第一批帧就是真正的
+  // 帧0"——这跟"seek时机"无关，是"边下载边播"这个模式本身在缓冲不够时
+  // 就先出声的固有限制，只能靠"播放前先把整个文件都下载完"来彻底避开，
+  // 不能靠时机上"晚一点点再叫play()"来解决（晚到loadedmetadata实测缓冲的
+  // 字节量并没有实质增加）。改成播放前先 fetch() 整个文件转成 blob: URL
+  // 再赋给 audio.src——blob 是本地内存数据，assign 之后 readyState 几乎
+  // 立刻到位，play() 出来的第一帧就是文件真正的开头，不存在"边下载边播"
+  // 这个中间状态。同一道题的 blob 缓存住（同一个 URL 不会重复 fetch），
+  // 点▶重听不会重新下载。
+  var quizBlobCache = {};
+  var currentQuizAudioUrl = null; // 当前题目的音频地址，▶重听按钮靠它知道放哪个
+  function quizLoadAndPlay(url) {
+    function playFromSrc(src) {
+      quizAudio.src = src;
       quizAudio.currentTime = 0;
       setQuizAudioLoading(true);
       quizAudio.play().catch(function() { setQuizAudioLoading(false); });
     }
-    if (quizAudio.readyState >= 1) {
-      doIt();
-    } else {
-      quizAudio.addEventListener("loadedmetadata", doIt, { once: true });
+    if (quizBlobCache[url]) {
+      playFromSrc(quizBlobCache[url]);
+      return;
     }
+    setQuizAudioLoading(true);
+    fetch(url).then(function(res) { return res.blob(); }).then(function(blob) {
+      var blobUrl = URL.createObjectURL(blob);
+      quizBlobCache[url] = blobUrl;
+      playFromSrc(blobUrl);
+    }).catch(function() {
+      // fetch/blob 这条路径失败（比如老浏览器不支持）就退回直接网络播放，
+      // 至少还能听，只是可能重新踩到开头截断的坑。
+      playFromSrc(url);
+    });
   }
 
   [quizInput, quizCheck, quizNext, quizPlayBtn, quizResetErrors].forEach(function(el) {
@@ -1791,14 +1809,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     } else if (q.type === "audio2kana") {
       quizPrompt.innerHTML = '<div class="quiz-hint-text">听发音，写出假名</div>';
       quizPlayBtn.style.display = "";
-      quizAudio.src = audioSrcFor(q.word);
+      currentQuizAudioUrl = audioSrcFor(q.word);
       // 题目一出现就自动放一遍，不用用户先手动点▶——这道题本来就是"听音频
       // 写假名"，音频是题目本身的一部分，不放的话用户还得先点一下才能
       // 开始做题。▶ 按钮仍然保留，用来重听。play() 是由"点确认/下一题"这
       // 类真实点击事件触发的 showQuestion() 调用出来的，带着真实用户手势，
       // 不会被自动播放策略拦截；万一个别浏览器仍然拒绝，静默忽略就行——
       // ▶ 按钮本来就在，用户自己点一下也一样能听。
-      quizPlayFromStart();
+      quizLoadAndPlay(currentQuizAudioUrl);
     } else if (q.type === "zh2kana") {
       quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + q.word.zh + '</div>';
     } else {
@@ -1857,7 +1875,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (e.key === "Enter") { e.preventDefault(); doCheck(); }
   });
   quizNext.addEventListener("click", function() { qi++; render(); });
-  quizPlayBtn.addEventListener("click", quizPlayFromStart);
+  quizPlayBtn.addEventListener("click", function() {
+    if (currentQuizAudioUrl) quizLoadAndPlay(currentQuizAudioUrl);
+  });
   quizResetErrors.addEventListener("click", function() {
     errors = {};
     localStorage.setItem(stateKeys().error, JSON.stringify(errors));
