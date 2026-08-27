@@ -587,6 +587,9 @@ body.mode-blank #blankProgressReset { display: inline-block; }
 .quiz-ja { font-size: 18px; line-height: 1.6; }
 .quiz-zh-hint { color: var(--text-muted); font-size: 13px; font-style: italic; margin-top: 6px; }
 .quiz-zh-prompt { font-size: 17px; line-height: 1.5; }
+/* 好几个词共用同一句中文释义时，靠这个编号消歧（"东南1"/"东南2"）——弱化
+   显示，跟释义本身的文字区分开，不能看着像释义的一部分。 */
+.quiz-zh-dedupe { color: var(--text-muted); font-size: 12px; font-weight: 700; margin-left: 2px; vertical-align: super; }
 .quiz-ja-prompt { font-size: 22px; font-weight: 700; }
 .quiz-hint-text { color: var(--text-muted); font-size: 14px; }
 .quiz-play-btn {

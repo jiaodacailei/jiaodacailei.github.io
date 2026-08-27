@@ -1481,6 +1481,31 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var validWordIds = {};
   words.forEach(function(w) { validWordIds[w.id] = true; });
 
+  // "根据中文写假名"这道题只给中文释义，用户没法知道具体是哪个词——如果
+  // 好几个词的 zh 释义一字不差（真实案例：用户反馈"对于中文一样的单词，
+  // 要求写假名，用户很茫然"，比如"东南"同时对应南東/なんとう和東南/
+  // とうなん），没有任何办法猜该写哪一个。给撞车的这几个词按它们在原始
+  // 生词表（`words` 数组本身的顺序，build_vocab_quiz_data.py 按词表原文
+  // 顺序写出来的，不是这里重新排序）里的先后顺序编号（"东南1"/"东南2"），
+  // 编号只跟 id 绑定、每次加载都按同样的顺序算出来，不会话与话之间随机
+  // 变化——用户蒙错一次、看到揭晓的正确答案之后，下次再碰到同一个编号
+  // 就能对上是哪个词，不用像之前那样每次都是纯瞎猜。没有撞车的词不受
+  // 影响，正常显示原始释义，不平白无故都加个"1"。
+  var ZH_DISAMBIGUATE_SUFFIX = {}; // wordId -> "1"/"2"/...
+  (function() {
+    var byZh = {};
+    words.forEach(function(w) {
+      var zh = (w.zh || "").trim();
+      if (!zh) return;
+      (byZh[zh] = byZh[zh] || []).push(w.id);
+    });
+    Object.keys(byZh).forEach(function(zh) {
+      var ids = byZh[zh];
+      if (ids.length < 2) return;
+      ids.forEach(function(id, i) { ZH_DISAMBIGUATE_SUFFIX[id] = String(i + 1); });
+    });
+  })();
+
   // 清掉 errors/completed 里 key 对应的 wordId 已经不在当前词表里的孤儿
   // 记录——errKey 格式是 "wordId:type"，取冒号前的部分对比。清完立刻存回
   // localStorage，不是只在内存里筛一下，不然下次读到的还是带孤儿记录的
@@ -1818,7 +1843,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // ▶ 按钮本来就在，用户自己点一下也一样能听。
       quizLoadAndPlay(currentQuizAudioUrl);
     } else if (q.type === "zh2kana") {
-      quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + q.word.zh + '</div>';
+      var zhSuffix = ZH_DISAMBIGUATE_SUFFIX[q.word.id];
+      var zhShown = q.word.zh + (zhSuffix ? '<span class="quiz-zh-dedupe">' + zhSuffix + '</span>' : "");
+      quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + zhShown + '</div>';
     } else {
       var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
         ? q.word.text + "（" + q.word.kana + "）" : q.word.text;
