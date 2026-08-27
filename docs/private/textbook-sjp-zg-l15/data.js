@@ -5396,7 +5396,7 @@ window.LESSON_DATA = {
                 "都"
               ],
               "audio": "audio/seg-145.mp3",
-              "quizSentence": "京都は昔の都だった。"
+              "quizSentence": "昔の都は京都だった。"
             },
             {
               "id": 146,
@@ -6512,8 +6512,8 @@ window.LESSON_DATA = {
       "text": "都",
       "kana": "みやこ",
       "zh": "[名] 首都，京城；繁华都市",
-      "sentence": "京都は昔の都だった。",
-      "sentence_zh": "京都曾是古都。",
+      "sentence": "昔の都は京都だった。",
+      "sentence_zh": "以前的首都是京都。",
       "blank": "都",
       "category": "other"
     },
