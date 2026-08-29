@@ -1481,30 +1481,40 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var validWordIds = {};
   words.forEach(function(w) { validWordIds[w.id] = true; });
 
-  // "根据中文写假名"这道题只给中文释义，用户没法知道具体是哪个词——如果
-  // 好几个词的 zh 释义一字不差（真实案例：用户反馈"对于中文一样的单词，
-  // 要求写假名，用户很茫然"，比如"东南"同时对应南東/なんとう和東南/
-  // とうなん），没有任何办法猜该写哪一个。给撞车的这几个词按它们在原始
-  // 生词表（`words` 数组本身的顺序，build_vocab_quiz_data.py 按词表原文
-  // 顺序写出来的，不是这里重新排序）里的先后顺序编号（"东南1"/"东南2"），
+  // 有些题型的"题面"没法唯一定位到具体是哪个词——两个不同的生词条目如果
+  // 题面字段（zh2kana 是中文释义，ja2zh 是日文原词+假名）撞车，用户完全
+  // 没办法猜该往哪个方向答。真实案例：用户反馈"对于中文一样的单词，要求
+  // 写假名，用户很茫然"（"东南"同时对应南東/なんとう和東南/とうなん，
+  // zh2kana 撞车）；同一类坑在 ja2zh 方向也有实例（textbook-sjp-zg-l12，
+  // "方言/ほうげん"同时是id56"[名]方言，地方话"和id105"〜方言，〜方言"
+  // 两个独立词条，ja2zh 题面显示的都是"方言（ほうげん）"，一模一样，
+  // 但两条各自的中文释义并不完全相同）。给撞车的词按它们在原始生词表
+  // （`words` 数组本身的顺序，build_vocab_quiz_data.py 按词表原文顺序
+  // 写出来的，不是这里重新排序）里的先后顺序编号（"东南1"/"东南2"），
   // 编号只跟 id 绑定、每次加载都按同样的顺序算出来，不会话与话之间随机
   // 变化——用户蒙错一次、看到揭晓的正确答案之后，下次再碰到同一个编号
   // 就能对上是哪个词，不用像之前那样每次都是纯瞎猜。没有撞车的词不受
-  // 影响，正常显示原始释义，不平白无故都加个"1"。
-  var ZH_DISAMBIGUATE_SUFFIX = {}; // wordId -> "1"/"2"/...
-  (function() {
-    var byZh = {};
+  // 影响，正常显示原始题面，不平白无故都加个"1"。
+  function buildDisambiguateSuffix(keyFn) {
+    var suffix = {}; // wordId -> "1"/"2"/...
+    var byKey = {};
     words.forEach(function(w) {
-      var zh = (w.zh || "").trim();
-      if (!zh) return;
-      (byZh[zh] = byZh[zh] || []).push(w.id);
+      var key = keyFn(w);
+      if (!key) return;
+      (byKey[key] = byKey[key] || []).push(w.id);
     });
-    Object.keys(byZh).forEach(function(zh) {
-      var ids = byZh[zh];
+    Object.keys(byKey).forEach(function(key) {
+      var ids = byKey[key];
       if (ids.length < 2) return;
-      ids.forEach(function(id, i) { ZH_DISAMBIGUATE_SUFFIX[id] = String(i + 1); });
+      ids.forEach(function(id, i) { suffix[id] = String(i + 1); });
     });
-  })();
+    return suffix;
+  }
+  var ZH_DISAMBIGUATE_SUFFIX = buildDisambiguateSuffix(function(w) { return (w.zh || "").trim(); });
+  var JA_DISAMBIGUATE_SUFFIX = buildDisambiguateSuffix(function(w) {
+    var text = (w.text || "").trim();
+    return text ? text + "|" + (w.kana || "").trim() : "";
+  });
 
   // 清掉 errors/completed 里 key 对应的 wordId 已经不在当前词表里的孤儿
   // 记录——errKey 格式是 "wordId:type"，取冒号前的部分对比。清完立刻存回
@@ -1844,11 +1854,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       quizLoadAndPlay(currentQuizAudioUrl);
     } else if (q.type === "zh2kana") {
       var zhSuffix = ZH_DISAMBIGUATE_SUFFIX[q.word.id];
-      var zhShown = q.word.zh + (zhSuffix ? '<span class="quiz-zh-dedupe">' + zhSuffix + '</span>' : "");
+      var zhShown = q.word.zh + (zhSuffix ? '<span class="quiz-dedupe-badge">' + zhSuffix + '</span>' : "");
       quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + zhShown + '</div>';
     } else {
       var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
         ? q.word.text + "（" + q.word.kana + "）" : q.word.text;
+      var jaSuffix = JA_DISAMBIGUATE_SUFFIX[q.word.id];
+      if (jaSuffix) shown += '<span class="quiz-dedupe-badge">' + jaSuffix + '</span>';
       quizPrompt.innerHTML = '<div class="quiz-ja-prompt">' + shown + '</div>';
     }
     quizInput.focus();
