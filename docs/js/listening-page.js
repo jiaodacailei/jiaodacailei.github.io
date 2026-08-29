@@ -945,13 +945,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
 
   var PUNCT_RE = /[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'"]/g;
-  // 全角数字/字母（０-９Ａ-Ｚａ-ｚ）跟半角（0-9A-Za-z）是同一个字符，但课本
-  // 原文排版经常用全角（比如"テレビＣＭ"里的ＣＭ）、键盘打字自然是半角——
-  // 判分前先统一转成半角，不然会出现"明明打对了，就因为全角/半角不一致
-  // 被判错"的情况。全角形式（Unicode 全角字符区）到半角 ASCII 的码位偏移
-  // 统一是 0xFEE0，数字/大写字母/小写字母都适用，不用分开写三次转换。
+  // 全角数字/字母/符号（０-９Ａ-Ｚａ-ｚ以及！＃％＆等）跟半角（0-9A-Za-z!#%&…）
+  // 是同一个字符，但课本原文排版经常用全角（比如"テレビＣＭ"里的ＣＭ、"56.6％"
+  // 这种百分号），键盘打字自然是半角——判分前先统一转成半角，不然会出现"明明
+  // 打对了，就因为全角/半角不一致被判错"的情况。全角形式（Unicode 全角字符区
+  // U+FF01~U+FF5E）到半角 ASCII（U+0021~U+007E）的码位偏移统一是 0xFEE0，覆盖
+  // 整个区间（不只是数字/字母），% 这类符号也在这个区间内，不用分开写规则。
+  // 真实案例（textbook-sjp-zg-l16"56.6%"这句）：范围原来只写了０-９Ａ-Ｚａ-ｚ，
+  // 漏了符号区，用户打的"５６.６％"（全角百分号）转完之后还剩一个全角％，
+  // PUNCT_RE 又没把 %/％ 当标点去掉，两边字符对不上被判错。
   function normalizeFullwidth(s) {
-    return (s || "").replace(/[０-９Ａ-Ｚａ-ｚ]/g, function(ch) {
+    return (s || "").replace(/[！-～]/g, function(ch) {
       return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
     });
   }
@@ -1734,10 +1738,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 跟句卡片默写/填空模式（本文件另一个 IIFE 里的 stripPunct()）是同一份
   // 逻辑，两边各自独立一份——单词测试"填空题"考的是这个词本身有没有记住，
   // 不是标点符号打没打对，例句原文里的句读符号不该算进判分；两个 IIFE
-  // 之间没有共享作用域，没法直接复用那边的函数。
+  // 之间没有共享作用域，没法直接复用那边的函数。全角转半角的范围同样要
+  // 覆盖整个 U+FF01~U+FF5E 符号区（不只是数字/字母），理由见另一份
+  // normalizeFullwidth() 的注释（l16"56.6%"全角％判分bug）。
   var QUIZ_PUNCT_RE = /[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'"]/g;
   function quizStripPunct(s) {
-    return (s || "").replace(/[０-９Ａ-Ｚａ-ｚ]/g, function(ch) {
+    return (s || "").replace(/[！-～]/g, function(ch) {
       return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
     }).replace(QUIZ_PUNCT_RE, "");
   }
