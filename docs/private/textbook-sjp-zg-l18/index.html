@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>标准日本语中级第18课：売り込み、手紙</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/listening-page.css">
+</head>
+<body>
+
+<div id="gate" data-hash="bb6db7538afe36c647632bf9a561cf15101756f132337f1d650ac8cd95cc3c81">
+  <div class="box">
+    <h2>&#128274; パスワードを入力してください</h2>
+    <input type="password" id="pwdInput" placeholder="パスワード" autofocus />
+    <button id="pwdBtn">開く</button>
+    <div class="err" id="pwdErr"></div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="sticky-header">
+    <div class="sh-title">标准日本语中级第18课：売り込み、手紙</div>
+    <div class="tab-bar" id="tabBar"></div>
+  </div>
+
+  <nav class="toc" id="sideNav">
+    
+    <div id="sideNavLists"></div>
+  </nav>
+
+  <div class="toc-float" id="sideNavMobile">
+    <div class="toc-float-nums">
+      <button class="toc-float-toggle" id="snmToggle" title="目次を開く">≡</button>
+      <div id="mobileNumsLists"></div>
+    </div>
+    <div class="toc-float-panel">
+      <div class="toc-float-header"><span></span><button class="toc-float-close" id="snmClose"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
+      <div id="sideNavListsMobile"></div>
+    </div>
+  </div>
+
+  <button class="settings-toggle" id="settingsToggle" title="再生設定"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14,-0.23,0.41,-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg></button>
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-group settings-group-speed">
+      <div class="settings-label">再生速度</div>
+      <div class="settings-options" id="speedOptions">
+        <button class="settings-opt" data-speed="0.5">0.5x</button>
+        <button class="settings-opt" data-speed="0.75">0.75x</button>
+        <button class="settings-opt active" data-speed="1">1x</button>
+        <button class="settings-opt" data-speed="1.2">1.2x</button>
+      </div>
+    </div>
+    <div class="settings-group settings-group-lang">
+      <div class="settings-label">表示</div>
+      <div class="settings-options" id="langOptions">
+        <button class="settings-opt" data-lang="ja">日本語</button>
+        <button class="settings-opt active" data-lang="both">日中</button>
+        <button class="settings-opt" data-lang="zh">中国語</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mini-player" id="miniPlayer">
+    <button class="mp-btn mp-first" id="mpFirst" title="最初" disabled><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+    <button class="mp-btn mp-prev" id="mpPrev" title="前へ" disabled><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+    <button class="mp-btn mp-playpause" id="mpPlayPause" title="再生/一時停止"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+    <button class="mp-btn mp-next" id="mpNext" title="次へ" disabled><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+    <button class="mp-btn mp-last" id="mpLast" title="最後" disabled><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+    <div class="mp-info">
+      <div class="mp-scope" id="mpScope">-</div>
+      <div class="mp-pos" id="mpPos"></div>
+    </div>
+    <button class="mp-btn mp-loop" id="mpLoop" title="ループ"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
+    <button class="mp-btn mp-stop" id="mpStop" title="停止"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+  </div>
+
+  <div class="post-page">
+    <div class="post-page-header">
+      <h1>标准日本语中级第18课：売り込み、手紙</h1>
+      <p class="post-page-meta">来源：《标准日本语》中级第18课（会话/课文/生词）。逐句配假名注音、中文翻译与语法笔记，播放时逐词跟读高亮，支持默写/填空练习，悬浮迷你播放器支持暂停/继续/循环。</p>
+      <p class="play-hint">▶ 点击题目标题或句子卡片即可播放对应音频</p>
+    </div>
+    <div class="post-body" id="postBody"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="/js/edit-mode-restore.js"></script>
+<script src="/js/page-renderer.js" defer></script>
+<script src="/js/edit-mode.js" defer></script>
+<script src="/js/private-gate.js" defer></script>
+<script src="/js/listening-page.js" defer></script>
+
+</body>
+</html>
