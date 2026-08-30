@@ -1196,6 +1196,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     clone.className = "seg-ja-blank";
     var cloneTokens = baseTokens(clone);
     var plain = cloneTokens.map(function(t) { return t.text; }).join("");
+    // 定位挖空范围时按半角归一化再搜索（跟 stripPunct() 对答案判分做的
+    // 归一化保持一致）——normalizeFullwidth() 是逐字符等长替换，不会改变
+    // 字符串长度，归一化后字符串里找到的下标直接搬回原始 plain 用完全
+    // 有效。真实bug：内容作者在 blanks[] 里打成全角"４００"，原文其实是
+    // 半角"400"，裸 indexOf 找不到，这个空整个不出现（只在控制台warn，
+    // 没人会打开控制台注意到），跟"判分不区分半全角"这条规则不一致。
+    var plainNorm = normalizeFullwidth(plain);
 
     var ranges = [];
     // searchFrom 只往前推进，不用每条都从头 plain.indexOf(text)——同一段文字
@@ -1205,7 +1212,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 数组按它们在原文里从左到右出现的顺序书写（正常写法本来就是这样）。
     var searchFrom = 0;
     blankTexts.forEach(function(text) {
-      var idx = plain.indexOf(text, searchFrom);
+      var idx = plainNorm.indexOf(normalizeFullwidth(text), searchFrom);
       if (idx === -1) {
         // data-blanks 里的文字在这句原文里找不到——多半是内容作者打字打错了
         // （或者句子后来改过、blanks 没跟着更新，或者这一条排在了它在原文
