@@ -180,6 +180,33 @@ class选择器），级联平局时后写的赢，`.exam-stem-row`赢了，`disp
 状态都正确。**教训：涉及CSS class显隐切换的功能，光测DOM结构/class不够，
 必须真的截图/看渲染结果核实一遍，jsdom测试通过不代表视觉效果对**。
 
+## 第四轮：新增「重点词汇语法」tab
+
+用户想从考试里抽取需要重点学习的单词和语法。統计过読解部分（問題10〜14）
+没有明确标注"这题考的是哪个词"，抽取要靠主观判断挑生词，没有官方解析
+背书；問題1〜9（51题）都有明确目标词/语法点+官方中文解析，可靠。跟
+用户确认后只做問題1〜9。
+
+`tools/listening/build_exam_review_items.py`：按大题类型分三种抽取
+（脚本内注释有完整说明）——問題1/2/3/4/5/7/8直接用`q.stem`（自带音频+
+furigana的完整正确句）；問題6（用法，题干只给裸词）用`q.stemWord`+
+对应正确选项的例句；問題9（4题共享一整篇文章，每题`q.stem`是null）
+合并成1条`passage`类型记录，复用`block.passageSentences`（逐句配好
+音的完整段落）。不解析中文解析文本去猜"哪段是哪个词的释义"——
+`explanationZh`整段原文本来就准确，直接原样当notes展示。
+
+跑出48条`reviewItems`写进data.js（42条sentence+5条word+1条passage
+覆盖問題9的4题）。`exam-page.js`新增一个虚拟"問題15"tab（跟現有14个
+問題tab复用同一套`data-mondai-idx`切换机制，不用改tab切换的事件监听
+代码），渲染逻辑复用了已有的`renderTokensHtml()`/`passageHtml()`/
+`playAudio()`——不计入`totalQuestions()`/判分逻辑（那两处只读
+`DATA.mondaiList`，这个tab的数据放在独立的`DATA.reviewItems`里，
+不会被带进去）。
+
+本地起服务器+Chrome实测：48条全部渲染（42+5+1分组数=9，跟問題1〜9
+对应）、sentence/word/passage三种类型渲染都正确、点开一个play按钮
+确认音频文件200+能正常播放完整个loading→playing→ended周期。
+
 ## 待办 / 已知限制
 
 - 只做了2020年12月这一套（试点），其余19套（2011-2020其中18套有PDF+音频，

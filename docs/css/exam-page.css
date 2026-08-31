@@ -308,3 +308,40 @@
   color: var(--muted, #666);
   margin-left: 0.6em;
 }
+
+/* 「重点词汇语法」tab——跟問題1〜14的.exam-question不是同一套（那套的
+   .exam-explanation默认display:none，要点开"复习"才看得到解析；这里是
+   纯参考列表，解析要一直可见，所以用独立的.exam-review-notes而不是复用
+   .exam-explanation）。 */
+.exam-review-group-title {
+  font-weight: 700;
+  font-size: 0.95em;
+  color: var(--accent, #3a6cf6);
+  margin: 1.4em 0 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border, #e5e5e5);
+}
+.exam-review-group-title:first-child { margin-top: 0; }
+
+.exam-review-item {
+  margin: 0.8em 0;
+  padding: 0.9em 1em;
+  border: 1px solid var(--border, #e5e5e5);
+  border-radius: 10px;
+}
+.exam-review-head { margin-bottom: 0.5em; }
+.exam-review-example {
+  margin-top: 0.4em;
+  padding-left: 0.9em;
+  border-left: 2px solid var(--border, #e5e5e5);
+}
+.exam-review-notes {
+  margin-top: 0.6em;
+  padding: 0.6em 0.8em;
+  background: var(--card-bg, #f7f7f9);
+  border-radius: 6px;
+  font-size: 0.9em;
+  line-height: 1.7;
+  color: var(--muted, #555);
+}
+.exam-review-passage .exam-passage { margin-top: 0.3em; }
