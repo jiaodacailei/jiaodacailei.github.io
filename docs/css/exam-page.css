@@ -1,6 +1,22 @@
 /* N2真题模考页面专用样式——跟 listening-page.css 共用密码门/sticky-header/
    tab-bar 那套基础样式，这里只加"选择题作答/判分/复习"这部分独有的样式。 */
 
+/* 問題1〜14共14个tab——听力精听页最多5个tab、教材课页最多4个tab，共用的
+   .tab-bar（flex-wrap:wrap）放得下，这套14个tab换行挤成好几行，顶部占用
+   空间过多。改成单行横向可滑动，只在这个文件（只有真题模考页会加载）里
+   加，不改listening-page.css的共用规则，不影响其它页面。min-width:0是
+   必须的——flex子元素默认min-width是内容自身宽度，不设这条overflow-x
+   不会真的触发横向滚动。 */
+#examTabBar {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+#examTabBar .tab-btn { flex: none; }
+
 .exam-mondai-instruction {
   color: var(--muted, #666);
   font-size: 0.95em;
