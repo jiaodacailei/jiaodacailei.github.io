@@ -234,6 +234,16 @@
   //      展示（不像教材页那样默写模式隐藏——这个tab本来就没有默写/填空
   //      模式）。
   var VOCAB_SECTION_IDX = DATA.mondaiList.length + 1;
+  // 「生词测试」tab——直接复用 window.PageRenderer.renderQuizSection()
+  // （page-renderer.js跟build_page.py的quiz_section_html()一一对应的
+  // 那个函数，教材课単語テスト tab用的就是它），传DATA.vocabQuiz（跟
+  // build_vocab_quiz_data.py生成的教材课quiz数据同一套字段：id/text/
+  // kana/zh/sentence/sentence_zh/blank/category，见tools/listening/
+  // build_exam_vocab.py）进去，"填空题/听音频写假名/中文写假名/日文写
+  // 中文"四种题型的出题/判分逻辑一行代码都不用改，listening-page.js的
+  // 単語テスト引擎本来就是靠<script id="vocab-quiz-data">这个约定接管
+  // 渲染的，不关心页面是教材课还是这个exam页。
+  var QUIZ_SECTION_IDX = VOCAB_SECTION_IDX + 1;
 
   // id="q-{VOCAB_SECTION_IDX}-{groupIdx}"/class="question-block"——
   // 跟 page-renderer.js 的 renderQuestionBlock() 同一套约定，
@@ -293,13 +303,19 @@
     if (DATA.vocabItems && DATA.vocabItems.length) {
       btns.push('<button class="tab-btn" data-mondai-idx="' + VOCAB_SECTION_IDX + '">生词</button>');
     }
+    if (DATA.vocabQuiz && DATA.vocabQuiz.length) {
+      btns.push('<button class="tab-btn" data-mondai-idx="' + QUIZ_SECTION_IDX + '">生词测试</button>');
+    }
     return btns.join("");
   }
 
   function render() {
     document.getElementById("examTitle").textContent = DATA.title;
     document.getElementById("examTabBar").innerHTML = tabBarHtml();
-    root.innerHTML = DATA.mondaiList.map(mondaiSectionHtml).join("") + vocabSectionHtml();
+    var quizHtml = (DATA.vocabQuiz && DATA.vocabQuiz.length)
+      ? window.PageRenderer.renderQuizSection(QUIZ_SECTION_IDX, DATA.vocabQuiz, false)
+      : "";
+    root.innerHTML = DATA.mondaiList.map(mondaiSectionHtml).join("") + vocabSectionHtml() + quizHtml;
     applyStoredAnswers();
     updateProgress();
   }
@@ -378,10 +394,11 @@
     document.querySelectorAll(".exam-mondai-section").forEach(function (sec) {
       sec.style.display = sec.getAttribute("data-mondai-idx") === idx ? "" : "none";
     });
-    // 「生词」tab不是答题流程，底部整份卷子的"交卷"条在这个tab下没有意义，
-    // 藏起来（跟.exam-mondai-submit-bar在.exam-submitted之后统一隐藏是
-    // 同一个道理，只是触发条件换成了"当前在生词tab"）。
-    document.body.classList.toggle("vocab-tab-active", String(idx) === String(VOCAB_SECTION_IDX));
+    // 「生词」「生词测试」都不是問題1〜14那套答题流程，底部整份卷子的
+    // "交卷"条在这两个tab下都没有意义，藏起来（跟.exam-mondai-submit-bar
+    // 在.exam-submitted之后统一隐藏是同一个道理，只是触发条件换成了
+    // "当前在生词/生词测试tab"）。
+    document.body.classList.toggle("vocab-tab-active", idx === String(VOCAB_SECTION_IDX) || idx === String(QUIZ_SECTION_IDX));
   });
 
   // 单题批改标记——被"交整份卷子"（submitExam）和"只交这一个大题"

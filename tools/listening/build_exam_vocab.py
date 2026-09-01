@@ -57,6 +57,9 @@ import sys
 import json
 import re
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 
 def opt_reading(tokens):
     return ''.join(t.get('kana', t['text']) for t in tokens)
@@ -78,20 +81,54 @@ def extract_meaning(zh, word_text, word_kana, mondai):
     return m.group(1) if m else None
 
 
+def extract_sentence_zh(zh, mondai, answer):
+    """"生词测试"tab需要例句的中文翻译（sentence_zh，跟build_vocab_quiz_
+    data.py生成的教材课quiz数据同一个字段名）——问題1/2/3/4/5/7/9的
+    explanationZh固定格式是"【解析】<例句中译>\n<选项对比，永远单独一行>"。
+    真实踩过的坑：例句中译本身有时也带换行（会话类问题会把两个说话人
+    的台词分两行译，比如id34"上司：...\n部下：..."）——如果只取"第一个
+    \n前的内容"，会把部下那句漏掉，日语原句(sentence字段)其实是两行都算
+    在内的完整对话，中译却只有一半，明显对不上。改成找最后一个\n（选项
+    对比那行的前一个换行），从"【解析】"之后到这个位置之间的内容整段
+    都算作中译，不管中间有几个换行；単行的普通句子只有一个\n，这个方案
+    照样取到同样的结果，不影响原来能正确处理的情形。
+    問題6是"...，第N项应用正确，句意：<例句中译>。第1项应用错误..."，
+    N是这道题的正确答案序号（answer），不是固定第几项。
+    問題8没有走这个函数——5道题的中译是从原文手工抄的，直接写在
+    MONDAI8_OVERRIDE里（问题8的explanationZh只有一句"句意：..."，对应
+    的是排好序的整句话，不是某个片段，抽取逻辑跟其它类型不是一回事，
+    没必要为了5条硬凑一个正则）。"""
+    if mondai == 6:
+        m = re.search(r'第' + str(answer) + r'项应用正确，句意：(.+?)。', zh)
+        return m.group(1) + '。' if m else None
+    m = re.match(r'^.解析.', zh)
+    if not m:
+        return None
+    last_nl = zh.rfind('\n')
+    if last_nl == -1 or last_nl <= m.end():
+        return None
+    return zh[m.end():last_nl]
+
+
 # ↓↓↓ 换一套真题时，先跑一遍不带override的版本看哪些id落进"需要人工
 # 核对"的桶里（問題8全部5题 + zh抽取失败 + blanks不在quizSentence里），
 # 再针对那些id填这三个字典。下面是2020年12月这套的结果，仅供参照格式。
 MONDAI8_OVERRIDE = {
     43: {'text': 'とおりに', 'kana': 'とおりに', 'audio': 'audio/q43_opt3.mp3',
-         'zh': '和……一样，按照……'},
+         'zh': '和……一样，按照……',
+         'sentence_zh': '昨天第一次试着做了面包。是按照料理杂志上写的配方做的，（面包）却没有很好地发起来。'},
     44: {'text': 'に対して', 'kana': 'にたいして', 'audio': None,
-         'zh': '相对于……；比例是……'},
+         'zh': '相对于……；比例是……',
+         'sentence_zh': '所谓“10倍粥”就是米和水以1:10的比例做出来的粥。'},
     45: {'text': '決して', 'kana': 'けっして', 'audio': 'audio/q45_opt1.mp3',
-         'zh': '绝对不，断然不'},
+         'zh': '绝对不，断然不',
+         'sentence_zh': '我工作的贸易公司，与大公司比起来，肯定没有大公司规模那样大，但是只要有干劲儿，即使是新人也可以被委以重任，是一份很有意义的工作。'},
     46: {'text': '抜きに', 'kana': 'ぬきに', 'audio': None,
-         'zh': '除去，拿掉'},
+         'zh': '除去，拿掉',
+         'sentence_zh': '她是20世纪70年代的一位非常活跃的爵士乐钢琴家。她的存在非常重要，以至于不谈她的话就没有办法去谈日本的爵士乐。'},
     47: {'text': '思い込み', 'kana': 'おもいこみ', 'audio': None,
-         'zh': '臆想，自认为'},
+         'zh': '臆想，自认为',
+         'sentence_zh': '送别人东西的时候，如果只按照自己的喜好去选的话，不仅不会取悦对方，还有可能会给别人添麻烦。想一下对方的兴趣和情况再做决定吧。'},
 }
 ZH_MANUAL = {
     21: '引导，向导',
@@ -103,6 +140,19 @@ ZH_MANUAL = {
 }
 BLANKS_OVERRIDE = {
     27: '打ち明けた',
+}
+# 例句中译(sentence_zh，"生词测试"tab要用)——先跑一遍空字典看extract_
+# sentence_zh()哪些id提取失败，再把失败的手工读原文填进来。問題9这4条
+# 失败是必然的：quizSentence来自共享文章里的某一句原文（build_exam_
+# vocab.py主流程里从passageSentences按子串定位到的那句），explanationZh
+# 对問題9压根没有"【解析】<例句中译>\n"这个开头格式（直接进选项对比），
+# 也没有任何地方存过这句共享文章原文对应的中译——4句译文是根据文章
+# 原文自己翻的，不是从exam数据的其它字段抄来的。
+SENTENCE_ZH_MANUAL = {
+    48: '最近，这是护理现场备受关注的东西，请问大家知道吗？',
+    49: '于是，作为“动物治疗法”的替代方案，最近“机器人治疗法”开始受到关注。',
+    50: '据说通过与这类机器人的接触，能够获得精神安定、沟通能力改善等效果。',
+    51: '然后，我想变得能够为医疗领域做出贡献。',
 }
 MONDAI_LABEL = {
     1: '問題1 漢字読み', 2: '問題2 表記', 3: '問題3 語形成', 4: '問題4 文脈規定',
@@ -139,6 +189,7 @@ def main():
                         'audio': ov['audio'],
                         'quizSentence': ''.join(t['text'] for t in q['stem']['tokens']),
                         'zh': ov['zh'],
+                        'sentence_zh': ov['sentence_zh'],
                     })
             continue
         if m['mondai'] == 9:
@@ -174,6 +225,7 @@ def main():
                         'audio': q['stemWord']['audio'],
                         'quizSentence': ''.join(t['text'] for t in sent['tokens']),
                         'zh_source': q['explanationZh'],
+                        'answer': q['answer'],
                     })
                     continue
                 opt = q['options'][q['answer'] - 1]
@@ -194,13 +246,19 @@ def main():
                 })
 
     for it in items:
-        if 'zh' in it:
+        if 'sentence_zh' in it:
             continue
-        if it['qid'] in ZH_MANUAL:
-            it['zh'] = ZH_MANUAL[it['qid']]
-        else:
-            it['zh'] = extract_meaning(it['zh_source'], it['wordText'], it['wordKana'], it['mondai'])
+        it['sentence_zh'] = SENTENCE_ZH_MANUAL.get(
+            it['qid'],
+            extract_sentence_zh(it['zh_source'], it['mondai'], it.get('answer')),
+        )
+        if 'zh' not in it:
+            if it['qid'] in ZH_MANUAL:
+                it['zh'] = ZH_MANUAL[it['qid']]
+            else:
+                it['zh'] = extract_meaning(it['zh_source'], it['wordText'], it['wordKana'], it['mondai'])
         it.pop('zh_source', None)
+        it.pop('answer', None)
 
     items.sort(key=lambda x: x['qid'])
 
@@ -222,15 +280,18 @@ def main():
     bad_blanks = [it for it in items if it['blanks'] not in (it['quizSentence'] or '')]
     zh_fails = [it for it in items if not it['zh']]
     missing_quiz = [it for it in items if not it['quizSentence']]
+    sentence_zh_fails = [it for it in items if not it['sentence_zh']]
     print('total', len(items))
     print('blanks not matching quizSentence:', [it['qid'] for it in bad_blanks])
     print('zh extraction failed:', [it['qid'] for it in zh_fails])
     print('missing quizSentence:', [it['qid'] for it in missing_quiz])
-    if bad_blanks or zh_fails or missing_quiz:
+    print('sentence_zh extraction failed:', [it['qid'] for it in sentence_zh_fails])
+    if bad_blanks or zh_fails or missing_quiz or sentence_zh_fails:
         print('以上id需要人工核对/补override，脚本不会自动写入data.js，先处理完再重跑')
         sys.exit(1)
 
     vocab_items = []
+    quiz_items = []
     for it in items:
         tokens = ([{'text': it['wordText'], 'kana': it['wordKana']}]
                    if it['wordKana'] != it['wordText']
@@ -246,12 +307,30 @@ def main():
             'audio': it['audio'],
             'quizSentence': it['quizSentence'],
         })
+        # 跟 build_vocab_quiz_data.py 生成的教材课quiz数据同一套字段名，
+        # listening-page.js的単語テスト引擎（"填空题/听音频写假名/中文
+        # 写假名/日文写中文"四种题型）不用改一行就能直接吃这份数据——
+        # category统一填"other"（这些词不是来自"会话/课文"，是从問題
+        # 1〜9里抽出来的，跟教材课"会话相关/课文相关/其他"三分类的语义
+        # 对不上，全归"other"最贴切，単語テスト页面上会显示成"其他单词"
+        # 这一个分类，不会出现空的"会话相关"分类可选）。
+        quiz_items.append({
+            'id': it['qid'],
+            'text': it['wordText'],
+            'kana': it['wordKana'],
+            'zh': it['zh'],
+            'sentence': it['quizSentence'],
+            'sentence_zh': it['sentence_zh'],
+            'blank': it['blanks'],
+            'category': 'other',
+        })
 
     d['vocabItems'] = vocab_items
+    d['vocabQuiz'] = quiz_items
     out = prefix + json.dumps(d, ensure_ascii=False, indent=2) + ';\n'
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         f.write(out)
-    print('written', len(vocab_items), 'vocabItems to', path)
+    print('written', len(vocab_items), 'vocabItems +', len(quiz_items), 'vocabQuiz entries to', path)
 
 
 if __name__ == '__main__':
