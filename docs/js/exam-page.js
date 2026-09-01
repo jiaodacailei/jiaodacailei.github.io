@@ -131,17 +131,6 @@
     return '<div class="exam-passage">' + sentences.map(passageSentenceRow).join("") + "</div>";
   }
 
-  // 問題9専用：交卷前只显示原始段落（48/49/50/51占位符原样保留，不给音频），
-  // 交卷后（.exam-submitted）切换成填好4个空的完整段落+音频+跟读高亮——一次
-  // 性填完的段落会同时剧透4道题，绝不能在交卷前就展示。
-  function passageDualHtml(blankSentences, filledSentences) {
-    if (!filledSentences || !filledSentences.length) return "";
-    var blankHtml = (blankSentences || []).map(passageSentenceRow).join("");
-    var filledHtml = filledSentences.map(passageSentenceRow).join("");
-    return '<div class="exam-passage exam-passage-blank">' + blankHtml + "</div>" +
-      '<div class="exam-passage exam-passage-filled">' + filledHtml + "</div>";
-  }
-
   function stemHtml(q) {
     if (q.stemWord) {
       var audioAttr = q.stemWord.audio ? ' data-audio="' + esc(q.stemWord.audio) + '"' : "";
@@ -152,18 +141,16 @@
     if (q.stemInstruction) {
       return '<div class="exam-stem-row"><span>' + esc(q.stemInstruction) + "</span></div>";
     }
-    if (q.stem) {
-      // 交卷前只显示stemBlank（原始挖空/画线题干，没有播放按钮——填好答案的
-      // 音频这时候放出来，等于直接把答案念给用户听）；交卷后切换成填好正确
-      // 答案的完整句，这时候才有播放按钮，音频/对齐数据一直都在，只是延后
-      // 展示。两版都渲染进DOM，靠.exam-submitted这个body class做CSS显隐
-      // 切换，不用交卷时重新渲染DOM。
-      var blankHtml = q.stemBlank
-        ? '<div class="exam-stem-row exam-stem-blank"><span>' + renderTokensHtml(q.stemBlank.tokens) + "</span></div>"
-        : "";
-      var filledHtml = '<div class="exam-stem-row exam-stem-filled"><button class="exam-play-btn" data-audio="' +
-        esc(q.stem.audio) + '">▶</button><span>' + renderTokensHtml(q.stem.tokens) + "</span></div>";
-      return blankHtml + filledHtml;
+    if (q.stemBlank) {
+      // 题干（画线/挖空原文）交卷前后都保持出题时的样子，不切换成填好
+      // 答案的完整句——真实反馈"显示答案时，题干不应该变化，保持出题时
+      // 的样子即可"。正确答案靠交卷后选项本身变绿（.correct-answer）+
+      // 下面的中文解析呈现，不需要额外把题干换掉；选项本身已经带
+      // furigana，读音信息没有因为题干不变而丢失。q.stem（完整正确句+
+      // 音频）这份数据仍然保留在DATA里，只是这里不再用它渲染——「重点
+      // 词汇语法」tab（reviewItems）复用的正是这份数据，音频没有被
+      // 浪费，只是从"交卷后在题干这里出现"挪到了那个独立的复习tab。
+      return '<div class="exam-stem-row"><span>' + renderTokensHtml(q.stemBlank.tokens) + "</span></div>";
     }
     return "";
   }
@@ -199,8 +186,14 @@
 
   function blockHtml(block) {
     var qsHtml = block.questions.map(questionHtml).join("");
+    // 問題9（4题共享一篇段落挖空文章）跟其它題型統一了同一条規則：
+    // 交卷前后都只显示原始段落（48/49/50/51占位符原样保留），不切换
+    // 成填好4个空的完整段落——block.passageSentencesBlank本来就没有
+    // audio字段（没配过音，也不需要，交卷前后都用不上）。填好版数据
+    // （block.passageSentences，带音频）还留在DATA里，被reviewItems
+    // 复用，没有被浪费。
     var passage = block.is_mondai9
-      ? passageDualHtml(block.passageSentencesBlank, block.passageSentences)
+      ? passageHtml(block.passageSentencesBlank)
       : passageHtml(block.passageSentences);
     return '<div class="exam-block">' + passage + qsHtml + "</div>";
   }
@@ -416,12 +409,9 @@
     if (submitted) return;
     submitted = true;
     stopPlayback();
-    // 题干/問題9段落的挖空→填好答案 这个切换是全局一次性的（不像每道题的
-    // 对错标记那样按题分别处理），交卷本来就是整份卷子一起交，不存在"这题
-    // 交了那题还没交"的中间状态，直接在body上打一个class，CSS统一处理
-    // 所有.exam-stem-blank/.exam-passage-blank的显隐切换（跟"只交一个
-    // 大题"用的.mondai-submitted是两套互不干扰的CSS触发条件，见
-    // exam-page.css）。
+    // body上加这个class纯粹是给"隐藏所有問題自己的'提交本大题'按钮"用的
+    // （整份卷子都交了，单独交某一个大题的入口自然没意义），题干/問題9
+    // 段落早就不会因为交卷而变化了（见stemHtml()/blockHtml()的注释）。
     document.body.classList.add("exam-submitted");
     var total = 0, correct = 0;
     var perMondai = {};
