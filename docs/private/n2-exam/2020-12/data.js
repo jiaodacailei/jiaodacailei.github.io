@@ -46102,7 +46102,7 @@ window.EXAM_DATA = {
       "sentence": "倒さないように気をつけてください。",
       "sentence_zh": "请小心不要把它撞倒。",
       "blank": "倒さない",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 2,
@@ -46112,7 +46112,7 @@ window.EXAM_DATA = {
       "sentence": "今回の件での損害は数千万円にのぼった。",
       "sentence_zh": "此次事件造成了数千万日元的损失。",
       "blank": "損害",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 3,
@@ -46122,7 +46122,7 @@ window.EXAM_DATA = {
       "sentence": "思ったより険しい山道だった。",
       "sentence_zh": "这是一条比我想象的更陡峭的山路。",
       "blank": "険しい",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 4,
@@ -46132,7 +46132,7 @@ window.EXAM_DATA = {
       "sentence": "この辺は比較的人通りが少ない。",
       "sentence_zh": "这附近通行的人比较少。",
       "blank": "比較的",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 5,
@@ -46142,7 +46142,7 @@ window.EXAM_DATA = {
       "sentence": "飛行機は下降を始めた。",
       "sentence_zh": "飞机开始下降。",
       "blank": "下降",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 6,
@@ -46152,7 +46152,7 @@ window.EXAM_DATA = {
       "sentence": "鈴木さんは鮮やかな色のシャツを着ていた。",
       "sentence_zh": "铃木穿着色彩鲜艳的衬衫。",
       "blank": "鮮やか",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 7,
@@ -46162,7 +46162,7 @@ window.EXAM_DATA = {
       "sentence": "今年の夏休みは帰省の予定はありません。",
       "sentence_zh": "今年暑假没有回老家探亲的计划。",
       "blank": "帰省",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 8,
@@ -46172,7 +46172,7 @@ window.EXAM_DATA = {
       "sentence": "もう少し縮めてください。",
       "sentence_zh": "请再稍微缩短一点。",
       "blank": "縮めて",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 9,
@@ -46182,7 +46182,7 @@ window.EXAM_DATA = {
       "sentence": "これからさまざまなことを実践していきたい。",
       "sentence_zh": "今后我想做各种各样的事情。",
       "blank": "実践",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 10,
@@ -46192,7 +46192,7 @@ window.EXAM_DATA = {
       "sentence": "西村氏の作品の中ではこの小説は、かなり異色だ。",
       "sentence_zh": "在西村先生的著作中，这部小说相当有特色。",
       "blank": "異色",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 11,
@@ -46202,7 +46202,7 @@ window.EXAM_DATA = {
       "sentence": "宿題を再提出するよう、先生に言われた。",
       "sentence_zh": "老师要求我重新交一次作业。",
       "blank": "再",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 12,
@@ -46212,7 +46212,7 @@ window.EXAM_DATA = {
       "sentence": "あの人は都会育ちだ。",
       "sentence_zh": "那个人是在城市里长大的。",
       "blank": "育ち",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 13,
@@ -46222,7 +46222,7 @@ window.EXAM_DATA = {
       "sentence": "一仕事終わったので、休憩しよう。",
       "sentence_zh": "一项工作完成了，休息一下吧。",
       "blank": "一",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 14,
@@ -46232,7 +46232,7 @@ window.EXAM_DATA = {
       "sentence": "彼の演技はとても個性的で、見る人の評価が大きく分かれる。",
       "sentence_zh": "他的表演很有个性，所以观众对他的评价有很大的差别。",
       "blank": "評価",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 15,
@@ -46242,7 +46242,7 @@ window.EXAM_DATA = {
       "sentence": "話し合いでは、相手の意見を尊重し、よく聞くことが大切だ。",
       "sentence_zh": "在交谈时，最重要的是要尊重对方的建议，认真倾听。",
       "blank": "尊重",
-      "category": "other"
+      "category": "组1"
     },
     {
       "id": 16,
@@ -46252,7 +46252,7 @@ window.EXAM_DATA = {
       "sentence": "この商品は健康を気にする40代から50代の人をターゲットに開発しました。",
       "sentence_zh": "这个产品是以关心身体健康的40～50岁的人为目标而开发的。",
       "blank": "ターゲット",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 17,
@@ -46262,7 +46262,7 @@ window.EXAM_DATA = {
       "sentence": "佐藤さんは服装や髪形が個性的で、他の人とは違う独特の雰囲気がある。",
       "sentence_zh": "佐藤的服装和发型都很有个性，和别人相比有一种独特的感觉。",
       "blank": "独特",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 18,
@@ -46272,7 +46272,7 @@ window.EXAM_DATA = {
       "sentence": "前回の大会では、あの二人は最後まで優勝を争ってした。",
       "sentence_zh": "在上一次大会中，那两个人到最后都在争夺冠军。",
       "blank": "争って",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 19,
@@ -46282,7 +46282,7 @@ window.EXAM_DATA = {
       "sentence": "高橋さんの家を訪ねたが、みんな出かけているようで、人の気配がなかった。",
       "sentence_zh": "我拜访了高桥先生家，但是大家好像都出门了，不像有人在家的样子。",
       "blank": "気配",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 20,
@@ -46292,7 +46292,7 @@ window.EXAM_DATA = {
       "sentence": "彼は自分で決めたルールも守らない、いいかげんな人だ。",
       "sentence_zh": "他是一个连自己定的规则都不遵守的，敷衍了事的人。",
       "blank": "いいかげんな",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 21,
@@ -46302,7 +46302,7 @@ window.EXAM_DATA = {
       "sentence": "ボランティアで町の名作を案内してしている。",
       "sentence_zh": "以志愿者的身份带着（大家）参观了城市的名作。",
       "blank": "案内して",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 22,
@@ -46312,7 +46312,7 @@ window.EXAM_DATA = {
       "sentence": "山口さんもまじめに作っていた。",
       "sentence_zh": "山口也认真地制作了。",
       "blank": "まじめに",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 23,
@@ -46322,7 +46322,7 @@ window.EXAM_DATA = {
       "sentence": "彼女のような歌手はあまりないだと思う。",
       "sentence_zh": "我觉得像她那样的歌手是很少见的。",
       "blank": "あまりない",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 24,
@@ -46332,7 +46332,7 @@ window.EXAM_DATA = {
       "sentence": "この道は一日中通行止めです。",
       "sentence_zh": "这条路今天一天都禁止通行。",
       "blank": "一日中",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 25,
@@ -46342,7 +46342,7 @@ window.EXAM_DATA = {
       "sentence": "青木さんは髪を触っていた。",
       "sentence_zh": "青木小姐刚刚在拨弄头发。",
       "blank": "触って",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 26,
@@ -46352,7 +46352,7 @@ window.EXAM_DATA = {
       "sentence": "この建物は有名な建築物で、明治時代の初期に建てられました。",
       "sentence_zh": "这幢楼是有名的建筑物，它是在明治时代初期建造的。",
       "blank": "初期",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 27,
@@ -46362,7 +46362,7 @@ window.EXAM_DATA = {
       "sentence": "ずっと秘密にしていたことを友達に打ち明けた。",
       "sentence_zh": "向朋友毫无隐瞒地说出了自己一直保守的秘密。",
       "blank": "打ち明けた",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 28,
@@ -46372,7 +46372,7 @@ window.EXAM_DATA = {
       "sentence": "先月発売された車のブレーキに欠陥が見つかり、販売が中止された。",
       "sentence_zh": "上个月发售的汽车因为在刹车方面有问题所以停止了出售。",
       "blank": "欠陥",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 29,
@@ -46382,7 +46382,7 @@ window.EXAM_DATA = {
       "sentence": "これまで多くの名作を残した映画監督が、今回限りで引退することを発表した。",
       "sentence_zh": "迄今为止留下了诸多名作的电影导演宣布将在这一部电影结束后引退。",
       "blank": "引退",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 30,
@@ -46392,7 +46392,7 @@ window.EXAM_DATA = {
       "sentence": "大きな箱に本がぎっしり詰まっている。",
       "sentence_zh": "大箱子里装满了书。",
       "blank": "ぎっしり",
-      "category": "other"
+      "category": "组2"
     },
     {
       "id": 31,
@@ -46402,7 +46402,7 @@ window.EXAM_DATA = {
       "sentence": "明日、海外に留学中の友人が一年ぶりに帰国する。 会って話を聞くのが楽しみだ。",
       "sentence_zh": "明天，在海外留学的朋友时隔一年回国。我期待见面和他说话。",
       "blank": "ぶりに",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 32,
@@ -46412,7 +46412,7 @@ window.EXAM_DATA = {
       "sentence": "12年間付き合っている彼女に、今年こそ結婚を申し込もうと思っている。",
       "sentence_zh": "我想今年一定要向交往12年的她求婚。",
       "blank": "こそ",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 33,
@@ -46422,7 +46422,7 @@ window.EXAM_DATA = {
       "sentence": "腰の曲がった老人に似ているところからエビは「海老」とも書かれると聞いた。",
       "sentence_zh": "因为像弯着腰的老人，所以虾又可以写作“海老”。",
       "blank": "ところから",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 34,
@@ -46432,7 +46432,7 @@ window.EXAM_DATA = {
       "sentence": "上司「セミナー会場の準備はどう？　順調？」\n部下「ええ。　いすも並び終わりましたし。あとは資料を受付に運ぶだけです。」",
       "sentence_zh": "上司：“研讨会会场的准备怎么样？顺利吗？”\n部下：“是的。椅子也排好了。剩下的只是把资料送到接待处。”",
       "blank": "あとは",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 35,
@@ -46442,7 +46442,7 @@ window.EXAM_DATA = {
       "sentence": "このテニスコートの利用料金は2時間1000円で、1時間しか使わない場合でも、1000円払わなければならない。",
       "sentence_zh": "这个网球场的使用费是2小时1000日元，即使只使用1小时，也必须支付1000日元。",
       "blank": "場合でも",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 36,
@@ -46452,7 +46452,7 @@ window.EXAM_DATA = {
       "sentence": "毎日日記を書きつづけることは簡単なようでいて、けっこう難しいことだ。",
       "sentence_zh": "每天坚持写日记似乎很简单，但是实际上很难。",
       "blank": "簡単なようでいて",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 37,
@@ -46462,7 +46462,7 @@ window.EXAM_DATA = {
       "sentence": "梅雨に入ってもほとんど雨が降らないので、庭の花が枯れてしまわないか心配だ。",
       "sentence_zh": "即使到了梅雨时节，但还是不下雨，我担心庭院的花会枯萎。",
       "blank": "枯れてしまわないか",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 38,
@@ -46472,7 +46472,7 @@ window.EXAM_DATA = {
       "sentence": "今日は、本当は映画を見に行くつもりだったが、雪が降ってきたので、やめた。",
       "sentence_zh": "今天本来是计划看电影的，因为下雪了，所以没去。",
       "blank": "見に行くつもりだった",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 39,
@@ -46482,7 +46482,7 @@ window.EXAM_DATA = {
       "sentence": "今日の戦略が有効であったかどうかは、まだ結果が出ていない現時点では判断しかねる。",
       "sentence_zh": "此刻无法判断此次的策略是否有效果，因为最终结果还未出。",
       "blank": "判断しかねる",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 40,
@@ -46492,7 +46492,7 @@ window.EXAM_DATA = {
       "sentence": "この馬の絵は本物そっくりに描かれていて、今にも走り出しそうだ。",
       "sentence_zh": "这匹马画得很逼真，它看着就像快跑起来了一样。",
       "blank": "走り出しそうだ",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 41,
@@ -46502,7 +46502,7 @@ window.EXAM_DATA = {
       "sentence": "わたしたちが旅館に着くと、従業員たちが笑顔で「ようこそお越しくださいました。」とあいさつしてくれた。",
       "sentence_zh": "我一到旅馆，工作人员们就笑脸相迎说“欢迎光临”。",
       "blank": "お越しくださいました",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 42,
@@ -46512,7 +46512,7 @@ window.EXAM_DATA = {
       "sentence": "木村「田中さん、アルバイトを探しているんだって？」\n田中「うん、そうなんだ。」\n木村「私が働いてる店がアルバイトを募集してるから、応募してみない？　もちろん、田中さんがよければだけど。」",
       "sentence_zh": "木村：“田中，听说你正在找兼职？”\n田中：“恩，是啊！”\n木村：“我工作的店正在招兼职，你要不要试试？当然，前提是你愿意的话。”",
       "blank": "よければだけど",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 43,
@@ -46522,7 +46522,7 @@ window.EXAM_DATA = {
       "sentence": "昨日初めてパンを作ってみた。 料理雑誌レシピに書いてある　とおりに　作った　のに、うまく膨らまなかった。",
       "sentence_zh": "昨天第一次试着做了面包。是按照料理杂志上写的配方做的，（面包）却没有很好地发起来。",
       "blank": "とおりに",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 44,
@@ -46532,7 +46532,7 @@ window.EXAM_DATA = {
       "sentence": "「10倍がゆ」とは、米1に対して　10倍の　水で　作ったおかゆのことです。",
       "sentence_zh": "所谓“10倍粥”就是米和水以1:10的比例做出来的粥。",
       "blank": "に対して",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 45,
@@ -46542,7 +46542,7 @@ window.EXAM_DATA = {
       "sentence": "私が就職した商社は大手の商社に比べると　決して　規模は大きくないが　やる気があれば新人でも大きな仕事を任せてもらえるので、やりがいがある。",
       "sentence_zh": "我工作的贸易公司，与大公司比起来，肯定没有大公司规模那样大，但是只要有干劲儿，即使是新人也可以被委以重任，是一份很有意义的工作。",
       "blank": "決して",
-      "category": "other"
+      "category": "组3"
     },
     {
       "id": 46,
@@ -46552,7 +46552,7 @@ window.EXAM_DATA = {
       "sentence": "彼女は1970年代に活躍したジャズピアニストで、この人抜きには　日本のジャズは　語れない　というほど大きな存在だった。",
       "sentence_zh": "她是20世纪70年代的一位非常活跃的爵士乐钢琴家。她的存在非常重要，以至于不谈她的话就没有办法去谈日本的爵士乐。",
       "blank": "抜きに",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 47,
@@ -46562,7 +46562,7 @@ window.EXAM_DATA = {
       "sentence": "贈り物をするときは、自分の勝手な思い込みだけで　品物を選ぶと　喜ばれるどころか　迷惑をかけることもあるので、相手の趣味や都合をよく考えて決めましょう。",
       "sentence_zh": "送别人东西的时候，如果只按照自己的喜好去选的话，不仅不会取悦对方，还有可能会给别人添麻烦。想一下对方的兴趣和情况再做决定吧。",
       "blank": "思い込み",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 48,
@@ -46572,7 +46572,7 @@ window.EXAM_DATA = {
       "sentence": "最近、介護の現場で注目されているものですが、みなさん、 ご存じでしょうか 。",
       "sentence_zh": "最近，这是护理现场备受关注的东西，请问大家知道吗？",
       "blank": "ご存じでしょうか",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 49,
@@ -46582,7 +46582,7 @@ window.EXAM_DATA = {
       "sentence": "そこで 、「アニマル・セラピー」に替わるものとして最近「ロボット・セラピー」が注目されるようになりました。",
       "sentence_zh": "于是，作为“动物治疗法”的替代方案，最近“机器人治疗法”开始受到关注。",
       "blank": "そこで",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 50,
@@ -46592,7 +46592,7 @@ window.EXAM_DATA = {
       "sentence": "こういったロボットとの触れ合いによって、精神的安定やコミュニケーション能力の改善などの効果が 得られるのだそうです 。",
       "sentence_zh": "据说通过与这类机器人的接触，能够获得精神安定、沟通能力改善等效果。",
       "blank": "得られるのだそうです",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 51,
@@ -46602,7 +46602,7 @@ window.EXAM_DATA = {
       "sentence": "そして、医療分野に 貢献できるようになりたいです 。",
       "sentence_zh": "然后，我想变得能够为医疗领域做出贡献。",
       "blank": "貢献できるようになりたいです",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1011,
@@ -46612,7 +46612,7 @@ window.EXAM_DATA = {
       "sentence": "積み木を崩さないように、そっと歩いてください。",
       "sentence_zh": "请轻轻走路，不要碰倒积木。",
       "blank": "崩さない",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1013,
@@ -46622,7 +46622,7 @@ window.EXAM_DATA = {
       "sentence": "おもちゃを壊さないように大事に扱ってください。",
       "sentence_zh": "请小心对待玩具，不要弄坏它。",
       "blank": "壊さない",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1014,
@@ -46632,7 +46632,7 @@ window.EXAM_DATA = {
       "sentence": "豆腐を潰さないように、そっと持ってください。",
       "sentence_zh": "请轻轻拿着豆腐，不要把它捏碎。",
       "blank": "潰さない",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1022,
@@ -46642,7 +46642,7 @@ window.EXAM_DATA = {
       "sentence": "地震で多くの建物が損壊した。",
       "sentence_zh": "地震导致许多建筑物受损。",
       "blank": "損壊",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1024,
@@ -46652,7 +46652,7 @@ window.EXAM_DATA = {
       "sentence": "台風による被害が各地で報告されている。",
       "sentence_zh": "各地都有报告受到台风造成的损害。",
       "blank": "被害",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1031,
@@ -46662,7 +46662,7 @@ window.EXAM_DATA = {
       "sentence": "長時間走り続けて、息が苦しい。",
       "sentence_zh": "长时间跑步，喘不过气来，很难受。",
       "blank": "苦しい",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1032,
@@ -46672,7 +46672,7 @@ window.EXAM_DATA = {
       "sentence": "一人暮らしは寂しいと感じることがある。",
       "sentence_zh": "一个人生活有时会感到寂寞。",
       "blank": "寂しい",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1033,
@@ -46682,7 +46682,7 @@ window.EXAM_DATA = {
       "sentence": "昨夜は激しい雨が降った。",
       "sentence_zh": "昨晚下了很大的雨。",
       "blank": "激しい",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1052,
@@ -46692,7 +46692,7 @@ window.EXAM_DATA = {
       "sentence": "この小説に出てくる町は架空のものだ。",
       "sentence_zh": "这部小说里出现的城镇是虚构的。",
       "blank": "架空",
-      "category": "other"
+      "category": "组4"
     },
     {
       "id": 1053,
@@ -46702,7 +46702,7 @@ window.EXAM_DATA = {
       "sentence": "子供たちは午後3時に下校する。",
       "sentence_zh": "孩子们下午3点放学。",
       "blank": "下校",
-      "category": "other"
+      "category": "组4"
     }
   ]
 };

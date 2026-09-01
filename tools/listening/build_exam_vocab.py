@@ -76,6 +76,24 @@ BLANKS_OVERRIDE/問題8 的 overrides）是2020年12月这一套核对完的结�
    点了播放会听到跟例句一致的整句朗读，宁可不给音频——vocabItems本来就
    支持`audio: null`，`MONDAI8_OVERRIDE`里已经有3条这么用了，页面渲染
    早就处理过这种情况）。
+
+6. 「生词测试」tab 的分类改成"组1〜组n"（真实反馈"每组包含15个单词的
+   测试题"），不再是单一的"其他"一个大类——`chunk_group_sizes()`按当前
+   `items`数组的顺序（就是"生词"tab里的id排列顺序，**不是**按問題号
+   重新分组，一组里可能混着不同問題来源的词）每15个切一组，**最后一组
+   如果少于5个就并进上一组**（真实反馈"如果最后一组少于5个，就合到
+   上一组吧"，避免一个只有一两个词的"组n"看起来太单薄）。这是纯数量
+   切页，不是稳定id——items总数变了（比如以后把問題2/3/5/6的干扰项也
+   加进来）重跑一遍这份脚本，组的边界会跟着重新计算，不需要额外维护。
+
+   分类过滤UI本身（`docs/js/listening-page.js`里"单词测试"那段）也
+   跟着改了：原来的`CATEGORIES`是写死的"全部/会话相关/课文相关/其他"
+   四类（教材课专用），现在改成已知的dialogue/text/other三个key保留
+   原来的中文标签（教材课页面行为完全不变），其余没见过的category值
+   （比如这里写的"组1"/"组2"）自动生成对应的筛选按钮，标签直接用这个
+   值本身，按数字后缀数值排序（不是字符串排序，避免"组10"排到"组2"
+   前面）。这是共享文件，改完要在l10之类的教材课页面回归测试一遍
+   分类筛选行为没变。
 """
 import sys
 import json
@@ -163,6 +181,24 @@ def extract_sentence_zh(zh, mondai, answer):
     if last_nl == -1 or last_nl <= m.end():
         return None
     return zh[m.end():last_nl]
+
+
+def chunk_group_sizes(n, size=15, min_last=5):
+    """把n个词按size一组切页，最后一组如果小于min_last就并进上一组
+    （不是单独成组）——见上面docstring第6条。返回每组的词数（不是
+    切好的下标区间，调用方自己按顺序累加）。n==0返回空列表；n<=size时
+    只有一组（不存在"最后一组"这个概念，直接整组返回，不受min_last
+    影响）。"""
+    if n <= 0:
+        return []
+    if n <= size:
+        return [n]
+    full, rem = divmod(n, size)
+    if rem == 0:
+        return [size] * full
+    if rem < min_last:
+        return [size] * (full - 1) + [size + rem]
+    return [size] * full + [rem]
 
 
 # ↓↓↓ 换一套真题时，先跑一遍不带override的版本看哪些id落进"需要人工
@@ -369,9 +405,18 @@ def main():
         print('以上id需要人工核对/补override，脚本不会自动写入data.js，先处理完再重跑')
         sys.exit(1)
 
+    # 単語テスト tab 的分类改成"组1〜组n"（见上面docstring第6条），按
+    # items当前顺序（生词tab的id排列顺序，不是按問題号重新分组）每15个
+    # 切一组，最后一组不足5个就并进上一组——group_labels[i]是第i个item
+    # （0-based）所属的组名，跟items顺序一一对应。
+    group_sizes = chunk_group_sizes(len(items))
+    group_labels = []
+    for gi, gsize in enumerate(group_sizes, start=1):
+        group_labels.extend(['组' + str(gi)] * gsize)
+
     vocab_items = []
     quiz_items = []
-    for it in items:
+    for i, it in enumerate(items):
         tokens = ([{'text': it['wordText'], 'kana': it['wordKana']}]
                    if it['wordKana'] != it['wordText']
                    else [{'text': it['wordText']}])
@@ -389,10 +434,9 @@ def main():
         # 跟 build_vocab_quiz_data.py 生成的教材课quiz数据同一套字段名，
         # listening-page.js的単語テスト引擎（"填空题/听音频写假名/中文
         # 写假名/日文写中文"四种题型）不用改一行就能直接吃这份数据——
-        # category统一填"other"（这些词不是来自"会话/课文"，是从問題
-        # 1〜9里抽出来的，跟教材课"会话相关/课文相关/其他"三分类的语义
-        # 对不上，全归"other"最贴切，単語テスト页面上会显示成"其他单词"
-        # 这一个分类，不会出现空的"会话相关"分类可选）。
+        # category填"组N"（见上面docstring第6条），不是教材课那套
+        # "会话相关/课文相关/其他"三分类，CATEGORIES的动态生成逻辑会
+        # 自动为这些新key生成对应的筛选按钮。
         quiz_items.append({
             'id': it['qid'],
             'text': it['wordText'],
@@ -401,7 +445,7 @@ def main():
             'sentence': it['quizSentence'],
             'sentence_zh': it['sentence_zh'],
             'blank': it['blanks'],
-            'category': 'other',
+            'category': group_labels[i],
         })
 
     d['vocabItems'] = vocab_items

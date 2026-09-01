@@ -296,16 +296,22 @@
   }
 
   function tabBarHtml() {
-    var btns = DATA.mondaiList.map(function (m, i) {
-      return '<button class="tab-btn' + (i === 0 ? " active" : "") + '" data-mondai-idx="' + (i + 1) + '">' +
-        esc(m.label) + "</button>";
-    });
+    // 生词/生词测试放最前面（真实反馈"n2-exam的生词和生词测试放到最前
+    // 面"）——只是按钮的视觉顺序变了，默认打开页面显示哪个大题由
+    // mondaiSectionHtml() 里单独控制（第一个問題永远不带 style="display:
+    // none"），不受这里按钮先后顺序影响，所以不会因为按钮挪到前面就变成
+    // 默认打开生词页。
+    var btns = [];
     if (DATA.vocabItems && DATA.vocabItems.length) {
       btns.push('<button class="tab-btn" data-mondai-idx="' + VOCAB_SECTION_IDX + '">生词</button>');
     }
     if (DATA.vocabQuiz && DATA.vocabQuiz.length) {
       btns.push('<button class="tab-btn" data-mondai-idx="' + QUIZ_SECTION_IDX + '">生词测试</button>');
     }
+    btns = btns.concat(DATA.mondaiList.map(function (m, i) {
+      return '<button class="tab-btn' + (i === 0 ? " active" : "") + '" data-mondai-idx="' + (i + 1) + '">' +
+        esc(m.label) + "</button>";
+    }));
     return btns.join("");
   }
 
@@ -315,7 +321,11 @@
     var quizHtml = (DATA.vocabQuiz && DATA.vocabQuiz.length)
       ? window.PageRenderer.renderQuizSection(QUIZ_SECTION_IDX, DATA.vocabQuiz, false)
       : "";
-    root.innerHTML = DATA.mondaiList.map(mondaiSectionHtml).join("") + vocabSectionHtml() + quizHtml;
+    // section 的 DOM 顺序跟着 tab 顺序一起挪到最前面，保持"tab 顺序"跟
+    // "文档阅读顺序"一致——各 section 的默认显示/隐藏由 mondaiSectionHtml()
+    // /vocabSectionHtml() 各自内联的 style 控制，不依赖拼接顺序，这里挪动
+    // 纯粹是为了阅读顺序整洁，不影响默认显示哪个 tab。
+    root.innerHTML = vocabSectionHtml() + quizHtml + DATA.mondaiList.map(mondaiSectionHtml).join("");
     applyStoredAnswers();
     updateProgress();
   }

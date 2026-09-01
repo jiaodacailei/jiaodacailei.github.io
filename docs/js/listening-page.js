@@ -856,7 +856,24 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   document.addEventListener("activateTab", function(e) {
     activate(e.detail.idx + 1, { skipScroll: true });
   });
-  activate(tabBtns[0].getAttribute("data-mondai-idx"), { skipScroll: true });
+  // exam页面混合场景下tabBtns只是"生词/生词测试"这一小撮（問題1〜14的按钮
+  // 没有对应.mondai-section，被上面的filter排除在外，见文件开头那段注释）——
+  // 問題1〜14的默认激活状态是exam-page.js自己的render()负责的（生成HTML时
+  // 直接给第一个問題按钮写死active class），如果这里还无条件把tabBtns[0]
+  // （也就是"生词"）也激活一遍，会导致"生词"和"問題1"两个按钮同时显示
+  // active高亮（真实案例：n2-exam页面生词/生词测试挪到tab最前面之后测出来
+  // 的，挪之前"生词"按钮虽然物理位置在后面，但tabBtns[0]本来就已经是它，
+  // 这个重复激活的bug其实一直都在，只是不显眼）。改成只在"没有任何一个不
+  // 属于tabBtns的按钮已经是active"时才自动激活tabBtns[0]——教材课页面
+  // tabBtns就是全部按钮，这个条件恒成立，行为完全不变；exam页面会因为
+  // 問題1的按钮已经active而跳过这次自动激活，生词/生词测试留着"未激活"，
+  // 真正点进去时click监听器（上面）会正常调用activate()，不受影响。
+  var otherBtnAlreadyActive = Array.from(document.querySelectorAll(".tab-btn.active")).some(function(b) {
+    return tabBtns.indexOf(b) === -1;
+  });
+  if (!otherBtnAlreadyActive) {
+    activate(tabBtns[0].getAttribute("data-mondai-idx"), { skipScroll: true });
+  }
 
   // 小题导航（复用博客 .toc / .toc-float 同款结构）：点击滚动到对应 question-block
   var sideNavMobile = document.getElementById("sideNavMobile");
@@ -1504,23 +1521,40 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   if (!dataEl) return;
   var words = JSON.parse(dataEl.textContent);
 
-  // 单词测试分"全部/会话相关/课文相关/其他"四个分类分别测试——分类来自
-  // build_vocab_quiz_data.py 写进每个词条的 category 字段（"dialogue"/"text"/
-  // "other"，直接复用人工核实过的"这个词真的出现在哪"的数据，不是拿词典
-  // 基本型重新猜一遍）。没有 category 字段的旧数据（页面还没用新版脚本重新
-  // 生成过）一律当"other"处理，不会报错也不会漏词。
+  // 单词测试按分类分别测试——分类来自 build_vocab_quiz_data.py（教材课）/
+  // build_exam_vocab.py（N2真题模考）写进每个词条的 category 字段。教材课
+  // 固定用"dialogue"/"text"/"other"三个key（直接复用人工核实过的"这个词
+  // 真的出现在哪"的数据，不是拿词典基本型重新猜一遍），有预先定义好的中文
+  // 标签；N2真题模考的「生词测试」tab 改用"组1"/"组2"...这种数量切页的
+  // 动态分类（每15个词一组，见 build_exam_vocab.py docstring 第6条），
+  // 这些key没有预先定义标签，直接拿key本身当标签——两套key只会出现在各自
+  // 的页面里，不会混在一起。没有 category 字段的旧数据（页面还没用新版
+  // 脚本重新生成过）一律当"other"处理，不会报错也不会漏词。
   var CATEGORY_KEY = "n2listen-quiz-category:" + location.pathname;
-  var CATEGORIES = [
-    { key: "all", label: "全部" },
-    { key: "dialogue", label: "会话相关" },
-    { key: "text", label: "课文相关" },
-    { key: "other", label: "其他单词" }
-  ];
+  var KNOWN_CATEGORY_LABELS = { dialogue: "会话相关", text: "课文相关", other: "其他单词" };
+  var KNOWN_CATEGORY_ORDER = ["dialogue", "text", "other"];
   var presentCategories = {};
   words.forEach(function(w) { presentCategories[w.category || "other"] = true; });
-  // "全部"永远展示；具体分类只在这份数据里真的有对应词的时候才展示，避免
-  // 点开一个空空如也的分类（比如某一课没有课文 tab，就不会有"课文相关"）。
-  var availableCategories = CATEGORIES.filter(function(c) { return c.key === "all" || presentCategories[c.key]; });
+  // 已知分类（dialogue/text/other）保留原有中文标签+固定顺序，只在这份
+  // 数据里真的有对应词的时候才展示（避免点开一个空空如也的分类，比如某
+  // 一课没有课文 tab 就不会有"课文相关"）——这部分行为跟改动前完全一致。
+  // 数据里出现的其它 category 值（"组N"这类）没有预先定义标签，直接用
+  // 值本身当标签，按数字后缀数值排序（不是字符串排序，避免"组10"排到
+  // "组2"前面；提不出数字的按字符串排序垫底）。
+  var unknownKeys = Object.keys(presentCategories).filter(function(k) {
+    return KNOWN_CATEGORY_ORDER.indexOf(k) === -1;
+  });
+  unknownKeys.sort(function(a, b) {
+    var na = parseInt(a.replace(/\D/g, ""), 10);
+    var nb = parseInt(b.replace(/\D/g, ""), 10);
+    if (!isNaN(na) && !isNaN(nb) && na !== nb) return na - nb;
+    return a < b ? -1 : a > b ? 1 : 0;
+  });
+  var availableCategories = [{ key: "all", label: "全部" }]
+    .concat(KNOWN_CATEGORY_ORDER.filter(function(k) { return presentCategories[k]; }).map(function(k) {
+      return { key: k, label: KNOWN_CATEGORY_LABELS[k] };
+    }))
+    .concat(unknownKeys.map(function(k) { return { key: k, label: k }; }));
   var category = localStorage.getItem(CATEGORY_KEY) || "all";
   if (category !== "all" && !presentCategories[category]) category = "all";
 
