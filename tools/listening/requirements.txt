@@ -3,3 +3,4 @@ pykakasi
 imageio-ffmpeg
 sudachipy
 sudachidict_core
+pymupdf

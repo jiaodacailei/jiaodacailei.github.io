@@ -435,6 +435,9 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
   设置/关闭这几个图标用内联 SVG（`fill="currentColor"`），不用 emoji 字符——原因见
   下面"常见坑"（播放/暂停两个运行时动态切换的图标在共享 JS 里；其余生成时渲染一次
   就不再变的图标还是 Python 端渲染成静态 HTML，没必要也搬进共享 JS）。
+- `render_pdf_pages.py` — 有源 PDF（比如 JLPT 真题的"真题解析"PDF）时，把指定页码
+  范围渲染成 PNG 图片，供 Claude 用 Read 工具直接看图核对文本，细节和踩过的坑见
+  下面第 3 步"有源 PDF 时：渲染成图片核对文本"。
 - `README.md` — 环境安装说明。
 
 `docs/js/private-gate.js` — 密码门逻辑单独抽出来的共享脚本（不算 `tools/listening/`
@@ -501,6 +504,12 @@ description: Turn a Japanese audio recording (meeting recording, JLPT listening 
 - **笔记详略度**：不管有没有先例，默认只在真正有语法/词汇点的句子写笔记，
   "はい""そうですね"这类语气词/寒暄不用硬凑笔记（除非用户要求每句都写）——这条
   是固定默认值，不需要确认。
+- **JLPT 真题类内容，先看有没有对应的源 PDF 可以用来核对文本**：仓库里
+  `n2test/`（gitignored，本地存放）放着历年 N2 真题的"解析"PDF，文件名是
+  "20XX年X月新日语能力试卷（N2）.pdf"这类，处理 `n2-listening/`（或同类真题）
+  时先按年份/月份找一下有没有匹配的文件，有就用（细节见下面第 3 步"有源 PDF 时：
+  渲染成图片核对文本"），不用等用户提示才想起来找。没有匹配文件就跳过，不用为了
+  凑一份去网上搜。
 
 ### 1. 转写
 
@@ -584,6 +593,45 @@ python tools/listening/extract_raw_sentences.py transcript.json items.json raw_s
 **简单流程**（内容零散、无分组，比如十几句话的会议录音）：不用两轮，直接一轮 Agent
 （或量少的话自己写）把转写内容拆成逐句 `{"start":.., "end":.., "text": ".."}`，
 再跑 `add_furigana.py` 生成 furigana + 空的 zh/notes 字段，自己填translation/notes即可。
+
+### 3.5 有源 PDF 时：渲染成图片核对文本
+
+有匹配的源 PDF（见上面"0. 默认值怎么定"）时，在第一轮 Agent 产出"标准答案"之后、
+进入第 4 步合并之前，用它核对一遍第一轮结果的 `text`/`zh`/`answer`，尤其是
+Whisper 转写本来就容易出错的地方（同音字、专有名词）、`validate_boundaries.py`
+后续会打出来的语速异常句、以及听力材料本身有声音质量问题（背景噪音、剪辑）的片段。
+
+**不要用 `pdftotext`/`PyPDF2`/`pdfplumber`/PyMuPDF 的 `page.get_text()` 这类
+文本层提取**——网上流传的这类"真题解析"PDF 经常是盗版重新排版出来的，**内嵌字体
+的 ToUnicode 映射表是坏的**：字形显示正常，但复制/文本提取拿到的是乱码（真实
+案例：`2019年7月新日语能力试卷（N2）.pdf` 全篇 32 页，`pdftotext -layout` 和
+PyMuPDF `get_text()` 提取出来的都是这类乱码，`pdftotext` 甚至在 Windows/mingw
+下对中文文件名还有一层单独的编码坑，两个问题会叠加、容易误判成"文件路径不对"）。
+唯一可靠的办法是**按像素渲染成图片，人工用 Read 工具直接看**——渲染走的是字体的
+字形轮廓，不经过 ToUnicode 映射，不受这个问题影响。
+
+这台机器上系统没装 poppler（`pdftoppm`），Read 工具自带的 PDF 页面渲染、
+`pdf2image` 这类依赖 poppler 的方案都用不了。用 `render_pdf_pages.py`
+（依赖纯 Python 的 PyMuPDF，`requirements.txt` 已加，不需要另装系统级的
+poppler/ghostscript）代替：
+
+```bash
+python tools/listening/render_pdf_pages.py <PDF文件> <输出目录> --pages 25-31
+```
+
+先通读转写文本/`items.json` 大致定位问題大题在录音里的相对位置，PDF 页码大概率
+跟着类似顺序（言語知識・文字語彙・文法・読解在前，聴解在后），不用整份 30+ 页
+全渲染——先渲染一小段范围看页眉栏目名，再按需要扩大范围。渲染完用 Read 工具
+逐张看输出目录下的 `page{N:03d}.png`，跟第一轮 Agent 的结果比对。
+
+**这类 PDF 通常是"放送台本"（含問題1~5 每道小题的完整对话原文+提问句），不是
+官方印刷试卷本身**——问題5 質問1/質問2 格式那道小题，PDF 上只印了兩句提问本身
+（"男の人は…と言っていますか。"这类），**不印那 4×2 组只在录音里念过一次的
+选项文本**（真实验证：`2019年7月` 那份 PDF 的問題5 3番 页面就是这样）。也就是说
+**这份 PDF 解决不了上面"常见坑"里"問題5 選択肢没有对应真实音频"这个老熟人坑**，
+该怎么处理还是照那条已有的经验（`raw_ids` 留空数组、`enriched_final.json` 生成
+后再手动补时间戳），PDF 只用来核对其余能对上录音的正文内容，别指望它能提供
+問題5 最后一小题的选项原文。
 
 ### 4. 合并 + 生成假名注音
 
