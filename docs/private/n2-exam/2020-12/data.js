@@ -45019,10 +45019,10 @@ window.EXAM_DATA = {
       "zh": "不要放倒",
       "notes": "",
       "blanks": [
-        "たおさない"
+        "倒さない"
       ],
       "audio": "audio/q1_stem.mp3",
-      "quizSentence": "たおさないように気をつけてください。"
+      "quizSentence": "倒さないように気をつけてください。"
     },
     {
       "id": 2,
@@ -45037,10 +45037,10 @@ window.EXAM_DATA = {
       "zh": "损失；损耗",
       "notes": "",
       "blanks": [
-        "そんがい"
+        "損害"
       ],
       "audio": "audio/q2_stem.mp3",
-      "quizSentence": "今回の件でのそんがいは数千万円にのぼった。"
+      "quizSentence": "今回の件での損害は数千万円にのぼった。"
     },
     {
       "id": 3,
@@ -45055,10 +45055,10 @@ window.EXAM_DATA = {
       "zh": "崎岖的，陡峭的",
       "notes": "",
       "blanks": [
-        "けわしい"
+        "険しい"
       ],
       "audio": "audio/q3_stem.mp3",
-      "quizSentence": "思ったよりけわしい山道だった。"
+      "quizSentence": "思ったより険しい山道だった。"
     },
     {
       "id": 4,
@@ -45073,10 +45073,10 @@ window.EXAM_DATA = {
       "zh": "比较，相对地",
       "notes": "",
       "blanks": [
-        "ひかくてき"
+        "比較的"
       ],
       "audio": "audio/q4_stem.mp3",
-      "quizSentence": "この辺はひかくてき人通りが少ない。"
+      "quizSentence": "この辺は比較的人通りが少ない。"
     },
     {
       "id": 5,
@@ -45091,10 +45091,10 @@ window.EXAM_DATA = {
       "zh": "下降",
       "notes": "",
       "blanks": [
-        "かこう"
+        "下降"
       ],
       "audio": "audio/q5_stem.mp3",
-      "quizSentence": "飛行機はかこうを始めた。"
+      "quizSentence": "飛行機は下降を始めた。"
     },
     {
       "id": 6,

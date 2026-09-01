@@ -33,12 +33,15 @@ BLANKS_OVERRIDE/問題8 的 overrides）是2020年12月这一套核对完的结�
    （比如某题解析只列了4个干扰项的释义、没提正确答案本身，因为"从句子
    本身就能看出意思"），这时候regex会返回None，得手动读原文写。
 
-3. blanks（填空定位用的文字）不一定等于卡片标题显示的词典形/汉字形：
-   問題1是読み题，quizSentence用的是假名读音而不是汉字，blanks要用
-   假名读音；活用形不一致时（headword是辞书形，例句里出现的是过去式/
-   て形等）blanks要用例句里实际出现的那个活用形，不是词典形——脚本里
-   有一段自动校验"blanks是否真的是quizSentence的子串"，凡是没通过的
-   都要一条条去读原句手工核对。
+3. 問題1（漢字読み）的`q['stem']`天然是纯假名句子（这道题本来就是"选
+   哪个假名读音对"，没有汉字形）——直接当例句会只出现假名、看不到卡片
+   标题的汉字词，真实反馈"红框中是假名，不是汉字哟"。改成把quizSentence
+   里的假名读音替换成卡片标题的汉字形（`wordKana`在quizSentence里保证
+   只出现一次，`str.replace(..., 1)`不会误伤）。activation形不一致时
+   （headword是辞书形，例句里出现的是过去式/て形等，比如id27"打ち明ける"
+   vs 例句里的"打ち明けた"）blanks要用例句里实际出现的那个活用形，不是
+   词典形——脚本里有一段自动校验"blanks是否真的是quizSentence的子串"，
+   凡是没通过的都要一条条去读原句手工核对。
 
 4. 顺带核对了一遍furigana——发现2处（不属于这次抽取新引入，是之前
    build_exam_data.py生成时就有的老问题）：単独出现的汉字被
@@ -201,13 +204,20 @@ def main():
 
     items.sort(key=lambda x: x['qid'])
 
+    # 問題1（漢字読み）的q['stem']是"填好正确假名读音"的句子——因为这道题
+    # 本来就是"选哪个假名读音对"，stem对这类题天然就是纯假名形式，没有
+    # 汉字。直接拿来当"生词"tab的例句会只出现假名、看不到卡片标题里那个
+    # 汉字词（比如标题"倒さない"，例句却是"たおさないように…"）——真实
+    # 反馈"红框中是假名，不是汉字哟"。改成把quizSentence里的假名读音替换
+    # 成卡片标题的汉字形，跟标题保持一致，例句读起来也符合正常日语书写
+    # 习惯。wordKana在quizSentence里保证只出现一次（构造时已验证过），
+    # replace(..., 1)不会误伤其它地方。
     for it in items:
-        if it['qid'] in BLANKS_OVERRIDE:
-            it['blanks'] = BLANKS_OVERRIDE[it['qid']]
-        elif it['mondai'] == 1:
-            it['blanks'] = it['wordKana']
-        else:
-            it['blanks'] = it['wordText']
+        if it['mondai'] == 1 and it['wordKana'] != it['wordText']:
+            it['quizSentence'] = it['quizSentence'].replace(it['wordKana'], it['wordText'], 1)
+
+    for it in items:
+        it['blanks'] = BLANKS_OVERRIDE.get(it['qid'], it['wordText'])
 
     bad_blanks = [it for it in items if it['blanks'] not in (it['quizSentence'] or '')]
     zh_fails = [it for it in items if not it['zh']]
