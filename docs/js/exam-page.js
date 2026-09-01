@@ -147,9 +147,7 @@
       // 的样子即可"。正确答案靠交卷后选项本身变绿（.correct-answer）+
       // 下面的中文解析呈现，不需要额外把题干换掉；选项本身已经带
       // furigana，读音信息没有因为题干不变而丢失。q.stem（完整正确句+
-      // 音频）这份数据仍然保留在DATA里，只是这里不再用它渲染——「重点
-      // 词汇语法」tab（reviewItems）复用的正是这份数据，音频没有被
-      // 浪费，只是从"交卷后在题干这里出现"挪到了那个独立的复习tab。
+      // 音频）这份数据仍然保留在DATA里，只是不再渲染。
       return '<div class="exam-stem-row"><span>' + renderTokensHtml(q.stemBlank.tokens) + "</span></div>";
     }
     return "";
@@ -190,8 +188,7 @@
     // 交卷前后都只显示原始段落（48/49/50/51占位符原样保留），不切换
     // 成填好4个空的完整段落——block.passageSentencesBlank本来就没有
     // audio字段（没配过音，也不需要，交卷前后都用不上）。填好版数据
-    // （block.passageSentences，带音频）还留在DATA里，被reviewItems
-    // 复用，没有被浪费。
+    // （block.passageSentences，带音频）还留在DATA里，只是不再渲染。
     var passage = block.is_mondai9
       ? passageHtml(block.passageSentencesBlank)
       : passageHtml(block.passageSentences);
@@ -217,76 +214,17 @@
       blocksHtml + mondaiSubmitBarHtml(sectionIdx) + "</section>";
   }
 
-  // ---- 「重点词汇语法」tab：从問題1〜9（结构化、有官方解析背书的大题）里
-  //      按题抽出目标词/语法点，供针对性复习——不是答题流程的一部分，不进
-  //      totalQuestions()/答案判分，纯只读展示。数据来自 build_exam_data.py
-  //      之外单独跑的抽取脚本写进 DATA.reviewItems（见该脚本注释），這裡只
-  //      负责渲染，不做任何"这题该不该收录"的判断。 ----
-  var MONDAI_CATEGORY = {
-    1: "漢字読み（读音）", 2: "表記（写法）", 3: "語形成（构词）", 4: "文脈規定（词汇）",
-    5: "言い換え類義（近义替换）", 6: "用法", 7: "文法1", 8: "文法2（並べ替え）", 9: "文法3（文章）"
-  };
-
-  function reviewSentenceRow(tokens, audio) {
-    var playBtn = audio ? '<button class="exam-play-btn" data-audio="' + esc(audio) + '">▶</button>' : "";
-    return '<div class="exam-stem-row">' + playBtn + "<span>" + renderTokensHtml(tokens) + "</span></div>";
-  }
-
-  function reviewItemHtml(item) {
-    var head = '<div class="exam-review-head"><span class="exam-question-num">' +
-      esc(item.mondaiLabel) + " " + esc(item.qLabel) + "</span></div>";
-    if (item.type === "passage") {
-      var notesHtml = item.notes.map(function (n) {
-        return '<div class="exam-review-notes"><b>' + esc(n.qLabel) + "：</b>" + esc(n.zh) + "</div>";
-      }).join("");
-      return '<div class="exam-review-item exam-review-passage">' + head +
-        passageHtml(item.passageSentences) + notesHtml + "</div>";
-    }
-    var body = item.type === "word"
-      ? reviewSentenceRow(item.headTokens, item.headAudio) +
-        '<div class="exam-review-example">' + reviewSentenceRow(item.stemTokens, item.stemAudio) + "</div>"
-      : reviewSentenceRow(item.stemTokens, item.stemAudio);
-    var notes = item.zh ? '<div class="exam-review-notes">' + esc(item.zh) + "</div>" : "";
-    return '<div class="exam-review-item">' + head + body + notes + "</div>";
-  }
-
-  function reviewSectionIdx() {
-    return DATA.mondaiList.length + 1;
-  }
-
-  function reviewSectionHtml() {
-    var items = DATA.reviewItems || [];
-    if (!items.length) return "";
-    var parts = [];
-    var lastMondai = null;
-    items.forEach(function (it) {
-      if (it.mondai !== lastMondai) {
-        parts.push('<div class="exam-review-group-title">問題' + it.mondai + " " +
-          esc(MONDAI_CATEGORY[it.mondai] || "") + "</div>");
-        lastMondai = it.mondai;
-      }
-      parts.push(reviewItemHtml(it));
-    });
-    return '<section class="exam-mondai-section" data-mondai-idx="' + reviewSectionIdx() + '" style="display:none">' +
-      '<div class="exam-mondai-instruction">从問題1〜9挑出的重点词汇/语法点，附例句音频和官方解析，供针对性复习——不计入作答/判分。</div>' +
-      parts.join("") + "</section>";
-  }
-
   function tabBarHtml() {
-    var btns = DATA.mondaiList.map(function (m, i) {
+    return DATA.mondaiList.map(function (m, i) {
       return '<button class="tab-btn' + (i === 0 ? " active" : "") + '" data-mondai-idx="' + (i + 1) + '">' +
         esc(m.label) + "</button>";
-    });
-    if (DATA.reviewItems && DATA.reviewItems.length) {
-      btns.push('<button class="tab-btn" data-mondai-idx="' + reviewSectionIdx() + '">重点词汇语法</button>');
-    }
-    return btns.join("");
+    }).join("");
   }
 
   function render() {
     document.getElementById("examTitle").textContent = DATA.title;
     document.getElementById("examTabBar").innerHTML = tabBarHtml();
-    root.innerHTML = DATA.mondaiList.map(mondaiSectionHtml).join("") + reviewSectionHtml();
+    root.innerHTML = DATA.mondaiList.map(mondaiSectionHtml).join("");
     applyStoredAnswers();
     updateProgress();
   }
