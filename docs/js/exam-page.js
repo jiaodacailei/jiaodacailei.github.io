@@ -214,17 +214,66 @@
       blocksHtml + mondaiSubmitBarHtml(sectionIdx) + "</section>";
   }
 
+  // ---- 「生词」tab：仿照课文/教材页的生词tab——从問題1〜9（有明确目标词+
+  //      官方解析的类型，読解問題10〜14不做，理由跟之前审视过一次的
+  //      「重点词汇语法」一样：没有清晰的目标词标注，抽取要靠主观判断）
+  //      抽出的51个目标词/语法点，按同样的.seg-card样式展示——单词+读音+
+  //      中文释义+例句（挖空目标词加粗），例句复用 exam-page.js 已有的
+  //      audio（options[answer-1].audio 或 stemWord.audio，都是已经存在
+  //      的真实录音，没有新增音频）。
+  //
+  //      卡片HTML直接复用 window.PageRenderer.renderCard()（page-renderer.js
+  //      新增的公开工具方法）——这样视觉上跟 l10~l18 那些教材课的生词tab
+  //      完全一致，不是另起一套自定义样式。但**不**加载完整的
+  //      listening-page.js（那个文件大量代码在页面顶层直接
+  //      document.getElementById 一堆本页面根本没有的元素——miniPlayer/
+  //      settingsPanel/quizApp等——碰到第一个null.addEventListener就会
+  //      整个脚本崩掉，后面所有代码都不会跑，风险太大，不值得为了省下面
+  //      这几十行代码去冒这个险）。默写/填空练习模式因此不支持，只做
+  //      "跟读"这一种模式对应的效果：点卡片播放这个词的发音，例句常驻
+  //      展示（不像教材页那样默写模式隐藏——这个tab本来就没有默写/填空
+  //      模式）。
+  var VOCAB_SECTION_IDX = DATA.mondaiList.length + 1;
+
+  function vocabGroupsHtml() {
+    var items = DATA.vocabItems || [];
+    var groups = [];
+    var lastMondai = null;
+    var cardsHtml = "";
+    items.forEach(function (it) {
+      if (it.mondai !== lastMondai) {
+        if (cardsHtml) groups.push(cardsHtml);
+        cardsHtml = '<div class="question-block"><h3>' + esc(it.mondaiLabel) + "</h3>";
+        lastMondai = it.mondai;
+      }
+      cardsHtml += window.PageRenderer.renderCard(it, null);
+    });
+    if (cardsHtml) groups.push(cardsHtml + "</div>");
+    return groups.join("");
+  }
+
+  function vocabSectionHtml() {
+    if (!DATA.vocabItems || !DATA.vocabItems.length) return "";
+    return '<section class="exam-mondai-section" data-mondai-idx="' + VOCAB_SECTION_IDX + '" style="display:none">' +
+      '<div class="exam-mondai-instruction">従問題1〜9挑出的目标词/语法点，点卡片播放发音，例句里挖空目标词已加粗。不计入作答/判分。</div>' +
+      vocabGroupsHtml() + "</section>";
+  }
+
   function tabBarHtml() {
-    return DATA.mondaiList.map(function (m, i) {
+    var btns = DATA.mondaiList.map(function (m, i) {
       return '<button class="tab-btn' + (i === 0 ? " active" : "") + '" data-mondai-idx="' + (i + 1) + '">' +
         esc(m.label) + "</button>";
-    }).join("");
+    });
+    if (DATA.vocabItems && DATA.vocabItems.length) {
+      btns.push('<button class="tab-btn" data-mondai-idx="' + VOCAB_SECTION_IDX + '">生词</button>');
+    }
+    return btns.join("");
   }
 
   function render() {
     document.getElementById("examTitle").textContent = DATA.title;
     document.getElementById("examTabBar").innerHTML = tabBarHtml();
-    root.innerHTML = DATA.mondaiList.map(mondaiSectionHtml).join("");
+    root.innerHTML = DATA.mondaiList.map(mondaiSectionHtml).join("") + vocabSectionHtml();
     applyStoredAnswers();
     updateProgress();
   }
@@ -257,6 +306,17 @@
       e.stopPropagation();
       var src = playBtn.getAttribute("data-audio");
       if (src) playAudio(src, playBtn);
+      return;
+    }
+    // 「生词」tab的.seg-card——没加载完整的listening-page.js（见
+    // vocabSectionHtml()注释），点击整张卡片播放这个词的发音，跟
+    // listening-page.js里"点卡片播放"的效果一致，但复用的是这个文件
+    // 自己的playAudio()（loading/playing这套class两边CSS共用同一套
+    // 规则，见listening-page.css的.seg-card.loading/.playing）。
+    var segCard = e.target.closest(".seg-card");
+    if (segCard) {
+      var segAudio = segCard.querySelector("audio");
+      if (segAudio && segAudio.getAttribute("src")) playAudio(segAudio.getAttribute("src"), segCard);
       return;
     }
     if (submitted) return;

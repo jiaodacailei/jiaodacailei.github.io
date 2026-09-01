@@ -15,7 +15,6 @@
 // 那些查询会查到空结果，所有交互都不会生效。
 (function () {
   var DATA = window.LESSON_DATA;
-  if (!DATA) return;
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -333,6 +332,20 @@
     return '<div class="' + cls + '" data-mondai-idx="' + mondaiIdx + '">' + btns + "</div>";
   }
 
+  // renderTokens/renderCard/exampleSentenceHtml/rerenderCardContent 这几个
+  // 是纯渲染工具函数，不依赖 window.LESSON_DATA 是否存在——放在下面
+  // "!DATA return" 之前无条件暴露，让没有整份 LESSON_DATA、只是想借用同一套
+  // .seg-card 渲染规则的页面（比如 n2-exam 页面自己拼的"生词"tab）也能拿到
+  // 用，不用整份 LESSON_DATA 页面才配置这些。函数声明本身有变量提升，就算
+  // rerenderCardContent 定义在这行下面，这里引用它也没问题。
+  window.PageRenderer = { renderTokens: renderTokens, rerenderCardContent: rerenderCardContent, renderCard: renderCard };
+
+  // 下面这些是"整份 LESSON_DATA 驱动的听力页"专属的页面级渲染（tab栏/
+  // 侧栏目录/mondai-section），必须真的有 window.LESSON_DATA 才跑——旧版
+  // build_page.py 直接把内容烘焙进 index.html 的页面，或者非听力页，这里
+  // 直接返回，不动那些页面已有的 DOM。
+  if (!DATA) return;
+
   var sections = [];
   var navLists = [];
   var navNumsMobile = [];
@@ -424,6 +437,4 @@
       exampleEl.remove();
     }
   }
-
-  window.PageRenderer = { renderTokens: renderTokens, rerenderCardContent: rerenderCardContent };
 })();

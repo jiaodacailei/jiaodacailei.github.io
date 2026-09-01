@@ -196,6 +196,63 @@ class选择器），级联平局时后写的赢，`.exam-stem-row`赢了，`disp
 追问细节——如果以后同类需求（"从模考里抽重点词汇语法"）再被提起，
 先假设是这次的实现方式本身有问题，不要直接复用旧代码。
 
+## 第五轮：仿照教材课的生词tab，重做一遍
+
+用户："仿照课文的生词tab，把n2考试新增一个生词tab"——跟第四轮撤掉的
+「重点词汇语法」不是同一回事：这次要求外观/交互直接照抄l10~l18教材课
+的生词tab，不是另起一套自定义UI。
+
+**数据**：`tools/listening/build_exam_vocab.py`（沿用第四轮已经验证过的
+"問題1〜9可靠、読解10〜14主观太重不抽"这条边界），比第四轮多踩出3类
+真实坑：
+1. 問題8（排序题）`options[answer-1]`只是"占了★位置的那个片段"，不
+   一定是真被考的语法点——5题里只有1题（id43）碰巧对上，其余4题
+   （44/45/46/47）的目标词都得从`explanationZh`开头单独解析再回去4个
+   选项里配对。
+2. 中文释义(zh)靠正则从`explanationZh`锚定抽取，51条里7条失败（有的是
+   正确答案没被列进干扰项对比列表，因为"从句子本身就能看出意思"）——
+   全部手工读原文补上，抽取成功的44条也全部人工复核过一遍。
+3. blanks（填空定位文字）不一定等于卡片标题的词典形——問題1是読み题，
+   quizSentence里出现的是假名读音不是汉字；id27是活用形不一致（辞书形
+   "打ち明ける" vs 例句里的过去式"打ち明けた"）。写了自动校验"blanks
+   是否真的是quizSentence子串"，揪出6条手工改正。
+
+顺带在核对读音时抓到2处**跟这次抽取无关、build_exam_data.py当初生成
+时就带着的老bug**：单独出现的"鮮"被猜成せん（应为あざ）、"一"在
+"一仕事"这个词里被猜成いち（应为ひと）——直接在data.js源头改正，不是
+在新代码里绕开。
+
+**页面**：`page-renderer.js`原本`if (!DATA) return`挡在文件最前面，
+`window.PageRenderer`只在有完整`window.LESSON_DATA`的教材课页面才会
+暴露。改成把`renderCard`/`renderTokens`/`rerenderCardContent`这几个
+纯渲染工具函数的暴露挪到"整份LESSON_DATA页面专属bootstrap"的`if
+(!DATA) return`之前——没有LESSON_DATA的页面（比如这个exam页）现在也能
+拿到`window.PageRenderer.renderCard()`，渲染出来的`.seg-card`跟教材课
+一模一样，不是重新拼一套HTML。`exam-page.js`新增"生词"tab（第15个
+tab，复用問題1〜14同一套`data-mondai-idx`切换机制），51张卡片按来源
+問題分9组，每组一个`question-block`（跟教材课"生词表1/2/3..."那种
+分组视觉一致）。
+
+**特意没做**：没有加载完整的`listening-page.js`——那个文件顶层直接
+`document.getElementById`了一堆这个页面根本没有的元素（miniPlayer/
+settingsPanel/quizApp等），第一个`null.addEventListener`就会让整个
+脚本崩掉、后面代码全部不执行，风险跟收益不成比例。改成在
+`exam-page.js`自己的事件委托里加一段：点击`.seg-card`调用这个文件
+已有的`playAudio()`播放对应`<audio>`，`.seg-card.loading/.playing`
+这套视觉反馈复用`listening-page.css`已经写好的规则（该文件本来就
+被这个页面加载着，用来给sticky-header/tab-bar共用样式）。因此这个
+"生词"tab只有"听发音"，没有默写/填空练习模式——教材课那两种模式的
+UI（齿轮设置面板/进度条清除按钮等）这个页面完全没有，要做的话是
+明显更大的一块工作，这次先不做。
+
+本地起服务器+Chrome验证：①l10全量135张卡片+默写/填空模式回归测试
+（改page-renderer.js之后必须确认没有破坏教材课页面——结果完全正常，
+包括跟读模式.seg-example、默写模式答对后.dictate-example都还在）；
+②exam页新tab渲染51张卡片、9个分组，问题8/问题9这两种特殊数据结构都
+单独截图核对过（问题8里3条audio=null的卡片点击不报错）；③問題1〜14
+原有的交卷/单独交某一大题功能不受影响，"生词"tab不计入总题数/判分；
+④两处furigana bug修复后的读音（鮮→あざ、一→ひと）在页面上正确显示。
+
 ## 待办 / 已知限制
 
 - 只做了2020年12月这一套（试点），其余19套（2011-2020其中18套有PDF+音频，

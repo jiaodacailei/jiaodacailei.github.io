@@ -925,7 +925,7 @@ window.EXAM_DATA = {
                   },
                   {
                     "text": "鮮",
-                    "kana": "せん",
+                    "kana": "あざ",
                     "t": 1.4
                   },
                   {
@@ -987,7 +987,7 @@ window.EXAM_DATA = {
                   "tokens": [
                     {
                       "text": "鮮",
-                      "kana": "せん",
+                      "kana": "あざ",
                       "t": 0.0
                     },
                     {
@@ -2122,7 +2122,7 @@ window.EXAM_DATA = {
                   "tokens": [
                     {
                       "text": "一",
-                      "kana": "いち",
+                      "kana": "ひと",
                       "t": 0.0
                     }
                   ],
@@ -45003,6 +45003,914 @@ window.EXAM_DATA = {
           ]
         }
       ]
+    }
+  ],
+  "vocabItems": [
+    {
+      "id": 1,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "倒さない",
+          "kana": "たおさない"
+        }
+      ],
+      "zh": "不要放倒",
+      "notes": "",
+      "blanks": [
+        "たおさない"
+      ],
+      "audio": "audio/q1_stem.mp3",
+      "quizSentence": "たおさないように気をつけてください。"
+    },
+    {
+      "id": 2,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "損害",
+          "kana": "そんがい"
+        }
+      ],
+      "zh": "损失；损耗",
+      "notes": "",
+      "blanks": [
+        "そんがい"
+      ],
+      "audio": "audio/q2_stem.mp3",
+      "quizSentence": "今回の件でのそんがいは数千万円にのぼった。"
+    },
+    {
+      "id": 3,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "険しい",
+          "kana": "けわしい"
+        }
+      ],
+      "zh": "崎岖的，陡峭的",
+      "notes": "",
+      "blanks": [
+        "けわしい"
+      ],
+      "audio": "audio/q3_stem.mp3",
+      "quizSentence": "思ったよりけわしい山道だった。"
+    },
+    {
+      "id": 4,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "比較的",
+          "kana": "ひかくてき"
+        }
+      ],
+      "zh": "比较，相对地",
+      "notes": "",
+      "blanks": [
+        "ひかくてき"
+      ],
+      "audio": "audio/q4_stem.mp3",
+      "quizSentence": "この辺はひかくてき人通りが少ない。"
+    },
+    {
+      "id": 5,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "下降",
+          "kana": "かこう"
+        }
+      ],
+      "zh": "下降",
+      "notes": "",
+      "blanks": [
+        "かこう"
+      ],
+      "audio": "audio/q5_stem.mp3",
+      "quizSentence": "飛行機はかこうを始めた。"
+    },
+    {
+      "id": 6,
+      "mondai": 2,
+      "mondaiLabel": "問題2 表記",
+      "tokens": [
+        {
+          "text": "鮮やか",
+          "kana": "あざやか"
+        }
+      ],
+      "zh": "鲜艳的；鲜明的",
+      "notes": "",
+      "blanks": [
+        "鮮やか"
+      ],
+      "audio": "audio/q6_stem.mp3",
+      "quizSentence": "鈴木さんは鮮やかな色のシャツを着ていた。"
+    },
+    {
+      "id": 7,
+      "mondai": 2,
+      "mondaiLabel": "問題2 表記",
+      "tokens": [
+        {
+          "text": "帰省",
+          "kana": "きせい"
+        }
+      ],
+      "zh": "归乡，回乡（探亲）",
+      "notes": "",
+      "blanks": [
+        "帰省"
+      ],
+      "audio": "audio/q7_stem.mp3",
+      "quizSentence": "今年の夏休みは帰省の予定はありません。"
+    },
+    {
+      "id": 8,
+      "mondai": 2,
+      "mondaiLabel": "問題2 表記",
+      "tokens": [
+        {
+          "text": "縮めて",
+          "kana": "ちぢめて"
+        }
+      ],
+      "zh": "蜷曲；缩短；畏缩",
+      "notes": "",
+      "blanks": [
+        "縮めて"
+      ],
+      "audio": "audio/q8_stem.mp3",
+      "quizSentence": "もう少し縮めてください。"
+    },
+    {
+      "id": 9,
+      "mondai": 2,
+      "mondaiLabel": "問題2 表記",
+      "tokens": [
+        {
+          "text": "実践",
+          "kana": "じっせん"
+        }
+      ],
+      "zh": "实行",
+      "notes": "",
+      "blanks": [
+        "実践"
+      ],
+      "audio": "audio/q9_stem.mp3",
+      "quizSentence": "これからさまざまなことを実践していきたい。"
+    },
+    {
+      "id": 10,
+      "mondai": 2,
+      "mondaiLabel": "問題2 表記",
+      "tokens": [
+        {
+          "text": "異色",
+          "kana": "いしょく"
+        }
+      ],
+      "zh": "特色；不同的颜色",
+      "notes": "",
+      "blanks": [
+        "異色"
+      ],
+      "audio": "audio/q10_stem.mp3",
+      "quizSentence": "西村氏の作品の中ではこの小説は、かなり異色だ。"
+    },
+    {
+      "id": 11,
+      "mondai": 3,
+      "mondaiLabel": "問題3 語形成",
+      "tokens": [
+        {
+          "text": "再",
+          "kana": "さい"
+        }
+      ],
+      "zh": "再三；重新",
+      "notes": "",
+      "blanks": [
+        "再"
+      ],
+      "audio": "audio/q11_stem.mp3",
+      "quizSentence": "宿題を再提出するよう、先生に言われた。"
+    },
+    {
+      "id": 12,
+      "mondai": 3,
+      "mondaiLabel": "問題3 語形成",
+      "tokens": [
+        {
+          "text": "育ち",
+          "kana": "そだち"
+        }
+      ],
+      "zh": "发育，成长",
+      "notes": "",
+      "blanks": [
+        "育ち"
+      ],
+      "audio": "audio/q12_stem.mp3",
+      "quizSentence": "あの人は都会育ちだ。"
+    },
+    {
+      "id": 13,
+      "mondai": 3,
+      "mondaiLabel": "問題3 語形成",
+      "tokens": [
+        {
+          "text": "一",
+          "kana": "ひと"
+        }
+      ],
+      "zh": "一阵子；稍微；一个；全体",
+      "notes": "",
+      "blanks": [
+        "一"
+      ],
+      "audio": "audio/q13_stem.mp3",
+      "quizSentence": "一仕事終わったので、休憩しよう。"
+    },
+    {
+      "id": 14,
+      "mondai": 4,
+      "mondaiLabel": "問題4 文脈規定",
+      "tokens": [
+        {
+          "text": "評価",
+          "kana": "ひょうか"
+        }
+      ],
+      "zh": "估价；评价",
+      "notes": "",
+      "blanks": [
+        "評価"
+      ],
+      "audio": "audio/q14_stem.mp3",
+      "quizSentence": "彼の演技はとても個性的で、見る人の評価が大きく分かれる。"
+    },
+    {
+      "id": 15,
+      "mondai": 4,
+      "mondaiLabel": "問題4 文脈規定",
+      "tokens": [
+        {
+          "text": "尊重",
+          "kana": "そんちょう"
+        }
+      ],
+      "zh": "重视，尊重",
+      "notes": "",
+      "blanks": [
+        "尊重"
+      ],
+      "audio": "audio/q15_stem.mp3",
+      "quizSentence": "話し合いでは、相手の意見を尊重し、よく聞くことが大切だ。"
+    },
+    {
+      "id": 16,
+      "mondai": 4,
+      "mondaiLabel": "問題4 文脈規定",
+      "tokens": [
+        {
+          "text": "ターゲット"
+        }
+      ],
+      "zh": "目标，靶子",
+      "notes": "",
+      "blanks": [
+        "ターゲット"
+      ],
+      "audio": "audio/q16_stem.mp3",
+      "quizSentence": "この商品は健康を気にする40代から50代の人をターゲットに開発しました。"
+    },
+    {
+      "id": 17,
+      "mondai": 4,
+      "mondaiLabel": "問題4 文脈規定",
+      "tokens": [
+        {
+          "text": "独特",
+          "kana": "どくとく"
+        }
+      ],
+      "zh": "特别",
+      "notes": "",
+      "blanks": [
+        "独特"
+      ],
+      "audio": "audio/q17_stem.mp3",
+      "quizSentence": "佐藤さんは服装や髪形が個性的で、他の人とは違う独特の雰囲気がある。"
+    },
+    {
+      "id": 18,
+      "mondai": 4,
+      "mondaiLabel": "問題4 文脈規定",
+      "tokens": [
+        {
+          "text": "争って",
+          "kana": "あらそって"
+        }
+      ],
+      "zh": "争先恐后地",
+      "notes": "",
+      "blanks": [
+        "争って"
+      ],
+      "audio": "audio/q18_stem.mp3",
+      "quizSentence": "前回の大会では、あの二人は最後まで優勝を争ってした。"
+    },
+    {
+      "id": 19,
+      "mondai": 4,
+      "mondaiLabel": "問題4 文脈規定",
+      "tokens": [
+        {
+          "text": "気配",
+          "kana": "けはい"
+        }
+      ],
+      "zh": "气氛，感觉；景气，行情",
+      "notes": "",
+      "blanks": [
+        "気配"
+      ],
+      "audio": "audio/q19_stem.mp3",
+      "quizSentence": "高橋さんの家を訪ねたが、みんな出かけているようで、人の気配がなかった。"
+    },
+    {
+      "id": 20,
+      "mondai": 4,
+      "mondaiLabel": "問題4 文脈規定",
+      "tokens": [
+        {
+          "text": "いいかげんな"
+        }
+      ],
+      "zh": "马虎，敷衍了事，不认真，不负责",
+      "notes": "",
+      "blanks": [
+        "いいかげんな"
+      ],
+      "audio": "audio/q20_stem.mp3",
+      "quizSentence": "彼は自分で決めたルールも守らない、いいかげんな人だ。"
+    },
+    {
+      "id": 21,
+      "mondai": 5,
+      "mondaiLabel": "問題5 言い換え類義",
+      "tokens": [
+        {
+          "text": "案内して",
+          "kana": "あんないして"
+        }
+      ],
+      "zh": "引导，向导",
+      "notes": "",
+      "blanks": [
+        "案内して"
+      ],
+      "audio": "audio/q21_stem.mp3",
+      "quizSentence": "ボランティアで町の名作を案内してしている。"
+    },
+    {
+      "id": 22,
+      "mondai": 5,
+      "mondaiLabel": "問題5 言い換え類義",
+      "tokens": [
+        {
+          "text": "まじめに"
+        }
+      ],
+      "zh": "认真",
+      "notes": "",
+      "blanks": [
+        "まじめに"
+      ],
+      "audio": "audio/q22_stem.mp3",
+      "quizSentence": "山口さんもまじめに作っていた。"
+    },
+    {
+      "id": 23,
+      "mondai": 5,
+      "mondaiLabel": "問題5 言い換え類義",
+      "tokens": [
+        {
+          "text": "あまりない"
+        }
+      ],
+      "zh": "少有的",
+      "notes": "",
+      "blanks": [
+        "あまりない"
+      ],
+      "audio": "audio/q23_stem.mp3",
+      "quizSentence": "彼女のような歌手はあまりないだと思う。"
+    },
+    {
+      "id": 24,
+      "mondai": 5,
+      "mondaiLabel": "問題5 言い換え類義",
+      "tokens": [
+        {
+          "text": "一日中",
+          "kana": "いちにちじゅう"
+        }
+      ],
+      "zh": "一整天",
+      "notes": "",
+      "blanks": [
+        "一日中"
+      ],
+      "audio": "audio/q24_stem.mp3",
+      "quizSentence": "この道は一日中通行止めです。"
+    },
+    {
+      "id": 25,
+      "mondai": 5,
+      "mondaiLabel": "問題5 言い換え類義",
+      "tokens": [
+        {
+          "text": "触って",
+          "kana": "さわって"
+        }
+      ],
+      "zh": "触摸，抚摸",
+      "notes": "",
+      "blanks": [
+        "触って"
+      ],
+      "audio": "audio/q25_stem.mp3",
+      "quizSentence": "青木さんは髪を触っていた。"
+    },
+    {
+      "id": 26,
+      "mondai": 6,
+      "mondaiLabel": "問題6 用法",
+      "tokens": [
+        {
+          "text": "初期",
+          "kana": "しょき"
+        }
+      ],
+      "zh": "开始时期，初期",
+      "notes": "",
+      "blanks": [
+        "初期"
+      ],
+      "audio": "audio/q26_stem.mp3",
+      "quizSentence": "この建物は有名な建築物で、明治時代の初期に建てられました。"
+    },
+    {
+      "id": 27,
+      "mondai": 6,
+      "mondaiLabel": "問題6 用法",
+      "tokens": [
+        {
+          "text": "打ち明ける",
+          "kana": "うちあける"
+        }
+      ],
+      "zh": "毫无隐瞒地说出",
+      "notes": "",
+      "blanks": [
+        "打ち明けた"
+      ],
+      "audio": "audio/q27_stem.mp3",
+      "quizSentence": "ずっと秘密にしていたことを友達に打ち明けた。"
+    },
+    {
+      "id": 28,
+      "mondai": 6,
+      "mondaiLabel": "問題6 用法",
+      "tokens": [
+        {
+          "text": "欠陥",
+          "kana": "けっかん"
+        }
+      ],
+      "zh": "缺陷",
+      "notes": "",
+      "blanks": [
+        "欠陥"
+      ],
+      "audio": "audio/q28_stem.mp3",
+      "quizSentence": "先月発売された車のブレーキに欠陥が見つかり、販売が中止された。"
+    },
+    {
+      "id": 29,
+      "mondai": 6,
+      "mondaiLabel": "問題6 用法",
+      "tokens": [
+        {
+          "text": "引退",
+          "kana": "いんたい"
+        }
+      ],
+      "zh": "退役；引退",
+      "notes": "",
+      "blanks": [
+        "引退"
+      ],
+      "audio": "audio/q29_stem.mp3",
+      "quizSentence": "これまで多くの名作を残した映画監督が、今回限りで引退することを発表した。"
+    },
+    {
+      "id": 30,
+      "mondai": 6,
+      "mondaiLabel": "問題6 用法",
+      "tokens": [
+        {
+          "text": "ぎっしり"
+        }
+      ],
+      "zh": "满满的",
+      "notes": "",
+      "blanks": [
+        "ぎっしり"
+      ],
+      "audio": "audio/q30_stem.mp3",
+      "quizSentence": "大きな箱に本がぎっしり詰まっている。"
+    },
+    {
+      "id": 31,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "ぶりに"
+        }
+      ],
+      "zh": "时隔……之后又……",
+      "notes": "",
+      "blanks": [
+        "ぶりに"
+      ],
+      "audio": "audio/q31_stem.mp3",
+      "quizSentence": "明日、海外に留学中の友人が一年ぶりに帰国する。 会って話を聞くのが楽しみだ。"
+    },
+    {
+      "id": 32,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "こそ"
+        }
+      ],
+      "zh": "正是，才是",
+      "notes": "",
+      "blanks": [
+        "こそ"
+      ],
+      "audio": "audio/q32_stem.mp3",
+      "quizSentence": "12年間付き合っている彼女に、今年こそ結婚を申し込もうと思っている。"
+    },
+    {
+      "id": 33,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "ところから"
+        }
+      ],
+      "zh": "因为……所以……",
+      "notes": "",
+      "blanks": [
+        "ところから"
+      ],
+      "audio": "audio/q33_stem.mp3",
+      "quizSentence": "腰の曲がった老人に似ているところからエビは「海老」とも書かれると聞いた。"
+    },
+    {
+      "id": 34,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "あとは"
+        }
+      ],
+      "zh": "还有",
+      "notes": "",
+      "blanks": [
+        "あとは"
+      ],
+      "audio": "audio/q34_stem.mp3",
+      "quizSentence": "上司「セミナー会場の準備はどう？　順調？」\n部下「ええ。　いすも並び終わりましたし。あとは資料を受付に運ぶだけです。」"
+    },
+    {
+      "id": 35,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "場合でも",
+          "kana": "ばあいでも"
+        }
+      ],
+      "zh": "即使在……情况下也……",
+      "notes": "",
+      "blanks": [
+        "場合でも"
+      ],
+      "audio": "audio/q35_stem.mp3",
+      "quizSentence": "このテニスコートの利用料金は2時間1000円で、1時間しか使わない場合でも、1000円払わなければならない。"
+    },
+    {
+      "id": 36,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "簡単なようでいて",
+          "kana": "かんたんなようでいて"
+        }
+      ],
+      "zh": "好像很简单，但是实际上……",
+      "notes": "",
+      "blanks": [
+        "簡単なようでいて"
+      ],
+      "audio": "audio/q36_stem.mp3",
+      "quizSentence": "毎日日記を書きつづけることは簡単なようでいて、けっこう難しいことだ。"
+    },
+    {
+      "id": 37,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "枯れてしまわないか",
+          "kana": "かれてしまわないか"
+        }
+      ],
+      "zh": "是否会枯萎",
+      "notes": "",
+      "blanks": [
+        "枯れてしまわないか"
+      ],
+      "audio": "audio/q37_stem.mp3",
+      "quizSentence": "梅雨に入ってもほとんど雨が降らないので、庭の花が枯れてしまわないか心配だ。"
+    },
+    {
+      "id": 38,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "見に行くつもりだった",
+          "kana": "みにいくつもりだった"
+        }
+      ],
+      "zh": "本打算去看……",
+      "notes": "",
+      "blanks": [
+        "見に行くつもりだった"
+      ],
+      "audio": "audio/q38_stem.mp3",
+      "quizSentence": "今日は、本当は映画を見に行くつもりだったが、雪が降ってきたので、やめた。"
+    },
+    {
+      "id": 39,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "判断しかねる",
+          "kana": "はんだんしかねる"
+        }
+      ],
+      "zh": "难以判断",
+      "notes": "",
+      "blanks": [
+        "判断しかねる"
+      ],
+      "audio": "audio/q39_stem.mp3",
+      "quizSentence": "今日の戦略が有効であったかどうかは、まだ結果が出ていない現時点では判断しかねる。"
+    },
+    {
+      "id": 40,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "走り出しそうだ",
+          "kana": "はしりだしそうだ"
+        }
+      ],
+      "zh": "看着马上就要跑起来了",
+      "notes": "",
+      "blanks": [
+        "走り出しそうだ"
+      ],
+      "audio": "audio/q40_stem.mp3",
+      "quizSentence": "この馬の絵は本物そっくりに描かれていて、今にも走り出しそうだ。"
+    },
+    {
+      "id": 41,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "お越しくださいました",
+          "kana": "おこしくださいました"
+        }
+      ],
+      "zh": "「来る」的尊敬语说法",
+      "notes": "",
+      "blanks": [
+        "お越しくださいました"
+      ],
+      "audio": "audio/q41_stem.mp3",
+      "quizSentence": "わたしたちが旅館に着くと、従業員たちが笑顔で「ようこそお越しくださいました。」とあいさつしてくれた。"
+    },
+    {
+      "id": 42,
+      "mondai": 7,
+      "mondaiLabel": "問題7 文法1",
+      "tokens": [
+        {
+          "text": "よければだけど"
+        }
+      ],
+      "zh": "如果……可以/愿意的话",
+      "notes": "",
+      "blanks": [
+        "よければだけど"
+      ],
+      "audio": "audio/q42_stem.mp3",
+      "quizSentence": "木村「田中さん、アルバイトを探しているんだって？」\n田中「うん、そうなんだ。」\n木村「私が働いてる店がアルバイトを募集してるから、応募してみない？　もちろん、田中さんがよければだけど。」"
+    },
+    {
+      "id": 43,
+      "mondai": 8,
+      "mondaiLabel": "問題8 文法2",
+      "tokens": [
+        {
+          "text": "とおりに"
+        }
+      ],
+      "zh": "和……一样，按照……",
+      "notes": "",
+      "blanks": [
+        "とおりに"
+      ],
+      "audio": "audio/q43_opt3.mp3",
+      "quizSentence": "昨日初めてパンを作ってみた。 料理雑誌レシピに書いてある　とおりに　作った　のに、うまく膨らまなかった。"
+    },
+    {
+      "id": 44,
+      "mondai": 8,
+      "mondaiLabel": "問題8 文法2",
+      "tokens": [
+        {
+          "text": "に対して",
+          "kana": "にたいして"
+        }
+      ],
+      "zh": "相对于……；比例是……",
+      "notes": "",
+      "blanks": [
+        "に対して"
+      ],
+      "audio": null,
+      "quizSentence": "「10倍がゆ」とは、米1に対して　10倍の　水で　作ったおかゆのことです。"
+    },
+    {
+      "id": 45,
+      "mondai": 8,
+      "mondaiLabel": "問題8 文法2",
+      "tokens": [
+        {
+          "text": "決して",
+          "kana": "けっして"
+        }
+      ],
+      "zh": "绝对不，断然不",
+      "notes": "",
+      "blanks": [
+        "決して"
+      ],
+      "audio": "audio/q45_opt1.mp3",
+      "quizSentence": "私が就職した商社は大手の商社に比べると　決して　規模は大きくないが　やる気があれば新人でも大きな仕事を任せてもらえるので、やりがいがある。"
+    },
+    {
+      "id": 46,
+      "mondai": 8,
+      "mondaiLabel": "問題8 文法2",
+      "tokens": [
+        {
+          "text": "抜きに",
+          "kana": "ぬきに"
+        }
+      ],
+      "zh": "除去，拿掉",
+      "notes": "",
+      "blanks": [
+        "抜きに"
+      ],
+      "audio": null,
+      "quizSentence": "彼女は1970年代に活躍したジャズピアニストで、この人抜きには　日本のジャズは　語れない　というほど大きな存在だった。"
+    },
+    {
+      "id": 47,
+      "mondai": 8,
+      "mondaiLabel": "問題8 文法2",
+      "tokens": [
+        {
+          "text": "思い込み",
+          "kana": "おもいこみ"
+        }
+      ],
+      "zh": "臆想，自认为",
+      "notes": "",
+      "blanks": [
+        "思い込み"
+      ],
+      "audio": null,
+      "quizSentence": "贈り物をするときは、自分の勝手な思い込みだけで　品物を選ぶと　喜ばれるどころか　迷惑をかけることもあるので、相手の趣味や都合をよく考えて決めましょう。"
+    },
+    {
+      "id": 48,
+      "mondai": 9,
+      "mondaiLabel": "問題9 文法3",
+      "tokens": [
+        {
+          "text": "ご存じでしょうか",
+          "kana": "ごぞんじでしょうか"
+        }
+      ],
+      "zh": "知道吗？",
+      "notes": "",
+      "blanks": [
+        "ご存じでしょうか"
+      ],
+      "audio": "audio/q48_opt3.mp3",
+      "quizSentence": "最近、介護の現場で注目されているものですが、みなさん、 ご存じでしょうか 。"
+    },
+    {
+      "id": 49,
+      "mondai": 9,
+      "mondaiLabel": "問題9 文法3",
+      "tokens": [
+        {
+          "text": "そこで"
+        }
+      ],
+      "zh": "于是，因此",
+      "notes": "",
+      "blanks": [
+        "そこで"
+      ],
+      "audio": "audio/q49_opt1.mp3",
+      "quizSentence": "そこで 、「アニマル・セラピー」に替わるものとして最近「ロボット・セラピー」が注目されるようになりました。"
+    },
+    {
+      "id": 50,
+      "mondai": 9,
+      "mondaiLabel": "問題9 文法3",
+      "tokens": [
+        {
+          "text": "得られるのだそうです",
+          "kana": "えられるのだそうです"
+        }
+      ],
+      "zh": "据说能够得到……",
+      "notes": "",
+      "blanks": [
+        "得られるのだそうです"
+      ],
+      "audio": "audio/q50_opt3.mp3",
+      "quizSentence": "こういったロボットとの触れ合いによって、精神的安定やコミュニケーション能力の改善などの効果が 得られるのだそうです 。"
+    },
+    {
+      "id": 51,
+      "mondai": 9,
+      "mondaiLabel": "問題9 文法3",
+      "tokens": [
+        {
+          "text": "貢献できるようになりたいです",
+          "kana": "こうけんできるようになりたいです"
+        }
+      ],
+      "zh": "想要变得尽量能够贡献",
+      "notes": "",
+      "blanks": [
+        "貢献できるようになりたいです"
+      ],
+      "audio": "audio/q51_opt4.mp3",
+      "quizSentence": "そして、医療分野に 貢献できるようになりたいです 。"
     }
   ]
 };
