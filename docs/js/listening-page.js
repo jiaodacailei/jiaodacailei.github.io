@@ -133,6 +133,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           card.scrollIntoView({ behavior: "smooth", block: "center" });
         }
       }
+    } else {
+      // audio 为 null 表示"没有正在播放的目标了"（真实触发：finishPlayer()
+      // 处理 safePlay() 里 play() 被拒绝的情况，比如 src 是空字符串——vocabItems
+      // 允许 audio:null 的词条，比如没有配音的問題1干扰项）。这种失败不保证会
+      // 触发 error/pause 原生事件（真实案例：src="" 时 play() 的 Promise 直接
+      // 被拒绝，既不触发 error 也不触发 pause，下面 audio 元素上绑定的
+      // clearLoading() 完全不会跑），跟上面清 .playing 一样统一在这里兜底清掉
+      // 所有卡片的 .loading，不能只指望某个具体 audio 元素的事件监听器。
+      document.querySelectorAll(".seg-card.loading").forEach(function(c) { c.classList.remove("loading"); });
     }
   }
 

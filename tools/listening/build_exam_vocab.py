@@ -52,6 +52,30 @@ BLANKS_OVERRIDE/問題8 的 overrides）是2020年12月这一套核对完的结�
 跑完之后务必打印出全部51条人工过一遍（尤其是問題8和zh抽取失败的那几
 条），不要不看输出直接信任脚本结果——上一次「重点词汇语法」被用户
 说"做得太烂"就是当时验证不够仔细导致的，这次专门记录下来避免重蹈。
+
+5. 問題1（漢字読み）干扰项试点（跟用户讨论后达成的范围：先只做問題1，
+   不铺开到其它題型，效果好再考虑扩大）——4个选项不是"1个正确答案+3个
+   随便凑的假词"，`explanationZh`里通常会把每个选项对应的汉字写法+释义
+   都列出来（格式`かな（かんじ）意为"释义"`，分号分隔），但**不是每个
+   选项都有**：有的选项就是纯粹考读音辨析用的音近假名串，字典里查不到
+   对应汉字/词义，`explanationZh`对这类选项只会写"第N项属于干扰项，排除"
+   或"其余三项属于干扰项，排除"，不会单独解释——这种的不收录（真实数据：
+   2020年12月这套问題1一共5题、4个选项，只有10个选项有单独释义可收录，
+   另外10个是这种无字典依据的假词，5道题里甚至有一整题（id4）4个选项
+   全部没有单独释义，一个都不收）。`MONDAI1_DISTRACTOR_MANUAL`能查到的
+   才收录，查不到打印WARN跳过，不自动生成。
+
+   例句**不是**拿原题`stemBlank`模板机械替换生成的——试过这个办法：把
+   id5"飛行機は下降を始めた。"的"下降"换成同题干扰项"架空"/"下校"，
+   得到"飛行機は架空を始めた。"这种语法通但语义不通的句子（4个选项只是
+   读音相近的干扰项，不是语义近似词，未必能套进同一个句子模板里），
+   不能拿这种句子给用户当学习例句用，所以每条例句都是手写的，存在
+   `MONDAI1_DISTRACTOR_MANUAL`里。audio留null（没有这些手写例句对应的
+   录音，选项本身倒是有单独的读音音频`opt['audio']`，但那是单读这个词、
+   跟同组正确答案项"整句朗读"的audio语义不一致，混在一起容易让用户以为
+   点了播放会听到跟例句一致的整句朗读，宁可不给音频——vocabItems本来就
+   支持`audio: null`，`MONDAI8_OVERRIDE`里已经有3条这么用了，页面渲染
+   早就处理过这种情况）。
 """
 import sys
 import json
@@ -79,6 +103,37 @@ def extract_meaning(zh, word_text, word_kana, mondai):
     pattern = anchor + r'(?:意为|表示)[“"](.+?)[”"]'
     m = re.search(pattern, zh)
     return m.group(1) if m else None
+
+
+MONDAI1_CLAUSE_RE = re.compile(
+    r'([ぁ-ゖァ-ヺー]+)（([^）]+)）意为[“"]([^”"]+)[”"]'
+)
+
+
+def mondai1_distractor_candidates(explanation_zh):
+    """从問題1的explanationZh里抽出"かな（かんじ）意为"释义""这种子句，
+    返回{かな读音: (漢字写法, 释义)}。只覆盖有单独释义的选项，见上面
+    docstring第5条——没匹配到的选项（纯音近假词，没有字典依据）由调用方
+    自己按"这个读音不在返回的dict里"来跳过，这个函数不负责判断"没匹配到
+    是因为真的没有还是正则写错了"，人工核对靠main()里的WARN打印。"""
+    return {kana: (kanji, meaning) for kana, kanji, meaning in MONDAI1_CLAUSE_RE.findall(explanation_zh)}
+
+
+# 問題1干扰项的手写例句+中译，见上面docstring第5条为什么不能机械生成。
+# key是(question id, 干扰项漢字写法)，2020年12月这套10条覆盖完（5题×
+# 2〜3个有释义的干扰项，id4这题4个选项都没有单独释义，不出现在这里）。
+MONDAI1_DISTRACTOR_MANUAL = {
+    (1, '崩さない'): ('積み木を崩さないように、そっと歩いてください。', '请轻轻走路，不要碰倒积木。'),
+    (1, '壊さない'): ('おもちゃを壊さないように大事に扱ってください。', '请小心对待玩具，不要弄坏它。'),
+    (1, '潰さない'): ('豆腐を潰さないように、そっと持ってください。', '请轻轻拿着豆腐，不要把它捏碎。'),
+    (2, '損壊'): ('地震で多くの建物が損壊した。', '地震导致许多建筑物受损。'),
+    (2, '被害'): ('台風による被害が各地で報告されている。', '各地都有报告受到台风造成的损害。'),
+    (3, '苦しい'): ('長時間走り続けて、息が苦しい。', '长时间跑步，喘不过气来，很难受。'),
+    (3, '寂しい'): ('一人暮らしは寂しいと感じることがある。', '一个人生活有时会感到寂寞。'),
+    (3, '激しい'): ('昨夜は激しい雨が降った。', '昨晚下了很大的雨。'),
+    (5, '架空'): ('この小説に出てくる町は架空のものだ。', '这部小说里出现的城镇是虚构的。'),
+    (5, '下校'): ('子供たちは午後3時に下校する。', '孩子们下午3点放学。'),
+}
 
 
 def extract_sentence_zh(zh, mondai, answer):
@@ -244,6 +299,30 @@ def main():
                     'quizSentence': ''.join(t['text'] for t in q['stem']['tokens']),
                     'zh_source': q['explanationZh'],
                 })
+                if m['mondai'] == 1:
+                    candidates = mondai1_distractor_candidates(q['explanationZh'])
+                    for dopt in q['options']:
+                        if dopt['idx'] == q['answer']:
+                            continue
+                        dkana = opt_reading(dopt['tokens'])
+                        cand = candidates.get(dkana)
+                        if not cand:
+                            continue
+                        dkanji, dmeaning = cand
+                        manual = MONDAI1_DISTRACTOR_MANUAL.get((q['id'], dkanji))
+                        if not manual:
+                            print('WARN: 問題1 id' + str(q['id']) + ' 干扰项"' + dkanji
+                                  + '"缺手写例句，需要人工补 MONDAI1_DISTRACTOR_MANUAL')
+                            continue
+                        dsentence, dsentence_zh = manual
+                        items.append({
+                            'mondai': 1, 'qid': 1000 + q['id'] * 10 + dopt['idx'],
+                            'wordText': dkanji, 'wordKana': dkana,
+                            'audio': None,
+                            'quizSentence': dsentence,
+                            'zh': dmeaning,
+                            'sentence_zh': dsentence_zh,
+                        })
 
     for it in items:
         if 'sentence_zh' in it:

@@ -45911,6 +45911,186 @@ window.EXAM_DATA = {
       ],
       "audio": "audio/q51_opt4.mp3",
       "quizSentence": "そして、医療分野に 貢献できるようになりたいです 。"
+    },
+    {
+      "id": 1011,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "崩さない",
+          "kana": "くずさない"
+        }
+      ],
+      "zh": "不要拆毁，不要打乱",
+      "notes": "",
+      "blanks": [
+        "崩さない"
+      ],
+      "audio": null,
+      "quizSentence": "積み木を崩さないように、そっと歩いてください。"
+    },
+    {
+      "id": 1013,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "壊さない",
+          "kana": "こわさない"
+        }
+      ],
+      "zh": "不要弄坏",
+      "notes": "",
+      "blanks": [
+        "壊さない"
+      ],
+      "audio": null,
+      "quizSentence": "おもちゃを壊さないように大事に扱ってください。"
+    },
+    {
+      "id": 1014,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "潰さない",
+          "kana": "つぶさない"
+        }
+      ],
+      "zh": "不要捣碎",
+      "notes": "",
+      "blanks": [
+        "潰さない"
+      ],
+      "audio": null,
+      "quizSentence": "豆腐を潰さないように、そっと持ってください。"
+    },
+    {
+      "id": 1022,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "損壊",
+          "kana": "そんかい"
+        }
+      ],
+      "zh": "损坏，毁坏",
+      "notes": "",
+      "blanks": [
+        "損壊"
+      ],
+      "audio": null,
+      "quizSentence": "地震で多くの建物が損壊した。"
+    },
+    {
+      "id": 1024,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "被害",
+          "kana": "ひがい"
+        }
+      ],
+      "zh": "受害",
+      "notes": "",
+      "blanks": [
+        "被害"
+      ],
+      "audio": null,
+      "quizSentence": "台風による被害が各地で報告されている。"
+    },
+    {
+      "id": 1031,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "苦しい",
+          "kana": "くるしい"
+        }
+      ],
+      "zh": "痛苦的，难受的",
+      "notes": "",
+      "blanks": [
+        "苦しい"
+      ],
+      "audio": null,
+      "quizSentence": "長時間走り続けて、息が苦しい。"
+    },
+    {
+      "id": 1032,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "寂しい",
+          "kana": "さびしい"
+        }
+      ],
+      "zh": "寂寞的，孤单的",
+      "notes": "",
+      "blanks": [
+        "寂しい"
+      ],
+      "audio": null,
+      "quizSentence": "一人暮らしは寂しいと感じることがある。"
+    },
+    {
+      "id": 1033,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "激しい",
+          "kana": "はげしい"
+        }
+      ],
+      "zh": "激烈的；苛刻的",
+      "notes": "",
+      "blanks": [
+        "激しい"
+      ],
+      "audio": null,
+      "quizSentence": "昨夜は激しい雨が降った。"
+    },
+    {
+      "id": 1052,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "架空",
+          "kana": "かくう"
+        }
+      ],
+      "zh": "虚构，无凭无据",
+      "notes": "",
+      "blanks": [
+        "架空"
+      ],
+      "audio": null,
+      "quizSentence": "この小説に出てくる町は架空のものだ。"
+    },
+    {
+      "id": 1053,
+      "mondai": 1,
+      "mondaiLabel": "問題1 漢字読み",
+      "tokens": [
+        {
+          "text": "下校",
+          "kana": "げこう"
+        }
+      ],
+      "zh": "放学",
+      "notes": "",
+      "blanks": [
+        "下校"
+      ],
+      "audio": null,
+      "quizSentence": "子供たちは午後3時に下校する。"
     }
   ],
   "vocabQuiz": [
@@ -46422,6 +46602,106 @@ window.EXAM_DATA = {
       "sentence": "そして、医療分野に 貢献できるようになりたいです 。",
       "sentence_zh": "然后，我想变得能够为医疗领域做出贡献。",
       "blank": "貢献できるようになりたいです",
+      "category": "other"
+    },
+    {
+      "id": 1011,
+      "text": "崩さない",
+      "kana": "くずさない",
+      "zh": "不要拆毁，不要打乱",
+      "sentence": "積み木を崩さないように、そっと歩いてください。",
+      "sentence_zh": "请轻轻走路，不要碰倒积木。",
+      "blank": "崩さない",
+      "category": "other"
+    },
+    {
+      "id": 1013,
+      "text": "壊さない",
+      "kana": "こわさない",
+      "zh": "不要弄坏",
+      "sentence": "おもちゃを壊さないように大事に扱ってください。",
+      "sentence_zh": "请小心对待玩具，不要弄坏它。",
+      "blank": "壊さない",
+      "category": "other"
+    },
+    {
+      "id": 1014,
+      "text": "潰さない",
+      "kana": "つぶさない",
+      "zh": "不要捣碎",
+      "sentence": "豆腐を潰さないように、そっと持ってください。",
+      "sentence_zh": "请轻轻拿着豆腐，不要把它捏碎。",
+      "blank": "潰さない",
+      "category": "other"
+    },
+    {
+      "id": 1022,
+      "text": "損壊",
+      "kana": "そんかい",
+      "zh": "损坏，毁坏",
+      "sentence": "地震で多くの建物が損壊した。",
+      "sentence_zh": "地震导致许多建筑物受损。",
+      "blank": "損壊",
+      "category": "other"
+    },
+    {
+      "id": 1024,
+      "text": "被害",
+      "kana": "ひがい",
+      "zh": "受害",
+      "sentence": "台風による被害が各地で報告されている。",
+      "sentence_zh": "各地都有报告受到台风造成的损害。",
+      "blank": "被害",
+      "category": "other"
+    },
+    {
+      "id": 1031,
+      "text": "苦しい",
+      "kana": "くるしい",
+      "zh": "痛苦的，难受的",
+      "sentence": "長時間走り続けて、息が苦しい。",
+      "sentence_zh": "长时间跑步，喘不过气来，很难受。",
+      "blank": "苦しい",
+      "category": "other"
+    },
+    {
+      "id": 1032,
+      "text": "寂しい",
+      "kana": "さびしい",
+      "zh": "寂寞的，孤单的",
+      "sentence": "一人暮らしは寂しいと感じることがある。",
+      "sentence_zh": "一个人生活有时会感到寂寞。",
+      "blank": "寂しい",
+      "category": "other"
+    },
+    {
+      "id": 1033,
+      "text": "激しい",
+      "kana": "はげしい",
+      "zh": "激烈的；苛刻的",
+      "sentence": "昨夜は激しい雨が降った。",
+      "sentence_zh": "昨晚下了很大的雨。",
+      "blank": "激しい",
+      "category": "other"
+    },
+    {
+      "id": 1052,
+      "text": "架空",
+      "kana": "かくう",
+      "zh": "虚构，无凭无据",
+      "sentence": "この小説に出てくる町は架空のものだ。",
+      "sentence_zh": "这部小说里出现的城镇是虚构的。",
+      "blank": "架空",
+      "category": "other"
+    },
+    {
+      "id": 1053,
+      "text": "下校",
+      "kana": "げこう",
+      "zh": "放学",
+      "sentence": "子供たちは午後3時に下校する。",
+      "sentence_zh": "孩子们下午3点放学。",
+      "blank": "下校",
       "category": "other"
     }
   ]
