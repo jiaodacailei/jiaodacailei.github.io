@@ -109,6 +109,9 @@
   }
 
   var submitted = false;
+  // 单独交某一個大题——key是section的data-mondai-idx，跟"交整份卷子"的
+  // submitted是两套独立状态，互不覆盖。
+  var mondaiSubmitted = {};
 
   // ---- 渲染 ----
   var root = document.getElementById("examRoot");
@@ -202,12 +205,23 @@
     return '<div class="exam-block">' + passage + qsHtml + "</div>";
   }
 
+  // 単独交这一個大题——跟底部整份卷子的"交卷"并存、互不影响：这个按钮
+  // 只批改/展开当前 data-mondai-idx 对应的这几道题，其它問題tab不受影响；
+  // 整份卷子的"交卷"逻辑（submitExam()）完全没改，还是一次性批改全部
+  // 72题。真实反馈：用户想要"每个問題都支持交卷功能，仅对当前问题"。
+  function mondaiSubmitBarHtml(sectionIdx) {
+    return '<div class="exam-mondai-submit-bar">' +
+      '<button class="exam-mondai-submit-btn" data-mondai-idx="' + sectionIdx + '">提交本大题</button>' +
+      '<span class="exam-mondai-submit-score"></span></div>';
+  }
+
   function mondaiSectionHtml(m, idx) {
+    var sectionIdx = idx + 1;
     var blocksHtml = m.blocks.map(blockHtml).join("");
-    return '<section class="exam-mondai-section" data-mondai-idx="' + (idx + 1) + '"' +
+    return '<section class="exam-mondai-section" data-mondai-idx="' + sectionIdx + '"' +
       (idx === 0 ? "" : ' style="display:none"') + ">" +
       '<div class="exam-mondai-instruction">' + esc(m.instruction) + "</div>" +
-      blocksHtml + "</section>";
+      blocksHtml + mondaiSubmitBarHtml(sectionIdx) + "</section>";
   }
 
   // ---- 「重点词汇语法」tab：从問題1〜9（结构化、有官方解析背书的大题）里
@@ -315,8 +329,17 @@
       return;
     }
     if (submitted) return;
+    var mSubmitBtn = e.target.closest(".exam-mondai-submit-btn");
+    if (mSubmitBtn) {
+      submitMondai(mSubmitBtn.getAttribute("data-mondai-idx"));
+      return;
+    }
     var opt = e.target.closest(".exam-option");
     if (opt) {
+      // 这道题所在的大题已经单独交过——答案/对错已经定了，不能再改选项
+      // （跟整份卷子交卷后的規則一致，只是判断范围缩小到这一个大题）。
+      var ownSection = opt.closest(".exam-mondai-section");
+      if (ownSection && ownSection.classList.contains("mondai-submitted")) return;
       var qid = opt.getAttribute("data-qid");
       var idx = opt.getAttribute("data-opt");
       var qEl = document.getElementById("q-" + qid);
@@ -340,6 +363,55 @@
     });
   });
 
+  // 单题批改标记——被"交整份卷子"（submitExam）和"只交这一个大题"
+  // （submitMondai）共用。用.review这个class本身当"这题已经标记过"的
+  // 幂等判断：一道题如果先被单独交的大题批改过，之后再交整份卷子，
+  // 不会把.exam-unanswered-mark再插一遍。返回值（是否答对）不受这个
+  // 幂等判断影响，每次都按answers/q.answer现算，两条路径的总分/大题
+  // 细分统计都能拿到准确数字。
+  function gradeQuestion(q) {
+    var qEl = document.getElementById("q-" + q.id);
+    var userAns = answers[q.id];
+    var isCorrect = String(userAns) === String(q.answer);
+    if (!qEl.classList.contains("review")) {
+      qEl.classList.add("review");
+      qEl.querySelectorAll(".exam-option").forEach(function (o) {
+        var oi = o.getAttribute("data-opt");
+        if (String(oi) === String(q.answer)) o.classList.add("correct-answer");
+        else if (String(oi) === String(userAns)) o.classList.add("wrong-selected");
+      });
+      if (userAns === undefined) {
+        var numEl = qEl.querySelector(".exam-question-num");
+        numEl.insertAdjacentHTML("afterend", '<span class="exam-unanswered-mark">未作答</span>');
+      }
+    }
+    return isCorrect;
+  }
+
+  // 只交当前这一个大题——跟submitExam()是两条独立路径，谁先谁后互不
+  // 覆盖：先单独交过的大题，之后再交整份卷子，gradeQuestion()的幂等
+  // 判断会跳过重复标记，但总分照常累计进submitExam()的统计里。
+  function submitMondai(sectionIdx) {
+    if (submitted || mondaiSubmitted[sectionIdx]) return;
+    var m = DATA.mondaiList[sectionIdx - 1];
+    if (!m) return;
+    mondaiSubmitted[sectionIdx] = true;
+    var sec = document.querySelector('.exam-mondai-section[data-mondai-idx="' + sectionIdx + '"]');
+    if (!sec) return;
+    sec.classList.add("mondai-submitted");
+    var total = 0, correct = 0;
+    m.blocks.forEach(function (b) {
+      b.questions.forEach(function (q) {
+        total++;
+        if (gradeQuestion(q)) correct++;
+      });
+    });
+    var scoreEl = sec.querySelector(".exam-mondai-submit-score");
+    if (scoreEl) scoreEl.textContent = correct + " / " + total;
+    var btn = sec.querySelector(".exam-mondai-submit-btn");
+    if (btn) btn.disabled = true;
+  }
+
   function submitExam() {
     if (submitted) return;
     submitted = true;
@@ -347,30 +419,20 @@
     // 题干/問題9段落的挖空→填好答案 这个切换是全局一次性的（不像每道题的
     // 对错标记那样按题分别处理），交卷本来就是整份卷子一起交，不存在"这题
     // 交了那题还没交"的中间状态，直接在body上打一个class，CSS统一处理
-    // 所有.exam-stem-blank/.exam-passage-blank的显隐切换。
+    // 所有.exam-stem-blank/.exam-passage-blank的显隐切换（跟"只交一个
+    // 大题"用的.mondai-submitted是两套互不干扰的CSS触发条件，见
+    // exam-page.css）。
     document.body.classList.add("exam-submitted");
     var total = 0, correct = 0;
     var perMondai = {};
     DATA.mondaiList.forEach(function (m) {
       perMondai[m.mondai] = { total: 0, correct: 0, label: m.label };
+      mondaiSubmitted[m.mondai] = true;
       m.blocks.forEach(function (b) {
         b.questions.forEach(function (q) {
           total++;
           perMondai[m.mondai].total++;
-          var qEl = document.getElementById("q-" + q.id);
-          qEl.classList.add("review");
-          var userAns = answers[q.id];
-          var isCorrect = String(userAns) === String(q.answer);
-          if (isCorrect) { correct++; perMondai[m.mondai].correct++; }
-          qEl.querySelectorAll(".exam-option").forEach(function (o) {
-            var oi = o.getAttribute("data-opt");
-            if (String(oi) === String(q.answer)) o.classList.add("correct-answer");
-            else if (String(oi) === String(userAns)) o.classList.add("wrong-selected");
-          });
-          if (userAns === undefined) {
-            var numEl = qEl.querySelector(".exam-question-num");
-            numEl.insertAdjacentHTML("afterend", '<span class="exam-unanswered-mark">未作答</span>');
-          }
+          if (gradeQuestion(q)) { correct++; perMondai[m.mondai].correct++; }
         });
       });
     });

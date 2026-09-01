@@ -1,6 +1,14 @@
 /* N2真题模考页面专用样式——跟 listening-page.css 共用密码门/sticky-header/
    tab-bar 那套基础样式，这里只加"选择题作答/判分/复习"这部分独有的样式。 */
 
+/* .sticky-header是position:fixed，跟listening-page.css那套用.post-page
+   （padding-top:110px）留出净空的页面不同，exam页面的#content/#examRoot
+   一直没有对应的顶部留白——問題1指示文的开头一截会被固定在顶部的
+   sticky-header（實測84px高）盖住。真实bug：用户反馈"tab挡住了试卷最
+   上面的文字"。110px是跟全站其它页面一致的留白量，比实测的sticky-header
+   高度多留了充足buffer。 */
+#content { padding-top: 110px; }
+
 /* 問題1〜14共14个tab——听力精听页最多5个tab、教材课页最多4个tab，共用的
    .tab-bar（flex-wrap:wrap）放得下，这套14个tab换行挤成好几行，顶部占用
    空间过多。改成单行横向可滑动，只在这个文件（只有真题模考页会加载）里
@@ -76,10 +84,17 @@
    不管这组规则写在文件里的哪个位置都能稳定赢，不用再小心翼翼维护顺序。 */
 .exam-stem-row.exam-stem-filled,
 .exam-passage.exam-passage-filled { display: none; }
+/* .exam-submitted（整份卷子交卷，body上加）/.mondai-submitted（只交当前
+   大题，加在对应.exam-mondai-section上）触发同一套挖空→填好答案的切换，
+   两条路径谁先发生都行，互不依赖。 */
 .exam-submitted .exam-stem-row.exam-stem-blank,
-.exam-submitted .exam-passage.exam-passage-blank { display: none; }
-.exam-submitted .exam-stem-row.exam-stem-filled { display: flex; }
-.exam-submitted .exam-passage.exam-passage-filled { display: block; }
+.exam-submitted .exam-passage.exam-passage-blank,
+.exam-mondai-section.mondai-submitted .exam-stem-row.exam-stem-blank,
+.exam-mondai-section.mondai-submitted .exam-passage.exam-passage-blank { display: none; }
+.exam-submitted .exam-stem-row.exam-stem-filled,
+.exam-mondai-section.mondai-submitted .exam-stem-row.exam-stem-filled { display: flex; }
+.exam-submitted .exam-passage.exam-passage-filled,
+.exam-mondai-section.mondai-submitted .exam-passage.exam-passage-filled { display: block; }
 
 .exam-question {
   margin: 1em 0;
@@ -291,6 +306,32 @@
 }
 .exam-submit-btn:hover { opacity: 0.9; }
 .exam-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* 每个大题自己的"提交本大题"——放在该問題最后一题下面，跟底部整份卷子
+   的.exam-submit-bar区分开（不是sticky，就是这个問題内容的收尾）。整份
+   卷子一旦交了（body加.exam-submitted），所有大题都已经批改完，这条
+   单独交的入口就没意义了，直接隐藏，不留一个点了也没反应的按钮。 */
+.exam-mondai-submit-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin-top: 1.2em;
+  padding-top: 1em;
+  border-top: 1px dashed var(--border, #ddd);
+}
+body.exam-submitted .exam-mondai-submit-bar { display: none; }
+.exam-mondai-submit-btn {
+  background: var(--bg, #fff);
+  color: var(--accent, #3a6cf6);
+  border: 1.5px solid var(--accent, #3a6cf6);
+  border-radius: 8px;
+  padding: 0.5em 1.2em;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.exam-mondai-submit-btn:hover { background: rgba(58, 108, 246, 0.08); }
+.exam-mondai-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.exam-mondai-submit-score { color: var(--muted, #666); font-size: 0.9em; }
 
 .exam-score-banner {
   display: none;
