@@ -764,8 +764,38 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 })();
 
 // ── Tab 切换：問題1~5，点击后只显示该大题内容 + 对应的小题导航 ──
+//
+// 匹配方式是"data-mondai-idx 属性值"而不是"数组位置下标"——这是为了支持
+// n2-exam 页面那种"同一条 tab-bar 里混了两套系统"的场景：問題1~14 的tab
+// 由 exam-page.js 自己一套 .exam-mondai-section/style.display 管理，
+// 「生词」「生词测试」这两个tab才是真的想借用这里的 .mondai-section[data-
+// scope="mondai"]/.tab-active 机制（吃跟读/默写/填空模式、单词测试）。
+// 如果继续按"第i个按钮对应第i个section"的位置下标配对，混合场景下idx会
+// 直接错位（総共16个.tab-btn，但可能只有2个真正的.mondai-section，第15个
+// 按钮"生词"点了会去找sections[14]，根本不存在）。改成两边都读各自的
+// data-mondai-idx属性去匹配同一个值，教材课页面因为tab-btn和mondai-section
+// 本来就是1:1同序生成的（position i ⇔ data-mondai-idx=i+1），行为跟以前
+// 完全一样；exam页面则会自然地把"没有对应.mondai-section"的問題1~14按钮
+// 排除在外（下面 tabBtns 的 filter），点它们不会触发这里的任何逻辑，
+// 不会有多余的"跳回顶部"这类副作用。
 (function() {
-  var tabBtns = Array.from(document.querySelectorAll(".tab-btn"));
+  // .mondai-section 的编号存在 id="m-N" 里（page-renderer.js/build_page.py
+  // 的 renderMondaiSection()/mondai_section_html() 都是这样生成的），不是
+  // data-mondai-idx 属性——只有 .tab-btn/.side-nav-list/.snm-nums-list
+  // 这三种才用 data-mondai-idx。两套取值方式不一样，弄混了会导致
+  // sectionMondaiIdx 永远拿到 null，activate() 找不到任何匹配的 section。
+  function sectionMondaiIdx(sec) {
+    var m = /^m-(\d+)$/.exec(sec.id || "");
+    return m ? m[1] : null;
+  }
+
+  var allSections = Array.from(document.querySelectorAll('.mondai-section[data-scope="mondai"]'));
+  if (!allSections.length) return;
+  var sectionIdxSet = {};
+  allSections.forEach(function(sec) { sectionIdxSet[sectionMondaiIdx(sec)] = true; });
+  var tabBtns = Array.from(document.querySelectorAll(".tab-btn")).filter(function(b) {
+    return sectionIdxSet.hasOwnProperty(b.getAttribute("data-mondai-idx"));
+  });
   if (!tabBtns.length) return;
 
   // 直接标记某小题为当前高亮，不读取任何布局属性（避免强制回流）
@@ -780,39 +810,44 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     });
   }
 
-  function activate(idx, opts) {
+  function activate(mondaiIdx, opts) {
     opts = opts || {};
+    mondaiIdx = String(mondaiIdx);
     document.dispatchEvent(new CustomEvent("stopAllAudio"));
 
-    tabBtns.forEach(function(b, i) { b.classList.toggle("active", i === idx); });
-    var sections = document.querySelectorAll('.mondai-section[data-scope="mondai"]');
-    sections.forEach(function(sec, i) {
-      sec.classList.toggle("tab-active", i === idx);
+    tabBtns.forEach(function(b) { b.classList.toggle("active", b.getAttribute("data-mondai-idx") === mondaiIdx); });
+    var activeSection = null;
+    document.querySelectorAll('.mondai-section[data-scope="mondai"]').forEach(function(sec) {
+      var match = sectionMondaiIdx(sec) === mondaiIdx;
+      sec.classList.toggle("tab-active", match);
+      if (match) activeSection = sec;
     });
     // 单词测试 tab 是单卡片互动出题，没有"小题"可跳转，也不需要跟读速度/显示
     // 模式/默写填空这些跟句子卡片相关的设置——用这个 body class 联动隐藏悬浮
     // 目录和设置面板里不相关的选项组（是否是这个 tab 靠"里面有没有单词测试的
     // 数据 script 标签"判断，不用在 build_page.py 里为此专门加一个新 class）。
-    document.body.classList.toggle("quiz-tab-active", !!(sections[idx] && sections[idx].querySelector("#vocab-quiz-data")));
-    document.querySelectorAll(".side-nav-list").forEach(function(list, i) {
-      list.classList.toggle("tab-active", i === idx);
+    document.body.classList.toggle("quiz-tab-active", !!(activeSection && activeSection.querySelector("#vocab-quiz-data")));
+    document.querySelectorAll(".side-nav-list").forEach(function(list) {
+      list.classList.toggle("tab-active", list.getAttribute("data-mondai-idx") === mondaiIdx);
     });
-    document.querySelectorAll(".snm-nums-list").forEach(function(list, i) {
-      list.classList.toggle("tab-active", i === idx);
+    document.querySelectorAll(".snm-nums-list").forEach(function(list) {
+      list.classList.toggle("tab-active", list.getAttribute("data-mondai-idx") === mondaiIdx);
     });
     // 切换后总是回到顶部，所以新 tab 的第一小题必然是"当前项"，直接设置，不用等滚动测量
-    setCurrent("q-" + (idx + 1) + "-1");
+    setCurrent("q-" + mondaiIdx + "-1");
     if (!opts.skipScroll) window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  tabBtns.forEach(function(b, i) {
-    b.addEventListener("click", function() { activate(i); });
+  tabBtns.forEach(function(b) {
+    b.addEventListener("click", function() { activate(b.getAttribute("data-mondai-idx")); });
   });
-  // 迷你播放器导航到别的大题时触发，跳过"滚回顶部"（接下来会直接滚到正在播放的那句）
+  // 迷你播放器导航到别的大题时触发（e.detail.idx 是"第几个.mondai-section"
+  // 的0基下标，教材课页面 data-mondai-idx 正好是下标+1），跳过"滚回顶部"
+  // （接下来会直接滚到正在播放的那句）。
   document.addEventListener("activateTab", function(e) {
-    activate(e.detail.idx, { skipScroll: true });
+    activate(e.detail.idx + 1, { skipScroll: true });
   });
-  activate(0, { skipScroll: true });
+  activate(tabBtns[0].getAttribute("data-mondai-idx"), { skipScroll: true });
 
   // 小题导航（复用博客 .toc / .toc-float 同款结构）：点击滚动到对应 question-block
   var sideNavMobile = document.getElementById("sideNavMobile");

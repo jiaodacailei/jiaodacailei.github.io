@@ -256,7 +256,7 @@
   margin-left: 0.5em;
 }
 
-/* 底部交卷条 */
+/* 底部交卷条——「生词」/「生词测试」tab不是答题流程，不需要交这份卷子。 */
 .exam-submit-bar {
   position: sticky;
   bottom: 0;
@@ -269,6 +269,7 @@
   gap: 1em;
   z-index: 20;
 }
+body.vocab-tab-active .exam-submit-bar { display: none; }
 .exam-progress-text { color: var(--muted, #666); font-size: 0.9em; }
 .exam-submit-btn {
   background: var(--accent, #3a6cf6);

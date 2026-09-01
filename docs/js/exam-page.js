@@ -235,15 +235,24 @@
   //      模式）。
   var VOCAB_SECTION_IDX = DATA.mondaiList.length + 1;
 
+  // id="q-{VOCAB_SECTION_IDX}-{groupIdx}"/class="question-block"——
+  // 跟 page-renderer.js 的 renderQuestionBlock() 同一套约定，
+  // listening-page.js 的 highlightCurrentQuestion()/setCurrent() 找
+  // "当前小题"靠的就是这个id格式，不遵守这个格式那两个函数直接找不到
+  // 匹配项，静默不生效（不会报错，只是浮动目录高亮不准，不影响
+  // 默写/填空/单词测试这些核心功能）。
   function vocabGroupsHtml() {
     var items = DATA.vocabItems || [];
     var groups = [];
+    var groupIdx = 0;
     var lastMondai = null;
     var cardsHtml = "";
     items.forEach(function (it) {
       if (it.mondai !== lastMondai) {
         if (cardsHtml) groups.push(cardsHtml);
-        cardsHtml = '<div class="question-block"><h3>' + esc(it.mondaiLabel) + "</h3>";
+        groupIdx++;
+        cardsHtml = '<div class="question-block" id="q-' + VOCAB_SECTION_IDX + "-" + groupIdx +
+          '" data-scope="question"><h3>' + esc(it.mondaiLabel) + "</h3>";
         lastMondai = it.mondai;
       }
       cardsHtml += window.PageRenderer.renderCard(it, null);
@@ -252,10 +261,27 @@
     return groups.join("");
   }
 
+  // class="mondai-section" data-scope="mondai" id="m-{VOCAB_SECTION_IDX}"——
+  // 跟 page-renderer.js 的 renderMondaiSection() 同一套标记，专门给
+  // listening-page.js 的模式切换/默写/填空/単語テスト机制识别用（那边找
+  // section 走的是 .mondai-section[data-scope="mondai"] + id="m-N" 解析
+  // 出来的编号，不是这里的 data-mondai-idx——两套系统刻意保留各自的
+  // 属性名，见 listening-page.js 里"Tab 切换"那段注释）。可见性还是只由
+  // exam-page.js 自己的 style.display 控制（tab-btn 点击时对全部
+  // .exam-mondai-section 一视同仁地设置），.mondai-section/.tab-active
+  // 这个class只是listening-page.js内部用来判断"现在归哪个mondai管"，
+  // 不会跟display互相打架。
   function vocabSectionHtml() {
     if (!DATA.vocabItems || !DATA.vocabItems.length) return "";
-    return '<section class="exam-mondai-section" data-mondai-idx="' + VOCAB_SECTION_IDX + '" style="display:none">' +
-      '<div class="exam-mondai-instruction">従問題1〜9挑出的目标词/语法点，点卡片播放发音，例句里挖空目标词已加粗。不计入作答/判分。</div>' +
+    // <h2>——page-renderer.js的renderMondaiSection()标准结构自带这个标签，
+    // listening-page.js有一段"点h2整段连播这个mondai"的功能直接querySelector
+    // "h2"、不判空就addEventListener，没有h2会在脚本顶层抛未捕获异常（同一个
+    // <script>里排在后面的默写/填空/单词测试代码全部执行不到，这个坑跟
+    // 前面mini-player那次是同一类问题）。
+    return '<section class="exam-mondai-section mondai-section" data-scope="mondai" id="m-' + VOCAB_SECTION_IDX +
+      '" data-mondai-idx="' + VOCAB_SECTION_IDX + '" style="display:none">' +
+      "<h2>生词</h2>" +
+      '<div class="exam-mondai-instruction">従問題1〜9挑出的目标词/语法点，点卡片播放发音，例句里挖空目标词已加粗，右下角设置里可以切换跟读/默写/填空模式。不计入作答/判分。</div>' +
       vocabGroupsHtml() + "</section>";
   }
 
@@ -352,6 +378,10 @@
     document.querySelectorAll(".exam-mondai-section").forEach(function (sec) {
       sec.style.display = sec.getAttribute("data-mondai-idx") === idx ? "" : "none";
     });
+    // 「生词」tab不是答题流程，底部整份卷子的"交卷"条在这个tab下没有意义，
+    // 藏起来（跟.exam-mondai-submit-bar在.exam-submitted之后统一隐藏是
+    // 同一个道理，只是触发条件换成了"当前在生词tab"）。
+    document.body.classList.toggle("vocab-tab-active", String(idx) === String(VOCAB_SECTION_IDX));
   });
 
   // 单题批改标记——被"交整份卷子"（submitExam）和"只交这一个大题"
