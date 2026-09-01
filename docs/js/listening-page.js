@@ -1028,10 +1028,27 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     card._dictate.setState = setState;
     setState("locked");
 
+    // 显示答案（不管是判对之后的✓正解，还是判错之后的✗答案）都带上这个
+    // 单词关联的例句——直接复用卡片上已经渲染好的 .seg-example（跟读模式
+    // 用的那份，挖空目标词已经用 .example-target 加粗），不用另外重新拼
+    // 一遍 quizSentence+blanks 的定位逻辑。会话/课文这类没有 quizSentence
+    // 的卡片，.seg-example 本来就不存在，querySelector 拿到 null，这里
+    // 自然不出现例句，不需要额外判断。真实反馈"单词tab的默写模式，显示
+    // 答案时，应该显示单词关联的句子"。
+    // 不能直接把 .dictate-example 也叫 .seg-example——那个类名在
+    // body.mode-dictate 下是强制 display:none 的（默写模式默认藏起来，
+    // 见 listening-page.css），这份拷贝虽然物理上还在同一张 .seg-card
+    // 里但要在答案区域里显示出来，选择器不能被那条隐藏规则误伤。
+    function answerHtml(badgeHtml) {
+      var exampleEl = card.querySelector(".seg-example");
+      var exampleHtml = exampleEl ? '<div class="dictate-example">' + exampleEl.innerHTML + "</div>" : "";
+      return badgeHtml + " " + segJa.innerHTML + exampleHtml;
+    }
+
     // 判对之后的展示逻辑单独拆出来，重新打开页面恢复已完成的句子时也要用
     // 同一套（不然恢复出来的样子跟当场刚答对时不一致）。
     function renderDone() {
-      answerBox.innerHTML = '<span class="dictate-badge ok">✓ 正解</span> ' + segJa.innerHTML;
+      answerBox.innerHTML = answerHtml('<span class="dictate-badge ok">✓ 正解</span>');
       status.textContent = "";
       status.className = "dictate-status";
       ui.classList.remove("revealed");
@@ -1053,7 +1070,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         saveDictateDone();
         advance(card);
       } else {
-        answerBox.innerHTML = '<span class="dictate-badge wrong">✗ 答案</span> ' + segJa.innerHTML;
+        answerBox.innerHTML = answerHtml('<span class="dictate-badge wrong">✗ 答案</span>');
         ui.classList.add("revealed");
         status.textContent = "跟上面的答案对一下，改好之后重新提交";
         status.className = "dictate-status ng";

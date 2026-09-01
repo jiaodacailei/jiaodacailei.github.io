@@ -497,6 +497,16 @@ body.mode-dictate .dictate-ui { display: block; }
 .dictate-badge { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 999px; margin-right: 4px; white-space: nowrap; }
 .dictate-badge.ok { background: #dcfce7; color: #16a34a; }
 .dictate-badge.wrong { background: #fee2e2; color: #dc2626; }
+/* 默写模式显示答案（不管对错）时带上的例句——从 .seg-example 拷贝
+   innerHTML 过来（含 .example-target 加粗样式，跟读模式那份复用同一套
+   视觉语言），单独用这个类名而不是继续叫 .seg-example，避免被
+   body.mode-dictate .seg-card .seg-example{display:none} 那条全局隐藏
+   规则误伤——这份拷贝物理上还在同一张 .seg-card 里，选择器分不出"跟读
+   模式那份隐藏的原版"跟"默写答案区里应该显示的这份"。 */
+.dictate-example {
+  font-size: 13px; line-height: 1.7; color: var(--text-muted);
+  margin-top: 4px; padding-top: 4px; border-top: 1px dashed var(--border);
+}
 .dictate-locked {
   display: none; color: var(--blue); font-size: 13px; padding: 7px 12px;
   border: 1px dashed var(--blue-light); background: var(--blue-xlight);
