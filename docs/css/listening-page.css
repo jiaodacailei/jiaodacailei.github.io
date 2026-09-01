@@ -198,6 +198,15 @@ body {
   background: var(--blue-xlight); border-left: 3px solid var(--blue);
   border-radius: 0 6px 6px 0; padding: 6px 10px;
 }
+/* 生词卡片跟读模式下的例句（quizSentence，纯展示，挖空目标词加粗）——
+   真实反馈"跟读模式时，单词下面有没有对应的例句啊"，之前quizSentence
+   只在填空模式才用得到。默写/填空模式下用body.mode-*选择器隐藏（见下面），
+   避免默写时提前看到内容、填空时跟可交互的输入框版本重复。 */
+.seg-example {
+  font-size: 13px; line-height: 1.7; color: var(--text-muted);
+  margin: 4px 0 0; padding-top: 4px; border-top: 1px dashed var(--border);
+}
+.seg-example .example-target { color: var(--blue-dark); font-weight: 700; }
 .q-overview { color: var(--text-muted); font-size: 14px; margin: 2px 0 10px; }
 .seg-answer { margin: 0 0 10px; font-size: 13px; }
 .seg-answer summary { cursor: pointer; color: var(--blue-dark); font-weight: 600; user-select: none; }
@@ -218,7 +227,8 @@ body.lang-ja-only .seg-zh,
 body.lang-ja-only .q-overview,
 body.lang-ja-only .seg-answer,
 body.lang-ja-only .seg-notes { display: none; }
-body.lang-zh-only .seg-ja { display: none; }
+body.lang-zh-only .seg-ja,
+body.lang-zh-only .seg-example { display: none; }
 
 /* ── 吸顶 tab 栏：問題1~5，点击切换，只显示当前大题 ── */
 .sticky-header {
@@ -461,7 +471,8 @@ body.repeat-mode-on .seg-ja .tw { padding: 2px 1px; }
    active 状态复习，不影响已经记下的过关状态），只有 active 时输入框可编辑。 */
 body.mode-dictate .seg-card .seg-ja,
 body.mode-dictate .seg-card .seg-zh,
-body.mode-dictate .seg-card .seg-notes { display: none; }
+body.mode-dictate .seg-card .seg-notes,
+body.mode-dictate .seg-card .seg-example { display: none; }
 .dictate-ui { display: none; }
 body.mode-dictate .dictate-ui { display: block; }
 
@@ -511,7 +522,8 @@ body.mode-dictate .dictate-ui { display: block; }
    .seg-ja 藏起来，换成运行时克隆出来的 .seg-ja-blank（挖空的词换成了 input）。
    挖空目标来自 seg-notes 里第一个「…」语法点，为了不被提前看到答案，挖了空
    的句子在填空模式下把 seg-notes 也藏起来，填对之后（.blank-revealed）才放出来。 */
-body.mode-blank .seg-card .seg-ja { display: none; }
+body.mode-blank .seg-card .seg-ja,
+body.mode-blank .seg-card .seg-example { display: none; }
 .seg-ja-blank { display: none; font-size: 16px; line-height: 2.2; margin: 0 24px 4px 0; }
 body.mode-blank .seg-ja-blank { display: block; }
 .seg-ja-blank ruby rt { font-size: 10px; color: var(--text-muted); font-style: normal; }

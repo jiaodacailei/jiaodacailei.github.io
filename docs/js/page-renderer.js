@@ -158,6 +158,31 @@
     return parts.join("");
   }
 
+  // 生词卡片"跟读"模式下面显示的例句——挖空目标词（blanks数组）加粗
+  // 标出来，纯展示不给input。跟 listening-page.js 的 setupBlankForCard()
+  // 定位挖空位置用的是同一套逻辑（indexOf + searchFrom 顺序往后找，
+  // 处理同一段文字出现不止一次的情况），保持两处"怎么在句子里找到blanks
+  // 对应的文字"这件事只有一套判断标准。
+  function exampleSentenceHtml(sentence, blanks) {
+    var ranges = [];
+    var searchFrom = 0;
+    (blanks || []).forEach(function (b) {
+      var idx = sentence.indexOf(b, searchFrom);
+      if (idx === -1) return;
+      ranges.push({ start: idx, end: idx + b.length });
+      searchFrom = idx + b.length;
+    });
+    var html = "";
+    var cursor = 0;
+    ranges.forEach(function (r) {
+      html += esc(sentence.slice(cursor, r.start));
+      html += '<b class="example-target">' + esc(sentence.slice(r.start, r.end)) + "</b>";
+      cursor = r.end;
+    });
+    html += esc(sentence.slice(cursor));
+    return '<p class="seg-example">' + html + "</p>";
+  }
+
   // 跟 build_page.py 的 sentence_card_html() 一一对应。contextSpeaker 是"进
   // 这张卡片之前，当前对话轮到谁说"的状态（由 renderQuestionBlock 按顺序
   // 维护，见那边的注释）——同一个人连续说好几句时，只有第一句在 data 里
@@ -195,6 +220,13 @@
     var quizSentenceAttr = s.quizSentence
       ? ' data-quiz-sentence="' + esc(s.quizSentence) + '"'
       : "";
+    // 跟读模式下生词卡片单词下面显示的例句——跟"填空"模式复用同一份
+    // quizSentence/blanks数据，只是这里是纯展示（挖空目标加粗，不是
+    // input），默写/填空模式下用CSS隐藏掉（见listening-page.css）。
+    // 真实反馈"跟读模式时，单词下面有没有对应的例句啊"——之前quizSentence
+    // 只在填空模式才看得到，默认的跟读模式完全看不到例句。纯文本，不做
+    // 假名注音（quizSentence本来就没有逐词kana数据，跟填空模式一致）。
+    var exampleHtml = s.quizSentence ? exampleSentenceHtml(s.quizSentence, s.blanks) : "";
     // 跟 build_page.py 的 sentence_card_html() 里 clause_bounds_attr 一一对应——
     // 见 tools/listening/build_page.py 的 sentence_to_data() 注释。
     var clauseBoundsAttr = "";
@@ -206,7 +238,7 @@
       '<div class="' + cardClass + '" id="card-a' + s.id + '"' + blanksAttr + quizSentenceAttr + clauseBoundsAttr + ">" +
         speakerHtml +
         '<p class="seg-ja">' + jaHtml + "</p>" +
-        '<p class="seg-zh">' + zh + "</p>" + notesHtml +
+        '<p class="seg-zh">' + zh + "</p>" + notesHtml + exampleHtml +
         '<audio id="a' + s.id + '" preload="none" src="' + esc(s.audio) + '"></audio>' +
       "</div>"
     );
@@ -377,6 +409,19 @@
       cardEl.dataset.blanks = JSON.stringify(s.blanks);
     } else {
       delete cardEl.dataset.blanks;
+    }
+
+    var exampleEl = cardEl.querySelector(".seg-example");
+    if (s.quizSentence) {
+      var exampleHtml = exampleSentenceHtml(s.quizSentence, s.blanks);
+      if (!exampleEl) {
+        var audioEl = cardEl.querySelector("audio");
+        audioEl.insertAdjacentHTML("beforebegin", exampleHtml);
+      } else {
+        exampleEl.outerHTML = exampleHtml;
+      }
+    } else if (exampleEl) {
+      exampleEl.remove();
     }
   }
 
