@@ -162,7 +162,7 @@
   // 定位挖空位置用的是同一套逻辑（indexOf + searchFrom 顺序往后找，
   // 处理同一段文字出现不止一次的情况），保持两处"怎么在句子里找到blanks
   // 对应的文字"这件事只有一套判断标准。
-  function exampleSentenceHtml(sentence, blanks) {
+  function exampleSentenceHtml(sentence, blanks, audioSrc) {
     var ranges = [];
     var searchFrom = 0;
     (blanks || []).forEach(function (b) {
@@ -179,7 +179,19 @@
       cursor = r.end;
     });
     html += esc(sentence.slice(cursor));
-    return '<p class="seg-example">' + html + "</p>";
+    // 例句自己的音频（跟卡片主 <audio> 是两条独立的资源）——真实反馈"点击时
+    // 播放的是单词的音频，点击句子时，播放句子的音频（如果没有就不播放）"。
+    // 没有 audioSrc 就不生成这个 <audio> 标签，点击例句区域自然找不到可播的
+    // 音频、静默不做任何事，不退化成播放单词音频（教材课的 quizSentence 目前
+    // 都没有配对的例句录音，一律落在这个"没有就不播"的分支，属于预期行为，
+    // 不是缺陷）。是不是 .seg-card 生成时唯一的 <audio> 由
+    // `document.querySelectorAll(".seg-card audio")` 那段通用 loading/playing
+    // 事件绑定自动接管（不区分是单词还是例句的音频元素，同一套逻辑），不用
+    // 专门为这第二个 <audio> 标签另外写绑定代码。
+    var audioHtml = audioSrc
+      ? '<audio class="seg-example-audio" preload="none" src="' + esc(audioSrc) + '"></audio>'
+      : "";
+    return '<p class="seg-example">' + html + audioHtml + "</p>";
   }
 
   // 跟 build_page.py 的 sentence_card_html() 一一对应。contextSpeaker 是"进
@@ -225,7 +237,7 @@
     // 真实反馈"跟读模式时，单词下面有没有对应的例句啊"——之前quizSentence
     // 只在填空模式才看得到，默认的跟读模式完全看不到例句。纯文本，不做
     // 假名注音（quizSentence本来就没有逐词kana数据，跟填空模式一致）。
-    var exampleHtml = s.quizSentence ? exampleSentenceHtml(s.quizSentence, s.blanks) : "";
+    var exampleHtml = s.quizSentence ? exampleSentenceHtml(s.quizSentence, s.blanks, s.sentenceAudio) : "";
     // 跟 build_page.py 的 sentence_card_html() 里 clause_bounds_attr 一一对应——
     // 见 tools/listening/build_page.py 的 sentence_to_data() 注释。
     var clauseBoundsAttr = "";
@@ -431,7 +443,7 @@
 
     var exampleEl = cardEl.querySelector(".seg-example");
     if (s.quizSentence) {
-      var exampleHtml = exampleSentenceHtml(s.quizSentence, s.blanks);
+      var exampleHtml = exampleSentenceHtml(s.quizSentence, s.blanks, s.sentenceAudio);
       if (!exampleEl) {
         var audioEl = cardEl.querySelector("audio");
         audioEl.insertAdjacentHTML("beforebegin", exampleHtml);

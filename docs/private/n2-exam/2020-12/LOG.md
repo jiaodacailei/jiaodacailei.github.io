@@ -418,3 +418,41 @@ active（不再是"問題1"+"生词"两个同时高亮）、生词测试"组1〜
 monkey-patch `HTMLMediaElement.prototype.play`点卡片，改之前应该能测出
 2次调用（这次没有提前验证到，是看代码直接定位到重复绑定改的），改之后
 只有1次。
+
+## 第十轮：生词卡片拆分单词音频/例句音频
+
+真实反馈"点击时播放的是单词的音频，点击句子时，播放句子的音频（如果
+没有就不播放）"。改动前卡片只有一个`audio`字段，問題1〜5/7/9的正确
+答案项这个字段存的其实是整句朗读（`q['stem']['audio']`），点卡片播放
+的不是单词本身；問題1干扰项那时候`audio`故意留null。
+
+`build_exam_vocab.py`拆成`audio`（词/语法点自己的读音——問題1〜5/7是
+`opt['audio']`，問題6是`stemWord['audio']`，問題8是override里的
+`audio`，問題9是`opt.get('audio')`，問題1干扰项是`dopt['audio']`）+
+`sentenceAudio`（`quizSentence`那句话整句朗读——問題1〜5/7是
+`q['stem']['audio']`，問題6是对应选项`sentences[0]['audio']`，問題9是
+从`passageSentences`按子串匹配到那句自己的`audio`）。問題8（句子是拼出
+来的，没有整句录音）和問題1干扰项（例句手写，没有对应录音）天然没有
+`sentenceAudio`，留`None`。順帯把問題1干扰项的`audio`也从null改成真实的
+`dopt['audio']`——之前留null是怕跟"点卡片=放整句"的语义混淆，拆开两个
+字段之后这层顾虑不存在了。
+
+`page-renderer.js`的`exampleSentenceHtml()`加第三个参数`audioSrc`，有值
+才生成`<audio class="seg-example-audio">`（跟卡片主`<audio>`是两条独立
+资源）。`listening-page.js`的卡片点击监听按`e.target.closest(".seg-
+example")`分流：点例句区域播例句自己的`<audio>`（没有就静默不播，不退化
+放单词音频）；点卡片其它区域走原来的`playScope("sentence", ...)`逻辑。
+
+**踩了一个真坑**：`exampleHtml`在`renderCard()`模板拼接时排在主`<audio>`
+标签前面，导致例句`<audio>`在DOM里排第一——`playScope()`原来的
+`el.querySelector("audio")`/`el.querySelectorAll("audio")`不管是"播这一句"
+还是"连播整题/整大题"，选到的都会是排在前面的例句音频，不是单词音频（连播
+整段还会把例句音频也算进播放队列，多播一遍）。改成`playScope()`三个分支
+统一用`audio:not(.seg-example-audio)`选择器排除例句音频，不依赖DOM顺序。
+
+本地验证：`HTMLMediaElement.prototype.play`打点确认——点问題1 id1单词播
+`q1_opt2.mp3`（不再是`q1_stem.mp3`整句），点例句播`q1_stem.mp3`；干扰项
+id1011点单词播`q1_opt1.mp3`（之前是完全不播），点例句静默不播（没有
+`sentenceAudio`）；問題1整个h2连播是"61/61"（不是被例句音频撑到122）。
+l10回归：普通对话卡片点击不受影响，生词tab单词点击正常播放，没有例句
+录音的例句区域点击静默不播，生词section整段连播数量跟词数一致。

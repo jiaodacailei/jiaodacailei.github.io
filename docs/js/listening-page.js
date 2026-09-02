@@ -346,15 +346,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 切完再紧接着开始新播放，不会产生"播了一半又被 Tab 停掉"的竞态。
       document.dispatchEvent(new CustomEvent("activateTab", { detail: { idx: navIndex } }));
     }
+    // 生词卡片的例句音频（.seg-example-audio，见 page-renderer.js 的
+    // exampleSentenceHtml()）是点例句区域单独点播用的，不算进这里"连续播完
+    // 一句/一题/一个大题"的正常队列——否则连播整段时每张生词卡片会跟着多播
+    // 一遍例句，跟"点单词播单词音频"的预期对不上。
     var audios, label;
     if (navType === "sentence") {
-      audios = [el.querySelector("audio")];
+      audios = [el.querySelector("audio:not(.seg-example-audio)")];
       label = "文 " + (navIndex + 1) + " / " + navSiblings.length;
     } else if (navType === "question") {
-      audios = Array.from(el.querySelectorAll("audio"));
+      audios = Array.from(el.querySelectorAll("audio:not(.seg-example-audio)"));
       label = "小問 " + el.querySelector("h3").textContent.trim();
     } else {
-      audios = Array.from(el.querySelectorAll("audio"));
+      audios = Array.from(el.querySelectorAll("audio:not(.seg-example-audio)"));
       label = "大問 " + el.querySelector("h2").textContent.trim();
     }
     player.audios.forEach(function(a) { a.onended = null; a.pause(); });
@@ -529,8 +533,33 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
   });
 
+  // 点卡片播放：例句区域（.seg-example，生词卡片才有）和卡片其它区域分开
+  // 处理——真实反馈"点击时播放的是单词的音频，点击句子时，播放句子的音频
+  // （如果没有就不播放）"。例句自己的 <audio>（没有就是 undefined，静默不
+  // 播，不退化去放单词audio）是独立于卡片主 <audio> 的第二条音频资源，见
+  // page-renderer.js 的 exampleSentenceHtml()。例句播放不接入下面的
+  // player.audios 播放队列/迷你播放器导航（不是"连续播放一串句子"这种场景，
+  // 只是单次点播），loading/playing 视觉反馈复用下面"每个 <audio> 元素只
+  // 绑一次"那段通用监听器（第150行左右，`.seg-card audio` 选择器本来就会
+  // 选中这第二个 <audio>，不用另外写）。
+  function playExampleAudio(audio) {
+    document.dispatchEvent(new CustomEvent("stopAllAudio"));
+    var card = audio.closest(".seg-card");
+    if (card) card.classList.add("loading");
+    prepareAudioSrc(audio).then(function() {
+      audio.currentTime = 0;
+      safePlay(audio);
+    });
+  }
+
   document.querySelectorAll(".seg-card").forEach(function(card) {
-    card.addEventListener("click", function() {
+    card.addEventListener("click", function(e) {
+      var exampleEl = e.target.closest(".seg-example");
+      if (exampleEl) {
+        var sentAudio = exampleEl.querySelector("audio");
+        if (sentAudio) playExampleAudio(sentAudio);
+        return;
+      }
       var block = card.closest(".question-block");
       var siblings = block ? Array.from(block.querySelectorAll(".seg-card")) : [card];
       playScope("sentence", siblings, siblings.indexOf(card));

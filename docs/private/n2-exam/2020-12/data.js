@@ -45021,7 +45021,8 @@ window.EXAM_DATA = {
       "blanks": [
         "倒さない"
       ],
-      "audio": "audio/q1_stem.mp3",
+      "audio": "audio/q1_opt2.mp3",
+      "sentenceAudio": "audio/q1_stem.mp3",
       "quizSentence": "倒さないように気をつけてください。"
     },
     {
@@ -45039,7 +45040,8 @@ window.EXAM_DATA = {
       "blanks": [
         "損害"
       ],
-      "audio": "audio/q2_stem.mp3",
+      "audio": "audio/q2_opt3.mp3",
+      "sentenceAudio": "audio/q2_stem.mp3",
       "quizSentence": "今回の件での損害は数千万円にのぼった。"
     },
     {
@@ -45057,7 +45059,8 @@ window.EXAM_DATA = {
       "blanks": [
         "険しい"
       ],
-      "audio": "audio/q3_stem.mp3",
+      "audio": "audio/q3_opt4.mp3",
+      "sentenceAudio": "audio/q3_stem.mp3",
       "quizSentence": "思ったより険しい山道だった。"
     },
     {
@@ -45075,7 +45078,8 @@ window.EXAM_DATA = {
       "blanks": [
         "比較的"
       ],
-      "audio": "audio/q4_stem.mp3",
+      "audio": "audio/q4_opt3.mp3",
+      "sentenceAudio": "audio/q4_stem.mp3",
       "quizSentence": "この辺は比較的人通りが少ない。"
     },
     {
@@ -45093,7 +45097,8 @@ window.EXAM_DATA = {
       "blanks": [
         "下降"
       ],
-      "audio": "audio/q5_stem.mp3",
+      "audio": "audio/q5_opt1.mp3",
+      "sentenceAudio": "audio/q5_stem.mp3",
       "quizSentence": "飛行機は下降を始めた。"
     },
     {
@@ -45111,7 +45116,8 @@ window.EXAM_DATA = {
       "blanks": [
         "鮮やか"
       ],
-      "audio": "audio/q6_stem.mp3",
+      "audio": "audio/q6_opt1.mp3",
+      "sentenceAudio": "audio/q6_stem.mp3",
       "quizSentence": "鈴木さんは鮮やかな色のシャツを着ていた。"
     },
     {
@@ -45129,7 +45135,8 @@ window.EXAM_DATA = {
       "blanks": [
         "帰省"
       ],
-      "audio": "audio/q7_stem.mp3",
+      "audio": "audio/q7_opt3.mp3",
+      "sentenceAudio": "audio/q7_stem.mp3",
       "quizSentence": "今年の夏休みは帰省の予定はありません。"
     },
     {
@@ -45147,7 +45154,8 @@ window.EXAM_DATA = {
       "blanks": [
         "縮めて"
       ],
-      "audio": "audio/q8_stem.mp3",
+      "audio": "audio/q8_opt4.mp3",
+      "sentenceAudio": "audio/q8_stem.mp3",
       "quizSentence": "もう少し縮めてください。"
     },
     {
@@ -45165,7 +45173,8 @@ window.EXAM_DATA = {
       "blanks": [
         "実践"
       ],
-      "audio": "audio/q9_stem.mp3",
+      "audio": "audio/q9_opt2.mp3",
+      "sentenceAudio": "audio/q9_stem.mp3",
       "quizSentence": "これからさまざまなことを実践していきたい。"
     },
     {
@@ -45183,7 +45192,8 @@ window.EXAM_DATA = {
       "blanks": [
         "異色"
       ],
-      "audio": "audio/q10_stem.mp3",
+      "audio": "audio/q10_opt1.mp3",
+      "sentenceAudio": "audio/q10_stem.mp3",
       "quizSentence": "西村氏の作品の中ではこの小説は、かなり異色だ。"
     },
     {
@@ -45201,7 +45211,8 @@ window.EXAM_DATA = {
       "blanks": [
         "再"
       ],
-      "audio": "audio/q11_stem.mp3",
+      "audio": "audio/q11_opt3.mp3",
+      "sentenceAudio": "audio/q11_stem.mp3",
       "quizSentence": "宿題を再提出するよう、先生に言われた。"
     },
     {
@@ -45219,7 +45230,8 @@ window.EXAM_DATA = {
       "blanks": [
         "育ち"
       ],
-      "audio": "audio/q12_stem.mp3",
+      "audio": "audio/q12_opt1.mp3",
+      "sentenceAudio": "audio/q12_stem.mp3",
       "quizSentence": "あの人は都会育ちだ。"
     },
     {
@@ -45237,7 +45249,8 @@ window.EXAM_DATA = {
       "blanks": [
         "一"
       ],
-      "audio": "audio/q13_stem.mp3",
+      "audio": "audio/q13_opt4.mp3",
+      "sentenceAudio": "audio/q13_stem.mp3",
       "quizSentence": "一仕事終わったので、休憩しよう。"
     },
     {
@@ -45255,7 +45268,8 @@ window.EXAM_DATA = {
       "blanks": [
         "評価"
       ],
-      "audio": "audio/q14_stem.mp3",
+      "audio": "audio/q14_opt2.mp3",
+      "sentenceAudio": "audio/q14_stem.mp3",
       "quizSentence": "彼の演技はとても個性的で、見る人の評価が大きく分かれる。"
     },
     {
@@ -45273,7 +45287,8 @@ window.EXAM_DATA = {
       "blanks": [
         "尊重"
       ],
-      "audio": "audio/q15_stem.mp3",
+      "audio": "audio/q15_opt1.mp3",
+      "sentenceAudio": "audio/q15_stem.mp3",
       "quizSentence": "話し合いでは、相手の意見を尊重し、よく聞くことが大切だ。"
     },
     {
@@ -45290,7 +45305,8 @@ window.EXAM_DATA = {
       "blanks": [
         "ターゲット"
       ],
-      "audio": "audio/q16_stem.mp3",
+      "audio": "audio/q16_opt4.mp3",
+      "sentenceAudio": "audio/q16_stem.mp3",
       "quizSentence": "この商品は健康を気にする40代から50代の人をターゲットに開発しました。"
     },
     {
@@ -45308,7 +45324,8 @@ window.EXAM_DATA = {
       "blanks": [
         "独特"
       ],
-      "audio": "audio/q17_stem.mp3",
+      "audio": "audio/q17_opt3.mp3",
+      "sentenceAudio": "audio/q17_stem.mp3",
       "quizSentence": "佐藤さんは服装や髪形が個性的で、他の人とは違う独特の雰囲気がある。"
     },
     {
@@ -45326,7 +45343,8 @@ window.EXAM_DATA = {
       "blanks": [
         "争って"
       ],
-      "audio": "audio/q18_stem.mp3",
+      "audio": "audio/q18_opt2.mp3",
+      "sentenceAudio": "audio/q18_stem.mp3",
       "quizSentence": "前回の大会では、あの二人は最後まで優勝を争ってした。"
     },
     {
@@ -45344,7 +45362,8 @@ window.EXAM_DATA = {
       "blanks": [
         "気配"
       ],
-      "audio": "audio/q19_stem.mp3",
+      "audio": "audio/q19_opt3.mp3",
+      "sentenceAudio": "audio/q19_stem.mp3",
       "quizSentence": "高橋さんの家を訪ねたが、みんな出かけているようで、人の気配がなかった。"
     },
     {
@@ -45361,7 +45380,8 @@ window.EXAM_DATA = {
       "blanks": [
         "いいかげんな"
       ],
-      "audio": "audio/q20_stem.mp3",
+      "audio": "audio/q20_opt4.mp3",
+      "sentenceAudio": "audio/q20_stem.mp3",
       "quizSentence": "彼は自分で決めたルールも守らない、いいかげんな人だ。"
     },
     {
@@ -45379,7 +45399,8 @@ window.EXAM_DATA = {
       "blanks": [
         "案内して"
       ],
-      "audio": "audio/q21_stem.mp3",
+      "audio": "audio/q21_opt1.mp3",
+      "sentenceAudio": "audio/q21_stem.mp3",
       "quizSentence": "ボランティアで町の名作を案内してしている。"
     },
     {
@@ -45396,7 +45417,8 @@ window.EXAM_DATA = {
       "blanks": [
         "まじめに"
       ],
-      "audio": "audio/q22_stem.mp3",
+      "audio": "audio/q22_opt4.mp3",
+      "sentenceAudio": "audio/q22_stem.mp3",
       "quizSentence": "山口さんもまじめに作っていた。"
     },
     {
@@ -45413,7 +45435,8 @@ window.EXAM_DATA = {
       "blanks": [
         "あまりない"
       ],
-      "audio": "audio/q23_stem.mp3",
+      "audio": "audio/q23_opt1.mp3",
+      "sentenceAudio": "audio/q23_stem.mp3",
       "quizSentence": "彼女のような歌手はあまりないだと思う。"
     },
     {
@@ -45431,7 +45454,8 @@ window.EXAM_DATA = {
       "blanks": [
         "一日中"
       ],
-      "audio": "audio/q24_stem.mp3",
+      "audio": "audio/q24_opt3.mp3",
+      "sentenceAudio": "audio/q24_stem.mp3",
       "quizSentence": "この道は一日中通行止めです。"
     },
     {
@@ -45449,7 +45473,8 @@ window.EXAM_DATA = {
       "blanks": [
         "触って"
       ],
-      "audio": "audio/q25_stem.mp3",
+      "audio": "audio/q25_opt2.mp3",
+      "sentenceAudio": "audio/q25_stem.mp3",
       "quizSentence": "青木さんは髪を触っていた。"
     },
     {
@@ -45468,6 +45493,7 @@ window.EXAM_DATA = {
         "初期"
       ],
       "audio": "audio/q26_stem.mp3",
+      "sentenceAudio": "audio/q26_opt2_s1.mp3",
       "quizSentence": "この建物は有名な建築物で、明治時代の初期に建てられました。"
     },
     {
@@ -45486,6 +45512,7 @@ window.EXAM_DATA = {
         "打ち明けた"
       ],
       "audio": "audio/q27_stem.mp3",
+      "sentenceAudio": "audio/q27_opt4_s1.mp3",
       "quizSentence": "ずっと秘密にしていたことを友達に打ち明けた。"
     },
     {
@@ -45504,6 +45531,7 @@ window.EXAM_DATA = {
         "欠陥"
       ],
       "audio": "audio/q28_stem.mp3",
+      "sentenceAudio": "audio/q28_opt3_s1.mp3",
       "quizSentence": "先月発売された車のブレーキに欠陥が見つかり、販売が中止された。"
     },
     {
@@ -45522,6 +45550,7 @@ window.EXAM_DATA = {
         "引退"
       ],
       "audio": "audio/q29_stem.mp3",
+      "sentenceAudio": "audio/q29_opt2_s1.mp3",
       "quizSentence": "これまで多くの名作を残した映画監督が、今回限りで引退することを発表した。"
     },
     {
@@ -45539,6 +45568,7 @@ window.EXAM_DATA = {
         "ぎっしり"
       ],
       "audio": "audio/q30_stem.mp3",
+      "sentenceAudio": "audio/q30_opt1_s1.mp3",
       "quizSentence": "大きな箱に本がぎっしり詰まっている。"
     },
     {
@@ -45555,7 +45585,8 @@ window.EXAM_DATA = {
       "blanks": [
         "ぶりに"
       ],
-      "audio": "audio/q31_stem.mp3",
+      "audio": "audio/q31_opt3.mp3",
+      "sentenceAudio": "audio/q31_stem.mp3",
       "quizSentence": "明日、海外に留学中の友人が一年ぶりに帰国する。 会って話を聞くのが楽しみだ。"
     },
     {
@@ -45572,7 +45603,8 @@ window.EXAM_DATA = {
       "blanks": [
         "こそ"
       ],
-      "audio": "audio/q32_stem.mp3",
+      "audio": "audio/q32_opt1.mp3",
+      "sentenceAudio": "audio/q32_stem.mp3",
       "quizSentence": "12年間付き合っている彼女に、今年こそ結婚を申し込もうと思っている。"
     },
     {
@@ -45589,7 +45621,8 @@ window.EXAM_DATA = {
       "blanks": [
         "ところから"
       ],
-      "audio": "audio/q33_stem.mp3",
+      "audio": "audio/q33_opt4.mp3",
+      "sentenceAudio": "audio/q33_stem.mp3",
       "quizSentence": "腰の曲がった老人に似ているところからエビは「海老」とも書かれると聞いた。"
     },
     {
@@ -45606,7 +45639,8 @@ window.EXAM_DATA = {
       "blanks": [
         "あとは"
       ],
-      "audio": "audio/q34_stem.mp3",
+      "audio": "audio/q34_opt2.mp3",
+      "sentenceAudio": "audio/q34_stem.mp3",
       "quizSentence": "上司「セミナー会場の準備はどう？　順調？」\n部下「ええ。　いすも並び終わりましたし。あとは資料を受付に運ぶだけです。」"
     },
     {
@@ -45624,7 +45658,8 @@ window.EXAM_DATA = {
       "blanks": [
         "場合でも"
       ],
-      "audio": "audio/q35_stem.mp3",
+      "audio": "audio/q35_opt1.mp3",
+      "sentenceAudio": "audio/q35_stem.mp3",
       "quizSentence": "このテニスコートの利用料金は2時間1000円で、1時間しか使わない場合でも、1000円払わなければならない。"
     },
     {
@@ -45642,7 +45677,8 @@ window.EXAM_DATA = {
       "blanks": [
         "簡単なようでいて"
       ],
-      "audio": "audio/q36_stem.mp3",
+      "audio": "audio/q36_opt4.mp3",
+      "sentenceAudio": "audio/q36_stem.mp3",
       "quizSentence": "毎日日記を書きつづけることは簡単なようでいて、けっこう難しいことだ。"
     },
     {
@@ -45660,7 +45696,8 @@ window.EXAM_DATA = {
       "blanks": [
         "枯れてしまわないか"
       ],
-      "audio": "audio/q37_stem.mp3",
+      "audio": "audio/q37_opt2.mp3",
+      "sentenceAudio": "audio/q37_stem.mp3",
       "quizSentence": "梅雨に入ってもほとんど雨が降らないので、庭の花が枯れてしまわないか心配だ。"
     },
     {
@@ -45678,7 +45715,8 @@ window.EXAM_DATA = {
       "blanks": [
         "見に行くつもりだった"
       ],
-      "audio": "audio/q38_stem.mp3",
+      "audio": "audio/q38_opt3.mp3",
+      "sentenceAudio": "audio/q38_stem.mp3",
       "quizSentence": "今日は、本当は映画を見に行くつもりだったが、雪が降ってきたので、やめた。"
     },
     {
@@ -45696,7 +45734,8 @@ window.EXAM_DATA = {
       "blanks": [
         "判断しかねる"
       ],
-      "audio": "audio/q39_stem.mp3",
+      "audio": "audio/q39_opt2.mp3",
+      "sentenceAudio": "audio/q39_stem.mp3",
       "quizSentence": "今日の戦略が有効であったかどうかは、まだ結果が出ていない現時点では判断しかねる。"
     },
     {
@@ -45714,7 +45753,8 @@ window.EXAM_DATA = {
       "blanks": [
         "走り出しそうだ"
       ],
-      "audio": "audio/q40_stem.mp3",
+      "audio": "audio/q40_opt3.mp3",
+      "sentenceAudio": "audio/q40_stem.mp3",
       "quizSentence": "この馬の絵は本物そっくりに描かれていて、今にも走り出しそうだ。"
     },
     {
@@ -45732,7 +45772,8 @@ window.EXAM_DATA = {
       "blanks": [
         "お越しくださいました"
       ],
-      "audio": "audio/q41_stem.mp3",
+      "audio": "audio/q41_opt1.mp3",
+      "sentenceAudio": "audio/q41_stem.mp3",
       "quizSentence": "わたしたちが旅館に着くと、従業員たちが笑顔で「ようこそお越しくださいました。」とあいさつしてくれた。"
     },
     {
@@ -45749,7 +45790,8 @@ window.EXAM_DATA = {
       "blanks": [
         "よければだけど"
       ],
-      "audio": "audio/q42_stem.mp3",
+      "audio": "audio/q42_opt4.mp3",
+      "sentenceAudio": "audio/q42_stem.mp3",
       "quizSentence": "木村「田中さん、アルバイトを探しているんだって？」\n田中「うん、そうなんだ。」\n木村「私が働いてる店がアルバイトを募集してるから、応募してみない？　もちろん、田中さんがよければだけど。」"
     },
     {
@@ -45767,6 +45809,7 @@ window.EXAM_DATA = {
         "とおりに"
       ],
       "audio": "audio/q43_opt3.mp3",
+      "sentenceAudio": null,
       "quizSentence": "昨日初めてパンを作ってみた。 料理雑誌レシピに書いてある　とおりに　作った　のに、うまく膨らまなかった。"
     },
     {
@@ -45785,6 +45828,7 @@ window.EXAM_DATA = {
         "に対して"
       ],
       "audio": null,
+      "sentenceAudio": null,
       "quizSentence": "「10倍がゆ」とは、米1に対して　10倍の　水で　作ったおかゆのことです。"
     },
     {
@@ -45803,6 +45847,7 @@ window.EXAM_DATA = {
         "決して"
       ],
       "audio": "audio/q45_opt1.mp3",
+      "sentenceAudio": null,
       "quizSentence": "私が就職した商社は大手の商社に比べると　決して　規模は大きくないが　やる気があれば新人でも大きな仕事を任せてもらえるので、やりがいがある。"
     },
     {
@@ -45821,6 +45866,7 @@ window.EXAM_DATA = {
         "抜きに"
       ],
       "audio": null,
+      "sentenceAudio": null,
       "quizSentence": "彼女は1970年代に活躍したジャズピアニストで、この人抜きには　日本のジャズは　語れない　というほど大きな存在だった。"
     },
     {
@@ -45839,6 +45885,7 @@ window.EXAM_DATA = {
         "思い込み"
       ],
       "audio": null,
+      "sentenceAudio": null,
       "quizSentence": "贈り物をするときは、自分の勝手な思い込みだけで　品物を選ぶと　喜ばれるどころか　迷惑をかけることもあるので、相手の趣味や都合をよく考えて決めましょう。"
     },
     {
@@ -45857,6 +45904,7 @@ window.EXAM_DATA = {
         "ご存じでしょうか"
       ],
       "audio": "audio/q48_opt3.mp3",
+      "sentenceAudio": "audio/mondai9_passage_s7.mp3",
       "quizSentence": "最近、介護の現場で注目されているものですが、みなさん、 ご存じでしょうか 。"
     },
     {
@@ -45874,6 +45922,7 @@ window.EXAM_DATA = {
         "そこで"
       ],
       "audio": "audio/q49_opt1.mp3",
+      "sentenceAudio": "audio/mondai9_passage_s11.mp3",
       "quizSentence": "そこで 、「アニマル・セラピー」に替わるものとして最近「ロボット・セラピー」が注目されるようになりました。"
     },
     {
@@ -45892,6 +45941,7 @@ window.EXAM_DATA = {
         "得られるのだそうです"
       ],
       "audio": "audio/q50_opt3.mp3",
+      "sentenceAudio": "audio/mondai9_passage_s15.mp3",
       "quizSentence": "こういったロボットとの触れ合いによって、精神的安定やコミュニケーション能力の改善などの効果が 得られるのだそうです 。"
     },
     {
@@ -45910,6 +45960,7 @@ window.EXAM_DATA = {
         "貢献できるようになりたいです"
       ],
       "audio": "audio/q51_opt4.mp3",
+      "sentenceAudio": "audio/mondai9_passage_s18.mp3",
       "quizSentence": "そして、医療分野に 貢献できるようになりたいです 。"
     },
     {
@@ -45927,7 +45978,8 @@ window.EXAM_DATA = {
       "blanks": [
         "崩さない"
       ],
-      "audio": null,
+      "audio": "audio/q1_opt1.mp3",
+      "sentenceAudio": null,
       "quizSentence": "積み木を崩さないように、そっと歩いてください。"
     },
     {
@@ -45945,7 +45997,8 @@ window.EXAM_DATA = {
       "blanks": [
         "壊さない"
       ],
-      "audio": null,
+      "audio": "audio/q1_opt3.mp3",
+      "sentenceAudio": null,
       "quizSentence": "おもちゃを壊さないように大事に扱ってください。"
     },
     {
@@ -45963,7 +46016,8 @@ window.EXAM_DATA = {
       "blanks": [
         "潰さない"
       ],
-      "audio": null,
+      "audio": "audio/q1_opt4.mp3",
+      "sentenceAudio": null,
       "quizSentence": "豆腐を潰さないように、そっと持ってください。"
     },
     {
@@ -45981,7 +46035,8 @@ window.EXAM_DATA = {
       "blanks": [
         "損壊"
       ],
-      "audio": null,
+      "audio": "audio/q2_opt2.mp3",
+      "sentenceAudio": null,
       "quizSentence": "地震で多くの建物が損壊した。"
     },
     {
@@ -45999,7 +46054,8 @@ window.EXAM_DATA = {
       "blanks": [
         "被害"
       ],
-      "audio": null,
+      "audio": "audio/q2_opt4.mp3",
+      "sentenceAudio": null,
       "quizSentence": "台風による被害が各地で報告されている。"
     },
     {
@@ -46017,7 +46073,8 @@ window.EXAM_DATA = {
       "blanks": [
         "苦しい"
       ],
-      "audio": null,
+      "audio": "audio/q3_opt1.mp3",
+      "sentenceAudio": null,
       "quizSentence": "長時間走り続けて、息が苦しい。"
     },
     {
@@ -46035,7 +46092,8 @@ window.EXAM_DATA = {
       "blanks": [
         "寂しい"
       ],
-      "audio": null,
+      "audio": "audio/q3_opt2.mp3",
+      "sentenceAudio": null,
       "quizSentence": "一人暮らしは寂しいと感じることがある。"
     },
     {
@@ -46053,7 +46111,8 @@ window.EXAM_DATA = {
       "blanks": [
         "激しい"
       ],
-      "audio": null,
+      "audio": "audio/q3_opt3.mp3",
+      "sentenceAudio": null,
       "quizSentence": "昨夜は激しい雨が降った。"
     },
     {
@@ -46071,7 +46130,8 @@ window.EXAM_DATA = {
       "blanks": [
         "架空"
       ],
-      "audio": null,
+      "audio": "audio/q5_opt2.mp3",
+      "sentenceAudio": null,
       "quizSentence": "この小説に出てくる町は架空のものだ。"
     },
     {
@@ -46089,7 +46149,8 @@ window.EXAM_DATA = {
       "blanks": [
         "下校"
       ],
-      "audio": null,
+      "audio": "audio/q5_opt3.mp3",
+      "sentenceAudio": null,
       "quizSentence": "子供たちは午後3時に下校する。"
     }
   ],

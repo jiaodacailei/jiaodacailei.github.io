@@ -94,6 +94,23 @@ BLANKS_OVERRIDE/問題8 的 overrides）是2020年12月这一套核对完的结�
    值本身，按数字后缀数值排序（不是字符串排序，避免"组10"排到"组2"
    前面）。这是共享文件，改完要在l10之类的教材课页面回归测试一遍
    分类筛选行为没变。
+
+7. `audio`/`sentenceAudio`两个字段分开（真实反馈"点击时播放的是单词的
+   音频，点击句子时，播放句子的音频（如果没有就不播放）"）——`audio`永远
+   是这个词/语法点自己的读音（問題1〜5/7是`opt['audio']`、問題6是
+   `stemWord['audio']`、問題8是`MONDAI8_OVERRIDE`里的`audio`、問題9是
+   `opt.get('audio')`，問題1干扰项是`dopt['audio']`，都是"读这一个词/
+   片段"的音频，不是整句），`sentenceAudio`是`quizSentence`那句话完整
+   朗读的音频（問題1〜5/7是`q['stem']['audio']`、問題6是对应选项那句
+   `sentences[0]['audio']`、問題9是从`passageSentences`里按子串匹配到的
+   那句自己的`audio`），問題8（排序题，句子是拼出来的，没有整句的录音）
+   和問題1干扰项（例句是手写的，没有对应录音）这两类天然没有sentenceAudio，
+   留`None`——点击例句区域会静默不播，不是bug。改这两个字段之前只有一个
+   `audio`，问題1〜5/7/9的正确答案项写的是`sentenceAudio`现在这个值（整句
+   朗读），点卡片播放放的其实是整句、不是单词本身；問題1干扰项那时候故意
+   把`audio`留null（怕跟"点卡片=放整句"的语义混淆，能用的`dopt['audio']`
+   没有用上）——分开两个字段之后这层顾虑不存在了，干扰项现在也有真实的单词
+   读音可以点。
 """
 import sys
 import json
@@ -277,7 +294,7 @@ def main():
                     items.append({
                         'mondai': 8, 'qid': q['id'],
                         'wordText': ov['text'], 'wordKana': ov['kana'],
-                        'audio': ov['audio'],
+                        'audio': ov['audio'], 'sentenceAudio': None,
                         'quizSentence': ''.join(t['text'] for t in q['stem']['tokens']),
                         'zh': ov['zh'],
                         'sentence_zh': ov['sentence_zh'],
@@ -291,15 +308,17 @@ def main():
                     word_text = opt_text(opt['tokens'])
                     word_kana = opt_reading(opt['tokens'])
                     example = None
+                    example_audio = None
                     for s in passage_sents:
                         stext = ''.join(t['text'] for t in s['tokens'])
                         if word_text in stext:
                             example = stext
+                            example_audio = s.get('audio')
                             break
                     items.append({
                         'mondai': 9, 'qid': q['id'],
                         'wordText': word_text, 'wordKana': word_kana,
-                        'audio': opt.get('audio'),
+                        'audio': opt.get('audio'), 'sentenceAudio': example_audio,
                         'quizSentence': example,
                         'zh_source': q['explanationZh'],
                     })
@@ -313,7 +332,7 @@ def main():
                         'mondai': 6, 'qid': q['id'],
                         'wordText': opt_text(q['stemWord']['tokens']),
                         'wordKana': opt_reading(q['stemWord']['tokens']),
-                        'audio': q['stemWord']['audio'],
+                        'audio': q['stemWord']['audio'], 'sentenceAudio': sent.get('audio'),
                         'quizSentence': ''.join(t['text'] for t in sent['tokens']),
                         'zh_source': q['explanationZh'],
                         'answer': q['answer'],
@@ -331,7 +350,12 @@ def main():
                 items.append({
                     'mondai': m['mondai'], 'qid': q['id'],
                     'wordText': word_text, 'wordKana': word_kana,
-                    'audio': q['stem']['audio'],
+                    # audio是这个词/选项本身的读音（opt['audio']），
+                    # sentenceAudio是整句的朗读（q['stem']['audio']）——两条
+                    # 独立的音频，之前这里只有一个'audio'字段、值是整句朗读，
+                    # 点卡片播放放的其实是整句而不是单词本身。真实反馈"点击时
+                    # 播放的是单词的音频，点击句子时，播放句子的音频"之后拆开。
+                    'audio': opt['audio'], 'sentenceAudio': q['stem']['audio'],
                     'quizSentence': ''.join(t['text'] for t in q['stem']['tokens']),
                     'zh_source': q['explanationZh'],
                 })
@@ -354,7 +378,13 @@ def main():
                         items.append({
                             'mondai': 1, 'qid': 1000 + q['id'] * 10 + dopt['idx'],
                             'wordText': dkanji, 'wordKana': dkana,
-                            'audio': None,
+                            # 干扰项自己有单读这个词的音频（dopt['audio']）——
+                            # 之前拆audio/sentenceAudio之前，这条故意留null是
+                            # 因为怕跟"点卡片=放整句"的语义混淆；现在卡片点击
+                            # 已经分成"点单词=放单词音频/点例句=放例句音频"两
+                            # 块，这层顾虑不存在了，直接用真实的单词音频。
+                            # sentenceAudio留None——手写的例句没有对应录音。
+                            'audio': dopt['audio'], 'sentenceAudio': None,
                             'quizSentence': dsentence,
                             'zh': dmeaning,
                             'sentence_zh': dsentence_zh,
@@ -429,6 +459,7 @@ def main():
             'notes': '',
             'blanks': [it['blanks']],
             'audio': it['audio'],
+            'sentenceAudio': it.get('sentenceAudio'),
             'quizSentence': it['quizSentence'],
         })
         # 跟 build_vocab_quiz_data.py 生成的教材课quiz数据同一套字段名，
