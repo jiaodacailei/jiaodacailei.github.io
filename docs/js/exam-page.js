@@ -360,17 +360,16 @@
       if (src) playAudio(src, playBtn);
       return;
     }
-    // 「生词」tab的.seg-card——没加载完整的listening-page.js（见
-    // vocabSectionHtml()注释），点击整张卡片播放这个词的发音，跟
-    // listening-page.js里"点卡片播放"的效果一致，但复用的是这个文件
-    // 自己的playAudio()（loading/playing这套class两边CSS共用同一套
-    // 规则，见listening-page.css的.seg-card.loading/.playing）。
-    var segCard = e.target.closest(".seg-card");
-    if (segCard) {
-      var segAudio = segCard.querySelector("audio");
-      if (segAudio && segAudio.getAttribute("src")) playAudio(segAudio.getAttribute("src"), segCard);
-      return;
-    }
+    // 「生词」tab的.seg-card点击播放**不**在这里处理——这段注释曾经写的
+    // "没加载完整的listening-page.js"是第五轮（刚加生词tab、还没接跟读/
+    // 默写/填空模式）时的状态，第六轮已经把listening-page.js完整加载进
+    // 这个页面（见index.html），它自己就有一段全局的
+    // `.seg-card`点击监听（在`.question-block`范围内联播），会跟这里
+    // 重复绑定的处理器同时触发——真实反馈"选中某个单词播放时，有时会
+    // 有回声（好像两次播放一前一后）"：两边各自维护一份完全独立的
+    // audio（这里是`new Audio()`的`player`，listening-page.js放的是卡片
+    // 自带的`<audio>`标签本身），同一次点击触发两条播放链，听起来就是
+    // 一前一后的回声。这里不再重复处理，交给listening-page.js唯一负责。
     if (submitted) return;
     var mSubmitBtn = e.target.closest(".exam-mondai-submit-btn");
     if (mSubmitBtn) {
