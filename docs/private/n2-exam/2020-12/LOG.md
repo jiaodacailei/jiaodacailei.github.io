@@ -403,3 +403,18 @@ active（不再是"問題1"+"生词"两个同时高亮）、生词测试"组1〜
 - 判分目前只有"总对错数"+"每個問題对错"，没有做JLPT官方量表分换算。
 - 問題1干扰项试点效果如果用户确认可以，問題2/3/5/6这几个"选项本身是词"
   的題型可以照同一套思路扩展（読解类不适用，选项是整句复述/推理判断）。
+
+## 第九轮：修生词tab播放回声bug
+
+真实反馈（线上页面）"生词tab，选中某个单词播放时，有时会有回声（好像
+两次播放一前一后）"。根因：exam-page.js第五轮加生词tab时自己给
+`.seg-card`绑了一份点击播放（当时listening-page.js还没加载进这个页面），
+第六轮为了支持跟读/默写/填空模式把listening-page.js完整加载进来之后，
+它自己那份全局`.seg-card`点击监听（在`.question-block`范围内联播）
+也会绑到同一批卡片上——exam-page.js那份没删，两边各用一个独立的audio
+对象（exam-page.js是`new Audio()`，listening-page.js放的是卡片自带的
+`<audio>`标签）播放同一个文件，一次点击触发两条播放链。exam-page.js
+不再处理`.seg-card`点击，交给listening-page.js唯一负责。本地验证：
+monkey-patch `HTMLMediaElement.prototype.play`点卡片，改之前应该能测出
+2次调用（这次没有提前验证到，是看代码直接定位到重复绑定改的），改之后
+只有1次。
