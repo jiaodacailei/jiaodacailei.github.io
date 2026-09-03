@@ -159,14 +159,27 @@ def merge_blanks(sentence_obj, new_blanks):
     位置，静默变成没有任何效果的空目标，不会报错但也不会真的抠出一个空。
     只在新目标完全没有被任何现有blank整段包含时才追加，避免这种"看起来加了
     但其实是废数据"的情况。反过来"新目标更长、现有的是它的子串"这种情况
-    这一课没遇到，暂不处理，遇到了再扩展。"""
+    这一课没遇到，暂不处理，遇到了再扩展。
+
+    **加完之后必须按新目标在原文里的实际出现位置重新排一遍`blanks`顺序**——
+    同一条setupBlankForCard()的searchFrom是单调向后推进的，只要求"按数组
+    顺序"，不认"先加的排前面"这种插入顺序。真实bug：语法点的目标词经常
+    排在句子靠前的位置（比如"東西南北の棟が…"的"東西南北"在句首），而
+    这句原有的（生词表来源的）blank可能排在句子靠后（"庭を中心に"）——
+    如果只是无脑append，新目标会被排在已有blank后面、但在原文里的真实
+    位置却在前面，导致searchFrom越过它之后再也找不到，新加的这个空
+    静默失效（不报错，打开填空模式却看不到）。这一课首次实现时就踩过
+    （id34/46/50三句，新加的目标全部因为这个排序问题没生效），必须每次
+    append之后都按位置重新排序，不能假设"append顺序=原文顺序"。"""
     existing = sentence_obj.setdefault("blanks", [])
+    text = "".join(t["text"] for t in sentence_obj["tokens"] if t.get("text") != "\n")
     for b in new_blanks:
         if b in existing:
             continue
         if any(b in e for e in existing):
             continue
         existing.append(b)
+    existing.sort(key=lambda b: text.find(b))
 
 
 def make_sentence(ex, lookup, next_id, vocab_extensions):
