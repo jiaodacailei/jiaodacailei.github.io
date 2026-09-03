@@ -50,7 +50,7 @@ import re
 import json
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_page import tokenize_ja  # noqa: E402
+from build_page import tokenize_ja, normalize_numbers  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -389,7 +389,7 @@ def main():
 
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8", newline="\n") as f:
-        f.write("window.EXAM_DATA = " + json.dumps(data, ensure_ascii=False, indent=2) + ";\n")
+        f.write("window.EXAM_DATA = " + json.dumps(normalize_numbers(data), ensure_ascii=False, indent=2) + ";\n")
 
     total_q = sum(len(b["questions"]) for m in mondai_list for b in m["blocks"])
     print("wrote", out_path)

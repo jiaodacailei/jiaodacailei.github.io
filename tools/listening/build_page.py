@@ -50,6 +50,26 @@ FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 _kks = pykakasi.kakasi()
 
 
+def normalize_numbers(obj):
+    """把整数值的float（比如1.0）递归转成int（1）再序列化——Python的
+    json.dumps会把1.0原样写成"1.0"，但浏览器编辑模式（edit-mode.js）点
+    "导出"时用JS的JSON.stringify重新序列化整个window.LESSON_DATA，JS的
+    number不区分int/float，同样是数值1会输出"1"，不是"1.0"。这份数据
+    经常在"脚本生成"和"页面编辑后导出"之间来回（用户在编辑模式下改了别的
+    字段，导出整个文件），如果两边数字格式不一致，即使用户完全没碰某个
+    字段（比如clauseBounds），diff里也会冒出一堆"1.0→1"这种纯格式噪音，
+    掩盖真正有意义的改动。所有往data.js写数据的脚本，最终json.dumps/
+    json.dump之前都应该先过一遍这个函数，保证跟浏览器那边的输出格式对齐。
+    真实案例：l17的clauseBounds在这次改动里就出现过这个噪音diff。"""
+    if isinstance(obj, dict):
+        return {k: normalize_numbers(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [normalize_numbers(v) for v in obj]
+    if isinstance(obj, float) and obj.is_integer():
+        return int(obj)
+    return obj
+
+
 def _is_kanji(ch):
     # 々（叠字符号，U+3005，比如"少々""人々""次々"）不在 CJK 表意文字主区块
     # 里，但它在读音上等同于"重复前一个汉字"，furigana 拆分要把它当汉字一样
@@ -1639,7 +1659,7 @@ def main():
         # 排版紧凑成一行虽然省字节但没人会想在一整行 JSON 里定位要改的字段。
         with open(out_data_js, "w", encoding="utf-8") as f:
             f.write("window.LESSON_DATA = ")
-            json.dump(lesson_data, f, ensure_ascii=False, indent=2)
+            json.dump(normalize_numbers(lesson_data), f, ensure_ascii=False, indent=2)
             f.write(";\n")
 
         page = SHELL_TEMPLATE.format(

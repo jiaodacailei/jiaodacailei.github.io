@@ -50,6 +50,9 @@ import re
 import json
 import argparse
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_page import normalize_numbers  # noqa: E402
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -143,7 +146,7 @@ def main():
     if is_data_driven:
         with open(data_js_path, "w", encoding="utf-8") as f:
             f.write("window.LESSON_DATA = ")
-            json.dump(lesson_data, f, ensure_ascii=False, indent=2)
+            json.dump(normalize_numbers(lesson_data), f, ensure_ascii=False, indent=2)
             f.write(";\n")
         print(f"wrote back to {data_js_path}")
     else:

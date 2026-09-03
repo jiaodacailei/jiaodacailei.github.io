@@ -217,7 +217,7 @@ def main():
     out_data_js = out_dir + "/data.js"
     with open(out_data_js, "w", encoding="utf-8") as f:
         f.write("window.LESSON_DATA = ")
-        json.dump(lesson_data, f, ensure_ascii=False, indent=2)
+        json.dump(bp.normalize_numbers(lesson_data), f, ensure_ascii=False, indent=2)
         f.write(";\n")
 
     toc_label_html = f'<div class="toc-label">{html_mod.escape(side_nav_label)}</div>' if side_nav_label else ""

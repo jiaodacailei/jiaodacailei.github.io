@@ -40,6 +40,7 @@ import subprocess
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from refine_boundaries import align_group  # noqa: E402
+from build_page import normalize_numbers  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -213,7 +214,7 @@ def main():
 
     os.remove(tmp_wav) if os.path.exists(tmp_wav) else None
 
-    out = prefix + json.dumps(data, ensure_ascii=False, indent=2) + ";\n"
+    out = prefix + json.dumps(normalize_numbers(data), ensure_ascii=False, indent=2) + ";\n"
     with open(args.data_js, "w", encoding="utf-8", newline="\n") as f:
         f.write(out)
     print("wrote", args.data_js)

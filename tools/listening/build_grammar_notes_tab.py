@@ -86,7 +86,7 @@ import argparse
 import importlib.util
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_page import tokenize_ja  # noqa: E402
+from build_page import tokenize_ja, normalize_numbers  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -374,7 +374,7 @@ def main():
     audio_copies = apply_vocab_extensions(data, vocab_extensions, next_id, stats)
     copy_audio_files(audio_dir, audio_copies, stats)
 
-    out = prefix + json.dumps(data, ensure_ascii=False, indent=2) + ";\n"
+    out = prefix + json.dumps(normalize_numbers(data), ensure_ascii=False, indent=2) + ";\n"
     with open(args.data_js, "w", encoding="utf-8", newline="\n") as f:
         f.write(out)
 

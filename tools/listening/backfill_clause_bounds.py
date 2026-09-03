@@ -39,6 +39,7 @@ import imageio_ffmpeg
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from compute_clause_bounds import find_clause_bounds_for_sentence, count_clause_punct
 from build_boundary_editor import ffprobe_duration
+from build_page import normalize_numbers
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -60,7 +61,7 @@ def save_lesson_data(slug_dir, data):
     data_js = os.path.join(slug_dir, "data.js")
     with open(data_js, "w", encoding="utf-8") as f:
         f.write("window.LESSON_DATA = ")
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(normalize_numbers(data), f, ensure_ascii=False, indent=2)
         f.write(";\n")
 
 
