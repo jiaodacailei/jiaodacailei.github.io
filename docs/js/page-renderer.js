@@ -250,7 +250,9 @@
         speakerHtml +
         '<p class="seg-ja">' + jaHtml + "</p>" +
         '<p class="seg-zh">' + zh + "</p>" + notesHtml + exampleHtml +
-        '<audio id="a' + s.id + '" preload="none" src="' + esc(s.audio) + '"></audio>' +
+        (s.audio
+          ? '<audio id="a' + s.id + '" preload="none" src="' + esc(s.audio) + '"></audio>'
+          : '<audio id="a' + s.id + '" preload="none"></audio>') +
       "</div>"
     );
   }

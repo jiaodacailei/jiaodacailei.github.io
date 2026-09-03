@@ -215,7 +215,7 @@ body {
    badge没显示时不需要，不然平时也会有一段没意义的空白缩进。 */
 .seg-card.audio-cached .seg-example,
 .seg-card.audio-cached .dictate-example { padding-left: 26px; }
-.q-overview { color: var(--text-muted); font-size: 14px; margin: 2px 0 10px; }
+.q-overview { color: var(--text-muted); font-size: 14px; margin: 2px 0 10px; white-space: pre-line; }
 .seg-answer { margin: 0 0 10px; font-size: 13px; }
 .seg-answer summary { cursor: pointer; color: var(--blue-dark); font-weight: 600; user-select: none; }
 .seg-answer div {
