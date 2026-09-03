@@ -168,7 +168,8 @@ window.LESSON_DATA = {
               "zh": "（做大概介绍后）以上便是要放在网页上“探访‘金星’的故乡”栏目里的一个例子。",
               "notes": "",
               "blanks": [
-                "取り上げる記事の一例"
+                "取り上げる記事の一例",
+                "以上"
               ],
               "audio": "audio/seg-002.mp3"
             },
@@ -450,7 +451,8 @@ window.LESSON_DATA = {
               "zh": "除此之外，我还有一个建议……（一边从袋子里取出一件东西）",
               "notes": "「んですが」用来引出下文/委婉地提出话题，后面的内容常被省略，留给对方追问或自己接着说明。",
               "blanks": [
-                "提案があるんですが"
+                "提案があるんですが",
+                "ほかにも"
               ],
               "audio": "audio/seg-008.mp3",
               "clauseBounds": [
@@ -1477,7 +1479,8 @@ window.LESSON_DATA = {
               "zh": "如果这种鸡尾酒在年轻人当中受到欢迎，不就可以带动“金星”的销售了吗？",
               "notes": "「〜んじゃないでしょうか」是委婉表达自己看法的句型，“……不是吗，……难道不是……”。",
               "blanks": [
-                "つながるんじゃないでしょうか"
+                "つながるんじゃないでしょうか",
+                "間"
               ],
               "audio": "audio/seg-022.mp3"
             },
@@ -2274,7 +2277,9 @@ window.LESSON_DATA = {
               "zh": "假日里，年轻的情侣、家人、游客聚集在此，热闹非凡。",
               "notes": "「Nでにぎわう」＝“因N而热闹”。",
               "blanks": [
-                "でにぎわう"
+                "でにぎわう",
+                "カップル",
+                "家族連れ"
               ],
               "audio": "audio/seg-034.mp3",
               "clauseBounds": [
@@ -2386,7 +2391,8 @@ window.LESSON_DATA = {
               "zh": "公园周围有无数条被称为“胡同”的狭窄小巷。",
               "notes": "「〜と呼ばれる」＝“被称为……”。",
               "blanks": [
-                "と呼ばれる"
+                "と呼ばれる",
+                "無数"
               ],
               "audio": "audio/seg-035.mp3"
             }
@@ -2735,7 +2741,8 @@ window.LESSON_DATA = {
               "zh": "围绕着这些住宅通向四面八方的街巷就是“胡同”。",
               "notes": "「〜ように」表示样态，“像……那样”。",
               "blanks": [
-                "取り囲むように"
+                "取り囲むように",
+                "通っている"
               ],
               "audio": "audio/seg-038.mp3"
             }
@@ -3571,7 +3578,8 @@ window.LESSON_DATA = {
               "zh": "以庭院为中心，东南西北四栋合围而建。",
               "notes": "「Nを中心に」＝“以N为中心”。",
               "blanks": [
-                "庭を中心に"
+                "庭を中心に",
+                "東西南北"
               ],
               "audio": "audio/seg-046.mp3",
               "clauseBounds": [
@@ -4131,7 +4139,8 @@ window.LESSON_DATA = {
               "zh": "遗憾的是，随着现代化的推进，胡同的数量急剧减少。",
               "notes": "「〜てしまう」在这里表示对结果感到遗憾、无法挽回。",
               "blanks": [
-                "減ってきてしまった"
+                "減ってきてしまった",
+                "ことに"
               ],
               "audio": "audio/seg-050.mp3",
               "clauseBounds": [
@@ -4488,38 +4497,123 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "すばらしい"
+                  "text": "すば",
+                  "t": 0.46
                 },
                 {
-                  "text": "。"
+                  "text": "ら",
+                  "t": 0.58
                 },
                 {
-                  "text": "これはおもしろいですよ"
-                },
-                {
-                  "text": "。"
-                },
-                {
-                  "text": "さすが"
-                },
-                {
-                  "text": "王",
-                  "kana": "おう"
-                },
-                {
-                  "text": "さん"
+                  "text": "しい",
+                  "t": 0.72
                 },
                 {
                   "text": "。"
                 }
               ],
-              "zh": "太好了。确实很有意思。到底是王风啊！",
+              "zh": "太好了。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-003.mp3"
             },
             {
               "id": 192,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "これは",
+                  "t": 0.45
+                },
+                {
+                  "text": "お",
+                  "t": 0.81
+                },
+                {
+                  "text": "世辞",
+                  "kana": "せじ",
+                  "t": 1.17
+                },
+                {
+                  "text": "抜",
+                  "kana": "ぬ",
+                  "t": 1.41
+                },
+                {
+                  "text": "き",
+                  "t": 1.51
+                },
+                {
+                  "text": "で",
+                  "t": 1.61
+                },
+                {
+                  "text": "お",
+                  "t": 1.75
+                },
+                {
+                  "text": "もしろ",
+                  "t": 1.95
+                },
+                {
+                  "text": "い",
+                  "t": 2.03
+                },
+                {
+                  "text": "です",
+                  "t": 2.13
+                },
+                {
+                  "text": "よ",
+                  "t": 2.31
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不是恭维，确实很有意思。",
+              "notes": "",
+              "blanks": [],
+              "audio": "audio/seg-004.mp3"
+            },
+            {
+              "id": 193,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "さ",
+                  "t": 0.29
+                },
+                {
+                  "text": "す",
+                  "t": 0.61
+                },
+                {
+                  "text": "が",
+                  "t": 0.73
+                },
+                {
+                  "text": "王",
+                  "kana": "おう",
+                  "t": 0.79
+                },
+                {
+                  "text": "さん",
+                  "t": 1.01
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "到底是王风啊！",
+              "notes": "",
+              "blanks": [],
+              "audio": "audio/seg-005.mp3"
+            },
+            {
+              "id": 194,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4573,7 +4667,7 @@ window.LESSON_DATA = {
               "audio": null
             },
             {
-              "id": 193,
+              "id": 195,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4594,7 +4688,7 @@ window.LESSON_DATA = {
               "audio": null
             },
             {
-              "id": 194,
+              "id": 196,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4611,7 +4705,7 @@ window.LESSON_DATA = {
               "audio": null
             },
             {
-              "id": 195,
+              "id": 197,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4646,7 +4740,7 @@ window.LESSON_DATA = {
               "audio": null
             },
             {
-              "id": 196,
+              "id": 198,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4698,43 +4792,83 @@ window.LESSON_DATA = {
               "audio": "audio/seg-025.mp3"
             },
             {
-              "id": 197,
+              "id": 199,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ありがとうございます"
+                  "text": "あり",
+                  "t": 0.0
                 },
                 {
-                  "text": "。"
+                  "text": "がとう",
+                  "t": 0.44
                 },
                 {
-                  "text": "でも"
-                },
-                {
-                  "text": "，"
-                },
-                {
-                  "text": "まだまだ"
-                },
-                {
-                  "text": "不十分",
-                  "kana": "ふじゅうぶん"
-                },
-                {
-                  "text": "なところもあります"
+                  "text": "ございます",
+                  "t": 0.68
                 },
                 {
                   "text": "。"
                 }
               ],
-              "zh": "谢谢。不过还有许多不足之处。",
+              "zh": "谢谢。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-006.mp3"
             },
             {
-              "id": 198,
+              "id": 200,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "でも",
+                  "t": 0.0
+                },
+                {
+                  "text": "，"
+                },
+                {
+                  "text": "まだ",
+                  "t": 0.46
+                },
+                {
+                  "text": "まだ",
+                  "t": 0.76
+                },
+                {
+                  "text": "不十分",
+                  "kana": "ふじゅうぶん",
+                  "t": 1.0
+                },
+                {
+                  "text": "な",
+                  "t": 1.36
+                },
+                {
+                  "text": "ところ",
+                  "t": 1.52
+                },
+                {
+                  "text": "も",
+                  "t": 1.74
+                },
+                {
+                  "text": "あります",
+                  "t": 1.9
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不过还有许多不足之处。",
+              "notes": "",
+              "blanks": [],
+              "audio": "audio/seg-007.mp3"
+            },
+            {
+              "id": 201,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4800,7 +4934,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 199,
+              "id": 202,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4925,11 +5059,13 @@ window.LESSON_DATA = {
               ],
               "zh": "以上便是要放在网页上“探访‘金星’的故乡”栏目里的一个例子。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "以上"
+              ],
               "audio": "audio/seg-002.mp3"
             },
             {
-              "id": 200,
+              "id": 203,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -4963,7 +5099,9 @@ window.LESSON_DATA = {
               ],
               "zh": "〔之前做了某种说明〕这就是本次策划的概要。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "これ"
+              ],
               "audio": null
             }
           ]
@@ -4974,7 +5112,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 201,
+              "id": 204,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5030,11 +5168,13 @@ window.LESSON_DATA = {
               ],
               "zh": "不是恭维，确实很有意思。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "抜きで"
+              ],
               "audio": "audio/seg-004.mp3"
             },
             {
-              "id": 202,
+              "id": 205,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5082,11 +5222,13 @@ window.LESSON_DATA = {
               ],
               "zh": "饭也不吃，连续工作了一整天。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "抜きで"
+              ],
               "audio": null
             },
             {
-              "id": 203,
+              "id": 206,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5157,11 +5299,13 @@ window.LESSON_DATA = {
               ],
               "zh": "听说山田请假了，那今天的碰头会就在山田缺席的情况下开吧。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "抜きで"
+              ],
               "audio": null
             },
             {
-              "id": 204,
+              "id": 207,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5211,11 +5355,13 @@ window.LESSON_DATA = {
               ],
               "zh": "那些虚礼客套就免了，大家尽情地喝吧。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "は抜きにして"
+              ],
               "audio": null
             },
             {
-              "id": 205,
+              "id": 208,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5265,11 +5411,13 @@ window.LESSON_DATA = {
               ],
               "zh": "不必客气，想说什么就说吧。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "は抜きにして"
+              ],
               "audio": null
             },
             {
-              "id": 206,
+              "id": 209,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5320,7 +5468,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不开玩笑，你跳槽来我们公司吧。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "は抜きにして"
+              ],
               "audio": null
             }
           ]
@@ -5331,25 +5481,65 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 207,
+              "id": 210,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ほかにももう"
+                  "text": "それ",
+                  "t": 0.0
                 },
                 {
-                  "text": "1"
+                  "text": "から",
+                  "t": 0.68
                 },
                 {
-                  "text": "つ"
+                  "text": "，"
+                },
+                {
+                  "text": "ほ",
+                  "t": 0.88
+                },
+                {
+                  "text": "かに",
+                  "t": 1.06
+                },
+                {
+                  "text": "も",
+                  "t": 1.26
+                },
+                {
+                  "text": "もう",
+                  "t": 1.48
+                },
+                {
+                  "text": "1",
+                  "t": 1.62
+                },
+                {
+                  "text": "つ",
+                  "t": 1.76
                 },
                 {
                   "text": "提案",
-                  "kana": "ていあん"
+                  "kana": "ていあん",
+                  "t": 1.88
                 },
                 {
-                  "text": "があるんですが"
+                  "text": "が",
+                  "t": 2.14
+                },
+                {
+                  "text": "ある",
+                  "t": 2.24
+                },
+                {
+                  "text": "んです",
+                  "t": 2.36
+                },
+                {
+                  "text": "が",
+                  "t": 2.6
                 },
                 {
                   "text": "…"
@@ -5358,13 +5548,15 @@ window.LESSON_DATA = {
                   "text": "。"
                 }
               ],
-              "zh": "除此之外，我还有一个建议……",
+              "zh": "接下来，除此之外，我还有一个建议……",
               "notes": "",
-              "blanks": [],
-              "audio": null
+              "blanks": [
+                "ほかにも"
+              ],
+              "audio": "audio/seg-008.mp3"
             },
             {
-              "id": 208,
+              "id": 211,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5391,7 +5583,9 @@ window.LESSON_DATA = {
               ],
               "zh": "除此之外还有什么需要的东西吗？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ほかにも"
+              ],
               "audio": null
             }
           ]
@@ -5402,53 +5596,104 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 209,
+              "id": 212,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "ええ"
-                },
-                {
-                  "text": "。"
-                },
-                {
-                  "text": "確",
-                  "kana": "たし"
-                },
-                {
-                  "text": "かに"
-                },
-                {
-                  "text": "。"
-                },
-                {
-                  "text": "でも"
-                },
-                {
-                  "text": "，"
-                },
-                {
-                  "text": "それは"
-                },
-                {
-                  "text": "日本国内",
-                  "kana": "にっぽんこくない"
-                },
-                {
-                  "text": "でのことですよ"
+                  "text": "ええ",
+                  "t": 1.02
                 },
                 {
                   "text": "。"
                 }
               ],
-              "zh": "嗯，那倒是。不过，那是日本国内的情况啊。",
+              "zh": "嗯。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-018.mp3"
             },
             {
-              "id": 210,
+              "id": 213,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "確",
+                  "kana": "たし",
+                  "t": 0.24
+                },
+                {
+                  "text": "か",
+                  "t": 0.36
+                },
+                {
+                  "text": "に",
+                  "t": 0.54
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "那倒是。",
+              "notes": "",
+              "blanks": [
+                "確かに"
+              ],
+              "audio": "audio/seg-013.mp3"
+            },
+            {
+              "id": 214,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "でも",
+                  "t": 0.24
+                },
+                {
+                  "text": "，"
+                },
+                {
+                  "text": "それは",
+                  "t": 0.62
+                },
+                {
+                  "text": "日本国内",
+                  "kana": "にっぽんこくない",
+                  "t": 1.28
+                },
+                {
+                  "text": "で",
+                  "t": 2.0
+                },
+                {
+                  "text": "の",
+                  "t": 2.12
+                },
+                {
+                  "text": "こと",
+                  "t": 2.16
+                },
+                {
+                  "text": "です",
+                  "t": 2.38
+                },
+                {
+                  "text": "よ",
+                  "t": 3.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不过，那是日本国内的情况啊。",
+              "notes": "",
+              "blanks": [],
+              "audio": "audio/seg-014.mp3"
+            },
+            {
+              "id": 215,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5527,11 +5772,13 @@ window.LESSON_DATA = {
               ],
               "zh": "台湾气候确实温暖，但也有高山，所以有些地方也会下雪。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "確かに"
+              ],
               "audio": null
             },
             {
-              "id": 211,
+              "id": 216,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5571,7 +5818,9 @@ window.LESSON_DATA = {
               ],
               "zh": "确实如您所说。非常抱歉。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "確かに"
+              ],
               "audio": null
             }
           ]
@@ -5582,7 +5831,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 212,
+              "id": 217,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5689,11 +5938,13 @@ window.LESSON_DATA = {
               ],
               "zh": "在中国也将这种鸡尾酒和“金星”一起销售怎么样？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "売り込んだら"
+              ],
               "audio": "audio/seg-015.mp3"
             },
             {
-              "id": 213,
+              "id": 218,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5751,11 +6002,13 @@ window.LESSON_DATA = {
               ],
               "zh": "少年从桥上跳进河里玩耍。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "飛び込んで"
+              ],
               "audio": null
             },
             {
-              "id": 214,
+              "id": 219,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5789,7 +6042,9 @@ window.LESSON_DATA = {
               ],
               "zh": "请不要往湖里扔垃圾。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "投げ込む"
+              ],
               "audio": null
             }
           ]
@@ -5800,46 +6055,81 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 215,
+              "id": 220,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
                   "text": "若者",
-                  "kana": "わかもの"
+                  "kana": "わかもの",
+                  "t": 0.24
                 },
                 {
-                  "text": "たちの"
+                  "text": "た",
+                  "t": 0.5
+                },
+                {
+                  "text": "ち",
+                  "t": 0.64
+                },
+                {
+                  "text": "の",
+                  "t": 0.72
                 },
                 {
                   "text": "間",
-                  "kana": "あいだ"
+                  "kana": "あいだ",
+                  "t": 0.82
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 0.96
                 },
                 {
-                  "text": "カクテル"
+                  "text": "この",
+                  "t": 1.32
                 },
                 {
-                  "text": "の"
+                  "text": "カ",
+                  "t": 1.54
+                },
+                {
+                  "text": "ク",
+                  "t": 1.74
+                },
+                {
+                  "text": "テ",
+                  "t": 1.8
+                },
+                {
+                  "text": "ル",
+                  "t": 1.9
+                },
+                {
+                  "text": "の",
+                  "t": 1.98
                 },
                 {
                   "text": "人気",
-                  "kana": "にんき"
+                  "kana": "にんき",
+                  "t": 2.1
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 2.32
                 },
                 {
                   "text": "出",
-                  "kana": "で"
+                  "kana": "で",
+                  "t": 2.4
                 },
                 {
-                  "text": "た"
+                  "text": "た",
+                  "t": 2.48
                 },
                 {
-                  "text": "ら"
+                  "text": "ら",
+                  "t": 2.62
                 },
                 {
                   "text": "，"
@@ -5849,30 +6139,73 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "金星",
-                  "kana": "きんせい"
+                  "kana": "きんせい",
+                  "t": 3.6
                 },
                 {
                   "text": "」"
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 3.72
                 },
                 {
                   "text": "売",
-                  "kana": "う"
+                  "kana": "う",
+                  "t": 3.88
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 3.98
                 },
                 {
                   "text": "上",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 4.08
                 },
                 {
-                  "text": "げ"
+                  "text": "げ",
+                  "t": 4.1
                 },
                 {
-                  "text": "にもつながるんじゃないでしょうか"
+                  "text": "に",
+                  "t": 4.2
+                },
+                {
+                  "text": "も",
+                  "t": 4.32
+                },
+                {
+                  "text": "つ",
+                  "t": 4.46
+                },
+                {
+                  "text": "な",
+                  "t": 4.62
+                },
+                {
+                  "text": "が",
+                  "t": 4.74
+                },
+                {
+                  "text": "る",
+                  "t": 4.82
+                },
+                {
+                  "text": "ん",
+                  "t": 4.9
+                },
+                {
+                  "text": "じゃない",
+                  "t": 5.02
+                },
+                {
+                  "text": "でしょう",
+                  "t": 5.1
+                },
+                {
+                  "text": "か",
+                  "t": 5.32
                 },
                 {
                   "text": "。"
@@ -5880,11 +6213,13 @@ window.LESSON_DATA = {
               ],
               "zh": "如果这种鸡尾酒在年轻人当中受到欢迎，不就可以带动“金星”的销售了吗？",
               "notes": "",
-              "blanks": [],
-              "audio": null
+              "blanks": [
+                "間"
+              ],
+              "audio": "audio/seg-022.mp3"
             },
             {
-              "id": 216,
+              "id": 221,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -5918,7 +6253,9 @@ window.LESSON_DATA = {
               ],
               "zh": "这件事情是你和我之间的约定。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "間"
+              ],
               "audio": null
             }
           ]
@@ -5929,60 +6266,106 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 217,
+              "id": 222,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "いやあ"
+                  "text": "いやあ",
+                  "t": 0.99
                 },
                 {
                   "text": "，"
                 },
                 {
-                  "text": "すばらしい"
+                  "text": "すばら",
+                  "t": 2.11
                 },
                 {
-                  "text": "アイデア"
+                  "text": "しい",
+                  "t": 2.19
                 },
                 {
-                  "text": "ですね"
+                  "text": "ア",
+                  "t": 2.31
                 },
                 {
-                  "text": "。"
+                  "text": "イ",
+                  "t": 2.43
                 },
                 {
-                  "text": "—"
+                  "text": "デ",
+                  "t": 2.51
                 },
                 {
-                  "text": "—"
-                },
-                {
-                  "text": "いえ"
-                },
-                {
-                  "text": "，"
-                },
-                {
-                  "text": "そんな"
-                },
-                {
-                  "text": "…"
-                },
-                {
-                  "text": "たいしたことではありません"
+                  "text": "アですね",
+                  "t": 2.55
                 },
                 {
                   "text": "。"
                 }
               ],
-              "zh": "哎呀，这个想法非常好啊！——哪里，看您说的……这个想法还很不成熟……",
+              "zh": "哎呀，这个想法非常好啊！",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-024.mp3"
             },
             {
-              "id": 218,
+              "id": 223,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "いえ",
+                  "t": 1.03
+                },
+                {
+                  "text": "，"
+                },
+                {
+                  "text": "そんな",
+                  "t": 1.31
+                },
+                {
+                  "text": "…"
+                },
+                {
+                  "text": "たい",
+                  "t": 1.75
+                },
+                {
+                  "text": "した",
+                  "t": 1.81
+                },
+                {
+                  "text": "こと",
+                  "t": 1.97
+                },
+                {
+                  "text": "では",
+                  "t": 2.09
+                },
+                {
+                  "text": "あり",
+                  "t": 2.25
+                },
+                {
+                  "text": "ません",
+                  "t": 2.37
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "哪里，看您说的……这个想法还很不成熟……",
+              "notes": "",
+              "blanks": [
+                "たいした"
+              ],
+              "audio": "audio/seg-025.mp3"
+            },
+            {
+              "id": 224,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6015,11 +6398,13 @@ window.LESSON_DATA = {
               ],
               "zh": "这是我画的，不是什么好作品。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "たいした"
+              ],
               "audio": null
             },
             {
-              "id": 219,
+              "id": 225,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6064,7 +6449,9 @@ window.LESSON_DATA = {
               ],
               "zh": "我的一个朋友在欧洲钢琴大赛上获得了冠军。太了不起了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "たいした"
+              ],
               "audio": null
             }
           ]
@@ -6075,7 +6462,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 220,
+              "id": 226,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6193,7 +6580,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在中国使用的名称、标签的设计等，由我公司来负责。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "私ども"
+              ],
               "audio": "audio/seg-028.mp3"
             }
           ]
@@ -6210,7 +6599,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 221,
+              "id": 227,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6294,7 +6683,9 @@ window.LESSON_DATA = {
               ],
               "zh": "假日里，年轻的情侣、家人、游客聚集在此，热闹非凡。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "カップル"
+              ],
               "audio": "audio/seg-034.mp3"
             }
           ]
@@ -6305,7 +6696,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 222,
+              "id": 228,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6389,11 +6780,13 @@ window.LESSON_DATA = {
               ],
               "zh": "假日里，年轻的情侣、家人、游客聚集在此，热闹非凡。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "家族連れ"
+              ],
               "audio": "audio/seg-034.mp3"
             },
             {
-              "id": 223,
+              "id": 229,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6451,7 +6844,9 @@ window.LESSON_DATA = {
               ],
               "zh": "学生时代，我经常和好朋友两人一起去旅行。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "2人連れ"
+              ],
               "audio": null
             }
           ]
@@ -6462,7 +6857,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 224,
+              "id": 230,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6558,11 +6953,13 @@ window.LESSON_DATA = {
               ],
               "zh": "公园周围有无数条被称为“胡同”的狭窄小巷。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "無数"
+              ],
               "audio": "audio/seg-035.mp3"
             },
             {
-              "id": 225,
+              "id": 231,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6633,7 +7030,9 @@ window.LESSON_DATA = {
               ],
               "zh": "晴天里仰望夜空，可以看到无数星星。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "無数"
+              ],
               "audio": null
             }
           ]
@@ -6644,7 +7043,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 226,
+              "id": 232,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6740,11 +7139,13 @@ window.LESSON_DATA = {
               ],
               "zh": "要了解“胡同”，就必须追溯到大约700年前。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "さかのぼら"
+              ],
               "audio": "audio/seg-036.mp3"
             },
             {
-              "id": 227,
+              "id": 233,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6777,7 +7178,9 @@ window.LESSON_DATA = {
               ],
               "zh": "我家的先祖，可以追溯到150年前。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "さかのぼる"
+              ],
               "audio": null
             }
           ]
@@ -6788,7 +7191,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 228,
+              "id": 234,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6873,7 +7276,9 @@ window.LESSON_DATA = {
               ],
               "zh": "围绕着这些住宅通向四面八方的街巷就是“胡同”。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "通っている"
+              ],
               "audio": "audio/seg-038.mp3"
             }
           ]
@@ -6884,7 +7289,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 229,
+              "id": 235,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -6954,11 +7359,13 @@ window.LESSON_DATA = {
               ],
               "zh": "以庭院为中心，东南西北四栋合围而建。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "東西南北"
+              ],
               "audio": "audio/seg-046.mp3"
             },
             {
-              "id": 230,
+              "id": 236,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7010,7 +7417,9 @@ window.LESSON_DATA = {
               ],
               "zh": "我亲戚家在北京市的东南角。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "南東"
+              ],
               "audio": null
             }
           ]
@@ -7021,7 +7430,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 231,
+              "id": 237,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7190,11 +7599,13 @@ window.LESSON_DATA = {
               ],
               "zh": "胡同在元代不过只有29条，而明代达到459条，到了20世纪80年代则超过了1300条。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "せいぜい"
+              ],
               "audio": "audio/seg-048.mp3"
             },
             {
-              "id": 232,
+              "id": 238,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7227,11 +7638,13 @@ window.LESSON_DATA = {
               ],
               "zh": "虽说有经历，也只是两三年而已。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "せいぜい"
+              ],
               "audio": null
             },
             {
-              "id": 233,
+              "id": 239,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7284,7 +7697,9 @@ window.LESSON_DATA = {
               ],
               "zh": "每年都参加这个比赛的人顶多也就五六人。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "せいぜい"
+              ],
               "audio": null
             }
           ]
@@ -7295,7 +7710,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 234,
+              "id": 240,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7435,11 +7850,13 @@ window.LESSON_DATA = {
               ],
               "zh": "据说，如果把北京的胡同连接起来，其长度甚至“相当于另一条万里长城”。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "とまでいわれた"
+              ],
               "audio": "audio/seg-049.mp3"
             },
             {
-              "id": 235,
+              "id": 241,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7486,11 +7903,13 @@ window.LESSON_DATA = {
               ],
               "zh": "苏州是个美丽的城市，甚至被称作“东方的威尼斯”。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "とまでいわれている"
+              ],
               "audio": null
             },
             {
-              "id": 236,
+              "id": 242,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7534,7 +7953,9 @@ window.LESSON_DATA = {
               ],
               "zh": "那位作曲家堪称是我国的骄傲。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "とさえいわれている"
+              ],
               "audio": null
             }
           ]
@@ -7545,7 +7966,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 237,
+              "id": 243,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7648,11 +8069,13 @@ window.LESSON_DATA = {
               ],
               "zh": "遗憾的是，随着现代化的推进，胡同的数量急剧减少。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ことに"
+              ],
               "audio": "audio/seg-050.mp3"
             },
             {
-              "id": 238,
+              "id": 244,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7710,11 +8133,13 @@ window.LESSON_DATA = {
               ],
               "zh": "不可思议的是，整整一周，每晚都做同样的梦。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ことに"
+              ],
               "audio": null
             },
             {
-              "id": 239,
+              "id": 245,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7770,7 +8195,9 @@ window.LESSON_DATA = {
               ],
               "zh": "令人吃惊的是，据说这件雕刻作品是只花了一天时间完成的。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ことに"
+              ],
               "audio": null
             }
           ]
@@ -7781,7 +8208,7 @@ window.LESSON_DATA = {
           "answer": "",
           "sentences": [
             {
-              "id": 240,
+              "id": 246,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7862,11 +8289,13 @@ window.LESSON_DATA = {
               ],
               "zh": "〔意志〕不过另一方面，也有要保留古老建筑的动向。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "残そうとする"
+              ],
               "audio": "audio/seg-051.mp3"
             },
             {
-              "id": 241,
+              "id": 247,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7917,11 +8346,13 @@ window.LESSON_DATA = {
               ],
               "zh": "〔意志〕犯人眼看要被警察抓住，企图开枪自杀。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "自殺しようとした"
+              ],
               "audio": null
             },
             {
-              "id": 242,
+              "id": 248,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7948,11 +8379,13 @@ window.LESSON_DATA = {
               ],
               "zh": "〔意志〕小鸟努力想从笼子里逃脱。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "逃げようとしている"
+              ],
               "audio": null
             },
             {
-              "id": 243,
+              "id": 249,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -7989,11 +8422,13 @@ window.LESSON_DATA = {
               ],
               "zh": "〔即将发生〕这围墙眼看就要塌了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "崩れようとしている"
+              ],
               "audio": null
             },
             {
-              "id": 244,
+              "id": 250,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -8040,11 +8475,13 @@ window.LESSON_DATA = {
               ],
               "zh": "〔即将发生〕太阳就要从地平线的那边升起来了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上ろうとしている"
+              ],
               "audio": null
             },
             {
-              "id": 245,
+              "id": 251,
               "speaker": null,
               "speakerKana": null,
               "tokens": [
@@ -8081,7 +8518,9 @@ window.LESSON_DATA = {
               ],
               "zh": "〔即将发生〕这眼泉水快要干涸了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "枯れようとしている"
+              ],
               "audio": null
             }
           ]
@@ -8234,6 +8673,39 @@ window.LESSON_DATA = {
               "quizSentence": "新商品を若者に売り込むための宣伝を行った。"
             },
             {
+              "id": 252,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "売",
+                  "kana": "う",
+                  "t": 0.0
+                },
+                {
+                  "text": "り",
+                  "t": 0.7
+                },
+                {
+                  "text": "込",
+                  "kana": "こ",
+                  "t": 0.86
+                },
+                {
+                  "text": "む",
+                  "t": 0.96
+                }
+              ],
+              "zh": "[动1] 销售，促销，推销",
+              "notes": "",
+              "blanks": [
+                "売り込んだら"
+              ],
+              "audio": "audio/seg-059.mp3",
+              "quizSentence": "中国でも「金星」といっしょに，このカクテルを売り込んだらどうでしょうか。",
+              "sentenceAudio": "audio/seg-015.mp3"
+            },
+            {
               "id": 60,
               "speaker": null,
               "speakerKana": null,
@@ -8314,6 +8786,26 @@ window.LESSON_DATA = {
               "quizSentence": "若者たちの間でこのカクテルの人気が出たら，「金星」の売り上げにもつながるんじゃないでしょうか。"
             },
             {
+              "id": 255,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "間",
+                  "kana": "あいだ",
+                  "t": 0.0
+                }
+              ],
+              "zh": "[名] 当中，之间，期间",
+              "notes": "",
+              "blanks": [
+                "間"
+              ],
+              "audio": "audio/seg-063.mp3",
+              "quizSentence": "このことは君とぼくの間の約束だ。",
+              "sentenceAudio": null
+            },
+            {
               "id": 64,
               "speaker": null,
               "speakerKana": null,
@@ -8334,6 +8826,52 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-064.mp3",
               "quizSentence": "いえ，そんな…たいしたことではありません。"
+            },
+            {
+              "id": 256,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "たい",
+                  "t": 0.0
+                },
+                {
+                  "text": "した",
+                  "t": 1.0
+                }
+              ],
+              "zh": "[连体] 了不起的，惊人的",
+              "notes": "",
+              "blanks": [
+                "たいした"
+              ],
+              "audio": "audio/seg-064.mp3",
+              "quizSentence": "これはわたしがかいた絵で，たいした作品ではありません。",
+              "sentenceAudio": null
+            },
+            {
+              "id": 257,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "たい",
+                  "t": 0.0
+                },
+                {
+                  "text": "した",
+                  "t": 1.0
+                }
+              ],
+              "zh": "[连体] 了不起的，惊人的",
+              "notes": "",
+              "blanks": [
+                "たいした"
+              ],
+              "audio": "audio/seg-064.mp3",
+              "quizSentence": "わたしの友達はヨーロッパのピアノコンクールで優勝しました。たいしたものです。",
+              "sentenceAudio": null
             },
             {
               "id": 65,
@@ -8381,6 +8919,28 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-066.mp3",
               "quizSentence": "私ども家族はみな元気です。"
+            },
+            {
+              "id": 258,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "〜"
+                },
+                {
+                  "text": "ども",
+                  "t": 0.0
+                }
+              ],
+              "zh": "〜们（自谦语）",
+              "notes": "",
+              "blanks": [
+                "私ども"
+              ],
+              "audio": "audio/seg-066.mp3",
+              "quizSentence": "中国用のネーミングやラベルのデザインは，私どもで引き受けます。",
+              "sentenceAudio": "audio/seg-028.mp3"
             }
           ]
         },
@@ -8582,6 +9142,39 @@ window.LESSON_DATA = {
               "quizSentence": "子供たちはプールに飛び込んだ。"
             },
             {
+              "id": 253,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "飛",
+                  "kana": "と",
+                  "t": 0.0
+                },
+                {
+                  "text": "び",
+                  "t": 0.48
+                },
+                {
+                  "text": "込",
+                  "kana": "こ",
+                  "t": 0.66
+                },
+                {
+                  "text": "む",
+                  "t": 0.8
+                }
+              ],
+              "zh": "[动1] 跳入，跳进",
+              "notes": "",
+              "blanks": [
+                "飛び込んで"
+              ],
+              "audio": "audio/seg-075.mp3",
+              "quizSentence": "少年が橋から川に飛び込んで遊んでいました。",
+              "sentenceAudio": null
+            },
+            {
               "id": 76,
               "speaker": null,
               "speakerKana": null,
@@ -8635,6 +9228,39 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-077.mp3",
               "quizSentence": "彼はボールをかごに投げ込んだ。"
+            },
+            {
+              "id": 254,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "投",
+                  "kana": "な",
+                  "t": 0.0
+                },
+                {
+                  "text": "げ",
+                  "t": 0.44
+                },
+                {
+                  "text": "込",
+                  "kana": "こ",
+                  "t": 0.62
+                },
+                {
+                  "text": "む",
+                  "t": 0.8
+                }
+              ],
+              "zh": "[动1] 投进，投入，扔进",
+              "notes": "",
+              "blanks": [
+                "投げ込む"
+              ],
+              "audio": "audio/seg-077.mp3",
+              "quizSentence": "湖にごみを投げ込むのはやめてください。",
+              "sentenceAudio": null
             },
             {
               "id": 78,
@@ -9206,6 +9832,26 @@ window.LESSON_DATA = {
               "quizSentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。"
             },
             {
+              "id": 260,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無数",
+                  "kana": "むすう",
+                  "t": 0.0
+                }
+              ],
+              "zh": "[名] 无数",
+              "notes": "",
+              "blanks": [
+                "無数"
+              ],
+              "audio": "audio/seg-100.mp3",
+              "quizSentence": "晴れた日に夜空を見上げると，無数の星を見ることができる。",
+              "sentenceAudio": null
+            },
+            {
               "id": 101,
               "speaker": null,
               "speakerKana": null,
@@ -9249,6 +9895,52 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-102.mp3",
               "quizSentence": "この習慣は江戸時代までさかのぼることができる。"
+            },
+            {
+              "id": 261,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "さか",
+                  "t": 0.0
+                },
+                {
+                  "text": "のぼる",
+                  "t": 0.62
+                }
+              ],
+              "zh": "[动1] 追溯，上溯",
+              "notes": "",
+              "blanks": [
+                "さかのぼら"
+              ],
+              "audio": "audio/seg-102.mp3",
+              "quizSentence": "「胡同」を知るには，歴史を約700年前までさかのぼらなければならない。",
+              "sentenceAudio": "audio/seg-036.mp3"
+            },
+            {
+              "id": 262,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "さか",
+                  "t": 0.0
+                },
+                {
+                  "text": "のぼる",
+                  "t": 0.62
+                }
+              ],
+              "zh": "[动1] 追溯，上溯",
+              "notes": "",
+              "blanks": [
+                "さかのぼる"
+              ],
+              "audio": "audio/seg-102.mp3",
+              "quizSentence": "うちの先祖は，150年前までさかのぼることができる。",
+              "sentenceAudio": null
             },
             {
               "id": 103,
@@ -9759,6 +10451,60 @@ window.LESSON_DATA = {
               "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。"
             },
             {
+              "id": 264,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "せ",
+                  "t": 0.0
+                },
+                {
+                  "text": "いぜ",
+                  "t": 0.92
+                },
+                {
+                  "text": "い",
+                  "t": 2.06
+                }
+              ],
+              "zh": "[副] 最多，充其量；尽量，尽可能",
+              "notes": "",
+              "blanks": [
+                "せいぜい"
+              ],
+              "audio": "audio/seg-125.mp3",
+              "quizSentence": "経験があるといってもせいぜい2，3年だ。",
+              "sentenceAudio": null
+            },
+            {
+              "id": 265,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "せ",
+                  "t": 0.0
+                },
+                {
+                  "text": "いぜ",
+                  "t": 0.92
+                },
+                {
+                  "text": "い",
+                  "t": 2.06
+                }
+              ],
+              "zh": "[副] 最多，充其量；尽量，尽可能",
+              "notes": "",
+              "blanks": [
+                "せいぜい"
+              ],
+              "audio": "audio/seg-125.mp3",
+              "quizSentence": "毎年このコンテストに応募する人はせいぜい5，6人程度だ。",
+              "sentenceAudio": null
+            },
+            {
               "id": 126,
               "speaker": null,
               "speakerKana": null,
@@ -9990,6 +10736,33 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-135.mp3",
               "quizSentence": "彼は子供連れで旅行に来た。"
+            },
+            {
+              "id": 259,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "〜"
+                },
+                {
+                  "text": "連",
+                  "kana": "つ",
+                  "t": 0.0
+                },
+                {
+                  "text": "れ",
+                  "t": 0.64
+                }
+              ],
+              "zh": "带着〜",
+              "notes": "",
+              "blanks": [
+                "2人連れ"
+              ],
+              "audio": "audio/seg-135.mp3",
+              "quizSentence": "学生時代に，仲のいい友達と2人連れでよく旅をしました。",
+              "sentenceAudio": null
             }
           ]
         },
@@ -10119,6 +10892,26 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-141.mp3",
               "quizSentence": "その島は日本の南東に位置している。"
+            },
+            {
+              "id": 263,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "南東",
+                  "kana": "なんとう",
+                  "t": -0.02
+                }
+              ],
+              "zh": "[名] 东南",
+              "notes": "",
+              "blanks": [
+                "南東"
+              ],
+              "audio": "audio/seg-141.mp3",
+              "quizSentence": "わたしの親戚の家は北京市の南東の方角にあります。",
+              "sentenceAudio": null
             },
             {
               "id": 142,
@@ -11260,6 +12053,16 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
+      "id": 252,
+      "text": "売り込む",
+      "kana": "うりこむ",
+      "zh": "[动1] 销售，促销，推销",
+      "sentence": "中国でも「金星」といっしょに，このカクテルを売り込んだらどうでしょうか。",
+      "sentence_zh": "在中国也将这种鸡尾酒和“金星”一起销售怎么样？",
+      "blank": "売り込んだら",
+      "category": "dialogue"
+    },
+    {
       "id": 60,
       "text": "戦略",
       "kana": "せんりゃく",
@@ -11300,6 +12103,16 @@ window.LESSON_DATA = {
       "category": "dialogue"
     },
     {
+      "id": 255,
+      "text": "間",
+      "kana": "あいだ",
+      "zh": "[名] 当中，之间，期间",
+      "sentence": "このことは君とぼくの間の約束だ。",
+      "sentence_zh": "这件事情是你和我之间的约定。",
+      "blank": "間",
+      "category": "other"
+    },
+    {
       "id": 64,
       "text": "たいした",
       "kana": "たいした",
@@ -11308,6 +12121,26 @@ window.LESSON_DATA = {
       "sentence_zh": "哪里，看您说的……这个想法还很不成熟。",
       "blank": "たいした",
       "category": "dialogue"
+    },
+    {
+      "id": 257,
+      "text": "たいした",
+      "kana": "たいした",
+      "zh": "[连体] 了不起的，惊人的",
+      "sentence": "わたしの友達はヨーロッパのピアノコンクールで優勝しました。たいしたものです。",
+      "sentence_zh": "我的一个朋友在欧洲钢琴大赛上获得了冠军。太了不起了。",
+      "blank": "たいした",
+      "category": "other"
+    },
+    {
+      "id": 256,
+      "text": "たいした",
+      "kana": "たいした",
+      "zh": "[连体] 了不起的，惊人的",
+      "sentence": "これはわたしがかいた絵で，たいした作品ではありません。",
+      "sentence_zh": "这是我画的，不是什么好作品。",
+      "blank": "たいした",
+      "category": "other"
     },
     {
       "id": 65,
@@ -11328,6 +12161,16 @@ window.LESSON_DATA = {
       "sentence_zh": "我们全家都很健康。",
       "blank": "私ども",
       "category": "other"
+    },
+    {
+      "id": 258,
+      "text": "〜ども",
+      "kana": "ども",
+      "zh": "〜们（自谦语）",
+      "sentence": "中国用のネーミングやラベルのデザインは，私どもで引き受けます。",
+      "sentence_zh": "在中国使用的名称、标签的设计等，由我公司来负责。",
+      "blank": "私ども",
+      "category": "dialogue"
     },
     {
       "id": 67,
@@ -11420,6 +12263,16 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
+      "id": 253,
+      "text": "飛び込む",
+      "kana": "とびこむ",
+      "zh": "[动1] 跳入，跳进",
+      "sentence": "少年が橋から川に飛び込んで遊んでいました。",
+      "sentence_zh": "少年从桥上跳进河里玩耍。",
+      "blank": "飛び込んで",
+      "category": "other"
+    },
+    {
       "id": 76,
       "text": "放る",
       "kana": "ほうる",
@@ -11437,6 +12290,16 @@ window.LESSON_DATA = {
       "sentence": "彼はボールをかごに投げ込んだ。",
       "sentence_zh": "他把球投进了篮子里。",
       "blank": "投げ込んだ",
+      "category": "other"
+    },
+    {
+      "id": 254,
+      "text": "投げ込む",
+      "kana": "なげこむ",
+      "zh": "[动1] 投进，投入，扔进",
+      "sentence": "湖にごみを投げ込むのはやめてください。",
+      "sentence_zh": "请不要往湖里扔垃圾。",
+      "blank": "投げ込む",
       "category": "other"
     },
     {
@@ -11670,6 +12533,16 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
+      "id": 260,
+      "text": "無数",
+      "kana": "むすう",
+      "zh": "[名] 无数",
+      "sentence": "晴れた日に夜空を見上げると，無数の星を見ることができる。",
+      "sentence_zh": "晴天里仰望夜空，可以看到无数星星。",
+      "blank": "無数",
+      "category": "other"
+    },
+    {
       "id": 101,
       "text": "存在する",
       "kana": "そんざいする",
@@ -11688,6 +12561,26 @@ window.LESSON_DATA = {
       "sentence_zh": "这个习惯可以追溯到江户时代。",
       "blank": "さかのぼる",
       "category": "other"
+    },
+    {
+      "id": 262,
+      "text": "さかのぼる",
+      "kana": "さかのぼる",
+      "zh": "[动1] 追溯，上溯",
+      "sentence": "うちの先祖は，150年前までさかのぼることができる。",
+      "sentence_zh": "我家的先祖，可以追溯到150年前。",
+      "blank": "さかのぼる",
+      "category": "other"
+    },
+    {
+      "id": 261,
+      "text": "さかのぼる",
+      "kana": "さかのぼる",
+      "zh": "[动1] 追溯，上溯",
+      "sentence": "「胡同」を知るには，歴史を約700年前までさかのぼらなければならない。",
+      "sentence_zh": "要了解“胡同”，就必须追溯到大约700年前。",
+      "blank": "さかのぼら",
+      "category": "text"
     },
     {
       "id": 103,
@@ -11920,6 +12813,26 @@ window.LESSON_DATA = {
       "category": "text"
     },
     {
+      "id": 265,
+      "text": "せいぜい",
+      "kana": "せいぜい",
+      "zh": "[副] 最多，充其量；尽量，尽可能",
+      "sentence": "毎年このコンテストに応募する人はせいぜい5，6人程度だ。",
+      "sentence_zh": "每年都参加这个比赛的人顶多也就五六人。",
+      "blank": "せいぜい",
+      "category": "other"
+    },
+    {
+      "id": 264,
+      "text": "せいぜい",
+      "kana": "せいぜい",
+      "zh": "[副] 最多，充其量；尽量，尽可能",
+      "sentence": "経験があるといってもせいぜい2，3年だ。",
+      "sentence_zh": "虽说有经历，也只是两三年而已。",
+      "blank": "せいぜい",
+      "category": "other"
+    },
+    {
       "id": 126,
       "text": "明",
       "kana": "みん",
@@ -12020,6 +12933,16 @@ window.LESSON_DATA = {
       "category": "other"
     },
     {
+      "id": 259,
+      "text": "〜連れ",
+      "kana": "つれ",
+      "zh": "带着〜",
+      "sentence": "学生時代に，仲のいい友達と2人連れでよく旅をしました。",
+      "sentence_zh": "学生时代，我经常和好朋友两人一起去旅行。",
+      "blank": "2人連れ",
+      "category": "other"
+    },
+    {
       "id": 136,
       "text": "年配",
       "kana": "ねんぱい",
@@ -12076,6 +12999,16 @@ window.LESSON_DATA = {
       "zh": "[名] 东南",
       "sentence": "その島は日本の南東に位置している。",
       "sentence_zh": "那个岛屿位于日本的东南方向。",
+      "blank": "南東",
+      "category": "other"
+    },
+    {
+      "id": 263,
+      "text": "南東",
+      "kana": "なんとう",
+      "zh": "[名] 东南",
+      "sentence": "わたしの親戚の家は北京市の南東の方角にあります。",
+      "sentence_zh": "我亲戚家在北京市的东南角。",
       "blank": "南東",
       "category": "other"
     },
