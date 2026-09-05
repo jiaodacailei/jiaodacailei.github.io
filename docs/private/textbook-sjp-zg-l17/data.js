@@ -4681,7 +4681,10 @@ window.LESSON_DATA = {
               ],
               "zh": "那是一场经典演奏，很令人感动，实在是难以用语言表达。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "名演奏",
+                "表せません"
+              ],
               "audio": "audio/seg-194.mp3",
               "duration": 7.032
             },
@@ -4706,7 +4709,9 @@ window.LESSON_DATA = {
               ],
               "zh": "太好吃了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "最高に"
+              ],
               "audio": "audio/seg-195.mp3",
               "duration": 2.496
             },
@@ -4726,7 +4731,9 @@ window.LESSON_DATA = {
               ],
               "zh": "很好吃。〔如用于称赞对方亲手制作的菜肴则略显不礼貌〕",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "かなり"
+              ],
               "audio": "audio/seg-196.mp3",
               "duration": 2.256
             },
@@ -4769,7 +4776,9 @@ window.LESSON_DATA = {
               ],
               "zh": "老师的话让我受益匪浅。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "勉強になります"
+              ],
               "audio": "audio/seg-197.mp3",
               "duration": 3.6
             },
@@ -4972,7 +4981,9 @@ window.LESSON_DATA = {
               ],
               "zh": "结果太棒了。——谢谢。您这么说，我真的非常感谢。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いただけると"
+              ],
               "audio": "audio/seg-201.mp3",
               "duration": 8.616
             }
@@ -5110,7 +5121,8 @@ window.LESSON_DATA = {
               "zh": "以上便是要放在网页上“探访‘金星’的故乡”栏目里的一个例子。",
               "notes": "",
               "blanks": [
-                "以上"
+                "以上",
+                "取り上げる"
               ],
               "audio": "audio/seg-002.mp3"
             },
@@ -5158,7 +5170,8 @@ window.LESSON_DATA = {
               "zh": "〔之前做了某种说明〕这就是本次策划的概要。",
               "notes": "",
               "blanks": [
-                "これ"
+                "これ",
+                "概略"
               ],
               "audio": "audio/seg-203.mp3",
               "duration": 3.408
@@ -5461,7 +5474,9 @@ window.LESSON_DATA = {
               "zh": "那些虚礼客套就免了，大家尽情地喝吧。",
               "notes": "",
               "blanks": [
-                "は抜きにして"
+                "堅苦しい",
+                "抜きにして",
+                "思いきり"
               ],
               "audio": "audio/seg-207.mp3",
               "duration": 4.464
@@ -5531,7 +5546,9 @@ window.LESSON_DATA = {
               "zh": "不必客气，想说什么就说吧。",
               "notes": "",
               "blanks": [
-                "は抜きにして"
+                "遠慮",
+                "抜きにして",
+                "言いたいことを言って"
               ],
               "audio": "audio/seg-208.mp3",
               "duration": 4.272
@@ -5602,7 +5619,9 @@ window.LESSON_DATA = {
               "zh": "不开玩笑，你跳槽来我们公司吧。",
               "notes": "",
               "blanks": [
-                "は抜きにして"
+                "冗談",
+                "抜きにして",
+                "転職"
               ],
               "audio": "audio/seg-209.mp3",
               "duration": 5.328
@@ -5935,7 +5954,8 @@ window.LESSON_DATA = {
               "zh": "台湾气候确实温暖，但也有高山，所以有些地方也会下雪。",
               "notes": "",
               "blanks": [
-                "確かに"
+                "確かに",
+                "温暖な気候"
               ],
               "audio": "audio/seg-215.mp3",
               "duration": 7.368
@@ -5992,7 +6012,8 @@ window.LESSON_DATA = {
               "zh": "确实如您所说。非常抱歉。",
               "notes": "",
               "blanks": [
-                "確かに"
+                "確かに",
+                "おっしゃるとおり"
               ],
               "audio": "audio/seg-216.mp3",
               "duration": 5.64
@@ -6679,6 +6700,7 @@ window.LESSON_DATA = {
               "zh": "我的一个朋友在欧洲钢琴大赛上获得了冠军。太了不起了。",
               "notes": "",
               "blanks": [
+                "コンクール",
                 "たいした"
               ],
               "audio": "audio/seg-225.mp3",
