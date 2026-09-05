@@ -1130,8 +1130,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 见 listening-page.css），这份拷贝虽然物理上还在同一张 .seg-card
     // 里但要在答案区域里显示出来，选择器不能被那条隐藏规则误伤。
     function answerHtml(badgeHtml) {
-      var exampleEl = card.querySelector(".seg-example");
-      var exampleHtml = exampleEl ? '<div class="dictate-example">' + exampleEl.innerHTML + "</div>" : "";
+      // 一张卡片可能不止一条例句（生词卡片的 moreExamples），全部带上，
+      // 不是只取第一条——不然默写答对/答错时看到的例句会少于跟读模式下
+      // 实际显示的那几条。
+      var exampleHtml = Array.from(card.querySelectorAll(".seg-example")).map(function(el) {
+        return '<div class="dictate-example">' + el.innerHTML + "</div>";
+      }).join("");
       return badgeHtml + " " + segJa.innerHTML + exampleHtml;
     }
 
@@ -1278,81 +1282,48 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function setupBlankForCard(card) {
     // 这张卡片可能是"重新设置"（编辑模式改完内容后再调一次），先把上一轮
     // 建的 .seg-ja-blank 克隆和相关状态清掉，不然会在原有输入框旁边又长出
-    // 一套新的、新旧两份重叠显示。
-    var oldClone = card.querySelector(".seg-ja-blank");
-    if (oldClone) oldClone.remove();
+    // 一套新的、新旧两份重叠显示。一张卡片现在可能有不止一个例句块（生词
+    // 卡片的 moreExamples，见 page-renderer.js 的 renderCard()），每块各自
+    // 一份克隆，全部清掉。
+    card.querySelectorAll(".seg-ja-blank").forEach(function(el) { el.remove(); });
     card.classList.remove("has-blank", "blank-revealed");
     delete card._blank;
 
     var segJa = card.querySelector(".seg-ja");
-    var notes = card.querySelector(".seg-notes");
-    if (!segJa || !card.dataset.blanks) return;
-    var blankTexts;
-    try { blankTexts = JSON.parse(card.dataset.blanks); } catch (e) { blankTexts = null; }
-    if (!blankTexts || !blankTexts.length) return;
+    if (!segJa) return;
 
-    // 在原文的克隆上动手（不碰真正的 .seg-ja，跟读高亮/切模式回退都还是原样）。
-    // 生词卡片本身只有孤立的一个词，没有上下文——data-quiz-sentence 存在时
-    // （build_page.py 从单词测试的例句反推出来的，见 sentence_to_data()），
-    // 挖空的底稿改用这句例句的纯文本，不用卡片自己的 .seg-ja（那样等于把
-    // 整个词都挖空，没有意义）。例句是纯文本、没有逐词假名注音结构，直接
-    // 塞成一个文本节点即可，baseTokens() 本来就支持纯文本节点。
-    var quizSentence = card.dataset.quizSentence;
-    var clone = quizSentence ? document.createElement("div") : segJa.cloneNode(true);
-    if (quizSentence) clone.textContent = quizSentence;
-    clone.className = "seg-ja-blank";
-    var cloneTokens = baseTokens(clone);
-    var plain = cloneTokens.map(function(t) { return t.text; }).join("");
-    // 定位挖空范围时按半角归一化再搜索（跟 stripPunct() 对答案判分做的
-    // 归一化保持一致）——normalizeFullwidth() 是逐字符等长替换，不会改变
-    // 字符串长度，归一化后字符串里找到的下标直接搬回原始 plain 用完全
-    // 有效。真实bug：内容作者在 blanks[] 里打成全角"４００"，原文其实是
-    // 半角"400"，裸 indexOf 找不到，这个空整个不出现（只在控制台warn，
-    // 没人会打开控制台注意到），跟"判分不区分半全角"这条规则不一致。
-    var plainNorm = normalizeFullwidth(plain);
+    // 收集这张卡片里所有要挖空的"块"——会话/课文这类没有 .seg-example 的
+    // 卡片，直接用卡片自己的 .seg-ja + 卡片级别的 data-blanks（当成唯一
+    // 一块）；生词卡片可能有多个 .seg-example（原有的 quizSentence +
+    // moreExamples 追加的），各自带自己的 data-quiz-sentence/data-blanks，
+    // 逐块处理、各自的挖空互不干扰（比如按回车提交只影响同一块内的空，
+    // 不会捎带上另一条例句的空）。
+    var jobs = [];
+    var exampleEls = card.querySelectorAll(".seg-example[data-quiz-sentence]");
+    if (exampleEls.length) {
+      exampleEls.forEach(function(el, idx) {
+        if (!el.dataset.blanks) return;
+        jobs.push({ quizSentence: el.dataset.quizSentence, blanksRaw: el.dataset.blanks, insertAfter: el, exampleIdx: idx });
+      });
+    } else if (card.dataset.blanks) {
+      jobs.push({ quizSentence: null, blanksRaw: card.dataset.blanks, insertAfter: segJa, exampleIdx: 0 });
+    }
+    if (!jobs.length) return;
 
-    var ranges = [];
-    // searchFrom 只往前推进，不用每条都从头 plain.indexOf(text)——同一段文字
-    // 在句子里出现不止一次时（比如"AでもBでも"两个"でも"都要单独挖空），从
-    // 头找每次都会命中同一个最靠前的位置，导致后一条被当成"跟前一条重叠"
-    // 在下面的去重步骤里静默吃掉，那个空实际上永远不会出现。要求 blanks
-    // 数组按它们在原文里从左到右出现的顺序书写（正常写法本来就是这样）。
-    var searchFrom = 0;
-    blankTexts.forEach(function(text) {
-      var idx = plainNorm.indexOf(normalizeFullwidth(text), searchFrom);
-      if (idx === -1) {
-        // data-blanks 里的文字在这句原文里找不到——多半是内容作者打字打错了
-        // （或者句子后来改过、blanks 没跟着更新，或者这一条排在了它在原文
-        // 里实际位置的后一条前面），控制台报警方便定位，不静默跳过导致
-        // "这个空莫名其妙消失了"却没人知道为什么。
-        console.warn("[填空] " + card.id + " 的 data-blanks 里 “" + text + "” 没有在原文中找到，检查数据是否有误");
-        return;
-      }
-      ranges.push({ start: idx, end: idx + text.length });
-      searchFrom = idx + text.length;
-    });
-    ranges.sort(function(a, b) { return a.start - b.start; });
-    // 两个 blanks 条目意外圈到同一段文字时只保留先出现的那个，避免同一批
-    // token 被挖空两次（第二次挖的时候 token 已经不在 DOM 里了）。这一步
-    // 只挡得住"两个 range 字符范围本身重叠"的情况，挡不住"range 不重叠，
-    // 但恰好都覆盖到同一个多字符 token 的一部分"这种——挖空是按整个 token
-    // 挖的，不是按字符精确裁的，这种情况得在下面按 token 级别（而不是字符
-    // 级别）去重，见 consumedNodes。
-    ranges = ranges.filter(function(r, i) { return i === 0 || r.start >= ranges[i - 1].end; });
-    if (!ranges.length) return;
-
-    // 一句可能挖了不止一个空，但 seg-notes 往往是把这几个语法点写在同一段
-    // 笔记里的（比如"「AでもBでも」表示…；「当たる」在此意为…"）——如果
-    // 提交了第一个空就把 seg-notes 整段放出来，会连第二个空的答案一起提前
-    // 剧透。要等这句所有空都提交过之后才放出 seg-notes，不能每提交一个空
-    // 就检查一次单独放行。
+    // 一句/一块可能挖了不止一个空，但 seg-notes 往往是把好几个语法点写在
+    // 同一段笔记里的（比如"「AでもBでも」表示…；「当たる」在此意为…"）——
+    // 如果提交了第一个空就把 seg-notes 整段放出来，会连其它空的答案一起
+    // 提前剧透。要等这张卡片全部块的全部空都提交过之后才放出 seg-notes，
+    // 不能每提交一个空就检查一次单独放行——跨块共享同一份计数器，不是
+    // 每块各自独立揭示。
     var blanksTotal = 0, blanksResolved = 0;
     function maybeRevealNotes() {
       if (blanksResolved >= blanksTotal) card.classList.add("blank-revealed");
     }
     // 给"清除填空进度"整体重置收集每个空自己的重置动作——每个空的
-    // input/redoBtn/everResolved 都是下面 ranges.forEach 里各自的闭包变量，
-    // 只能在定义的地方各自收一份重置函数，没法从外面直接够到。
+    // input/redoBtn/everResolved 都是下面 forEach 里各自的闭包变量，
+    // 只能在定义的地方各自收一份重置函数，没法从外面直接够到。跨块共享
+    // 同一个数组，reset() 一次性把整张卡片（所有块）都清空。
     var blankResets = [];
 
     // token 粒度可能比语法点标注的原文粗——分词器有时会把一长串纯假名（比如
@@ -1363,133 +1334,197 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     function isPlainToken(t) {
       return t.node.nodeType === 3 || (t.node.nodeType === 1 && !t.node.querySelector("ruby"));
     }
-    var consumedNodes = [];
-    // 一句可能不止一个空，用户反馈"输入回车应该把这句所有空都比对一次，
-    // 而不是只比对当前空"——收集这句里每个空自己的 input/answer/resolve，
-    // 键盘事件触发时才能把它们一起处理，不是只处理触发事件的那一个。
-    var blankEntries = [];
-    ranges.forEach(function(range, blankIdx) {
-      var overlapping = cloneTokens.filter(function(t) {
-        return t.start < range.end && t.end > range.start && consumedNodes.indexOf(t.node) === -1;
-      });
-      if (!overlapping.length) return;
-      consumedNodes = consumedNodes.concat(overlapping.map(function(t) { return t.node; }));
-      var answer = overlapping.map(function(t) {
-        var s = Math.max(t.start, range.start) - t.start;
-        var e = Math.min(t.end, range.end) - t.start;
-        return t.text.slice(s, e);
-      }).join("");
-      var blankId = card.id + ":" + blankIdx;
-      blanksTotal++;
 
-      var input = document.createElement("input");
-      input.type = "text";
-      input.className = "blank-input";
-      input.autocomplete = "off";
-      input.dataset.answer = answer;
-      input.style.width = (answer.length * 1.4 + 1.2) + "em";
-      var first = overlapping[0], last = overlapping[overlapping.length - 1];
-      var parent = first.node.parentNode;
-      // 首尾 token 如果比 range 宽、且是纯文本（没有 ruby 标注结构），劈开成
-      // "不挖空的那一截照常保留"+"挖空的那一截换成输入框"，纯假名 token 直接
-      // 切字符串就行；如果边界 token 带 ruby（汉字词，切开会破坏注音结构），
-      // 这种少见情况退回整个 token 一起挖空的旧行为，不强行拆。
-      if (first.start < range.start && isPlainToken(first)) {
-        parent.insertBefore(document.createTextNode(first.text.slice(0, range.start - first.start)), first.node);
-      }
-      parent.insertBefore(input, first.node);
-      if (last.end > range.end && isPlainToken(last)) {
-        parent.insertBefore(document.createTextNode(last.text.slice(range.end - last.start)), last.node.nextSibling);
-      }
-      overlapping.forEach(function(t) { if (t.node.parentNode) t.node.parentNode.removeChild(t.node); });
-      input.addEventListener("click", function(e) { e.stopPropagation(); });
+    var anyBuilt = false;
+    jobs.forEach(function(job) {
+      var blankTexts;
+      try { blankTexts = JSON.parse(job.blanksRaw); } catch (e) { blankTexts = null; }
+      if (!blankTexts || !blankTexts.length) return;
 
-      // 重做按钮——提交过之后（不管对错）才出现，点了把这个空重新切回可编辑，
-      // 跟默写的"重新练习"一个道理：只是给用户一个重新做一遍的入口，不影响
-      // 已经记进 localStorage 的过关状态、也不影响 seg-notes 的揭示状态
-      // （notes 一旦因为"这句所有空都提交过"而放出来，就不会因为重做某一个
-      // 空又重新藏回去——放出来的内容已经看到了，藏回去没有意义）。
-      var redoBtn = document.createElement("button");
-      redoBtn.type = "button";
-      redoBtn.className = "blank-redo";
-      redoBtn.textContent = "↻";
-      redoBtn.title = "重新做这道题";
-      redoBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        input.disabled = false;
-        input.value = "";
-        input.classList.remove("ok", "ng");
-        input.focus();
-      });
+      // 在原文的克隆上动手（不碰真正的 .seg-ja，跟读高亮/切模式回退都还是
+      // 原样）。生词卡片本身只有孤立的一个词，没有上下文——job.quizSentence
+      // 存在时（这块是某条例句，不是卡片自己的原句）挖空的底稿改用这句
+      // 例句的纯文本，不用卡片自己的 .seg-ja（那样等于把整个词都挖空，
+      // 没有意义）。例句是纯文本、没有逐词假名注音结构，直接塞成一个文本
+      // 节点即可，baseTokens() 本来就支持纯文本节点。
+      var clone = job.quizSentence ? document.createElement("div") : segJa.cloneNode(true);
+      if (job.quizSentence) clone.textContent = job.quizSentence;
+      clone.className = "seg-ja-blank";
+      var cloneTokens = baseTokens(clone);
+      var plain = cloneTokens.map(function(t) { return t.text; }).join("");
+      // 定位挖空范围时按半角归一化再搜索（跟 stripPunct() 对答案判分做的
+      // 归一化保持一致）——normalizeFullwidth() 是逐字符等长替换，不会改变
+      // 字符串长度，归一化后字符串里找到的下标直接搬回原始 plain 用完全
+      // 有效。真实bug：内容作者在 blanks[] 里打成全角"４００"，原文其实是
+      // 半角"400"，裸 indexOf 找不到，这个空整个不出现（只在控制台warn，
+      // 没人会打开控制台注意到），跟"判分不区分半全角"这条规则不一致。
+      var plainNorm = normalizeFullwidth(plain);
 
-      // 不管对错，提交后都直接给出正确答案，不要求改到对才能继续——这条
-      // 特意跟单词测试的"不管对错都显示答案"保持一致，不是默写"必须改对"
-      // 那一套（填空考的是语法点本身记没记住，不是靠反复重试硬凑答案）。
-      // everResolved 只在"这次页面加载里，这个空第一次被 resolve()"时推进
-      // blanksResolved/放出 notes——必须从 false 开始，不能按 blankDone
-      // 是否已有记录来初始化：blanksResolved 是每次刷新页面都从 0 重新计的
-      // 内存计数器，哪怕这个空之前已经在 localStorage 里记过，这次加载时
-      // 用 blankDone 恢复状态那一次 resolve() 调用也必须真的执行一次
-      // "+1"，不然 blanksResolved 永远数不到 blanksTotal、notes 也就永远
-      // 放不出来（真实踩过：写成按 blankDone 初始化，导致刷新页面之后所有
-      // 已完成的填空都不再显示 notes，即使这句所有空都做完了）。这个 flag
-      // 真正要防的是"同一次页面加载里，用户重做之后再提交一次"不要重复计数，
-      // 不是要跳过刷新页面后的首次恢复。
-      var everResolved = false;
-      function resolve(ok) {
-        input.disabled = true;
-        input.classList.toggle("ok", ok);
-        input.classList.toggle("ng", !ok);
-        if (!ok) input.value = answer;
-        redoBtn.classList.add("shown");
-        if (!everResolved) {
-          everResolved = true;
-          blanksResolved++;
-          maybeRevealNotes();
+      var ranges = [];
+      // searchFrom 只往前推进，不用每条都从头 plain.indexOf(text)——同一段文字
+      // 在句子里出现不止一次时（比如"AでもBでも"两个"でも"都要单独挖空），从
+      // 头找每次都会命中同一个最靠前的位置，导致后一条被当成"跟前一条重叠"
+      // 在下面的去重步骤里静默吃掉，那个空实际上永远不会出现。要求 blanks
+      // 数组按它们在原文里从左到右出现的顺序书写（正常写法本来就是这样）。
+      var searchFrom = 0;
+      blankTexts.forEach(function(text) {
+        var idx = plainNorm.indexOf(normalizeFullwidth(text), searchFrom);
+        if (idx === -1) {
+          // data-blanks 里的文字在这句原文里找不到——多半是内容作者打字打错了
+          // （或者句子后来改过、blanks 没跟着更新，或者这一条排在了它在原文
+          // 里实际位置的后一条前面），控制台报警方便定位，不静默跳过导致
+          // "这个空莫名其妙消失了"却没人知道为什么。
+          console.warn("[填空] " + card.id + "(第" + job.exampleIdx + "块) 的 data-blanks 里 “" + text + "” 没有在原文中找到，检查数据是否有误");
+          return;
         }
-        blankDone[blankId] = ok;
-        saveBlankDone();
-      }
-      blankEntries.push({ input: input, answer: answer, resolve: resolve });
-      // 这句里任意一个空按回车，都把这句所有还没提交过的空一起比对一遍
-      // （不是只比对触发事件的这一个）——填空练习通常一句挖好几个空，
-      // 用户习惯打完最后一个空直接回车提交整句，不想逐个空分别回车。
-      // 但必须这些还没提交过的空**全部**都写了内容才真正判定——空着的
-      // 空一按回车就被判错、直接亮出答案，等于没写就先看答案，练习失去
-      // 意义；改成只要还有空着的，回车什么都不做，让用户继续写。
-      input.addEventListener("keydown", function(e) {
-        if (e.key !== "Enter") return;
-        e.preventDefault();
-        var pending = blankEntries.filter(function(entry) { return !entry.input.disabled; });
-        var allFilled = pending.every(function(entry) { return entry.input.value.trim() !== ""; });
-        if (!allFilled) return;
-        pending.forEach(function(entry) {
-          // 跟默写模式同一个道理（见上面 stripPunct() 的注释）：挖空的原文
-          // 如果带标点（比如"「他人丼」という料理もある"这种挖空范围本身
-          // 就含引号），用户照着实际说的内容打、但省略了引号这类不影响
-          // 语义的标点，不应该被判错——填空考的是语法点/词汇本身记没记住，
-          // 不是标点符号打没打对。之前这里是裸 `===` 精确匹配，没有做这层
-          // 归一化。
-          entry.resolve(stripPunct(entry.input.value.trim()) === stripPunct(entry.answer));
+        ranges.push({ start: idx, end: idx + text.length });
+        searchFrom = idx + text.length;
+      });
+      ranges.sort(function(a, b) { return a.start - b.start; });
+      // 两个 blanks 条目意外圈到同一段文字时只保留先出现的那个，避免同一批
+      // token 被挖空两次（第二次挖的时候 token 已经不在 DOM 里了）。这一步
+      // 只挡得住"两个 range 字符范围本身重叠"的情况，挡不住"range 不重叠，
+      // 但恰好都覆盖到同一个多字符 token 的一部分"这种——挖空是按整个 token
+      // 挖的，不是按字符精确裁的，这种情况得在下面按 token 级别（而不是字符
+      // 级别）去重，见 consumedNodes。
+      ranges = ranges.filter(function(r, i) { return i === 0 || r.start >= ranges[i - 1].end; });
+      if (!ranges.length) return;
+
+      var consumedNodes = [];
+      // 这一块里可能不止一个空，用户反馈"输入回车应该把这句所有空都比对
+      // 一次，而不是只比对当前空"——收集这一块里每个空自己的
+      // input/answer/resolve，键盘事件触发时才能把它们一起处理，不是只
+      // 处理触发事件的那一个。范围限定在同一块内，不跨块（见函数顶部）。
+      var blankEntries = [];
+      ranges.forEach(function(range, blankIdx) {
+        var overlapping = cloneTokens.filter(function(t) {
+          return t.start < range.end && t.end > range.start && consumedNodes.indexOf(t.node) === -1;
         });
-      });
-      input.parentNode.insertBefore(redoBtn, input.nextSibling);
-      blankResets.push(function() {
-        input.disabled = false;
-        input.value = "";
-        input.classList.remove("ok", "ng");
-        redoBtn.classList.remove("shown");
-        everResolved = false;
-      });
+        if (!overlapping.length) return;
+        consumedNodes = consumedNodes.concat(overlapping.map(function(t) { return t.node; }));
+        var answer = overlapping.map(function(t) {
+          var s = Math.max(t.start, range.start) - t.start;
+          var e = Math.min(t.end, range.end) - t.start;
+          return t.text.slice(s, e);
+        }).join("");
+        // blankId 带上 job.exampleIdx，不同例句块里即使 blankIdx 撞了也不会
+        // 共用同一份 localStorage 进度记录。
+        var blankId = card.id + ":" + job.exampleIdx + ":" + blankIdx;
+        blanksTotal++;
 
-      if (blankId in blankDone) {
-        input.value = answer;
-        resolve(blankDone[blankId]);
-      }
+        var input = document.createElement("input");
+        input.type = "text";
+        input.className = "blank-input";
+        input.autocomplete = "off";
+        input.dataset.answer = answer;
+        input.style.width = (answer.length * 1.4 + 1.2) + "em";
+        var first = overlapping[0], last = overlapping[overlapping.length - 1];
+        var parent = first.node.parentNode;
+        // 首尾 token 如果比 range 宽、且是纯文本（没有 ruby 标注结构），劈开成
+        // "不挖空的那一截照常保留"+"挖空的那一截换成输入框"，纯假名 token 直接
+        // 切字符串就行；如果边界 token 带 ruby（汉字词，切开会破坏注音结构），
+        // 这种少见情况退回整个 token 一起挖空的旧行为，不强行拆。
+        if (first.start < range.start && isPlainToken(first)) {
+          parent.insertBefore(document.createTextNode(first.text.slice(0, range.start - first.start)), first.node);
+        }
+        parent.insertBefore(input, first.node);
+        if (last.end > range.end && isPlainToken(last)) {
+          parent.insertBefore(document.createTextNode(last.text.slice(range.end - last.start)), last.node.nextSibling);
+        }
+        overlapping.forEach(function(t) { if (t.node.parentNode) t.node.parentNode.removeChild(t.node); });
+        input.addEventListener("click", function(e) { e.stopPropagation(); });
+
+        // 重做按钮——提交过之后（不管对错）才出现，点了把这个空重新切回可编辑，
+        // 跟默写的"重新练习"一个道理：只是给用户一个重新做一遍的入口，不影响
+        // 已经记进 localStorage 的过关状态、也不影响 seg-notes 的揭示状态
+        // （notes 一旦因为"这句所有空都提交过"而放出来，就不会因为重做某一个
+        // 空又重新藏回去——放出来的内容已经看到了，藏回去没有意义）。
+        var redoBtn = document.createElement("button");
+        redoBtn.type = "button";
+        redoBtn.className = "blank-redo";
+        redoBtn.textContent = "↻";
+        redoBtn.title = "重新做这道题";
+        redoBtn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          input.disabled = false;
+          input.value = "";
+          input.classList.remove("ok", "ng");
+          input.focus();
+        });
+
+        // 不管对错，提交后都直接给出正确答案，不要求改到对才能继续——这条
+        // 特意跟单词测试的"不管对错都显示答案"保持一致，不是默写"必须改对"
+        // 那一套（填空考的是语法点本身记没记住，不是靠反复重试硬凑答案）。
+        // everResolved 只在"这次页面加载里，这个空第一次被 resolve()"时推进
+        // blanksResolved/放出 notes——必须从 false 开始，不能按 blankDone
+        // 是否已有记录来初始化：blanksResolved 是每次刷新页面都从 0 重新计的
+        // 内存计数器，哪怕这个空之前已经在 localStorage 里记过，这次加载时
+        // 用 blankDone 恢复状态那一次 resolve() 调用也必须真的执行一次
+        // "+1"，不然 blanksResolved 永远数不到 blanksTotal、notes 也就永远
+        // 放不出来（真实踩过：写成按 blankDone 初始化，导致刷新页面之后所有
+        // 已完成的填空都不再显示 notes，即使这句所有空都做完了）。这个 flag
+        // 真正要防的是"同一次页面加载里，用户重做之后再提交一次"不要重复计数，
+        // 不是要跳过刷新页面后的首次恢复。
+        var everResolved = false;
+        function resolve(ok) {
+          input.disabled = true;
+          input.classList.toggle("ok", ok);
+          input.classList.toggle("ng", !ok);
+          if (!ok) input.value = answer;
+          redoBtn.classList.add("shown");
+          if (!everResolved) {
+            everResolved = true;
+            blanksResolved++;
+            maybeRevealNotes();
+          }
+          blankDone[blankId] = ok;
+          saveBlankDone();
+        }
+        blankEntries.push({ input: input, answer: answer, resolve: resolve });
+        // 这一块里任意一个空按回车，都把这一块里所有还没提交过的空一起比对
+        // 一遍（不是只比对触发事件的这一个，也不牵连到其它例句块的空）——
+        // 填空练习通常一句挖好几个空，用户习惯打完最后一个空直接回车提交
+        // 整句，不想逐个空分别回车。但必须这些还没提交过的空**全部**都写了
+        // 内容才真正判定——空着的空一按回车就被判错、直接亮出答案，等于
+        // 没写就先看答案，练习失去意义；改成只要还有空着的，回车什么都不
+        // 做，让用户继续写。
+        input.addEventListener("keydown", function(e) {
+          if (e.key !== "Enter") return;
+          e.preventDefault();
+          var pending = blankEntries.filter(function(entry) { return !entry.input.disabled; });
+          var allFilled = pending.every(function(entry) { return entry.input.value.trim() !== ""; });
+          if (!allFilled) return;
+          pending.forEach(function(entry) {
+            // 跟默写模式同一个道理（见上面 stripPunct() 的注释）：挖空的原文
+            // 如果带标点（比如"「他人丼」という料理もある"这种挖空范围本身
+            // 就含引号），用户照着实际说的内容打、但省略了引号这类不影响
+            // 语义的标点，不应该被判错——填空考的是语法点/词汇本身记没记住，
+            // 不是标点符号打没打对。之前这里是裸 `===` 精确匹配，没有做这层
+            // 归一化。
+            entry.resolve(stripPunct(entry.input.value.trim()) === stripPunct(entry.answer));
+          });
+        });
+        input.parentNode.insertBefore(redoBtn, input.nextSibling);
+        blankResets.push(function() {
+          input.disabled = false;
+          input.value = "";
+          input.classList.remove("ok", "ng");
+          redoBtn.classList.remove("shown");
+          everResolved = false;
+        });
+
+        if (blankId in blankDone) {
+          input.value = answer;
+          resolve(blankDone[blankId]);
+        }
+      });
+      if (!blankEntries.length) return;
+
+      job.insertAfter.insertAdjacentElement("afterend", clone);
+      anyBuilt = true;
     });
-    if (!blanksTotal) return;
+    if (!anyBuilt) return;
 
-    segJa.insertAdjacentElement("afterend", clone);
     card.classList.add("has-blank");
     card._blank = {
       reset: function() {

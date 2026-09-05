@@ -162,6 +162,10 @@
   // 定位挖空位置用的是同一套逻辑（indexOf + searchFrom 顺序往后找，
   // 处理同一段文字出现不止一次的情况），保持两处"怎么在句子里找到blanks
   // 对应的文字"这件事只有一套判断标准。
+  // data-quiz-sentence/data-blanks 现在直接标在这个块自己身上（不是卡片
+  // 外层），因为一张卡片可能有多个例句块（生词卡片的moreExamples，见下面
+  // renderCard()）——setupBlankForCard() 按 .seg-example 逐块遍历，每块
+  // 各自定位自己的挖空，不再假设卡片里只有唯一一份 quizSentence/blanks。
   function exampleSentenceHtml(sentence, blanks, audioSrc) {
     var ranges = [];
     var searchFrom = 0;
@@ -191,7 +195,8 @@
     var audioHtml = audioSrc
       ? '<audio class="seg-example-audio" preload="none" src="' + esc(audioSrc) + '"></audio>'
       : "";
-    return '<p class="seg-example">' + html + audioHtml + "</p>";
+    var blanksAttr = (blanks && blanks.length) ? ' data-blanks="' + esc(JSON.stringify(blanks)) + '"' : "";
+    return '<p class="seg-example" data-quiz-sentence="' + esc(sentence) + '"' + blanksAttr + ">" + html + audioHtml + "</p>";
   }
 
   // 跟 build_page.py 的 sentence_card_html() 一一对应。contextSpeaker 是"进
@@ -220,24 +225,38 @@
       }
     }
 
+    // 会话/课文这类没有quizSentence的卡片，blanks直接挖在卡片自己的
+    // .seg-ja上，data-blanks留在卡片级别，这条路径完全不变。生词卡片
+    // （有quizSentence）的blanks改成放在各自的.seg-example块上（见下面
+    // exampleBlocks），不再重复放一份在卡片级别。
     var blanksAttr = "";
-    if (s.blanks && s.blanks.length) {
+    if (!s.quizSentence && s.blanks && s.blanks.length) {
       blanksAttr = ' data-blanks="' + esc(JSON.stringify(s.blanks)) + '"';
     }
     // 生词卡片自己只有孤立的一个词，没有上下文句子——"填空"模式下借用
     // 单词测试里现成的例句+挖空位置（build_page.py 的 sentence_to_data()
     // 从 quiz_data 反推出来的），quizSentence 存在时优先用这句而不是卡片
     // 自己的 .seg-ja 当挖空底稿，见 listening-page.js 的 setupBlankForCard()。
-    var quizSentenceAttr = s.quizSentence
-      ? ' data-quiz-sentence="' + esc(s.quizSentence) + '"'
-      : "";
     // 跟读模式下生词卡片单词下面显示的例句——跟"填空"模式复用同一份
     // quizSentence/blanks数据，只是这里是纯展示（挖空目标加粗，不是
     // input），默写/填空模式下用CSS隐藏掉（见listening-page.css）。
     // 真实反馈"跟读模式时，单词下面有没有对应的例句啊"——之前quizSentence
     // 只在填空模式才看得到，默认的跟读模式完全看不到例句。纯文本，不做
     // 假名注音（quizSentence本来就没有逐词kana数据，跟填空模式一致）。
-    var exampleHtml = s.quizSentence ? exampleSentenceHtml(s.quizSentence, s.blanks, s.sentenceAudio) : "";
+    //
+    // 一个词可能不止一条例句——原有的quizSentence（本来就有）+
+    // moreExamples（语法与表达里额外命中这个词的例句追加进来的，见
+    // tools/listening/build_grammar_notes_tab.py）——渲染成多个.seg-example
+    // 块堆在同一张卡片下面，不是拆成好几张卡片重复显示同一个词（真实反馈
+    // "投げ込む单词重复了"）。
+    var exampleBlocks = [];
+    if (s.quizSentence) exampleBlocks.push({ sentence: s.quizSentence, blanks: s.blanks, audio: s.sentenceAudio });
+    (s.moreExamples || []).forEach(function (ex) {
+      exampleBlocks.push({ sentence: ex.quizSentence, blanks: ex.blanks, audio: ex.sentenceAudio });
+    });
+    var exampleHtml = exampleBlocks.map(function (ex) {
+      return exampleSentenceHtml(ex.sentence, ex.blanks, ex.audio);
+    }).join("");
     // 跟 build_page.py 的 sentence_card_html() 里 clause_bounds_attr 一一对应——
     // 见 tools/listening/build_page.py 的 sentence_to_data() 注释。
     var clauseBoundsAttr = "";
@@ -246,7 +265,7 @@
     }
 
     return (
-      '<div class="' + cardClass + '" id="card-a' + s.id + '"' + blanksAttr + quizSentenceAttr + clauseBoundsAttr + ">" +
+      '<div class="' + cardClass + '" id="card-a' + s.id + '"' + blanksAttr + clauseBoundsAttr + ">" +
         speakerHtml +
         '<p class="seg-ja">' + jaHtml + "</p>" +
         '<p class="seg-zh">' + zh + "</p>" + notesHtml + exampleHtml +
@@ -437,23 +456,31 @@
         : "";
     }
 
-    if (s.blanks && s.blanks.length) {
+    if (!s.quizSentence && s.blanks && s.blanks.length) {
       cardEl.dataset.blanks = JSON.stringify(s.blanks);
     } else {
       delete cardEl.dataset.blanks;
     }
 
-    var exampleEl = cardEl.querySelector(".seg-example");
-    if (s.quizSentence) {
-      var exampleHtml = exampleSentenceHtml(s.quizSentence, s.blanks, s.sentenceAudio);
-      if (!exampleEl) {
-        var audioEl = cardEl.querySelector("audio");
-        audioEl.insertAdjacentHTML("beforebegin", exampleHtml);
-      } else {
-        exampleEl.outerHTML = exampleHtml;
-      }
-    } else if (exampleEl) {
-      exampleEl.remove();
+    // 重建全部例句块（原有quizSentence + moreExamples），不是只处理一块——
+    // edit-mode 目前不编辑 quizSentence/moreExamples 本身，这里只是让"改了
+    // 别的字段（notes/blanks等）之后"这几块仍然跟卡片其它内容一起刷新，不会
+    // 因为只认第一个 .seg-example 而把 moreExamples 渲染出的其余块丢掉。
+    var oldExampleEls = cardEl.querySelectorAll(".seg-example");
+    var exampleBlocks = [];
+    if (s.quizSentence) exampleBlocks.push({ sentence: s.quizSentence, blanks: s.blanks, audio: s.sentenceAudio });
+    (s.moreExamples || []).forEach(function (ex) {
+      exampleBlocks.push({ sentence: ex.quizSentence, blanks: ex.blanks, audio: ex.sentenceAudio });
+    });
+    var newExampleHtml = exampleBlocks.map(function (ex) {
+      return exampleSentenceHtml(ex.sentence, ex.blanks, ex.audio);
+    }).join("");
+    if (oldExampleEls.length) {
+      oldExampleEls[0].insertAdjacentHTML("beforebegin", newExampleHtml);
+      oldExampleEls.forEach(function (el) { el.remove(); });
+    } else if (newExampleHtml) {
+      var audioEl = cardEl.querySelector("audio");
+      audioEl.insertAdjacentHTML("beforebegin", newExampleHtml);
     }
   }
 })();

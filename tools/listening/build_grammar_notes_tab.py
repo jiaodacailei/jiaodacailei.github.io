@@ -43,32 +43,37 @@ tab结构，插到"课文"和"生词"之间（跟教材app自己的tab顺序一�
    语法点本身也能被挖空考到，不止是生词表挑出来的单词。专题卡的例句不参与
    这一步（没有blanks字段）。
 
-3. **给"生词"tab和単語テスト同步追加语法例句练习**：编号语法点的例句如果
-   带vocab_id，且这句跟那个词条现在的例句（生词tab的quizSentence /
-   単語テスト的sentence）不是同一句，就在原词条**后面紧跟着**追加一张新卡
-   （生词tab）/一条新记录（DATA.quiz）——tokens/说话人/词条本身的读音音频
-   （`audio`）原样复制自原词条，不删不改原有例句；只有`quizSentence`
-   （生词tab）/`sentence`+`sentence_zh`+`blank`（単語テスト）换成语法例句，
-   一个词有几条不重复的语法例句就追加几张卡，填空练习也就变成几道题。如果
-   跟原有例句是同一句（比如这个词的生词表例句本来就是从这句真实对话里挑的，
-   跟语法卡引用的是同一句），说明没有新增信息，跳过、不追加。
+3. **给"生词"tab追加语法例句练习——挂在原卡片自己身上，不再拆成新卡片**：
+   编号语法点的例句如果带vocab_id，且这句跟那个词条现在已有的例句（原有
+   `quizSentence` + 已经追加过的`moreExamples[].quizSentence`）都不是
+   同一句，就追加进`orig["moreExamples"]`（列表，每项
+   `{quizSentence, blanks, sentenceAudio}`）——**同一个词永远只有一张
+   卡片，`id`/`tokens`/词本身读音`audio`都不变，前端在这一张卡片内部
+   渲染出多个例句区块**。早期版本是"追加一张新卡片、复制tokens/audio"，
+   真实反馈"投げ込む单词重复了"——同一个词紧挨着出现两次，即使内容上
+   没错，观感上像是内容重复，改成挂在同一张卡片下面。如果新例句跟已有
+   的（原有的或者moreExamples里任意一条）是同一句，说明没有新增信息，
+   跳过、不追加。
 
-   新卡的`sentenceAudio`（生词tab，例句自己的音频，独立于词条本身读音的
-   `audio`字段）：语法例句如果匹配到了会话/课文的真句子，直接用那句的
+   `sentenceAudio`：语法例句如果匹配到了会话/课文的真句子，直接用那句的
    audio；专题卡/新造例句没有对应真实录音，留null。
-   単語テスト新记录的`category`：不是照抄原词条的category，而是按这句
+
+4. **単語テスト（`DATA.quiz`）继续用独立记录，不跟"生词"tab走同一套
+   moreExamples**——quiz引擎（`docs/js/listening-page.js`的
+   `TYPES`/`audioSrcFor`）是"一条记录出一组题"的模型，不是"一张卡片"，
+   合并进数组对它没有意义。这里还是给每条不重复的语法例句单独插入一条
+   新记录（新`id`），`category`不是照抄原词条的category，而是按这句
    语法例句自己的来源判——匹配到会话真句子记"dialogue"，匹配到课文真句子
    记"text"，例句本身是新造的（没匹配上任何真句子）记"other"——因为
    category描述的是"这句例句是不是从本课对话/课文里真实核实过的原句"，
    不是词条本身的属性，同一个词条的两条例句完全可能一条来自真句子、一条
    是补写的。
 
-   `audioSrcFor(word)`（`docs/js/listening-page.js`里単語テスト自己的
-   引擎）只认id推audio路径（`audio/seg-{id:03d}.mp3`），新id目前在磁盘上
-   没有对应文件——直接复制原词条自己的`audio/seg-{原id:03d}.mp3`到新id
-   那个路径（同一个词的读音，只是换了个id用来独立记录进度/错题），这个
-   脚本自己做，不留人工TODO。`--audio-dir`不传时默认是
-   `<data.js所在目录>/audio`。
+   `audioSrcFor(word)`只认id推audio路径（`audio/seg-{id:03d}.mp3`），
+   新id目前在磁盘上没有对应文件——直接复制原词条自己的
+   `audio/seg-{原id:03d}.mp3`到新id那个路径（同一个词的读音，只是换了
+   个id用来独立记录进度/错题），这个脚本自己做，不留人工TODO。
+   `--audio-dir`不传时默认是`<data.js所在目录>/audio`。
 
 ## 重复运行防护
 
@@ -279,26 +284,23 @@ def apply_vocab_extensions(data, vocab_extensions, next_id, stats):
         q = vocab_question_of[vocab_id]
         base_idx = find_index(q["sentences"], vocab_id)
         orig = q["sentences"][base_idx]
-        insert_at = base_idx + 1
+        # 不再拆成多张卡片——同一个词的额外例句挂在原卡片自己的
+        # moreExamples数组里（每条{quizSentence,blanks,sentenceAudio}），
+        # 前端一张卡片内渲染成多个.seg-example块，不再是"同一个词连续
+        # 出现两次"（真实反馈"投げ込む单词重复了"）。原卡片的id/tokens/
+        # audio（词本身的读音）完全不动，moreExamples只追加不覆盖已有的。
+        more_examples = orig.setdefault("moreExamples", [])
+        existing_sentences = {orig.get("quizSentence")} | {e["quizSentence"] for e in more_examples}
         for ext in exts:
-            if orig.get("quizSentence") == ext["ja"]:
+            if ext["ja"] in existing_sentences:
                 stats["vocab_skip_identical"] += 1
                 continue
-            new_id = next_id()
-            new_card = {
-                "id": new_id,
-                "speaker": orig.get("speaker"),
-                "speakerKana": orig.get("speakerKana"),
-                "tokens": orig["tokens"],
-                "zh": orig["zh"],
-                "notes": "",
-                "blanks": list(ext["blanks"]),
-                "audio": orig.get("audio"),
+            more_examples.append({
                 "quizSentence": ext["ja"],
+                "blanks": list(ext["blanks"]),
                 "sentenceAudio": ext.get("sentence_audio"),
-            }
-            q["sentences"].insert(insert_at, new_card)
-            insert_at += 1
+            })
+            existing_sentences.add(ext["ja"])
             stats["vocab_added_to_wordlist"] += 1
 
             if vocab_id in quiz_index:
@@ -306,7 +308,11 @@ def apply_vocab_extensions(data, vocab_extensions, next_id, stats):
                 if orig_quiz.get("sentence") == ext["ja"]:
                     stats["quiz_skip_identical"] += 1
                 else:
-                    new_quiz_id = new_id
+                    # 単語テスト这边仍然是"一条记录一道题"的模型（quiz引擎
+                    # 假设一词一句，见listening-page.js的TYPES/audioSrcFor），
+                    # 跟"生词"tab那边合并进moreExamples不是一回事，这里继续
+                    # 用独立id+独立记录，音频也还是复制一份到这个新id。
+                    new_quiz_id = next_id()
                     new_quiz_entry = {
                         "id": new_quiz_id,
                         "text": orig_quiz["text"],

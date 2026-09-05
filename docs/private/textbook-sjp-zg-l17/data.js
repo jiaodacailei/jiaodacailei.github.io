@@ -9116,40 +9116,16 @@ window.LESSON_DATA = {
                 "売り込む"
               ],
               "audio": "audio/seg-059.mp3",
-              "quizSentence": "新商品を若者に売り込むための宣伝を行った。"
-            },
-            {
-              "id": 252,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "新商品を若者に売り込むための宣伝を行った。",
+              "moreExamples": [
                 {
-                  "text": "売",
-                  "kana": "う",
-                  "t": 0
-                },
-                {
-                  "text": "り",
-                  "t": 0.7
-                },
-                {
-                  "text": "込",
-                  "kana": "こ",
-                  "t": 0.86
-                },
-                {
-                  "text": "む",
-                  "t": 0.96
+                  "quizSentence": "中国でも「金星」といっしょに，このカクテルを売り込んだらどうでしょうか。",
+                  "blanks": [
+                    "売り込んだら"
+                  ],
+                  "sentenceAudio": "audio/seg-015.mp3"
                 }
-              ],
-              "zh": "[动1] 销售，促销，推销",
-              "notes": "",
-              "blanks": [
-                "売り込んだら"
-              ],
-              "audio": "audio/seg-059.mp3",
-              "quizSentence": "中国でも「金星」といっしょに，このカクテルを売り込んだらどうでしょうか。",
-              "sentenceAudio": "audio/seg-015.mp3"
+              ]
             },
             {
               "id": 60,
@@ -9229,27 +9205,16 @@ window.LESSON_DATA = {
                 "間"
               ],
               "audio": "audio/seg-063.mp3",
-              "quizSentence": "若者たちの間でこのカクテルの人気が出たら，「金星」の売り上げにもつながるんじゃないでしょうか。"
-            },
-            {
-              "id": 255,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "若者たちの間でこのカクテルの人気が出たら，「金星」の売り上げにもつながるんじゃないでしょうか。",
+              "moreExamples": [
                 {
-                  "text": "間",
-                  "kana": "あいだ",
-                  "t": 0
+                  "quizSentence": "このことは君とぼくの間の約束だ。",
+                  "blanks": [
+                    "間"
+                  ],
+                  "sentenceAudio": "audio/seg-221.mp3"
                 }
-              ],
-              "zh": "[名] 当中，之间，期间",
-              "notes": "",
-              "blanks": [
-                "間"
-              ],
-              "audio": "audio/seg-063.mp3",
-              "quizSentence": "このことは君とぼくの間の約束だ。",
-              "sentenceAudio": "audio/seg-221.mp3"
+              ]
             },
             {
               "id": 64,
@@ -9271,53 +9236,23 @@ window.LESSON_DATA = {
                 "たいした"
               ],
               "audio": "audio/seg-064.mp3",
-              "quizSentence": "いえ，そんな…たいしたことではありません。"
-            },
-            {
-              "id": 256,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "いえ，そんな…たいしたことではありません。",
+              "moreExamples": [
                 {
-                  "text": "たい",
-                  "t": 0
+                  "quizSentence": "これはわたしがかいた絵で，たいした作品ではありません。",
+                  "blanks": [
+                    "たいした"
+                  ],
+                  "sentenceAudio": "audio/seg-224.mp3"
                 },
                 {
-                  "text": "した",
-                  "t": 1
+                  "quizSentence": "わたしの友達はヨーロッパのピアノコンクールで優勝しました。たいしたものです。",
+                  "blanks": [
+                    "たいした"
+                  ],
+                  "sentenceAudio": "audio/seg-225.mp3"
                 }
-              ],
-              "zh": "[连体] 了不起的，惊人的",
-              "notes": "",
-              "blanks": [
-                "たいした"
-              ],
-              "audio": "audio/seg-064.mp3",
-              "quizSentence": "これはわたしがかいた絵で，たいした作品ではありません。",
-              "sentenceAudio": "audio/seg-224.mp3"
-            },
-            {
-              "id": 257,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
-                {
-                  "text": "たい",
-                  "t": 0
-                },
-                {
-                  "text": "した",
-                  "t": 1
-                }
-              ],
-              "zh": "[连体] 了不起的，惊人的",
-              "notes": "",
-              "blanks": [
-                "たいした"
-              ],
-              "audio": "audio/seg-064.mp3",
-              "quizSentence": "わたしの友達はヨーロッパのピアノコンクールで優勝しました。たいしたものです。",
-              "sentenceAudio": "audio/seg-225.mp3"
+              ]
             },
             {
               "id": 65,
@@ -9364,29 +9299,16 @@ window.LESSON_DATA = {
                 "私ども"
               ],
               "audio": "audio/seg-066.mp3",
-              "quizSentence": "私ども家族はみな元気です。"
-            },
-            {
-              "id": 258,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "私ども家族はみな元気です。",
+              "moreExamples": [
                 {
-                  "text": "〜"
-                },
-                {
-                  "text": "ども",
-                  "t": 0
+                  "quizSentence": "中国用のネーミングやラベルのデザインは，私どもで引き受けます。",
+                  "blanks": [
+                    "私ども"
+                  ],
+                  "sentenceAudio": "audio/seg-028.mp3"
                 }
-              ],
-              "zh": "〜们（自谦语）",
-              "notes": "",
-              "blanks": [
-                "私ども"
-              ],
-              "audio": "audio/seg-066.mp3",
-              "quizSentence": "中国用のネーミングやラベルのデザインは，私どもで引き受けます。",
-              "sentenceAudio": "audio/seg-028.mp3"
+              ]
             }
           ]
         },
@@ -9585,40 +9507,16 @@ window.LESSON_DATA = {
                 "飛び込んだ"
               ],
               "audio": "audio/seg-075.mp3",
-              "quizSentence": "子供たちはプールに飛び込んだ。"
-            },
-            {
-              "id": 253,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "子供たちはプールに飛び込んだ。",
+              "moreExamples": [
                 {
-                  "text": "飛",
-                  "kana": "と",
-                  "t": 0
-                },
-                {
-                  "text": "び",
-                  "t": 0.48
-                },
-                {
-                  "text": "込",
-                  "kana": "こ",
-                  "t": 0.66
-                },
-                {
-                  "text": "む",
-                  "t": 0.8
+                  "quizSentence": "少年が橋から川に飛び込んで遊んでいました。",
+                  "blanks": [
+                    "飛び込んで"
+                  ],
+                  "sentenceAudio": "audio/seg-218.mp3"
                 }
-              ],
-              "zh": "[动1] 跳入，跳进",
-              "notes": "",
-              "blanks": [
-                "飛び込んで"
-              ],
-              "audio": "audio/seg-075.mp3",
-              "quizSentence": "少年が橋から川に飛び込んで遊んでいました。",
-              "sentenceAudio": "audio/seg-218.mp3"
+              ]
             },
             {
               "id": 76,
@@ -9673,40 +9571,16 @@ window.LESSON_DATA = {
                 "投げ込んだ"
               ],
               "audio": "audio/seg-077.mp3",
-              "quizSentence": "彼はボールをかごに投げ込んだ。"
-            },
-            {
-              "id": 254,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "彼はボールをかごに投げ込んだ。",
+              "moreExamples": [
                 {
-                  "text": "投",
-                  "kana": "な",
-                  "t": 0
-                },
-                {
-                  "text": "げ",
-                  "t": 0.44
-                },
-                {
-                  "text": "込",
-                  "kana": "こ",
-                  "t": 0.62
-                },
-                {
-                  "text": "む",
-                  "t": 0.8
+                  "quizSentence": "湖にごみを投げ込むのはやめてください。",
+                  "blanks": [
+                    "投げ込む"
+                  ],
+                  "sentenceAudio": "audio/seg-219.mp3"
                 }
-              ],
-              "zh": "[动1] 投进，投入，扔进",
-              "notes": "",
-              "blanks": [
-                "投げ込む"
-              ],
-              "audio": "audio/seg-077.mp3",
-              "quizSentence": "湖にごみを投げ込むのはやめてください。",
-              "sentenceAudio": "audio/seg-219.mp3"
+              ]
             },
             {
               "id": 78,
@@ -10275,27 +10149,16 @@ window.LESSON_DATA = {
                 "無数"
               ],
               "audio": "audio/seg-100.mp3",
-              "quizSentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。"
-            },
-            {
-              "id": 260,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。",
+              "moreExamples": [
                 {
-                  "text": "無数",
-                  "kana": "むすう",
-                  "t": 0
+                  "quizSentence": "晴れた日に夜空を見上げると，無数の星を見ることができる。",
+                  "blanks": [
+                    "無数"
+                  ],
+                  "sentenceAudio": "audio/seg-231.mp3"
                 }
-              ],
-              "zh": "[名] 无数",
-              "notes": "",
-              "blanks": [
-                "無数"
-              ],
-              "audio": "audio/seg-100.mp3",
-              "quizSentence": "晴れた日に夜空を見上げると，無数の星を見ることができる。",
-              "sentenceAudio": "audio/seg-231.mp3"
+              ]
             },
             {
               "id": 101,
@@ -10340,53 +10203,23 @@ window.LESSON_DATA = {
                 "さかのぼる"
               ],
               "audio": "audio/seg-102.mp3",
-              "quizSentence": "この習慣は江戸時代までさかのぼることができる。"
-            },
-            {
-              "id": 261,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "この習慣は江戸時代までさかのぼることができる。",
+              "moreExamples": [
                 {
-                  "text": "さか",
-                  "t": 0
+                  "quizSentence": "「胡同」を知るには，歴史を約700年前までさかのぼらなければならない。",
+                  "blanks": [
+                    "さかのぼら"
+                  ],
+                  "sentenceAudio": "audio/seg-036.mp3"
                 },
                 {
-                  "text": "のぼる",
-                  "t": 0.62
+                  "quizSentence": "うちの先祖は，150年前までさかのぼることができる。",
+                  "blanks": [
+                    "さかのぼる"
+                  ],
+                  "sentenceAudio": "audio/seg-233.mp3"
                 }
-              ],
-              "zh": "[动1] 追溯，上溯",
-              "notes": "",
-              "blanks": [
-                "さかのぼら"
-              ],
-              "audio": "audio/seg-102.mp3",
-              "quizSentence": "「胡同」を知るには，歴史を約700年前までさかのぼらなければならない。",
-              "sentenceAudio": "audio/seg-036.mp3"
-            },
-            {
-              "id": 262,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
-                {
-                  "text": "さか",
-                  "t": 0
-                },
-                {
-                  "text": "のぼる",
-                  "t": 0.62
-                }
-              ],
-              "zh": "[动1] 追溯，上溯",
-              "notes": "",
-              "blanks": [
-                "さかのぼる"
-              ],
-              "audio": "audio/seg-102.mp3",
-              "quizSentence": "うちの先祖は，150年前までさかのぼることができる。",
-              "sentenceAudio": "audio/seg-233.mp3"
+              ]
             },
             {
               "id": 103,
@@ -10894,61 +10727,23 @@ window.LESSON_DATA = {
                 "せいぜい"
               ],
               "audio": "audio/seg-125.mp3",
-              "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。"
-            },
-            {
-              "id": 264,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。",
+              "moreExamples": [
                 {
-                  "text": "せ",
-                  "t": 0
+                  "quizSentence": "経験があるといってもせいぜい2，3年だ。",
+                  "blanks": [
+                    "せいぜい"
+                  ],
+                  "sentenceAudio": "audio/seg-238.mp3"
                 },
                 {
-                  "text": "いぜ",
-                  "t": 0.92
-                },
-                {
-                  "text": "い",
-                  "t": 2.06
+                  "quizSentence": "毎年このコンテストに応募する人はせいぜい5，6人程度だ。",
+                  "blanks": [
+                    "せいぜい"
+                  ],
+                  "sentenceAudio": "audio/seg-239.mp3"
                 }
-              ],
-              "zh": "[副] 最多，充其量；尽量，尽可能",
-              "notes": "",
-              "blanks": [
-                "せいぜい"
-              ],
-              "audio": "audio/seg-125.mp3",
-              "quizSentence": "経験があるといってもせいぜい2，3年だ。",
-              "sentenceAudio": "audio/seg-238.mp3"
-            },
-            {
-              "id": 265,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
-                {
-                  "text": "せ",
-                  "t": 0
-                },
-                {
-                  "text": "いぜ",
-                  "t": 0.92
-                },
-                {
-                  "text": "い",
-                  "t": 2.06
-                }
-              ],
-              "zh": "[副] 最多，充其量；尽量，尽可能",
-              "notes": "",
-              "blanks": [
-                "せいぜい"
-              ],
-              "audio": "audio/seg-125.mp3",
-              "quizSentence": "毎年このコンテストに応募する人はせいぜい5，6人程度だ。",
-              "sentenceAudio": "audio/seg-239.mp3"
+              ]
             },
             {
               "id": 126,
@@ -11181,34 +10976,16 @@ window.LESSON_DATA = {
                 "子供連れ"
               ],
               "audio": "audio/seg-135.mp3",
-              "quizSentence": "彼は子供連れで旅行に来た。"
-            },
-            {
-              "id": 259,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "彼は子供連れで旅行に来た。",
+              "moreExamples": [
                 {
-                  "text": "〜"
-                },
-                {
-                  "text": "連",
-                  "kana": "つ",
-                  "t": 0
-                },
-                {
-                  "text": "れ",
-                  "t": 0.64
+                  "quizSentence": "学生時代に，仲のいい友達と2人連れでよく旅をしました。",
+                  "blanks": [
+                    "2人連れ"
+                  ],
+                  "sentenceAudio": "audio/seg-229.mp3"
                 }
-              ],
-              "zh": "带着〜",
-              "notes": "",
-              "blanks": [
-                "2人連れ"
-              ],
-              "audio": "audio/seg-135.mp3",
-              "quizSentence": "学生時代に，仲のいい友達と2人連れでよく旅をしました。",
-              "sentenceAudio": "audio/seg-229.mp3"
+              ]
             }
           ]
         },
@@ -11337,27 +11114,16 @@ window.LESSON_DATA = {
                 "南東"
               ],
               "audio": "audio/seg-141.mp3",
-              "quizSentence": "その島は日本の南東に位置している。"
-            },
-            {
-              "id": 263,
-              "speaker": null,
-              "speakerKana": null,
-              "tokens": [
+              "quizSentence": "その島は日本の南東に位置している。",
+              "moreExamples": [
                 {
-                  "text": "南東",
-                  "kana": "なんとう",
-                  "t": -0.02
+                  "quizSentence": "わたしの親戚の家は北京市の南東の方角にあります。",
+                  "blanks": [
+                    "南東"
+                  ],
+                  "sentenceAudio": "audio/seg-236.mp3"
                 }
-              ],
-              "zh": "[名] 东南",
-              "notes": "",
-              "blanks": [
-                "南東"
-              ],
-              "audio": "audio/seg-141.mp3",
-              "quizSentence": "わたしの親戚の家は北京市の南東の方角にあります。",
-              "sentenceAudio": "audio/seg-236.mp3"
+              ]
             },
             {
               "id": 142,
