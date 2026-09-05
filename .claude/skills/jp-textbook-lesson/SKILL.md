@@ -689,6 +689,37 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
       错了导致运行时静默失效"的bug，检查时不能只看"有没有这几个词"，
       必须实际按前端算法（`searchFrom`单调推进）复现一遍才能发现——光看
       数据"形状对不对"不够，要按真实消费这份数据的算法逻辑走一遍。
+  11. **第10点"生词表追加语法例句练习"最初的实现是"原例句保留+额外插入
+      一张新卡片"，用户反馈"投げ込む单词重复了"**——同一个词紧挨着连续
+      出现两次（只是例句不同），即使数据没错，观感上像是内容重复。
+      **改成一张卡片下挂多个例句块**：生词条目新增可选字段
+      `moreExamples`（`[{quizSentence, blanks, sentenceAudio}, ...]`），
+      额外例句追加进这个数组而不是复制一张新卡片（`id`/`tokens`/词本身
+      读音`audio`都不再重复）；`page-renderer.js`的`exampleSentenceHtml()`
+      把`data-quiz-sentence`/`data-blanks`直接标在每个`.seg-example`块
+      自己身上（不再是卡片级别的单一data属性），`renderCard()`按
+      "原有quizSentence + moreExamples"渲染出多个`.seg-example`块；
+      `listening-page.js`的`setupBlankForCard()`从"一张卡片一份
+      quizSentence/blanks"改成按`.seg-example`逐块建挖空UI，每块的
+      localStorage进度key带上例句序号（`card.id + ':' + exampleIdx +
+      ':' + blankIdx`）各自独立，回车提交只影响同一块内的空；`seg-notes`
+      揭示逻辑仍然是跨全部块共享一个计数器（等这张卡片所有块的所有空
+      都做完才放出笔记）。默写模式的答案区（`answerHtml()`）也要改成
+      拿全部`.seg-example`块，不能只取第一块（原来的实现只找第一个，
+      加了moreExamples之后默写答对/答错时会漏显示后面几条例句）。
+      **単語テスト（`DATA.quiz`）不受影响、继续用独立记录**——quiz引擎
+      是"一条记录出一组题"的模型，不是"一张卡片"，合并进数组对它没有
+      意义，这条只影响"生词"tab自己的卡片列表。**已发布的第17课**用
+      一次性迁移脚本把之前生成的14张重复卡片合并回原词条的
+      `moreExamples`（按"跟前一张卡片是不是同一个词+同一个audio"这个
+      特征识别，含"一个词被追加了不止一条例句"的链式case），同时清掉
+      了14个不再被引用的孤儿音频文件（重复卡片当初复制的词本身读音）。
+      **这类前端逻辑改动没有现成的测试基建**，靠临时装一次
+      `npm install --no-save jsdom`、写一次性脚本把真实的
+      `data.js`+`page-renderer.js`+`listening-page.js`一起跑起来、
+      对着真实DOM断言（多例句卡片渲染出几块、挖空输入框数量对不对、
+      模拟输入正确答案能不能判对）——比只读代码走查更可信，跑完删掉
+      `node_modules`，不留作项目依赖。
 
 ## 参数
 
