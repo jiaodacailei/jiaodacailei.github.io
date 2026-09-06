@@ -62,12 +62,16 @@ tab结构，插到"课文"和"生词"之间（跟教材app自己的tab顺序一�
    moreExamples**——quiz引擎（`docs/js/listening-page.js`的
    `TYPES`/`audioSrcFor`）是"一条记录出一组题"的模型，不是"一张卡片"，
    合并进数组对它没有意义。这里还是给每条不重复的语法例句单独插入一条
-   新记录（新`id`），`category`不是照抄原词条的category，而是按这句
-   语法例句自己的来源判——匹配到会话真句子记"dialogue"，匹配到课文真句子
-   记"text"，例句本身是新造的（没匹配上任何真句子）记"other"——因为
-   category描述的是"这句例句是不是从本课对话/课文里真实核实过的原句"，
-   不是词条本身的属性，同一个词条的两条例句完全可能一条来自真句子、一条
-   是补写的。
+   新记录（新`id`），`category`**直接照抄原词条的category**（生词表小节
+   名，比如"生词表2·语法与表达"）——单词测试的分类现在描述的是"这个词
+   属于生词表哪个小节"，是词条本身的属性，不是这句例句是从会话/课文里
+   来的还是新造的，同一个词条不管追加几条例句，分类必须保持一致，不能
+   按例句来源分裂成不同分类（这条2026-09-06从"按例句来源分dialogue/
+   text/other"改过来，配套`build_vocab_quiz_data.py`的同一次改动，见
+   SKILL.md"一个词在句子里再出现"那节旁边的分类改造说明；早期第17课
+   生成时用的是旧逻辑，历史数据已经用`backfill_quiz_group_category.py`
+   迁移过，这个脚本如果不跟着改，之后再跑会把新追加的quiz条目重新
+   写回旧格式，跟已经迁移过的其它条目不一致）。
 
    `audioSrcFor(word)`只认id推audio路径（`audio/seg-{id:03d}.mp3`），
    新id目前在磁盘上没有对应文件——直接复制原词条自己的
@@ -189,9 +193,11 @@ def merge_blanks(sentence_obj, new_blanks):
 
 def make_sentence(ex, lookup, next_id, vocab_extensions):
     """ex是变长tuple：(ja, zh) / (ja, zh, blanks) / (ja, zh, blanks, vocab_id)。
-    返回(sentence_dict, source)，source是"dialogue"/"text"/"other"，
-    分别对应"匹配到会话真句子"/"匹配到课文真句子"/"没匹配上、例句是新造的"
-    ——单词测试新记录的category要用这个，不是照抄原词条的category。"""
+    返回(sentence_dict, matched)，matched表示这句是不是复用了会话/课文的
+    真实录音（source=="dialogue"/"text"）还是新造例句没有音频
+    （source=="other"）——只用来统计"matched/new"这两个audio复用数字，
+    不再用来决定单词测试新记录的category（那个现在直接照抄原词条的
+    category，见apply_vocab_extensions()）。"""
     ja, zh = ex[0], ex[1]
     blanks = list(ex[2]) if len(ex) >= 3 else []
     vocab_id = ex[3] if len(ex) >= 4 else None
@@ -227,7 +233,7 @@ def make_sentence(ex, lookup, next_id, vocab_extensions):
         }
 
     if vocab_id is not None:
-        vocab_extensions.append({"vocab_id": vocab_id, "ja": ja, "zh_ignored": zh, "blanks": blanks, "source": source})
+        vocab_extensions.append({"vocab_id": vocab_id, "ja": ja, "zh_ignored": zh, "blanks": blanks})
         # sentence本身携带的audio既是"这句真句子的audio"也是生词tab新卡要用的
         # sentenceAudio来源，vocab_extensions里额外存一份，避免下面处理时
         # 还要回头重新查一遍lookup。
@@ -321,7 +327,7 @@ def apply_vocab_extensions(data, vocab_extensions, next_id, stats):
                         "sentence": ext["ja"],
                         "sentence_zh": ext["zh_ignored"],
                         "blank": ext["blanks"][0] if ext["blanks"] else "",
-                        "category": ext["source"],
+                        "category": orig_quiz["category"],
                     }
                     orig_qidx = quiz_index[vocab_id]
                     quiz_list.insert(orig_qidx + 1, new_quiz_entry)
