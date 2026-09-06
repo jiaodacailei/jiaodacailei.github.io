@@ -3226,14 +3226,9 @@ window.LESSON_DATA = {
                   "text": "「"
                 },
                 {
-                  "text": "銭",
-                  "kana": "せん",
+                  "text": "銭市",
+                  "kana": "チェンシー",
                   "t": 3.77
-                },
-                {
-                  "text": "市",
-                  "kana": "し",
-                  "t": 4.01
                 },
                 {
                   "text": "胡同",
@@ -3294,14 +3289,9 @@ window.LESSON_DATA = {
                   "text": "「"
                 },
                 {
-                  "text": "磨",
-                  "kana": "みがく",
+                  "text": "磨刀",
+                  "kana": "モータオ",
                   "t": 8.59
-                },
-                {
-                  "text": "刀",
-                  "kana": "とう",
-                  "t": 8.77
                 },
                 {
                   "text": "胡同",
@@ -10486,14 +10476,9 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "銭",
-                  "kana": "せん",
+                  "text": "銭市",
+                  "kana": "チェンシー",
                   "t": 0.53
-                },
-                {
-                  "text": "市",
-                  "kana": "し",
-                  "t": 1.17
                 },
                 {
                   "text": "胡同",
@@ -10576,14 +10561,9 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "磨",
-                  "kana": "みがく",
+                  "text": "磨刀",
+                  "kana": "モータオ",
                   "t": 0.49
-                },
-                {
-                  "text": "刀",
-                  "kana": "とう",
-                  "t": 1.31
                 },
                 {
                   "text": "胡同",
