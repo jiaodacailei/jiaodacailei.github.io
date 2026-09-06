@@ -49,7 +49,15 @@ tab结构，插到"课文"和"生词"之间（跟教材app自己的tab顺序一�
    tab里精确文字匹配上的句子（原文一字不差），直接复用那句的tokens/audio
    （含char_times，真人朗读+faster-whisper对齐）；匹配不上的（本课对话/
    课文里没出现过的补充例句）只做`tokenize_ja()`假名注音，不配音频
-   （audio=null）。
+   （audio=null）——这一步会把这一课"生词"tab里每个词条自己的读音拼成
+   `{生词原文: 生词读音}` 传给 `tokenize_ja()`（`build_vocab_readings()`，
+   跟 `build_page.py` 生成会话/课文句子时用的是同一个 `vocab_readings`
+   参数），新造例句如果用到某个生词的字，优先用生词表已经人工核实过的
+   读音，不能让 pykakasi 重新猜一遍——真实案例（textbook-sjp-zg-l18）：
+   "〜の折(に)"新造例句"その節はたいへんお世話になりました。"，"節"字
+   pykakasi 默认猜成訓読み"ふし"（关节/枝节），这一课生词表"節"条目
+   已经人工核实过的音読み是"せつ"（时节/时候），这句例句本来就是为了
+   示范"節"在"その節"里的正确读音，不接vocab_readings会自己先读错。
 
 2. **给会话/课文里的真句子默认加上语法点对应的挖空**：编号语法点的例句如果
    匹配到了会话/课文里的真句子，这句的blanks目标（截图里加粗那部分）会
@@ -141,6 +149,31 @@ def load_data(data_js_path):
     return prefix, data
 
 
+def build_vocab_readings(data, vocab_label):
+    """{生词原文: 生词读音} 映射，喂给新造例句的 tokenize_ja() ——跟 build_page.py
+    的 build_lesson_data() 给会话/课文句子用的是同一个参数、同一个作用：避免
+    新造例句里凑巧用到某个生词的字，pykakasi 自己猜的默认读音跟这一课生词表
+    已经人工核实过的读音不一致。真实案例（textbook-sjp-zg-l18）：第11条语法点
+    "〜の折(に)"新造的例句"その節はたいへんお世話になりました。"，"節"字
+    pykakasi 默认猜成訓読み"ふし"（枝节/关节的意思），跟这一课生词表"節"
+    条目已经核实过的音読み"せつ"（时节/时候的意思）完全不是一个词——这句
+    例句本来就是为了示范"節"在"その節"这个搭配里的正确读音，结果新造例句
+    自己先读错了。data.js 里"生词"tab 的句子对象不像 build_page.py 那边的
+    原始 enriched.json 那样直接带一个顶层 kana 字段，读音已经拆进
+    `tokens[].kana` 里了，这里反过来拼回一个整词读音字符串。"""
+    vocab_readings = {}
+    for tab in data["tabs"]:
+        if tab["mondai"] != vocab_label:
+            continue
+        for q in tab["questions"]:
+            for s in q["sentences"]:
+                text = "".join(t["text"] for t in s["tokens"])
+                kana = "".join(t.get("kana", t["text"]) for t in s["tokens"])
+                if kana != text:
+                    vocab_readings[text] = kana
+    return vocab_readings
+
+
 def build_lookup(data, dialogue_label, text_label):
     """text -> (tab名, sentence对象引用)。sentence对象是data里的原始dict，
     后面合并blanks是直接在这个dict上原地改，改完随json.dumps一起落地。"""
@@ -206,7 +239,7 @@ def merge_blanks(sentence_obj, new_blanks):
     existing.sort(key=lambda b: text.find(b))
 
 
-def make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label):
+def make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label, vocab_readings):
     """ex是变长tuple：(ja, zh) / (ja, zh, blanks) / (ja, zh, blanks, vocab_id)。
     返回(sentence_dict, matched)，matched表示这句是不是复用了会话/课文的
     真实录音（source=="dialogue"/"text"）还是新造例句没有音频
@@ -240,7 +273,7 @@ def make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label):
             "id": sid,
             "speaker": None,
             "speakerKana": None,
-            "tokens": tokenize_ja(ja),
+            "tokens": tokenize_ja(ja, vocab_readings=vocab_readings),
             "zh": zh,
             "notes": "",
             "blanks": list(blanks),
@@ -257,12 +290,12 @@ def make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label):
     return sentence, (source != "other")
 
 
-def build_group(cards, lookup, next_id, stats, vocab_extensions, dialogue_label):
+def build_group(cards, lookup, next_id, stats, vocab_extensions, dialogue_label, vocab_readings):
     questions = []
     for title, overview, examples in cards:
         sentences = []
         for ex in examples:
-            s, matched = make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label)
+            s, matched = make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label, vocab_readings)
             sentences.append(s)
             stats["matched" if matched else "new"] += 1
         questions.append({"question": title, "overview": overview, "answer": "", "sentences": sentences})
@@ -385,6 +418,7 @@ def main():
     kaishiwa, kewen = load_content(args.content_path)
     prefix, data = load_data(args.data_js)
     lookup = build_lookup(data, args.dialogue_label, args.text_label)
+    vocab_readings = build_vocab_readings(data, args.vocab_label)
     next_id = next_id_counter(data)
 
     stats = {
@@ -396,9 +430,9 @@ def main():
     vocab_extensions = []
     questions = []
     questions.append({"question": args.dialogue_label, "overview": "", "answer": "", "sentences": []})
-    questions.extend(build_group(kaishiwa, lookup, next_id, stats, vocab_extensions, args.dialogue_label))
+    questions.extend(build_group(kaishiwa, lookup, next_id, stats, vocab_extensions, args.dialogue_label, vocab_readings))
     questions.append({"question": args.text_label, "overview": "", "answer": "", "sentences": []})
-    questions.extend(build_group(kewen, lookup, next_id, stats, vocab_extensions, args.dialogue_label))
+    questions.extend(build_group(kewen, lookup, next_id, stats, vocab_extensions, args.dialogue_label, vocab_readings))
 
     grammar_tab = {"mondai": "语法与表达", "questions": questions}
     idx = next(i for i, t in enumerate(data["tabs"]) if t["mondai"] == args.vocab_label)
