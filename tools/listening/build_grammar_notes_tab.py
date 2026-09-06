@@ -1,12 +1,27 @@
 # -*- coding: utf-8 -*-
 """用法：
   python build_grammar_notes_tab.py <data.js路径> <content模块.py路径> [--audio-dir <audio目录>]
+      [--dialogue-label 会话] [--text-label 课文] [--vocab-label 生词]
 
 把教材配套app自己的"语法与表达"tab内容（截图转录）拼成 data.js 能吃的
 tab结构，插到"课文"和"生词"之间（跟教材app自己的tab顺序一致：会话|课文|
 语法与表达|生词|練習）——`jp-textbook-lesson` skill 的可选扩展步骤，只在
 这一课的素材目录里确实有"语法与表达/{会话,课文}"截图时才需要跑，源头案例
 见 SKILL.md 的 l17 条目。
+
+`--dialogue-label`/`--text-label`/`--vocab-label`：三个tab各自的 mondai
+文字，默认"会话"/"课文"/"生词"，跟 l17 一致；不是每课都用这三个字——
+真实案例（textbook-sjp-zg-l18）：这一课的 mondai 用的是日文汉字"会話"/
+"課文"，脚本按默认值硬编码查找完全找不到匹配，`build_lookup()` 返回
+空字典，151句例句全部落进"没匹配上、当新造例句处理"这条退化分支，
+统计出来"matched: 0"——数字本身没有报错也没有崩溃，很容易被当成"这一课
+确实没有例句能匹配上真实录音"这种合理但错误的结论直接放过，跑完之后
+一定要看这两个统计数字是不是明显不合理（转录内容里写了一堆看着应该能
+命中真实台词的例句，medium matched却是0，这就是没接对tab名字的信号），
+不能只看"脚本跑完没报错"就默认没问题。跟 `verify_quiz_ids.py`/
+`backfill_quiz_group_category.py` 的 `--vocab-label` 是同一个坑、同一
+个修法（这几个脚本都硬编码过"生词"/"课文"这类 mondai 文字，"单词"/
+"会話"/"課文"这些变体历史上都真实撞到过）。
 
 <content模块.py>：任意 .py 文件，必须定义两个模块级变量：
   KAISHIWA = [(卡片标题, 中文讲解正文, [例句, ...]), ...]
@@ -126,12 +141,12 @@ def load_data(data_js_path):
     return prefix, data
 
 
-def build_lookup(data):
+def build_lookup(data, dialogue_label, text_label):
     """text -> (tab名, sentence对象引用)。sentence对象是data里的原始dict，
     后面合并blanks是直接在这个dict上原地改，改完随json.dumps一起落地。"""
     lookup = {}
     for tab in data["tabs"]:
-        if tab["mondai"] not in ("会话", "课文"):
+        if tab["mondai"] not in (dialogue_label, text_label):
             continue
         for q in tab["questions"]:
             for s in q["sentences"]:
@@ -191,7 +206,7 @@ def merge_blanks(sentence_obj, new_blanks):
     existing.sort(key=lambda b: text.find(b))
 
 
-def make_sentence(ex, lookup, next_id, vocab_extensions):
+def make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label):
     """ex是变长tuple：(ja, zh) / (ja, zh, blanks) / (ja, zh, blanks, vocab_id)。
     返回(sentence_dict, matched)，matched表示这句是不是复用了会话/课文的
     真实录音（source=="dialogue"/"text"）还是新造例句没有音频
@@ -208,7 +223,7 @@ def make_sentence(ex, lookup, next_id, vocab_extensions):
         src_mondai, real_sentence = found
         if blanks:
             merge_blanks(real_sentence, blanks)
-        source = "dialogue" if src_mondai == "会话" else "text"
+        source = "dialogue" if src_mondai == dialogue_label else "text"
         sentence = {
             "id": sid,
             "speaker": None,
@@ -242,20 +257,20 @@ def make_sentence(ex, lookup, next_id, vocab_extensions):
     return sentence, (source != "other")
 
 
-def build_group(cards, lookup, next_id, stats, vocab_extensions):
+def build_group(cards, lookup, next_id, stats, vocab_extensions, dialogue_label):
     questions = []
     for title, overview, examples in cards:
         sentences = []
         for ex in examples:
-            s, matched = make_sentence(ex, lookup, next_id, vocab_extensions)
+            s, matched = make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label)
             sentences.append(s)
             stats["matched" if matched else "new"] += 1
         questions.append({"question": title, "overview": overview, "answer": "", "sentences": sentences})
     return questions
 
 
-def apply_vocab_extensions(data, vocab_extensions, next_id, stats):
-    vocab_tab = next(t for t in data["tabs"] if t["mondai"] == "生词")
+def apply_vocab_extensions(data, vocab_extensions, next_id, stats, vocab_label):
+    vocab_tab = next(t for t in data["tabs"] if t["mondai"] == vocab_label)
     # id -> question字典引用（只存question，不存下标——下标会被前面插入的新
     # 卡顶掉变得不准，真实踩过这个坑：同一个question列表里先给id59插入
     # 一张新卡，后面同一个列表里id63的原始下标就整体错位了1个位置，
@@ -357,13 +372,19 @@ def main():
     ap.add_argument("data_js")
     ap.add_argument("content_path")
     ap.add_argument("--audio-dir", default=None)
+    ap.add_argument("--dialogue-label", default="会话", help="会话 tab 的 mondai 文字，默认“会话”"
+                     "（有的课用日文汉字“会話”，用这个参数覆盖）")
+    ap.add_argument("--text-label", default="课文", help="课文 tab 的 mondai 文字，默认“课文”"
+                     "（有的课用日文汉字“課文”，用这个参数覆盖）")
+    ap.add_argument("--vocab-label", default="生词", help="生词 tab 的 mondai 文字，默认“生词”"
+                     "（有的课用“单词”，用这个参数覆盖）")
     args = ap.parse_args()
 
     audio_dir = args.audio_dir or os.path.join(os.path.dirname(os.path.abspath(args.data_js)), "audio")
 
     kaishiwa, kewen = load_content(args.content_path)
     prefix, data = load_data(args.data_js)
-    lookup = build_lookup(data)
+    lookup = build_lookup(data, args.dialogue_label, args.text_label)
     next_id = next_id_counter(data)
 
     stats = {
@@ -374,16 +395,16 @@ def main():
     }
     vocab_extensions = []
     questions = []
-    questions.append({"question": "会话", "overview": "", "answer": "", "sentences": []})
-    questions.extend(build_group(kaishiwa, lookup, next_id, stats, vocab_extensions))
-    questions.append({"question": "课文", "overview": "", "answer": "", "sentences": []})
-    questions.extend(build_group(kewen, lookup, next_id, stats, vocab_extensions))
+    questions.append({"question": args.dialogue_label, "overview": "", "answer": "", "sentences": []})
+    questions.extend(build_group(kaishiwa, lookup, next_id, stats, vocab_extensions, args.dialogue_label))
+    questions.append({"question": args.text_label, "overview": "", "answer": "", "sentences": []})
+    questions.extend(build_group(kewen, lookup, next_id, stats, vocab_extensions, args.dialogue_label))
 
     grammar_tab = {"mondai": "语法与表达", "questions": questions}
-    idx = next(i for i, t in enumerate(data["tabs"]) if t["mondai"] == "生词")
+    idx = next(i for i, t in enumerate(data["tabs"]) if t["mondai"] == args.vocab_label)
     data["tabs"].insert(idx, grammar_tab)
 
-    audio_copies = apply_vocab_extensions(data, vocab_extensions, next_id, stats)
+    audio_copies = apply_vocab_extensions(data, vocab_extensions, next_id, stats, args.vocab_label)
     copy_audio_files(audio_dir, audio_copies, stats)
 
     out = prefix + json.dumps(normalize_numbers(data), ensure_ascii=False, indent=2) + ";\n"
