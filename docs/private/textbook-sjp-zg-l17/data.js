@@ -2532,7 +2532,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "元",
-                  "kana": "もと",
+                  "kana": "げん",
                   "t": 1.26
                 },
                 {
@@ -3724,7 +3724,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "元",
-                  "kana": "もと",
+                  "kana": "げん",
                   "t": 1.01
                 },
                 {
@@ -7756,7 +7756,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "元",
-                  "kana": "もと",
+                  "kana": "げん",
                   "t": 1.01
                 },
                 {
@@ -10228,7 +10228,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "元",
-                  "kana": "もと",
+                  "kana": "げん",
                   "t": 0
                 }
               ],
