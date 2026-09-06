@@ -73,7 +73,7 @@ window.LESSON_DATA = {
                 {
                   "text": "王",
                   "kana": "おう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "さん",
@@ -93,7 +93,7 @@ window.LESSON_DATA = {
                 {
                   "text": "来",
                   "kana": "き",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "て",
@@ -240,7 +240,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "そんな",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "あ",
@@ -463,7 +463,7 @@ window.LESSON_DATA = {
                 {
                   "text": "気",
                   "kana": "き",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "を",
@@ -994,7 +994,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "学",
@@ -2247,7 +2247,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "んと",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "した",
@@ -2260,7 +2260,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "する",
@@ -2807,7 +2807,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "も",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "，"
@@ -3171,7 +3171,7 @@ window.LESSON_DATA = {
                 {
                   "text": "会社",
                   "kana": "かいしゃ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -3191,7 +3191,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ージ",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "を",
@@ -3229,7 +3229,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "した",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "り",
@@ -3762,7 +3762,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "めて",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "，"
@@ -5601,7 +5601,7 @@ window.LESSON_DATA = {
       "sentence": "後藤先生は，王さんの大学時代の恩師です。",
       "sentence_zh": "后藤老师是小王大学时代的恩师。",
       "blank": "恩師",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 51,
@@ -5611,7 +5611,7 @@ window.LESSON_DATA = {
       "sentence": "後藤さんは，大学で王さんを教えていた先生です。",
       "sentence_zh": "后藤是大学里教过小王的老师。",
       "blank": "後藤さん",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 52,
@@ -5621,7 +5621,7 @@ window.LESSON_DATA = {
       "sentence": "まあ，まあ，そんなあいさつは後にして，とにかく上がって。",
       "sentence_zh": "行了行了，待会儿再客套，快先进屋吧！",
       "blank": "上がって",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 53,
@@ -5631,7 +5631,7 @@ window.LESSON_DATA = {
       "sentence": "先生がお好きな福建省のウーロン茶です。",
       "sentence_zh": "这是老师喜欢的福建乌龙茶。",
       "blank": "福建省",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 54,
@@ -5641,7 +5641,7 @@ window.LESSON_DATA = {
       "sentence": "広告代理店の仕事は？",
       "sentence_zh": "你在广告公司的工作？",
       "blank": "広告代理店",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 55,
@@ -5651,7 +5651,7 @@ window.LESSON_DATA = {
       "sentence": "はい，とてもやりがいを感じています。",
       "sentence_zh": "哦，我觉得很值得做。",
       "blank": "やりがい",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 56,
@@ -5661,7 +5661,7 @@ window.LESSON_DATA = {
       "sentence": "金子君たちによろしく。",
       "sentence_zh": "请代我向金子他们问好。",
       "blank": "金子君たちに",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 57,
@@ -5671,7 +5671,7 @@ window.LESSON_DATA = {
       "sentence": "ええ。金子君や高橋さんとは，明日の夜，いっしょに食事する約束をしています。",
       "sentence_zh": "有啊！已经和金子、高桥他们约好了明晚一起吃饭。",
       "blank": "高橋さんとは",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 58,
@@ -5681,7 +5681,7 @@ window.LESSON_DATA = {
       "sentence": "金子君は旅行代理店に，高橋さんは化粧品の会社に勤めているそうです。",
       "sentence_zh": "听说金子在旅行社，高桥在化妆品公司工作。",
       "blank": "旅行代理店",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 59,
@@ -5691,7 +5691,7 @@ window.LESSON_DATA = {
       "sentence": "金子君は旅行代理店に，高橋さんは化粧品の会社に勤めているそうです。",
       "sentence_zh": "听说金子在旅行社，高桥在化妆品公司工作。",
       "blank": "勤めている",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 60,
@@ -5701,7 +5701,7 @@ window.LESSON_DATA = {
       "sentence": "まあ，まあ，そんなあいさつは後にして，とにかく上がって。",
       "sentence_zh": "行了行了，待会儿再客套，快先进屋吧！",
       "blank": "まあ，まあ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 61,
@@ -5711,7 +5711,7 @@ window.LESSON_DATA = {
       "sentence": "まあ，まあ，そんなあいさつは後にして，とにかく上がって。",
       "sentence_zh": "行了行了，待会儿再客套，快先进屋吧！",
       "blank": "後にして",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 62,
@@ -5721,7 +5721,7 @@ window.LESSON_DATA = {
       "sentence": "これ，つまらないものですが……。",
       "sentence_zh": "这个嘛，是一点点心意……",
       "blank": "つまらないものですが",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 63,
@@ -5731,7 +5731,7 @@ window.LESSON_DATA = {
       "sentence": "あれ，そんなに気を使わなくてよかったのに。",
       "sentence_zh": "哎呀，用不着这么费心的嘛！",
       "blank": "気を使わなくて",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 64,
@@ -5741,7 +5741,7 @@ window.LESSON_DATA = {
       "sentence": "じゃあ，無理も言えないな。",
       "sentence_zh": "也就不好强留你了，",
       "blank": "無理も言えない",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 65,
@@ -5751,7 +5751,7 @@ window.LESSON_DATA = {
       "sentence": "働きがいのある仕事を見つけたいです。",
       "sentence_zh": "想找一份有工作价值的工作。",
       "blank": "働きがい",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 66,
@@ -5761,7 +5761,7 @@ window.LESSON_DATA = {
       "sentence": "面接はいいチャンスだから，しっかり準備しましょう。",
       "sentence_zh": "面试是很好的机会，要好好准备。",
       "blank": "チャンス",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 67,
@@ -5771,7 +5771,7 @@ window.LESSON_DATA = {
       "sentence": "今日は快晴で，就職活動日和だ。",
       "sentence_zh": "今天晴空万里，正适合去求职活动。",
       "blank": "快晴",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 68,
@@ -5781,7 +5781,7 @@ window.LESSON_DATA = {
       "sentence": "後藤先生の奥様も，玄関まで迎えに来てくれた。",
       "sentence_zh": "后藤老师的夫人也到门口来迎接了。",
       "blank": "奥様",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 69,
@@ -5791,7 +5791,7 @@ window.LESSON_DATA = {
       "sentence": "「ごめんください。」と言って，家に入った。",
       "sentence_zh": "说了声“有人在家吗”，就进了家门。",
       "blank": "ごめんください",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 70,
@@ -5801,7 +5801,7 @@ window.LESSON_DATA = {
       "sentence": "「よくいらっしゃいました。」と後藤さんは言った。",
       "sentence_zh": "后藤说：“欢迎光临。”",
       "blank": "よくいらっしゃいました",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 71,
@@ -5811,7 +5811,7 @@ window.LESSON_DATA = {
       "sentence": "これはほんの気持ちですが，どうぞ。",
       "sentence_zh": "这只是一点小意思，请收下。",
       "blank": "ほんの気持ちですが",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 72,
@@ -5821,7 +5821,7 @@ window.LESSON_DATA = {
       "sentence": "この料理，お口に合うといいのですが。",
       "sentence_zh": "希望这道菜合您的口味。",
       "blank": "お口に合う",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 73,
@@ -5831,7 +5831,7 @@ window.LESSON_DATA = {
       "sentence": "お口に合うかどうか分かりませんが，どうぞ召し上がってください。",
       "sentence_zh": "不知道合不合您的口味，请您尝尝。",
       "blank": "お口に合うかどうか分かりませんが",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 74,
@@ -5841,7 +5841,7 @@ window.LESSON_DATA = {
       "sentence": "何のお構いもできませんで，失礼いたしました。",
       "sentence_zh": "没什么好招待您的，真是不好意思。",
       "blank": "何のお構いもできませんで",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 75,
@@ -5851,7 +5851,7 @@ window.LESSON_DATA = {
       "sentence": "もう帰るんですか。まだいいじゃありませんか。",
       "sentence_zh": "已经要走了吗？时间还早嘛。",
       "blank": "まだいいじゃありませんか",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 76,
@@ -5861,7 +5861,7 @@ window.LESSON_DATA = {
       "sentence": "彼女の好意を無駄にしたくない。",
       "sentence_zh": "不想辜负她的好意。",
       "blank": "好意",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 77,
@@ -5871,7 +5871,7 @@ window.LESSON_DATA = {
       "sentence": "希望の会社に就職できて，とても幸せです。",
       "sentence_zh": "能进入理想的公司工作，非常幸福。",
       "blank": "幸せ",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 78,
@@ -5881,7 +5881,7 @@ window.LESSON_DATA = {
       "sentence": "時間を無駄にしないでください。",
       "sentence_zh": "请不要浪费时间。",
       "blank": "無駄にしない",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 79,
@@ -5891,7 +5891,7 @@ window.LESSON_DATA = {
       "sentence": "就職活動は，まず希望する職種の会社を選択することから始まる。",
       "sentence_zh": "就业活动，首先要做的是选择自己瞩目的行业的公司。",
       "blank": "就職活動",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 80,
@@ -5901,7 +5901,7 @@ window.LESSON_DATA = {
       "sentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。",
       "sentence_zh": "在陈述择业愿望和动机以及做自我宣传时，不要完全照着简历上写的说。",
       "blank": "志望動機",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 81,
@@ -5911,7 +5911,7 @@ window.LESSON_DATA = {
       "sentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。",
       "sentence_zh": "在陈述择业愿望和动机以及做自我宣传时，不要完全照着简历上写的说。",
       "blank": "自己PR",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 82,
@@ -5921,7 +5921,7 @@ window.LESSON_DATA = {
       "sentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。",
       "sentence_zh": "在陈述择业愿望和动机以及做自我宣传时，不要完全照着简历上写的说。",
       "blank": "履歴書",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 83,
@@ -5931,7 +5931,7 @@ window.LESSON_DATA = {
       "sentence": "志望動機や自己PRなど，履歴書に書いたものをそのまま話すのはよくない。",
       "sentence_zh": "在陈述择业愿望和动机以及做自我宣传时，不要完全照着简历上写的说。",
       "blank": "そのまま",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 84,
@@ -5941,7 +5941,7 @@ window.LESSON_DATA = {
       "sentence": "会社の建物に入り，出るまでが採用試験である。",
       "sentence_zh": "从踏入公司办公楼直到离开，都属于录用考试。",
       "blank": "採用試験",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 85,
@@ -5951,7 +5951,7 @@ window.LESSON_DATA = {
       "sentence": "清潔感のあるきちんとした服装をすること。",
       "sentence_zh": "要注意服装整洁而正式。",
       "blank": "清潔感",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 86,
@@ -5961,7 +5961,7 @@ window.LESSON_DATA = {
       "sentence": "清潔感のあるきちんとした服装をすること。",
       "sentence_zh": "要注意服装整洁而正式。",
       "blank": "服装",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 87,
@@ -5971,7 +5971,7 @@ window.LESSON_DATA = {
       "sentence": "これは，就職活動をする学生のために書かれたガイドブックの一部である。",
       "sentence_zh": "这是为学生求职活动写的求职指南的一部分。",
       "blank": "一部",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 88,
@@ -5981,7 +5981,7 @@ window.LESSON_DATA = {
       "sentence": "毎年，新学期が始まるころから，街にリクルートスーツを着た学生たちの姿が見られるようになる。",
       "sentence_zh": "每年的新学期开始时，在街上都能看到穿着求职服装的学生。",
       "blank": "新学期",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 89,
@@ -5991,7 +5991,7 @@ window.LESSON_DATA = {
       "sentence": "毎年，新学期が始まるころから，街にリクルートスーツを着た学生たちの姿が見られるようになる。",
       "sentence_zh": "每年的新学期开始时，在街上都能看到穿着求职服装的学生。",
       "blank": "リクルートスーツ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 90,
@@ -6001,7 +6001,7 @@ window.LESSON_DATA = {
       "sentence": "毎年，新学期が始まるころから，街にリクルートスーツを着た学生たちの姿が見られるようになる。",
       "sentence_zh": "每年的新学期开始时，在街上都能看到穿着求职服装的学生。",
       "blank": "姿",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 91,
@@ -6011,7 +6011,7 @@ window.LESSON_DATA = {
       "sentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。",
       "sentence_zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
       "blank": "際",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 92,
@@ -6021,7 +6021,7 @@ window.LESSON_DATA = {
       "sentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。",
       "sentence_zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
       "blank": "男女",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 93,
@@ -6031,7 +6031,7 @@ window.LESSON_DATA = {
       "sentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。",
       "sentence_zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
       "blank": "問わず",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 94,
@@ -6041,7 +6041,7 @@ window.LESSON_DATA = {
       "sentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。",
       "sentence_zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
       "blank": "黒",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 95,
@@ -6051,7 +6051,7 @@ window.LESSON_DATA = {
       "sentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。",
       "sentence_zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
       "blank": "紺色",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 96,
@@ -6061,7 +6061,7 @@ window.LESSON_DATA = {
       "sentence": "リクルートスーツというのは，希望する会社を訪問する際の服装のことで，男女を問わず，黒か濃い紺色，灰色の地味な色のスーツを指す。",
       "sentence_zh": "所谓“求职服装”，是指去访问期望就职的公司时所穿的服装，即不论男女都穿的黑色或藏青色、灰色等素色套装。",
       "blank": "灰色",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 97,
@@ -6071,7 +6071,7 @@ window.LESSON_DATA = {
       "sentence": "就職の氷河期は過ぎたといっても，希望する会社に簡単に就職できるわけではない。",
       "sentence_zh": "虽说就业冰河期已经过去，但也并非轻易就能进入自己所期望的公司。",
       "blank": "氷河期",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 98,
@@ -6081,7 +6081,7 @@ window.LESSON_DATA = {
       "sentence": "日本の若者に人気のある職種は，銀行や出版社，自動車メーカーなどだが，自分の希望する会社に就職できる人は，ごく一部しかいない。",
       "sentence_zh": "受日本年轻人青睐的职业有银行、出版社、汽车公司等，但是真正能进入自己心仪的公司工作的人只是很少的一部分。",
       "blank": "職種",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 99,
@@ -6091,7 +6091,7 @@ window.LESSON_DATA = {
       "sentence": "日本の若者に人気のある職種は，銀行や出版社，自動車メーカーなどだが，自分の希望する会社に就職できる人は，ごく一部しかいない。",
       "sentence_zh": "受日本年轻人青睐的职业有银行、出版社、汽车公司等，但是真正能进入自己心仪的公司工作的人只是很少的一部分。",
       "blank": "自動車メーカー",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 100,
@@ -6101,7 +6101,7 @@ window.LESSON_DATA = {
       "sentence": "日本の若者に人気のある職種は，銀行や出版社，自動車メーカーなどだが，自分の希望する会社に就職できる人は，ごく一部しかいない。",
       "sentence_zh": "受日本年轻人青睐的职业有银行、出版社、汽车公司等，但是真正能进入自己心仪的公司工作的人只是很少的一部分。",
       "blank": "ごく",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 101,
@@ -6111,7 +6111,7 @@ window.LESSON_DATA = {
       "sentence": "就職活動は，まず希望する職種の会社を選択することから始まる。",
       "sentence_zh": "就业活动，首先要做的是选择自己瞩目的行业的公司。",
       "blank": "選択する",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 102,
@@ -6121,7 +6121,7 @@ window.LESSON_DATA = {
       "sentence": "会社のホームページを見たり，会社を訪問したりして採用試験の申し込みをする。",
       "sentence_zh": "通过浏览公司网页或登门拜访，报名参加录用考试。",
       "blank": "申し込み",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 103,
@@ -6131,7 +6131,7 @@ window.LESSON_DATA = {
       "sentence": "これらの試験を突破して初めて内定をもらうことになる。",
       "sentence_zh": "只有通过了这些考试才可能获得内定。",
       "blank": "突破して",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 104,
@@ -6141,7 +6141,7 @@ window.LESSON_DATA = {
       "sentence": "これらの試験を突破して初めて内定をもらうことになる。",
       "sentence_zh": "只有通过了这些考试才可能获得内定。",
       "blank": "内定",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 105,
@@ -6151,7 +6151,7 @@ window.LESSON_DATA = {
       "sentence": "学生たちは，少しでも早い時期から就職活動の準備を始めて，希望の会社に就職できるよう努力している。",
       "sentence_zh": "学生们总是尽可能早地开始准备求职活动，为能进入心仪的公司而努力。",
       "blank": "少しでも",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 106,
@@ -6161,7 +6161,7 @@ window.LESSON_DATA = {
       "sentence": "1次試験，2次試験，3次試験とたくさんの試験を受けなければならない。",
       "sentence_zh": "求职者必须参加初试、再试、三试等层层选拔，",
       "blank": "次",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 107,
@@ -6171,7 +6171,7 @@ window.LESSON_DATA = {
       "sentence": "外から帰ったら，うがいと手洗いをしましょう。",
       "sentence_zh": "从外面回来后要漱口和洗手。",
       "blank": "うがい",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 108,
@@ -6181,7 +6181,7 @@ window.LESSON_DATA = {
       "sentence": "外から帰ったら，うがいと手洗いをしましょう。",
       "sentence_zh": "从外面回来后要漱口和洗手。",
       "blank": "手洗い",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 109,
@@ -6191,7 +6191,7 @@ window.LESSON_DATA = {
       "sentence": "就職活動がうまくいかなくても，焦らないでください。",
       "sentence_zh": "即使求职不顺利，也请不要着急。",
       "blank": "焦らないで",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 110,
@@ -6201,7 +6201,7 @@ window.LESSON_DATA = {
       "sentence": "大学卒業後，彼は上京することにした。",
       "sentence_zh": "大学毕业后，他决定去东京。",
       "blank": "上京する",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 111,
@@ -6211,7 +6211,7 @@ window.LESSON_DATA = {
       "sentence": "来週，友達のお別れ会があります。",
       "sentence_zh": "下周有朋友的欢送会。",
       "blank": "お別れ会",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 112,
@@ -6221,7 +6221,7 @@ window.LESSON_DATA = {
       "sentence": "面接の前に，事前に準備しておいたほうがいい。",
       "sentence_zh": "面试前最好事先做好准备。",
       "blank": "事前",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 113,
@@ -6231,7 +6231,7 @@ window.LESSON_DATA = {
       "sentence": "彼は昼夜を問わず，就職活動に励んでいる。",
       "sentence_zh": "他不分昼夜地努力求职。",
       "blank": "昼夜",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 114,
@@ -6241,7 +6241,7 @@ window.LESSON_DATA = {
       "sentence": "この仕事は性別を問わず，応募できます。",
       "sentence_zh": "这份工作不分性别都可以应聘。",
       "blank": "性別",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 115,
@@ -6251,7 +6251,7 @@ window.LESSON_DATA = {
       "sentence": "納期までに，レポートを提出してください。",
       "sentence_zh": "请在交货期限前提交报告。",
       "blank": "納期",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 116,
@@ -6261,7 +6261,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は茶色いスーツを着ている。",
       "sentence_zh": "她穿着茶色的套装。",
       "blank": "茶色い",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 117,
@@ -6271,7 +6271,7 @@ window.LESSON_DATA = {
       "sentence": "グレーのスーツも面接には合う。",
       "sentence_zh": "灰色的套装也适合面试。",
       "blank": "グレー",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 118,
@@ -6281,7 +6281,7 @@ window.LESSON_DATA = {
       "sentence": "彼はブラックのネクタイを選んだ。",
       "sentence_zh": "他选了黑色的领带。",
       "blank": "ブラック",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 119,
@@ -6291,7 +6291,7 @@ window.LESSON_DATA = {
       "sentence": "少量のお酒なら，飲んでもいいです。",
       "sentence_zh": "少量的酒的话，喝一点也没关系。",
       "blank": "少量",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 120,
@@ -6301,7 +6301,7 @@ window.LESSON_DATA = {
       "sentence": "この薬には微量の成分しか入っていない。",
       "sentence_zh": "这个药只含有微量的成分。",
       "blank": "微量",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 121,
@@ -6311,7 +6311,7 @@ window.LESSON_DATA = {
       "sentence": "多量の水を飲むようにしています。",
       "sentence_zh": "我一直保持喝大量水的习惯。",
       "blank": "多量",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 122,
@@ -6321,7 +6321,7 @@ window.LESSON_DATA = {
       "sentence": "この経験は，とても価値があると思います。",
       "sentence_zh": "我觉得这段经历很有价值。",
       "blank": "価値",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 123,
@@ -6331,7 +6331,7 @@ window.LESSON_DATA = {
       "sentence": "エルニーニョ現象が世界の天気に影響している。",
       "sentence_zh": "厄尔尼诺现象影响着世界的天气。",
       "blank": "エルニーニョ",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 124,
@@ -6341,7 +6341,7 @@ window.LESSON_DATA = {
       "sentence": "ペルー沖の海面温度が上昇している。",
       "sentence_zh": "秘鲁海上的海面温度正在上升。",
       "blank": "ペルー沖",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 125,
@@ -6351,7 +6351,7 @@ window.LESSON_DATA = {
       "sentence": "ペルー沖の海面温度が上昇している。",
       "sentence_zh": "秘鲁海上的海面温度正在上升。",
       "blank": "海面",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 126,
@@ -6361,7 +6361,7 @@ window.LESSON_DATA = {
       "sentence": "今年の夏は異常に暑い。",
       "sentence_zh": "今年夏天异常炎热。",
       "blank": "異常",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 127,
@@ -6371,7 +6371,7 @@ window.LESSON_DATA = {
       "sentence": "部屋に入る前に，ノックをしてください。",
       "sentence_zh": "进房间前请先敲门。",
       "blank": "ノック",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 128,
@@ -6381,7 +6381,7 @@ window.LESSON_DATA = {
       "sentence": "彼は木の後ろに隠れた。",
       "sentence_zh": "他躲在了树后面。",
       "blank": "隠れた",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 129,
@@ -6391,7 +6391,7 @@ window.LESSON_DATA = {
       "sentence": "面接の申込書に，身長を書く欄がある。",
       "sentence_zh": "面试申请表上有填写身高的栏目。",
       "blank": "身長",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 130,
@@ -6401,7 +6401,7 @@ window.LESSON_DATA = {
       "sentence": "希望の条件に合う会社を探しています。",
       "sentence_zh": "正在寻找符合理想条件的公司。",
       "blank": "条件",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 131,
@@ -6411,7 +6411,7 @@ window.LESSON_DATA = {
       "sentence": "この資格があれば，就職に有利です。",
       "sentence_zh": "有了这个资格证，求职会更有利。",
       "blank": "資格",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 132,
@@ -6421,7 +6421,7 @@ window.LESSON_DATA = {
       "sentence": "この資格があれば，就職に有利です。",
       "sentence_zh": "有了这个资格证，求职会更有利。",
       "blank": "有利",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 133,
@@ -6431,7 +6431,7 @@ window.LESSON_DATA = {
       "sentence": "面接では，第一印象を重視する会社が多い。",
       "sentence_zh": "很多公司在面试中很重视第一印象。",
       "blank": "重視する",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 134,
@@ -6441,7 +6441,7 @@ window.LESSON_DATA = {
       "sentence": "特別な理由はなく，ただ緊張しているだけです。",
       "sentence_zh": "没有什么特别的理由，只是紧张而已。",
       "blank": "ただ",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 135,
@@ -6451,7 +6451,7 @@ window.LESSON_DATA = {
       "sentence": "来週，面接試験を受ける予定です。",
       "sentence_zh": "下周打算参加面试考试。",
       "blank": "面接試験",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 136,
@@ -6461,7 +6461,7 @@ window.LESSON_DATA = {
       "sentence": "働けることのありがたさを感じています。",
       "sentence_zh": "我深感能够工作是件很值得感激的事。",
       "blank": "ありがたさ",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 137,
@@ -6471,7 +6471,7 @@ window.LESSON_DATA = {
       "sentence": "18歳未満の方は，応募できません。",
       "sentence_zh": "未满18岁的人不能应聘。",
       "blank": "未満",
-      "category": "other"
+      "category": "生词表4·练习"
     }
   ]
 };

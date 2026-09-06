@@ -10,17 +10,21 @@
 音频写假名/中文写假名/日文写中文"四种题目，不在这里预先展开成 400 条——
 题目怎么问是纯前端逻辑，这里只负责把每个词该有的素材备齐。
 
-每条输出还带一个 `category` 字段（"dialogue"/"text"/"other"），直接复用
-occurrences.json 里人工核实过的 `src`（会话/课文里真实出现的词，已经处理过
-活用形不一致的问题，不是重新拿词典基本型去匹配）；走 authored_examples.json
-（会话/课文里真没找到）的词条固定是 "other"。前端"单词测试"tab 靠这个字段
-把词库分成"会话相关/课文相关/其他"三部分分别测试、各自独立记进度和错题。
+每条输出还带一个 `category` 字段，直接取自 vocab_words.json 里每个词条自己的
+`group` 字段（生词表自身的小节分组，比如"生词表1"/"生词表2·语法与表达"，
+必须跟 data.js 里"生词"tab 下对应 `question` 分组的文字完全一致）——前端
+"单词测试"tab 靠这个字段把词库按生词表小节分别测试、各自独立记进度和错题，
+不再是按"这个词的例句是会话/课文/人工补写"分的"会话相关/课文相关/其他"
+（例句来源只决定题目素材，跟单词本身属于哪个小节是两件事，混在一起分类
+对用户没有意义——用户复习时想按"生词表2"这种课本原有单元来测，不关心
+某个词的例句恰好是从会话还是课文里挑的）。
 
 <vocab_words.json>：跟 build_vocab_from_wordlist.py 用的是同一份格式，但这里
-  只用 id/text/zh/kana 四个字段（audio 路径不需要传，跟 build_page.py 生成
-  生词卡片时用的是同一条规则：`audio/seg-{id:03d}.mp3`，由 build_page.py 自己
-  拼，不在这份数据里重复）。id 允许带不带 "a" 前缀都行，这里统一转成不带前缀
-  的数字字符串再往下用。
+  只用 id/text/zh/kana/group 五个字段（audio 路径不需要传，跟 build_page.py
+  生成生词卡片时用的是同一条规则：`audio/seg-{id:03d}.mp3`，由 build_page.py
+  自己拼，不在这份数据里重复）。id 允许带不带 "a" 前缀都行，这里统一转成不带
+  前缀的数字字符串再往下用。`group` 是必填字段，缺失直接报错——这是单词测试
+  分类的唯一来源，不能静默退化。
 
   没有 "kana" 字段的词条，读音现在会跟生词卡片显示用的furigana走同一条
   pykakasi 转换（`build_page.py` 的 `ruby_html()`），不是简单退化成 `text`
@@ -231,6 +235,10 @@ def main():
         except ValueError as e:
             print(f"FAIL: word {wid} ({w['text']!r}): {e}")
             sys.exit(1)
+        if not w.get("group"):
+            print(f"FAIL: word {wid} ({w['text']!r}) 在 vocab_words.json 里没有 "
+                  f"'group' 字段，这是单词测试分类的唯一来源，不能留空")
+            sys.exit(1)
         entry = {
             "id": int(wid),
             "text": w["text"],
@@ -248,11 +256,6 @@ def main():
             entry["sentence"] = sent["ja"]
             entry["sentence_zh"] = sent["zh"]
             entry["blank"] = o["blank"]
-            # "这个词真的出现在会话/课文里"这件事，人工核实 occurrence 的时候已经
-            # 判断过一次了（包括处理活用形不一致的问题——blank 存的是这句里实际
-            # 出现的活用形，不是词典基本型），单词测试 tab 按"会话相关/课文相关/
-            # 其他"分三部分测试时直接复用这个 src，不用另外再猜一遍。
-            entry["category"] = o["src"]
         else:
             auth_key = next(k for k in authored if norm_id(k) == wid)
             a = authored[auth_key]
@@ -262,9 +265,7 @@ def main():
             entry["sentence"] = a["ja"]
             entry["sentence_zh"] = a["zh"]
             entry["blank"] = a["blank"]
-            # 会话/课文里真没找到这个词才会走到人工补写例句这条路，天然就是
-            # "其他"分类（不属于会话，也不属于课文）。
-            entry["category"] = "other"
+        entry["category"] = w["group"]
         quiz.append(entry)
 
     json.dump(quiz, open(args.out_json, "w", encoding="utf-8"), ensure_ascii=False, indent=2)

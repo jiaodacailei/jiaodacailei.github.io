@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "最終日",
                   "kana": "さいしゅうび",
-                  "t": 0.0
+                  "t": 0
                 }
               ],
               "zh": "（标题）最后一天",
@@ -79,7 +79,7 @@ window.LESSON_DATA = {
                 {
                   "text": "次",
                   "kana": "つぎ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -130,7 +130,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "はい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "。"
@@ -188,7 +188,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "や",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "っぱ",
@@ -289,7 +289,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "と",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "い",
@@ -734,7 +734,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "か",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "く",
@@ -928,7 +928,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -976,7 +976,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "は",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "，"
@@ -1049,7 +1049,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "そう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "なん",
@@ -1075,7 +1075,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "は",
@@ -1106,7 +1106,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "という",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "のは",
@@ -1184,7 +1184,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "えっ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "！"
@@ -1276,7 +1276,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "り",
@@ -1331,7 +1331,7 @@ window.LESSON_DATA = {
                 {
                   "text": "王",
                   "kana": "おう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "さん",
@@ -1353,7 +1353,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "もし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "よ",
@@ -1512,7 +1512,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "ぜ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ひ",
@@ -1547,7 +1547,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "いい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "んです",
@@ -1573,7 +1573,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "では",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -1626,7 +1626,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "よ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "かった",
@@ -1666,7 +1666,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "こちら",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "こ",
@@ -1693,7 +1693,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本",
                   "kana": "にほん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -1818,7 +1818,7 @@ window.LESSON_DATA = {
                 {
                   "text": "方言",
                   "kana": "ほうげん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "と",
@@ -2242,7 +2242,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "まず",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -2365,7 +2365,7 @@ window.LESSON_DATA = {
                 {
                   "text": "箸",
                   "kana": "はし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "」"
@@ -2534,7 +2534,7 @@ window.LESSON_DATA = {
                 {
                   "text": "共通語",
                   "kana": "きょうつうご",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "（"
@@ -2754,7 +2754,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "①",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "は",
@@ -2788,7 +2788,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "し",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "（"
@@ -3056,7 +3056,7 @@ window.LESSON_DATA = {
                 {
                   "text": "方言",
                   "kana": "ほうげん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -3437,7 +3437,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-051.mp3",
               "clauseBounds": [
-                5.0
+                5
               ]
             },
             {
@@ -3512,7 +3512,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "や",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "は",
@@ -3726,7 +3726,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "レ",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "ビ",
@@ -3761,7 +3761,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "した",
@@ -5695,7 +5695,7 @@ window.LESSON_DATA = {
       "sentence": "いよいよ明日帰国ですね。",
       "sentence_zh": "终于明天就要回国了呢。",
       "blank": "いよいよ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 56,
@@ -5705,7 +5705,7 @@ window.LESSON_DATA = {
       "sentence": "また中国語も1つではなく，かなりの数の方言が存在する。",
       "sentence_zh": "而且中文也不是只有一种，存在相当数量的方言。",
       "blank": "方言",
-      "category": "text"
+      "category": "生词表1"
     },
     {
       "id": 57,
@@ -5715,7 +5715,7 @@ window.LESSON_DATA = {
       "sentence": "繁華街の方に行かなかったせいかな。",
       "sentence_zh": "大概是因为没去繁华街那边吧。",
       "blank": "繁華街",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 58,
@@ -5725,7 +5725,7 @@ window.LESSON_DATA = {
       "sentence": "今から，ミナミに飲みに行きませんか。",
       "sentence_zh": "现在要不要去南街喝一杯？",
       "blank": "ミナミ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 59,
@@ -5735,7 +5735,7 @@ window.LESSON_DATA = {
       "sentence": "あのう…，実は，来月の取材には，わたしは同行できないんです。",
       "sentence_zh": "呃……其实，下个月的采访我没法一起去了。",
       "blank": "同行できない",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 60,
@@ -5745,7 +5745,7 @@ window.LESSON_DATA = {
       "sentence": "もしよかったら，披露宴に出てくれませんか。",
       "sentence_zh": "如果方便的话，能不能来参加我的婚宴？",
       "blank": "披露宴",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 61,
@@ -5755,7 +5755,7 @@ window.LESSON_DATA = {
       "sentence": "では，喜んで出席させていただきます。",
       "sentence_zh": "那我就恭敬不如从命，高兴地出席了。",
       "blank": "喜んで",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 62,
@@ -5765,7 +5765,7 @@ window.LESSON_DATA = {
       "sentence": "というと？",
       "sentence_zh": "此话怎讲？（愿闻其详？）",
       "blank": "というと",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 63,
@@ -5775,7 +5775,7 @@ window.LESSON_DATA = {
       "sentence": "いやあ，大阪だから，「おおきに」とか「あかん」とか，もっと大阪の方言が聞けると思っていたんですが，あまり耳にしませんでした。",
       "sentence_zh": "哎呀，我还以为既然是大阪，能多听到些像「おおきに」「あかん」这样的大阪方言，结果并没怎么听到。",
       "blank": "おおきに",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 64,
@@ -5785,7 +5785,7 @@ window.LESSON_DATA = {
       "sentence": "いやあ，大阪だから，「おおきに」とか「あかん」とか，もっと大阪の方言が聞けると思っていたんですが，あまり耳にしませんでした。",
       "sentence_zh": "哎呀，我还以为既然是大阪，能多听到些像「おおきに」「あかん」这样的大阪方言，结果并没怎么听到。",
       "blank": "あかん",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 65,
@@ -5795,7 +5795,7 @@ window.LESSON_DATA = {
       "sentence": "いやあ，大阪だから，「おおきに」とか「あかん」とか，もっと大阪の方言が聞けると思っていたんですが，あまり耳にしませんでした。",
       "sentence_zh": "哎呀，我还以为既然是大阪，能多听到些像「おおきに」「あかん」这样的大阪方言，结果并没怎么听到。",
       "blank": "耳にしませんでした",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 66,
@@ -5805,7 +5805,7 @@ window.LESSON_DATA = {
       "sentence": "せっかくですけれど，今日は遠慮しておきます。",
       "sentence_zh": "难得您邀请，不过今天我就不去打扰了。",
       "blank": "せっかくですけれど",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 67,
@@ -5815,7 +5815,7 @@ window.LESSON_DATA = {
       "sentence": "せっかくですけれど，今日は遠慮しておきます。",
       "sentence_zh": "难得您邀请，不过今天我就不去打扰了。",
       "blank": "遠慮しておきます",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 68,
@@ -5825,7 +5825,7 @@ window.LESSON_DATA = {
       "sentence": "それは，おめでとうございます。",
       "sentence_zh": "那真是恭喜您了。",
       "blank": "おめでとうございます",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 69,
@@ -5835,7 +5835,7 @@ window.LESSON_DATA = {
       "sentence": "大阪弁がたっぷり聞けますよ。",
       "sentence_zh": "在那儿能好好听个够大阪腔哦。",
       "blank": "弁",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 70,
@@ -5845,7 +5845,7 @@ window.LESSON_DATA = {
       "sentence": "駅前に公衆電話があります。",
       "sentence_zh": "车站前有公用电话。",
       "blank": "公衆電話",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 71,
@@ -5855,7 +5855,7 @@ window.LESSON_DATA = {
       "sentence": "昨夜は雷がひどかったです。",
       "sentence_zh": "昨晚打雷很厉害。",
       "blank": "雷",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 72,
@@ -5865,7 +5865,7 @@ window.LESSON_DATA = {
       "sentence": "食べ物の好き嫌いが激しいです。",
       "sentence_zh": "对食物很挑剔（好恶很明显）。",
       "blank": "好き嫌い",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 73,
@@ -5875,7 +5875,7 @@ window.LESSON_DATA = {
       "sentence": "週末はよく山登りに行きます。",
       "sentence_zh": "周末经常去爬山。",
       "blank": "山登り",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 74,
@@ -5885,7 +5885,7 @@ window.LESSON_DATA = {
       "sentence": "会議の資料を作成しました。",
       "sentence_zh": "制作了会议资料。",
       "blank": "作成しました",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 75,
@@ -5895,7 +5895,7 @@ window.LESSON_DATA = {
       "sentence": "新しい商品を披露することになりました。",
       "sentence_zh": "决定要公开新产品了。",
       "blank": "披露する",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 76,
@@ -5905,7 +5905,7 @@ window.LESSON_DATA = {
       "sentence": "予定を変更することにしました。",
       "sentence_zh": "决定变更计划了。",
       "blank": "変更する",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 77,
@@ -5915,7 +5915,7 @@ window.LESSON_DATA = {
       "sentence": "改めてご連絡いたします。",
       "sentence_zh": "改日再与您联系。",
       "blank": "改めて",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 78,
@@ -5925,7 +5925,7 @@ window.LESSON_DATA = {
       "sentence": "最近、体調がよくありません。",
       "sentence_zh": "最近身体状况不太好。",
       "blank": "体調",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 79,
@@ -5935,7 +5935,7 @@ window.LESSON_DATA = {
       "sentence": "最近よく彼のニュースを目にします。",
       "sentence_zh": "最近经常看到他的新闻。",
       "blank": "目にします",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 80,
@@ -5945,7 +5945,7 @@ window.LESSON_DATA = {
       "sentence": "お言葉に甘えて、遠慮なくいただきます。",
       "sentence_zh": "那就恭敬不如从命了。",
       "blank": "お言葉に甘えて",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 81,
@@ -5955,7 +5955,7 @@ window.LESSON_DATA = {
       "sentence": "夏休みに伊豆へ旅行に行きました。",
       "sentence_zh": "暑假去伊豆旅行了。",
       "blank": "伊豆",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 82,
@@ -5965,7 +5965,7 @@ window.LESSON_DATA = {
       "sentence": "父は競馬が好きです。",
       "sentence_zh": "父亲喜欢赛马。",
       "blank": "競馬",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 83,
@@ -5975,7 +5975,7 @@ window.LESSON_DATA = {
       "sentence": "これは映画史に残る名作です。",
       "sentence_zh": "这是留名电影史的名作。",
       "blank": "名作",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 84,
@@ -5985,7 +5985,7 @@ window.LESSON_DATA = {
       "sentence": "このDVDはとても面白いです。",
       "sentence_zh": "这张DVD非常有意思。",
       "blank": "DVD",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 85,
@@ -5995,7 +5995,7 @@ window.LESSON_DATA = {
       "sentence": "村上春樹の小説を読んだことがありますか。",
       "sentence_zh": "你读过村上春树的小说吗？",
       "blank": "村上春樹",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 86,
@@ -6005,7 +6005,7 @@ window.LESSON_DATA = {
       "sentence": "夏は冷房をつけて寝ます。",
       "sentence_zh": "夏天开着空调睡觉。",
       "blank": "冷房",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 87,
@@ -6015,7 +6015,7 @@ window.LESSON_DATA = {
       "sentence": "入場は午後6時からです。",
       "sentence_zh": "入场从下午6点开始。",
       "blank": "入場",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 88,
@@ -6025,7 +6025,7 @@ window.LESSON_DATA = {
       "sentence": "その誘いを断りました。",
       "sentence_zh": "拒绝了那个邀请。",
       "blank": "断りました",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 89,
@@ -6035,7 +6035,7 @@ window.LESSON_DATA = {
       "sentence": "今年の夏は猛暑が続いています。",
       "sentence_zh": "今年夏天持续酷暑。",
       "blank": "猛暑",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 90,
@@ -6045,7 +6045,7 @@ window.LESSON_DATA = {
       "sentence": "睡眠が不足すると体に悪いです。",
       "sentence_zh": "睡眠不足对身体不好。",
       "blank": "不足する",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 91,
@@ -6055,7 +6055,7 @@ window.LESSON_DATA = {
       "sentence": "最近、風邪気味です。",
       "sentence_zh": "最近有点感冒的样子。",
       "blank": "気味",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 92,
@@ -6065,7 +6065,7 @@ window.LESSON_DATA = {
       "sentence": "共通語（東京方言）では，「箸」は「は」を高く，「し」を低く言う（①）。",
       "sentence_zh": "在共通语（东京方言）里，「箸」是「は」读高音、「し」读低音（①）。",
       "blank": "共通語",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 93,
@@ -6075,7 +6075,7 @@ window.LESSON_DATA = {
       "sentence": "この国にはさまざまな民族が住んでいます。",
       "sentence_zh": "这个国家住着各种各样的民族。",
       "blank": "民族",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 94,
@@ -6085,7 +6085,7 @@ window.LESSON_DATA = {
       "sentence": "中国は多民族国家で，民族によって使用する言語が異なっている。",
       "sentence_zh": "中国是一个多民族国家，因民族不同而使用的语言也不同。",
       "blank": "異なっている",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 95,
@@ -6095,7 +6095,7 @@ window.LESSON_DATA = {
       "sentence": "それぞれの方言は発音も文法も語彙も大きく違っている。",
       "sentence_zh": "各个方言在发音、语法、词汇上都有很大不同。",
       "blank": "文法",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 96,
@@ -6105,7 +6105,7 @@ window.LESSON_DATA = {
       "sentence": "まず，発音やアクセントの違いがある。",
       "sentence_zh": "首先，存在发音和声调上的差异。",
       "blank": "アクセント",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 97,
@@ -6115,7 +6115,7 @@ window.LESSON_DATA = {
       "sentence": "一方，京都など関西地方では，「箸」は「はし（②）」，「橋」のほうは「はし（①）」と発音する。",
       "sentence_zh": "另一方面，在京都等关西地区，「箸」读成「はし（②，低高调）」，而「橋」则读成「はし（①，高低调）」，正好相反。",
       "blank": "関西",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 98,
@@ -6125,7 +6125,7 @@ window.LESSON_DATA = {
       "sentence": "方言の違いによってこんな誤解が起きることもある。",
       "sentence_zh": "由于方言的差异，也会发生这样的误会。",
       "blank": "誤解",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 99,
@@ -6135,7 +6135,7 @@ window.LESSON_DATA = {
       "sentence": "これは「捨てる」という意味だが，方言を知らない人が「これをなげて」と言われて，「投げる」だと解釈して，ごみを投げ返して怒られたという話がある。",
       "sentence_zh": "这个词是「扔掉」的意思，但曾有过这样的事：不懂方言的人被人说「これをなげて（把这个扔了吧）」，却理解成了标准语的「投げる（投掷）」，结果把垃圾扔了回去，惹得对方生气。",
       "blank": "投げる",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 100,
@@ -6145,7 +6145,7 @@ window.LESSON_DATA = {
       "sentence": "これは「捨てる」という意味だが，方言を知らない人が「これをなげて」と言われて，「投げる」だと解釈して，ごみを投げ返して怒られたという話がある。",
       "sentence_zh": "这个词是「扔掉」的意思，但曾有过这样的事：不懂方言的人被人说「これをなげて（把这个扔了吧）」，却理解成了标准语的「投げる（投掷）」，结果把垃圾扔了回去，惹得对方生气。",
       "blank": "解釈して",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 101,
@@ -6155,7 +6155,7 @@ window.LESSON_DATA = {
       "sentence": "これは「捨てる」という意味だが，方言を知らない人が「これをなげて」と言われて，「投げる」だと解釈して，ごみを投げ返して怒られたという話がある。",
       "sentence_zh": "这个词是「扔掉」的意思，但曾有过这样的事：不懂方言的人被人说「これをなげて（把这个扔了吧）」，却理解成了标准语的「投げる（投掷）」，结果把垃圾扔了回去，惹得对方生气。",
       "blank": "投げ返して",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 102,
@@ -6165,7 +6165,7 @@ window.LESSON_DATA = {
       "sentence": "やはり「捨てる」という意味だが，これを「保管して」と聞き間違えて，要らないものを大切に保管してしまったという話もある。",
       "sentence_zh": "这个词也是「扔掉」的意思，但也有人把它听成了「保管して（帮我保管一下）」，结果把不要的东西当宝贝一样保管了起来。",
       "blank": "保管してしまった",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 103,
@@ -6175,7 +6175,7 @@ window.LESSON_DATA = {
       "sentence": "やはり「捨てる」という意味だが，これを「保管して」と聞き間違えて，要らないものを大切に保管してしまったという話もある。",
       "sentence_zh": "这个词也是「扔掉」的意思，但也有人把它听成了「保管して（帮我保管一下）」，结果把不要的东西当宝贝一样保管了起来。",
       "blank": "聞き間違えて",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 104,
@@ -6185,7 +6185,7 @@ window.LESSON_DATA = {
       "sentence": "現在では，ラジオやテレビでは東京の言葉を基本にした共通語が使われ，地方の日常生活にも共通語が浸透している。",
       "sentence_zh": "如今，广播和电视里使用的都是以东京话为基础的共通语，共通语也已经渗透进了地方的日常生活当中。",
       "blank": "浸透している",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 105,
@@ -6195,7 +6195,7 @@ window.LESSON_DATA = {
       "sentence": "共通語（東京方言）では，「箸」は「は」を高く，「し」を低く言う（①）。",
       "sentence_zh": "在共通语（东京方言）里，「箸」是「は」读高音、「し」读低音（①）。",
       "blank": "方言",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 106,
@@ -6205,7 +6205,7 @@ window.LESSON_DATA = {
       "sentence": "一方，京都など関西地方では，「箸」は「はし（②）」，「橋」のほうは「はし（①）」と発音する。",
       "sentence_zh": "另一方面，在京都等关西地区，「箸」读成「はし（②，低高调）」，而「橋」则读成「はし（①，高低调）」，正好相反。",
       "blank": "地方",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 107,
@@ -6215,7 +6215,7 @@ window.LESSON_DATA = {
       "sentence": "彼は去年、会社から独立しました。",
       "sentence_zh": "他去年从公司独立出来了。",
       "blank": "独立しました",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 108,
@@ -6225,7 +6225,7 @@ window.LESSON_DATA = {
       "sentence": "自分の意見を述べてください。",
       "sentence_zh": "请陈述自己的意见。",
       "blank": "述べて",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 109,
@@ -6235,7 +6235,7 @@ window.LESSON_DATA = {
       "sentence": "当日は9時に集合してください。",
       "sentence_zh": "当天请9点集合。",
       "blank": "当日",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 110,
@@ -6245,7 +6245,7 @@ window.LESSON_DATA = {
       "sentence": "電話の応対はとても丁寧でした。",
       "sentence_zh": "电话应答非常礼貌。",
       "blank": "応対",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 111,
@@ -6255,7 +6255,7 @@ window.LESSON_DATA = {
       "sentence": "飛行場まで迎えに行きます。",
       "sentence_zh": "去机场接你。",
       "blank": "飛行場",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 112,
@@ -6265,7 +6265,7 @@ window.LESSON_DATA = {
       "sentence": "学生時代、よくボランティア活動に参加しました。",
       "sentence_zh": "学生时代经常参加志愿者活动。",
       "blank": "ボランティア活動",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 113,
@@ -6275,7 +6275,7 @@ window.LESSON_DATA = {
       "sentence": "浜辺で貝殻を拾いました。",
       "sentence_zh": "在海边捡了贝壳。",
       "blank": "貝殻",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 114,
@@ -6285,7 +6285,7 @@ window.LESSON_DATA = {
       "sentence": "長野県は自然が豊かです。",
       "sentence_zh": "长野县自然资源丰富。",
       "blank": "長野県",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 115,
@@ -6295,7 +6295,7 @@ window.LESSON_DATA = {
       "sentence": "近畿地方には大阪や京都があります。",
       "sentence_zh": "近畿地区有大阪和京都。",
       "blank": "近畿",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 116,
@@ -6305,7 +6305,7 @@ window.LESSON_DATA = {
       "sentence": "中部地方には名古屋があります。",
       "sentence_zh": "中部地区有名古屋。",
       "blank": "中部",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 117,
@@ -6315,7 +6315,7 @@ window.LESSON_DATA = {
       "sentence": "日本の中国地方には広島や岡山があります。",
       "sentence_zh": "日本的中国地区有广岛和冈山。",
       "blank": "中国",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 118,
@@ -6325,7 +6325,7 @@ window.LESSON_DATA = {
       "sentence": "四国には香川や愛媛があります。",
       "sentence_zh": "四国有香川和爱媛。",
       "blank": "四国",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 119,
@@ -6335,7 +6335,7 @@ window.LESSON_DATA = {
       "sentence": "あのとき言わなくて後悔しています。",
       "sentence_zh": "那时没说出口，现在很后悔。",
       "blank": "後悔しています",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 120,
@@ -6345,7 +6345,7 @@ window.LESSON_DATA = {
       "sentence": "急いでいたので、名前を書き間違えました。",
       "sentence_zh": "因为着急，把名字写错了。",
       "blank": "書き間違えました",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 121,
@@ -6355,7 +6355,7 @@ window.LESSON_DATA = {
       "sentence": "緊張して、名前を言い間違えました。",
       "sentence_zh": "太紧张了，把名字说错了。",
       "blank": "言い間違えました",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 122,
@@ -6365,7 +6365,7 @@ window.LESSON_DATA = {
       "sentence": "彼は先生に言い返しました。",
       "sentence_zh": "他跟老师顶了嘴。",
       "blank": "言い返しました",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 123,
@@ -6375,7 +6375,7 @@ window.LESSON_DATA = {
       "sentence": "よく聞こえなかったので、聞き返しました。",
       "sentence_zh": "没听清楚，就反问了一遍。",
       "blank": "聞き返しました",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 124,
@@ -6385,7 +6385,7 @@ window.LESSON_DATA = {
       "sentence": "あのときのことを思い返すと、恥ずかしいです。",
       "sentence_zh": "回想起那时候的事，觉得很丢脸。",
       "blank": "思い返す",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 125,
@@ -6395,7 +6395,7 @@ window.LESSON_DATA = {
       "sentence": "彼は寮長を務めています。",
       "sentence_zh": "他担任宿舍长。",
       "blank": "寮長",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 126,
@@ -6405,7 +6405,7 @@ window.LESSON_DATA = {
       "sentence": "この寮の門限は10時です。",
       "sentence_zh": "这个宿舍的门禁时间是10点。",
       "blank": "門限",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 127,
@@ -6415,7 +6415,7 @@ window.LESSON_DATA = {
       "sentence": "これは3問目の質問です。",
       "sentence_zh": "这是第3个问题。",
       "blank": "問目",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 128,
@@ -6425,7 +6425,7 @@ window.LESSON_DATA = {
       "sentence": "あちらこちら探しましたが、見つかりませんでした。",
       "sentence_zh": "到处找了，但没找到。",
       "blank": "あちらこちら",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 129,
@@ -6435,7 +6435,7 @@ window.LESSON_DATA = {
       "sentence": "彼の国籍はどこですか。",
       "sentence_zh": "他的国籍是哪里？",
       "blank": "国籍",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 130,
@@ -6445,7 +6445,7 @@ window.LESSON_DATA = {
       "sentence": "子供の教育に力を入れています。",
       "sentence_zh": "致力于孩子的教育。",
       "blank": "教育",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 131,
@@ -6455,7 +6455,7 @@ window.LESSON_DATA = {
       "sentence": "この教材はとても分かりやすいです。",
       "sentence_zh": "这本教材非常易懂。",
       "blank": "教材",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 132,
@@ -6465,7 +6465,7 @@ window.LESSON_DATA = {
       "sentence": "彼は高等学校の教師です。",
       "sentence_zh": "他是高中老师。",
       "blank": "高等学校",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 133,
@@ -6475,7 +6475,7 @@ window.LESSON_DATA = {
       "sentence": "その会社は海外市場に進出しました。",
       "sentence_zh": "那家公司进军了海外市场。",
       "blank": "進出しました",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 134,
@@ -6485,7 +6485,7 @@ window.LESSON_DATA = {
       "sentence": "セキュリティを強化する必要があります。",
       "sentence_zh": "有必要加强安全措施。",
       "blank": "強化する",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 135,
@@ -6495,7 +6495,7 @@ window.LESSON_DATA = {
       "sentence": "今日の課題を終わらせました。",
       "sentence_zh": "完成了今天的课题（作业）。",
       "blank": "課題",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 136,
@@ -6505,7 +6505,7 @@ window.LESSON_DATA = {
       "sentence": "我が国の経済は成長しています。",
       "sentence_zh": "我国的经济正在增长。",
       "blank": "我が国",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 137,
@@ -6515,7 +6515,7 @@ window.LESSON_DATA = {
       "sentence": "このページを見てください。",
       "sentence_zh": "请看这一页。",
       "blank": "ページ",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 138,
@@ -6525,7 +6525,7 @@ window.LESSON_DATA = {
       "sentence": "このサイトに登録する必要があります。",
       "sentence_zh": "需要在这个网站注册。",
       "blank": "登録する",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 139,
@@ -6535,7 +6535,7 @@ window.LESSON_DATA = {
       "sentence": "大気汚染が深刻になっています。",
       "sentence_zh": "大气污染变得严重了。",
       "blank": "汚染",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 140,
@@ -6545,7 +6545,7 @@ window.LESSON_DATA = {
       "sentence": "この町は漁業が盛んです。",
       "sentence_zh": "这个城市渔业发达。",
       "blank": "漁業",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 141,
@@ -6555,7 +6555,7 @@ window.LESSON_DATA = {
       "sentence": "代金を支払いました。",
       "sentence_zh": "支付了货款。",
       "blank": "支払いました",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 142,
@@ -6565,7 +6565,7 @@ window.LESSON_DATA = {
       "sentence": "予約を取り消しました。",
       "sentence_zh": "取消了预约。",
       "blank": "取り消しました",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 143,
@@ -6575,7 +6575,7 @@ window.LESSON_DATA = {
       "sentence": "駅前で待ち合わせましょう。",
       "sentence_zh": "在车站前见面吧。",
       "blank": "待ち合わせましょう",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 144,
@@ -6585,7 +6585,7 @@ window.LESSON_DATA = {
       "sentence": "1時間以内に戻ります。",
       "sentence_zh": "1小时以内回来。",
       "blank": "以内",
-      "category": "other"
+      "category": "生词表4・练习"
     }
   ]
 };

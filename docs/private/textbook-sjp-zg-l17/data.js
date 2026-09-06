@@ -2140,7 +2140,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "景山公園",
-                  "kana": "かげやまこうえん",
+                  "kana": "けいざんこうえん",
                   "t": 2.05
                 },
                 {
@@ -10010,7 +10010,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "景山公園",
-                  "kana": "かげやまこうえん",
+                  "kana": "けいざんこうえん",
                   "t": 0
                 }
               ],
@@ -12212,7 +12212,7 @@ window.LESSON_DATA = {
       "sentence": "彼の研究はすばらしい成果を上げた。",
       "sentence_zh": "他的研究取得了出色的成果。",
       "blank": "成果",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 55,
@@ -12222,7 +12222,7 @@ window.LESSON_DATA = {
       "sentence": "以上が，ホームページの「『金星』の故郷を探る」で取り上げる記事の一例です。",
       "sentence_zh": "（做大概介绍后）以上便是要放在网页上“探访‘金星’的故乡”栏目里的一个例子。",
       "blank": "以上",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 56,
@@ -12232,7 +12232,7 @@ window.LESSON_DATA = {
       "sentence": "以上が，ホームページの「『金星』の故郷を探る」で取り上げる記事の一例です。",
       "sentence_zh": "（做大概介绍后）以上便是要放在网页上“探访‘金星’的故乡”栏目里的一个例子。",
       "blank": "一例",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 57,
@@ -12242,7 +12242,7 @@ window.LESSON_DATA = {
       "sentence": "これはお世辞抜きでおもしろいですよ。",
       "sentence_zh": "不是恭维，确实很有意思。",
       "blank": "お世辞",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 58,
@@ -12252,7 +12252,7 @@ window.LESSON_DATA = {
       "sentence": "でも，それは日本国内でのことですよ。",
       "sentence_zh": "不过，那是日本国内的情况啊。",
       "blank": "国内",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 59,
@@ -12262,17 +12262,17 @@ window.LESSON_DATA = {
       "sentence": "新商品を若者に売り込むための宣伝を行った。",
       "sentence_zh": "为了向年轻人推销新商品而开展了宣传活动。",
       "blank": "売り込む",
-      "category": "other"
+      "category": "生词表1"
     },
     {
-      "id": 252,
+      "id": 59,
       "text": "売り込む",
       "kana": "うりこむ",
       "zh": "[动1] 销售，促销，推销",
       "sentence": "中国でも「金星」といっしょに，このカクテルを売り込んだらどうでしょうか。",
       "sentence_zh": "在中国也将这种鸡尾酒和“金星”一起销售怎么样？",
       "blank": "売り込んだら",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 60,
@@ -12282,7 +12282,7 @@ window.LESSON_DATA = {
       "sentence": "戦略の1つとして，若者をターゲットにするんです。",
       "sentence_zh": "作为战略之一，把年轻人作为销售对象。",
       "blank": "戦略",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 61,
@@ -12292,7 +12292,7 @@ window.LESSON_DATA = {
       "sentence": "こういったバーで「金星」のカクテルを試飲するキャンペーンを行ったらいかがですか。",
       "sentence_zh": "在这些酒吧开展试饮“金星”鸡尾酒的宣传活动如何？",
       "blank": "試飲する",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 62,
@@ -12302,7 +12302,7 @@ window.LESSON_DATA = {
       "sentence": "若者は流行に敏感です。",
       "sentence_zh": "年轻人对时髦的东西很敏感，",
       "blank": "敏感",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 63,
@@ -12312,17 +12312,17 @@ window.LESSON_DATA = {
       "sentence": "若者たちの間でこのカクテルの人気が出たら，「金星」の売り上げにもつながるんじゃないでしょうか。",
       "sentence_zh": "如果这种鸡尾酒在年轻人当中受到欢迎，不就可以带动“金星”的销售了吗？",
       "blank": "間",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
-      "id": 255,
+      "id": 63,
       "text": "間",
       "kana": "あいだ",
       "zh": "[名] 当中，之间，期间",
       "sentence": "このことは君とぼくの間の約束だ。",
       "sentence_zh": "这件事情是你和我之间的约定。",
       "blank": "間",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 64,
@@ -12332,27 +12332,27 @@ window.LESSON_DATA = {
       "sentence": "いえ，そんな…たいしたことではありません。",
       "sentence_zh": "哪里，看您说的……这个想法还很不成熟。",
       "blank": "たいした",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
-      "id": 257,
+      "id": 64,
       "text": "たいした",
       "kana": "たいした",
       "zh": "[连体] 了不起的，惊人的",
       "sentence": "わたしの友達はヨーロッパのピアノコンクールで優勝しました。たいしたものです。",
       "sentence_zh": "我的一个朋友在欧洲钢琴大赛上获得了冠军。太了不起了。",
       "blank": "たいした",
-      "category": "other"
+      "category": "生词表1"
     },
     {
-      "id": 256,
+      "id": 64,
       "text": "たいした",
       "kana": "たいした",
       "zh": "[连体] 了不起的，惊人的",
       "sentence": "これはわたしがかいた絵で，たいした作品ではありません。",
       "sentence_zh": "这是我画的，不是什么好作品。",
       "blank": "たいした",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 65,
@@ -12362,7 +12362,7 @@ window.LESSON_DATA = {
       "sentence": "中国用のネーミングやラベルのデザインは，私どもで引き受けます。",
       "sentence_zh": "至于在中国使用的名称、标签的设计等，由我公司来负责。",
       "blank": "ラベル",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 66,
@@ -12372,17 +12372,17 @@ window.LESSON_DATA = {
       "sentence": "私ども家族はみな元気です。",
       "sentence_zh": "我们全家都很健康。",
       "blank": "私ども",
-      "category": "other"
+      "category": "生词表1"
     },
     {
-      "id": 258,
+      "id": 66,
       "text": "〜ども",
       "kana": "ども",
       "zh": "〜们（自谦语）",
       "sentence": "中国用のネーミングやラベルのデザインは，私どもで引き受けます。",
       "sentence_zh": "在中国使用的名称、标签的设计等，由我公司来负责。",
       "blank": "私ども",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 67,
@@ -12392,7 +12392,7 @@ window.LESSON_DATA = {
       "sentence": "その結果は意外なものだった。",
       "sentence_zh": "那个结果出乎意料。",
       "blank": "意外",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 68,
@@ -12402,7 +12402,7 @@ window.LESSON_DATA = {
       "sentence": "この問題は案外簡単だった。",
       "sentence_zh": "这个问题出乎意料地简单。",
       "blank": "案外",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 69,
@@ -12412,7 +12412,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はとても賢い子供だ。",
       "sentence_zh": "她是个非常聪明的孩子。",
       "blank": "賢い",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 70,
@@ -12422,7 +12422,7 @@ window.LESSON_DATA = {
       "sentence": "会議の概略を説明します。",
       "sentence_zh": "我来说明一下会议的概要。",
       "blank": "概略",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 71,
@@ -12432,7 +12432,7 @@ window.LESSON_DATA = {
       "sentence": "そんな堅苦しいあいさつはやめましょう。",
       "sentence_zh": "别说那么拘谨的客套话了。",
       "blank": "堅苦しい",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 72,
@@ -12442,7 +12442,7 @@ window.LESSON_DATA = {
       "sentence": "来月，台湾へ旅行に行くつもりです。",
       "sentence_zh": "下个月打算去台湾旅游。",
       "blank": "台湾",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 73,
@@ -12452,7 +12452,7 @@ window.LESSON_DATA = {
       "sentence": "この地域は一年中温暖な気候だ。",
       "sentence_zh": "这个地区一年四季气候温暖。",
       "blank": "温暖",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 74,
@@ -12462,7 +12462,7 @@ window.LESSON_DATA = {
       "sentence": "この町は気候がいいので，住みやすい。",
       "sentence_zh": "这个城市气候好，很宜居。",
       "blank": "気候",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 75,
@@ -12472,17 +12472,17 @@ window.LESSON_DATA = {
       "sentence": "子供たちはプールに飛び込んだ。",
       "sentence_zh": "孩子们跳进了游泳池。",
       "blank": "飛び込んだ",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
-      "id": 253,
+      "id": 75,
       "text": "飛び込む",
       "kana": "とびこむ",
       "zh": "[动1] 跳入，跳进",
       "sentence": "少年が橋から川に飛び込んで遊んでいました。",
       "sentence_zh": "少年从桥上跳进河里玩耍。",
       "blank": "飛び込んで",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 76,
@@ -12492,7 +12492,7 @@ window.LESSON_DATA = {
       "sentence": "そんなに大事な仕事を放っておいてはいけない。",
       "sentence_zh": "不能把那么重要的工作放着不管。",
       "blank": "放って",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 77,
@@ -12502,17 +12502,17 @@ window.LESSON_DATA = {
       "sentence": "彼はボールをかごに投げ込んだ。",
       "sentence_zh": "他把球投进了篮子里。",
       "blank": "投げ込んだ",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
-      "id": 254,
+      "id": 77,
       "text": "投げ込む",
       "kana": "なげこむ",
       "zh": "[动1] 投进，投入，扔进",
       "sentence": "湖にごみを投げ込むのはやめてください。",
       "sentence_zh": "请不要往湖里扔垃圾。",
       "blank": "投げ込む",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 78,
@@ -12522,7 +12522,7 @@ window.LESSON_DATA = {
       "sentence": "かばんに教科書を放り込んで，家を出た。",
       "sentence_zh": "把教科书塞进书包就出门了。",
       "blank": "放り込んで",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 79,
@@ -12532,7 +12532,7 @@ window.LESSON_DATA = {
       "sentence": "飛行機に飲み物を持ち込むことはできません。",
       "sentence_zh": "不能把饮料带上飞机。",
       "blank": "持ち込む",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 80,
@@ -12542,7 +12542,7 @@ window.LESSON_DATA = {
       "sentence": "川の水が海に流れ込む。",
       "sentence_zh": "河水流入大海。",
       "blank": "流れ込む",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 81,
@@ -12552,7 +12552,7 @@ window.LESSON_DATA = {
       "sentence": "猫が布団の中に潜り込んだ。",
       "sentence_zh": "猫钻进了被窝里。",
       "blank": "潜り込んだ",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 82,
@@ -12562,7 +12562,7 @@ window.LESSON_DATA = {
       "sentence": "試験に失敗して，すっかり落ち込んでいる。",
       "sentence_zh": "因为考试没考好，情绪十分低落。",
       "blank": "落ち込んでいる",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 83,
@@ -12572,7 +12572,7 @@ window.LESSON_DATA = {
       "sentence": "少年のころ，よくこの公園で遊んだ。",
       "sentence_zh": "少年时代常在这个公园玩耍。",
       "blank": "少年",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 84,
@@ -12582,7 +12582,7 @@ window.LESSON_DATA = {
       "sentence": "先生のお話はとても勉強になりました。",
       "sentence_zh": "老师的话让我学到了很多东西。",
       "blank": "勉強になりました",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 85,
@@ -12592,7 +12592,7 @@ window.LESSON_DATA = {
       "sentence": "彼は名俳優として知られている。",
       "sentence_zh": "他作为著名演员而闻名。",
       "blank": "名俳優",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 86,
@@ -12602,7 +12602,7 @@ window.LESSON_DATA = {
       "sentence": "資料を全部かばんに詰め込んだ。",
       "sentence_zh": "把资料全部塞进了包里。",
       "blank": "詰め込んだ",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 87,
@@ -12612,7 +12612,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は見事な演技を見せた。",
       "sentence_zh": "她展示了精彩的演技。",
       "blank": "見事な",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 88,
@@ -12622,7 +12622,7 @@ window.LESSON_DATA = {
       "sentence": "このケーキはカロリーが高い。",
       "sentence_zh": "这个蛋糕热量很高。",
       "blank": "カロリー",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 89,
@@ -12632,7 +12632,7 @@ window.LESSON_DATA = {
       "sentence": "計画をもう一度見直したほうがいい。",
       "sentence_zh": "最好把计划再重新审视一下。",
       "blank": "見直した",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 90,
@@ -12642,7 +12642,7 @@ window.LESSON_DATA = {
       "sentence": "このイベントは中高年に人気がある。",
       "sentence_zh": "这个活动很受中老年人欢迎。",
       "blank": "中高年",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 91,
@@ -12652,7 +12652,7 @@ window.LESSON_DATA = {
       "sentence": "最近，携帯小説を読む若者が増えている。",
       "sentence_zh": "最近读手机小说的年轻人越来越多。",
       "blank": "携帯小説",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 92,
@@ -12662,7 +12662,7 @@ window.LESSON_DATA = {
       "sentence": "雨は一時強く降った。",
       "sentence_zh": "雨曾一度下得很大。",
       "blank": "一時",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 93,
@@ -12672,7 +12672,7 @@ window.LESSON_DATA = {
       "sentence": "これは一時的な問題にすぎない。",
       "sentence_zh": "这只不过是暂时性的问题。",
       "blank": "一時的な",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 94,
@@ -12682,7 +12682,7 @@ window.LESSON_DATA = {
       "sentence": "北京のほぼ中心部にある景山公園は，市民の憩いの場である。",
       "sentence_zh": "位于北京中心地带的景山公园是市民休闲的场所。",
       "blank": "景山公園",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 95,
@@ -12692,7 +12692,7 @@ window.LESSON_DATA = {
       "sentence": "北京のほぼ中心部にある景山公園は，市民の憩いの場である。",
       "sentence_zh": "位于北京中心地带的景山公园是市民休闲的场所。",
       "blank": "憩い",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 96,
@@ -12702,7 +12702,7 @@ window.LESSON_DATA = {
       "sentence": "休日には，若いカップルや家族連れ，旅行者でにぎわう。",
       "sentence_zh": "假日里，年轻的情侣、家人、游客聚集在此，热闹非凡。",
       "blank": "カップル",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 97,
@@ -12712,7 +12712,7 @@ window.LESSON_DATA = {
       "sentence": "休日には，若いカップルや家族連れ，旅行者でにぎわう。",
       "sentence_zh": "假日里，年轻的情侣、家人、游客聚集在此，热闹非凡。",
       "blank": "家族連れ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 98,
@@ -12722,7 +12722,7 @@ window.LESSON_DATA = {
       "sentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。",
       "sentence_zh": "公园周围有无数条被称为“胡同”的狭窄小巷。",
       "blank": "周囲",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 99,
@@ -12732,7 +12732,7 @@ window.LESSON_DATA = {
       "sentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。",
       "sentence_zh": "公园周围有无数条被称为“胡同”的狭窄小巷。",
       "blank": "路地",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 100,
@@ -12742,17 +12742,17 @@ window.LESSON_DATA = {
       "sentence": "公園の周囲には「胡同」と呼ばれる狭い路地が無数に存在している。",
       "sentence_zh": "公园周围有无数条被称为“胡同”的狭窄小巷。",
       "blank": "無数",
-      "category": "text"
+      "category": "生词表3"
     },
     {
-      "id": 260,
+      "id": 100,
       "text": "無数",
       "kana": "むすう",
       "zh": "[名] 无数",
       "sentence": "晴れた日に夜空を見上げると，無数の星を見ることができる。",
       "sentence_zh": "晴天里仰望夜空，可以看到无数星星。",
       "blank": "無数",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 101,
@@ -12762,7 +12762,7 @@ window.LESSON_DATA = {
       "sentence": "この町には古い寺がたくさん存在する。",
       "sentence_zh": "这个城市里存在着很多古老的寺庙。",
       "blank": "存在する",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 102,
@@ -12772,27 +12772,27 @@ window.LESSON_DATA = {
       "sentence": "この習慣は江戸時代までさかのぼることができる。",
       "sentence_zh": "这个习惯可以追溯到江户时代。",
       "blank": "さかのぼる",
-      "category": "other"
+      "category": "生词表3"
     },
     {
-      "id": 262,
+      "id": 102,
       "text": "さかのぼる",
       "kana": "さかのぼる",
       "zh": "[动1] 追溯，上溯",
       "sentence": "うちの先祖は，150年前までさかのぼることができる。",
       "sentence_zh": "我家的先祖，可以追溯到150年前。",
       "blank": "さかのぼる",
-      "category": "other"
+      "category": "生词表3"
     },
     {
-      "id": 261,
+      "id": 102,
       "text": "さかのぼる",
       "kana": "さかのぼる",
       "zh": "[动1] 追溯，上溯",
       "sentence": "「胡同」を知るには，歴史を約700年前までさかのぼらなければならない。",
       "sentence_zh": "要了解“胡同”，就必须追溯到大约700年前。",
       "blank": "さかのぼら",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 103,
@@ -12802,7 +12802,7 @@ window.LESSON_DATA = {
       "sentence": "13世紀，元の時代に，敵から市民を守るため，石垣が作られ，その中に住宅が作られた。",
       "sentence_zh": "在13世纪的元代，为了防范敌人、保卫市民安全而修建了石墙，在里面建造了房屋。",
       "blank": "元",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 104,
@@ -12812,7 +12812,7 @@ window.LESSON_DATA = {
       "sentence": "13世紀，元の時代に，敵から市民を守るため，石垣が作られ，その中に住宅が作られた。",
       "sentence_zh": "在13世纪的元代，为了防范敌人、保卫市民安全而修建了石墙，在里面建造了房屋。",
       "blank": "敵",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 105,
@@ -12822,7 +12822,7 @@ window.LESSON_DATA = {
       "sentence": "13世紀，元の時代に，敵から市民を守るため，石垣が作られ，その中に住宅が作られた。",
       "sentence_zh": "在13世纪的元代，为了防范敌人、保卫市民安全而修建了石墙，在里面建造了房屋。",
       "blank": "石垣",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 106,
@@ -12832,7 +12832,7 @@ window.LESSON_DATA = {
       "sentence": "この住居を取り囲むように通っているのが「胡同」である。",
       "sentence_zh": "围绕着这些住宅通向四面八方的街巷就是“胡同”。",
       "blank": "住居",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 107,
@@ -12842,7 +12842,7 @@ window.LESSON_DATA = {
       "sentence": "この住居を取り囲むように通っているのが「胡同」である。",
       "sentence_zh": "围绕着这些住宅通向四面八方的街巷就是“胡同”。",
       "blank": "取り囲む",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 108,
@@ -12852,7 +12852,7 @@ window.LESSON_DATA = {
       "sentence": "路地には朝市が頻繁に開かれ，屋台が並ぶ。",
       "sentence_zh": "胡同里，早市频开，摊位云集。",
       "blank": "朝市",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 109,
@@ -12862,7 +12862,7 @@ window.LESSON_DATA = {
       "sentence": "路地には朝市が頻繁に開かれ，屋台が並ぶ。",
       "sentence_zh": "胡同里，早市频开，摊位云集。",
       "blank": "頻繁",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 110,
@@ -12872,7 +12872,7 @@ window.LESSON_DATA = {
       "sentence": "路地には朝市が頻繁に開かれ，屋台が並ぶ。",
       "sentence_zh": "胡同里，早市频开，摊位云集。",
       "blank": "屋台",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 111,
@@ -12882,7 +12882,7 @@ window.LESSON_DATA = {
       "sentence": "時には自転車置き場にもなる。",
       "sentence_zh": "这里有时还成为停放自行车的场所。",
       "blank": "時には",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 112,
@@ -12892,7 +12892,7 @@ window.LESSON_DATA = {
       "sentence": "時には自転車置き場にもなる。",
       "sentence_zh": "这里有时还成为停放自行车的场所。",
       "blank": "自転車置き場",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 113,
@@ -12902,7 +12902,7 @@ window.LESSON_DATA = {
       "sentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。",
       "sentence_zh": "如曾经是银钱交易场所的“钱市胡同”，磨刀工生活过的“磨刀胡同”等，一些旧时的名称仍然保留着。",
       "blank": "金銭",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 114,
@@ -12912,7 +12912,7 @@ window.LESSON_DATA = {
       "sentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。",
       "sentence_zh": "如曾经是银钱交易场所的“钱市胡同”，磨刀工生活过的“磨刀胡同”等，一些旧时的名称仍然保留着。",
       "blank": "取引所",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 115,
@@ -12922,7 +12922,7 @@ window.LESSON_DATA = {
       "sentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。",
       "sentence_zh": "如曾经是银钱交易场所的“钱市胡同”，磨刀工生活过的“磨刀胡同”等，一些旧时的名称仍然保留着。",
       "blank": "銭市胡同",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 116,
@@ -12932,7 +12932,7 @@ window.LESSON_DATA = {
       "sentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。",
       "sentence_zh": "如曾经是银钱交易场所的“钱市胡同”，磨刀工生活过的“磨刀胡同”等，一些旧时的名称仍然保留着。",
       "blank": "刃物",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 117,
@@ -12942,7 +12942,7 @@ window.LESSON_DATA = {
       "sentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。",
       "sentence_zh": "如曾经是银钱交易场所的“钱市胡同”，磨刀工生活过的“磨刀胡同”等，一些旧时的名称仍然保留着。",
       "blank": "研ぐ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 118,
@@ -12952,7 +12952,7 @@ window.LESSON_DATA = {
       "sentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。",
       "sentence_zh": "如曾经是银钱交易场所的“钱市胡同”，磨刀工生活过的“磨刀胡同”等，一些旧时的名称仍然保留着。",
       "blank": "職人",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 119,
@@ -12962,7 +12962,7 @@ window.LESSON_DATA = {
       "sentence": "かつて金銭の取引所があった「銭市胡同」，刃物を研ぐ職人が暮らしていた「磨刀胡同」など，昔のままの名前も残っている。",
       "sentence_zh": "如曾经是银钱交易场所的“钱市胡同”，磨刀工生活过的“磨刀胡同”等，一些旧时的名称仍然保留着。",
       "blank": "磨刀胡同",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 120,
@@ -12972,7 +12972,7 @@ window.LESSON_DATA = {
       "sentence": "胡同が作られた当時，「四合院」と呼ばれる，中国の伝統的な家屋も作られた。",
       "sentence_zh": "当年在建造胡同时，还建起了叫做四合院的中国传统房屋。",
       "blank": "四合院",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 121,
@@ -12982,7 +12982,7 @@ window.LESSON_DATA = {
       "sentence": "胡同が作られた当時，「四合院」と呼ばれる，中国の伝統的な家屋も作られた。",
       "sentence_zh": "当年在建造胡同时，还建起了叫做四合院的中国传统房屋。",
       "blank": "家屋",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 122,
@@ -12992,7 +12992,7 @@ window.LESSON_DATA = {
       "sentence": "東西南北の棟が，庭を中心に建てられている。",
       "sentence_zh": "以庭院为中心，东南西北四栋合围而建。",
       "blank": "東西南北",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 123,
@@ -13002,7 +13002,7 @@ window.LESSON_DATA = {
       "sentence": "東西南北の棟が，庭を中心に建てられている。",
       "sentence_zh": "以庭院为中心，东南西北四栋合围而建。",
       "blank": "棟",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 124,
@@ -13012,7 +13012,7 @@ window.LESSON_DATA = {
       "sentence": "古い工場をレストランに改造する計画がある。",
       "sentence_zh": "有计划把旧工厂改造成餐厅。",
       "blank": "改造する",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 125,
@@ -13022,27 +13022,27 @@ window.LESSON_DATA = {
       "sentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。",
       "sentence_zh": "胡同在元代不过只有29条，而明代达到459条，到了20世纪80年代则超过了1300条。",
       "blank": "せいぜい",
-      "category": "text"
+      "category": "生词表3"
     },
     {
-      "id": 265,
+      "id": 125,
       "text": "せいぜい",
       "kana": "せいぜい",
       "zh": "[副] 最多，充其量；尽量，尽可能",
       "sentence": "毎年このコンテストに応募する人はせいぜい5，6人程度だ。",
       "sentence_zh": "每年都参加这个比赛的人顶多也就五六人。",
       "blank": "せいぜい",
-      "category": "other"
+      "category": "生词表3"
     },
     {
-      "id": 264,
+      "id": 125,
       "text": "せいぜい",
       "kana": "せいぜい",
       "zh": "[副] 最多，充其量；尽量，尽可能",
       "sentence": "経験があるといってもせいぜい2，3年だ。",
       "sentence_zh": "虽说有经历，也只是两三年而已。",
       "blank": "せいぜい",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 126,
@@ -13052,7 +13052,7 @@ window.LESSON_DATA = {
       "sentence": "胡同は元の時代にはせいぜい29本だったが，明の時代には459本に，1980年代には1,300本を超えた。",
       "sentence_zh": "胡同在元代不过只有29条，而明代达到459条，到了20世纪80年代则超过了1300条。",
       "blank": "明",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 127,
@@ -13062,7 +13062,7 @@ window.LESSON_DATA = {
       "sentence": "その長さから，北京の胡同をつなぐと「もう1つの万里の長城になる」とまでいわれたそうである。",
       "sentence_zh": "据说，如果把北京的胡同连接起来，其长度甚至“相当于另一条万里长城”。",
       "blank": "つなぐ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 128,
@@ -13072,7 +13072,7 @@ window.LESSON_DATA = {
       "sentence": "ただ，その一方，古い建物を残そうとする動きもある。",
       "sentence_zh": "不过另一方面，也有要保留古老建筑的动向。",
       "blank": "動き",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 129,
@@ -13082,7 +13082,7 @@ window.LESSON_DATA = {
       "sentence": "北京市では25か所の歴史文化保護区を指定して，町並みを保存することを決めた。",
       "sentence_zh": "北京已指定25处历史文物保护区，决定保存其街道原貌。",
       "blank": "歴史文化保護区",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 130,
@@ -13092,7 +13092,7 @@ window.LESSON_DATA = {
       "sentence": "先生は宿題の締め切りを指定した。",
       "sentence_zh": "老师指定了作业的截止日期。",
       "blank": "指定した",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 131,
@@ -13102,7 +13102,7 @@ window.LESSON_DATA = {
       "sentence": "北京市では25か所の歴史文化保護区を指定して，町並みを保存することを決めた。",
       "sentence_zh": "北京已指定25处历史文物保护区，决定保存其街道原貌。",
       "blank": "保存する",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 132,
@@ -13112,7 +13112,7 @@ window.LESSON_DATA = {
       "sentence": "新しいものと古いものが混在する街北京は，今変革の時を迎えている。",
       "sentence_zh": "新与旧并存的北京城，如今正迎来变革的时代。",
       "blank": "混在する",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 133,
@@ -13122,7 +13122,7 @@ window.LESSON_DATA = {
       "sentence": "新しいものと古いものが混在する街北京は，今変革の時を迎えている。",
       "sentence_zh": "新与旧并存的北京城，如今正迎来变革的时代。",
       "blank": "変革",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 134,
@@ -13132,7 +13132,7 @@ window.LESSON_DATA = {
       "sentence": "この町には公園が3か所ある。",
       "sentence_zh": "这个城市有三处公园。",
       "blank": "3か所",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 135,
@@ -13142,17 +13142,17 @@ window.LESSON_DATA = {
       "sentence": "彼は子供連れで旅行に来た。",
       "sentence_zh": "他带着孩子来旅行了。",
       "blank": "子供連れ",
-      "category": "other"
+      "category": "生词表3"
     },
     {
-      "id": 259,
+      "id": 135,
       "text": "〜連れ",
       "kana": "つれ",
       "zh": "带着〜",
       "sentence": "学生時代に，仲のいい友達と2人連れでよく旅をしました。",
       "sentence_zh": "学生时代，我经常和好朋友两人一起去旅行。",
       "blank": "2人連れ",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 136,
@@ -13162,7 +13162,7 @@ window.LESSON_DATA = {
       "sentence": "年配の方にも使いやすいデザインだ。",
       "sentence_zh": "这是一款连年长者也容易使用的设计。",
       "blank": "年配",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 137,
@@ -13172,7 +13172,7 @@ window.LESSON_DATA = {
       "sentence": "夏休みに一人で旅に出た。",
       "sentence_zh": "暑假一个人出去旅行了。",
       "blank": "旅",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 138,
@@ -13182,7 +13182,7 @@ window.LESSON_DATA = {
       "sentence": "夜空に星がきれいに輝いている。",
       "sentence_zh": "夜空中星星闪闪发光，很美。",
       "blank": "夜空",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 139,
@@ -13192,7 +13192,7 @@ window.LESSON_DATA = {
       "sentence": "空を見上げると，満月が見えた。",
       "sentence_zh": "抬头望向天空，看见了满月。",
       "blank": "見上げる",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 140,
@@ -13202,7 +13202,7 @@ window.LESSON_DATA = {
       "sentence": "この家は先祖代々続いている。",
       "sentence_zh": "这个家族世代相传至今。",
       "blank": "先祖",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 141,
@@ -13212,17 +13212,17 @@ window.LESSON_DATA = {
       "sentence": "その島は日本の南東に位置している。",
       "sentence_zh": "那个岛屿位于日本的东南方向。",
       "blank": "南東",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
-      "id": 263,
+      "id": 141,
       "text": "南東",
       "kana": "なんとう",
       "zh": "[名] 东南",
       "sentence": "わたしの親戚の家は北京市の南東の方角にあります。",
       "sentence_zh": "我亲戚家在北京市的东南角。",
       "blank": "南東",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 142,
@@ -13232,7 +13232,7 @@ window.LESSON_DATA = {
       "sentence": "台風は北西に進んでいる。",
       "sentence_zh": "台风正在向西北方向移动。",
       "blank": "北西",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 143,
@@ -13242,7 +13242,7 @@ window.LESSON_DATA = {
       "sentence": "この村は町の北東にある。",
       "sentence_zh": "这个村子位于城镇的东北方。",
       "blank": "北東",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 144,
@@ -13252,7 +13252,7 @@ window.LESSON_DATA = {
       "sentence": "南西の空に雲が広がっている。",
       "sentence_zh": "西南方向的天空乌云密布。",
       "blank": "南西",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 145,
@@ -13262,7 +13262,7 @@ window.LESSON_DATA = {
       "sentence": "この部屋は東南に窓があって明るい。",
       "sentence_zh": "这个房间朝东南开窗，很明亮。",
       "blank": "東南",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 146,
@@ -13272,7 +13272,7 @@ window.LESSON_DATA = {
       "sentence": "彼は東南アジアを旅行したことがある。",
       "sentence_zh": "他去东南亚旅行过。",
       "blank": "東南アジア",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 147,
@@ -13282,7 +13282,7 @@ window.LESSON_DATA = {
       "sentence": "地図を見ても，方角がよく分からない。",
       "sentence_zh": "就算看地图，也搞不清方向。",
       "blank": "方角",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 148,
@@ -13292,7 +13292,7 @@ window.LESSON_DATA = {
       "sentence": "そのアルバイトに応募することにした。",
       "sentence_zh": "决定去应聘那份兼职工作了。",
       "blank": "応募する",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 149,
@@ -13302,7 +13302,7 @@ window.LESSON_DATA = {
       "sentence": "蘇州には美しい庭園がたくさんある。",
       "sentence_zh": "苏州有很多美丽的园林。",
       "blank": "蘇州",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 150,
@@ -13312,7 +13312,7 @@ window.LESSON_DATA = {
       "sentence": "ベニスは水の都として有名だ。",
       "sentence_zh": "威尼斯作为水城而闻名。",
       "blank": "ベニス",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 151,
@@ -13322,7 +13322,7 @@ window.LESSON_DATA = {
       "sentence": "彼は自分の仕事に誇りを持っている。",
       "sentence_zh": "他对自己的工作感到自豪。",
       "blank": "誇り",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 152,
@@ -13332,7 +13332,7 @@ window.LESSON_DATA = {
       "sentence": "職人が木に花の模様を彫った。",
       "sentence_zh": "工匠在木头上雕刻了花纹。",
       "blank": "彫った",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 153,
@@ -13342,7 +13342,7 @@ window.LESSON_DATA = {
       "sentence": "空が暗くなって，今にも雨が降りそうだ。",
       "sentence_zh": "天变暗了，眼看就要下雨了。",
       "blank": "今にも",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 154,
@@ -13352,7 +13352,7 @@ window.LESSON_DATA = {
       "sentence": "犯人はすぐに警察に捕まった。",
       "sentence_zh": "犯人很快就被警察抓住了。",
       "blank": "捕まった",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 155,
@@ -13362,7 +13362,7 @@ window.LESSON_DATA = {
       "sentence": "この映画には銃を持った男が出てくる。",
       "sentence_zh": "这部电影里出现了一个持枪的男人。",
       "blank": "銃",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 156,
@@ -13372,7 +13372,7 @@ window.LESSON_DATA = {
       "sentence": "SF映画の中で，主人公が自殺するシーンがある。",
       "sentence_zh": "科幻电影里有主人公自杀的场景。",
       "blank": "自殺する",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 157,
@@ -13382,7 +13382,7 @@ window.LESSON_DATA = {
       "sentence": "かごの中にりんごがたくさん入っている。",
       "sentence_zh": "篮子里装着很多苹果。",
       "blank": "かご",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 158,
@@ -13392,7 +13392,7 @@ window.LESSON_DATA = {
       "sentence": "庭の周りに塀が立てられている。",
       "sentence_zh": "院子周围立着围墙。",
       "blank": "塀",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 159,
@@ -13402,7 +13402,7 @@ window.LESSON_DATA = {
       "sentence": "地平線から太陽が昇ってきた。",
       "sentence_zh": "太阳从地平线升起。",
       "blank": "地平線",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 160,
@@ -13412,7 +13412,7 @@ window.LESSON_DATA = {
       "sentence": "山の中できれいな泉を見つけた。",
       "sentence_zh": "在山里发现了一处清澈的泉水。",
       "blank": "泉",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 161,
@@ -13422,7 +13422,7 @@ window.LESSON_DATA = {
       "sentence": "時計の時間が正確かどうか確認した。",
       "sentence_zh": "确认了一下时钟的时间是否准确。",
       "blank": "正確",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 162,
@@ -13432,7 +13432,7 @@ window.LESSON_DATA = {
       "sentence": "この国は初めて人工衛星の打ち上げに成功した。",
       "sentence_zh": "这个国家首次成功发射了人造卫星。",
       "blank": "人工衛星",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 163,
@@ -13442,7 +13442,7 @@ window.LESSON_DATA = {
       "sentence": "これは人工の湖で，自然にできたものではない。",
       "sentence_zh": "这是人工湖，不是天然形成的。",
       "blank": "人工",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 164,
@@ -13452,7 +13452,7 @@ window.LESSON_DATA = {
       "sentence": "ロケットの打ち上げは来週の予定だ。",
       "sentence_zh": "火箭发射预定在下周进行。",
       "blank": "打ち上げ",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 165,
@@ -13462,7 +13462,7 @@ window.LESSON_DATA = {
       "sentence": "この部屋は日当たりがよくて，暖かい。",
       "sentence_zh": "这个房间采光好，很暖和。",
       "blank": "日当たり",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 166,
@@ -13472,7 +13472,7 @@ window.LESSON_DATA = {
       "sentence": "庭に花の苗を植えた。",
       "sentence_zh": "在院子里种了花苗。",
       "blank": "植えた",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 167,
@@ -13482,7 +13482,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は将来，弁護士になりたいと言っている。",
       "sentence_zh": "她说将来想成为律师。",
       "blank": "弁護士",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 168,
@@ -13492,7 +13492,7 @@ window.LESSON_DATA = {
       "sentence": "中華鍋で野菜を炒める。",
       "sentence_zh": "用中式炒锅炒蔬菜。",
       "blank": "中華鍋",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 169,
@@ -13502,7 +13502,7 @@ window.LESSON_DATA = {
       "sentence": "コンロの火を消してから，外出した。",
       "sentence_zh": "关掉炉子的火后才出的门。",
       "blank": "コンロ",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 170,
@@ -13512,7 +13512,7 @@ window.LESSON_DATA = {
       "sentence": "彼は毎朝のジョギングを欠かさない。",
       "sentence_zh": "他从不间断每天早上的慢跑。",
       "blank": "欠かさない",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 171,
@@ -13522,7 +13522,7 @@ window.LESSON_DATA = {
       "sentence": "この町は昔，城下町として栄えた。",
       "sentence_zh": "这座城市过去曾作为城下町繁荣一时。",
       "blank": "城下町",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 172,
@@ -13532,7 +13532,7 @@ window.LESSON_DATA = {
       "sentence": "この城は500年前に建てられた。",
       "sentence_zh": "这座城堡是500年前建造的。",
       "blank": "城",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 173,
@@ -13542,7 +13542,7 @@ window.LESSON_DATA = {
       "sentence": "山の頂上からは四方の景色が見渡せる。",
       "sentence_zh": "从山顶可以眺望四面八方的景色。",
       "blank": "四方",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 174,
@@ -13552,7 +13552,7 @@ window.LESSON_DATA = {
       "sentence": "塩分の取りすぎは体によくない。",
       "sentence_zh": "摄入过多盐分对身体不好。",
       "blank": "塩分",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 175,
@@ -13562,7 +13562,7 @@ window.LESSON_DATA = {
       "sentence": "今晩の献立をまだ決めていない。",
       "sentence_zh": "今晚的菜谱还没定。",
       "blank": "献立",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 176,
@@ -13572,7 +13572,7 @@ window.LESSON_DATA = {
       "sentence": "庭の花壇にチューリップを植えた。",
       "sentence_zh": "在院子的花坛里种了郁金香。",
       "blank": "花壇",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 177,
@@ -13582,7 +13582,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はピンクの服がよく似合う。",
       "sentence_zh": "她很适合穿粉色的衣服。",
       "blank": "ピンク",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 178,
@@ -13592,7 +13592,7 @@ window.LESSON_DATA = {
       "sentence": "紫の花が庭に咲いている。",
       "sentence_zh": "院子里开着紫色的花。",
       "blank": "紫",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 179,
@@ -13602,7 +13602,7 @@ window.LESSON_DATA = {
       "sentence": "彼は多額のお金を病院に寄付した。",
       "sentence_zh": "他向医院捐了一大笔钱。",
       "blank": "寄付した",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 180,
@@ -13612,7 +13612,7 @@ window.LESSON_DATA = {
       "sentence": "幸い，けがはたいしたことがなかった。",
       "sentence_zh": "幸好伤得不严重。",
       "blank": "幸い",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 181,
@@ -13622,7 +13622,7 @@ window.LESSON_DATA = {
       "sentence": "薬のおかげで，病気は徐々によくなっている。",
       "sentence_zh": "多亏了药，病情正在逐渐好转。",
       "blank": "徐々に",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 182,
@@ -13632,7 +13632,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はピアノのコンクールで優勝した。",
       "sentence_zh": "她在钢琴比赛中获得了冠军。",
       "blank": "コンクール",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 183,
@@ -13642,7 +13642,7 @@ window.LESSON_DATA = {
       "sentence": "彼の作品はコンクールで入賞した。",
       "sentence_zh": "他的作品在比赛中获奖了。",
       "blank": "入賞した",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 184,
@@ -13652,7 +13652,7 @@ window.LESSON_DATA = {
       "sentence": "トイレの便器を新しいものに交換した。",
       "sentence_zh": "把厕所的马桶换成了新的。",
       "blank": "便器",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 185,
@@ -13662,7 +13662,7 @@ window.LESSON_DATA = {
       "sentence": "この道は川に沿って続いている。",
       "sentence_zh": "这条路沿着河流延伸。",
       "blank": "沿って",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 186,
@@ -13672,7 +13672,7 @@ window.LESSON_DATA = {
       "sentence": "川沿いに柳の木が並んでいる。",
       "sentence_zh": "河边并排种着柳树。",
       "blank": "柳",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 187,
@@ -13682,7 +13682,7 @@ window.LESSON_DATA = {
       "sentence": "この森には珍しい鳥がたくさんいる。",
       "sentence_zh": "这片森林里有很多珍稀鸟类。",
       "blank": "森",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 188,
@@ -13692,7 +13692,7 @@ window.LESSON_DATA = {
       "sentence": "彼は不動産会社に勤めている。",
       "sentence_zh": "他在房地产公司工作。",
       "blank": "不動産会社",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 189,
@@ -13702,7 +13702,7 @@ window.LESSON_DATA = {
       "sentence": "市民たちはその計画に抗議の声を上げた。",
       "sentence_zh": "市民们对那个计划发出了抗议的声音。",
       "blank": "抗議",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 190,
@@ -13712,7 +13712,7 @@ window.LESSON_DATA = {
       "sentence": "海沿いの道を散歩した。",
       "sentence_zh": "沿着海边散步了。",
       "blank": "海沿い",
-      "category": "other"
+      "category": "生词表4·练习"
     }
   ]
 };

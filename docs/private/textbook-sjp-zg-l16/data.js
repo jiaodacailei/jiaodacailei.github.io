@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "結婚披露宴",
                   "kana": "けっこんひろうえん",
-                  "t": 0.0
+                  "t": 0
                 }
               ],
               "zh": "结婚喜宴",
@@ -605,7 +605,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "という",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "言葉",
@@ -1178,7 +1178,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "い",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "出",
@@ -1330,7 +1330,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "お",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "きます",
@@ -1379,7 +1379,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "。"
@@ -2329,7 +2329,7 @@ window.LESSON_DATA = {
                 {
                   "text": "人",
                   "kana": "ひと",
-                  "t": 9.0
+                  "t": 9
                 },
                 {
                   "text": "が",
@@ -2974,7 +2974,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "スト",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "教式",
@@ -3043,7 +3043,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "で",
-                  "t": 11.0
+                  "t": 11
                 },
                 {
                   "text": "あ",
@@ -3440,7 +3440,7 @@ window.LESSON_DATA = {
                 {
                   "text": "結婚式",
                   "kana": "けっこんしき",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -3543,7 +3543,7 @@ window.LESSON_DATA = {
                 {
                   "text": "招",
                   "kana": "まね",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "いて",
@@ -3776,7 +3776,7 @@ window.LESSON_DATA = {
                 {
                   "text": "多",
                   "kana": "おお",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "く",
@@ -5280,7 +5280,7 @@ window.LESSON_DATA = {
       "sentence": "新郎の拓也さんとは，日本酒を中国で販売する仕事を，現在いっしょにしております。",
       "sentence_zh": "我与新郎拓也先生一道正从事在中国销售日本酒的工作。",
       "blank": "新郎",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 43,
@@ -5290,7 +5290,7 @@ window.LESSON_DATA = {
       "sentence": "私は，2年前に入社しましたが，拓也さんはそれまで上海支社にお勤めでした。",
       "sentence_zh": "在两年前进公司，在那以前，拓也先生一直在上海分公司工作。",
       "blank": "勤め",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 44,
@@ -5300,7 +5300,7 @@ window.LESSON_DATA = {
       "sentence": "これは「ともに白髪になるまでいっしょにいる」という意味の言葉です。",
       "sentence_zh": "意思是说“一起生活直到彼此都头发变白了”。",
       "blank": "ともに",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 45,
@@ -5310,7 +5310,7 @@ window.LESSON_DATA = {
       "sentence": "これは「ともに白髪になるまでいっしょにいる」という意味の言葉です。",
       "sentence_zh": "意思是说“一起生活直到彼此都头发变白了”。",
       "blank": "白髪",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 46,
@@ -5320,7 +5320,7 @@ window.LESSON_DATA = {
       "sentence": "拓也さん，町子さん，どうかお幸せに！",
       "sentence_zh": "拓也先生，町子小姐，祝福你们!",
       "blank": "どうか",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 47,
@@ -5330,7 +5330,7 @@ window.LESSON_DATA = {
       "sentence": "王さんの活躍を祈っています。",
       "sentence_zh": "祝愿王先生大显身手。",
       "blank": "祈っています",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 48,
@@ -5340,7 +5340,7 @@ window.LESSON_DATA = {
       "sentence": "彼が次期社長に指名された。",
       "sentence_zh": "他被指定为下一任社长。",
       "blank": "指名された",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 49,
@@ -5350,7 +5350,7 @@ window.LESSON_DATA = {
       "sentence": "最後にひと言お願いします。",
       "sentence_zh": "最后请说几句话。",
       "blank": "ひと言",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 50,
@@ -5360,7 +5360,7 @@ window.LESSON_DATA = {
       "sentence": "本日はお忙しい中お越しいただき，ありがとうございます。",
       "sentence_zh": "感谢各位在今天百忙之中拨冗光临。",
       "blank": "本日",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 51,
@@ -5370,7 +5370,7 @@ window.LESSON_DATA = {
       "sentence": "二人の縁が切れることはないだろう。",
       "sentence_zh": "两人的缘分应该不会断吧。",
       "blank": "切れる",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 52,
@@ -5380,7 +5380,7 @@ window.LESSON_DATA = {
       "sentence": "彼らは駅で別れた。",
       "sentence_zh": "他们在车站分别了。",
       "blank": "別れた",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 53,
@@ -5390,7 +5390,7 @@ window.LESSON_DATA = {
       "sentence": "そろそろお開きの時間です。",
       "sentence_zh": "差不多到散席的时间了。",
       "blank": "お開き",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 54,
@@ -5400,7 +5400,7 @@ window.LESSON_DATA = {
       "sentence": "披露宴は，親戚や友人，同僚らを招いて行うパーティーである。",
       "sentence_zh": "婚宴是招待亲戚朋友和同事的宴会。",
       "blank": "招いて",
-      "category": "text"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 55,
@@ -5410,7 +5410,7 @@ window.LESSON_DATA = {
       "sentence": "困った時はお互いに助け合いましょう。",
       "sentence_zh": "遇到困难时大家互相帮助吧。",
       "blank": "助け合いましょう",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 56,
@@ -5420,7 +5420,7 @@ window.LESSON_DATA = {
       "sentence": "彼女たちは仲のいい姉妹だ。",
       "sentence_zh": "她们是感情很好的姐妹。",
       "blank": "姉妹",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 57,
@@ -5430,7 +5430,7 @@ window.LESSON_DATA = {
       "sentence": "スープを暖めてから飲んでください。",
       "sentence_zh": "请把汤加热后再喝。",
       "blank": "暖めて",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 58,
@@ -5440,7 +5440,7 @@ window.LESSON_DATA = {
       "sentence": "僭越ながら，一言ご挨拶申し上げます。",
       "sentence_zh": "冒昧地说几句致辞。",
       "blank": "僭越ながら",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 59,
@@ -5450,7 +5450,7 @@ window.LESSON_DATA = {
       "sentence": "趙さんは中国から来た留学生です。",
       "sentence_zh": "小赵是从中国来的留学生。",
       "blank": "趙さん",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 60,
@@ -5460,7 +5460,7 @@ window.LESSON_DATA = {
       "sentence": "今日の司会を務めさせていただきます。",
       "sentence_zh": "今天由我来担任主持。",
       "blank": "司会",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 61,
@@ -5470,7 +5470,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は白いブラウスを着ている。",
       "sentence_zh": "她穿着一件白色衬衫。",
       "blank": "ブラウス",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 62,
@@ -5480,7 +5480,7 @@ window.LESSON_DATA = {
       "sentence": "両社の代表がテーブルに着いた。",
       "sentence_zh": "两家公司的代表就座了。",
       "blank": "両社",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 63,
@@ -5490,7 +5490,7 @@ window.LESSON_DATA = {
       "sentence": "みんなと仲良くするようにしています。",
       "sentence_zh": "我尽量和大家好好相处。",
       "blank": "仲良くする",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 64,
@@ -5500,7 +5500,7 @@ window.LESSON_DATA = {
       "sentence": "その中でも，神社での「神前結婚式」，教会での「キリスト教式結婚式」，親戚や友人たちの前で行う「人前結婚式」が一般的なものだろう。",
       "sentence_zh": "其中，最常见的大概算是在神社举行的“神前式婚礼”、在教堂举行的“基督教式婚礼”以及在亲朋好友面前举行的“人前式婚礼”了。",
       "blank": "神社",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 65,
@@ -5510,7 +5510,7 @@ window.LESSON_DATA = {
       "sentence": "その中でも，神社での「神前結婚式」，教会での「キリスト教式結婚式」，親戚や友人たちの前で行う「人前結婚式」が一般的なものだろう。",
       "sentence_zh": "其中，最常见的大概算是在神社举行的“神前式婚礼”、在教堂举行的“基督教式婚礼”以及在亲朋好友面前举行的“人前式婚礼”了。",
       "blank": "神前結婚式",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 66,
@@ -5520,7 +5520,7 @@ window.LESSON_DATA = {
       "sentence": "ウェディングドレスが着たいからとか，教会で挙式したいからなど，自分の好みで挙式のスタイルを決める人が多く，宗教で決める人は少数である。",
       "sentence_zh": "出于想穿婚纱、想在教堂举行婚礼等原因，许多人按照个人的喜好确定婚礼的形式，因宗教原因决定婚礼形式的只是少数。",
       "blank": "教会",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 67,
@@ -5530,7 +5530,7 @@ window.LESSON_DATA = {
       "sentence": "1994年には「キリスト教式結婚式」が56.6%，「人前結婚式」が5.4%であったのに対して，2005年では，それぞれ74.7%，12.6%に増えた。",
       "sentence_zh": "1994年“基督教式婚礼”占56.6%，“人前式婚礼”占5.4%，与之相比，2005年分别增加到了74.7%和12.6%。",
       "blank": "キリスト教式結婚式",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 68,
@@ -5540,7 +5540,7 @@ window.LESSON_DATA = {
       "sentence": "1994年には「キリスト教式結婚式」が56.6%，「人前結婚式」が5.4%であったのに対して，2005年では，それぞれ74.7%，12.6%に増えた。",
       "sentence_zh": "1994年“基督教式婚礼”占56.6%，“人前式婚礼”占5.4%，与之相比，2005年分别增加到了74.7%和12.6%。",
       "blank": "人前結婚式",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 69,
@@ -5550,7 +5550,7 @@ window.LESSON_DATA = {
       "sentence": "キリスト教式で結婚式を挙げるからといって，キリスト教の信者であるとは限らない。",
       "sentence_zh": "虽然举行基督教式婚礼，但也不一定就是基督徒。",
       "blank": "挙げる",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 70,
@@ -5560,7 +5560,7 @@ window.LESSON_DATA = {
       "sentence": "キリスト教式で結婚式を挙げるからといって，キリスト教の信者であるとは限らない。",
       "sentence_zh": "虽然举行基督教式婚礼，但也不一定就是基督徒。",
       "blank": "信者",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 71,
@@ -5570,7 +5570,7 @@ window.LESSON_DATA = {
       "sentence": "キリスト教式で結婚式を挙げるからといって，キリスト教の信者であるとは限らない。",
       "sentence_zh": "虽然举行基督教式婚礼，但也不一定就是基督徒。",
       "blank": "とは限らない",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 72,
@@ -5580,7 +5580,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はウエディングドレス姿がとても美しかった。",
       "sentence_zh": "她穿婚纱的样子非常美丽。",
       "blank": "ウエディングドレス",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 73,
@@ -5590,7 +5590,7 @@ window.LESSON_DATA = {
       "sentence": "二人は来月，教会で挙式する予定だ。",
       "sentence_zh": "两人预定下个月在教堂举行婚礼仪式。",
       "blank": "挙式する",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 74,
@@ -5600,7 +5600,7 @@ window.LESSON_DATA = {
       "sentence": "ウェディングドレスが着たいからとか，教会で挙式したいからなど，自分の好みで挙式のスタイルを決める人が多く，宗教で決める人は少数である。",
       "sentence_zh": "出于想穿婚纱、想在教堂举行婚礼等原因，许多人按照个人的喜好确定婚礼的形式，因宗教原因决定婚礼形式的只是少数。",
       "blank": "好み",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 75,
@@ -5610,7 +5610,7 @@ window.LESSON_DATA = {
       "sentence": "ウェディングドレスが着たいからとか，教会で挙式したいからなど，自分の好みで挙式のスタイルを決める人が多く，宗教で決める人は少数である。",
       "sentence_zh": "出于想穿婚纱、想在教堂举行婚礼等原因，许多人按照个人的喜好确定婚礼的形式，因宗教原因决定婚礼形式的只是少数。",
       "blank": "宗教",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 76,
@@ -5620,7 +5620,7 @@ window.LESSON_DATA = {
       "sentence": "ウェディングドレスが着たいからとか，教会で挙式したいからなど，自分の好みで挙式のスタイルを決める人が多く，宗教で決める人は少数である。",
       "sentence_zh": "出于想穿婚纱、想在教堂举行婚礼等原因，许多人按照个人的喜好确定婚礼的形式，因宗教原因决定婚礼形式的只是少数。",
       "blank": "少数",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 77,
@@ -5630,7 +5630,7 @@ window.LESSON_DATA = {
       "sentence": "披露宴の場所は，以前はホテルと結婚式場が4分の3近くを占めていた。",
       "sentence_zh": "至于婚宴地点，以前宾馆和婚礼会场占到将近四分之三。",
       "blank": "結婚式場",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 78,
@@ -5640,7 +5640,7 @@ window.LESSON_DATA = {
       "sentence": "下のグラフは，ある出版社が首都圏の夫婦400組に対して行ったアンケートの結果をまとめたものである。",
       "sentence_zh": "下面的图表是某出版社以东京范围内400对夫妇为对象的问卷调查结果。",
       "blank": "ある出版社",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 79,
@@ -5650,7 +5650,7 @@ window.LESSON_DATA = {
       "sentence": "さらに，海外で挙式をする人も多くなっている。",
       "sentence_zh": "此外，在海外举行婚礼的人也在增多。",
       "blank": "挙式",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 80,
@@ -5660,7 +5660,7 @@ window.LESSON_DATA = {
       "sentence": "披露宴の場所は，以前はホテルと結婚式場が4分の3近くを占めていた。",
       "sentence_zh": "至于婚宴地点，以前宾馆和婚礼会场占到将近四分之三。",
       "blank": "占めていた",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 81,
@@ -5670,7 +5670,7 @@ window.LESSON_DATA = {
       "sentence": "一方，伝統的な挙式形式である「神前結婚式」は，2005年には1994年の3分の1まで減少した。",
       "sentence_zh": "另一方面，作为传统婚礼形式的“神前式婚礼”2005年减少到了1994年的三分之一。",
       "blank": "3分の1",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 82,
@@ -5680,7 +5680,7 @@ window.LESSON_DATA = {
       "sentence": "彼はスーツを着るととてもかっこいい。",
       "sentence_zh": "他穿上西装非常帅气。",
       "blank": "かっこいい",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 83,
@@ -5690,7 +5690,7 @@ window.LESSON_DATA = {
       "sentence": "彼女が今回の司会を務める。",
       "sentence_zh": "这次由她担任主持。",
       "blank": "務める",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 84,
@@ -5700,7 +5700,7 @@ window.LESSON_DATA = {
       "sentence": "薔薇にはとげがある。",
       "sentence_zh": "玫瑰花上有刺。",
       "blank": "とげ",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 85,
@@ -5710,7 +5710,7 @@ window.LESSON_DATA = {
       "sentence": "このきのこには毒がある。",
       "sentence_zh": "这种蘑菇有毒。",
       "blank": "毒",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 86,
@@ -5720,7 +5720,7 @@ window.LESSON_DATA = {
       "sentence": "このチケットは今月末まで有効だ。",
       "sentence_zh": "这张票在本月底之前有效。",
       "blank": "有効",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 87,
@@ -5730,7 +5730,7 @@ window.LESSON_DATA = {
       "sentence": "彼は内向的な性格だ。",
       "sentence_zh": "他性格内向。",
       "blank": "内向的",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 88,
@@ -5740,7 +5740,7 @@ window.LESSON_DATA = {
       "sentence": "子供たちはとても活発だ。",
       "sentence_zh": "孩子们非常活泼。",
       "blank": "活発",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 89,
@@ -5750,7 +5750,7 @@ window.LESSON_DATA = {
       "sentence": "妹は外向的な性格で，友達が多い。",
       "sentence_zh": "妹妹性格外向，朋友很多。",
       "blank": "外向的",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 90,
@@ -5760,7 +5760,7 @@ window.LESSON_DATA = {
       "sentence": "平均すると，一日に8時間働いている。",
       "sentence_zh": "平均来说，一天工作8小时。",
       "blank": "平均",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 91,
@@ -5770,7 +5770,7 @@ window.LESSON_DATA = {
       "sentence": "日本人の平均寿命は年々延びている。",
       "sentence_zh": "日本人的平均寿命逐年延长。",
       "blank": "寿命",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 92,
@@ -5780,7 +5780,7 @@ window.LESSON_DATA = {
       "sentence": "病院には重病人がたくさんいる。",
       "sentence_zh": "医院里有很多重症患者。",
       "blank": "重病人",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 93,
@@ -5790,7 +5790,7 @@ window.LESSON_DATA = {
       "sentence": "会場はホテルの3階に移動することになった。",
       "sentence_zh": "会场决定移到酒店的3楼。",
       "blank": "移動する",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 94,
@@ -5800,7 +5800,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はまだ幼い子供だ。",
       "sentence_zh": "她还是个年幼的孩子。",
       "blank": "幼い",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 95,
@@ -5810,7 +5810,7 @@ window.LESSON_DATA = {
       "sentence": "彼は私の親友だ。",
       "sentence_zh": "他是我的好朋友。",
       "blank": "親友",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 96,
@@ -5820,7 +5820,7 @@ window.LESSON_DATA = {
       "sentence": "我が社は来年，新しいプロジェクトを始める。",
       "sentence_zh": "我公司明年将启动一个新项目。",
       "blank": "我が社",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 97,
@@ -5830,7 +5830,7 @@ window.LESSON_DATA = {
       "sentence": "彼は会社の役員を務めている。",
       "sentence_zh": "他担任公司的董事。",
       "blank": "役員",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 98,
@@ -5840,7 +5840,7 @@ window.LESSON_DATA = {
       "sentence": "この製品は質がいい。",
       "sentence_zh": "这个产品质量好。",
       "blank": "質",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 99,
@@ -5850,7 +5850,7 @@ window.LESSON_DATA = {
       "sentence": "長時間の会議で疲れた。",
       "sentence_zh": "开了很长时间的会，累了。",
       "blank": "長時間",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 100,
@@ -5860,7 +5860,7 @@ window.LESSON_DATA = {
       "sentence": "彼の年収は年々増えている。",
       "sentence_zh": "他的年收入逐年增加。",
       "blank": "年収",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 101,
@@ -5870,7 +5870,7 @@ window.LESSON_DATA = {
       "sentence": "彼はインドに出張することになった。",
       "sentence_zh": "他要去印度出差了。",
       "blank": "インド",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 102,
@@ -5880,7 +5880,7 @@ window.LESSON_DATA = {
       "sentence": "夢を追って上海に来た。",
       "sentence_zh": "为了追求梦想来到了上海。",
       "blank": "追って",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 103,
@@ -5890,7 +5890,7 @@ window.LESSON_DATA = {
       "sentence": "現実を受け入れるしかない。",
       "sentence_zh": "只能接受现实。",
       "blank": "現実",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 104,
@@ -5900,7 +5900,7 @@ window.LESSON_DATA = {
       "sentence": "彼は落語を聞くのが好きだ。",
       "sentence_zh": "他喜欢听单口相声。",
       "blank": "落語",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 105,
@@ -5910,7 +5910,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は有名なジャーナリストだ。",
       "sentence_zh": "她是有名的记者。",
       "blank": "ジャーナリスト",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 106,
@@ -5920,7 +5920,7 @@ window.LESSON_DATA = {
       "sentence": "来月，選挙が行われる。",
       "sentence_zh": "下个月将举行选举。",
       "blank": "選挙",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 107,
@@ -5930,7 +5930,7 @@ window.LESSON_DATA = {
       "sentence": "青森県はりんごの産地として有名だ。",
       "sentence_zh": "青森县以苹果产地闻名。",
       "blank": "青森県",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 108,
@@ -5940,7 +5940,7 @@ window.LESSON_DATA = {
       "sentence": "りんごはこの地方の特産だ。",
       "sentence_zh": "苹果是这个地方的特产。",
       "blank": "特産",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 109,
@@ -5950,7 +5950,7 @@ window.LESSON_DATA = {
       "sentence": "全体の意見をまとめる。",
       "sentence_zh": "汇总大家的意见。",
       "blank": "全体",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 110,
@@ -5960,7 +5960,7 @@ window.LESSON_DATA = {
       "sentence": "この国にはたくさんの政党がある。",
       "sentence_zh": "这个国家有很多政党。",
       "blank": "政党",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 111,
@@ -5970,7 +5970,7 @@ window.LESSON_DATA = {
       "sentence": "多くの人がこの政策を支持している。",
       "sentence_zh": "很多人支持这项政策。",
       "blank": "支持している",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 112,
@@ -5980,7 +5980,7 @@ window.LESSON_DATA = {
       "sentence": "多数の意見に従う。",
       "sentence_zh": "遵从多数人的意见。",
       "blank": "多数",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 113,
@@ -5990,7 +5990,7 @@ window.LESSON_DATA = {
       "sentence": "参加者の半数が女性だった。",
       "sentence_zh": "参加者中有一半是女性。",
       "blank": "半数",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 114,
@@ -6000,7 +6000,7 @@ window.LESSON_DATA = {
       "sentence": "会場にはおよそ200人が集まった。",
       "sentence_zh": "会场聚集了大约200人。",
       "blank": "およそ",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 115,
@@ -6010,7 +6010,7 @@ window.LESSON_DATA = {
       "sentence": "この店では輸入品を扱っている。",
       "sentence_zh": "这家店经营进口商品。",
       "blank": "輸入品",
-      "category": "other"
+      "category": "生词表4·练习"
     }
   ]
 };

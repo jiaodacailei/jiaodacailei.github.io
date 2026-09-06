@@ -18,7 +18,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "ス",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ピ",
@@ -53,7 +53,7 @@ window.LESSON_DATA = {
                 {
                   "text": "課長",
                   "kana": "かちょう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -277,7 +277,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "どう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "した",
@@ -321,7 +321,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "ええ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "。"
@@ -442,7 +442,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "ぼ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "くが",
@@ -534,7 +534,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "う",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "うん",
@@ -682,7 +682,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "も",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "しか",
@@ -877,7 +877,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "そう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -1137,7 +1137,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "は",
@@ -1287,7 +1287,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本",
                   "kana": "にほん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -1354,7 +1354,7 @@ window.LESSON_DATA = {
                 {
                   "text": "世界",
                   "kana": "せかい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -1455,7 +1455,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "2005",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "年",
@@ -1464,7 +1464,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "統計",
@@ -1616,7 +1616,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "に",
@@ -1736,7 +1736,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "して",
-                  "t": 9.0
+                  "t": 9
                 },
                 {
                   "text": "いる",
@@ -1771,7 +1771,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "その",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "原因",
@@ -1882,7 +1882,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "こ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "う",
@@ -2029,7 +2029,7 @@ window.LESSON_DATA = {
                 {
                   "text": "少子",
                   "kana": "しょうし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "化",
@@ -2142,11 +2142,11 @@ window.LESSON_DATA = {
                 {
                   "text": "例",
                   "kana": "たと",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "えば",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -2249,7 +2249,7 @@ window.LESSON_DATA = {
                 {
                   "text": "結婚時",
                   "kana": "けっこんじ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -2541,7 +2541,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "す",
-                  "t": 7.0
+                  "t": 7
                 },
                 {
                   "text": "「"
@@ -2592,7 +2592,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "が",
@@ -2666,7 +2666,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "また",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -2757,7 +2757,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 7.0
+                  "t": 7
                 },
                 {
                   "text": "作",
@@ -2935,7 +2935,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "200",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "3",
@@ -3123,7 +3123,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "しか",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "し",
@@ -3166,7 +3166,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "わ",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "る",
@@ -5019,7 +5019,7 @@ window.LESSON_DATA = {
       "sentence": "実は，折り入ってお願いしたいことがあるんですが……。",
       "sentence_zh": "其实，我有件事想诚恳地拜托您……。",
       "blank": "折り入って",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 33,
@@ -5029,7 +5029,7 @@ window.LESSON_DATA = {
       "sentence": "どうしたの？改まって。",
       "sentence_zh": "怎么了？这么郑重其事的。",
       "blank": "改まって",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 34,
@@ -5039,7 +5039,7 @@ window.LESSON_DATA = {
       "sentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。",
       "sentence_zh": "唔，我不太有自信呢。不过，既然是你拜托的，那就答应下来吧。",
       "blank": "自信",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 35,
@@ -5049,7 +5049,7 @@ window.LESSON_DATA = {
       "sentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。",
       "sentence_zh": "唔，我不太有自信呢。不过，既然是你拜托的，那就答应下来吧。",
       "blank": "君",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 36,
@@ -5059,7 +5059,7 @@ window.LESSON_DATA = {
       "sentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。",
       "sentence_zh": "唔，我不太有自信呢。不过，既然是你拜托的，那就答应下来吧。",
       "blank": "頼み",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 37,
@@ -5069,7 +5069,7 @@ window.LESSON_DATA = {
       "sentence": "ううん，あまり自信がないけどなあ。しかし，君の頼みだ。引き受けるか。",
       "sentence_zh": "唔，我不太有自信呢。不过，既然是你拜托的，那就答应下来吧。",
       "blank": "引き受ける",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 38,
@@ -5079,7 +5079,7 @@ window.LESSON_DATA = {
       "sentence": "もしかして，上海の李さんも来るの？",
       "sentence_zh": "该不会上海的小李也要来吧？",
       "blank": "もしかして",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 39,
@@ -5089,7 +5089,7 @@ window.LESSON_DATA = {
       "sentence": "いいえ。今回のプロジェクトが忙しくて，どうしても中国を離れられないそうです。",
       "sentence_zh": "不，听说这次的项目很忙，怎么也没法离开中国。",
       "blank": "どうしても",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 40,
@@ -5099,7 +5099,7 @@ window.LESSON_DATA = {
       "sentence": "それはよかった。何と言っても，上海は，君と町子さんが出会った思い出の場所だからね。",
       "sentence_zh": "那太好了。不管怎么说，上海可是你和町子相遇的、充满回忆的地方呢。",
       "blank": "出会った",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 41,
@@ -5109,7 +5109,7 @@ window.LESSON_DATA = {
       "sentence": "この格好で出かけるのは、ちょっと恥ずかしい。",
       "sentence_zh": "穿这身打扮出门有点不好意思。",
       "blank": "格好",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 42,
@@ -5119,7 +5119,7 @@ window.LESSON_DATA = {
       "sentence": "この工場には最新の装置が導入されている。",
       "sentence_zh": "这家工厂引进了最新的装置。",
       "blank": "装置",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 43,
@@ -5129,7 +5129,7 @@ window.LESSON_DATA = {
       "sentence": "今日の夕飯は何にしましょうか。",
       "sentence_zh": "今天的晚饭吃什么好呢？",
       "blank": "夕飯",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 44,
@@ -5139,7 +5139,7 @@ window.LESSON_DATA = {
       "sentence": "子供たちはハンバーグが大好きだ。",
       "sentence_zh": "孩子们最爱吃汉堡牛肉饼了。",
       "blank": "ハンバーグ",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 45,
@@ -5149,7 +5149,7 @@ window.LESSON_DATA = {
       "sentence": "もしかすると、彼は今日来ないかもしれない。",
       "sentence_zh": "说不定他今天不会来了。",
       "blank": "もしかすると",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 46,
@@ -5159,7 +5159,7 @@ window.LESSON_DATA = {
       "sentence": "彼はお酒に酔うとよく歌を歌う。",
       "sentence_zh": "他一喝醉酒就爱唱歌。",
       "blank": "酔う",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 47,
@@ -5169,7 +5169,7 @@ window.LESSON_DATA = {
       "sentence": "この店は新鮮な魚介類を使った料理が評判だ。",
       "sentence_zh": "这家店用新鲜鱼贝类做的菜很受好评。",
       "blank": "魚介類",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 48,
@@ -5179,7 +5179,7 @@ window.LESSON_DATA = {
       "sentence": "悪いけど、先に帰らせてもらうよ。",
       "sentence_zh": "不好意思，我先走一步了。",
       "blank": "悪いけど",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 49,
@@ -5189,7 +5189,7 @@ window.LESSON_DATA = {
       "sentence": "彼は入社してから、ずっと商品開発を担当している。",
       "sentence_zh": "他入职以来一直负责商品开发。",
       "blank": "商品開発",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 50,
@@ -5199,7 +5199,7 @@ window.LESSON_DATA = {
       "sentence": "東西食品は来月新しい飲料を発売する予定だ。",
       "sentence_zh": "东西食品公司预计下个月发售新饮料。",
       "blank": "東西食品",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 51,
@@ -5209,7 +5209,7 @@ window.LESSON_DATA = {
       "sentence": "課長は外出中ですが、何か伝言することがありますか。",
       "sentence_zh": "科长外出了，您有什么口信要转达吗？",
       "blank": "伝言する",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 52,
@@ -5219,7 +5219,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は大手出版社に就職した。",
       "sentence_zh": "她进入了一家大出版社工作。",
       "blank": "出版社",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 53,
@@ -5229,7 +5229,7 @@ window.LESSON_DATA = {
       "sentence": "来年、彼の新しい小説が出版される予定だ。",
       "sentence_zh": "明年他的新小说预计将会出版。",
       "blank": "出版される",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 54,
@@ -5239,7 +5239,7 @@ window.LESSON_DATA = {
       "sentence": "パーティーが終わったら，みんなで後片づけをしましょう。",
       "sentence_zh": "聚会结束后，大家一起来收拾一下吧。",
       "blank": "後片づけ",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 55,
@@ -5249,7 +5249,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は将来テレビ局で働きたいと思っている。",
       "sentence_zh": "她将来想在电视台工作。",
       "blank": "テレビ局",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 56,
@@ -5259,7 +5259,7 @@ window.LESSON_DATA = {
       "sentence": "困ったことがあったら、いつでも相談に乗るよ。",
       "sentence_zh": "有什么烦心事的话，随时可以来找我商量。",
       "blank": "相談に乗る",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 57,
@@ -5269,7 +5269,7 @@ window.LESSON_DATA = {
       "sentence": "2005年の統計によると，世界の人口は約65億人で，前の年より約7,550万人も増えている。",
       "sentence_zh": "根据2005年的统计，世界人口约为65亿人，比上一年增加了约7,550万人。",
       "blank": "統計",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 58,
@@ -5279,7 +5279,7 @@ window.LESSON_DATA = {
       "sentence": "それに対して，日本の人口は約1億2,775万人で，前の年から約1万人も減少している。",
       "sentence_zh": "与此相对，日本人口约为1亿2,775万人，比上一年减少了约1万人。",
       "blank": "減少している",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 59,
@@ -5289,7 +5289,7 @@ window.LESSON_DATA = {
       "sentence": "こうした現象を「少子化」と呼んでいるが，この傾向は今後も続いていくと予測されている。",
       "sentence_zh": "这种现象被称为「少子化」，预计这一趋势今后仍将持续下去。",
       "blank": "現象",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 60,
@@ -5299,7 +5299,7 @@ window.LESSON_DATA = {
       "sentence": "例えば，結婚年齢が遅くなる「晩婚化」の傾向は，年々強まっている。",
       "sentence_zh": "比如，结婚年龄推迟的「晚婚化」倾向正逐年增强。",
       "blank": "傾向",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 61,
@@ -5309,7 +5309,7 @@ window.LESSON_DATA = {
       "sentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。",
       "sentence_zh": "「少子化」的背景，是人们在结婚、生育、育儿方面意识的变化。",
       "blank": "背景",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 62,
@@ -5319,7 +5319,7 @@ window.LESSON_DATA = {
       "sentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。",
       "sentence_zh": "「少子化」的背景，是人们在结婚、生育、育儿方面意识的变化。",
       "blank": "出産",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 63,
@@ -5329,7 +5329,7 @@ window.LESSON_DATA = {
       "sentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。",
       "sentence_zh": "「少子化」的背景，是人们在结婚、生育、育儿方面意识的变化。",
       "blank": "育児",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 64,
@@ -5339,7 +5339,7 @@ window.LESSON_DATA = {
       "sentence": "「少子化」の背景には，結婚，出産，育児に対する人々の意識の変化がある。",
       "sentence_zh": "「少子化」的背景，是人们在结婚、生育、育儿方面意识的变化。",
       "blank": "対する",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 65,
@@ -5349,7 +5349,7 @@ window.LESSON_DATA = {
       "sentence": "最近は晩婚の人が増えている。",
       "sentence_zh": "最近晚婚的人越来越多了。",
       "blank": "晩婚",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 66,
@@ -5359,7 +5359,7 @@ window.LESSON_DATA = {
       "sentence": "高年齢になると出産を控える傾向が強まり，1人の女性が出産する子供の数を示す「出生率」が下がる。",
       "sentence_zh": "年龄越大，控制生育的倾向就越强，表示一名女性生育子女数量的「出生率」也随之下降。",
       "blank": "控える",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 67,
@@ -5369,7 +5369,7 @@ window.LESSON_DATA = {
       "sentence": "この書類には出生の年月日を記入してください。",
       "sentence_zh": "请在这份文件上填写出生年月日。",
       "blank": "出生",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 68,
@@ -5379,7 +5379,7 @@ window.LESSON_DATA = {
       "sentence": "それが少子化の原因につながっている。",
       "sentence_zh": "这就成为了少子化的原因。",
       "blank": "つながっている",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 69,
@@ -5389,7 +5389,7 @@ window.LESSON_DATA = {
       "sentence": "また，物価の上昇，高額な税金，住宅問題などのために，結婚をしても子供を作らない夫婦が増えている。",
       "sentence_zh": "另外，由于物价上涨、高额税金、住房问题等原因，即使结婚也不要孩子的夫妇正在增多。",
       "blank": "上昇",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 70,
@@ -5399,7 +5399,7 @@ window.LESSON_DATA = {
       "sentence": "今月の支出は予想より少ない額で済んだ。",
       "sentence_zh": "这个月的支出比预想的金额要少。",
       "blank": "額",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 71,
@@ -5409,7 +5409,7 @@ window.LESSON_DATA = {
       "sentence": "また，物価の上昇，高額な税金，住宅問題などのために，結婚をしても子供を作らない夫婦が増えている。",
       "sentence_zh": "另外，由于物价上涨、高额税金、住房问题等原因，即使结婚也不要孩子的夫妇正在增多。",
       "blank": "住宅問題",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 72,
@@ -5419,7 +5419,7 @@ window.LESSON_DATA = {
       "sentence": "自分の意志で結婚しない人も増えており，「非婚率」も上がっている。",
       "sentence_zh": "出于自己意愿而不结婚的人也在增多，「非婚率」也随之上升。",
       "blank": "意志",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 73,
@@ -5429,7 +5429,7 @@ window.LESSON_DATA = {
       "sentence": "非婚を選ぶ人の割合が年々増えている。",
       "sentence_zh": "选择不结婚的人的比例逐年增加。",
       "blank": "非婚",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 74,
@@ -5439,7 +5439,7 @@ window.LESSON_DATA = {
       "sentence": "2003年の年間出産数は，1973年の約半分に減った。",
       "sentence_zh": "2003年的年出生人数，减少到了1973年的约一半。",
       "blank": "年間",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 75,
@@ -5449,7 +5449,7 @@ window.LESSON_DATA = {
       "sentence": "しかし，人々の意識が簡単に変わるわけはなく，結果が出るまでには，長い年月が必要だろう。",
       "sentence_zh": "但是，人们的观念不会轻易改变，恐怕要经过漫长的岁月才能见到成效。",
       "blank": "年月",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 76,
@@ -5459,7 +5459,7 @@ window.LESSON_DATA = {
       "sentence": "出発時には、必ずパスポートを持ってきてください。",
       "sentence_zh": "出发时请务必携带护照。",
       "blank": "時",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 77,
@@ -5469,7 +5469,7 @@ window.LESSON_DATA = {
       "sentence": "このアンケートの回答数はまだ集計中だ。",
       "sentence_zh": "这份问卷的回答数量还在统计中。",
       "blank": "数",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 78,
@@ -5479,7 +5479,7 @@ window.LESSON_DATA = {
       "sentence": "昔はどの家庭も石炭で暖を取っていた。",
       "sentence_zh": "以前每家每户都用煤炭取暖。",
       "blank": "石炭",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 79,
@@ -5489,7 +5489,7 @@ window.LESSON_DATA = {
       "sentence": "彼の病状は悪化の一途をたどっている。",
       "sentence_zh": "他的病情正在持续恶化。",
       "blank": "一途",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 80,
@@ -5499,7 +5499,7 @@ window.LESSON_DATA = {
       "sentence": "彼の病状は悪化の一途をたどっている。",
       "sentence_zh": "他的病情正在持续恶化。",
       "blank": "たどっている",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 81,
@@ -5509,7 +5509,7 @@ window.LESSON_DATA = {
       "sentence": "円安の影響で、輸入品の値段が上がっている。",
       "sentence_zh": "受日元贬值影响，进口商品的价格在上涨。",
       "blank": "円安",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 82,
@@ -5519,7 +5519,7 @@ window.LESSON_DATA = {
       "sentence": "このスーパーには輸入食品のコーナーがある。",
       "sentence_zh": "这家超市有进口食品专区。",
       "blank": "輸入食品",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 83,
@@ -5529,7 +5529,7 @@ window.LESSON_DATA = {
       "sentence": "最近、野菜の値上がりが続いている。",
       "sentence_zh": "最近蔬菜价格持续上涨。",
       "blank": "値上がり",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 84,
@@ -5539,7 +5539,7 @@ window.LESSON_DATA = {
       "sentence": "会社は労働環境を改善するために新しい制度を導入した。",
       "sentence_zh": "公司为了改善劳动环境引入了新制度。",
       "blank": "改善する",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 85,
@@ -5549,7 +5549,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は髪を伸ばすことにした。",
       "sentence_zh": "她决定把头发留长。",
       "blank": "伸ばす",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 86,
@@ -5559,7 +5559,7 @@ window.LESSON_DATA = {
       "sentence": "昔の子供はそろばんの使い方を習っていた。",
       "sentence_zh": "以前的孩子都学习算盘的用法。",
       "blank": "そろばん",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 87,
@@ -5569,7 +5569,7 @@ window.LESSON_DATA = {
       "sentence": "不況のせいで、就職先を見つけるのが難しい。",
       "sentence_zh": "由于经济不景气，很难找到工作。",
       "blank": "不況",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 88,
@@ -5579,7 +5579,7 @@ window.LESSON_DATA = {
       "sentence": "彼の長所は、どんな仕事にも真剣に取り組むところだ。",
       "sentence_zh": "他的长处是对任何工作都认真对待。",
       "blank": "長所",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 89,
@@ -5589,7 +5589,7 @@ window.LESSON_DATA = {
       "sentence": "自分の短所を知ることも大切だ。",
       "sentence_zh": "了解自己的短处也很重要。",
       "blank": "短所",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 90,
@@ -5599,7 +5599,7 @@ window.LESSON_DATA = {
       "sentence": "整備不良が原因で事故が起きた。",
       "sentence_zh": "事故的原因是维修不良。",
       "blank": "整備不良",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 91,
@@ -5609,7 +5609,7 @@ window.LESSON_DATA = {
       "sentence": "この道路は現在整備が進められている。",
       "sentence_zh": "这条道路目前正在进行整修。",
       "blank": "整備",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 92,
@@ -5619,7 +5619,7 @@ window.LESSON_DATA = {
       "sentence": "その発言は多くの人から批判を受けた。",
       "sentence_zh": "那番发言受到了很多人的批评。",
       "blank": "批判",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 93,
@@ -5629,7 +5629,7 @@ window.LESSON_DATA = {
       "sentence": "お世話になった先生に礼を言いに行った。",
       "sentence_zh": "去向照顾过自己的老师道谢了。",
       "blank": "礼",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 94,
@@ -5639,7 +5639,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は不当な扱いを受けたと訴えた。",
       "sentence_zh": "她申诉自己受到了不公正的对待。",
       "blank": "訴えた",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 95,
@@ -5649,7 +5649,7 @@ window.LESSON_DATA = {
       "sentence": "政府は被災地を援助するための予算を組んだ。",
       "sentence_zh": "政府编列了援助灾区的预算。",
       "blank": "援助する",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 96,
@@ -5659,7 +5659,7 @@ window.LESSON_DATA = {
       "sentence": "この旅行は忘れられない体験になった。",
       "sentence_zh": "这次旅行成了难忘的体验。",
       "blank": "体験",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 97,
@@ -5669,7 +5669,7 @@ window.LESSON_DATA = {
       "sentence": "彼は毎年家族で旅行に行く。",
       "sentence_zh": "他每年都和家人一起去旅行。",
       "blank": "毎年",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 98,
@@ -5679,7 +5679,7 @@ window.LESSON_DATA = {
       "sentence": "忙しい日々が続いている。",
       "sentence_zh": "忙碌的日子还在持续。",
       "blank": "日々",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 99,
@@ -5689,7 +5689,7 @@ window.LESSON_DATA = {
       "sentence": "月々の家賃は8万円だ。",
       "sentence_zh": "每月的房租是8万日元。",
       "blank": "月々",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 100,
@@ -5699,7 +5699,7 @@ window.LESSON_DATA = {
       "sentence": "現在の状況を詳しく説明してください。",
       "sentence_zh": "请详细说明一下现在的情况。",
       "blank": "状況",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 101,
@@ -5709,7 +5709,7 @@ window.LESSON_DATA = {
       "sentence": "彼は収入の一部を貯金に回している。",
       "sentence_zh": "他把一部分收入用于储蓄。",
       "blank": "収入",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 102,
@@ -5719,7 +5719,7 @@ window.LESSON_DATA = {
       "sentence": "徳川家康は江戸幕府を開いた人物だ。",
       "sentence_zh": "德川家康是开创江户幕府的人物。",
       "blank": "徳川家康",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 103,
@@ -5729,7 +5729,7 @@ window.LESSON_DATA = {
       "sentence": "今日の宿題は量が多い。",
       "sentence_zh": "今天的作业量很大。",
       "blank": "量",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 104,
@@ -5739,7 +5739,7 @@ window.LESSON_DATA = {
       "sentence": "この機械は不良品だった。",
       "sentence_zh": "这台机器是次品。",
       "blank": "不",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 105,
@@ -5749,7 +5749,7 @@ window.LESSON_DATA = {
       "sentence": "運動不足は肥満の原因になる。",
       "sentence_zh": "运动不足会导致肥胖。",
       "blank": "肥満",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 106,
@@ -5759,7 +5759,7 @@ window.LESSON_DATA = {
       "sentence": "今月の事故の件数は去年より減った。",
       "sentence_zh": "这个月的事故件数比去年减少了。",
       "blank": "件数",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 107,
@@ -5769,7 +5769,7 @@ window.LESSON_DATA = {
       "sentence": "彼は経済的な理由で退学することになった。",
       "sentence_zh": "他因为经济原因不得不退学。",
       "blank": "退学",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 108,
@@ -5779,7 +5779,7 @@ window.LESSON_DATA = {
       "sentence": "最近、健康志向のブームが続いている。",
       "sentence_zh": "最近注重健康的热潮持续不断。",
       "blank": "ブーム",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 109,
@@ -5789,7 +5789,7 @@ window.LESSON_DATA = {
       "sentence": "誰にでも教育を受ける権利がある。",
       "sentence_zh": "任何人都有接受教育的权利。",
       "blank": "権利",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 110,
@@ -5799,7 +5799,7 @@ window.LESSON_DATA = {
       "sentence": "排気ガスは大気汚染の原因の一つだ。",
       "sentence_zh": "废气是大气污染的原因之一。",
       "blank": "排気ガス",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 111,
@@ -5809,7 +5809,7 @@ window.LESSON_DATA = {
       "sentence": "ラッシュアワーの電車はいつも混んでいる。",
       "sentence_zh": "高峰时段的电车总是很拥挤。",
       "blank": "ラッシュアワー",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 112,
@@ -5819,7 +5819,7 @@ window.LESSON_DATA = {
       "sentence": "週末の駅は混雑している。",
       "sentence_zh": "周末的车站很拥挤。",
       "blank": "混雑",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 113,
@@ -5829,7 +5829,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はペットとして猫を飼っている。",
       "sentence_zh": "她养了一只猫作为宠物。",
       "blank": "ペット",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 114,
@@ -5839,7 +5839,7 @@ window.LESSON_DATA = {
       "sentence": "両親は子供に深い愛情を注いでいる。",
       "sentence_zh": "父母对孩子倾注了深深的爱。",
       "blank": "愛情",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 115,
@@ -5849,7 +5849,7 @@ window.LESSON_DATA = {
       "sentence": "若者の政治への関心が高まっている。",
       "sentence_zh": "年轻人对政治的关心正在提高。",
       "blank": "政治",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 116,
@@ -5859,7 +5859,7 @@ window.LESSON_DATA = {
       "sentence": "彼は色に対する感覚が鋭い。",
       "sentence_zh": "他对颜色的感觉很敏锐。",
       "blank": "感覚",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 117,
@@ -5869,7 +5869,7 @@ window.LESSON_DATA = {
       "sentence": "日中の文化交流はますます盛んになっている。",
       "sentence_zh": "日中文化交流日益兴盛。",
       "blank": "日中",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 118,
@@ -5879,7 +5879,7 @@ window.LESSON_DATA = {
       "sentence": "彼は長年外交の仕事に携わってきた。",
       "sentence_zh": "他多年来一直从事外交工作。",
       "blank": "外交",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 119,
@@ -5889,7 +5889,7 @@ window.LESSON_DATA = {
       "sentence": "彼らは一晩かけてレポートを書き上げた。",
       "sentence_zh": "他们花了一整晚写完了报告。",
       "blank": "一晩",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 120,
@@ -5899,7 +5899,7 @@ window.LESSON_DATA = {
       "sentence": "この装置の仕組みを説明してください。",
       "sentence_zh": "请说明一下这个装置的结构。",
       "blank": "仕組み",
-      "category": "other"
+      "category": "生词表4·练习"
     }
   ]
 };

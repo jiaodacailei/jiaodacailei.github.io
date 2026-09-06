@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "若者",
                   "kana": "わかもの",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -43,7 +43,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あの",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ポスター",
@@ -124,7 +124,7 @@ window.LESSON_DATA = {
                 {
                   "text": "公開",
                   "kana": "こうかい",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "されたばかりです",
@@ -149,7 +149,7 @@ window.LESSON_DATA = {
                 {
                   "text": "興行成績",
                   "kana": "こうぎょうせいせき",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "は",
@@ -205,7 +205,7 @@ window.LESSON_DATA = {
                 {
                   "text": "見込",
                   "kana": "みこ",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "み"
@@ -233,7 +233,7 @@ window.LESSON_DATA = {
                 {
                   "text": "張",
                   "kana": "ちょう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "一心",
@@ -313,7 +313,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "はい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "。"
@@ -423,7 +423,7 @@ window.LESSON_DATA = {
                 {
                   "text": "中国映画",
                   "kana": "ちゅうごくえいが",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -454,7 +454,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "ええ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -530,7 +530,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "どれも",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "高",
@@ -566,7 +566,7 @@ window.LESSON_DATA = {
                 {
                   "text": "中国以外",
                   "kana": "ちゅうごくいがい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ではどこの",
@@ -615,7 +615,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "アメリカ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "や",
@@ -678,7 +678,7 @@ window.LESSON_DATA = {
               ],
               "audio": "audio/seg-011.mp3",
               "clauseBounds": [
-                4.0
+                4
               ]
             },
             {
@@ -688,7 +688,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "そうすると",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -745,7 +745,7 @@ window.LESSON_DATA = {
                 {
                   "text": "若者",
                   "kana": "わかもの",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "は",
@@ -763,7 +763,7 @@ window.LESSON_DATA = {
                 {
                   "text": "外国",
                   "kana": "がいこく",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "のものを",
@@ -809,7 +809,7 @@ window.LESSON_DATA = {
                 {
                   "text": "彼",
                   "kana": "かれ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ら"
@@ -1005,7 +1005,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "うーん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "…，"
@@ -1085,7 +1085,7 @@ window.LESSON_DATA = {
                 {
                   "text": "本当",
                   "kana": "ほんとう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "にいいもの",
@@ -1223,7 +1223,7 @@ window.LESSON_DATA = {
                 {
                   "text": "映像",
                   "kana": "えいぞう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "でも",
@@ -1232,7 +1232,7 @@ window.LESSON_DATA = {
                 {
                   "text": "音楽",
                   "kana": "おんがく",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "でも",
@@ -1374,7 +1374,7 @@ window.LESSON_DATA = {
                 {
                   "text": "漫画",
                   "kana": "まんが",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "と",
@@ -1398,7 +1398,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本",
                   "kana": "にっぽん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "に",
@@ -1552,7 +1552,7 @@ window.LESSON_DATA = {
                 {
                   "text": "成人",
                   "kana": "せいじん",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "向",
@@ -1948,7 +1948,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本",
                   "kana": "にっぽん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -2005,7 +2005,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本",
                   "kana": "にっぽん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "で",
@@ -2077,7 +2077,7 @@ window.LESSON_DATA = {
                 {
                   "text": "漫画",
                   "kana": "まんが",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "を",
@@ -2165,7 +2165,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "その",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "後",
@@ -2273,7 +2273,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ドラ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "えもん",
@@ -2329,7 +2329,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "アニメ",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "化",
@@ -2390,7 +2390,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "やがて",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -2448,7 +2448,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 7.0
+                  "t": 7
                 },
                 {
                   "text": "登場",
@@ -2542,7 +2542,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "2001",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "年",
@@ -2608,7 +2608,7 @@ window.LESSON_DATA = {
                 {
                   "text": "豊",
                   "kana": "ゆた",
-                  "t": 7.0
+                  "t": 7
                 },
                 {
                   "text": "か"
@@ -5632,7 +5632,7 @@ window.LESSON_DATA = {
       "sentence": "王：あのポスター，張一心ですね。",
       "sentence_zh": "王：那张海报上是张一心吧。",
       "blank": "一心",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 37,
@@ -5642,7 +5642,7 @@ window.LESSON_DATA = {
       "sentence": "担当者：ええ。新作映画の「朋友」が今週公開されたばかりです。",
       "sentence_zh": "负责人：是的。新作电影《朋友》这周才刚上映。",
       "blank": "新作",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 38,
@@ -5652,7 +5652,7 @@ window.LESSON_DATA = {
       "sentence": "この映画は来月公開される予定だ。",
       "sentence_zh": "这部电影预计下个月上映。",
       "blank": "公開される",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 39,
@@ -5662,7 +5662,7 @@ window.LESSON_DATA = {
       "sentence": "興行成績は現在のところ第２位ですが，来週はトップになる見込みです。",
       "sentence_zh": "目前票房成绩是第2位，预计下周会成为第一。",
       "blank": "興行",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 40,
@@ -5672,7 +5672,7 @@ window.LESSON_DATA = {
       "sentence": "興行成績は現在のところ第２位ですが，来週はトップになる見込みです。",
       "sentence_zh": "目前票房成绩是第2位，预计下周会成为第一。",
       "blank": "トップ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 41,
@@ -5682,7 +5682,7 @@ window.LESSON_DATA = {
       "sentence": "興行成績は現在のところ第２位ですが，来週はトップになる見込みです。",
       "sentence_zh": "目前票房成绩是第2位，预计下周会成为第一。",
       "blank": "見込み",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 42,
@@ -5692,7 +5692,7 @@ window.LESSON_DATA = {
       "sentence": "担当者：はい。彼が主演する映画は，アクションでも恋愛ドラマでも，必ず当たります。",
       "sentence_zh": "负责人：是的。他主演的电影，无论是动作片还是爱情剧，一定会大卖。",
       "blank": "主演する",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 43,
@@ -5702,7 +5702,7 @@ window.LESSON_DATA = {
       "sentence": "担当者：はい。彼が主演する映画は，アクションでも恋愛ドラマでも，必ず当たります。",
       "sentence_zh": "负责人：是的。他主演的电影，无论是动作片还是爱情剧，一定会大卖。",
       "blank": "アクション",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 44,
@@ -5712,7 +5712,7 @@ window.LESSON_DATA = {
       "sentence": "この宝くじ、当たるといいですね。",
       "sentence_zh": "这张彩票要是能中奖就好了。",
       "blank": "当たる",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 45,
@@ -5722,7 +5722,7 @@ window.LESSON_DATA = {
       "sentence": "先生は彼の努力を高く評価した。",
       "sentence_zh": "老师对他的努力给予了很高的评价。",
       "blank": "評価した",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 46,
@@ -5732,7 +5732,7 @@ window.LESSON_DATA = {
       "sentence": "最近、健康への関心が高まっている。",
       "sentence_zh": "最近人们对健康的关注日益提高。",
       "blank": "高まって",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 47,
@@ -5742,7 +5742,7 @@ window.LESSON_DATA = {
       "sentence": "王：そうすると，外国のものだから人気があるというわけではないんですね。",
       "sentence_zh": "王：这么说来，并不是因为是外国的东西才受欢迎的呢。",
       "blank": "そうすると",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 48,
@@ -5752,7 +5752,7 @@ window.LESSON_DATA = {
       "sentence": "王：そうすると，外国のものだから人気があるというわけではないんですね。",
       "sentence_zh": "王：这么说来，并不是因为是外国的东西才受欢迎的呢。",
       "blank": "わけ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 49,
@@ -5762,7 +5762,7 @@ window.LESSON_DATA = {
       "sentence": "本物と偽物を区別するのは難しい。",
       "sentence_zh": "要区分真品和赝品很难。",
       "blank": "区別する",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 50,
@@ -5772,7 +5772,7 @@ window.LESSON_DATA = {
       "sentence": "彼は新しい意見を素直に受け入れた。",
       "sentence_zh": "他坦率地接受了新的意见。",
       "blank": "受け入れた",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 51,
@@ -5782,7 +5782,7 @@ window.LESSON_DATA = {
       "sentence": "彼らは，映画にしても音楽にしても，いいものならすぐに受け入れます。",
       "sentence_zh": "他们无论是电影还是音乐，只要是好东西就会立刻接受。",
       "blank": "彼ら",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 52,
@@ -5792,7 +5792,7 @@ window.LESSON_DATA = {
       "sentence": "じゃあ，彼らの心をつかむには，どうすればいいんでしょうか。",
       "sentence_zh": "那么，要抓住他们的心，该怎么做才好呢？",
       "blank": "つかむ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 53,
@@ -5802,7 +5802,7 @@ window.LESSON_DATA = {
       "sentence": "担当者：ええ。今の若者は，テレビＣＭより，同世代の人の口コミを信じます。",
       "sentence_zh": "负责人：是的。现在的年轻人比起电视广告，更相信同龄人的口碑。",
       "blank": "口コミ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 54,
@@ -5812,7 +5812,7 @@ window.LESSON_DATA = {
       "sentence": "映像でも音楽でも食べ物でも，本当にいいものを提供すれば，口コミで広がっていくはずです。",
       "sentence_zh": "无论是影像、音乐还是食物，只要提供真正好的东西，应该就会通过口碑传播开来。",
       "blank": "映像",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 55,
@@ -5822,7 +5822,7 @@ window.LESSON_DATA = {
       "sentence": "このホテルは無料の朝食を提供している。",
       "sentence_zh": "这家酒店提供免费早餐。",
       "blank": "提供して",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 56,
@@ -5832,7 +5832,7 @@ window.LESSON_DATA = {
       "sentence": "なんだか今日はいいことが起きる気がする。",
       "sentence_zh": "总觉得今天会发生好事。",
       "blank": "気がする",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 57,
@@ -5842,7 +5842,7 @@ window.LESSON_DATA = {
       "sentence": "子供らが公園で元気に遊んでいる。",
       "sentence_zh": "孩子们在公园里精神抖擞地玩耍。",
       "blank": "子供ら",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 58,
@@ -5852,7 +5852,7 @@ window.LESSON_DATA = {
       "sentence": "担当者：ええ。今の若者は，テレビＣＭより，同世代の人の口コミを信じます。",
       "sentence_zh": "负责人：是的。现在的年轻人比起电视广告，更相信同龄人的口碑。",
       "blank": "同",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 59,
@@ -5862,7 +5862,7 @@ window.LESSON_DATA = {
       "sentence": "彼が話したことは真実だった。",
       "sentence_zh": "他说的是真话。",
       "blank": "真実",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 60,
@@ -5872,7 +5872,7 @@ window.LESSON_DATA = {
       "sentence": "会社は新しい方針を決めた。",
       "sentence_zh": "公司决定了新的方针。",
       "blank": "方針",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 61,
@@ -5882,7 +5882,7 @@ window.LESSON_DATA = {
       "sentence": "父は来年定年を迎える。",
       "sentence_zh": "父亲明年将迎来退休。",
       "blank": "定年",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 62,
@@ -5892,7 +5892,7 @@ window.LESSON_DATA = {
       "sentence": "この国のGDPは年々増えている。",
       "sentence_zh": "这个国家的GDP逐年增长。",
       "blank": "GDP",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 63,
@@ -5902,7 +5902,7 @@ window.LESSON_DATA = {
       "sentence": "彼は最後の一人を抜いて一位になった。",
       "sentence_zh": "他超过了最后一个人，成为了第一。",
       "blank": "抜いて",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 64,
@@ -5912,7 +5912,7 @@ window.LESSON_DATA = {
       "sentence": "彼はさっと立ち上がって出て行った。",
       "sentence_zh": "他很快地站起来走了出去。",
       "blank": "さっと",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 65,
@@ -5922,7 +5922,7 @@ window.LESSON_DATA = {
       "sentence": "この曲は若者の間でヒットしている。",
       "sentence_zh": "这首歌在年轻人中非常畅销。",
       "blank": "ヒットして",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 66,
@@ -5932,7 +5932,7 @@ window.LESSON_DATA = {
       "sentence": "服はたんすにしまってください。",
       "sentence_zh": "请把衣服收进衣柜里。",
       "blank": "たんす",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 67,
@@ -5942,7 +5942,7 @@ window.LESSON_DATA = {
       "sentence": "運動は集中力を高める。",
       "sentence_zh": "运动能提高集中力。",
       "blank": "高める",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 68,
@@ -5952,7 +5952,7 @@ window.LESSON_DATA = {
       "sentence": "そのうわさはすぐに広まった。",
       "sentence_zh": "那个传言很快就传开了。",
       "blank": "広まった",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 69,
@@ -5962,7 +5962,7 @@ window.LESSON_DATA = {
       "sentence": "会社は新商品を広めるために宣伝した。",
       "sentence_zh": "公司为了推广新产品做了宣传。",
       "blank": "広める",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 70,
@@ -5972,7 +5972,7 @@ window.LESSON_DATA = {
       "sentence": "台風が近づき、風が強まってきた。",
       "sentence_zh": "台风临近，风势渐强。",
       "blank": "強まって",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 71,
@@ -5982,7 +5982,7 @@ window.LESSON_DATA = {
       "sentence": "政府は規制を強める方針だ。",
       "sentence_zh": "政府打算加强管制。",
       "blank": "強める",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 72,
@@ -5992,7 +5992,7 @@ window.LESSON_DATA = {
       "sentence": "雨は夜になって弱まった。",
       "sentence_zh": "雨到了晚上变小了。",
       "blank": "弱まった",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 73,
@@ -6002,7 +6002,7 @@ window.LESSON_DATA = {
       "sentence": "エアコンの風を弱めてください。",
       "sentence_zh": "请把空调的风调弱一点。",
       "blank": "弱めて",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 74,
@@ -6012,7 +6012,7 @@ window.LESSON_DATA = {
       "sentence": "二人の友情は年々深まっている。",
       "sentence_zh": "两人的友情年年加深。",
       "blank": "深まって",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 75,
@@ -6022,7 +6022,7 @@ window.LESSON_DATA = {
       "sentence": "毎月お金を節約している。",
       "sentence_zh": "每个月都在节约用钱。",
       "blank": "節約",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 76,
@@ -6032,7 +6032,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はキリスト教を信じている。",
       "sentence_zh": "她信仰基督教。",
       "blank": "キリスト教",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 77,
@@ -6042,7 +6042,7 @@ window.LESSON_DATA = {
       "sentence": "その宣教師は日本語がとても上手だ。",
       "sentence_zh": "那位传教士日语说得非常好。",
       "blank": "宣教師",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 78,
@@ -6052,7 +6052,7 @@ window.LESSON_DATA = {
       "sentence": "コーヒーを水で薄めて飲んだ。",
       "sentence_zh": "用水把咖啡稀释后喝了。",
       "blank": "薄めて",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 79,
@@ -6062,7 +6062,7 @@ window.LESSON_DATA = {
       "sentence": "試合の前にルールを確認しましょう。",
       "sentence_zh": "比赛前先确认一下规则吧。",
       "blank": "ルール",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 80,
@@ -6072,7 +6072,7 @@ window.LESSON_DATA = {
       "sentence": "川田さんは私の大学の同級生です。",
       "sentence_zh": "川田是我大学的同学。",
       "blank": "川田",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 81,
@@ -6082,7 +6082,7 @@ window.LESSON_DATA = {
       "sentence": "紙に線を引いてください。",
       "sentence_zh": "请在纸上画一条线。",
       "blank": "線",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 82,
@@ -6092,7 +6092,7 @@ window.LESSON_DATA = {
       "sentence": "田んぼで稲が育っている。",
       "sentence_zh": "稻子在稻田里生长。",
       "blank": "田んぼ",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 83,
@@ -6102,7 +6102,7 @@ window.LESSON_DATA = {
       "sentence": "彼は最後まで自分の意見をとおした。",
       "sentence_zh": "他把自己的意见坚持到了最后。",
       "blank": "とおした",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 84,
@@ -6112,7 +6112,7 @@ window.LESSON_DATA = {
       "sentence": "この事件はマスコミに大きく取り上げられた。",
       "sentence_zh": "这起事件被媒体大幅报道。",
       "blank": "マスコミ",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 85,
@@ -6122,7 +6122,7 @@ window.LESSON_DATA = {
       "sentence": "彼はイスラム教を信じている。",
       "sentence_zh": "他信仰伊斯兰教。",
       "blank": "教",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 86,
@@ -6132,7 +6132,7 @@ window.LESSON_DATA = {
       "sentence": "視力が低下してきた。",
       "sentence_zh": "视力开始下降了。",
       "blank": "低下して",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 87,
@@ -6142,7 +6142,7 @@ window.LESSON_DATA = {
       "sentence": "いずれこの問題も解決するだろう。",
       "sentence_zh": "这个问题迟早也会解决的吧。",
       "blank": "いずれ",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 88,
@@ -6152,7 +6152,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はテストでいつも上位に入る。",
       "sentence_zh": "她考试总是名列前茅。",
       "blank": "上位",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 89,
@@ -6162,7 +6162,7 @@ window.LESSON_DATA = {
       "sentence": "油断していると事故が起きやすい。",
       "sentence_zh": "疏忽大意的话容易发生事故。",
       "blank": "油断して",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 90,
@@ -6172,7 +6172,7 @@ window.LESSON_DATA = {
       "sentence": "母は韓国ドラマが大好きだ。",
       "sentence_zh": "妈妈非常喜欢韩剧。",
       "blank": "韓国ドラマ",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 91,
@@ -6182,7 +6182,7 @@ window.LESSON_DATA = {
       "sentence": "この化粧品は肌に優しい。",
       "sentence_zh": "这款化妆品对皮肤很温和。",
       "blank": "化粧品",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 92,
@@ -6192,7 +6192,7 @@ window.LESSON_DATA = {
       "sentence": "父とよくチェスをする。",
       "sentence_zh": "我经常和爸爸下国际象棋。",
       "blank": "チェス",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 93,
@@ -6202,7 +6202,7 @@ window.LESSON_DATA = {
       "sentence": "祖父は将棋が得意だ。",
       "sentence_zh": "爷爷擅长下日本象棋。",
       "blank": "将棋",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 94,
@@ -6212,7 +6212,7 @@ window.LESSON_DATA = {
       "sentence": "おじいさんと碁を打つのが好きだ。",
       "sentence_zh": "我喜欢和爷爷下围棋。",
       "blank": "碁",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 95,
@@ -6222,7 +6222,7 @@ window.LESSON_DATA = {
       "sentence": "日本語の授業で俳句を作った。",
       "sentence_zh": "在日语课上写了俳句。",
       "blank": "俳句",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 96,
@@ -6232,7 +6232,7 @@ window.LESSON_DATA = {
       "sentence": "弟がおもちゃを壊してしまった。",
       "sentence_zh": "弟弟把玩具弄坏了。",
       "blank": "壊して",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 97,
@@ -6242,7 +6242,7 @@ window.LESSON_DATA = {
       "sentence": "人気の商品はすぐ売り切れてしまう。",
       "sentence_zh": "人气商品很快就会卖完。",
       "blank": "売り切れて",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 98,
@@ -6252,7 +6252,7 @@ window.LESSON_DATA = {
       "sentence": "彼は今月末に退職する予定だ。",
       "sentence_zh": "他预计这个月底退休。",
       "blank": "退職する",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 99,
@@ -6262,7 +6262,7 @@ window.LESSON_DATA = {
       "sentence": "祖母は昔の歌謡曲をよく歌う。",
       "sentence_zh": "奶奶经常唱以前的流行歌曲。",
       "blank": "歌謡曲",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 100,
@@ -6272,7 +6272,7 @@ window.LESSON_DATA = {
       "sentence": "留学生と交流する機会が増えた。",
       "sentence_zh": "和留学生交流的机会增多了。",
       "blank": "交流",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 101,
@@ -6282,7 +6282,7 @@ window.LESSON_DATA = {
       "sentence": "日本に来た外国人は，電車などでサラリーマンが夢中になって漫画を読んでいる光景を見て驚くという。",
       "sentence_zh": "据说来到日本的外国人，看到上班族在电车等场合痴迷地读漫画的情景会感到吃惊。",
       "blank": "夢中",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 102,
@@ -6292,7 +6292,7 @@ window.LESSON_DATA = {
       "sentence": "日本に来た外国人は，電車などでサラリーマンが夢中になって漫画を読んでいる光景を見て驚くという。",
       "sentence_zh": "据说来到日本的外国人，看到上班族在电车等场合痴迷地读漫画的情景会感到吃惊。",
       "blank": "光景",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 103,
@@ -6302,7 +6302,7 @@ window.LESSON_DATA = {
       "sentence": "日本の漫画は，子供向けから成人向けまで，対象の年代ごとにさまざまな種類がある。",
       "sentence_zh": "日本的漫画，从面向儿童到面向成人，按对象年龄层的不同有各种各样的种类。",
       "blank": "成人",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 104,
@@ -6312,7 +6312,7 @@ window.LESSON_DATA = {
       "sentence": "会社員の生活や，経済に関するものなど，大人にしか楽しめない内容の漫画も多くある。",
       "sentence_zh": "也有很多描写上班族生活、经济相关内容等只有大人才能享受的漫画。",
       "blank": "関する",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 105,
@@ -6322,7 +6322,7 @@ window.LESSON_DATA = {
       "sentence": "近年，中国では「クレヨンしんちゃん」「ドラえもん」「ちびまる子ちゃん」などの漫画が子供だけでなく大人からも人気を集めている。",
       "sentence_zh": "近年来，在中国，《蜡笔小新》《哆啦A梦》《樱桃小丸子》等漫画不仅受到孩子们的喜爱，也深受大人的欢迎。",
       "blank": "クレヨンしんちゃん",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 106,
@@ -6332,7 +6332,7 @@ window.LESSON_DATA = {
       "sentence": "近年，中国では「クレヨンしんちゃん」「ドラえもん」「ちびまる子ちゃん」などの漫画が子供だけでなく大人からも人気を集めている。",
       "sentence_zh": "近年来，在中国，《蜡笔小新》《哆啦A梦》《樱桃小丸子》等漫画不仅受到孩子们的喜爱，也深受大人的欢迎。",
       "blank": "ドラえもん",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 107,
@@ -6342,7 +6342,7 @@ window.LESSON_DATA = {
       "sentence": "近年，中国では「クレヨンしんちゃん」「ドラえもん」「ちびまる子ちゃん」などの漫画が子供だけでなく大人からも人気を集めている。",
       "sentence_zh": "近年来，在中国，《蜡笔小新》《哆啦A梦》《樱桃小丸子》等漫画不仅受到孩子们的喜爱，也深受大人的欢迎。",
       "blank": "ちびまる子ちゃん",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 108,
@@ -6352,7 +6352,7 @@ window.LESSON_DATA = {
       "sentence": "日本で最初のテレビアニメは1963年の「鉄腕アトム」だ。",
       "sentence_zh": "日本最早的电视动画是1963年的《铁臂阿童木》。",
       "blank": "鉄腕アトム",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 109,
@@ -6362,7 +6362,7 @@ window.LESSON_DATA = {
       "sentence": "漫画をアニメ化したものだが，その画質は今とは比べものにならないほど悪かった。",
       "sentence_zh": "它是把漫画动画化制作而成的，画质差到无法与现在相比。",
       "blank": "画質",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 110,
@@ -6372,7 +6372,7 @@ window.LESSON_DATA = {
       "sentence": "漫画をアニメ化したものだが，その画質は今とは比べものにならないほど悪かった。",
       "sentence_zh": "它是把漫画动画化制作而成的，画质差到无法与现在相比。",
       "blank": "比べもの",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 111,
@@ -6382,7 +6382,7 @@ window.LESSON_DATA = {
       "sentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。",
       "sentence_zh": "之后，随着数码技术的开发不断进步，画质高、生动的影像逐渐被制作出来。",
       "blank": "デジタル技術",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 112,
@@ -6392,7 +6392,7 @@ window.LESSON_DATA = {
       "sentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。",
       "sentence_zh": "之后，随着数码技术的开发不断进步，画质高、生动的影像逐渐被制作出来。",
       "blank": "いきいき",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 113,
@@ -6402,7 +6402,7 @@ window.LESSON_DATA = {
       "sentence": "この会社は次々に新しい製品を生み出している。",
       "sentence_zh": "这家公司接连不断地创造出新产品。",
       "blank": "生み出して",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 114,
@@ -6412,7 +6412,7 @@ window.LESSON_DATA = {
       "sentence": "「ドラえもん」「クレヨンしんちゃん」などの漫画も，テレビ番組用にアニメ化され，高視聴率を獲得した。",
       "sentence_zh": "《哆啦A梦》《蜡笔小新》等漫画也被制作成电视动画节目，获得了很高的收视率。",
       "blank": "テレビ番組",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 115,
@@ -6422,7 +6422,7 @@ window.LESSON_DATA = {
       "sentence": "「ドラえもん」「クレヨンしんちゃん」などの漫画も，テレビ番組用にアニメ化され，高視聴率を獲得した。",
       "sentence_zh": "《哆啦A梦》《蜡笔小新》等漫画也被制作成电视动画节目，获得了很高的收视率。",
       "blank": "視聴率",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 116,
@@ -6432,7 +6432,7 @@ window.LESSON_DATA = {
       "sentence": "彼は大会で優勝を獲得した。",
       "sentence_zh": "他在大赛中获得了冠军。",
       "blank": "獲得した",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 117,
@@ -6442,7 +6442,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "やがて",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 118,
@@ -6452,7 +6452,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "先端",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 119,
@@ -6462,7 +6462,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "映画館",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 120,
@@ -6472,7 +6472,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "スクリーン",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 121,
@@ -6482,7 +6482,7 @@ window.LESSON_DATA = {
       "sentence": "新しいキャラクターが物語に登場する。",
       "sentence_zh": "新角色登场了。",
       "blank": "登場する",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 122,
@@ -6492,7 +6492,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "娯楽",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 123,
@@ -6502,7 +6502,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "芸術",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 124,
@@ -6512,7 +6512,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "次々",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 125,
@@ -6522,7 +6522,7 @@ window.LESSON_DATA = {
       "sentence": "2001年に公開された「千と千尋の神隠し」は，その豊かな想像力と高い表現力が世界的にも高く評価された。",
       "sentence_zh": "2001年上映的《千与千寻》，凭借其丰富的想象力和高超的表现力在世界范围内也获得了很高的评价。",
       "blank": "千と千尋の神隠し",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 126,
@@ -6532,7 +6532,7 @@ window.LESSON_DATA = {
       "sentence": "彼はゲームに夢中になっている。",
       "sentence_zh": "他沉迷于游戏。",
       "blank": "夢中になって",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 127,
@@ -6542,7 +6542,7 @@ window.LESSON_DATA = {
       "sentence": "漫画をアニメ化したものだが，その画質は今とは比べものにならないほど悪かった。",
       "sentence_zh": "它是把漫画动画化制作而成的，画质差到无法与现在相比。",
       "blank": "比べものにならない",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 128,
@@ -6552,7 +6552,7 @@ window.LESSON_DATA = {
       "sentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。",
       "sentence_zh": "之后，随着数码技术的开发不断进步，画质高、生动的影像逐渐被制作出来。",
       "blank": "その後",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 129,
@@ -6562,7 +6562,7 @@ window.LESSON_DATA = {
       "sentence": "日本の漫画は，子供向けから成人向けまで，対象の年代ごとにさまざまな種類がある。",
       "sentence_zh": "日本的漫画，从面向儿童到面向成人，按对象年龄层的不同有各种各样的种类。",
       "blank": "向け",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 130,
@@ -6572,7 +6572,7 @@ window.LESSON_DATA = {
       "sentence": "その後，デジタル技術の開発が進むとともに，高画質のいきいきとした映像が生み出されるようになった。",
       "sentence_zh": "之后，随着数码技术的开发不断进步，画质高、生动的影像逐渐被制作出来。",
       "blank": "高",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 131,
@@ -6582,7 +6582,7 @@ window.LESSON_DATA = {
       "sentence": "「ドラえもん」「クレヨンしんちゃん」などの漫画も，テレビ番組用にアニメ化され，高視聴率を獲得した。",
       "sentence_zh": "《哆啦A梦》《蜡笔小新》等漫画也被制作成电视动画节目，获得了很高的收视率。",
       "blank": "率",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 132,
@@ -6592,7 +6592,7 @@ window.LESSON_DATA = {
       "sentence": "やがて，最先端のデジタル技術を使ったアニメが映画館のスクリーンに登場し，娯楽性や芸術性の高い作品が次々に制作されるようになった。",
       "sentence_zh": "不久后，运用最尖端数码技术制作的动画开始出现在电影院的银幕上，娱乐性和艺术性都很高的作品接连不断地被制作出来。",
       "blank": "性",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 133,
@@ -6602,7 +6602,7 @@ window.LESSON_DATA = {
       "sentence": "2001年に公開された「千と千尋の神隠し」は，その豊かな想像力と高い表現力が世界的にも高く評価された。",
       "sentence_zh": "2001年上映的《千与千寻》，凭借其丰富的想象力和高超的表现力在世界范围内也获得了很高的评价。",
       "blank": "力",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 134,
@@ -6612,7 +6612,7 @@ window.LESSON_DATA = {
       "sentence": "犬が猫を追いかけている。",
       "sentence_zh": "狗在追猫。",
       "blank": "追いかけて",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 135,
@@ -6622,7 +6622,7 @@ window.LESSON_DATA = {
       "sentence": "山の上からの風景はとても美しい。",
       "sentence_zh": "从山上看到的风景非常美丽。",
       "blank": "風景",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 136,
@@ -6632,7 +6632,7 @@ window.LESSON_DATA = {
       "sentence": "レポートの締め切りは明日だ。",
       "sentence_zh": "报告的截止日期是明天。",
       "blank": "締め切り",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 137,
@@ -6642,7 +6642,7 @@ window.LESSON_DATA = {
       "sentence": "彼はカメラを空に向けた。",
       "sentence_zh": "他把相机对准了天空。",
       "blank": "向けた",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 138,
@@ -6652,7 +6652,7 @@ window.LESSON_DATA = {
       "sentence": "この仕事は彼に向いていると思う。",
       "sentence_zh": "我觉得这份工作适合他。",
       "blank": "向いている",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 139,
@@ -6662,7 +6662,7 @@ window.LESSON_DATA = {
       "sentence": "まくらが高すぎて眠れない。",
       "sentence_zh": "枕头太高了睡不着。",
       "blank": "まくら",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 140,
@@ -6672,7 +6672,7 @@ window.LESSON_DATA = {
       "sentence": "本にカバーをかけた。",
       "sentence_zh": "给书套上了书皮。",
       "blank": "カバー",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 141,
@@ -6682,7 +6682,7 @@ window.LESSON_DATA = {
       "sentence": "この二つの事件は関連するかもしれない。",
       "sentence_zh": "这两起事件可能有关联。",
       "blank": "関連する",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 142,
@@ -6692,7 +6692,7 @@ window.LESSON_DATA = {
       "sentence": "入学の手続きを済ませた。",
       "sentence_zh": "办完了入学手续。",
       "blank": "手続き",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 143,
@@ -6702,7 +6702,7 @@ window.LESSON_DATA = {
       "sentence": "図書館で専門書を借りた。",
       "sentence_zh": "在图书馆借了专业书。",
       "blank": "専門書",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 144,
@@ -6712,7 +6712,7 @@ window.LESSON_DATA = {
       "sentence": "来年ドイツへ留学するつもりだ。",
       "sentence_zh": "我打算明年去德国留学。",
       "blank": "ドイツ",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 145,
@@ -6722,7 +6722,7 @@ window.LESSON_DATA = {
       "sentence": "市長は工場を視察した。",
       "sentence_zh": "市长视察了工厂。",
       "blank": "視察した",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 146,
@@ -6732,7 +6732,7 @@ window.LESSON_DATA = {
       "sentence": "彼女はロシア語を勉強している。",
       "sentence_zh": "她在学俄语。",
       "blank": "ロシア語",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 147,
@@ -6742,7 +6742,7 @@ window.LESSON_DATA = {
       "sentence": "あいつはいつも遅刻する。",
       "sentence_zh": "那家伙总是迟到。",
       "blank": "あいつ",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 148,
@@ -6752,7 +6752,7 @@ window.LESSON_DATA = {
       "sentence": "彼らは大学時代からの仲間だ。",
       "sentence_zh": "他们是大学时代起的伙伴。",
       "blank": "仲間",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 149,
@@ -6762,7 +6762,7 @@ window.LESSON_DATA = {
       "sentence": "彼は友人を裏切るような人ではない。",
       "sentence_zh": "他不是会背叛朋友的人。",
       "blank": "裏切る",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 150,
@@ -6772,7 +6772,7 @@ window.LESSON_DATA = {
       "sentence": "この店は安い。そのうえ、味もいい。",
       "sentence_zh": "这家店便宜，而且味道也好。",
       "blank": "そのうえ",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 151,
@@ -6782,7 +6782,7 @@ window.LESSON_DATA = {
       "sentence": "会議が終わって、その後食事に行った。",
       "sentence_zh": "会议结束后，之后去吃了饭。",
       "blank": "その後",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 152,
@@ -6792,7 +6792,7 @@ window.LESSON_DATA = {
       "sentence": "駅で昔の友人を見かけた。",
       "sentence_zh": "在车站看到了以前的朋友。",
       "blank": "見かけた",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 153,
@@ -6802,7 +6802,7 @@ window.LESSON_DATA = {
       "sentence": "工場が原因で公害が発生した。",
       "sentence_zh": "因为工厂而发生了公害。",
       "blank": "公害",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 154,
@@ -6812,7 +6812,7 @@ window.LESSON_DATA = {
       "sentence": "病気の再発を防ぐために運動している。",
       "sentence_zh": "为了防止疾病复发而在运动。",
       "blank": "再発",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 155,
@@ -6822,7 +6822,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は嬉しそうな表情を見せた。",
       "sentence_zh": "她露出了高兴的表情。",
       "blank": "表情",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 156,
@@ -6832,7 +6832,7 @@ window.LESSON_DATA = {
       "sentence": "秋になると木の葉が色づく。",
       "sentence_zh": "一到秋天，树叶就变了颜色。",
       "blank": "木の葉",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 157,
@@ -6842,7 +6842,7 @@ window.LESSON_DATA = {
       "sentence": "水槽で魚を飼っている。",
       "sentence_zh": "在水槽里养着鱼。",
       "blank": "水槽",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 158,
@@ -6852,7 +6852,7 @@ window.LESSON_DATA = {
       "sentence": "この映画は来週から上映される。",
       "sentence_zh": "这部电影下周开始上映。",
       "blank": "上映",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 159,
@@ -6862,7 +6862,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は有名なブランドのバッグを持っている。",
       "sentence_zh": "她拿着一个知名品牌的包。",
       "blank": "ブランド",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 160,
@@ -6872,7 +6872,7 @@ window.LESSON_DATA = {
       "sentence": "忙しい時はインスタント食品をよく食べる。",
       "sentence_zh": "忙的时候经常吃方便食品。",
       "blank": "インスタント食品",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 161,
@@ -6882,7 +6882,7 @@ window.LESSON_DATA = {
       "sentence": "勉強に集中したいので静かにしてください。",
       "sentence_zh": "我想集中精力学习，请安静一点。",
       "blank": "集中",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 162,
@@ -6892,7 +6892,7 @@ window.LESSON_DATA = {
       "sentence": "母を説得して旅行に行かせてもらった。",
       "sentence_zh": "说服了妈妈让我去旅行。",
       "blank": "説得して",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 163,
@@ -6902,7 +6902,7 @@ window.LESSON_DATA = {
       "sentence": "火力を強めて肉を焼いた。",
       "sentence_zh": "加大火力把肉烤了。",
       "blank": "火力",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 164,
@@ -6912,7 +6912,7 @@ window.LESSON_DATA = {
       "sentence": "この作業はまだ人力に頼っている。",
       "sentence_zh": "这项工作还依赖人力。",
       "blank": "人力",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 165,
@@ -6922,7 +6922,7 @@ window.LESSON_DATA = {
       "sentence": "学力を伸ばすために毎日勉強している。",
       "sentence_zh": "为了提高学习实力，每天都在学习。",
       "blank": "学力",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 166,
@@ -6932,7 +6932,7 @@ window.LESSON_DATA = {
       "sentence": "先生は彼の成績を上げるために特別指導をした。",
       "sentence_zh": "老师为了提高他的成绩进行了特别辅导。",
       "blank": "上げる",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 167,
@@ -6942,7 +6942,7 @@ window.LESSON_DATA = {
       "sentence": "この仕事は初心者向きだ。",
       "sentence_zh": "这份工作适合初学者。",
       "blank": "向き",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 168,
@@ -6952,7 +6952,7 @@ window.LESSON_DATA = {
       "sentence": "この公園は幼児向けの遊具が多い。",
       "sentence_zh": "这个公园有很多适合幼儿的游乐设施。",
       "blank": "幼児",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 169,
@@ -6962,7 +6962,7 @@ window.LESSON_DATA = {
       "sentence": "彼は世界的に有名な科学者だ。",
       "sentence_zh": "他是世界闻名的科学家。",
       "blank": "科学者",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 170,
@@ -6972,7 +6972,7 @@ window.LESSON_DATA = {
       "sentence": "彼はいつも慎重に行動する。",
       "sentence_zh": "他总是谨慎行事。",
       "blank": "行動する",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 171,
@@ -6982,7 +6982,7 @@ window.LESSON_DATA = {
       "sentence": "それは冗談ですよね。",
       "sentence_zh": "那是开玩笑的吧。",
       "blank": "冗談",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 172,
@@ -6992,7 +6992,7 @@ window.LESSON_DATA = {
       "sentence": "先生はプリントを学生に配布した。",
       "sentence_zh": "老师把讲义分发给了学生。",
       "blank": "配布した",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 173,
@@ -7002,7 +7002,7 @@ window.LESSON_DATA = {
       "sentence": "この動物は極寒の地でも生存できる。",
       "sentence_zh": "这种动物在极寒之地也能生存。",
       "blank": "生存できる",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 174,
@@ -7012,7 +7012,7 @@ window.LESSON_DATA = {
       "sentence": "海水を飲むことはできない。",
       "sentence_zh": "海水是不能喝的。",
       "blank": "海水",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 175,
@@ -7022,7 +7022,7 @@ window.LESSON_DATA = {
       "sentence": "この水にはミネラルが豊富に含まれている。",
       "sentence_zh": "这种水中富含矿物质。",
       "blank": "ミネラル",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 176,
@@ -7032,7 +7032,7 @@ window.LESSON_DATA = {
       "sentence": "彼は貧しい家庭で育った。",
       "sentence_zh": "他在贫穷的家庭中长大。",
       "blank": "貧しい",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 177,
@@ -7042,7 +7042,7 @@ window.LESSON_DATA = {
       "sentence": "この土地は農業に向いている。",
       "sentence_zh": "这片土地适合农业。",
       "blank": "土地",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 178,
@@ -7052,7 +7052,7 @@ window.LESSON_DATA = {
       "sentence": "夏になるとレジャー用品がよく売れる。",
       "sentence_zh": "一到夏天，休闲用品就很畅销。",
       "blank": "レジャー用品",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 179,
@@ -7062,7 +7062,7 @@ window.LESSON_DATA = {
       "sentence": "この商店街はいつも活気にあふれている。",
       "sentence_zh": "这条商业街总是充满活力。",
       "blank": "活気",
-      "category": "other"
+      "category": "生词表4・练习"
     }
   ]
 };

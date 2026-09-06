@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "今日",
                   "kana": "きょう",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "から",
@@ -219,7 +219,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "いいえ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "、"
@@ -323,7 +323,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それから",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "、"
@@ -399,7 +399,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "てみませんか",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "。"
@@ -525,7 +525,7 @@ window.LESSON_DATA = {
                 {
                   "text": "分",
                   "kana": "わ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か"
@@ -590,7 +590,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "お",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "電話",
@@ -639,7 +639,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "すみません",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "、"
@@ -683,7 +683,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "はい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "、"
@@ -791,7 +791,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "はい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "、"
@@ -1118,7 +1118,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本",
                   "kana": "にっぽん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "には",
@@ -1159,7 +1159,7 @@ window.LESSON_DATA = {
                 {
                   "text": "温泉地",
                   "kana": "おんせんち",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "があり",
@@ -1263,7 +1263,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "から",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "湧",
@@ -1407,7 +1407,7 @@ window.LESSON_DATA = {
                 {
                   "text": "温泉",
                   "kana": "おんせん",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "という",
@@ -1608,7 +1608,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "かつて",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "、"
@@ -1687,7 +1687,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "変",
@@ -1739,7 +1739,7 @@ window.LESSON_DATA = {
                 {
                   "text": "温泉",
                   "kana": "おんせん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -1820,7 +1820,7 @@ window.LESSON_DATA = {
                 {
                   "text": "見",
                   "kana": "み",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "な"
@@ -1928,7 +1928,7 @@ window.LESSON_DATA = {
                 {
                   "text": "温泉地",
                   "kana": "おんせんち",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "では",
@@ -2305,7 +2305,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "また",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "銭湯",
@@ -2409,7 +2409,7 @@ window.LESSON_DATA = {
                 {
                   "text": "風呂",
                   "kana": "ふろ",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "がなかったころに",
@@ -2418,7 +2418,7 @@ window.LESSON_DATA = {
                 {
                   "text": "作",
                   "kana": "つく",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "ら"
@@ -4708,7 +4708,7 @@ window.LESSON_DATA = {
       "sentence": "こちらこそ、お世話になります。スケジュール表、ありがとうございます。",
       "sentence_zh": "我才要请您多关照，谢谢您准备的日程表。",
       "blank": "スケジュール",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 37,
@@ -4718,7 +4718,7 @@ window.LESSON_DATA = {
       "sentence": "滞在期間中に、できるだけたくさんの取材ができるよう予定を立てました。ちょっとハード過ぎますか。",
       "sentence_zh": "我安排了行程，想让您在逗留期间尽量多采访一些内容。会不会有点太紧了？",
       "blank": "ハード",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 38,
@@ -4728,7 +4728,7 @@ window.LESSON_DATA = {
       "sentence": "「手伝ってくれてありがとうございます」「いいえ、とんでもないです」",
       "sentence_zh": "「谢谢你的帮忙」「不客气，没什么的」",
       "blank": "とんでもない",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 39,
@@ -4738,7 +4738,7 @@ window.LESSON_DATA = {
       "sentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。",
       "sentence_zh": "不，哪里的话。音乐、时尚、电影、美食、观光胜地……每一项我都很感兴趣。",
       "blank": "ファッション",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 40,
@@ -4748,7 +4748,7 @@ window.LESSON_DATA = {
       "sentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。",
       "sentence_zh": "不，哪里的话。音乐、时尚、电影、美食、观光胜地……每一项我都很感兴趣。",
       "blank": "観光地",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 41,
@@ -4758,7 +4758,7 @@ window.LESSON_DATA = {
       "sentence": "それから、水曜日だけは予定を入れていません。もしよかったら、その日、有馬温泉に寄ってみませんか。",
       "sentence_zh": "另外，只有周三没有安排。方便的话，那天要不要去有马温泉看看？",
       "blank": "入れて",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 42,
@@ -4768,7 +4768,7 @@ window.LESSON_DATA = {
       "sentence": "それから、水曜日だけは予定を入れていません。もしよかったら、その日、有馬温泉に寄ってみませんか。",
       "sentence_zh": "另外，只有周三没有安排。方便的话，那天要不要去有马温泉看看？",
       "blank": "有馬温泉",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 43,
@@ -4778,7 +4778,7 @@ window.LESSON_DATA = {
       "sentence": "ええ。1日くらいのんびりしたほうがいいと思って…。",
       "sentence_zh": "嗯，我想您也该找一天放松一下……",
       "blank": "のんびり",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 44,
@@ -4788,7 +4788,7 @@ window.LESSON_DATA = {
       "sentence": "旅館に着くと、女将が出迎えてくれた。",
       "sentence_zh": "到了旅馆，老板娘出来迎接了我们。",
       "blank": "女将",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 45,
@@ -4798,7 +4798,7 @@ window.LESSON_DATA = {
       "sentence": "こちらこそ、お世話になります。スケジュール表、ありがとうございます。",
       "sentence_zh": "我才要请您多关照，谢谢您准备的日程表。",
       "blank": "お世話になります",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 46,
@@ -4808,7 +4808,7 @@ window.LESSON_DATA = {
       "sentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。",
       "sentence_zh": "不，哪里的话。音乐、时尚、电影、美食、观光胜地……每一项我都很感兴趣。",
       "blank": "とんでもありません",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 47,
@@ -4818,7 +4818,7 @@ window.LESSON_DATA = {
       "sentence": "いいえ、とんでもありません。音楽、ファッション、映画、食べ物、観光地・・・。どれも関心のある所ばかりです。",
       "sentence_zh": "不，哪里的话。音乐、时尚、电影、美食、观光胜地……每一项我都很感兴趣。",
       "blank": "関心のある",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 48,
@@ -4828,7 +4828,7 @@ window.LESSON_DATA = {
       "sentence": "はい、20日の水曜日、2名様で、ご1泊ですね。少々お待ちくださいませ。",
       "sentence_zh": "好的，20号星期三，两位入住一晚，是吧？请您稍等。",
       "blank": "名様",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 49,
@@ -4838,7 +4838,7 @@ window.LESSON_DATA = {
       "sentence": "はい、ご用意できます。1泊2食付きで、お一人様16,000円になりますが、よろしいですか。",
       "sentence_zh": "好的，可以为您安排。一泊两食，每位16,000日元，请问可以吗？",
       "blank": "食",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 50,
@@ -4848,7 +4848,7 @@ window.LESSON_DATA = {
       "sentence": "はい、ご用意できます。1泊2食付きで、お一人様16,000円になりますが、よろしいですか。",
       "sentence_zh": "好的，可以为您安排。一泊两食，每位16,000日元，请问可以吗？",
       "blank": "付き",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 51,
@@ -4858,7 +4858,7 @@ window.LESSON_DATA = {
       "sentence": "人気のホテルなので、週末はいつも満室だ。",
       "sentence_zh": "因为是人气旅馆，周末总是客满。",
       "blank": "満室",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 52,
@@ -4868,7 +4868,7 @@ window.LESSON_DATA = {
       "sentence": "医者に安静にするよう言われた。",
       "sentence_zh": "医生让我好好静养。",
       "blank": "安静",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 53,
@@ -4878,7 +4878,7 @@ window.LESSON_DATA = {
       "sentence": "母は料理をするとき、いつもエプロンをつける。",
       "sentence_zh": "妈妈做饭的时候总是系着围裙。",
       "blank": "エプロン",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 54,
@@ -4888,7 +4888,7 @@ window.LESSON_DATA = {
       "sentence": "毎朝、社員が交代でオフィスを清掃する。",
       "sentence_zh": "每天早上员工轮流打扫办公室。",
       "blank": "清掃する",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 55,
@@ -4898,7 +4898,7 @@ window.LESSON_DATA = {
       "sentence": "来月の出張のスケジュールを組んでおいた。",
       "sentence_zh": "已经安排好了下个月出差的日程。",
       "blank": "組んで",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 56,
@@ -4908,7 +4908,7 @@ window.LESSON_DATA = {
       "sentence": "駅でたまたま昔の同僚に会った。",
       "sentence_zh": "在车站碰巧遇见了以前的同事。",
       "blank": "たまたま",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 57,
@@ -4918,7 +4918,7 @@ window.LESSON_DATA = {
       "sentence": "この本は一度読んだことがある。",
       "sentence_zh": "这本书我读过一次。",
       "blank": "一度",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 58,
@@ -4928,7 +4928,7 @@ window.LESSON_DATA = {
       "sentence": "明日、取引先の方が来社する予定だ。",
       "sentence_zh": "明天客户方面的人预定来我公司。",
       "blank": "来社する",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 59,
@@ -4938,7 +4938,7 @@ window.LESSON_DATA = {
       "sentence": "このプロジェクトは全員が協力することで成功した。",
       "sentence_zh": "这个项目靠大家的合作才取得了成功。",
       "blank": "協力する",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 60,
@@ -4948,7 +4948,7 @@ window.LESSON_DATA = {
       "sentence": "台所の棚に古い壷が置いてある。",
       "sentence_zh": "厨房的架子上放着一个旧罐子。",
       "blank": "壷",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 61,
@@ -4958,7 +4958,7 @@ window.LESSON_DATA = {
       "sentence": "買う前に必ず試着することにしている。",
       "sentence_zh": "我买之前一定会先试穿。",
       "blank": "試着する",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 62,
@@ -4968,7 +4968,7 @@ window.LESSON_DATA = {
       "sentence": "この度はご来社いただき、心より御礼申し上げます。",
       "sentence_zh": "这次承蒙您来访，衷心表示感谢。",
       "blank": "申し上げます",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 63,
@@ -4978,7 +4978,7 @@ window.LESSON_DATA = {
       "sentence": "来月、出張で札幌へ行くことになった。",
       "sentence_zh": "下个月因为出差要去札幌。",
       "blank": "札幌",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 64,
@@ -4988,7 +4988,7 @@ window.LESSON_DATA = {
       "sentence": "家から会社まで、片道1時間かかる。",
       "sentence_zh": "从家到公司单程要花一个小时。",
       "blank": "片道",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 65,
@@ -4998,7 +4998,7 @@ window.LESSON_DATA = {
       "sentence": "窓から朝の光が差し込んでいる。",
       "sentence_zh": "早晨的阳光从窗户照射进来。",
       "blank": "光",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 66,
@@ -5008,7 +5008,7 @@ window.LESSON_DATA = {
       "sentence": "出発の準備ができたら、手を上げて合図してください。",
       "sentence_zh": "准备好出发的话，请举手示意。",
       "blank": "合図して",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 67,
@@ -5018,7 +5018,7 @@ window.LESSON_DATA = {
       "sentence": "弟は算数のテストで満点を取った。",
       "sentence_zh": "弟弟算数考试得了满分。",
       "blank": "算数",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 68,
@@ -5028,7 +5028,7 @@ window.LESSON_DATA = {
       "sentence": "この問題を解くのに30分もかかった。",
       "sentence_zh": "解这道题花了30分钟。",
       "blank": "解く",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 69,
@@ -5038,7 +5038,7 @@ window.LESSON_DATA = {
       "sentence": "商品には必ず価格を表示しなければならない。",
       "sentence_zh": "商品上必须标明价格。",
       "blank": "表示",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 70,
@@ -5048,7 +5048,7 @@ window.LESSON_DATA = {
       "sentence": "名前をローマ字で書いてください。",
       "sentence_zh": "请用罗马字写下名字。",
       "blank": "ローマ字",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 71,
@@ -5058,7 +5058,7 @@ window.LESSON_DATA = {
       "sentence": "今の生活に満足している。",
       "sentence_zh": "对现在的生活感到满足。",
       "blank": "満足",
-      "category": "other"
+      "category": "生词表2"
     },
     {
       "id": 72,
@@ -5068,7 +5068,7 @@ window.LESSON_DATA = {
       "sentence": "日本は経済大国の一つだ。",
       "sentence_zh": "日本是经济大国之一。",
       "blank": "大国",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 73,
@@ -5078,7 +5078,7 @@ window.LESSON_DATA = {
       "sentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。",
       "sentence_zh": "据说日本全国约有3000处温泉，一年的使用人次累计超过1亿4千万人以上。",
       "blank": "全国",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 74,
@@ -5088,7 +5088,7 @@ window.LESSON_DATA = {
       "sentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。",
       "sentence_zh": "据说日本全国约有3000处温泉，一年的使用人次累计超过1亿4千万人以上。",
       "blank": "温泉地",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 75,
@@ -5098,7 +5098,7 @@ window.LESSON_DATA = {
       "sentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。",
       "sentence_zh": "据说日本全国约有3000处温泉，一年的使用人次累计超过1亿4千万人以上。",
       "blank": "延べ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 76,
@@ -5108,7 +5108,7 @@ window.LESSON_DATA = {
       "sentence": "温泉といえば、地中から湧き出る温かいお湯のことだと思っている人も多い。",
       "sentence_zh": "说起温泉，很多人认为那是指从地下涌出的温热泉水。",
       "blank": "地中",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 77,
@@ -5118,7 +5118,7 @@ window.LESSON_DATA = {
       "sentence": "温泉といえば、地中から湧き出る温かいお湯のことだと思っている人も多い。",
       "sentence_zh": "说起温泉，很多人认为那是指从地下涌出的温热泉水。",
       "blank": "湧き出る",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 78,
@@ -5128,7 +5128,7 @@ window.LESSON_DATA = {
       "sentence": "しかし、冷たい水でも、規定の成分を含んでいれば温泉という。",
       "sentence_zh": "但实际上，即使是冷水，只要含有规定的成分，也可以称为温泉。",
       "blank": "規定",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 79,
@@ -5138,7 +5138,7 @@ window.LESSON_DATA = {
       "sentence": "しかし、冷たい水でも、規定の成分を含んでいれば温泉という。",
       "sentence_zh": "但实际上，即使是冷水，只要含有规定的成分，也可以称为温泉。",
       "blank": "含んで",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 80,
@@ -5148,7 +5148,7 @@ window.LESSON_DATA = {
       "sentence": "温泉の色は、透明なものから白く濁ったものや青色をしたものまでさまざまである。",
       "sentence_zh": "温泉的颜色也是多种多样的，从透明的到浑浊发白的、乃至呈青色的都有。",
       "blank": "透明",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 81,
@@ -5158,7 +5158,7 @@ window.LESSON_DATA = {
       "sentence": "温泉の色は、透明なものから白く濁ったものや青色をしたものまでさまざまである。",
       "sentence_zh": "温泉的颜色也是多种多样的，从透明的到浑浊发白的、乃至呈青色的都有。",
       "blank": "濁った",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 82,
@@ -5168,7 +5168,7 @@ window.LESSON_DATA = {
       "sentence": "また、成分の違いによって、神経痛や皮膚病、高血圧などいろいろな病気に効くといわれている。",
       "sentence_zh": "而且据说根据成分的不同，对神经痛、皮肤病、高血压等各种疾病都有疗效。",
       "blank": "神経痛",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 83,
@@ -5178,7 +5178,7 @@ window.LESSON_DATA = {
       "sentence": "また、成分の違いによって、神経痛や皮膚病、高血圧などいろいろな病気に効くといわれている。",
       "sentence_zh": "而且据说根据成分的不同，对神经痛、皮肤病、高血压等各种疾病都有疗效。",
       "blank": "皮膚病",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 84,
@@ -5188,7 +5188,7 @@ window.LESSON_DATA = {
       "sentence": "また、成分の違いによって、神経痛や皮膚病、高血圧などいろいろな病気に効くといわれている。",
       "sentence_zh": "而且据说根据成分的不同，对神经痛、皮肤病、高血压等各种疾病都有疗效。",
       "blank": "高血圧",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 85,
@@ -5198,7 +5198,7 @@ window.LESSON_DATA = {
       "sentence": "かつて、温泉は病気やけがの治療に使われていた。",
       "sentence_zh": "从前，温泉曾被用来治疗疾病和伤痛。",
       "blank": "治療",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 86,
@@ -5208,7 +5208,7 @@ window.LESSON_DATA = {
       "sentence": "今は、環境を変えてのんびりするために利用する人がほとんどだ。",
       "sentence_zh": "而现在，大多数人利用温泉是为了换个环境放松身心。",
       "blank": "変えて",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 87,
@@ -5218,7 +5218,7 @@ window.LESSON_DATA = {
       "sentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。",
       "sentence_zh": "因此，一边欣赏绿意一边泡露天温泉，或是在宽敞的浴池里充分泡个够，大概正是这样才能让人放松下来吧。",
       "blank": "露天風呂",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 88,
@@ -5228,7 +5228,7 @@ window.LESSON_DATA = {
       "sentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。",
       "sentence_zh": "因此，一边欣赏绿意一边泡露天温泉，或是在宽敞的浴池里充分泡个够，大概正是这样才能让人放松下来吧。",
       "blank": "たっぷり",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 89,
@@ -5238,7 +5238,7 @@ window.LESSON_DATA = {
       "sentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。",
       "sentence_zh": "因此，一边欣赏绿意一边泡露天温泉，或是在宽敞的浴池里充分泡个够，大概正是这样才能让人放松下来吧。",
       "blank": "つかった",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 90,
@@ -5248,7 +5248,7 @@ window.LESSON_DATA = {
       "sentence": "だから、緑を見ながら、露天風呂に入ったり、広いお風呂でたっぷりのお湯につかったりすることによって、リラックスできるのだろう。",
       "sentence_zh": "因此，一边欣赏绿意一边泡露天温泉，或是在宽敞的浴池里充分泡个够，大概正是这样才能让人放松下来吧。",
       "blank": "リラックス",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 91,
@@ -5258,7 +5258,7 @@ window.LESSON_DATA = {
       "sentence": "温泉地では、お客を集めるための工夫をしている。",
       "sentence_zh": "各温泉胜地都想方设法招揽游客。",
       "blank": "集める",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 92,
@@ -5268,7 +5268,7 @@ window.LESSON_DATA = {
       "sentence": "例えば、宿泊する人以外がホテルや旅館の入浴施設を有料で使用できる「日帰り温泉」がある。",
       "sentence_zh": "比如设有“当日往返温泉”，让非住宿客人也能付费使用酒店或旅馆的入浴设施。",
       "blank": "宿泊する",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 93,
@@ -5278,7 +5278,7 @@ window.LESSON_DATA = {
       "sentence": "例えば、宿泊する人以外がホテルや旅館の入浴施設を有料で使用できる「日帰り温泉」がある。",
       "sentence_zh": "比如设有“当日往返温泉”，让非住宿客人也能付费使用酒店或旅馆的入浴设施。",
       "blank": "入浴施設",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 94,
@@ -5288,7 +5288,7 @@ window.LESSON_DATA = {
       "sentence": "例えば、宿泊する人以外がホテルや旅館の入浴施設を有料で使用できる「日帰り温泉」がある。",
       "sentence_zh": "比如设有“当日往返温泉”，让非住宿客人也能付费使用酒店或旅馆的入浴设施。",
       "blank": "日帰り",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 95,
@@ -5298,7 +5298,7 @@ window.LESSON_DATA = {
       "sentence": "また銭湯といって、安い値段で入浴できる施設もある。",
       "sentence_zh": "此外还有一种叫做“钱汤”的设施，能以低廉的价格泡澡。",
       "blank": "入浴",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 96,
@@ -5308,7 +5308,7 @@ window.LESSON_DATA = {
       "sentence": "最近では「日帰り入浴」専用の施設も増えてきている。",
       "sentence_zh": "最近，专门用于“当日往返泡汤”的设施也在不断增加。",
       "blank": "施設",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 97,
@@ -5318,7 +5318,7 @@ window.LESSON_DATA = {
       "sentence": "また銭湯といって、安い値段で入浴できる施設もある。",
       "sentence_zh": "此外还有一种叫做“钱汤”的设施，能以低廉的价格泡澡。",
       "blank": "銭湯",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 98,
@@ -5328,7 +5328,7 @@ window.LESSON_DATA = {
       "sentence": "銭湯とは、多くの家にお風呂がなかったころに作られた入浴施設のことだ。",
       "sentence_zh": "所谓钱汤，是在很多人家里还没有浴室的年代建造的公共浴室设施。",
       "blank": "ころ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 99,
@@ -5338,7 +5338,7 @@ window.LESSON_DATA = {
       "sentence": "現在ではその数も少なくなってきているが、最近では、「スーパー銭湯」が出てきて人気を集めている。",
       "sentence_zh": "如今这类设施数量已经减少，但最近出现的“超级钱汤”却很受欢迎。",
       "blank": "スーパー銭湯",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 100,
@@ -5348,7 +5348,7 @@ window.LESSON_DATA = {
       "sentence": "普通の銭湯より値段は高いが、いろいろな種類のお風呂やマッサージ、エステなどがあり、1日中楽しめる。",
       "sentence_zh": "虽然价格比普通钱汤贵，但里面有各种各样的浴池，还有按摩、美容等项目，可以玩上一整天。",
       "blank": "マッサージ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 101,
@@ -5358,7 +5358,7 @@ window.LESSON_DATA = {
       "sentence": "普通の銭湯より値段は高いが、いろいろな種類のお風呂やマッサージ、エステなどがあり、1日中楽しめる。",
       "sentence_zh": "虽然价格比普通钱汤贵，但里面有各种各样的浴池，还有按摩、美容等项目，可以玩上一整天。",
       "blank": "エステ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 102,
@@ -5368,7 +5368,7 @@ window.LESSON_DATA = {
       "sentence": "普通の銭湯より値段は高いが、いろいろな種類のお風呂やマッサージ、エステなどがあり、1日中楽しめる。",
       "sentence_zh": "虽然价格比普通钱汤贵，但里面有各种各样的浴池，还有按摩、美容等项目，可以玩上一整天。",
       "blank": "楽しめる",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 103,
@@ -5378,7 +5378,7 @@ window.LESSON_DATA = {
       "sentence": "「スーパー銭湯」は忙しい人たちのちょっとしたいやしの場になっているのだ。",
       "sentence_zh": "“超级钱汤”已经成为忙碌人群的一个小小疗愈场所。",
       "blank": "ちょっとした",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 104,
@@ -5388,7 +5388,7 @@ window.LESSON_DATA = {
       "sentence": "「スーパー銭湯」は忙しい人たちのちょっとしたいやしの場になっているのだ。",
       "sentence_zh": "“超级钱汤”已经成为忙碌人群的一个小小疗愈场所。",
       "blank": "いやし",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 105,
@@ -5398,7 +5398,7 @@ window.LESSON_DATA = {
       "sentence": "日本には、全国に約3,000の温泉地があり、利用者は1年間に延べ1億4千万人以上といわれている。",
       "sentence_zh": "据说日本全国约有3000处温泉，一年的使用人次累计超过1亿4千万人以上。",
       "blank": "千万",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 106,
@@ -5408,7 +5408,7 @@ window.LESSON_DATA = {
       "sentence": "バスの停留所はこの先にあります。",
       "sentence_zh": "公交车站在前面。",
       "blank": "停留所",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 107,
@@ -5418,7 +5418,7 @@ window.LESSON_DATA = {
       "sentence": "このサイズの服が私にぴったりだ。",
       "sentence_zh": "这个尺寸的衣服正合适我穿。",
       "blank": "ぴったり",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 108,
@@ -5428,7 +5428,7 @@ window.LESSON_DATA = {
       "sentence": "この床は磨かれていてつるつるしている。",
       "sentence_zh": "这个地板打磨得很光滑。",
       "blank": "つるつる",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 109,
@@ -5438,7 +5438,7 @@ window.LESSON_DATA = {
       "sentence": "理科の授業で実験をした。",
       "sentence_zh": "理科课上做了实验。",
       "blank": "実験",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 110,
@@ -5448,7 +5448,7 @@ window.LESSON_DATA = {
       "sentence": "大雨で川が氾濫し、洪水が起きた。",
       "sentence_zh": "因为大雨河水泛滥，发生了洪水。",
       "blank": "洪水",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 111,
@@ -5458,7 +5458,7 @@ window.LESSON_DATA = {
       "sentence": "使ったコップは水で流してから片付けてください。",
       "sentence_zh": "用过的杯子请用水冲洗后再收起来。",
       "blank": "流して",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 112,
@@ -5468,7 +5468,7 @@ window.LESSON_DATA = {
       "sentence": "誕生日にレストランでステーキを食べた。",
       "sentence_zh": "生日那天在餐厅吃了牛排。",
       "blank": "ステーキ",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 113,
@@ -5478,7 +5478,7 @@ window.LESSON_DATA = {
       "sentence": "今日の晩ご飯のおかずは魚だ。",
       "sentence_zh": "今天晚饭的菜是鱼。",
       "blank": "おかず",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 114,
@@ -5488,7 +5488,7 @@ window.LESSON_DATA = {
       "sentence": "彼の言うことは全く分からない。",
       "sentence_zh": "他说的话我完全听不懂。",
       "blank": "全く",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 115,
@@ -5498,7 +5498,7 @@ window.LESSON_DATA = {
       "sentence": "試験の範囲はまだ発表されていない。",
       "sentence_zh": "考试范围还没有公布。",
       "blank": "範囲",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 116,
@@ -5508,7 +5508,7 @@ window.LESSON_DATA = {
       "sentence": "新鮮な食材を使って料理を作った。",
       "sentence_zh": "用新鲜的食材做了菜。",
       "blank": "食材",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 117,
@@ -5518,7 +5518,7 @@ window.LESSON_DATA = {
       "sentence": "秋になると松茸を使った料理が人気になる。",
       "sentence_zh": "一到秋天，用松茸做的料理就很受欢迎。",
       "blank": "松茸",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 118,
@@ -5528,7 +5528,7 @@ window.LESSON_DATA = {
       "sentence": "事故の原因はまだ分かっていない。",
       "sentence_zh": "事故的原因还不清楚。",
       "blank": "原因",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 119,
@@ -5538,7 +5538,7 @@ window.LESSON_DATA = {
       "sentence": "温かいお風呂は一日の疲れをいやしてくれる。",
       "sentence_zh": "温暖的洗澡水能治愈一天的疲惫。",
       "blank": "いやして",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 120,
@@ -5548,7 +5548,7 @@ window.LESSON_DATA = {
       "sentence": "このコーヒーはいい香りがする。",
       "sentence_zh": "这个咖啡有很好的香味。",
       "blank": "香り",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 121,
@@ -5558,7 +5558,7 @@ window.LESSON_DATA = {
       "sentence": "分からないことがあったら、案内所で聞いてください。",
       "sentence_zh": "有不懂的事情，请到问讯处询问。",
       "blank": "所",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 122,
@@ -5568,7 +5568,7 @@ window.LESSON_DATA = {
       "sentence": "この大学は4年制です。",
       "sentence_zh": "这所大学是四年制的。",
       "blank": "年制",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 123,
@@ -5578,7 +5578,7 @@ window.LESSON_DATA = {
       "sentence": "野菜にはビタミンがたくさん含まれている。",
       "sentence_zh": "蔬菜里含有大量的维生素。",
       "blank": "ビタミン",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 124,
@@ -5588,7 +5588,7 @@ window.LESSON_DATA = {
       "sentence": "風邪を予防するために、手をよく洗っている。",
       "sentence_zh": "为了预防感冒，我经常洗手。",
       "blank": "予防する",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 125,
@@ -5598,7 +5598,7 @@ window.LESSON_DATA = {
       "sentence": "会社の経営を立て直すために、新しい社長が任命された。",
       "sentence_zh": "为了重整公司的经营，任命了新的社长。",
       "blank": "立て直す",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 126,
@@ -5608,7 +5608,7 @@ window.LESSON_DATA = {
       "sentence": "健康を維持するために、毎日運動している。",
       "sentence_zh": "为了维持健康，每天都在运动。",
       "blank": "維持する",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 127,
@@ -5618,7 +5618,7 @@ window.LESSON_DATA = {
       "sentence": "最近、体重が少し増えた。",
       "sentence_zh": "最近体重稍微增加了一些。",
       "blank": "体重",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 128,
@@ -5628,7 +5628,7 @@ window.LESSON_DATA = {
       "sentence": "大事な書類はファイルにまとめておいた。",
       "sentence_zh": "把重要的文件整理放进了文件夹。",
       "blank": "ファイル",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 129,
@@ -5638,7 +5638,7 @@ window.LESSON_DATA = {
       "sentence": "この書類には日付を書き忘れている。",
       "sentence_zh": "这份文件忘了写日期。",
       "blank": "日付",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 130,
@@ -5648,7 +5648,7 @@ window.LESSON_DATA = {
       "sentence": "冬は肌が乾燥しやすい。",
       "sentence_zh": "冬天肌肤容易干燥。",
       "blank": "肌",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 131,
@@ -5658,7 +5658,7 @@ window.LESSON_DATA = {
       "sentence": "この地区は昔から農業が盛んだ。",
       "sentence_zh": "这个地区自古以来农业就很兴旺。",
       "blank": "地区",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 132,
@@ -5668,7 +5668,7 @@ window.LESSON_DATA = {
       "sentence": "この仕事を終わらせるには相当な時間がかかりそうだ。",
       "sentence_zh": "完成这项工作看来要花相当长的时间。",
       "blank": "相当",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 133,
@@ -5678,7 +5678,7 @@ window.LESSON_DATA = {
       "sentence": "この情報は社内だけで共有されている。",
       "sentence_zh": "这个信息只在公司内部共享。",
       "blank": "社内",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 134,
@@ -5688,7 +5688,7 @@ window.LESSON_DATA = {
       "sentence": "彼はピアノの天才だと言われている。",
       "sentence_zh": "大家都说他是钢琴天才。",
       "blank": "天才",
-      "category": "other"
+      "category": "生词表4"
     },
     {
       "id": 135,
@@ -5698,7 +5698,7 @@ window.LESSON_DATA = {
       "sentence": "田中氏がこのプロジェクトの責任者だ。",
       "sentence_zh": "田中先生是这个项目的负责人。",
       "blank": "氏",
-      "category": "other"
+      "category": "生词表4"
     }
   ]
 };

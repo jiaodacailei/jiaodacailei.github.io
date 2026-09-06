@@ -1585,40 +1585,29 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   if (!dataEl) return;
   var words = JSON.parse(dataEl.textContent);
 
-  // 单词测试按分类分别测试——分类来自 build_vocab_quiz_data.py（教材课）/
-  // build_exam_vocab.py（N2真题模考）写进每个词条的 category 字段。教材课
-  // 固定用"dialogue"/"text"/"other"三个key（直接复用人工核实过的"这个词
-  // 真的出现在哪"的数据，不是拿词典基本型重新猜一遍），有预先定义好的中文
-  // 标签；N2真题模考的「生词测试」tab 改用"组1"/"组2"...这种数量切页的
-  // 动态分类（每15个词一组，见 build_exam_vocab.py docstring 第6条），
-  // 这些key没有预先定义标签，直接拿key本身当标签——两套key只会出现在各自
-  // 的页面里，不会混在一起。没有 category 字段的旧数据（页面还没用新版
-  // 脚本重新生成过）一律当"other"处理，不会报错也不会漏词。
+  // 单词测试按分类分别测试——分类来自 build_vocab_quiz_data.py（教材课，
+  // 按生词表自身的小节分组，比如"生词表1"/"生词表2·语法与表达"）/
+  // build_exam_vocab.py（N2真题模考，"组1"/"组2"...这种按数量切页的动态
+  // 分类，每15个词一组，见 build_exam_vocab.py docstring 第6条）写进每个
+  // 词条的 category 字段，两套数据源产出的分类天然已经是人读得懂的标签，
+  // 不需要另外维护一份中文标签映射表，直接拿字段值本身当标签。顺序按这些
+  // 分类在词表里第一次出现的先后，不用数字提取排序——教材课"生词表2·语法
+  // 与表达"/"生词表2·练习"数字部分都是2会撞车排错；N2真题"组N"本来就是
+  // 按词表顺序切出来的，先出现的组天然排在前面，两套场景用同一条规则都
+  // 对。没有 category 字段的旧数据（页面还没用新版脚本重新生成过）一律
+  // 当"other"处理，不会报错也不会漏词。
   var CATEGORY_KEY = "n2listen-quiz-category:" + location.pathname;
-  var KNOWN_CATEGORY_LABELS = { dialogue: "会话相关", text: "课文相关", other: "其他单词" };
-  var KNOWN_CATEGORY_ORDER = ["dialogue", "text", "other"];
   var presentCategories = {};
-  words.forEach(function(w) { presentCategories[w.category || "other"] = true; });
-  // 已知分类（dialogue/text/other）保留原有中文标签+固定顺序，只在这份
-  // 数据里真的有对应词的时候才展示（避免点开一个空空如也的分类，比如某
-  // 一课没有课文 tab 就不会有"课文相关"）——这部分行为跟改动前完全一致。
-  // 数据里出现的其它 category 值（"组N"这类）没有预先定义标签，直接用
-  // 值本身当标签，按数字后缀数值排序（不是字符串排序，避免"组10"排到
-  // "组2"前面；提不出数字的按字符串排序垫底）。
-  var unknownKeys = Object.keys(presentCategories).filter(function(k) {
-    return KNOWN_CATEGORY_ORDER.indexOf(k) === -1;
-  });
-  unknownKeys.sort(function(a, b) {
-    var na = parseInt(a.replace(/\D/g, ""), 10);
-    var nb = parseInt(b.replace(/\D/g, ""), 10);
-    if (!isNaN(na) && !isNaN(nb) && na !== nb) return na - nb;
-    return a < b ? -1 : a > b ? 1 : 0;
+  var categoryOrder = [];
+  words.forEach(function(w) {
+    var c = w.category || "other";
+    if (!presentCategories[c]) {
+      presentCategories[c] = true;
+      categoryOrder.push(c);
+    }
   });
   var availableCategories = [{ key: "all", label: "全部" }]
-    .concat(KNOWN_CATEGORY_ORDER.filter(function(k) { return presentCategories[k]; }).map(function(k) {
-      return { key: k, label: KNOWN_CATEGORY_LABELS[k] };
-    }))
-    .concat(unknownKeys.map(function(k) { return { key: k, label: k }; }));
+    .concat(categoryOrder.map(function(k) { return { key: k, label: k }; }));
   var category = localStorage.getItem(CATEGORY_KEY) || "all";
   if (category !== "all" && !presentCategories[category]) category = "all";
 
@@ -1627,10 +1616,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return words.filter(function(w) { return (w.category || "other") === category; });
   }
 
-  // 错题/进度/出题范围这三份状态都要按分类分开记——同一个页面里"会话相关"
-  // 跟"课文相关"是两套独立的做题进度，不能共用一份 localStorage。key 里的
-  // category 会随用户切分类实时变化，所以不能像 DELAY_KEY 那样在模块顶层
-  // 算一次就定死，每次要用的时候都要重新拼。
+  // 错题/进度/出题范围这三份状态都要按分类分开记——同一个页面里"生词表1"
+  // 跟"生词表2·语法与表达"是两套独立的做题进度，不能共用一份 localStorage。
+  // key 里的 category 会随用户切分类实时变化，所以不能像 DELAY_KEY 那样在
+  // 模块顶层算一次就定死，每次要用的时候都要重新拼。
   function stateKeys() {
     var suffix = ":" + location.pathname + ":" + category;
     return {
@@ -2099,9 +2088,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     render();
   });
 
-  // 分类选择条（全部/会话相关/课文相关/其他单词）——只有真的存在对应词的
-  // 分类才会出现在 availableCategories 里，不足两个分类（比如这一课没有课文
-  // tab、所有词都归"其他"）时不用渲染这排按钮，避免看起来像"有得选却选了
+  // 分类选择条（全部+词表里出现过的各个分类，比如教材课的生词表小节、
+  // N2真题模考的"组N"）——只有真的存在对应词的分类才会出现在
+  // availableCategories 里，不足两个分类（比如这份数据没有 category 字段、
+  // 所有词都归同一类）时不用渲染这排按钮，避免看起来像"有得选却选了
   // 也没变化"。放在答题卡片上方、跟"出题范围"这类藏在设置面板里的次要偏好
   // 区别开——选哪个分类是"测哪一批词"这种主要选择，要放在显眼位置。
   if (availableCategories.length > 1) {

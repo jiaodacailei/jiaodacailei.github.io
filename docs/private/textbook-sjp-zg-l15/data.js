@@ -314,7 +314,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "わ",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "ね",
@@ -560,7 +560,7 @@ window.LESSON_DATA = {
                 {
                   "text": "頼",
                   "kana": "たの",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "み",
@@ -859,7 +859,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "はい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "。"
@@ -1124,7 +1124,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "豆腐",
@@ -1300,7 +1300,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本酒",
                   "kana": "にほんしゅ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -1432,7 +1432,7 @@ window.LESSON_DATA = {
                 {
                   "text": "和食",
                   "kana": "わしょく",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "だけ",
@@ -1668,7 +1668,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本",
                   "kana": "にほん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "レ",
@@ -1936,7 +1936,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "ある",
@@ -2190,7 +2190,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "き",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "焼",
@@ -2217,7 +2217,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "これ",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "も",
@@ -3223,7 +3223,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "った",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "う",
@@ -3402,7 +3402,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "キ",
@@ -5575,7 +5575,7 @@ window.LESSON_DATA = {
       "sentence": "荷物はこっちに置いてください。",
       "sentence_zh": "行李请放在这边。",
       "blank": "こっち",
-      "category": "other"
+      "category": "生词表1"
     },
     {
       "id": 52,
@@ -5585,7 +5585,7 @@ window.LESSON_DATA = {
       "sentence": "やあ，久しぶり。",
       "sentence_zh": "哎呀，好久不见了！",
       "blank": "やあ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 53,
@@ -5595,7 +5595,7 @@ window.LESSON_DATA = {
       "sentence": "学生のころと，ちっとも変わってないわね。",
       "sentence_zh": "和学生时代相比一点儿没变样儿啊！",
       "blank": "ちっとも",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 54,
@@ -5605,7 +5605,7 @@ window.LESSON_DATA = {
       "sentence": "それはそうと，今回は仕事で日本に来たんでしょ。",
       "sentence_zh": "先不说那个，你这次是因工作来日本的吧？",
       "blank": "それはそうと",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 55,
@@ -5615,7 +5615,7 @@ window.LESSON_DATA = {
       "sentence": "ねえ，話は後にして，早く料理を頼みましょうよ。",
       "sentence_zh": "喂，这些话留到待会儿再说，先点菜嘛。",
       "blank": "ねえ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 56,
@@ -5625,7 +5625,7 @@ window.LESSON_DATA = {
       "sentence": "すみません，何かおすすめはありますか。",
       "sentence_zh": "劳驾！有什么可以推荐的菜吗？",
       "blank": "おすすめ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 57,
@@ -5635,7 +5635,7 @@ window.LESSON_DATA = {
       "sentence": "この季節でしたら，「水炊き」などいかがでしょう。",
       "sentence_zh": "这个季节的话，“鸡肉时蔬火锅”怎么样？",
       "blank": "水炊き",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 58,
@@ -5645,7 +5645,7 @@ window.LESSON_DATA = {
       "sentence": "とり肉と野菜の鍋です。",
       "sentence_zh": "就是将鸡肉和蔬菜一起煮的火锅，",
       "blank": "とり肉",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 59,
@@ -5655,7 +5655,7 @@ window.LESSON_DATA = {
       "sentence": "温まりますよ。",
       "sentence_zh": "很暖身子的。",
       "blank": "温まります",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 60,
@@ -5665,7 +5665,7 @@ window.LESSON_DATA = {
       "sentence": "よし，じゃあ，「水炊き」を３人前。",
       "sentence_zh": "好，那就来3个人的“鸡肉时蔬火锅”吧。",
       "blank": "よし",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 61,
@@ -5675,7 +5675,7 @@ window.LESSON_DATA = {
       "sentence": "あとは，お刺し身の盛り合わせと，タコの唐揚げ，それに豆腐と大根のサラダもお願いします。",
       "sentence_zh": "另外，再要生鱼片拼盘、油炸章鱼和萝卜丝凉拌豆腐。",
       "blank": "盛り合わせ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 62,
@@ -5685,7 +5685,7 @@ window.LESSON_DATA = {
       "sentence": "あとは，お刺し身の盛り合わせと，タコの唐揚げ，それに豆腐と大根のサラダもお願いします。",
       "sentence_zh": "另外，再要生鱼片拼盘、油炸章鱼和萝卜丝凉拌豆腐。",
       "blank": "タコ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 63,
@@ -5695,7 +5695,7 @@ window.LESSON_DATA = {
       "sentence": "あとは，お刺し身の盛り合わせと，タコの唐揚げ，それに豆腐と大根のサラダもお願いします。",
       "sentence_zh": "另外，再要生鱼片拼盘、油炸章鱼和萝卜丝凉拌豆腐。",
       "blank": "豆腐",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 64,
@@ -5705,7 +5705,7 @@ window.LESSON_DATA = {
       "sentence": "あとは，お刺し身の盛り合わせと，タコの唐揚げ，それに豆腐と大根のサラダもお願いします。",
       "sentence_zh": "另外，再要生鱼片拼盘、油炸章鱼和萝卜丝凉拌豆腐。",
       "blank": "大根",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 65,
@@ -5715,7 +5715,7 @@ window.LESSON_DATA = {
       "sentence": "日本酒のカクテル！？",
       "sentence_zh": "日本酒的鸡尾酒！？",
       "blank": "カクテル",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 66,
@@ -5725,7 +5725,7 @@ window.LESSON_DATA = {
       "sentence": "和食だけじゃなくて，中華料理やフランス料理にも合う。",
       "sentence_zh": "不光适合日本菜也适合中国菜、法国菜。",
       "blank": "フランス料理",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 67,
@@ -5735,7 +5735,7 @@ window.LESSON_DATA = {
       "sentence": "そうだなあ。",
       "sentence_zh": "是啊，",
       "blank": "そうだなあ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 68,
@@ -5745,7 +5745,7 @@ window.LESSON_DATA = {
       "sentence": "よし，じゃあ，「水炊き」を３人前。",
       "sentence_zh": "好，那就来3个人的“鸡肉时蔬火锅”吧。",
       "blank": "人前",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 69,
@@ -5755,7 +5755,7 @@ window.LESSON_DATA = {
       "sentence": "禁煙席をお願いします。",
       "sentence_zh": "劳驾，请给我无烟席。",
       "blank": "禁煙席",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 70,
@@ -5765,7 +5765,7 @@ window.LESSON_DATA = {
       "sentence": "屋台で焼きそばを買って食べた。",
       "sentence_zh": "在小吃摊买了炒面吃。",
       "blank": "焼きそば",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 71,
@@ -5775,7 +5775,7 @@ window.LESSON_DATA = {
       "sentence": "昼ご飯にチャーハンを食べました。",
       "sentence_zh": "午饭吃了炒饭。",
       "blank": "チャーハン",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 72,
@@ -5785,7 +5785,7 @@ window.LESSON_DATA = {
       "sentence": "すみません，お会計をお願いします。",
       "sentence_zh": "劳驾，请结账。",
       "blank": "会計",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 73,
@@ -5795,7 +5795,7 @@ window.LESSON_DATA = {
       "sentence": "今日は割り勘にしましょう。",
       "sentence_zh": "今天AA制吧。",
       "blank": "割り勘",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 74,
@@ -5805,7 +5805,7 @@ window.LESSON_DATA = {
       "sentence": "今日は私がおごります。",
       "sentence_zh": "今天我请客。",
       "blank": "おごります",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 75,
@@ -5815,7 +5815,7 @@ window.LESSON_DATA = {
       "sentence": "本はそっちにあります。",
       "sentence_zh": "书在那边。",
       "blank": "そっち",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 76,
@@ -5825,7 +5825,7 @@ window.LESSON_DATA = {
       "sentence": "あっちの部屋で待っていてください。",
       "sentence_zh": "请在那边的房间等着。",
       "blank": "あっち",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 77,
@@ -5835,7 +5835,7 @@ window.LESSON_DATA = {
       "sentence": "コーヒーと紅茶，どっちがいいですか。",
       "sentence_zh": "咖啡和红茶，你要哪个？",
       "blank": "どっち",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 78,
@@ -5845,7 +5845,7 @@ window.LESSON_DATA = {
       "sentence": "ねえねえ，聞いてよ。",
       "sentence_zh": "喂喂，你听我说。",
       "blank": "ねえねえ",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 79,
@@ -5855,7 +5855,7 @@ window.LESSON_DATA = {
       "sentence": "よう，久しぶりだね。",
       "sentence_zh": "哟，好久不见啊。",
       "blank": "よう",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 80,
@@ -5865,7 +5865,7 @@ window.LESSON_DATA = {
       "sentence": "動物園で虎を見た。",
       "sentence_zh": "在动物园看了老虎。",
       "blank": "虎",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 81,
@@ -5875,7 +5875,7 @@ window.LESSON_DATA = {
       "sentence": "少しも疲れていません。",
       "sentence_zh": "一点也不累。",
       "blank": "少しも",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 82,
@@ -5885,7 +5885,7 @@ window.LESSON_DATA = {
       "sentence": "彼は商売がうまい。",
       "sentence_zh": "他很会做生意。",
       "blank": "商売",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 83,
@@ -5895,7 +5895,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は口紅をつけた。",
       "sentence_zh": "她涂了口红。",
       "blank": "口紅",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 84,
@@ -5905,7 +5905,7 @@ window.LESSON_DATA = {
       "sentence": "冬は鍋物が食べたくなる。",
       "sentence_zh": "冬天就想吃火锅。",
       "blank": "鍋物",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 85,
@@ -5915,7 +5915,7 @@ window.LESSON_DATA = {
       "sentence": "牧場で羊を飼っている。",
       "sentence_zh": "在牧场养着羊。",
       "blank": "羊",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 86,
@@ -5925,7 +5925,7 @@ window.LESSON_DATA = {
       "sentence": "今夜はしゃぶしゃぶを食べに行こう。",
       "sentence_zh": "今晚去吃涮锅吧。",
       "blank": "しゃぶしゃぶ",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 87,
@@ -5935,7 +5935,7 @@ window.LESSON_DATA = {
       "sentence": "ありがとうございました。またお越しください。",
       "sentence_zh": "谢谢惠顾，欢迎再次光临。",
       "blank": "またお越しください",
-      "category": "other"
+      "category": "生词表2・语法与表达"
     },
     {
       "id": 88,
@@ -5945,7 +5945,7 @@ window.LESSON_DATA = {
       "sentence": "当店では禁煙です。",
       "sentence_zh": "本店内禁烟。",
       "blank": "当店",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 89,
@@ -5955,7 +5955,7 @@ window.LESSON_DATA = {
       "sentence": "羊肉は苦手です。",
       "sentence_zh": "我不太能吃羊肉。",
       "blank": "羊肉",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 90,
@@ -5965,7 +5965,7 @@ window.LESSON_DATA = {
       "sentence": "彼はホラー映画が好きだ。",
       "sentence_zh": "他喜欢恐怖片。",
       "blank": "ホラー",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 91,
@@ -5975,7 +5975,7 @@ window.LESSON_DATA = {
       "sentence": "切符売り場に長い列ができている。",
       "sentence_zh": "售票处排起了长队。",
       "blank": "列",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 92,
@@ -5985,7 +5985,7 @@ window.LESSON_DATA = {
       "sentence": "受付の窓口はあちらです。",
       "sentence_zh": "受理窗口在那边。",
       "blank": "窓口",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 93,
@@ -5995,7 +5995,7 @@ window.LESSON_DATA = {
       "sentence": "レポートを書き直してください。",
       "sentence_zh": "请重新写一遍报告。",
       "blank": "書き直して",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 94,
@@ -6005,7 +6005,7 @@ window.LESSON_DATA = {
       "sentence": "野菜は体にいいです。",
       "sentence_zh": "蔬菜对身体好。",
       "blank": "体にいい",
-      "category": "other"
+      "category": "生词表2・练习"
     },
     {
       "id": 95,
@@ -6015,7 +6015,7 @@ window.LESSON_DATA = {
       "sentence": "料理の種類によって，さまざまな専門店がある。",
       "sentence_zh": "根据饭菜种类不同，有品种繁多的专卖店，",
       "blank": "専門店",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 96,
@@ -6025,7 +6025,7 @@ window.LESSON_DATA = {
       "sentence": "ラーメン，ハンバーガー，ステーキ，パスタなど，実に多様である。",
       "sentence_zh": "如拉面、汉堡、牛排、意大利面条等，不一而足。",
       "blank": "ハンバーガー",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 97,
@@ -6035,7 +6035,7 @@ window.LESSON_DATA = {
       "sentence": "ラーメン，ハンバーガー，ステーキ，パスタなど，実に多様である。",
       "sentence_zh": "如拉面、汉堡、牛排、意大利面条等，不一而足。",
       "blank": "パスタ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 98,
@@ -6045,7 +6045,7 @@ window.LESSON_DATA = {
       "sentence": "ラーメン，ハンバーガー，ステーキ，パスタなど，実に多様である。",
       "sentence_zh": "如拉面、汉堡、牛排、意大利面条等，不一而足。",
       "blank": "多様",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 99,
@@ -6055,7 +6055,7 @@ window.LESSON_DATA = {
       "sentence": "日本では，レストランへ行って席に着くと，たいてい「おしぼり」が出てくる。",
       "sentence_zh": "在日本，进了餐馆一落座，通常服务员就会递上“湿巾”。",
       "blank": "おしぼり",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 100,
@@ -6065,7 +6065,7 @@ window.LESSON_DATA = {
       "sentence": "また，注文の前にお茶や冷たい水が無料で出てくる。",
       "sentence_zh": "而且在点菜前会送上免费茶水或冰水。",
       "blank": "無料",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 101,
@@ -6075,7 +6075,7 @@ window.LESSON_DATA = {
       "sentence": "その後，メニューを見ながら料理を注文する。",
       "sentence_zh": "之后，可以一边看菜单一边点菜。",
       "blank": "メニュー",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 102,
@@ -6085,7 +6085,7 @@ window.LESSON_DATA = {
       "sentence": "例えば，「親子丼」というのは，とり肉と卵を調理してご飯に載せた料理である。",
       "sentence_zh": "比如说“亲子丼”，是指将鸡肉和鸡蛋烹制好以后盖在米饭上的盖浇饭。",
       "blank": "調理して",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 103,
@@ -6095,7 +6095,7 @@ window.LESSON_DATA = {
       "sentence": "例えば，「親子丼」というのは，とり肉と卵を調理してご飯に載せた料理である。",
       "sentence_zh": "比如说“亲子丼”，是指将鸡肉和鸡蛋烹制好以后盖在米饭上的盖浇饭。",
       "blank": "載せた",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 104,
@@ -6105,7 +6105,7 @@ window.LESSON_DATA = {
       "sentence": "ほかに，「他人丼」という料理もある。",
       "sentence_zh": "此外还有“他人丼”，",
       "blank": "他人丼",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 105,
@@ -6115,7 +6115,7 @@ window.LESSON_DATA = {
       "sentence": "豚肉や牛肉と卵を調理してご飯に載せた料理である。",
       "sentence_zh": "是指将猪肉或牛肉与鸡蛋一起烹制好再盖在米饭上的盖浇饭。",
       "blank": "豚肉",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 106,
@@ -6125,7 +6125,7 @@ window.LESSON_DATA = {
       "sentence": "豚肉と卵は「親子」ではなく「他人」だからである。",
       "sentence_zh": "由于猪肉（或牛肉）与鸡蛋不是“母子关系”而是“他人关系”而得名。",
       "blank": "親子",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 107,
@@ -6135,7 +6135,7 @@ window.LESSON_DATA = {
       "sentence": "豚肉と卵は「親子」ではなく「他人」だからである。",
       "sentence_zh": "由于猪肉（或牛肉）与鸡蛋不是“母子关系”而是“他人关系”而得名。",
       "blank": "他人",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 108,
@@ -6145,7 +6145,7 @@ window.LESSON_DATA = {
       "sentence": "では，「キツネうどん」というのはどんな料理だろうか。",
       "sentence_zh": "那么，“キツネうどん（狐狸乌冬面）”又是什么饭食呢？",
       "blank": "キツネうどん",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 109,
@@ -6155,7 +6155,7 @@ window.LESSON_DATA = {
       "sentence": "決してキツネの肉が入ったうどんではない。",
       "sentence_zh": "这绝对不是放了狐狸肉的乌冬面，",
       "blank": "決して",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 110,
@@ -6165,7 +6165,7 @@ window.LESSON_DATA = {
       "sentence": "決してキツネの肉が入ったうどんではない。",
       "sentence_zh": "这绝对不是放了狐狸肉的乌冬面，",
       "blank": "キツネ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 111,
@@ -6175,7 +6175,7 @@ window.LESSON_DATA = {
       "sentence": "うどんの上に，「油揚げ」という，豆腐を揚げた物を載せた料理だ。",
       "sentence_zh": "而是在乌冬面上放“油揚げ（油炸豆腐）”的面条。",
       "blank": "油揚げ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 112,
@@ -6185,7 +6185,7 @@ window.LESSON_DATA = {
       "sentence": "油揚げの色がキツネのような色だからとか，油揚げがキツネの好物だからという理由でこんな名前がつけられたという。",
       "sentence_zh": "据说这个名称的来由有两种说法：一种说法是缘于油炸豆腐的颜色很像狐狸皮毛的颜色；另一种说法则称油炸豆腐是狐狸爱吃的东西。",
       "blank": "好物",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 113,
@@ -6195,7 +6195,7 @@ window.LESSON_DATA = {
       "sentence": "駅の近くに小さな店がある。",
       "sentence_zh": "车站附近有一家小店。",
       "blank": "店",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 114,
@@ -6205,7 +6205,7 @@ window.LESSON_DATA = {
       "sentence": "全員着席してください。",
       "sentence_zh": "请大家都就座。",
       "blank": "着席して",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 115,
@@ -6215,7 +6215,7 @@ window.LESSON_DATA = {
       "sentence": "総理大臣が記者会見を開いた。",
       "sentence_zh": "总理召开了记者会。",
       "blank": "総理大臣",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 116,
@@ -6225,7 +6225,7 @@ window.LESSON_DATA = {
       "sentence": "国会で新しい法律が決まった。",
       "sentence_zh": "国会通过了新法律。",
       "blank": "国会",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 117,
@@ -6235,7 +6235,7 @@ window.LESSON_DATA = {
       "sentence": "手を拭くウエットティッシュを持ってきた。",
       "sentence_zh": "带了擦手用的湿纸巾。",
       "blank": "ウエットティッシュ",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 118,
@@ -6245,7 +6245,7 @@ window.LESSON_DATA = {
       "sentence": "包丁で野菜を切る。",
       "sentence_zh": "用菜刀切蔬菜。",
       "blank": "包丁",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 119,
@@ -6255,7 +6255,7 @@ window.LESSON_DATA = {
       "sentence": "駐車違反で罰金を払った。",
       "sentence_zh": "因违章停车交了罚款。",
       "blank": "違反",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 120,
@@ -6265,7 +6265,7 @@ window.LESSON_DATA = {
       "sentence": "警察が犯人を逮捕した。",
       "sentence_zh": "警察逮捕了犯人。",
       "blank": "逮捕した",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 121,
@@ -6275,7 +6275,7 @@ window.LESSON_DATA = {
       "sentence": "この機械は誰でも使用できます。",
       "sentence_zh": "这台机器谁都能使用。",
       "blank": "使用",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 122,
@@ -6285,7 +6285,7 @@ window.LESSON_DATA = {
       "sentence": "答案をもう一度確認してください。",
       "sentence_zh": "请再确认一下答案。",
       "blank": "答案",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 123,
@@ -6295,7 +6295,7 @@ window.LESSON_DATA = {
       "sentence": "計画を白紙に戻した。",
       "sentence_zh": "把计划取消，恢复原状。",
       "blank": "白紙",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 124,
@@ -6305,7 +6305,7 @@ window.LESSON_DATA = {
       "sentence": "医者が病気を診断した。",
       "sentence_zh": "医生诊断了病情。",
       "blank": "診断した",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 125,
@@ -6315,7 +6315,7 @@ window.LESSON_DATA = {
       "sentence": "週末に親戚の家へ行く。",
       "sentence_zh": "周末去亲戚家。",
       "blank": "親戚",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 126,
@@ -6325,7 +6325,7 @@ window.LESSON_DATA = {
       "sentence": "我が家へようこそ。",
       "sentence_zh": "欢迎来我家。",
       "blank": "我が家",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 127,
@@ -6335,7 +6335,7 @@ window.LESSON_DATA = {
       "sentence": "資源ごみは月曜日に出してください。",
       "sentence_zh": "资源垃圾请在周一投放。",
       "blank": "資源ごみ",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 128,
@@ -6345,7 +6345,7 @@ window.LESSON_DATA = {
       "sentence": "今年の試験に落ちてしまった。",
       "sentence_zh": "今年的考试落榜了。",
       "blank": "落ちて",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 129,
@@ -6355,7 +6355,7 @@ window.LESSON_DATA = {
       "sentence": "貧困問題を解決したい。",
       "sentence_zh": "想解决贫困问题。",
       "blank": "貧困",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 130,
@@ -6365,7 +6365,7 @@ window.LESSON_DATA = {
       "sentence": "過剰生産が問題になっている。",
       "sentence_zh": "生产过剩成了问题。",
       "blank": "過剰生産",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 131,
@@ -6375,7 +6375,7 @@ window.LESSON_DATA = {
       "sentence": "今月の家計は赤字だ。",
       "sentence_zh": "这个月的家庭收支是赤字。",
       "blank": "赤字",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 132,
@@ -6385,7 +6385,7 @@ window.LESSON_DATA = {
       "sentence": "そんなうそは信じない。",
       "sentence_zh": "我不信那种谎话。",
       "blank": "うそ",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 133,
@@ -6395,7 +6395,7 @@ window.LESSON_DATA = {
       "sentence": "彼は本当のことを隠している。",
       "sentence_zh": "他隐瞒着真相。",
       "blank": "隠して",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 134,
@@ -6405,7 +6405,7 @@ window.LESSON_DATA = {
       "sentence": "来週手術を受ける予定だ。",
       "sentence_zh": "下周打算做手术。",
       "blank": "手術",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 135,
@@ -6415,7 +6415,7 @@ window.LESSON_DATA = {
       "sentence": "3人組で行動する。",
       "sentence_zh": "3人一组行动。",
       "blank": "組",
-      "category": "other"
+      "category": "生词表4・语法与表达"
     },
     {
       "id": 136,
@@ -6425,7 +6425,7 @@ window.LESSON_DATA = {
       "sentence": "スピード制限を守ってください。",
       "sentence_zh": "请遵守限速。",
       "blank": "制限",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 137,
@@ -6435,7 +6435,7 @@ window.LESSON_DATA = {
       "sentence": "この本は貸し出し中です。",
       "sentence_zh": "这本书正在被借出。",
       "blank": "貸し出し",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 138,
@@ -6445,7 +6445,7 @@ window.LESSON_DATA = {
       "sentence": "レポートの期限は明日までです。",
       "sentence_zh": "报告的期限是明天。",
       "blank": "期限",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 139,
@@ -6455,7 +6455,7 @@ window.LESSON_DATA = {
       "sentence": "生の魚は食べられますか。",
       "sentence_zh": "能吃生鱼吗？",
       "blank": "生",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 140,
@@ -6465,7 +6465,7 @@ window.LESSON_DATA = {
       "sentence": "100円ショップで買い物をした。",
       "sentence_zh": "在百元店买了东西。",
       "blank": "100円ショップ",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 141,
@@ -6475,7 +6475,7 @@ window.LESSON_DATA = {
       "sentence": "消費税が上がった。",
       "sentence_zh": "消费税上涨了。",
       "blank": "消費税",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 142,
@@ -6485,7 +6485,7 @@ window.LESSON_DATA = {
       "sentence": "子供たちは裸足で走り回っている。",
       "sentence_zh": "孩子们光着脚到处跑。",
       "blank": "裸足",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 143,
@@ -6495,7 +6495,7 @@ window.LESSON_DATA = {
       "sentence": "夜道は気をつけてください。",
       "sentence_zh": "夜路请多加小心。",
       "blank": "夜道",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 144,
@@ -6505,7 +6505,7 @@ window.LESSON_DATA = {
       "sentence": "このスカーフは絹でできている。",
       "sentence_zh": "这条围巾是丝绸做的。",
       "blank": "絹",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 145,
@@ -6515,7 +6515,7 @@ window.LESSON_DATA = {
       "sentence": "昔の都は京都だった。",
       "sentence_zh": "以前的首都是京都。",
       "blank": "都",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 146,
@@ -6525,7 +6525,7 @@ window.LESSON_DATA = {
       "sentence": "富士見町に新しい駅ができた。",
       "sentence_zh": "富士见町建了新车站。",
       "blank": "富士見町",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 147,
@@ -6535,7 +6535,7 @@ window.LESSON_DATA = {
       "sentence": "琵琶を演奏するのが趣味です。",
       "sentence_zh": "弹琵琶是我的爱好。",
       "blank": "琵琶",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 148,
@@ -6545,7 +6545,7 @@ window.LESSON_DATA = {
       "sentence": "朝食にグレープフルーツを食べる。",
       "sentence_zh": "早餐吃葡萄柚。",
       "blank": "グレープフルーツ",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 149,
@@ -6555,7 +6555,7 @@ window.LESSON_DATA = {
       "sentence": "この木にはりんごがたくさんなる。",
       "sentence_zh": "这棵树结了很多苹果。",
       "blank": "なる",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 150,
@@ -6565,7 +6565,7 @@ window.LESSON_DATA = {
       "sentence": "昨夜，事故が起こった。",
       "sentence_zh": "昨晚发生了事故。",
       "blank": "起こった",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 151,
@@ -6575,7 +6575,7 @@ window.LESSON_DATA = {
       "sentence": "パンは小麦から作られる。",
       "sentence_zh": "面包是用小麦做的。",
       "blank": "小麦",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 152,
@@ -6585,7 +6585,7 @@ window.LESSON_DATA = {
       "sentence": "秋に米を収穫する。",
       "sentence_zh": "秋天收获稻米。",
       "blank": "収穫",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 153,
@@ -6595,7 +6595,7 @@ window.LESSON_DATA = {
       "sentence": "電力の消費を減らそう。",
       "sentence_zh": "减少电力消耗吧。",
       "blank": "消費",
-      "category": "other"
+      "category": "生词表4・练习"
     },
     {
       "id": 154,
@@ -6605,7 +6605,7 @@ window.LESSON_DATA = {
       "sentence": "時間を無駄にしないでください。",
       "sentence_zh": "请不要浪费时间。",
       "blank": "無駄",
-      "category": "other"
+      "category": "生词表4・练习"
     }
   ]
 };

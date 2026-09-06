@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "売",
                   "kana": "う",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "り",
@@ -51,7 +51,7 @@ window.LESSON_DATA = {
                 {
                   "text": "金星",
                   "kana": "きんせい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "」"
@@ -96,7 +96,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -396,7 +396,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本酒",
                   "kana": "にほんしゅ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "は",
@@ -414,7 +414,7 @@ window.LESSON_DATA = {
                 {
                   "text": "好",
                   "kana": "この",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "ま",
@@ -488,7 +488,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -614,7 +614,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ません",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "。"
@@ -641,7 +641,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "でも",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -725,7 +725,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "です",
@@ -750,7 +750,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "では",
@@ -863,7 +863,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "こちら",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "でした",
@@ -1062,7 +1062,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "サ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ンプ",
@@ -1256,7 +1256,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -1507,7 +1507,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あり",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "がとう",
@@ -1534,7 +1534,7 @@ window.LESSON_DATA = {
                 {
                   "text": "北京",
                   "kana": "ぺきん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -1643,7 +1643,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "に",
@@ -1851,7 +1851,7 @@ window.LESSON_DATA = {
                 {
                   "text": "手紙",
                   "kana": "てがみ",
-                  "t": 0.0
+                  "t": 0
                 }
               ],
               "zh": "信函",
@@ -2034,7 +2034,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -2043,7 +2043,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "，"
@@ -2131,7 +2131,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "と",
@@ -3046,7 +3046,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "パ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ンフ",
@@ -3131,7 +3131,7 @@ window.LESSON_DATA = {
                 {
                   "text": "上海",
                   "kana": "しゃんはい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "P",
@@ -3195,7 +3195,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "度",
@@ -3244,7 +3244,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "請求",
@@ -3385,7 +3385,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "お",
@@ -3581,7 +3581,7 @@ window.LESSON_DATA = {
                 {
                   "text": "願",
                   "kana": "ねが",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "いい",
@@ -3630,7 +3630,7 @@ window.LESSON_DATA = {
                 {
                   "text": "竜虎",
                   "kana": "りゅうこ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "酒造",
@@ -6070,7 +6070,7 @@ window.LESSON_DATA = {
       "sentence": "売り込み",
       "sentence_zh": "推销",
       "blank": "売り込み",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 59,
@@ -6080,7 +6080,7 @@ window.LESSON_DATA = {
       "sentence": "正直に言って，ちょっと難しいかもしれませんねえ。",
       "sentence_zh": "老实说，恐怕有点困难啊。",
       "blank": "正直に",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 60,
@@ -6090,7 +6090,7 @@ window.LESSON_DATA = {
       "sentence": "白酒や紹興酒がお好きな方には少々物足りないかもしれません。",
       "sentence_zh": "也许对喜欢白酒和绍兴酒的人来说有点不过瘾。",
       "blank": "白酒",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 61,
@@ -6100,7 +6100,7 @@ window.LESSON_DATA = {
       "sentence": "弊社では，「金星」をベースにした新感覚のカクテルもご用意しています。",
       "sentence_zh": "敝公司还准备了以“金星”为基础的新感觉鸡尾酒。",
       "blank": "ベースにした",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 62,
@@ -6110,7 +6110,7 @@ window.LESSON_DATA = {
       "sentence": "こちらの青いほうは「上海パール」，赤いほうは「北京ルージュ」です。",
       "sentence_zh": "这个蓝色的叫“上海珍珠”，红色的叫“北京丹红”。",
       "blank": "上海パール",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 63,
@@ -6120,7 +6120,7 @@ window.LESSON_DATA = {
       "sentence": "こちらの青いほうは「上海パール」，赤いほうは「北京ルージュ」です。",
       "sentence_zh": "这个蓝色的叫“上海珍珠”，红色的叫“北京丹红”。",
       "blank": "北京ルージュ",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 64,
@@ -6130,7 +6130,7 @@ window.LESSON_DATA = {
       "sentence": "白酒や紹興酒がお好きな方には少々物足りないかもしれません。",
       "sentence_zh": "也许对喜欢白酒和绍兴酒的人来说有点不过瘾。",
       "blank": "物足りない",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 65,
@@ -6140,7 +6140,7 @@ window.LESSON_DATA = {
       "sentence": "当ホテルでは，最近，中国人のお客様がたいへん多くなってきています。",
       "sentence_zh": "在我们宾馆，近来中国客人大量增多。",
       "blank": "当ホテル",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 66,
@@ -6150,7 +6150,7 @@ window.LESSON_DATA = {
       "sentence": "弊社では，「金星」をベースにした新感覚のカクテルもご用意しています。",
       "sentence_zh": "敝公司还准备了以“金星”为基础的新感觉鸡尾酒。",
       "blank": "弊社",
-      "category": "dialogue"
+      "category": "生词表1"
     },
     {
       "id": 67,
@@ -6160,7 +6160,7 @@ window.LESSON_DATA = {
       "sentence": "彼は率直に自分の意見を述べた。",
       "sentence_zh": "他坦率地陈述了自己的意见。",
       "blank": "率直に",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 68,
@@ -6170,7 +6170,7 @@ window.LESSON_DATA = {
       "sentence": "アンケートのデータを分析する。",
       "sentence_zh": "分析问卷调查的数据。",
       "blank": "データ",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 69,
@@ -6180,7 +6180,7 @@ window.LESSON_DATA = {
       "sentence": "この本はなかなか興味深い内容だ。",
       "sentence_zh": "这本书的内容相当有意思。",
       "blank": "興味深い",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 70,
@@ -6190,7 +6190,7 @@ window.LESSON_DATA = {
       "sentence": "そのチケットはもう売り切れです。",
       "sentence_zh": "那张票已经卖完了。",
       "blank": "売り切れ",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 71,
@@ -6200,7 +6200,7 @@ window.LESSON_DATA = {
       "sentence": "もっとも，値段が高ければ話は別だ。",
       "sentence_zh": "话虽如此，如果价格贵的话就另当别论了。",
       "blank": "もっとも",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 72,
@@ -6210,7 +6210,7 @@ window.LESSON_DATA = {
       "sentence": "力の限り頑張ります。",
       "sentence_zh": "我会尽全力努力的。",
       "blank": "限り",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 73,
@@ -6220,7 +6220,7 @@ window.LESSON_DATA = {
       "sentence": "旧暦の正月は毎年日にちが変わる。",
       "sentence_zh": "农历新年每年的日期都不一样。",
       "blank": "旧暦",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 74,
@@ -6230,7 +6230,7 @@ window.LESSON_DATA = {
       "sentence": "新暦では今日は何月何日ですか。",
       "sentence_zh": "按公历今天是几月几号？",
       "blank": "新暦",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 75,
@@ -6240,7 +6240,7 @@ window.LESSON_DATA = {
       "sentence": "畑で野菜を育てている。",
       "sentence_zh": "在旱地里种蔬菜。",
       "blank": "畑",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 76,
@@ -6250,7 +6250,7 @@ window.LESSON_DATA = {
       "sentence": "不況で失業者が増えている。",
       "sentence_zh": "由于经济不景气，失业者在增多。",
       "blank": "失業者",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 77,
@@ -6260,7 +6260,7 @@ window.LESSON_DATA = {
       "sentence": "工場で単純な作業を繰り返す。",
       "sentence_zh": "在工厂里反复做单调的工作。",
       "blank": "作業",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 78,
@@ -6270,7 +6270,7 @@ window.LESSON_DATA = {
       "sentence": "書類にミスが見つかった。",
       "sentence_zh": "在文件里发现了错误。",
       "blank": "ミス",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 79,
@@ -6280,7 +6280,7 @@ window.LESSON_DATA = {
       "sentence": "エレベーターが故障している。",
       "sentence_zh": "电梯出故障了。",
       "blank": "故障",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 80,
@@ -6290,7 +6290,7 @@ window.LESSON_DATA = {
       "sentence": "小社の製品にご興味をお持ちいただき，ありがとうございます。",
       "sentence_zh": "感谢您对敝公司产品的关注。",
       "blank": "小社",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 81,
@@ -6300,7 +6300,7 @@ window.LESSON_DATA = {
       "sentence": "新しい情報を手に入れた。",
       "sentence_zh": "得到了新的信息。",
       "blank": "情報",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 82,
@@ -6310,7 +6310,7 @@ window.LESSON_DATA = {
       "sentence": "エコロジーの観点から車を使わない。",
       "sentence_zh": "从环保的角度出发不开车。",
       "blank": "エコロジー",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 83,
@@ -6320,7 +6320,7 @@ window.LESSON_DATA = {
       "sentence": "この商品のコンセプトは「自然」だ。",
       "sentence_zh": "这个商品的宗旨是“自然”。",
       "blank": "コンセプト",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 84,
@@ -6330,7 +6330,7 @@ window.LESSON_DATA = {
       "sentence": "この服は天然の素材で作られている。",
       "sentence_zh": "这件衣服是用天然材料做的。",
       "blank": "素材",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 85,
@@ -6340,7 +6340,7 @@ window.LESSON_DATA = {
       "sentence": "筆で名前を書く。",
       "sentence_zh": "用毛笔写名字。",
       "blank": "筆",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 86,
@@ -6350,7 +6350,7 @@ window.LESSON_DATA = {
       "sentence": "こちらの色がお気に召しましたか。",
       "sentence_zh": "您中意这个颜色吗？",
       "blank": "お気に召しました",
-      "category": "other"
+      "category": "生词表2·语法与表达"
     },
     {
       "id": 87,
@@ -6360,7 +6360,7 @@ window.LESSON_DATA = {
       "sentence": "自分の考えをはっきり言う。",
       "sentence_zh": "把自己的想法说清楚。",
       "blank": "はっきり",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 88,
@@ -6370,7 +6370,7 @@ window.LESSON_DATA = {
       "sentence": "彼は会長に再選された。",
       "sentence_zh": "他被再次选为会长。",
       "blank": "再選された",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 89,
@@ -6380,7 +6380,7 @@ window.LESSON_DATA = {
       "sentence": "この果実酒は自分で作ったものです。",
       "sentence_zh": "这个果酒是自己酿的。",
       "blank": "果実酒",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 90,
@@ -6390,7 +6390,7 @@ window.LESSON_DATA = {
       "sentence": "健康飲料を毎朝飲んでいる。",
       "sentence_zh": "每天早上都喝健康饮料。",
       "blank": "健康飲料",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 91,
@@ -6400,7 +6400,7 @@ window.LESSON_DATA = {
       "sentence": "カボチャでスープを作る。",
       "sentence_zh": "用南瓜做汤。",
       "blank": "カボチャ",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 92,
@@ -6410,7 +6410,7 @@ window.LESSON_DATA = {
       "sentence": "朝食にヨーグルトを食べる。",
       "sentence_zh": "早饭吃酸奶。",
       "blank": "ヨーグルト",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 93,
@@ -6420,7 +6420,7 @@ window.LESSON_DATA = {
       "sentence": "近くの店でランチを食べた。",
       "sentence_zh": "在附近的店里吃了午餐。",
       "blank": "ランチ",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 94,
@@ -6430,7 +6430,7 @@ window.LESSON_DATA = {
       "sentence": "駅前で友達との集まりがある。",
       "sentence_zh": "在车站前和朋友有个聚会。",
       "blank": "集まり",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 95,
@@ -6440,7 +6440,7 @@ window.LESSON_DATA = {
       "sentence": "この大会の記録が更新された。",
       "sentence_zh": "这次大会的记录被刷新了。",
       "blank": "記録",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 96,
@@ -6450,7 +6450,7 @@ window.LESSON_DATA = {
       "sentence": "新聞に広告を掲載する。",
       "sentence_zh": "在报纸上刊登广告。",
       "blank": "掲載する",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 97,
@@ -6460,7 +6460,7 @@ window.LESSON_DATA = {
       "sentence": "その説には賛成しかねる。",
       "sentence_zh": "很难赞成那个说法。",
       "blank": "説",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 98,
@@ -6470,7 +6470,7 @@ window.LESSON_DATA = {
       "sentence": "新しいシステムを導入する。",
       "sentence_zh": "引进新的系统。",
       "blank": "システム",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 99,
@@ -6480,7 +6480,7 @@ window.LESSON_DATA = {
       "sentence": "この車は自動運転の機能がある。",
       "sentence_zh": "这辆车有自动驾驶功能。",
       "blank": "自動運転",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 100,
@@ -6490,7 +6490,7 @@ window.LESSON_DATA = {
       "sentence": "前社長は今も会社に顔を出す。",
       "sentence_zh": "前任社长现在还会到公司来。",
       "blank": "前",
-      "category": "other"
+      "category": "生词表2·练习"
     },
     {
       "id": 101,
@@ -6500,7 +6500,7 @@ window.LESSON_DATA = {
       "sentence": "佐藤から北上貿易への手紙",
       "sentence_zh": "佐藤写给北上贸易公司的信函",
       "blank": "北上貿易",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 102,
@@ -6510,7 +6510,7 @@ window.LESSON_DATA = {
       "sentence": "販売促進部　張徳栄様",
       "sentence_zh": "销售促进部　张德荣先生",
       "blank": "徳栄",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 103,
@@ -6520,7 +6520,7 @@ window.LESSON_DATA = {
       "sentence": "拝啓",
       "sentence_zh": "敬启者，",
       "blank": "拝啓",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 104,
@@ -6530,7 +6530,7 @@ window.LESSON_DATA = {
       "sentence": "新春の候，北上貿易の皆様におかれましてはお元気でお過ごしのことと存じます。",
       "sentence_zh": "时值新春，想必北上贸易公司的诸位一切安好吧！",
       "blank": "皆様",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 105,
@@ -6540,7 +6540,7 @@ window.LESSON_DATA = {
       "sentence": "新春の候，北上貿易の皆様におかれましてはお元気でお過ごしのことと存じます。",
       "sentence_zh": "时值新春，想必北上贸易公司的诸位一切安好吧！",
       "blank": "存じます",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 106,
@@ -6550,7 +6550,7 @@ window.LESSON_DATA = {
       "sentence": "突然のお手紙を差し上げる失礼をお許しください。",
       "sentence_zh": "请原谅我冒昧地写这封信。",
       "blank": "失礼",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 107,
@@ -6560,7 +6560,7 @@ window.LESSON_DATA = {
       "sentence": "突然のお手紙を差し上げる失礼をお許しください。",
       "sentence_zh": "请原谅我冒昧地写这封信。",
       "blank": "許し",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 108,
@@ -6570,7 +6570,7 @@ window.LESSON_DATA = {
       "sentence": "御社が中国国内の酒類販売ルートにお詳しいことを，MTS社の菊池様より伺いました。",
       "sentence_zh": "从MTS公司的菊池先生那里得知贵公司熟悉中国国内营销酒类的渠道。",
       "blank": "御社",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 109,
@@ -6580,7 +6580,7 @@ window.LESSON_DATA = {
       "sentence": "御社が中国国内の酒類販売ルートにお詳しいことを，MTS社の菊池様より伺いました。",
       "sentence_zh": "从MTS公司的菊池先生那里得知贵公司熟悉中国国内营销酒类的渠道。",
       "blank": "酒類",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 110,
@@ -6590,7 +6590,7 @@ window.LESSON_DATA = {
       "sentence": "御社が中国国内の酒類販売ルートにお詳しいことを，MTS社の菊池様より伺いました。",
       "sentence_zh": "从MTS公司的菊池先生那里得知贵公司熟悉中国国内营销酒类的渠道。",
       "blank": "販売ルート",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 111,
@@ -6600,7 +6600,7 @@ window.LESSON_DATA = {
       "sentence": "御社が中国国内の酒類販売ルートにお詳しいことを，MTS社の菊池様より伺いました。",
       "sentence_zh": "从MTS公司的菊池先生那里得知贵公司熟悉中国国内营销酒类的渠道。",
       "blank": "MTS社",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 112,
@@ -6610,7 +6610,7 @@ window.LESSON_DATA = {
       "sentence": "御社が中国国内の酒類販売ルートにお詳しいことを，MTS社の菊池様より伺いました。",
       "sentence_zh": "从MTS公司的菊池先生那里得知贵公司熟悉中国国内营销酒类的渠道。",
       "blank": "菊池",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 113,
@@ -6620,7 +6620,7 @@ window.LESSON_DATA = {
       "sentence": "後日こちらからお電話いたしますので，その折にご都合をお聞かせいただければ幸いです。",
       "sentence_zh": "改日我再打电话联系，届时望能告知贵处方便的时间。",
       "blank": "後日",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 114,
@@ -6630,7 +6630,7 @@ window.LESSON_DATA = {
       "sentence": "後日こちらからお電話いたしますので，その折にご都合をお聞かせいただければ幸いです。",
       "sentence_zh": "改日我再打电话联系，届时望能告知贵处方便的时间。",
       "blank": "折",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 115,
@@ -6640,7 +6640,7 @@ window.LESSON_DATA = {
       "sentence": "勝手なお願いで，ご迷惑をおかけいたしますが，よろしくご検討くださいますようお願い申し上げます。",
       "sentence_zh": "我的一厢情愿恐给贵方添麻烦了，不过恳请予以考虑。",
       "blank": "勝手な",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 116,
@@ -6650,7 +6650,7 @@ window.LESSON_DATA = {
       "sentence": "敬具",
       "sentence_zh": "敬上",
       "blank": "敬具",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 117,
@@ -6660,7 +6660,7 @@ window.LESSON_DATA = {
       "sentence": "佐藤　光一",
       "sentence_zh": "佐藤　光一",
       "blank": "光一",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 118,
@@ -6670,7 +6670,7 @@ window.LESSON_DATA = {
       "sentence": "上海PECホテル　黒田様",
       "sentence_zh": "上海PEC宾馆　黑田先生",
       "blank": "上海PECホテル",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 119,
@@ -6680,7 +6680,7 @@ window.LESSON_DATA = {
       "sentence": "上海PECホテル　黒田様",
       "sentence_zh": "上海PEC宾馆　黑田先生",
       "blank": "黒田",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 120,
@@ -6690,7 +6690,7 @@ window.LESSON_DATA = {
       "sentence": "この度は日本酒「金星」パンフレットをご請求いただき，まことにありがとうございます。",
       "sentence_zh": "此次承蒙贵方索要日本酒“金星”的宣传册，我们由衷地表示感谢。",
       "blank": "請求",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 121,
@@ -6700,7 +6700,7 @@ window.LESSON_DATA = {
       "sentence": "この度は日本酒「金星」パンフレットをご請求いただき，まことにありがとうございます。",
       "sentence_zh": "此次承蒙贵方索要日本酒“金星”的宣传册，我们由衷地表示感谢。",
       "blank": "まことに",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 122,
@@ -6710,7 +6710,7 @@ window.LESSON_DATA = {
       "sentence": "早速，最新のパンフレット５部をご送付申し上げます。",
       "sentence_zh": "兹寄上5份最新宣传册，请查收。",
       "blank": "送付",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 123,
@@ -6720,7 +6720,7 @@ window.LESSON_DATA = {
       "sentence": "なお，資料の内容についてご不明の点がございましたら，お気軽にお問い合わせください。",
       "sentence_zh": "另外，如对资料内容有不清楚的地方，请随时垂询，",
       "blank": "なお",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 124,
@@ -6730,7 +6730,7 @@ window.LESSON_DATA = {
       "sentence": "なお，資料の内容についてご不明の点がございましたら，お気軽にお問い合わせください。",
       "sentence_zh": "另外，如对资料内容有不清楚的地方，请随时垂询，",
       "blank": "不明",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 125,
@@ -6740,7 +6740,7 @@ window.LESSON_DATA = {
       "sentence": "なお，資料の内容についてご不明の点がございましたら，お気軽にお問い合わせください。",
       "sentence_zh": "另外，如对资料内容有不清楚的地方，请随时垂询，",
       "blank": "気軽に",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 126,
@@ -6750,7 +6750,7 @@ window.LESSON_DATA = {
       "sentence": "なお，資料の内容についてご不明の点がございましたら，お気軽にお問い合わせください。",
       "sentence_zh": "另外，如对资料内容有不清楚的地方，请随时垂询，",
       "blank": "問い合わせ",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 127,
@@ -6760,7 +6760,7 @@ window.LESSON_DATA = {
       "sentence": "新春の候，北上貿易の皆様におかれましてはお元気でお過ごしのことと存じます。",
       "sentence_zh": "时值新春，想必北上贸易公司的诸位一切安好吧！",
       "blank": "新春の候",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 128,
@@ -6770,7 +6770,7 @@ window.LESSON_DATA = {
       "sentence": "急なお願いで申し訳ございませんが，近いうちに一度お目にかかり，お話を伺えればと存じます。",
       "sentence_zh": "突然提出请求，实在不好意思，我想于近期前往拜会，聆听指教。",
       "blank": "お目にかかり",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 129,
@@ -6780,7 +6780,7 @@ window.LESSON_DATA = {
       "sentence": "残暑の候，いかがお過ごしでしょうか。",
       "sentence_zh": "值此盛夏未消之际，您过得怎么样？",
       "blank": "の候",
-      "category": "other"
+      "category": "生词表3"
     },
     {
       "id": 130,
@@ -6790,7 +6790,7 @@ window.LESSON_DATA = {
       "sentence": "御社が中国国内の酒類販売ルートにお詳しいことを，MTS社の菊池様より伺いました。",
       "sentence_zh": "从MTS公司的菊池先生那里得知贵公司熟悉中国国内营销酒类的渠道。",
       "blank": "御",
-      "category": "text"
+      "category": "生词表3"
     },
     {
       "id": 131,
@@ -6800,7 +6800,7 @@ window.LESSON_DATA = {
       "sentence": "来月の吉日に開店することにした。",
       "sentence_zh": "决定在下个月的黄道吉日开业。",
       "blank": "吉日",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 132,
@@ -6810,7 +6810,7 @@ window.LESSON_DATA = {
       "sentence": "元旦に神社にお参りする。",
       "sentence_zh": "元旦去神社参拜。",
       "blank": "元旦",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 133,
@@ -6820,7 +6820,7 @@ window.LESSON_DATA = {
       "sentence": "封筒には「北上貿易株式会社　御中」と書く。",
       "sentence_zh": "在信封上写“北上贸易股份公司　公启”。",
       "blank": "御中",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 134,
@@ -6830,7 +6830,7 @@ window.LESSON_DATA = {
       "sentence": "若葉のきれいな季節になった。",
       "sentence_zh": "到了嫩叶美丽的季节了。",
       "blank": "若葉",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 135,
@@ -6840,7 +6840,7 @@ window.LESSON_DATA = {
       "sentence": "春暖の候，皆様お元気でお過ごしのことと存じます。",
       "sentence_zh": "值此春暖时节，想必诸位一切安好。",
       "blank": "春暖",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 136,
@@ -6850,7 +6850,7 @@ window.LESSON_DATA = {
       "sentence": "青葉が目にまぶしい。",
       "sentence_zh": "绿叶晃得眼睛都睁不开。",
       "blank": "青葉",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 137,
@@ -6860,7 +6860,7 @@ window.LESSON_DATA = {
       "sentence": "涼風が心地よい季節になった。",
       "sentence_zh": "到了凉风怡人的季节了。",
       "blank": "涼風",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 138,
@@ -6870,7 +6870,7 @@ window.LESSON_DATA = {
       "sentence": "末筆ながら，皆様のご自愛をお祈り申し上げます。",
       "sentence_zh": "最后，祝愿诸位保重身体。",
       "blank": "ご自愛",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 139,
@@ -6880,7 +6880,7 @@ window.LESSON_DATA = {
       "sentence": "一層の努力をお願いします。",
       "sentence_zh": "请您更加努力。",
       "blank": "一層",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 140,
@@ -6890,7 +6890,7 @@ window.LESSON_DATA = {
       "sentence": "手紙の最後に〆と書いた。",
       "sentence_zh": "在信的末尾写了个“缄”字。",
       "blank": "〆",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 141,
@@ -6900,7 +6900,7 @@ window.LESSON_DATA = {
       "sentence": "彼は学級委員に選ばれた。",
       "sentence_zh": "他被选为班委。",
       "blank": "委員",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 142,
@@ -6910,7 +6910,7 @@ window.LESSON_DATA = {
       "sentence": "事故の目撃者を探している。",
       "sentence_zh": "正在寻找事故的目击者。",
       "blank": "目撃者",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 143,
@@ -6920,7 +6920,7 @@ window.LESSON_DATA = {
       "sentence": "大学の研究所で働いている。",
       "sentence_zh": "在大学的研究所工作。",
       "blank": "研究所",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 144,
@@ -6930,7 +6930,7 @@ window.LESSON_DATA = {
       "sentence": "科学技術は日々進化している。",
       "sentence_zh": "科学技术日新月异（不断进化）。",
       "blank": "進化",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 145,
@@ -6940,7 +6940,7 @@ window.LESSON_DATA = {
       "sentence": "貴社のご発展をお祈り申し上げます。",
       "sentence_zh": "祝愿贵公司发展昌盛。",
       "blank": "貴社",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 146,
@@ -6950,7 +6950,7 @@ window.LESSON_DATA = {
       "sentence": "御行のますますのご繁栄をお祈りいたします。",
       "sentence_zh": "祝愿贵行日益繁荣。",
       "blank": "御行",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 147,
@@ -6960,7 +6960,7 @@ window.LESSON_DATA = {
       "sentence": "貴行との取引を続けたいと存じます。",
       "sentence_zh": "我们希望继续与贵行的业务往来。",
       "blank": "貴行",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 148,
@@ -6970,7 +6970,7 @@ window.LESSON_DATA = {
       "sentence": "貴校の卒業生は各分野で活躍している。",
       "sentence_zh": "贵校的毕业生在各个领域都很活跃。",
       "blank": "貴校",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 149,
@@ -6980,7 +6980,7 @@ window.LESSON_DATA = {
       "sentence": "当社は来年で創業10周年を迎える。",
       "sentence_zh": "本公司明年将迎来创业十周年。",
       "blank": "当社",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 150,
@@ -6990,7 +6990,7 @@ window.LESSON_DATA = {
       "sentence": "請求書を郵送でお送りします。",
       "sentence_zh": "账单将以邮寄的方式寄送。",
       "blank": "請求書",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 151,
@@ -7000,7 +7000,7 @@ window.LESSON_DATA = {
       "sentence": "明後日また電話いたします。",
       "sentence_zh": "后天再打电话联系您。",
       "blank": "明後日",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 152,
@@ -7010,7 +7010,7 @@ window.LESSON_DATA = {
       "sentence": "床がぴかぴかに磨かれている。",
       "sentence_zh": "地板被擦得闪闪发光。",
       "blank": "ぴかぴか",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 153,
@@ -7020,7 +7020,7 @@ window.LESSON_DATA = {
       "sentence": "展示品にはお手を触れないでください。",
       "sentence_zh": "请不要用手触摸展品。",
       "blank": "展示品",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 154,
@@ -7030,7 +7030,7 @@ window.LESSON_DATA = {
       "sentence": "この節はお世話になりました。",
       "sentence_zh": "这段时间承蒙您的关照了。",
       "blank": "節",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 155,
@@ -7040,7 +7040,7 @@ window.LESSON_DATA = {
       "sentence": "書類に朱で訂正を入れる。",
       "sentence_zh": "用朱笔在文件上做修改。",
       "blank": "朱",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 156,
@@ -7050,7 +7050,7 @@ window.LESSON_DATA = {
       "sentence": "お待たせしてしまい，恐縮です。",
       "sentence_zh": "让您久等了，真是过意不去。",
       "blank": "恐縮",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 157,
@@ -7060,7 +7060,7 @@ window.LESSON_DATA = {
       "sentence": "同僚と一緒に昼食をとる。",
       "sentence_zh": "和同事一起吃午饭。",
       "blank": "昼食",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 158,
@@ -7070,7 +7070,7 @@ window.LESSON_DATA = {
       "sentence": "二つの会社が合併することになった。",
       "sentence_zh": "两家公司决定合并了。",
       "blank": "合併する",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 159,
@@ -7080,7 +7080,7 @@ window.LESSON_DATA = {
       "sentence": "子供とゲームセンターで遊んだ。",
       "sentence_zh": "和孩子一起在游戏厅玩了。",
       "blank": "ゲームセンター",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 160,
@@ -7090,7 +7090,7 @@ window.LESSON_DATA = {
       "sentence": "カウンターで手続きをする。",
       "sentence_zh": "在服务台办理手续。",
       "blank": "カウンター",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 161,
@@ -7100,7 +7100,7 @@ window.LESSON_DATA = {
       "sentence": "写真をお目にかけましょう。",
       "sentence_zh": "给您看看照片吧。",
       "blank": "お目にかけましょう",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 162,
@@ -7110,7 +7110,7 @@ window.LESSON_DATA = {
       "sentence": "封筒の宛名には「山田太郎殿」と書いた。",
       "sentence_zh": "信封的收件人处写了“山田太郎先生”。",
       "blank": "殿",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 163,
@@ -7120,7 +7120,7 @@ window.LESSON_DATA = {
       "sentence": "書類は営業部宛てに送ってください。",
       "sentence_zh": "文件请寄送给营业部。",
       "blank": "宛て",
-      "category": "other"
+      "category": "生词表4·语法与表达"
     },
     {
       "id": 164,
@@ -7130,7 +7130,7 @@ window.LESSON_DATA = {
       "sentence": "参加者は100人を超えた。",
       "sentence_zh": "参加者超过了100人。",
       "blank": "超えた",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 165,
@@ -7140,7 +7140,7 @@ window.LESSON_DATA = {
       "sentence": "会議の内容をメモする。",
       "sentence_zh": "把会议内容做成笔记。",
       "blank": "メモする",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 166,
@@ -7150,7 +7150,7 @@ window.LESSON_DATA = {
       "sentence": "駅前で工事が行われている。",
       "sentence_zh": "车站前正在施工。",
       "blank": "工事",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 167,
@@ -7160,7 +7160,7 @@ window.LESSON_DATA = {
       "sentence": "去年，運転免許を取った。",
       "sentence_zh": "去年考取了驾驶执照。",
       "blank": "運転免許",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 168,
@@ -7170,7 +7170,7 @@ window.LESSON_DATA = {
       "sentence": "夏になると花火大会が開かれる。",
       "sentence_zh": "一到夏天就会举办烟花大会。",
       "blank": "花火",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 169,
@@ -7180,7 +7180,7 @@ window.LESSON_DATA = {
       "sentence": "一瞬，何が起きたか分からなかった。",
       "sentence_zh": "有一瞬间不知道发生了什么事。",
       "blank": "一瞬",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 170,
@@ -7190,7 +7190,7 @@ window.LESSON_DATA = {
       "sentence": "下記の住所までお送りください。",
       "sentence_zh": "请寄送到下面的地址。",
       "blank": "下記",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 171,
@@ -7200,7 +7200,7 @@ window.LESSON_DATA = {
       "sentence": "次郎という名前の犬を飼っている。",
       "sentence_zh": "养了一只叫次郎的狗。",
       "blank": "次郎",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 172,
@@ -7210,7 +7210,7 @@ window.LESSON_DATA = {
       "sentence": "彼女は詩集を出版した。",
       "sentence_zh": "她出版了一本诗集。",
       "blank": "詩集",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 173,
@@ -7220,7 +7220,7 @@ window.LESSON_DATA = {
       "sentence": "この映画の感想を聞かせてください。",
       "sentence_zh": "请告诉我你对这部电影的感想。",
       "blank": "感想",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 174,
@@ -7230,7 +7230,7 @@ window.LESSON_DATA = {
       "sentence": "若者の購買傾向を調査する。",
       "sentence_zh": "调查年轻人的购买意向。",
       "blank": "購買傾向",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 175,
@@ -7240,7 +7240,7 @@ window.LESSON_DATA = {
       "sentence": "再度ご連絡いたします。",
       "sentence_zh": "我会再次与您联系。",
       "blank": "再度",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 176,
@@ -7250,7 +7250,7 @@ window.LESSON_DATA = {
       "sentence": "窓口の係員に道を尋ねた。",
       "sentence_zh": "向窗口的工作人员问了路。",
       "blank": "係員",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 177,
@@ -7260,7 +7260,7 @@ window.LESSON_DATA = {
       "sentence": "この件についてはご了承ください。",
       "sentence_zh": "关于这件事，请予以谅解。",
       "blank": "了承",
-      "category": "other"
+      "category": "生词表4·练习"
     },
     {
       "id": 178,
@@ -7270,7 +7270,7 @@ window.LESSON_DATA = {
       "sentence": "よろしくお願いいたします。",
       "sentence_zh": "那就拜托了。",
       "blank": "お願い",
-      "category": "dialogue"
+      "category": "生词表4·练习"
     },
     {
       "id": 179,
@@ -7280,7 +7280,7 @@ window.LESSON_DATA = {
       "sentence": "あっという間に一年が過ぎた。",
       "sentence_zh": "一年转瞬间就过去了。",
       "blank": "あっという間",
-      "category": "other"
+      "category": "生词表4·练习"
     }
   ]
 };
