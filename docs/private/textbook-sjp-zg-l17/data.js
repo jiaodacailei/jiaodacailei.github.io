@@ -3207,7 +3207,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "取引所",
-                  "kana": "とりひきしょ",
+                  "kana": "とりひきじょ",
                   "t": 2.01
                 },
                 {
@@ -4261,7 +4261,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "所",
-                  "kana": "ところ",
+                  "kana": "しょ",
                   "t": 2.45
                 },
                 {
@@ -4423,7 +4423,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "今",
-                  "kana": "こん",
+                  "kana": "いま",
                   "t": 5.25
                 },
                 {
@@ -10458,7 +10458,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "取引所",
-                  "kana": "とりひきしょ",
+                  "kana": "とりひきじょ",
                   "t": 0.51
                 }
               ],
@@ -10920,7 +10920,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "所",
-                  "kana": "ところ",
+                  "kana": "しょ",
                   "t": 0.52
                 }
               ],
@@ -13107,7 +13107,7 @@ window.LESSON_DATA = {
     {
       "id": 134,
       "text": "〜か所",
-      "kana": "かところ",
+      "kana": "かしょ",
       "zh": "〜处，〜个地方",
       "sentence": "この町には公園が3か所ある。",
       "sentence_zh": "这个城市有三处公园。",
