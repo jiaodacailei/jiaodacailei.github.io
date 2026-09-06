@@ -2701,7 +2701,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "通",
-                  "kana": "かよ",
+                  "kana": "とお",
                   "t": 1.9
                 },
                 {
@@ -7529,7 +7529,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "通",
-                  "kana": "かよ",
+                  "kana": "とお",
                   "t": 1.9
                 },
                 {
