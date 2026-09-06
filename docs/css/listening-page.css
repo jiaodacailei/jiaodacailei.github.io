@@ -585,17 +585,21 @@ body.mode-blank #blankProgressReset { display: inline-block; }
 /* 分类选择条（全部+词表里出现过的各个分类）——选哪个分类是"测哪一批词"这种
    主要选择，样式故意比 .quiz-reset-btn 这类次要操作更显眼一点（更大的字号、
    选中态更明显），跟设置面板里藏起来的 .settings-opt 区别开。
-   按钮不能用 flex:1（配合 flex-wrap 换行后，换到最后一行、单独一个的按钮会
-   被拉伸撑满整行宽度，教材课分类数从4个涨到6~7个、长度也从"会话相关"这种
-   固定4字变成"生词表2·语法与表达"这种9字之后，真实出现过这个问题——按钮
-   宽度按内容走，不够放的自然换行到下一行，不整行拉伸）；也不能用 border-
-   radius:999px 的全圆角药丸形状（配合两行文字会挤压成难看的窄圆角矩形），
-   改成普通的小圆角矩形，长标签换行也不难看。 */
-.quiz-category-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+   要求保持单行，放不下横向滑动查看，不换行——分类改成生词表小节之后数量
+   从4个涨到6~7个，换行会占掉好几行答题区域上方的空间；单行横向滑动跟
+   `.toc` 桌面侧栏同一条 scrollbar-width:thin 细滚动条约定，暗示"这里能滑"
+   又不抢眼。按钮不能用 flex:1（配合换行，换到最后一行、单独一个的按钮会
+   被拉伸撑满整行宽度——这是没改单行滚动之前踩过的坑）；也不能用 border-
+   radius:999px 的全圆角药丸形状（配合"生词表2·语法与表达"这种长标签换行
+   会挤压成难看的窄圆角矩形），改成普通的小圆角矩形、单行不换行。 */
+.quiz-category-bar {
+  display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: auto; margin-bottom: 12px;
+  scrollbar-width: thin; scrollbar-color: #e2e8f0 transparent; -webkit-overflow-scrolling: touch;
+}
 .quiz-category-btn {
-  min-width: 56px; border: 1px solid var(--border); background: var(--bg-soft);
-  color: var(--text); border-radius: 8px; padding: 6px 12px; font-size: 13px;
-  font-weight: 600; cursor: pointer; transition: all .15s; line-height: 1.3;
+  flex: 0 0 auto; white-space: nowrap; min-width: 56px; border: 1px solid var(--border);
+  background: var(--bg-soft); color: var(--text); border-radius: 8px; padding: 6px 12px;
+  font-size: 13px; font-weight: 600; cursor: pointer; transition: all .15s;
 }
 .quiz-category-btn:hover { background: var(--blue-xlight); border-color: var(--blue-light); }
 .quiz-category-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
