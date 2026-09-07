@@ -174,11 +174,13 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
     questions = []
     seg_id = 0
     for unit in units:
+        unit_label = unit.get("label", "")
         for point in unit["points"]:
             question_label = point["title"]
             questions.append({
                 "mondai": mondai_label, "question": question_label,
                 "overview": point.get("overview", ""), "answer": "",
+                "unit": unit_label,
             })
             for ja, zh in point["examples"]:
                 seg_id += 1

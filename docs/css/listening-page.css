@@ -258,6 +258,10 @@ body.lang-zh-only .seg-example { display: none; }
 }
 .tab-btn:hover { background: var(--blue-xlight); border-color: var(--blue-light); color: var(--blue-dark); }
 .tab-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+/* 单元选择下拉框（N2语法/词汇页，只有2个以上单元时才会出现，见
+   page-renderer.js 里的 n2-unit-select）——沿用 .tab-btn 的外观，只是
+   标签元素换成了 <select>，补几条原生表单控件跟按钮不一样的属性。 */
+.n2-unit-select { font-family: inherit; appearance: none; -webkit-appearance: none; }
 
 /* ── 小题导航：复用博客 toc.js 同款样式（.toc 桌面右侧栏 / .toc-float 手机悬浮），
    只是内容改成"当前 tab 的小题列表"，随 tab 切换动态换一批 ── */

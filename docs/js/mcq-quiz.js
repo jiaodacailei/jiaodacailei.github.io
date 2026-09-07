@@ -52,7 +52,15 @@
   }
 
   var SLUG = location.pathname;
-  var CATEGORY_KEY = "n2mcq-category:" + SLUG;
+  // 有顶部"单元选择"下拉框的页面（page-renderer.js 里 DATA.titleDictate
+  // 判断出来的 has-title-dictate）——"生词"/"语法点"tab 和这个练习tab共用
+  // 同一份"当前选中单元"状态，key 名字必须跟 page-renderer.js 里那份完全
+  // 一致（"n2-unit:"+pathname），不能各用各的（不然两边各记各的，选了
+  // 单元只有一边跟着换，另一边还是老样子）。没有下拉框的场景（假设以后
+  // mcq-quiz.js 被别的、没有 titleDictate 的页面复用）退回到旧的独立
+  // key，行为等价于以前。
+  var HAS_UNIT_SELECT = document.body.classList.contains("has-title-dictate");
+  var CATEGORY_KEY = HAS_UNIT_SELECT ? ("n2-unit:" + SLUG) : ("n2mcq-category:" + SLUG);
   var SCOPE_KEY = "n2mcq-scope:" + SLUG;
   var ERROR_KEY_PREFIX = "n2mcq-errors:" + SLUG;
   var PROGRESS_KEY_PREFIX = "n2mcq-progress:" + SLUG;
@@ -254,7 +262,10 @@
     render();
   });
 
-  if (availableCategories.length > 1) {
+  // 有顶部单元下拉框的页面不再重复渲染这一份分类条——两个UI选同一件事，
+  // 留着反而让人搞不清"到底该点哪个"。下拉框换单元时靠下面的
+  // window.addEventListener("n2unitchange", ...) 同步刷新这里的题目集合。
+  if (availableCategories.length > 1 && !HAS_UNIT_SELECT) {
     var categoryBar = document.createElement("div");
     categoryBar.className = "quiz-category-bar";
     categoryBar.innerHTML = availableCategories.map(function (c) {
@@ -276,6 +287,20 @@
         qi = 0;
         render();
       });
+    });
+  }
+
+  // 顶部单元下拉框（page-renderer.js）换了单元——这个练习tab自己没有分类
+  // 按钮时（HAS_UNIT_SELECT）靠这个事件同步刷新，题目集合、进度显示都要
+  // 跟着换。事件的 detail 就是选中的单元原文（"all"或者"第N单元"），跟
+  // category 期望的值格式完全一样，不用转换。
+  if (HAS_UNIT_SELECT) {
+    window.addEventListener("n2unitchange", function (e) {
+      category = e.detail;
+      loadCategoryState();
+      queue = buildQueue();
+      qi = 0;
+      render();
     });
   }
 

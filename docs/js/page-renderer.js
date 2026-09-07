@@ -291,8 +291,9 @@
       currentSpeaker = s.speaker || currentSpeaker;
       return html;
     }).join("");
+    var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
     return (
-      '<div class="question-block" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question">' +
+      '<div class="question-block" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question"' + unitAttr + '>' +
         '<h3><span class="q-title-text">' + esc(label) + "</span></h3>" +
         overviewHtml + answerHtml + cards +
       "</div>"
@@ -394,7 +395,8 @@
       // 万一 overview 缺失/过滤完是空的（正常内容不会出现，纯粹兜底）——
       // 退回显示日语标题，不留一个空的导航项。
       var cn = firstSafeOverviewLine(q.overview) || label;
-      return '<li class="toc-h2"><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (i + 1) + '">' +
+      var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
+      return '<li class="toc-h2"' + unitAttr + '><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (i + 1) + '">' +
         '<span class="side-nav-ja">' + esc(label) + "</span>" +
         '<span class="side-nav-cn">' + esc(cn) + "</span>" +
         "</a></li>";
@@ -402,12 +404,15 @@
     return '<ul class="' + cls + '" data-mondai-idx="' + mondaiIdx + '">' + items + "</ul>";
   }
 
-  // 跟 build_page.py 的 mobile_nums_list_html() 一一对应。
-  function renderMobileNumsList(mondaiIdx, questionLabels, active) {
+  // 跟 build_page.py 的 mobile_nums_list_html() 一一对应。questions 传完整
+  // 对象（不只是数量）是为了带上 data-unit，单元筛选时手机悬浮数字条也要
+  // 跟着藏——不藏的话点个数字可能跳到一个已经被筛掉、当前不可见的词条。
+  function renderMobileNumsList(mondaiIdx, questions, active) {
     var cls = "snm-nums-list" + (active ? " tab-active" : "");
-    var btns = questionLabels.map(function (_label, i) {
+    var btns = questions.map(function (q, i) {
       var qi = i + 1;
-      return '<button class="toc-float-num side-nav-btn" data-target="q-' + mondaiIdx + "-" + qi + '">' + qi + "</button>";
+      var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
+      return '<button class="toc-float-num side-nav-btn" data-target="q-' + mondaiIdx + "-" + qi + '"' + unitAttr + ">" + qi + "</button>";
     }).join("");
     return '<div class="' + cls + '" data-mondai-idx="' + mondaiIdx + '">' + btns + "</div>";
   }
@@ -447,11 +452,10 @@
   (DATA.tabs || []).forEach(function (tab, i) {
     var mondaiIdx = i + 1;
     var isFirst = mondaiIdx === 1;
-    var qLabels = tab.questions.map(function (q) { return q.question || tab.mondai; });
-    var navQuestions = tab.questions.map(function (q) { return { question: q.question || tab.mondai, overview: q.overview }; });
+    var navQuestions = tab.questions.map(function (q) { return { question: q.question || tab.mondai, overview: q.overview, unit: q.unit }; });
     sections.push(renderMondaiSection(mondaiIdx, tab, isFirst));
     navLists.push(renderSideNavList(mondaiIdx, navQuestions, isFirst));
-    navNumsMobile.push(renderMobileNumsList(mondaiIdx, qLabels, isFirst));
+    navNumsMobile.push(renderMobileNumsList(mondaiIdx, navQuestions, isFirst));
     tabLabels.push(tab.mondai);
   });
 
@@ -484,6 +488,56 @@
   document.getElementById("sideNavListsMobile").innerHTML = navLists.join("");
   document.getElementById("mobileNumsLists").innerHTML = navNumsMobile.join("");
   document.getElementById("postBody").innerHTML = sections.join("");
+
+  // 单元选择下拉框（N2语法/词汇页专属，DATA.titleDictate）：内容按单元
+  // （词汇01/词汇02……）持续追加进同一个页面，"生词"/"语法点"tab本身不再
+  // 分tab（避免顶部tab栏随单元数量无限变长），改成一个跟"生词"/"练习"
+  // 平级放在同一行tab栏里的下拉框，选哪个单元，"生词"tab（靠
+  // .question-block[data-unit]显隐过滤）和"练习"tab（mcq-quiz.js监听同一个
+  // localStorage key+自定义事件）都跟着换——两边共用同一份"当前单元"状态，
+  // 不是各自独立的两套筛选。只有1个单元时不渲染下拉框（没有可选的意义），
+  // 以后加了词汇02才会出现，不影响当前只有1个单元的现状。
+  if (DATA.titleDictate) {
+    var unitOrder = [];
+    var unitSeen = {};
+    (DATA.tabs || []).forEach(function (tab) {
+      (tab.questions || []).forEach(function (q) {
+        if (q.unit && !unitSeen[q.unit]) { unitSeen[q.unit] = true; unitOrder.push(q.unit); }
+      });
+    });
+    if (unitOrder.length > 1) {
+      var UNIT_KEY = "n2-unit:" + location.pathname;
+      var currentUnit = localStorage.getItem(UNIT_KEY) || "all";
+      if (currentUnit !== "all" && unitSeen[currentUnit] !== true) currentUnit = "all";
+
+      function applyUnitFilter(unit) {
+        // 正文卡片、桌面/手机侧栏目录、手机悬浮数字条——四处都要跟着筛，
+        // 不然筛完之后侧栏还留着指向被藏起来的词条的链接，点了跳过去
+        // 却什么都看不到。
+        var selector = ".question-block[data-unit], .toc-h2[data-unit], .toc-float-num[data-unit]";
+        document.querySelectorAll(selector).forEach(function (el) {
+          el.style.display = (unit === "all" || el.dataset.unit === unit) ? "" : "none";
+        });
+      }
+
+      var unitSelect = document.createElement("select");
+      unitSelect.className = "tab-btn n2-unit-select";
+      unitSelect.id = "n2UnitSelect";
+      unitSelect.innerHTML = '<option value="all">全部单元</option>' +
+        unitOrder.map(function (u) { return '<option value="' + esc(u) + '">' + esc(u) + "</option>"; }).join("");
+      unitSelect.value = currentUnit;
+      document.getElementById("tabBar").insertBefore(unitSelect, document.getElementById("tabBar").firstChild);
+
+      unitSelect.addEventListener("change", function () {
+        currentUnit = unitSelect.value;
+        localStorage.setItem(UNIT_KEY, currentUnit);
+        applyUnitFilter(currentUnit);
+        window.dispatchEvent(new CustomEvent("n2unitchange", { detail: currentUnit }));
+      });
+
+      applyUnitFilter(currentUnit);
+    }
+  }
 
   // 编辑模式（docs/js/edit-mode.js）用来在原地刷新一张卡片的显示内容，不用
   // 重新渲染整个页面（那样会把 listening-page.js 已经挂在其它卡片上的交互

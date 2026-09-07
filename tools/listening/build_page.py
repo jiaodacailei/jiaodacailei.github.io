@@ -1084,7 +1084,7 @@ def sentence_card_html(s, audio_rel):
         </div>'''
 
 
-def question_block_html(mondai_idx, q_idx, question_label, overview, answer, sentences, audio_rel):
+def question_block_html(mondai_idx, q_idx, question_label, overview, answer, sentences, audio_rel, unit=""):
     overview_html = f'<p class="q-overview">{html.escape(overview)}</p>' if overview else ""
     answer_html = ""
     if answer:
@@ -1095,8 +1095,9 @@ def question_block_html(mondai_idx, q_idx, question_label, overview, answer, sen
         </details>'''
     cards = "\n".join(sentence_card_html(s, audio_rel) for s in sentences)
     scope_id = f"q-{mondai_idx}-{q_idx}"
+    unit_attr = f' data-unit="{html.escape(unit)}"' if unit else ""
     return f'''
-      <div class="question-block" id="{scope_id}" data-scope="question">
+      <div class="question-block" id="{scope_id}" data-scope="question"{unit_attr}>
         <h3><span class="q-title-text">{html.escape(question_label)}</span></h3>
         {overview_html}{answer_html}
         {cards}
@@ -1525,6 +1526,11 @@ def _group_by_mondai_question(sentences, questions):
             meta = overview_map.get((mrec["mondai"], qrec["question"]), {})
             qrec["overview"] = meta.get("overview", "")
             qrec["answer"] = meta.get("answer", "")
+            # unit：N2语法/词汇页专属（build_n2_reference_page.py 从内容模块的
+            # UNITS[]["label"] 传进来），标记这个词条/语法点属于第几单元，供
+            # 页面顶部"单元选择"下拉框过滤用。普通课文/听力页的 question 没有
+            # 这个字段，取到的是空字符串，不影响现状。
+            qrec["unit"] = meta.get("unit", "")
     return by_mondai
 
 
@@ -1620,6 +1626,7 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
                     "question": qrec["question"],
                     "overview": qrec["overview"],
                     "answer": qrec["answer"],
+                    "unit": qrec.get("unit", ""),
                     "sentences": [
                         sentence_to_data(s, audio_rel, quiz_by_id, vocab_readings)
                         for s in qrec["sentences"]
@@ -1658,7 +1665,8 @@ def build_sections_html(sentences, questions, audio_rel, quiz_data=None):
             q_blocks.append(question_block_html(
                 mi, qi, label,
                 qrec["overview"], qrec["answer"],
-                qrec["sentences"], audio_rel
+                qrec["sentences"], audio_rel,
+                unit=qrec.get("unit", "")
             ))
         sections.append(mondai_section_html(mi, mrec["mondai"], "\n".join(q_blocks), is_first))
         nav_lists.append(side_nav_list_html(mi, q_nav_items, is_first))
