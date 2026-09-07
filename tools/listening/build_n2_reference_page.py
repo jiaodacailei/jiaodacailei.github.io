@@ -264,6 +264,12 @@ def main():
     )
     if mcq_data:
         lesson_data["mcq"] = mcq_data
+    # titleDictate：question-block 标题本身就是"要记住的语法点/单词"，允许
+    # 默写/填空模式下对标题也出练习（隐藏原文、给输入框、判对错）——跟普通
+    # 课文/听力页共用同一份 page-renderer.js/listening-page.js，但那些页面
+    # 的标题是场景名/生词表分组名，不该被这套逻辑影响，靠这个显式标记
+    # （而不是"标题内容像不像一个词"之类的猜测）区分。
+    lesson_data["titleDictate"] = True
 
     pwd_hash = args.password_hash or hashlib.sha256(args.password.encode("utf-8")).hexdigest()
 

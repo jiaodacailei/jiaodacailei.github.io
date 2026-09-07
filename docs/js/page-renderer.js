@@ -293,7 +293,7 @@
     }).join("");
     return (
       '<div class="question-block" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question">' +
-        "<h3>" + esc(label) + "</h3>" +
+        '<h3><span class="q-title-text">' + esc(label) + "</span></h3>" +
         overviewHtml + answerHtml + cards +
       "</div>"
     );
@@ -370,12 +370,34 @@
     );
   }
 
+  // 标题默写页（N2语法/词汇，DATA.titleDictate）专属：默写/填空模式下侧栏
+  // 目录也得把日语藏起来——不然旁边始终挂着一份"0005. 思いつき（おもいつき）"
+  // 这样的答案，标题默写再怎么隐藏正文都没用。中文候补文字直接复用
+  // overview 第一行（跟标题默写用的是同一份思路：接续：开头那行会把语法点
+  // 原文写出来，先过滤掉，避免侧栏反而成了泄题的地方）——不新开字段。
+  var NAV_LEAKY_OVERVIEW_LINE_RE = /^(接续|接続)[：:]/;
+  function firstSafeOverviewLine(overview) {
+    var lines = (overview || "").split("\n").filter(function (line) { return !NAV_LEAKY_OVERVIEW_LINE_RE.test(line); });
+    return lines[0] || "";
+  }
+
   // 跟 build_page.py 的 side_nav_list_html() 一一对应（桌面 .toc 和手机
-  // .toc-float-panel 共用同一份 <ul> 标记）。
-  function renderSideNavList(mondaiIdx, questionLabels, active) {
+  // .toc-float-panel 共用同一份 <ul> 标记）。questions 传完整对象（不只是
+  // 标签字符串）是因为要点里同时要日语标题（跟读模式显示）跟中文提示
+  // （默写/填空模式显示，来自 overview），CSS 按 body 的 mode-*/
+  // has-title-dictate 类切换显示哪一份，两份都渲染进 DOM，不用 JS 在切换
+  // 模式时重新渲染。
+  function renderSideNavList(mondaiIdx, questions, active) {
     var cls = "side-nav-list" + (active ? " tab-active" : "");
-    var items = questionLabels.map(function (label, i) {
-      return '<li class="toc-h2"><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (i + 1) + '">' + esc(label) + "</a></li>";
+    var items = questions.map(function (q, i) {
+      var label = q.question || "";
+      // 万一 overview 缺失/过滤完是空的（正常内容不会出现，纯粹兜底）——
+      // 退回显示日语标题，不留一个空的导航项。
+      var cn = firstSafeOverviewLine(q.overview) || label;
+      return '<li class="toc-h2"><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (i + 1) + '">' +
+        '<span class="side-nav-ja">' + esc(label) + "</span>" +
+        '<span class="side-nav-cn">' + esc(cn) + "</span>" +
+        "</a></li>";
     }).join("");
     return '<ul class="' + cls + '" data-mondai-idx="' + mondaiIdx + '">' + items + "</ul>";
   }
@@ -410,6 +432,13 @@
   // 直接返回，不动那些页面已有的 DOM。
   if (!DATA) return;
 
+  // titleDictate：N2语法/词汇页专属标记（build_n2_reference_page.py 生成时
+  // 写进 DATA），标题本身就是"要记住的语法点/单词"，允许对标题做默写/填空。
+  // 普通课文/听力页的 question-block 标题是场景名/生词表分组名，不是需要
+  // 背诵的内容，不应该被这套逻辑影响，所以必须显式开关，不能靠标题"看起来
+  // 像不像一个词"这种猜测去判断。
+  if (DATA.titleDictate) document.body.classList.add("has-title-dictate");
+
   var sections = [];
   var navLists = [];
   var navNumsMobile = [];
@@ -419,8 +448,9 @@
     var mondaiIdx = i + 1;
     var isFirst = mondaiIdx === 1;
     var qLabels = tab.questions.map(function (q) { return q.question || tab.mondai; });
+    var navQuestions = tab.questions.map(function (q) { return { question: q.question || tab.mondai, overview: q.overview }; });
     sections.push(renderMondaiSection(mondaiIdx, tab, isFirst));
-    navLists.push(renderSideNavList(mondaiIdx, qLabels, isFirst));
+    navLists.push(renderSideNavList(mondaiIdx, navQuestions, isFirst));
     navNumsMobile.push(renderMobileNumsList(mondaiIdx, qLabels, isFirst));
     tabLabels.push(tab.mondai);
   });

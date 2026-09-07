@@ -536,6 +536,38 @@ body.mode-dictate .dictate-ui { display: block; }
 .dictate-redo-row { display: none; margin-top: 6px; }
 .dictate-ui.state-done .dictate-redo-row { display: block; }
 
+/* ── 标题默写（N2语法/词汇页专属，见 listening-page.js 里 has-title-dictate
+   那一段）：question-block 的标题本身（语法点名称/生词单词）就是要默写的
+   目标，默写、填空两种模式下表现完全一致（跟句子那两种模式分别对应两套
+   不同UI不一样——标题没有"挖空局部、保留上下文"的中间状态，要么整个显示
+   要么整个藏起来），复用 .dictate-ui 的状态机（state-locked/active/done）
+   跟视觉样式，只是选择器额外要求 body.has-title-dictate，不影响普通课文/
+   听力页的 question-block 标题（那些页面的 body 上没有这个类，标题永远
+   照常显示）。 */
+body.has-title-dictate.mode-dictate .q-title-text,
+body.has-title-dictate.mode-blank .q-title-text,
+body.has-title-dictate.mode-dictate .q-overview,
+body.has-title-dictate.mode-blank .q-overview { display: none; }
+/* h3::after 是全站通用的"▶点击可播放"提示图标（见上面 .post-body h3::after），
+   标题文字藏起来之后这个图标会孤零零地浮在原地，没有任何文字跟它一起，
+   一并藏起来。 */
+body.has-title-dictate.mode-dictate .question-block h3::after,
+body.has-title-dictate.mode-blank .question-block h3::after { display: none; }
+body.has-title-dictate.mode-dictate .q-title-dictate,
+body.has-title-dictate.mode-blank .q-title-dictate { display: block; }
+.q-title-dictate { margin: 4px 0 10px; }
+
+/* 侧栏目录（.toc-h2 > a）默认只显示日语标题——.side-nav-cn 这份中文候补
+   永远渲染在 DOM 里（见 renderSideNavList()/side_nav_list_html()），但默认
+   隐藏，只有标题默写页（has-title-dictate）在默写/填空模式下才换成显示它、
+   反过来把日语藏起来，避免侧栏本身变成泄题的地方。没有 has-title-dictate
+   的页面（绝大多数）这两条规则一直保持"只显示日语"的现状，不受影响。 */
+.side-nav-cn { display: none; }
+body.has-title-dictate.mode-dictate .side-nav-ja,
+body.has-title-dictate.mode-blank .side-nav-ja { display: none; }
+body.has-title-dictate.mode-dictate .side-nav-cn,
+body.has-title-dictate.mode-blank .side-nav-cn { display: inline; }
+
 /* ── 练习模式：填空 ──
    .seg-ja 藏起来，换成运行时克隆出来的 .seg-ja-blank（挖空的词换成了 input）。
    挖空目标来自 seg-notes 里第一个「…」语法点，为了不被提前看到答案，挖了空

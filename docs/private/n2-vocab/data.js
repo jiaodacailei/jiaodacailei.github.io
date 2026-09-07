@@ -11280,5 +11280,6 @@ window.LESSON_DATA = {
       "answer": 4,
       "explanationZh": ""
     }
-  ]
+  ],
+  "titleDictate": true
 };

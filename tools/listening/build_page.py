@@ -1097,7 +1097,7 @@ def question_block_html(mondai_idx, q_idx, question_label, overview, answer, sen
     scope_id = f"q-{mondai_idx}-{q_idx}"
     return f'''
       <div class="question-block" id="{scope_id}" data-scope="question">
-        <h3>{html.escape(question_label)}</h3>
+        <h3><span class="q-title-text">{html.escape(question_label)}</span></h3>
         {overview_html}{answer_html}
         {cards}
       </div>'''
@@ -1178,14 +1178,36 @@ def mcq_section_html(mondai_idx, mcq_json_data, active):
     </section>'''
 
 
-def side_nav_list_html(mondai_idx, question_labels, active):
-    """桌面 .toc 侧栏 / 手机 .toc-float-panel 都用这份列表（结构与 toc.js 生成的一致）。"""
+_NAV_LEAKY_OVERVIEW_LINE_RE = re.compile(r"^(接续|接続)[：:]")
+
+
+def _first_safe_overview_line(overview):
+    """标题默写页（DATA.titleDictate）侧栏目录用的中文候补文字——跟
+    listening-page.js 里同名逻辑对应，取 overview 第一行、过滤掉"接续："/
+    "接続："开头那行（会把语法点原文写出来，默写/填空模式下侧栏不该泄题）。
+    不新开字段，直接复用已有的 overview。"""
+    lines = [ln for ln in (overview or "").split("\n") if not _NAV_LEAKY_OVERVIEW_LINE_RE.match(ln)]
+    return lines[0] if lines else ""
+
+
+def side_nav_list_html(mondai_idx, questions, active):
+    """桌面 .toc 侧栏 / 手机 .toc-float-panel 都用这份列表（结构与 toc.js 生成的一致）。
+    `questions` 是 (label, overview) 二元组列表——两份文字都渲染进 DOM，日语/
+    中文哪份显示由 CSS 按 body 的 mode-*/has-title-dictate 类切换（见
+    listening-page.js），不是这里决定的；普通页面 overview 传空字符串就够，
+    渲染出来的 .side-nav-cn 内容跟 .side-nav-ja 一样（没有 has-title-dictate
+    时这两个类的显示规则本来就一致，不影响现状）。"""
     cls = "side-nav-list tab-active" if active else "side-nav-list"
-    items = "\n".join(
-        f'<li class="toc-h2"><a class="side-nav-btn" data-target="q-{mondai_idx}-{qi}">{html.escape(label)}</a></li>'
-        for qi, label in enumerate(question_labels, 1)
-    )
-    return f'<ul class="{cls}" data-mondai-idx="{mondai_idx}">{items}</ul>'
+    items = []
+    for qi, (label, overview) in enumerate(questions, 1):
+        cn = _first_safe_overview_line(overview) or label
+        items.append(
+            f'<li class="toc-h2"><a class="side-nav-btn" data-target="q-{mondai_idx}-{qi}">'
+            f'<span class="side-nav-ja">{html.escape(label)}</span>'
+            f'<span class="side-nav-cn">{html.escape(cn)}</span>'
+            f'</a></li>'
+        )
+    return f'<ul class="{cls}" data-mondai-idx="{mondai_idx}">{"".join(items)}</ul>'
 
 
 def mobile_nums_list_html(mondai_idx, question_labels, active):
@@ -1628,16 +1650,18 @@ def build_sections_html(sentences, questions, audio_rel, quiz_data=None):
         is_first = (mi == 1)
         q_blocks = []
         q_labels = []
+        q_nav_items = []
         for qi, qrec in enumerate(mrec["questions"], 1):
             label = qrec["question"] or mrec["mondai"]
             q_labels.append(label)
+            q_nav_items.append((label, qrec["overview"]))
             q_blocks.append(question_block_html(
                 mi, qi, label,
                 qrec["overview"], qrec["answer"],
                 qrec["sentences"], audio_rel
             ))
         sections.append(mondai_section_html(mi, mrec["mondai"], "\n".join(q_blocks), is_first))
-        nav_lists.append(side_nav_list_html(mi, q_labels, is_first))
+        nav_lists.append(side_nav_list_html(mi, q_nav_items, is_first))
         nav_nums_mobile.append(mobile_nums_list_html(mi, q_labels, is_first))
 
     tab_labels = [mrec["mondai"] for mrec in by_mondai]

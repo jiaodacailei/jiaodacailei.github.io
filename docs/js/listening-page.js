@@ -1075,6 +1075,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     localStorage.setItem(DICTATE_DONE_KEY, JSON.stringify(Object.keys(dictateDone)));
   }
 
+  // 标题默写（N2语法/词汇页专属）用的进度记录——跟句子默写是同一个"默写"
+  // 概念下的两件事，但目标不同（句子 vs 标题本身），分开一个 key，互不影响。
+  // 变量声明特意放在 has-title-dictate 判断之外（没有这个 body class 的
+  // 页面这几行代价也很小），是为了后面"清除默写进度"按钮能直接引用得到
+  // （var 是函数作用域，不是块作用域，写在 if 里面外面一样能拿到，但拆开
+  // 写更直观，不用读者自己想 hoisting）。
+  var TITLE_DICTATE_DONE_KEY = "n2listen-title-dictate-done:" + location.pathname;
+  var titleDictateDone = {};
+  try { (JSON.parse(localStorage.getItem(TITLE_DICTATE_DONE_KEY) || "[]")).forEach(function(id) { titleDictateDone[id] = 1; }); } catch (e) { titleDictateDone = {}; }
+  function saveTitleDictateDone() {
+    localStorage.setItem(TITLE_DICTATE_DONE_KEY, JSON.stringify(Object.keys(titleDictateDone)));
+  }
+
   document.querySelectorAll(".seg-card").forEach(function(card) {
     var segJa = card.querySelector(".seg-ja");
     var segZh = card.querySelector(".seg-zh");
@@ -1225,6 +1238,144 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (i >= 0 && i + 1 < cards.length && cards[i + 1]._dictate.state === "locked") {
       cards[i + 1]._dictate.setState("active");
     }
+  }
+
+  // ---- 标题默写（N2语法/词汇页专属）：question-block 的标题本身（语法点
+  //      名称/生词单词）也能被默写/填空——两种模式下标题的表现完全一样
+  //      （藏起来、给输入框、判对错），跟句子那边"默写整句隐藏、填空只挖
+  //      句中一个词、两者是不同UI"不一样：标题本身就是唯一的目标，没有
+  //      "挖空局部、保留上下文"这种中间状态可言。用 body.has-title-dictate
+  //      （page-renderer.js 里根据 DATA.titleDictate 加的）区分要不要跑这
+  //      段——普通课文/听力页的 question-block 标题是场景名/生词表分组名，
+  //      不是需要背诵的内容，没有这个 class，这段整体跳过，不影响。 ----
+  if (document.body.classList.contains("has-title-dictate")) {
+    // 从标题原文抽出"要默写的答案"：去掉开头的编号前缀（"0001. "/"1. "），
+    // 再去掉结尾的全角括注（读音/词源提示，比如"（あいかわらず）"/
+    // "（idea）"）——只去全角括号，不动半角括号：两个内容模块
+    // （n2_vocab_content.py/n2_grammar_content.py）的转录约定是生词读音
+    // 提示固定写全角括号，语法点名称里的半角括号（比如"～あげく(に)"的
+    // "(に)"）是语法结构本身的一部分不是读音提示，必须保留——靠这个既有
+    // 的全角/半角排版差异就能天然区分两种内容，不需要额外传一个"这是
+    // 词汇还是语法"的标记。
+    var TITLE_NUM_PREFIX_RE = /^\d+\.\s*/;
+    var TITLE_TRAILING_FULLWIDTH_PAREN_RE = /（[^（）]*）$/;
+    function extractTitleAnswer(raw) {
+      return raw.replace(TITLE_NUM_PREFIX_RE, "").replace(TITLE_TRAILING_FULLWIDTH_PAREN_RE, "").trim();
+    }
+
+    // overview 本来是常驻显示、不受练习模式影响的——但语法点 overview 第
+    // 一行"接续：……"经常直接把语法点原文写在里面（比如"接续：动た形/
+    // 名一の＋あげく（に）"），标题默写时如果 overview 照常整段显示，等于
+    // 把答案原样泄露在旁边。过滤掉"接续："/"接続："开头的那一行——生词
+    // 条目的 overview 从来不会这样开头，这条过滤对词汇页是空操作，不需要
+    // 额外区分页面类型。
+    var LEAKY_OVERVIEW_LINE_RE = /^(接续|接続)[：:]/;
+    function safeOverviewHint(raw) {
+      return (raw || "").split("\n").filter(function(line) { return !LEAKY_OVERVIEW_LINE_RE.test(line); }).join("\n");
+    }
+
+    document.querySelectorAll(".question-block").forEach(function(block) {
+      var titleEl = block.querySelector(".q-title-text");
+      if (!titleEl) return;
+      var answer = extractTitleAnswer(titleEl.textContent);
+      if (!answer) return;
+      // "アイデア/アイディア"这类一个词有多种写法都算对的情况，任选一种
+      // 打对就算过关，不要求两种都写。
+      var acceptable = answer.split("/").map(stripPunct).filter(Boolean);
+      if (!acceptable.length) return;
+
+      var overviewEl = block.querySelector(".q-overview");
+      var hintText = overviewEl ? safeOverviewHint(overviewEl.textContent) : "";
+
+      var ui = document.createElement("div");
+      ui.className = "dictate-ui q-title-dictate";
+      ui.innerHTML =
+        '<div class="dictate-hint"></div>' +
+        '<div class="dictate-row">' +
+          '<textarea class="dictate-input" rows="1" autocomplete="off" placeholder="写出这个词/语法点…"></textarea>' +
+          '<button type="button" class="dictate-btn dictate-check">確認</button>' +
+        '</div>' +
+        '<div class="dictate-status"></div>' +
+        '<div class="dictate-answer"></div>' +
+        '<div class="dictate-redo-row"><button type="button" class="dictate-btn dictate-redo">重新练习</button></div>' +
+        '<button type="button" class="dictate-locked">▶ 点击开始练习</button>';
+      var h3 = titleEl.closest("h3");
+      h3.insertAdjacentElement("afterend", ui);
+
+      var input = ui.querySelector(".dictate-input");
+      var checkBtn = ui.querySelector(".dictate-check");
+      var status = ui.querySelector(".dictate-status");
+      var answerBox = ui.querySelector(".dictate-answer");
+      var redoBtn = ui.querySelector(".dictate-redo");
+      var lockedBtn = ui.querySelector(".dictate-locked");
+      var hintBox = ui.querySelector(".dictate-hint");
+      hintBox.textContent = hintText;
+      [input, checkBtn, redoBtn, lockedBtn].forEach(function(el) {
+        el.addEventListener("click", function(e) { e.stopPropagation(); });
+      });
+
+      var titleId = block.id; // "q-1-5"，页面内天然唯一，直接当 key 用
+
+      function setState(s) {
+        ui.classList.remove("state-locked", "state-active", "state-done");
+        ui.classList.add("state-" + s);
+        input.disabled = (s !== "active");
+      }
+      setState("locked");
+
+      function answerHtml(badgeHtml) {
+        return badgeHtml + " " + titleEl.textContent;
+      }
+      function renderDone() {
+        answerBox.innerHTML = answerHtml('<span class="dictate-badge ok">✓ 正解</span>');
+        status.textContent = "";
+        status.className = "dictate-status";
+        ui.classList.remove("revealed");
+        setState("done");
+      }
+      if (titleDictateDone[titleId]) renderDone();
+
+      function check() {
+        if (ui.classList.contains("state-done")) return;
+        var typed = stripPunct(input.value);
+        if (acceptable.indexOf(typed) !== -1) {
+          renderDone();
+          titleDictateDone[titleId] = 1;
+          saveTitleDictateDone();
+        } else {
+          answerBox.innerHTML = answerHtml('<span class="dictate-badge wrong">✗ 答案</span>');
+          ui.classList.add("revealed");
+          status.textContent = "跟上面的答案对一下，改好之后重新提交";
+          status.className = "dictate-status ng";
+        }
+      }
+      checkBtn.addEventListener("click", check);
+      input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") { e.preventDefault(); check(); }
+      });
+      redoBtn.addEventListener("click", function() {
+        input.value = "";
+        status.textContent = "";
+        status.className = "dictate-status";
+        ui.classList.remove("revealed");
+        setState("active");
+        input.focus();
+      });
+      lockedBtn.addEventListener("click", function() {
+        setState("active");
+        input.focus();
+      });
+
+      block._titleDictate = {
+        reset: function() {
+          input.value = "";
+          status.textContent = "";
+          status.className = "dictate-status";
+          ui.classList.remove("revealed");
+          setState("locked");
+        }
+      };
+    });
   }
 
   // 不再自动解锁"第一句还没过关的"——所有句子（包括第一句）默认都收起，
@@ -1561,12 +1712,25 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       '</div>';
     settingsPanel.appendChild(progressGroup);
 
+    // 标题默写（有的话）在默写、填空两个模式下都会出现，所以两个按钮都要
+    // 顺带清一下——不管用户是从哪个模式点的"清除进度"，看到的标题练习都
+    // 是同一份共享状态，两边都清才不会出现"清了默写、填空里标题还是done"
+    // 这种不一致。没有 has-title-dictate 的页面 querySelectorAll 拿到的
+    // 是空集合，这段代码本身对那些页面是无操作。
+    function resetTitleDictate() {
+      titleDictateDone = {};
+      localStorage.removeItem(TITLE_DICTATE_DONE_KEY);
+      document.querySelectorAll(".question-block").forEach(function(block) {
+        if (block._titleDictate) block._titleDictate.reset();
+      });
+    }
     document.getElementById("dictateProgressReset").addEventListener("click", function() {
       dictateDone = {};
       localStorage.removeItem(DICTATE_DONE_KEY);
       document.querySelectorAll(".seg-card").forEach(function(card) {
         if (card._dictate) card._dictate.reset();
       });
+      resetTitleDictate();
     });
     document.getElementById("blankProgressReset").addEventListener("click", function() {
       blankDone = {};
@@ -1574,6 +1738,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       document.querySelectorAll(".seg-card").forEach(function(card) {
         if (card._blank) card._blank.reset();
       });
+      resetTitleDictate();
     });
   }
 })();
