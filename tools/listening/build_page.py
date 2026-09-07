@@ -1451,23 +1451,51 @@ SHELL_TEMPLATE = '''<!DOCTYPE html>
 
 
 def _group_by_mondai_question(sentences, questions):
-    """按 (mondai, question) 分组，保留首次出现的顺序，附带每道题的
-    overview/answer——这份分组结构是 build_sections_html()（生成完整 HTML）
-    和 build_lesson_data()（生成 data-driven 用的 JSON 数据）共用的，两条
-    路径分组逻辑必须完全一致，所以只写一份。"""
+    """按 (mondai, question) 分组，附带每道题的 overview/answer——这份分组
+    结构是 build_sections_html()（生成完整 HTML）和 build_lesson_data()
+    （生成 data-driven 用的 JSON 数据）共用的，两条路径分组逻辑必须完全
+    一致，所以只写一份。
+
+    分组顺序以 `questions` 列表自身的顺序为准（这是作者/教材原本的真实
+    顺序）——`questions` 非空时,先用它把每个 (mondai, question) 的分组
+    骨架按顺序建好，再把 sentences 逐句塞进对应分组；只有当某句子的
+    (mondai, question) 组合在 questions 里完全没登记过时（多数旧的纯听力
+    页面 questions 传空列表，分组信息只能靠 sentences 自己现造），才现造
+    一个新分组并追加在末尾。
+
+    这么设计是因为踩过一个真实的坑：最初的实现反过来——先扫一遍
+    sentences 建分组骨架，questions 只用来找 overview/answer——对"每个
+    question 至少有一句例句"的旧内容（l17/l18的语法与表达tab、单词测试）
+    刚好巧合成立，因为 sentences/questions 总是在同一次遍历里一起构建，
+    彼此顺序天然一致。但 N2词汇页第一次出现"某个词条书上根本没配例句"
+    的情况（只有词头+释义，examples=[]）——这类词条在 sentences 里完全
+    不出现，旧实现的分组循环永远碰不到它，导致整个词条（标题+读音+释义）
+    从页面上完全消失，不只是"缺一个例句"。当时的第一版修复只是在
+    sentences 循环之后"追加"这些遗漏词条，结果它们全部被甩到当前
+    mondai 分组的最末尾，跟书本原有顺序对不上（比如"0005"跑到了
+    "0153"后面）——真正正确的做法是让 questions 列表本身的顺序说了算。"""
     by_mondai = []
     mondai_index = {}
-    for s in sentences:
-        m = s.get("mondai") or "听力材料"
+
+    def get_mrec(m):
         if m not in mondai_index:
             mondai_index[m] = len(by_mondai)
             by_mondai.append({"mondai": m, "questions": [], "q_index": {}})
-        mrec = by_mondai[mondai_index[m]]
-        q = s.get("question") or ""
-        if q not in mrec["q_index"]:
-            mrec["q_index"][q] = len(mrec["questions"])
-            mrec["questions"].append({"question": q, "sentences": []})
-        mrec["questions"][mrec["q_index"][q]]["sentences"].append(s)
+        return by_mondai[mondai_index[m]]
+
+    def get_qrec(mrec, qname):
+        if qname not in mrec["q_index"]:
+            mrec["q_index"][qname] = len(mrec["questions"])
+            mrec["questions"].append({"question": qname, "sentences": []})
+        return mrec["questions"][mrec["q_index"][qname]]
+
+    for q in questions:
+        get_qrec(get_mrec(q.get("mondai") or "听力材料"), q.get("question") or "")
+
+    for s in sentences:
+        mrec = get_mrec(s.get("mondai") or "听力材料")
+        qrec = get_qrec(mrec, s.get("question") or "")
+        qrec["sentences"].append(s)
 
     overview_map = {(q["mondai"], q["question"]): q for q in questions}
     for mrec in by_mondai:

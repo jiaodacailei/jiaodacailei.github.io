@@ -48,7 +48,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "って",
-                  "t": 1.42
+                  "t": 1.4
                 },
                 {
                   "text": "人",
@@ -57,15 +57,15 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 1.92
+                  "t": 1.94
                 },
                 {
                   "text": "み",
-                  "t": 2.08
+                  "t": 2.04
                 },
                 {
                   "text": "に",
-                  "t": 2.2
+                  "t": 2.18
                 },
                 {
                   "text": "巻",
@@ -407,7 +407,7 @@ window.LESSON_DATA = {
                 {
                   "text": "以上",
                   "kana": "いじょう",
-                  "t": 1.08
+                  "t": 1.1
                 },
                 {
                   "text": "、"
@@ -502,7 +502,7 @@ window.LESSON_DATA = {
                 {
                   "text": "生活",
                   "kana": "せいかつ",
-                  "t": 1.98
+                  "t": 1.96
                 },
                 {
                   "text": "を",
@@ -539,7 +539,7 @@ window.LESSON_DATA = {
                 {
                   "text": "深刻",
                   "kana": "しんこく",
-                  "t": 4.24
+                  "t": 4.08
                 },
                 {
                   "text": "な",
@@ -548,7 +548,7 @@ window.LESSON_DATA = {
                 {
                   "text": "環境汚染",
                   "kana": "かんきょうおせん",
-                  "t": 4.76
+                  "t": 4.74
                 },
                 {
                   "text": "を",
@@ -557,7 +557,7 @@ window.LESSON_DATA = {
                 {
                   "text": "引",
                   "kana": "ひ",
-                  "t": 5.84
+                  "t": 5.82
                 },
                 {
                   "text": "き",
@@ -694,7 +694,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 0.92
+                  "t": 0.9
                 },
                 {
                   "text": "勉強",
@@ -743,7 +743,7 @@ window.LESSON_DATA = {
                 {
                   "text": "最",
                   "kana": "もっと",
-                  "t": 4.04
+                  "t": 4.06
                 },
                 {
                   "text": "も",
@@ -820,7 +820,7 @@ window.LESSON_DATA = {
                 {
                   "text": "我々",
                   "kana": "われわれ",
-                  "t": 2.68
+                  "t": 2.7
                 },
                 {
                   "text": "再検討",
@@ -838,7 +838,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "で",
-                  "t": 4.36
+                  "t": 4.34
                 },
                 {
                   "text": "、"
@@ -948,7 +948,7 @@ window.LESSON_DATA = {
                 {
                   "text": "行動",
                   "kana": "こうどう",
-                  "t": 3.78
+                  "t": 3.76
                 },
                 {
                   "text": "し",
@@ -1185,7 +1185,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "か",
-                  "t": 6.26
+                  "t": 6.28
                 },
                 {
                   "text": "り",
@@ -1374,7 +1374,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 4.1
+                  "t": 4.08
                 },
                 {
                   "text": "協力",
@@ -1440,7 +1440,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "げ",
-                  "t": 1.24
+                  "t": 1.22
                 },
                 {
                   "text": "目標",
