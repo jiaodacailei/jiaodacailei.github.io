@@ -860,11 +860,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       sec.classList.toggle("tab-active", match);
       if (match) activeSection = sec;
     });
-    // 单词测试 tab 是单卡片互动出题，没有"小题"可跳转，也不需要跟读速度/显示
-    // 模式/默写填空这些跟句子卡片相关的设置——用这个 body class 联动隐藏悬浮
-    // 目录和设置面板里不相关的选项组（是否是这个 tab 靠"里面有没有单词测试的
-    // 数据 script 标签"判断，不用在 build_page.py 里为此专门加一个新 class）。
-    document.body.classList.toggle("quiz-tab-active", !!(activeSection && activeSection.querySelector("#vocab-quiz-data")));
+    // 单词测试/N2语法词汇页的"练习"tab 都是单卡片互动出题，没有"小题"可
+    // 跳转，也不需要跟读速度/显示模式/默写填空这些跟句子卡片相关的设置——
+    // 用这个 body class 联动隐藏悬浮目录和设置面板里不相关的选项组（是否是
+    // 这类 tab 靠"里面有没有对应的数据 script 标签"判断，不用在 build_page.py
+    // 里为此专门加一个新 class）。mcq-quiz.js 那套"四选一"引擎跟単语テスト
+    // 是两个独立引擎，但都属于"这类 tab"，共用同一个 body class。
+    document.body.classList.toggle("quiz-tab-active", !!(activeSection &&
+      (activeSection.querySelector("#vocab-quiz-data") || activeSection.querySelector("#mcq-quiz-data"))));
     document.querySelectorAll(".side-nav-list").forEach(function(list) {
       list.classList.toggle("tab-active", list.getAttribute("data-mondai-idx") === mondaiIdx);
     });

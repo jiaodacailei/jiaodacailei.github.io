@@ -1150,6 +1150,34 @@ def quiz_section_html(mondai_idx, quiz_json_data, active):
     </section>'''
 
 
+def mcq_section_html(mondai_idx, mcq_json_data, active):
+    """跟 quiz_section_html() 一一对应，但对接的是 docs/js/mcq-quiz.js 那套
+    独立的"四选一"练习引擎（N2语法/词汇页面专用），不是単语テスト——两套
+    引擎数据模型不同，不能共用同一个 <script id="vocab-quiz-data">标签，
+    这里用 id="mcq-quiz-data" 区分，mcq-quiz.js 自己找这个 id 接管渲染。"""
+    scope_id = f"m-{mondai_idx}"
+    cls = "mondai-section tab-active" if active else "mondai-section"
+    mcq_json = json.dumps(mcq_json_data, ensure_ascii=False)
+    return f'''
+    <section class="{cls}" id="{scope_id}" data-scope="mondai">
+      <h2>練習</h2>
+      <div class="quiz-app" id="mcqApp">
+        <div class="quiz-toolbar">
+          <div class="quiz-progress" id="mcqProgress">0 / 0</div>
+          <button type="button" class="quiz-reset-btn" id="mcqResetErrors">清除使用记录</button>
+        </div>
+        <div class="quiz-card" id="mcqCard">
+          <div class="mcq-stem" id="mcqStem"></div>
+          <div class="mcq-options" id="mcqOptions"></div>
+          <div class="quiz-status" id="mcqStatus"></div>
+          <div class="mcq-explanation" id="mcqExplanation"></div>
+        </div>
+        <div class="quiz-done" id="mcqDone" style="display:none">🎉 本轮全部完成！</div>
+      </div>
+      <script type="application/json" id="mcq-quiz-data">{mcq_json}</script>
+    </section>'''
+
+
 def side_nav_list_html(mondai_idx, question_labels, active):
     """桌面 .toc 侧栏 / 手机 .toc-float-panel 都用这份列表（结构与 toc.js 生成的一致）。"""
     cls = "side-nav-list tab-active" if active else "side-nav-list"
@@ -1415,6 +1443,7 @@ SHELL_TEMPLATE = '''<!DOCTYPE html>
 <script src="/js/edit-mode.js" defer></script>
 <script src="/js/private-gate.js" defer></script>
 <script src="/js/listening-page.js" defer></script>
+<script src="/js/mcq-quiz.js" defer></script>
 
 </body>
 </html>

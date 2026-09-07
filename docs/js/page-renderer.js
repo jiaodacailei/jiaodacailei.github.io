@@ -345,6 +345,31 @@
     );
   }
 
+  // 跟 build_page.py 的 mcq_section_html() 一一对应——独立于単语テスト的
+  // "四选一"练习引擎（docs/js/mcq-quiz.js），N2语法/词汇页面专用。
+  function renderMcqSection(mondaiIdx, mcqData, active) {
+    var cls = "mondai-section" + (active ? " tab-active" : "");
+    return (
+      '<section class="' + cls + '" id="m-' + mondaiIdx + '" data-scope="mondai">' +
+        "<h2>練習</h2>" +
+        '<div class="quiz-app" id="mcqApp">' +
+          '<div class="quiz-toolbar">' +
+            '<div class="quiz-progress" id="mcqProgress">0 / 0</div>' +
+            '<button type="button" class="quiz-reset-btn" id="mcqResetErrors">清除使用记录</button>' +
+          "</div>" +
+          '<div class="quiz-card" id="mcqCard">' +
+            '<div class="mcq-stem" id="mcqStem"></div>' +
+            '<div class="mcq-options" id="mcqOptions"></div>' +
+            '<div class="quiz-status" id="mcqStatus"></div>' +
+            '<div class="mcq-explanation" id="mcqExplanation"></div>' +
+          "</div>" +
+          '<div class="quiz-done" id="mcqDone" style="display:none">🎉 本轮全部完成！</div>' +
+        "</div>" +
+        '<script type="application/json" id="mcq-quiz-data">' + JSON.stringify(mcqData) + "</script>" +
+      "</section>"
+    );
+  }
+
   // 跟 build_page.py 的 side_nav_list_html() 一一对应（桌面 .toc 和手机
   // .toc-float-panel 共用同一份 <ul> 标记）。
   function renderSideNavList(mondaiIdx, questionLabels, active) {
@@ -375,7 +400,8 @@
     renderTokens: renderTokens,
     rerenderCardContent: rerenderCardContent,
     renderCard: renderCard,
-    renderQuizSection: renderQuizSection
+    renderQuizSection: renderQuizSection,
+    renderMcqSection: renderMcqSection
   };
 
   // 下面这些是"整份 LESSON_DATA 驱动的听力页"专属的页面级渲染（tab栏/
@@ -405,6 +431,17 @@
     navLists.push(renderSideNavList(quizIdx, [], false));
     navNumsMobile.push(renderMobileNumsList(quizIdx, [], false));
     tabLabels.push("単語テスト");
+  }
+
+  // DATA.mcq——N2语法/词汇页面的"练习"tab（docs/js/mcq-quiz.js接管），
+  // 跟DATA.quiz（単语テスト）是两个独立字段，一个页面理论上可以同时有
+  // 两种tab（虽然目前的用法里两者互斥），互不影响，顺序跟在quiz后面。
+  if (DATA.mcq) {
+    var mcqIdx = (DATA.tabs || []).length + (DATA.quiz ? 1 : 0) + 1;
+    sections.push(renderMcqSection(mcqIdx, DATA.mcq, false));
+    navLists.push(renderSideNavList(mcqIdx, [], false));
+    navNumsMobile.push(renderMobileNumsList(mcqIdx, [], false));
+    tabLabels.push("練習");
   }
 
   var tabButtons = tabLabels.map(function (label, i) {

@@ -673,6 +673,47 @@ body.mode-blank #blankProgressReset { display: inline-block; }
   padding: 60px 20px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
 }
 
+/* ── 四选一练习引擎（docs/js/mcq-quiz.js）——N2语法/词汇页面专用，跟単语
+   テスト（.quiz-*，一个词自动衍生4种打字题）是完全独立的两套引擎，数据
+   模型不同（教材原版固定选项+标准答案，不是从一个词现算），但沿用同一套
+   .quiz-app/.quiz-toolbar/.quiz-card/.quiz-progress/.quiz-status/.quiz-done/
+   .quiz-category-bar 外壳，只有题干+选项这部分是这里新增的 .mcq-* 样式，
+   视觉上跟単语テスト是一家人，不用重新发明一套外观。 */
+.mcq-stem { font-size: 17px; line-height: 1.8; margin-bottom: 14px; }
+.mcq-stem .mcq-blank {
+  display: inline-block; min-width: 3em; border-bottom: 2px solid var(--blue);
+  text-align: center; margin: 0 2px;
+}
+.mcq-options { display: flex; flex-direction: column; gap: 8px; }
+.mcq-option {
+  display: flex; align-items: baseline; gap: 8px; border: 1px solid var(--border);
+  background: var(--bg-soft); border-radius: 10px; padding: 10px 14px; cursor: pointer;
+  font-size: 15px; line-height: 1.6; transition: all .15s;
+}
+.mcq-option:hover { background: var(--blue-xlight); border-color: var(--blue-light); }
+.mcq-option-num {
+  flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: var(--bg-soft);
+  border: 1px solid var(--border); color: var(--text-muted); font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+/* 选完立刻判分（不像単语テスト那样先"確認"再定死）——用户的点击本身就是
+   提交，选中的选项先高亮一下再变成对/错色，给一个"点到了"的即时反馈，
+   跟句卡片播放态的处理逻辑是同一个道理（点击必有反应）。 */
+.mcq-option.selected { border-color: var(--blue); background: var(--blue-xlight); }
+.mcq-option.correct {
+  border-color: #16a34a; background: #f0fdf4; color: #15803d; font-weight: 700;
+}
+.mcq-option.correct .mcq-option-num { background: #16a34a; border-color: #16a34a; color: #fff; }
+.mcq-option.wrong { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.mcq-option.wrong .mcq-option-num { background: #dc2626; border-color: #dc2626; color: #fff; }
+.mcq-option.disabled { cursor: default; }
+.mcq-option.disabled:not(.correct):not(.wrong):hover { background: var(--bg-soft); border-color: var(--border); }
+.mcq-explanation {
+  margin-top: 12px; padding: 10px 12px; background: var(--bg-soft); border-radius: 8px;
+  font-size: 13px; color: var(--text-muted); line-height: 1.6; display: none;
+}
+.mcq-explanation.show { display: block; }
+
 #gate {
   position: fixed; inset: 0; background: var(--navy); display: flex;
   align-items: center; justify-content: center; z-index: 999; flex-direction: column;
