@@ -1324,7 +1324,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       setState("locked");
 
       function answerHtml(badgeHtml) {
-        return badgeHtml + " " + titleEl.textContent;
+        // 揭晓答案时不带开头的编号前缀（"0001. "/"1. "）——编号是给侧栏/
+        // 内容管理用的，不是答案本身的一部分，默写对不对不该看编号，反馈
+        // 里带着编号只会让"答案"看起来比实际要打的内容长一截。
+        return badgeHtml + " " + titleEl.textContent.replace(TITLE_NUM_PREFIX_RE, "");
       }
       function renderDone() {
         answerBox.innerHTML = answerHtml('<span class="dictate-badge ok">✓ 正解</span>');
