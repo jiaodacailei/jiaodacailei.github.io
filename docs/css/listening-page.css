@@ -489,11 +489,20 @@ body.mode-dictate .seg-card .seg-example { display: none; }
 body.mode-dictate .dictate-ui { display: block; }
 
 .dictate-hint { color: var(--text-muted); font-size: 13px; font-style: italic; margin: 0 0 8px; }
-/* 标题默写（N2语法/词汇页）自己的播放发音按钮——独立一行，不在
-   .dictate-row 里面，locked/active/done 任何状态下都要看得见（跟
-   .dictate-row本身会在locked/done状态被隐藏不一样），所以单独给一条
-   margin，不依赖 .dictate-row 的 flex 布局。 */
-.dictate-play-word { display: inline-block; margin: 0 0 10px; }
+/* 标题默写（N2语法/词汇页）自己的播放发音按钮——跟中文提示同一行（不是
+   独立成行），locked/active/done 任何状态下都要看得见（跟 .dictate-row
+   本身会在locked/done状态被隐藏不一样），所以外面包一层 flex 容器
+   .dictate-hint-row，不依赖 .dictate-row 的布局。颜色跟"单词测试"tab
+   里同名的"▶ 播放发音"按钮（.quiz-play-btn）保持一致，同一个交互在
+   两个地方长得不一样容易让人以为是两种功能。 */
+.dictate-hint-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 8px; }
+.dictate-hint-row .dictate-hint { margin: 0; }
+.dictate-play-word {
+  border: 1px solid var(--blue-light); background: var(--blue-xlight); color: var(--blue-dark);
+  border-radius: 999px; padding: 5px 14px; font-size: 12.5px; font-weight: 600; cursor: pointer;
+  white-space: nowrap;
+}
+.dictate-play-word:hover { background: var(--blue-light); }
 .dictate-row { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
 .dictate-input {
   flex: 1; min-width: 160px; padding: 8px 10px; border: 1px solid var(--border);
