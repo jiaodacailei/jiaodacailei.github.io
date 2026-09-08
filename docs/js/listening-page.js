@@ -1270,6 +1270,22 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return raw.replace(TITLE_NUM_PREFIX_RE, "").replace(TITLE_TRAILING_FULLWIDTH_PAREN_RE, "").trim();
     }
 
+    // 播放单词发音用的最简单播放器——不能直接复用上面"练习模式"那段代码
+    // 之外定义的 playExampleAudio()（本文件按功能拆成好几个独立 IIFE，
+    // 那个函数在另一个 IIFE 作用域里，这里引用不到，真实报错
+    // "ReferenceError: playExampleAudio is not defined"）。不需要那份
+    // 完整实现里的 .seg-card 归属查找/加载中转圈动画/Cache Storage
+    // 预热——这里的 <audio> 不在任何 .seg-card 里，这些都用不上，直接
+    // 播放就够。stopAllAudio 是全站共用的自定义事件（跨 IIFE 靠 document
+    // 这个共享对象广播，不受各自独立作用域影响），派发它可以先把迷你
+    // 播放器等其它正在播的音频停掉。
+    function playWordAudio(audio) {
+      document.dispatchEvent(new CustomEvent("stopAllAudio"));
+      audio.currentTime = 0;
+      var p = audio.play();
+      if (p && p.catch) p.catch(function() {});
+    }
+
     // overview 本来是常驻显示、不受练习模式影响的——但语法点 overview 第
     // 一行"接续：……"经常直接把语法点原文写在里面（比如"接续：动た形/
     // 名一の＋あげく（に）"），标题默写时如果 overview 照常整段显示，等于
@@ -1294,12 +1310,26 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var overviewEl = block.querySelector(".q-overview");
       var hintText = overviewEl ? safeOverviewHint(overviewEl.textContent) : "";
 
+      // 默写/填空模式下标题文字（.q-title-text）被 CSS 藏起来，<h3> 里就
+      // 只剩一个不占视觉空间的 <audio>（没有 controls），整个 <h3> 塌缩成
+      // 零高度——点击播放单词发音那个交互（h3.click 绑的监听器，见下面
+      // "点击标题播放单词发音"那段）虽然还挂在 h3 上，但已经没有任何看得见
+      // 的区域可以点了。真实反馈"默写和填空模式时，无法播放单词的音频"。
+      // 这里在默写输入框自己的界面里额外放一个播放按钮，直接绕开
+      // "点h3"这条路径，用同一个 <audio> 元素、同一套 playExampleAudio()
+      // 单次播放逻辑——默写/填空本来就该能听着发音写，不是只能凭记忆猜。
+      var wordAudioEl = titleEl.closest("h3").querySelector("audio.word-audio");
+      var playBtnHtml = wordAudioEl
+        ? '<button type="button" class="dictate-btn dictate-play-word">▶ 播放发音</button>'
+        : "";
+
       var ui = document.createElement("div");
       ui.className = "dictate-ui q-title-dictate";
       ui.innerHTML =
         '<div class="dictate-hint"></div>' +
         '<div class="dictate-row">' +
           '<textarea class="dictate-input" rows="1" autocomplete="off" placeholder="写出这个词/语法点…"></textarea>' +
+          playBtnHtml +
           '<button type="button" class="dictate-btn dictate-check">確認</button>' +
         '</div>' +
         '<div class="dictate-status"></div>' +
@@ -1311,15 +1341,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
       var input = ui.querySelector(".dictate-input");
       var checkBtn = ui.querySelector(".dictate-check");
+      var playWordBtn = ui.querySelector(".dictate-play-word");
       var status = ui.querySelector(".dictate-status");
       var answerBox = ui.querySelector(".dictate-answer");
       var redoBtn = ui.querySelector(".dictate-redo");
       var lockedBtn = ui.querySelector(".dictate-locked");
       var hintBox = ui.querySelector(".dictate-hint");
       hintBox.textContent = hintText;
-      [input, checkBtn, redoBtn, lockedBtn].forEach(function(el) {
-        el.addEventListener("click", function(e) { e.stopPropagation(); });
+      [input, checkBtn, redoBtn, lockedBtn, playWordBtn].forEach(function(el) {
+        if (el) el.addEventListener("click", function(e) { e.stopPropagation(); });
       });
+      if (playWordBtn) {
+        playWordBtn.addEventListener("click", function() { playWordAudio(wordAudioEl); });
+      }
 
       var titleId = block.id; // "q-1-5"，页面内天然唯一，直接当 key 用
 
