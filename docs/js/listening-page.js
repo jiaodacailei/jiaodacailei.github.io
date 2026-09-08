@@ -1315,9 +1315,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 零高度——点击播放单词发音那个交互（h3.click 绑的监听器，见下面
       // "点击标题播放单词发音"那段）虽然还挂在 h3 上，但已经没有任何看得见
       // 的区域可以点了。真实反馈"默写和填空模式时，无法播放单词的音频"。
-      // 这里在默写输入框自己的界面里额外放一个播放按钮，直接绕开
-      // "点h3"这条路径，用同一个 <audio> 元素、同一套 playExampleAudio()
-      // 单次播放逻辑——默写/填空本来就该能听着发音写，不是只能凭记忆猜。
+      // 这里在默写卡片自己的界面里额外放一个播放按钮，直接绕开"点h3"这条
+      // 路径，用同一个 <audio> 元素单次播放——默写/填空本来就该能听着
+      // 发音写，不是只能凭记忆猜。
+      //
+      // 放在 .dictate-hint 后面自己独立一行，不是塞进 .dictate-row 里面——
+      // .dictate-row 在"locked"状态（还没点"开始练习"之前）是display:none
+      // 的，塞进去会导致刚打开卡片、还没点开始练习时完全看不到这个按钮，
+      // 第一版就是这么写的，真实反馈"'▶ 播放发音' button 没有看到"——
+      // 播放发音应该在写之前就能听、不需要先点"开始练习"解锁。
       var wordAudioEl = titleEl.closest("h3").querySelector("audio.word-audio");
       var playBtnHtml = wordAudioEl
         ? '<button type="button" class="dictate-btn dictate-play-word">▶ 播放发音</button>'
@@ -1327,9 +1333,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       ui.className = "dictate-ui q-title-dictate";
       ui.innerHTML =
         '<div class="dictate-hint"></div>' +
+        playBtnHtml +
         '<div class="dictate-row">' +
           '<textarea class="dictate-input" rows="1" autocomplete="off" placeholder="写出这个词/语法点…"></textarea>' +
-          playBtnHtml +
           '<button type="button" class="dictate-btn dictate-check">確認</button>' +
         '</div>' +
         '<div class="dictate-status"></div>' +
