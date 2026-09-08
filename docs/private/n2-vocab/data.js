@@ -11,6 +11,7 @@ window.LESSON_DATA = {
           "overview": "[副] 依然，照旧；跟从前一样",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-001.mp3",
           "sentences": [
             {
               "id": 1,
@@ -81,6 +82,7 @@ window.LESSON_DATA = {
           "overview": "[名] 熨斗",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-002.mp3",
           "sentences": [
             {
               "id": 2,
@@ -186,6 +188,7 @@ window.LESSON_DATA = {
           "overview": "[接頭] 冰……",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-003.mp3",
           "sentences": [
             {
               "id": 4,
@@ -264,6 +267,7 @@ window.LESSON_DATA = {
           "overview": "[名] 想法，主意",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-004.mp3",
           "sentences": [
             {
               "id": 6,
@@ -370,6 +374,7 @@ window.LESSON_DATA = {
           "overview": "[名] 灵机一动，偶然想起；主意，点子\n（书中标注为“アイデア”的类义词）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-005.mp3",
           "sentences": []
         },
         {
@@ -377,6 +382,7 @@ window.LESSON_DATA = {
           "overview": "[副・ナ形] 不凑巧，不随人愿",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-006.mp3",
           "sentences": [
             {
               "id": 8,
@@ -480,6 +486,7 @@ window.LESSON_DATA = {
           "overview": "[连语] 真不凑巧，很遗憾（用于婉拒或表示遗憾）\n（headword行在照片边缘缺失，释义据例句与常用义补全，可信度略低）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-007.mp3",
           "sentences": [
             {
               "id": 10,
@@ -527,6 +534,7 @@ window.LESSON_DATA = {
           "overview": "[名] 外側，外部；（球）出界，出局\n（反义词：イン(in)[名] 内部，内侧；界内球，场内球）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-008.mp3",
           "sentences": [
             {
               "id": 11,
@@ -612,6 +620,7 @@ window.LESSON_DATA = {
           "overview": "[名・自他動3] 信号，暗号",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-009.mp3",
           "sentences": [
             {
               "id": 13,
@@ -692,6 +701,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 署名，签字；暗号，示意动作",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-010.mp3",
           "sentences": []
         },
         {
@@ -699,6 +709,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 青白色的；苍白的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-011.mp3",
           "sentences": [
             {
               "id": 15,
@@ -732,6 +743,7 @@ window.LESSON_DATA = {
           "overview": "[名] 赤字，亏空\n（反义词：黒字(くろじ)[名] 黑字，盈余）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-012.mp3",
           "sentences": [
             {
               "id": 16,
@@ -803,6 +815,7 @@ window.LESSON_DATA = {
           "overview": "[名] 偶像，被人崇拜的对象",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-013.mp3",
           "sentences": [
             {
               "id": 18,
@@ -886,6 +899,7 @@ window.LESSON_DATA = {
           "overview": "[自他動1] （价格、水平等）提高，上升；（雨、烟花等）停，住；\n（\"行く/訪問する\"的自谦语）去，拜访；（在人前）紧张，怯场",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-014.mp3",
           "sentences": [
             {
               "id": 20,
@@ -1142,6 +1156,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 握手",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-015.mp3",
           "sentences": [
             {
               "id": 25,
@@ -1186,6 +1201,7 @@ window.LESSON_DATA = {
           "overview": "[接尾] （接在动词连用形后）表示动作向上或彻底完成",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-016.mp3",
           "sentences": [
             {
               "id": 26,
@@ -1257,6 +1273,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 访问，连接；通道，（去某地）交通的便利性",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-017.mp3",
           "sentences": [
             {
               "id": 28,
@@ -1396,6 +1413,7 @@ window.LESSON_DATA = {
           "overview": "[名] 哈欠",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-018.mp3",
           "sentences": [
             {
               "id": 30,
@@ -1443,6 +1461,7 @@ window.LESSON_DATA = {
           "overview": "[接頭] 空的，无内容的；空闲",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-019.mp3",
           "sentences": [
             {
               "id": 31,
@@ -1562,6 +1581,7 @@ window.LESSON_DATA = {
           "overview": "[名] 恶魔，魔鬼",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-020.mp3",
           "sentences": [
             {
               "id": 33,
@@ -1594,6 +1614,7 @@ window.LESSON_DATA = {
           "overview": "[副] 无论如何……，彻底地；坚决地",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-021.mp3",
           "sentences": [
             {
               "id": 34,
@@ -1685,6 +1706,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 没长性的，容易厌烦的性格",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-022.mp3",
           "sentences": [
             {
               "id": 36,
@@ -1726,6 +1748,7 @@ window.LESSON_DATA = {
           "overview": "[连体] 下一个，第二个",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-023.mp3",
           "sentences": [
             {
               "id": 37,
@@ -1792,6 +1815,7 @@ window.LESSON_DATA = {
           "overview": "[自動2] 惊呆，因意外而无语；吃惊",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-024.mp3",
           "sentences": [
             {
               "id": 39,
@@ -1892,6 +1916,7 @@ window.LESSON_DATA = {
           "overview": "[名] 黎明，拂晓，天亮时分\n（反义词：暮れ方(くれがた)[名] 傍晚，日暮时分）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-025.mp3",
           "sentences": []
         },
         {
@@ -1899,6 +1924,7 @@ window.LESSON_DATA = {
           "overview": "[他動2] 空出，腾出（时间/空间）；不在家\n（同音词：明ける[自動2] 天明；过年；期满，到期 / 開ける[他動2] 打开；开办）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-026.mp3",
           "sentences": [
             {
               "id": 41,
@@ -1988,6 +2014,7 @@ window.LESSON_DATA = {
           "overview": "[名] 恶，坏",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-027.mp3",
           "sentences": [
             {
               "id": 43,
@@ -2073,6 +2100,7 @@ window.LESSON_DATA = {
           "overview": "[名] 不良影响",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-028.mp3",
           "sentences": [
             {
               "id": 45,
@@ -2117,6 +2145,7 @@ window.LESSON_DATA = {
           "overview": "[名] 恶性循环",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-029.mp3",
           "sentences": []
         },
         {
@@ -2124,6 +2153,7 @@ window.LESSON_DATA = {
           "overview": "[名・他動3] 压缩，缩减；（预算/篇幅等）削减",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-030.mp3",
           "sentences": [
             {
               "id": 46,
@@ -2196,6 +2226,7 @@ window.LESSON_DATA = {
           "overview": "[名] 早晚；朝夕，成天",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-031.mp3",
           "sentences": [
             {
               "id": 48,
@@ -2240,6 +2271,7 @@ window.LESSON_DATA = {
           "overview": "[名・自他動3] 上涨，上升；提高\n（反义词：ダウン(down)[名・自他動3] 下降，降低）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-032.mp3",
           "sentences": [
             {
               "id": 49,
@@ -2317,6 +2349,7 @@ window.LESSON_DATA = {
           "overview": "[名] 足迹，脚印；踪迹",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-033.mp3",
           "sentences": [
             {
               "id": 51,
@@ -2420,6 +2453,7 @@ window.LESSON_DATA = {
           "overview": "[他動1] 品尝，品味；经历，体验",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-034.mp3",
           "sentences": [
             {
               "id": 53,
@@ -2521,6 +2555,7 @@ window.LESSON_DATA = {
           "overview": "[名] 压力",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-035.mp3",
           "sentences": [
             {
               "id": 55,
@@ -2576,6 +2611,7 @@ window.LESSON_DATA = {
           "overview": "[名] 憧憬，向往",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-036.mp3",
           "sentences": [
             {
               "id": 57,
@@ -2618,6 +2654,7 @@ window.LESSON_DATA = {
           "overview": "[自動2] 憧憬，向往",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-037.mp3",
           "sentences": [
             {
               "id": 58,
@@ -2710,6 +2747,7 @@ window.LESSON_DATA = {
           "overview": "[名] 早饭（比“朝食”更随意的男性用语）\n朝飯前 [イ形] 易如反掌，轻而易举",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-038.mp3",
           "sentences": [
             {
               "id": 60,
@@ -2762,6 +2800,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] （状态、病情等）恶化\n（反义词：好転(こうてん)[名・自動3] 好转）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-039.mp3",
           "sentences": [
             {
               "id": 61,
@@ -2802,6 +2841,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 厚脸皮的，无耻的\n（同义词：ずうずうしい [イ形] 厚脸皮的，无耻的）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-040.mp3",
           "sentences": [
             {
               "id": 62,
@@ -2862,6 +2902,7 @@ window.LESSON_DATA = {
           "overview": "[接尾] 寄往……，送往……（人名/地址后）\n（同音词：当て[名] 目标，目的；指望，希望）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-041.mp3",
           "sentences": [
             {
               "id": 63,
@@ -2899,6 +2940,7 @@ window.LESSON_DATA = {
           "overview": "当て嵌まる [自動1] 符合（一定条件），相配\n当て嵌める [他動2] 使符合，套用",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-042.mp3",
           "sentences": [
             {
               "id": 64,
@@ -2997,6 +3039,7 @@ window.LESSON_DATA = {
           "overview": "[ナ形・イ形] （气温）温暖的；（气氛、内心等）温馨的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-043.mp3",
           "sentences": [
             {
               "id": 66,
@@ -3059,6 +3102,7 @@ window.LESSON_DATA = {
           "overview": "[他動2] 打中，碰上；使接触；晒；中奖；猜测",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-044.mp3",
           "sentences": [
             {
               "id": 68,
@@ -3200,6 +3244,7 @@ window.LESSON_DATA = {
           "overview": "[名] 脂肪，油脂",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-045.mp3",
           "sentences": [
             {
               "id": 71,
@@ -3240,6 +3285,7 @@ window.LESSON_DATA = {
           "overview": "[他動1] 烧，烤；靠近火源取暖",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-046.mp3",
           "sentences": [
             {
               "id": 72,
@@ -3324,6 +3370,7 @@ window.LESSON_DATA = {
           "overview": "[名] 约定，约会（“アポイントメント”的略语）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-047.mp3",
           "sentences": [
             {
               "id": 74,
@@ -3384,6 +3431,7 @@ window.LESSON_DATA = {
           "overview": "[名] 踪迹，痕迹；行踪，下落",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-048.mp3",
           "sentences": [
             {
               "id": 75,
@@ -3458,6 +3506,7 @@ window.LESSON_DATA = {
           "overview": "[名・他動3] 整理，收拾（善后）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-049.mp3",
           "sentences": [
             {
               "id": 77,
@@ -3506,6 +3555,7 @@ window.LESSON_DATA = {
           "overview": "[名] 业余爱好者（“アマチュア(amateur)”的略语）\n（反义词：プロ [名] 专家，内行，“プロフェッショナル(professional)”的略语）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-050.mp3",
           "sentences": []
         },
         {
@@ -3513,6 +3563,7 @@ window.LESSON_DATA = {
           "overview": "[名] 善后，收尾",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-051.mp3",
           "sentences": []
         },
         {
@@ -3520,6 +3571,7 @@ window.LESSON_DATA = {
           "overview": "[名] 防雨门，护窗板\n（关联词：雨具(あまぐ)[名] 雨具，如雨伞、雨鞋等）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-052.mp3",
           "sentences": [
             {
               "id": 78,
@@ -3560,6 +3612,7 @@ window.LESSON_DATA = {
           "overview": "[名] 洞，窟窿；破绽，缺点；亏空",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-053.mp3",
           "sentences": [
             {
               "id": 79,
@@ -3658,6 +3711,7 @@ window.LESSON_DATA = {
           "overview": "[名] 风雨；又刮风又下雨",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-054.mp3",
           "sentences": []
         },
         {
@@ -3665,6 +3719,7 @@ window.LESSON_DATA = {
           "overview": "[自動2] 胡闹，乱闹；大显身手",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-055.mp3",
           "sentences": [
             {
               "id": 81,
@@ -3763,6 +3818,7 @@ window.LESSON_DATA = {
           "overview": "[他動1] 宠，娇惯（孩子）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-056.mp3",
           "sentences": [
             {
               "id": 83,
@@ -3811,6 +3867,7 @@ window.LESSON_DATA = {
           "overview": "[名・ナ形・副] 剩余，剩下的部分；过于……，过分（不）……；因过于……（导致后项结果）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-057.mp3",
           "sentences": [
             {
               "id": 84,
@@ -3914,6 +3971,7 @@ window.LESSON_DATA = {
           "overview": "[他動2] 淋，浇；照，晒；遭受",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-058.mp3",
           "sentences": [
             {
               "id": 86,
@@ -4005,6 +4063,7 @@ window.LESSON_DATA = {
           "overview": "[副] 过于……，太……",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-059.mp3",
           "sentences": [
             {
               "id": 88,
@@ -4076,6 +4135,7 @@ window.LESSON_DATA = {
           "overview": "[名] 概要，大纲",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-060.mp3",
           "sentences": [
             {
               "id": 89,
@@ -4125,6 +4185,7 @@ window.LESSON_DATA = {
           "overview": "[名] 梗概，大纲，要点",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-061.mp3",
           "sentences": []
         },
         {
@@ -4132,6 +4193,7 @@ window.LESSON_DATA = {
           "overview": "[名] 争论，纠纷",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-062.mp3",
           "sentences": [
             {
               "id": 90,
@@ -4180,6 +4242,7 @@ window.LESSON_DATA = {
           "overview": "[自他動1] 争吵，争斗；竞争",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-063.mp3",
           "sentences": []
         },
         {
@@ -4187,6 +4250,7 @@ window.LESSON_DATA = {
           "overview": "[名] 网\n（关联词：～網(～もう)[接尾] ……网）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-064.mp3",
           "sentences": [
             {
               "id": 91,
@@ -4227,6 +4291,7 @@ window.LESSON_DATA = {
           "overview": "[副] 争先恐后地",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-065.mp3",
           "sentences": [
             {
               "id": 92,
@@ -4306,6 +4371,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 危险的，不安全的；危急",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-066.mp3",
           "sentences": [
             {
               "id": 93,
@@ -4366,6 +4432,7 @@ window.LESSON_DATA = {
           "overview": "[自動1] 更新，更替；郑重，庄重起来",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-067.mp3",
           "sentences": [
             {
               "id": 94,
@@ -4439,6 +4506,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 危险的；靠不住，令人担心",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-068.mp3",
           "sentences": [
             {
               "id": 96,
@@ -4479,6 +4547,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 可疑的，让人放心不下的；靠不住的，糟糕的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-069.mp3",
           "sentences": [
             {
               "id": 97,
@@ -4544,6 +4613,7 @@ window.LESSON_DATA = {
           "overview": "[副] 另（找机会）……，改日；重新",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-070.mp3",
           "sentences": [
             {
               "id": 99,
@@ -4597,6 +4667,7 @@ window.LESSON_DATA = {
           "overview": "[他動2] 改变，更新；端正，郑重其事",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-071.mp3",
           "sentences": [
             {
               "id": 100,
@@ -4685,6 +4756,7 @@ window.LESSON_DATA = {
           "overview": "[他動1] 感到奇怪，觉得可疑",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-072.mp3",
           "sentences": [
             {
               "id": 102,
@@ -4791,6 +4863,7 @@ window.LESSON_DATA = {
           "overview": "[名] 错误，失误",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-073.mp3",
           "sentences": [
             {
               "id": 104,
@@ -4835,6 +4908,7 @@ window.LESSON_DATA = {
           "overview": "[他動1] 著（书），写作",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-074.mp3",
           "sentences": [
             {
               "id": 105,
@@ -4884,6 +4958,7 @@ window.LESSON_DATA = {
           "overview": "[他動1] 显现，展现\n（同音关联词：表す/顕す，均读作あらわす，各有侧重）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-075.mp3",
           "sentences": []
         },
         {
@@ -4891,6 +4966,7 @@ window.LESSON_DATA = {
           "overview": "[名] 显露，体现",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-076.mp3",
           "sentences": [
             {
               "id": 106,
@@ -4932,6 +5008,7 @@ window.LESSON_DATA = {
           "overview": "[名] 暴风雨；骚乱",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-077.mp3",
           "sentences": []
         },
         {
@@ -4939,6 +5016,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] （颜色）浅的，淡的；微弱的\n（反义词：濃い(こい)[イ形]（颜色）浓的，深的；（味道）浓重的）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-078.mp3",
           "sentences": [
             {
               "id": 107,
@@ -5013,6 +5091,7 @@ window.LESSON_DATA = {
           "overview": "[名] 现款，手头有的钱",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-079.mp3",
           "sentences": [
             {
               "id": 109,
@@ -5065,6 +5144,7 @@ window.LESSON_DATA = {
           "overview": "[接尾] 使……一致，配……",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-080.mp3",
           "sentences": [
             {
               "id": 110,
@@ -5126,6 +5206,7 @@ window.LESSON_DATA = {
           "overview": "[接尾] 使……组合，配合",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-081.mp3",
           "sentences": [
             {
               "id": 112,
@@ -5236,6 +5317,7 @@ window.LESSON_DATA = {
           "overview": "[副] 那样，那么多",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-082.mp3",
           "sentences": [
             {
               "id": 114,
@@ -5292,6 +5374,7 @@ window.LESSON_DATA = {
           "overview": "[自動2] （天气）恶劣；（局面）混乱；粗糙；荒芜",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-083.mp3",
           "sentences": [
             {
               "id": 115,
@@ -5418,6 +5501,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 慌忙的，匆忙的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-084.mp3",
           "sentences": [
             {
               "id": 118,
@@ -5462,6 +5546,7 @@ window.LESSON_DATA = {
           "overview": "[名] 冒失鬼，急性子",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-085.mp3",
           "sentences": [
             {
               "id": 119,
@@ -5540,6 +5625,7 @@ window.LESSON_DATA = {
           "overview": "[名] 过敏反应，过敏",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-086.mp3",
           "sentences": [
             {
               "id": 120,
@@ -5651,6 +5737,7 @@ window.LESSON_DATA = {
           "overview": "[名・ナ形] 悲哀，哀愁；可怜\n（关联词：哀れむ(あわれむ)[他動1] 怜悯，可怜）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-087.mp3",
           "sentences": [
             {
               "id": 122,
@@ -5717,6 +5804,7 @@ window.LESSON_DATA = {
           "overview": "[名] 泡沫，唾沫；泡影",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-088.mp3",
           "sentences": [
             {
               "id": 124,
@@ -5815,6 +5903,7 @@ window.LESSON_DATA = {
           "overview": "[名] 想法，主意；方案，草案",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-089.mp3",
           "sentences": [
             {
               "id": 126,
@@ -5863,6 +5952,7 @@ window.LESSON_DATA = {
           "overview": "[名・他動3] 记忆，背诵",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-090.mp3",
           "sentences": [
             {
               "id": 127,
@@ -5919,6 +6009,7 @@ window.LESSON_DATA = {
           "overview": "[名] 天线；获取信息所需的手段",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-091.mp3",
           "sentences": [
             {
               "id": 129,
@@ -6026,6 +6117,7 @@ window.LESSON_DATA = {
           "overview": "[名・ナ形・副] 适可而止；敷衍，不靠谱；相当，很",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-092.mp3",
           "sentences": [
             {
               "id": 131,
@@ -6098,6 +6190,7 @@ window.LESSON_DATA = {
           "overview": "[他動2] 命令，吩咐；告状",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-093.mp3",
           "sentences": [
             {
               "id": 133,
@@ -6217,6 +6310,7 @@ window.LESSON_DATA = {
           "overview": "[接尾] （表示顺序）第……名；（表示地位、等级）……位",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-094.mp3",
           "sentences": [
             {
               "id": 135,
@@ -6261,6 +6355,7 @@ window.LESSON_DATA = {
           "overview": "[接尾] ……医",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-095.mp3",
           "sentences": [
             {
               "id": 137,
@@ -6301,6 +6396,7 @@ window.LESSON_DATA = {
           "overview": "[他動2] 转达，传话；（传说）代代相传",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-096.mp3",
           "sentences": [
             {
               "id": 139,
@@ -6401,6 +6497,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 借口，辩解",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-097.mp3",
           "sentences": [
             {
               "id": 141,
@@ -6445,6 +6542,7 @@ window.LESSON_DATA = {
           "overview": "[名・自他動3] 争吵，口角",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-098.mp3",
           "sentences": []
         },
         {
@@ -6452,6 +6550,7 @@ window.LESSON_DATA = {
           "overview": "[他動1] 表达，描述",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-099.mp3",
           "sentences": [
             {
               "id": 142,
@@ -6505,6 +6604,7 @@ window.LESSON_DATA = {
           "overview": "[名] 委员，经选举产生的担任者",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-100.mp3",
           "sentences": [
             {
               "id": 143,
@@ -6529,6 +6629,7 @@ window.LESSON_DATA = {
           "overview": "[名] （小）医院，通常指个人经营的诊所\n（关联词：クリニック(clinic)[名] 诊所（私人医院）/ 診療所(しんりょうじょ)[名] 诊所）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-101.mp3",
           "sentences": []
         },
         {
@@ -6536,6 +6637,7 @@ window.LESSON_DATA = {
           "overview": "[自動1] 幸存，活下来",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-102.mp3",
           "sentences": [
             {
               "id": 144,
@@ -6637,6 +6739,7 @@ window.LESSON_DATA = {
           "overview": "[名] 做某事的价值，值得做",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-103.mp3",
           "sentences": [
             {
               "id": 146,
@@ -6685,6 +6788,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 离家出走",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-104.mp3",
           "sentences": [
             {
               "id": 147,
@@ -6733,6 +6837,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 育婴，育儿",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-105.mp3",
           "sentences": [
             {
               "id": 148,
@@ -6757,6 +6862,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 抚养孩子",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-106.mp3",
           "sentences": []
         },
         {
@@ -6764,6 +6870,7 @@ window.LESSON_DATA = {
           "overview": "[名] 愤怒，生气",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-107.mp3",
           "sentences": [
             {
               "id": 149,
@@ -6808,6 +6915,7 @@ window.LESSON_DATA = {
           "overview": "[名・副] 一部分；少许，有点儿",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-108.mp3",
           "sentences": [
             {
               "id": 150,
@@ -6861,6 +6969,7 @@ window.LESSON_DATA = {
           "overview": "[名・接尾] 去，往；（接地名后）表示去向",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-109.mp3",
           "sentences": [
             {
               "id": 151,
@@ -6930,6 +7039,7 @@ window.LESSON_DATA = {
           "overview": "[名] 插花，花道\n（关联词：華道(かどう)[名] 花道，江户前期形成的插花技艺总称）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-110.mp3",
           "sentences": []
         },
         {
@@ -6937,6 +7047,7 @@ window.LESSON_DATA = {
           "overview": "[他動2] 插（花）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-111.mp3",
           "sentences": [
             {
               "id": 152,
@@ -6977,6 +7088,7 @@ window.LESSON_DATA = {
           "overview": "[名] 气势，势头，气焰",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-112.mp3",
           "sentences": [
             {
               "id": 153,
@@ -7030,6 +7142,7 @@ window.LESSON_DATA = {
           "overview": "[名] 生存的意义，生活的目标",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-113.mp3",
           "sentences": [
             {
               "id": 154,
@@ -7149,6 +7262,7 @@ window.LESSON_DATA = {
           "overview": "[名] ……以后，……之后",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-114.mp3",
           "sentences": [
             {
               "id": 156,
@@ -7219,6 +7333,7 @@ window.LESSON_DATA = {
           "overview": "[名] 小酒馆，小饭店\n（关联词：酒屋(さかや)[名] 卖酒的店；酿酒作坊）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-115.mp3",
           "sentences": [
             {
               "id": 158,
@@ -7273,6 +7388,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 使坏的，刁难人的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-116.mp3",
           "sentences": [
             {
               "id": 159,
@@ -7321,6 +7437,7 @@ window.LESSON_DATA = {
           "overview": "[名] 泉，泉水；（比喻）事物的源头",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-117.mp3",
           "sentences": [
             {
               "id": 160,
@@ -7395,6 +7512,7 @@ window.LESSON_DATA = {
           "overview": "[イ形] 勇敢的，勇猛的，威武的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-118.mp3",
           "sentences": [
             {
               "id": 162,
@@ -7468,6 +7586,7 @@ window.LESSON_DATA = {
           "overview": "[副] 不管怎样，反正，总之",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-119.mp3",
           "sentences": [
             {
               "id": 164,
@@ -7541,6 +7660,7 @@ window.LESSON_DATA = {
           "overview": "[连语] 紧要（关键）时刻",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-120.mp3",
           "sentences": [
             {
               "id": 165,
@@ -7593,6 +7713,7 @@ window.LESSON_DATA = {
           "overview": "[连语] 一旦（真）到了那时候，万一真出现（紧急）状况",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-121.mp3",
           "sentences": [
             {
               "id": 166,
@@ -7664,6 +7785,7 @@ window.LESSON_DATA = {
           "overview": "[名] 异性\n（反义词：同性(どうせい)[名] 同性）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-122.mp3",
           "sentences": []
         },
         {
@@ -7671,6 +7793,7 @@ window.LESSON_DATA = {
           "overview": "[名] 板；切菜板，厨师，舞台\n（同音关联：板につく [连语] 熟练，老练；恰如其分）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-123.mp3",
           "sentences": [
             {
               "id": 167,
@@ -7704,6 +7827,7 @@ window.LESSON_DATA = {
           "overview": "[名] 医师，医生\n（关联词：歯科医師 [名] 牙科医生）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-124.mp3",
           "sentences": []
         },
         {
@@ -7711,6 +7835,7 @@ window.LESSON_DATA = {
           "overview": "[ナ形] 宏伟的，伟大的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-125.mp3",
           "sentences": [
             {
               "id": 168,
@@ -7769,6 +7894,7 @@ window.LESSON_DATA = {
           "overview": "[名] 意思，想法，打算",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-126.mp3",
           "sentences": []
         },
         {
@@ -7776,6 +7902,7 @@ window.LESSON_DATA = {
           "overview": "[名] 意志，明确的想法",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-127.mp3",
           "sentences": [
             {
               "id": 170,
@@ -7816,6 +7943,7 @@ window.LESSON_DATA = {
           "overview": "[名・他動3] 维持，保持原有状态",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-128.mp3",
           "sentences": [
             {
               "id": 171,
@@ -7872,6 +8000,7 @@ window.LESSON_DATA = {
           "overview": "[名・ナ形] 使坏，故意刁难人；坏心眼的（人）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-129.mp3",
           "sentences": [
             {
               "id": 173,
@@ -7907,6 +8036,7 @@ window.LESSON_DATA = {
           "overview": "傷み [名]（食品）腐坏；（物品）损坏\n傷む [自動1] （食品）腐坏；（物品）损坏\n（同音关联：痛み/痛む，均读作いたみ/いたむ，指身体的疼痛）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-130.mp3",
           "sentences": [
             {
               "id": 174,
@@ -8030,6 +8160,7 @@ window.LESSON_DATA = {
           "overview": "痛める [他動2]（身体）使受伤，损伤；使为难，伤脑筋\n傷める [他動2]（物品）使损伤",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-131.mp3",
           "sentences": [
             {
               "id": 176,
@@ -8127,6 +8258,7 @@ window.LESSON_DATA = {
           "overview": "[自動1] 到，抵达；（从……）到（……）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-132.mp3",
           "sentences": [
             {
               "id": 178,
@@ -8227,6 +8359,7 @@ window.LESSON_DATA = {
           "overview": "[副] 处处，到处",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-133.mp3",
           "sentences": [
             {
               "id": 180,
@@ -8280,6 +8413,7 @@ window.LESSON_DATA = {
           "overview": "[副] （下接否定）丝毫（不）……；完全，全然",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-134.mp3",
           "sentences": [
             {
               "id": 181,
@@ -8378,6 +8512,7 @@ window.LESSON_DATA = {
           "overview": "[名・副] 一切，全部；（下接否定）一概（不）……",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-135.mp3",
           "sentences": [
             {
               "id": 183,
@@ -8473,6 +8608,7 @@ window.LESSON_DATA = {
           "overview": "[名・副] 一一，逐一，件件",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-136.mp3",
           "sentences": [
             {
               "id": 185,
@@ -8592,6 +8728,7 @@ window.LESSON_DATA = {
           "overview": "[副] 格外，更加，越发",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-137.mp3",
           "sentences": [
             {
               "id": 187,
@@ -8689,6 +8826,7 @@ window.LESSON_DATA = {
           "overview": "[名] 一流，头等\n（反义词：三流(さんりゅう)[名] 低级，三流）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-138.mp3",
           "sentences": [
             {
               "id": 189,
@@ -8743,6 +8881,7 @@ window.LESSON_DATA = {
           "overview": "[副] 一口气，中途不休息",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-139.mp3",
           "sentences": [
             {
               "id": 191,
@@ -8804,6 +8943,7 @@ window.LESSON_DATA = {
           "overview": "[副] 大致，大体；姑且，暂且",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-140.mp3",
           "sentences": [
             {
               "id": 192,
@@ -8889,6 +9029,7 @@ window.LESSON_DATA = {
           "overview": "一昨日 [名] 前天（关联词：昨日(さくじつ)[名] 昨天）\n一昨年 [名] 前年（关联词：昨年(さくねん)[名] 去年）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-141.mp3",
           "sentences": []
         },
         {
@@ -8896,6 +9037,7 @@ window.LESSON_DATA = {
           "overview": "[副] （下接否定）一概（不）……",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-142.mp3",
           "sentences": [
             {
               "id": 194,
@@ -8957,6 +9099,7 @@ window.LESSON_DATA = {
           "overview": "[名] 一氧化碳\n（关联词：二酸化炭素(にさんかたんそ)[名] 二氧化碳）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-143.mp3",
           "sentences": []
         },
         {
@@ -8964,6 +9107,7 @@ window.LESSON_DATA = {
           "overview": "[名・副] 一种，一类；说不清的某种",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-144.mp3",
           "sentences": [
             {
               "id": 195,
@@ -9027,6 +9171,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 一致，相符；团结",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-145.mp3",
           "sentences": [
             {
               "id": 197,
@@ -9083,6 +9228,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 一周，环游（世界）一圈",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-146.mp3",
           "sentences": [
             {
               "id": 199,
@@ -9144,6 +9290,7 @@ window.LESSON_DATA = {
           "overview": "[名・自他動3] 一定，某种；固定的",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-147.mp3",
           "sentences": [
             {
               "id": 201,
@@ -9177,6 +9324,7 @@ window.LESSON_DATA = {
           "overview": "[副] 一齐，同时",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-148.mp3",
           "sentences": [
             {
               "id": 202,
@@ -9226,6 +9374,7 @@ window.LESSON_DATA = {
           "overview": "[副] 更，更加，越发",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-149.mp3",
           "sentences": [
             {
               "id": 203,
@@ -9262,6 +9411,7 @@ window.LESSON_DATA = {
           "overview": "[名・自動3] 突然一变，情况一转\n（关联词：心機一転(しんきいってん)[名] 重新振作，心境一新）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-150.mp3",
           "sentences": [
             {
               "id": 204,
@@ -9340,6 +9490,7 @@ window.LESSON_DATA = {
           "overview": "[副] 暂时，姑且；一旦（……就……）",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-151.mp3",
           "sentences": [
             {
               "id": 205,
@@ -9389,6 +9540,7 @@ window.LESSON_DATA = {
           "overview": "[副] 不知不觉，不知什么时候",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-152.mp3",
           "sentences": [
             {
               "id": 206,
@@ -9448,6 +9600,7 @@ window.LESSON_DATA = {
           "overview": "[副] 不知什么时候，不知不觉",
           "answer": "",
           "unit": "第1单元",
+          "wordAudio": "audio/word-153.mp3",
           "sentences": []
         }
       ]

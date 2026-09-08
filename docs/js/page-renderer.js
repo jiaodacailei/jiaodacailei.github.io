@@ -292,9 +292,17 @@
       return html;
     }).join("");
     var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
+    // wordAudio：N2语法/词汇页专属（词条/语法点标题本身的发音，独立于
+    // 例句音频）——真实反馈"点击单词也要可以发音，和例句一样"，点标题
+    // 播这份音频，见 listening-page.js 里 h3 click 那段。没有这个字段的
+    // 页面（普通课文/听力页）不生成这个 <audio> 标签，点标题保持原有的
+    // "从这里开始连续播放"行为不变。
+    var wordAudioHtml = q.wordAudio
+      ? '<audio class="word-audio" preload="none" src="' + esc(q.wordAudio) + '"></audio>'
+      : "";
     return (
       '<div class="question-block" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question"' + unitAttr + '>' +
-        '<h3><span class="q-title-text">' + esc(label) + "</span></h3>" +
+        '<h3><span class="q-title-text">' + esc(label) + "</span>" + wordAudioHtml + "</h3>" +
         overviewHtml + answerHtml + cards +
       "</div>"
     );

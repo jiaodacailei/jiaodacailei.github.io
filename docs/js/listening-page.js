@@ -568,7 +568,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
   document.querySelectorAll('.question-block[data-scope="question"]').forEach(function(block) {
     var h3 = block.querySelector("h3");
+    // wordAudio：N2语法/词汇页专属，词条/语法点标题自己的发音——真实反馈
+    // "点击单词也要可以发音，和例句一样"。有这份音频的标题，点击只单独
+    // 播这一个词（跟点例句一样是单次点播，不接入下面的连续播放队列）；
+    // 没有的（普通课文/听力页，标题是场景名/生词表分组名，没有"这个词
+    // 怎么念"这回事）保持原来"从这里开始连续播放"的行为不变。
+    var wordAudio = h3.querySelector("audio.word-audio");
     h3.addEventListener("click", function() {
+      if (wordAudio) { playExampleAudio(wordAudio); return; }
       var mondaiSec = block.closest(".mondai-section");
       var siblings = mondaiSec ? Array.from(mondaiSec.querySelectorAll('.question-block[data-scope="question"]')) : [block];
       playScope("question", siblings, siblings.indexOf(block));

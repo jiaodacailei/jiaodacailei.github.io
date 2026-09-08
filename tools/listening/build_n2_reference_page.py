@@ -166,6 +166,39 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats):
     return filename, duration, char_times
 
 
+_WORD_NUM_PREFIX_RE = re.compile(r"^\d+\.\s*")
+_WORD_TRAILING_FULLWIDTH_PAREN_RE = re.compile(r"（[^（）]*）$")
+
+
+def word_answer_text(title):
+    """从标题原文抽出"这个词/语法点本身该怎么读"——跟 listening-page.js
+    里 extractTitleAnswer() 完全同一条规则（去掉编号前缀，去掉结尾的全角
+    括注），两处独立各写一份是因为一个跑在Python构建期、一个跑在浏览器里，
+    没有共享模块的机制，规则改动要记得两边一起改。"""
+    return _WORD_TRAILING_FULLWIDTH_PAREN_RE.sub(
+        "", _WORD_NUM_PREFIX_RE.sub("", title)
+    ).strip()
+
+
+def synth_word_audio(text, audio_dir, word_id, stats):
+    """给词条/语法点标题本身合成一份"单独读这个词"的音频——跟例句音频是
+    两回事：例句要跟读高亮，得跑whisper对齐拿char_times；这个只是点一下
+    听发音，不需要逐字时间戳，纯TTS，省掉对齐这一步（不需要model/tmp_wav
+    参数）。文件名前缀"word-"跟例句的"seg-"分开一套独立编号，不共用同一个
+    计数器——例句以后可能因为某条目新增/去掉某句例句而不再对齐，词audio
+    的编号只跟"点"的出现顺序有关，两套编号各自独立递增，互不干扰。"""
+    filename = "word-{:03d}.mp3".format(word_id)
+    out_path = os.path.join(audio_dir, filename)
+    if not os.path.exists(out_path):
+        try:
+            synth_tts(text, out_path)
+        except Exception as e:
+            print(f"[word_id={word_id}] 单词发音TTS FAILED: {e}")
+            stats["word_failed"] = stats.get("word_failed", 0) + 1
+            return None
+    return filename
+
+
 def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label):
     """把 UNITS 展开成 build_lesson_data() 要的 (sentences, questions) 扁平
     列表——跟 l17/l18"语法与表达"tab 的数据形状完全一致，每个语法点/单词
@@ -173,14 +206,18 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
     sentences = []
     questions = []
     seg_id = 0
+    word_id = 0
     for unit in units:
         unit_label = unit.get("label", "")
         for point in unit["points"]:
             question_label = point["title"]
+            word_id += 1
+            word_text = word_answer_text(question_label)
+            word_audio = synth_word_audio(word_text, audio_dir, word_id, stats) if word_text else None
             questions.append({
                 "mondai": mondai_label, "question": question_label,
                 "overview": point.get("overview", ""), "answer": "",
-                "unit": unit_label,
+                "unit": unit_label, "wordAudio": word_audio,
             })
             for ja, zh in point["examples"]:
                 seg_id += 1
