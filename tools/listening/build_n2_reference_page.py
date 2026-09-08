@@ -234,6 +234,129 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
     return sentences, questions
 
 
+_TRAILING_PAREN_CONTENT_RE = re.compile(r"（([^（）]*)）$")
+_KANA_ONLY_RE = re.compile(r"^[぀-ゟ゠-ヿー・～]+$")
+_POS_TAG_RE = re.compile(r"^\[[^\]]*\]\s*")
+
+
+def derive_reading(title, word_text):
+    """给"单词测试"tab的audio2kana/zh2kana两道题型推读音——词条标题结尾的
+    全角括注，如果整段内容本身就是纯假名（"（あいかわらず）"这种），那就是
+    读音；如果不是纯假名（"（iron）"这种英文词源提示，不是读音），说明这个
+    词本身已经是假名了（外来语片假名词自己就能读，标题结尾的英文纯粹是
+    给人看词源用的），读音就是word_text本身。"多个写法用"/"分隔"（"アイデア/
+    アイディア"）这种取第一个当权威读音，不需要两个都收。"""
+    m = _TRAILING_PAREN_CONTENT_RE.search(_WORD_NUM_PREFIX_RE.sub("", title))
+    if m and _KANA_ONLY_RE.match(m.group(1)):
+        return m.group(1)
+    return word_text.split("/")[0].strip("～")
+
+
+def quiz_zh_text(overview):
+    """"单词测试"tab的ja2zh/zh2kana两道题型要用的干净中文释义——只取
+    overview第一行、去掉开头的"[词性]"标签（跟词典抄来的标注一样，不算
+    释义内容本身，来源见 listening-page.js 里 POS_RE 同一条逻辑，这里独立
+    写一份是因为这边是Python、那边是JS，没有共享模块的机制）。"""
+    first_line = (overview or "").split("\n")[0]
+    return _POS_TAG_RE.sub("", first_line).strip()
+
+
+def chunk_group_sizes(n, size=10, min_last=5):
+    """跟 build_exam_vocab.py 的同名函数完全一样的算法（这里独立复制一份，
+    两个脚本没有共享模块的机制）：把n个词按size一组切页，最后一组如果
+    小于min_last就并进上一组。真实反馈"如果最后一组少于5个，就合到上一组
+    吧"——先在N2真题模考的单词测试分类上用过一次，这次是"单词测试"分类
+    和侧栏导航分组（page-renderer.js里的chunkGroupSizes，JS单独一份）
+    两个新场景复用同一条规则。"""
+    if n <= 0:
+        return []
+    if n <= size:
+        return [n]
+    full, rem = divmod(n, size)
+    if rem == 0:
+        return [size] * full
+    if rem < min_last:
+        return [size] * (full - 1) + [size + rem]
+    return [size] * full + [rem]
+
+
+def build_vocab_quiz_items(units):
+    """把 UNITS 展开成"单词测试"tab（跟l17/l18等教材课同一套引擎，
+    listening-page.js里读#vocab-quiz-data的那个IIFE）要吃的数据——
+    每个词条一条，{id, text, kana, zh, sentence, sentence_zh, blank,
+    category, unit, audio}。这套引擎的"填空"题型对sentence/blank没有
+    任何兜底，字段缺失或者blank不是sentence的字面子串会直接在前端崩掉，
+    所以这里发现任何一条对不上就整体硬失败（报出所有问题词），不悄悄跳过
+    ——内容模块（n2_vocab_content.py）必须保证每个词至少有一条例句、
+    example[0]要么word_text本身就是字面子串，要么显式给了quiz_blank
+    覆盖字段。
+
+    category是"组N"，在每个单元内部各自重新分组（不同单元的"组1"是完全
+    不同的一批词）——真实反馈"选中某单元，单词测试也只测那个单元，但是
+    也要按照单词的分组来切"，组距跟侧栏导航分组用同一个size=10/
+    min_last=5，两处看到的"组1"范围因此是一致的。unit字段单独保留（不
+    只靠category区分），供前端顶部"单元选择"下拉框先按单元筛一遍词表、
+    再在筛出来的子集里重新算这个单元自己的"组N"选项。
+
+    "id"字段特意加了个很大的偏移量（QUIZ_ID_OFFSET）——真实踩过的坑：
+    build_page.py 的 sentence_to_data() 里有一段"生词卡片没有自己的
+    blanks时，从quiz_by_id按相同id借一份填空例句"的逻辑（专为"生词卡片
+    本身只有孤立一个词、没有上下文"这种情况设计的），quiz_by_id是直接拿
+    quiz_data的"id"字段当key，如果这里的id也从1开始编号，会跟句子自己的
+    seg_id（build_point_sentences()里按例句出现顺序编的，同样从1开始）
+    发生大量偶然撞车——句子seg_id=5如果刚好等于某个不相关单词的单词测试
+    id=5，这句原本自己就有真实例句的生词卡片会被错误地整个替换成那个
+    不相关单词的填空例句。N2词汇每个词现在都有自己真实的例句（fork已经
+    把21个空例句的词全部补上），根本不需要"借用"这个机制，加偏移量让两边
+    id永远不可能撞上是最简单可靠的隔离办法。音频文件名不用这个偏移后的
+    id（要跟build_point_sentences()里synth_word_audio()用的word_id对上，
+    那边没有偏移），单独留一个word_id变量。"""
+    QUIZ_ID_OFFSET = 1000000
+    items = []
+    word_id = 0
+    problems = []
+    for unit in units:
+        unit_label = unit.get("label", "")
+        group_sizes = chunk_group_sizes(len(unit["points"]))
+        group_labels = []
+        for gi, gsize in enumerate(group_sizes, 1):
+            group_labels.extend([f"组{gi}"] * gsize)
+        for point, group_label in zip(unit["points"], group_labels):
+            word_id += 1
+            title = point["title"]
+            word_text = word_answer_text(title)
+            kana = derive_reading(title, word_text)
+            zh = quiz_zh_text(point.get("overview", ""))
+            examples = point.get("examples") or []
+            if not examples:
+                problems.append(f"{title}: 没有例句")
+                continue
+            ja, zh_sentence = examples[0]
+            blank = point.get("quiz_blank")
+            if not blank:
+                for alt in word_text.split("/"):
+                    alt = alt.strip("～")
+                    if alt and alt in ja:
+                        blank = alt
+                        break
+            if not blank or blank not in ja:
+                problems.append(f"{title}: 例句 {ja!r} 里找不到有效的挖空片段"
+                                 f"（blank={blank!r}），需要补 quiz_blank 字段")
+                continue
+            items.append({
+                "id": QUIZ_ID_OFFSET + word_id, "text": word_text, "kana": kana, "zh": zh,
+                "sentence": ja, "sentence_zh": zh_sentence, "blank": blank,
+                "category": group_label, "unit": unit_label,
+                "audio": f"audio/word-{word_id:03d}.mp3",
+            })
+    if problems:
+        print("FAIL: 以下词条无法生成单词测试数据：")
+        for p in problems:
+            print("  -", p)
+        sys.exit(1)
+    return items
+
+
 def build_mcq_items(mcq_units):
     """把 MCQ_UNITS 展开成 mcq-quiz.js 要吃的扁平JSON数组——纯文本注音，
     不配TTS音频（教材原版这几种题型本身就是阅读/语法判断题，不是听力题，
@@ -272,6 +395,10 @@ def main():
                      "比如「语法点」/「单词」")
     ap.add_argument("--password")
     ap.add_argument("--password-hash")
+    ap.add_argument("--vocab-quiz", action="store_true", help="额外生成"
+                     "「单词测试」tab（跟教材课l17/l18同一套引擎）——"
+                     "只给N2词汇页用，语法页的语法点不是要背读音的词，"
+                     "不适用这套题型，jp-n2-vocab-page skill才会传这个开关。")
     args = ap.parse_args()
     if not args.password and not args.password_hash:
         ap.error("must provide --password or --password-hash")
@@ -298,8 +425,13 @@ def main():
     mcq_data = build_mcq_items(mcq_units)
     print(f"练习题：{len(mcq_data)} 道")
 
+    vocab_quiz_data = build_vocab_quiz_items(units) if args.vocab_quiz else None
+    if vocab_quiz_data is not None:
+        print(f"单词测试：{len(vocab_quiz_data)} 词")
+
     lesson_data = build_lesson_data(
-        args.title, args.subtitle, "", sentences, questions, "audio/"
+        args.title, args.subtitle, "", sentences, questions, "audio/",
+        quiz_data=vocab_quiz_data
     )
     if mcq_data:
         lesson_data["mcq"] = mcq_data

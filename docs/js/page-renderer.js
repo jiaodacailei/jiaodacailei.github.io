@@ -390,6 +390,48 @@
     return lines[0] || "";
   }
 
+  // 词条数量很多时（N2词汇153个词），侧栏一个词一条太长了——真实反馈
+  // "按照每十个单词的分组导航（如果最后一组少于5个，就划到上一组）"，
+  // 分组规则直接照搬 build_exam_vocab.py 的 chunk_group_sizes()（同一个
+  // 用户之前对N2真题模考"单词测试"分类提过一模一样的规则，这里是给侧栏
+  // 导航用，两处场景不同但算法相同，各自独立实现一份，不共用模块）。
+  // 只有超过 size 才分组——语法01只有10个语法点，10不大于size，
+  // 直接走下面 else 分支保持逐条显示，不会被"分组"成唯一一条毫无意义
+  // 的导航。分组边界按 unit 分段各自计算（不跨单元合并一组），保证以后
+  // 追加词汇02时，新单元的分组从它自己的起点重新算，不会把两个单元的
+  // 词混进同一组里。
+  var NAV_GROUP_SIZE = 10;
+  var NAV_GROUP_MIN_LAST = 5;
+  function chunkGroupSizes(n, size, minLast) {
+    if (n <= 0) return [];
+    if (n <= size) return [n];
+    var full = Math.floor(n / size), rem = n % size;
+    if (rem === 0) return new Array(full).fill(size);
+    if (rem < minLast) return new Array(full - 1).fill(size).concat([size + rem]);
+    return new Array(full).fill(size).concat([rem]);
+  }
+  // 按 unit 分段（同一 unit 内连续的 questions 算一段），每段各自跑
+  // chunkGroupSizes，返回 [{startIdx, size, unit}, ...]（startIdx 是
+  // questions 数组里的 0-based 下标，跨越整个 mondai，不是段内相对位置）。
+  function groupQuestionsByUnit(questions) {
+    var groups = [];
+    var i = 0;
+    while (i < questions.length) {
+      var unit = questions[i].unit;
+      var j = i;
+      while (j < questions.length && questions[j].unit === unit) j++;
+      var runLen = j - i;
+      var sizes = chunkGroupSizes(runLen, NAV_GROUP_SIZE, NAV_GROUP_MIN_LAST);
+      var pos = i;
+      sizes.forEach(function (sz) {
+        groups.push({ startIdx: pos, size: sz, unit: unit });
+        pos += sz;
+      });
+      i = j;
+    }
+    return groups;
+  }
+
   // 跟 build_page.py 的 side_nav_list_html() 一一对应（桌面 .toc 和手机
   // .toc-float-panel 共用同一份 <ul> 标记）。questions 传完整对象（不只是
   // 标签字符串）是因为要点里同时要日语标题（跟读模式显示）跟中文提示
@@ -398,30 +440,57 @@
   // 模式时重新渲染。
   function renderSideNavList(mondaiIdx, questions, active) {
     var cls = "side-nav-list" + (active ? " tab-active" : "");
-    var items = questions.map(function (q, i) {
-      var label = q.question || "";
-      // 万一 overview 缺失/过滤完是空的（正常内容不会出现，纯粹兜底）——
-      // 退回显示日语标题，不留一个空的导航项。
-      var cn = firstSafeOverviewLine(q.overview) || label;
-      var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
-      return '<li class="toc-h2"' + unitAttr + '><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (i + 1) + '">' +
-        '<span class="side-nav-ja">' + esc(label) + "</span>" +
-        '<span class="side-nav-cn">' + esc(cn) + "</span>" +
-        "</a></li>";
-    }).join("");
+    var items;
+    if (questions.length > NAV_GROUP_SIZE) {
+      // 分组导航：每条链接指向这一组第一个词，文字是"起-止"的位置范围
+      // （不是词条本身的编号，避免依赖标题里的数字前缀这种词汇页特有的
+      // 排版习惯）——纯数字范围不含日语原文，不算泄题，日语/中文两个
+      // span 显示同样的文字就够，不用像单条词那样区分。
+      items = groupQuestionsByUnit(questions).map(function (g) {
+        var label = (g.startIdx + 1) + " - " + (g.startIdx + g.size);
+        var unitAttr = g.unit ? ' data-unit="' + esc(g.unit) + '"' : "";
+        return '<li class="toc-h2"' + unitAttr + '><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (g.startIdx + 1) + '">' +
+          '<span class="side-nav-ja">' + label + "</span>" +
+          '<span class="side-nav-cn">' + label + "</span>" +
+          "</a></li>";
+      }).join("");
+    } else {
+      items = questions.map(function (q, i) {
+        var label = q.question || "";
+        // 万一 overview 缺失/过滤完是空的（正常内容不会出现，纯粹兜底）——
+        // 退回显示日语标题，不留一个空的导航项。
+        var cn = firstSafeOverviewLine(q.overview) || label;
+        var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
+        return '<li class="toc-h2"' + unitAttr + '><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (i + 1) + '">' +
+          '<span class="side-nav-ja">' + esc(label) + "</span>" +
+          '<span class="side-nav-cn">' + esc(cn) + "</span>" +
+          "</a></li>";
+      }).join("");
+    }
     return '<ul class="' + cls + '" data-mondai-idx="' + mondaiIdx + '">' + items + "</ul>";
   }
 
   // 跟 build_page.py 的 mobile_nums_list_html() 一一对应。questions 传完整
   // 对象（不只是数量）是为了带上 data-unit，单元筛选时手机悬浮数字条也要
   // 跟着藏——不藏的话点个数字可能跳到一个已经被筛掉、当前不可见的词条。
+  // 词条数超过分组阈值时，跟桌面侧栏用同一套分组（按钮数字变成"第几组"
+  // 而不是"第几个词"，跟桌面侧栏的链接目标完全一致，只是手机小按钮放不下
+  // 完整的范围文字，退回显示组的序号）。
   function renderMobileNumsList(mondaiIdx, questions, active) {
     var cls = "snm-nums-list" + (active ? " tab-active" : "");
-    var btns = questions.map(function (q, i) {
-      var qi = i + 1;
-      var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
-      return '<button class="toc-float-num side-nav-btn" data-target="q-' + mondaiIdx + "-" + qi + '"' + unitAttr + ">" + qi + "</button>";
-    }).join("");
+    var btns;
+    if (questions.length > NAV_GROUP_SIZE) {
+      btns = groupQuestionsByUnit(questions).map(function (g, gi) {
+        var unitAttr = g.unit ? ' data-unit="' + esc(g.unit) + '"' : "";
+        return '<button class="toc-float-num side-nav-btn" data-target="q-' + mondaiIdx + "-" + (g.startIdx + 1) + '"' + unitAttr + ">" + (gi + 1) + "</button>";
+      }).join("");
+    } else {
+      btns = questions.map(function (q, i) {
+        var qi = i + 1;
+        var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
+        return '<button class="toc-float-num side-nav-btn" data-target="q-' + mondaiIdx + "-" + qi + '"' + unitAttr + ">" + qi + "</button>";
+      }).join("");
+    }
     return '<div class="' + cls + '" data-mondai-idx="' + mondaiIdx + '">' + btns + "</div>";
   }
 

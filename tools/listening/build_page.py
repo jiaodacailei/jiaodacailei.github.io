@@ -1201,7 +1201,16 @@ def side_nav_list_html(mondai_idx, questions, active):
     中文哪份显示由 CSS 按 body 的 mode-*/has-title-dictate 类切换（见
     listening-page.js），不是这里决定的；普通页面 overview 传空字符串就够，
     渲染出来的 .side-nav-cn 内容跟 .side-nav-ja 一样（没有 has-title-dictate
-    时这两个类的显示规则本来就一致，不影响现状）。"""
+    时这两个类的显示规则本来就一致，不影响现状）。
+
+    刻意没有实现 page-renderer.js 里"超过10条就按分组导航"那部分逻辑——
+    这个函数走的是 build_sections_html() 那条legacy HTML路径，调用方都是
+    课文/听力页（会话/课文/生词各自最多几十句），从没有单个 mondai 底下
+    塞100+条 question 的场景，N2语法/词汇页（唯一会触发分组阈值的内容）
+    走的是 build_lesson_data()+page-renderer.js 这条 data-driven 路径，
+    不经过这里。真的有listening-page.js模板生成的旧式页面也堆到这个量级
+    时，再照抄 page-renderer.js 里 groupQuestionsByUnit()/chunkGroupSizes()
+    那段搬过来，不要事先猜测。"""
     cls = "side-nav-list tab-active" if active else "side-nav-list"
     items = []
     for qi, (label, overview) in enumerate(questions, 1):

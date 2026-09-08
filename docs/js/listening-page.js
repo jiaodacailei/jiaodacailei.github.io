@@ -1774,32 +1774,80 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 按词表顺序切出来的，先出现的组天然排在前面，两套场景用同一条规则都
   // 对。没有 category 字段的旧数据（页面还没用新版脚本重新生成过）一律
   // 当"other"处理，不会报错也不会漏词。
-  var CATEGORY_KEY = "n2listen-quiz-category:" + location.pathname;
-  var presentCategories = {};
-  var categoryOrder = [];
-  words.forEach(function(w) {
-    var c = w.category || "other";
-    if (!presentCategories[c]) {
-      presentCategories[c] = true;
-      categoryOrder.push(c);
-    }
-  });
-  var availableCategories = [{ key: "all", label: "全部" }]
-    .concat(categoryOrder.map(function(k) { return { key: k, label: k }; }));
-  var category = localStorage.getItem(CATEGORY_KEY) || "all";
-  if (category !== "all" && !presentCategories[category]) category = "all";
+  // N2语法/词汇页专属：顶部有"单元选择"下拉框时（page-renderer.js 里
+  // DATA.titleDictate 判断出来的 has-title-dictate；只有2个以上单元才会
+  // 出现这个下拉框），单词测试先按选中的单元筛一遍词、分类（"组N"，
+  // build_n2_reference_page.py 里在每个单元内部各自切组）也是每个单元
+  // 各算各的——选了哪个单元，这里的"全部/组1/组2..."筛选条要跟着整个
+  // 换一批，不是在全量词表里筛。没有这个下拉框的页面（教材课l17/l18等，
+  // 或者N2语法/词汇页本身只有1个单元时）currentUnit 恒为"all"，
+  // unitWords() 直接返回完整 words，跟改动前行为完全一样。
+  var HAS_UNIT_SELECT = document.body.classList.contains("has-title-dictate");
+  var UNIT_KEY = "n2-unit:" + location.pathname;
+  var currentUnit = HAS_UNIT_SELECT ? (localStorage.getItem(UNIT_KEY) || "all") : "all";
+  function unitWords() {
+    if (!HAS_UNIT_SELECT || currentUnit === "all") return words;
+    return words.filter(function(w) { return w.unit === currentUnit; });
+  }
+
+  // 单词测试按分类分别测试——分类来自 build_vocab_quiz_data.py（教材课，
+  // 按生词表自身的小节分组，比如"生词表1"/"生词表2·语法与表达"）/
+  // build_exam_vocab.py（N2真题模考，"组1"/"组2"...这种按数量切页的动态
+  // 分类，每15个词一组，见 build_exam_vocab.py docstring 第6条）写进每个
+  // 词条的 category 字段，两套数据源产出的分类天然已经是人读得懂的标签，
+  // 不需要另外维护一份中文标签映射表，直接拿字段值本身当标签。顺序按这些
+  // 分类在词表里第一次出现的先后，不用数字提取排序——教材课"生词表2·语法
+  // 与表达"/"生词表2·练习"数字部分都是2会撞车排错；N2真题"组N"本来就是
+  // 按词表顺序切出来的，先出现的组天然排在前面，两套场景用同一条规则都
+  // 对。没有 category 字段的旧数据（页面还没用新版脚本重新生成过）一律
+  // 当"other"处理，不会报错也不会漏词。
+  //
+  // categoryKey()/presentCategories/categoryOrder/availableCategories/
+  // category 这几样以前都是模块顶层算一次就定死的——现在有单元筛选时
+  // 需要在切单元时重新算一遍（同一个"组1"在不同单元下代表完全不同的
+  // 一批词），所以拆成 recomputeCategories() 这个可以反复调用的函数，
+  // 首次调用等价于以前的写法。
+  function categoryKey() {
+    // 只在真的选中了某个具体单元（不是"全部"）时才在 key 里加单元后缀——
+    // "全部"/没有单元下拉框这两种情况都退回旧的 key 格式，不会让 l17/l18
+    // 等已发布页面用户现有的做题记录因为 key 格式变了而对不上。
+    var unitSuffix = (HAS_UNIT_SELECT && currentUnit !== "all") ? ":" + currentUnit : "";
+    return "n2listen-quiz-category:" + location.pathname + unitSuffix;
+  }
+  var presentCategories, categoryOrder, availableCategories, category;
+  function recomputeCategories() {
+    presentCategories = {};
+    categoryOrder = [];
+    unitWords().forEach(function(w) {
+      var c = w.category || "other";
+      if (!presentCategories[c]) {
+        presentCategories[c] = true;
+        categoryOrder.push(c);
+      }
+    });
+    availableCategories = [{ key: "all", label: "全部" }]
+      .concat(categoryOrder.map(function(k) { return { key: k, label: k }; }));
+    category = localStorage.getItem(categoryKey()) || "all";
+    if (category !== "all" && !presentCategories[category]) category = "all";
+  }
+  recomputeCategories();
 
   function categoryWords() {
-    if (category === "all") return words;
-    return words.filter(function(w) { return (w.category || "other") === category; });
+    var base = unitWords();
+    if (category === "all") return base;
+    return base.filter(function(w) { return (w.category || "other") === category; });
   }
 
   // 错题/进度/出题范围这三份状态都要按分类分开记——同一个页面里"生词表1"
   // 跟"生词表2·语法与表达"是两套独立的做题进度，不能共用一份 localStorage。
   // key 里的 category 会随用户切分类实时变化，所以不能像 DELAY_KEY 那样在
-  // 模块顶层算一次就定死，每次要用的时候都要重新拼。
+  // 模块顶层算一次就定死，每次要用的时候都要重新拼。有单元下拉框且选中
+  // 了具体某个单元时额外加一段单元后缀（原因跟 categoryKey() 一样：
+  // 不同单元下同名的"组1"是完全不同的一批词，选"全部"或者压根没有单元
+  // 下拉框时退回旧格式，不影响 l17/l18 等已发布页面的现有记录）。
   function stateKeys() {
-    var suffix = ":" + location.pathname + ":" + category;
+    var unitSuffix = (HAS_UNIT_SELECT && currentUnit !== "all") ? ":" + currentUnit : "";
+    var suffix = ":" + location.pathname + unitSuffix + ":" + category;
     return {
       error: "n2listen-quiz-errors" + suffix,
       progress: "n2listen-quiz-progress" + suffix,
@@ -1924,7 +1972,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 不然用户如果照抄了词性标签会误判、如果没抄也不该因为"少打了标签"算错。
   var POS_RE = /^\s*[「『\[［【]{1}[^\]」』］】]*[\]」』］】]\s*/;
 
+  // word.audio 有值就直接用（N2语法/词汇页专属：词条标题自己的发音，
+  // "audio/word-{id:03d}.mp3"，不是例句音频——"听音频写假名"这道题问的是
+  // 这个词怎么读，用词本身的发音比用它某句例句的完整录音更直接）。没有
+  // 这个字段的旧数据（教材课的 build_vocab_quiz_data.py 产出）保持现状，
+  // 退回按 word.id 拼 "audio/seg-{id:03d}.mp3"。
   function audioSrcFor(word) {
+    if (word.audio) return word.audio;
     var id = String(word.id);
     while (id.length < 3) id = "0" + id;
     return "audio/seg-" + id + ".mp3";
@@ -2267,12 +2321,23 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   });
 
   // 分类选择条（全部+词表里出现过的各个分类，比如教材课的生词表小节、
-  // N2真题模考的"组N"）——只有真的存在对应词的分类才会出现在
+  // N2真题模考/N2词汇的"组N"）——只有真的存在对应词的分类才会出现在
   // availableCategories 里，不足两个分类（比如这份数据没有 category 字段、
   // 所有词都归同一类）时不用渲染这排按钮，避免看起来像"有得选却选了
   // 也没变化"。放在答题卡片上方、跟"出题范围"这类藏在设置面板里的次要偏好
   // 区别开——选哪个分类是"测哪一批词"这种主要选择，要放在显眼位置。
-  if (availableCategories.length > 1) {
+  //
+  // 拆成具名函数（不是就地内联建一次）是因为有单元下拉框时，切单元要把
+  // 这排按钮整个重建一遍（上一个单元的"组N"跟新单元的"组N"是完全不同的
+  // 按钮列表）——首次调用（DOMContentLoaded 时）跟切单元后再调用走的是
+  // 同一份逻辑，不用维护两份重复代码。scopeBtns 在这个函数第一次被调用时
+  // （紧跟在下面"出题范围"那段之后）已经存在，但函数本身定义在它之前——
+  // 没关系，函数体只在真正被调用、且用户点击分类按钮触发内层回调时才会
+  // 读 scopeBtns，JS 变量提升保证这时候 scopeBtns 已经赋值好了。
+  function rebuildCategoryBar() {
+    var old = quizApp.querySelector(".quiz-category-bar");
+    if (old) old.remove();
+    if (availableCategories.length <= 1) return;
     var categoryBar = document.createElement("div");
     categoryBar.className = "quiz-category-bar";
     categoryBar.innerHTML = availableCategories.map(function(c) {
@@ -2287,7 +2352,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         e.stopPropagation();
         if (b.dataset.category === category) return;
         category = b.dataset.category;
-        localStorage.setItem(CATEGORY_KEY, category);
+        localStorage.setItem(categoryKey(), category);
         categoryBtns.forEach(function(x) { x.classList.toggle("active", x === b); });
         loadCategoryState();
         scopeBtns.forEach(function(x) { x.classList.toggle("active", x.dataset.scope === scope); });
@@ -2297,6 +2362,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       });
     });
   }
+  rebuildCategoryBar();
 
   // 出题范围（全部题目／仅错题）——设置面板里只在单词测试 tab 激活时才显示
   // 的那一组，跟播放速度/显示模式/练习模式那几组是互斥的（见 CSS 的
@@ -2346,6 +2412,23 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         localStorage.setItem(DELAY_KEY, advanceDelay);
         delayBtns.forEach(function(x) { x.classList.toggle("active", x === b); });
       });
+    });
+  }
+
+  // 顶部单元下拉框（page-renderer.js）换了单元——分类、词表范围都要整个
+  // 重算一遍（"组N"是每个单元各自独立编的号，换单元等于换了一整批完全
+  // 不同的候选分类），分类选择条也要重建。切换后固定回到"全部"分类（
+  // recomputeCategories() 已经处理——新单元下旧的分类名多半根本不存在），
+  // 不去猜"应该继续停留在跟旧单元同名的组"这种可能对不上的行为。
+  if (HAS_UNIT_SELECT) {
+    window.addEventListener("n2unitchange", function(e) {
+      currentUnit = e.detail;
+      recomputeCategories();
+      rebuildCategoryBar();
+      loadCategoryState();
+      queue = buildQueue();
+      qi = 0;
+      render();
     });
   }
 
