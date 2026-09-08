@@ -926,13 +926,27 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   });
 
   // 高亮当前小题（滚动时用）：用 requestAnimationFrame 节流，避免每个 scroll 事件都同步读布局触发强制回流
+  //
+  // 按"侧栏导航按钮自己的target"找当前位置，不是按"每一个question-block"——
+  // N2词汇这类词条很多的页面，侧栏导航超过10条会自动分组（page-renderer.js
+  // 里的 chunkGroupSizes()，一条链接对应一组10个词，data-target 只指向组里
+  // 第一个词），原来这里遍历所有 question-block 算出来的 cur 是"当前滚动到
+  // 的那个词自己的id"（比如"q-1-47"），但分组之后压根没有任何一个导航按钮
+  // 的 data-target 是"q-1-47"（只有"q-1-41"这种组首才有），setCurrent()
+  // 找不到匹配，侧栏就会完全停在原地不跟着滚动更新——真实反馈"页面向下
+  // 滑动时，右侧的导航没有跟着改变焦点"。改成只在"导航按钮真的指向的那些
+  // 目标元素"里找当前位置，不管有没有分组、哪种分组方式都按同一个逻辑走。
   function highlightCurrentQuestion() {
     var activeSection = document.querySelector(".mondai-section.tab-active");
     if (!activeSection) return;
-    var blocks = Array.from(activeSection.querySelectorAll(".question-block"));
-    var y = window.scrollY + 130, cur = null;
-    blocks.forEach(function(bl) { if (bl.offsetTop <= y) cur = bl.id; });
-    if (cur) setCurrent(cur);
+    var y = window.scrollY + 130, curTarget = null;
+    document.querySelectorAll(".side-nav-btn").forEach(function(b) {
+      var target = document.getElementById(b.dataset.target);
+      if (target && activeSection.contains(target) && target.offsetTop <= y) {
+        curTarget = b.dataset.target;
+      }
+    });
+    if (curTarget) setCurrent(curTarget);
   }
   var rafPending = false;
   function scheduleHighlight() {

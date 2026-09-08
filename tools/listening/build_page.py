@@ -1100,9 +1100,15 @@ def question_block_html(mondai_idx, q_idx, question_label, overview, answer, sen
         f'<audio class="word-audio" preload="none" src="{html.escape(word_audio)}"></audio>'
         if word_audio else ""
     )
+    # 编号前缀单独拆出来，不跟着 .q-title-text 一起被默写/填空模式藏起来——
+    # 跟 page-renderer.js 里 renderQuestionBlock() 的同名逻辑对应，真实反馈
+    # "默写/填空模式，也请显示序号"。
+    num_match = re.match(r"^(\d+\.\s*)", question_label)
+    num_part = num_match.group(1) if num_match else ""
+    rest_part = question_label[len(num_part):]
     return f'''
       <div class="question-block" id="{scope_id}" data-scope="question"{unit_attr}>
-        <h3><span class="q-title-text">{html.escape(question_label)}</span>{word_audio_html}</h3>
+        <h3><span class="q-title-num">{html.escape(num_part)}</span><span class="q-title-text">{html.escape(rest_part)}</span>{word_audio_html}</h3>
         {overview_html}{answer_html}
         {cards}
       </div>'''

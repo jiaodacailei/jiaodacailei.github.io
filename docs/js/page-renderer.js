@@ -300,9 +300,18 @@
     var wordAudioHtml = q.wordAudio
       ? '<audio class="word-audio" preload="none" src="' + esc(q.wordAudio) + '"></audio>'
       : "";
+    // 编号前缀（"0001. "/"1. "）单独拆出来，不跟着 .q-title-text 一起被
+    // 默写/填空模式藏起来——真实反馈"默写/填空模式，也请显示序号"。编号
+    // 本身不是答案的一部分（默写判分早就在用同一条正则把它去掉了，见
+    // listening-page.js 的 extractTitleAnswer()），显示编号不会泄题，
+    // 反而能让人知道自己正在做第几个词/第几条语法点，配合侧栏分组导航
+    // 定位更方便。
+    var numMatch = /^(\d+\.\s*)/.exec(label);
+    var numPart = numMatch ? numMatch[1] : "";
+    var restPart = numMatch ? label.slice(numMatch[1].length) : label;
     return (
       '<div class="question-block" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question"' + unitAttr + '>' +
-        '<h3><span class="q-title-text">' + esc(label) + "</span>" + wordAudioHtml + "</h3>" +
+        '<h3><span class="q-title-num">' + esc(numPart) + '</span><span class="q-title-text">' + esc(restPart) + "</span>" + wordAudioHtml + "</h3>" +
         overviewHtml + answerHtml + cards +
       "</div>"
     );
