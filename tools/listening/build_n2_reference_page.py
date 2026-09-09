@@ -105,6 +105,27 @@ def synth_tts(text, out_path):
     asyncio.run(_synth(text, out_path))
 
 
+# TTS多音字读错人工订正表——某些汉字有多个读音，edge-tts偶尔会选错（真实
+# 反馈"町的音频中发音是chou，应该是machi哟"："町でお祭りがあって..."这句
+# 里"町"该读"まち"，TTS却读成了行政区划/地名常用的"ちょう"）。这里替换的
+# 是"喂给TTS合成引擎的文本"，不改变实际存储/显示的原文——原文怎么写、
+# 假名怎么标注都不受影响；whisper对齐也仍然拿原文（含汉字）当目标文本，
+# 因为对齐本来就是按读音模糊匹配、不是逐字符比对，文本换成假名一样能对
+# 上（而且应该对得更准，因为音频这下真读对了）。没法穷举所有多音字提前
+# 订正，只能"听到读错的就加一条"，key 特意带上一点上下文（"町で"而不是
+# 光"町"）——"町"单独出现在其它词里（比如"○○町"这种地名后缀）读"ちょう"
+# 才是对的，不能不分场合把所有"町"都替换成"まち"。
+TTS_READING_OVERRIDES = {
+    "町で": "まちで",
+}
+
+
+def apply_tts_reading_overrides(text):
+    for kanji, kana in TTS_READING_OVERRIDES.items():
+        text = text.replace(kanji, kana)
+    return text
+
+
 def probe_duration(path):
     r = subprocess.run(
         ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
@@ -144,7 +165,7 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats):
     out_path = os.path.join(audio_dir, filename)
     if not os.path.exists(out_path):
         try:
-            synth_tts(text, out_path)
+            synth_tts(apply_tts_reading_overrides(text), out_path)
         except Exception as e:
             print(f"[id={seg_id}] TTS FAILED: {e}")
             stats["failed"] += 1
@@ -191,7 +212,7 @@ def synth_word_audio(text, audio_dir, word_id, stats):
     out_path = os.path.join(audio_dir, filename)
     if not os.path.exists(out_path):
         try:
-            synth_tts(text, out_path)
+            synth_tts(apply_tts_reading_overrides(text), out_path)
         except Exception as e:
             print(f"[word_id={word_id}] 单词发音TTS FAILED: {e}")
             stats["word_failed"] = stats.get("word_failed", 0) + 1
