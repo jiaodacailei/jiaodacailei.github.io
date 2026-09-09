@@ -976,6 +976,21 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (lang === "ja") document.body.classList.add("lang-ja-only");
     if (lang === "zh") document.body.classList.add("lang-zh-only");
   }
+  // 真实反馈"设置变速比如0.75后，第一次播放某句时，正常，再次播放时，
+  // 就切回原来的1倍语速了"。根因：本地音频缓存（Cache Storage，见下面
+  // "音频本地缓存"那段）第一次播放时是缓存未命中，audio 用的还是原始
+  // 网络地址，playbackRate（页面刚加载时 applySpeed() 设过一次）没有被
+  // 动过，正常按设置的速度播放；播放的同时后台把这条音频抓下来存进
+  // 缓存，第二次再播同一句，缓存命中，prepareAudioSrc() 把 audio.src
+  // 换成本地 blob URL——**换 src 会把 playbackRate 重置回默认的1**，
+  // 而当时"设置速度"只在"刚加载页面"和"点了变速按钮"这两个时机主动应用
+  // 过一次，src 换了之后没人再重新设一遍。改成给每个 <audio> 元素订阅
+  // loadedmetadata（换 src 触发媒体重新加载时一定会再发一次这个事件，
+  // 不管是缓存命中换 blob URL、还是正常走网络地址），事件触发时用当前
+  // 的 speed 变量重新赋值一遍——不需要知道是谁触发的换 src，统一兜底。
+  document.querySelectorAll("audio").forEach(function(a) {
+    a.addEventListener("loadedmetadata", function() { a.playbackRate = speed; });
+  });
   applySpeed();
   applyLang();
 
