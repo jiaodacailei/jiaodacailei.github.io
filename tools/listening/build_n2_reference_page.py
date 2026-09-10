@@ -36,6 +36,9 @@ MCQ题目各自的出现顺序"分配，不能中途在数组中间插入旧单�
             ("……。", "……译文……"),  # (日语, 中文) 二元组，跟 l17/l18
                 # "语法与表达"专题卡的例句格式一致——这里全部都要TTS配音，
                 # 不存在"匹配不上真句子"这回事（没有真句子可匹配）
+            ("……。", "……译文……", ["挖空片段1", "挖空片段2"]),  # 第三个
+                # 元素可选：填空练习模式要挖空的原文片段列表，每个必须是
+                # 第一个元素（日语原文）的字面子串，缺省当[]（不给填空）
           ],
         },
         ...
@@ -240,7 +243,9 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
                 "overview": point.get("overview", ""), "answer": "",
                 "unit": unit_label, "wordAudio": word_audio,
             })
-            for ja, zh in point["examples"]:
+            for example in point["examples"]:
+                ja, zh = example[0], example[1]
+                blanks = example[2] if len(example) > 2 else []
                 seg_id += 1
                 filename, duration, char_times = synth_and_align(
                     model, ja, audio_dir, seg_id, tmp_wav, stats
@@ -249,7 +254,7 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
                     continue
                 sentences.append({
                     "id": seg_id, "mondai": mondai_label, "question": question_label,
-                    "text": ja, "zh": zh, "notes": "", "blanks": [],
+                    "text": ja, "zh": zh, "notes": "", "blanks": blanks,
                     "start": 0.0, "char_times": char_times,
                 })
     return sentences, questions
@@ -352,7 +357,7 @@ def build_vocab_quiz_items(units):
             if not examples:
                 problems.append(f"{title}: 没有例句")
                 continue
-            ja, zh_sentence = examples[0]
+            ja, zh_sentence = examples[0][0], examples[0][1]
             blank = point.get("quiz_blank")
             if not blank:
                 for alt in word_text.split("/"):

@@ -134,7 +134,11 @@ window.LESSON_DATA = {
               ],
               "zh": "镇上有庙会，被卷入人群中，最后迷路了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "人ごみ",
+                "巻き込まれたあげく",
+                "迷ってしまった"
+              ],
               "audio": "audio/seg-001.mp3"
             },
             {
@@ -243,7 +247,10 @@ window.LESSON_DATA = {
               ],
               "zh": "关于升学问题苦恼再三，最后放弃了读研究生。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "さんざん悩んだあげく",
+                "あきらめることにした"
+              ],
               "audio": "audio/seg-002.mp3"
             }
           ]
@@ -380,7 +387,10 @@ window.LESSON_DATA = {
               ],
               "zh": "她终于见到了自己最喜爱的偶像，兴奋得太过度，激动得晕了过去。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "やっと会えた喜びのあまり",
+                "興奮して気を失った"
+              ],
               "audio": "audio/seg-003.mp3"
             }
           ]
@@ -463,7 +473,10 @@ window.LESSON_DATA = {
               ],
               "zh": "既然是学生，就应该把学业放在第一位。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "である以上",
+                "考えるべきだ"
+              ],
               "audio": "audio/seg-004.mp3"
             }
           ]
@@ -590,7 +603,10 @@ window.LESSON_DATA = {
               ],
               "zh": "科学的发展一方面给人们带来了便利的生活，另一方面也引起了严重的环境污染。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "もたらす一方で",
+                "引き起こした"
+              ],
               "audio": "audio/seg-005.mp3"
             }
           ]
@@ -682,7 +698,10 @@ window.LESSON_DATA = {
               ],
               "zh": "根据最近的调查显示，未成年犯罪率越来越高。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "によれば",
+                "なる一方だ"
+              ],
               "audio": "audio/seg-006.mp3"
             }
           ]
@@ -776,7 +795,9 @@ window.LESSON_DATA = {
               ],
               "zh": "学习外语方面，坚定的精神态度是最重要的。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上で"
+              ],
               "audio": "audio/seg-007.mp3"
             },
             {
@@ -874,7 +895,10 @@ window.LESSON_DATA = {
               ],
               "zh": "我一个人不能决定，等我们再研讨之后，再给您回复。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "決めかねます",
+                "上で"
+              ],
               "audio": "audio/seg-008.mp3"
             }
           ]
@@ -994,7 +1018,11 @@ window.LESSON_DATA = {
               ],
               "zh": "既然定了目标，就必须朝着实现目标积极行动。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上は",
+                "それに向かって",
+                "前向きに"
+              ],
               "audio": "audio/seg-009.mp3"
             }
           ]
@@ -1074,7 +1102,10 @@ window.LESSON_DATA = {
               ],
               "zh": "趁着还没忘记，先记在手账里吧。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "忘れないうちに",
+                "しとこう"
+              ],
               "audio": "audio/seg-010.mp3"
             },
             {
@@ -1217,7 +1248,10 @@ window.LESSON_DATA = {
               ],
               "zh": "买了新电脑，但是还没到一个月新款就发售了，很失望。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "経たないうちに",
+                "がっかり"
+              ],
               "audio": "audio/seg-011.mp3"
             }
           ]
@@ -1309,7 +1343,9 @@ window.LESSON_DATA = {
               ],
               "zh": "气象厅发布大雨警报期间，请减少外出。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "うちは"
+              ],
               "audio": "audio/seg-012.mp3"
             }
           ]
@@ -1427,7 +1463,9 @@ window.LESSON_DATA = {
               ],
               "zh": "为了保护自然资源，让我们一起支持废品再利用运动吧。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "しようではないか"
+              ],
               "audio": "audio/seg-013.mp3"
             },
             {
@@ -1535,7 +1573,10 @@ window.LESSON_DATA = {
               ],
               "zh": "这个月的销售目标也达成了，今天我们大家一起痛痛快快喝一杯吧！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "できたし",
+                "飲もうじゃないか"
+              ],
               "audio": "audio/seg-014.mp3"
             }
           ]
