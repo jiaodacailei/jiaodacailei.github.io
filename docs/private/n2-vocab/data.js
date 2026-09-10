@@ -72,7 +72,9 @@ window.LESSON_DATA = {
               ],
               "zh": "每天照旧很忙碌。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "相変わらず"
+              ],
               "audio": "audio/seg-001.mp3"
             }
           ]
@@ -124,7 +126,9 @@ window.LESSON_DATA = {
               ],
               "zh": "蒸汽电熨斗",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイロン"
+              ],
               "audio": "audio/seg-002.mp3"
             },
             {
@@ -178,7 +182,9 @@ window.LESSON_DATA = {
               ],
               "zh": "用熨斗熨西服。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイロン"
+              ],
               "audio": "audio/seg-003.mp3"
             }
           ]
@@ -222,7 +228,9 @@ window.LESSON_DATA = {
               ],
               "zh": "冰咖啡",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイス"
+              ],
               "audio": "audio/seg-004.mp3"
             },
             {
@@ -257,7 +265,9 @@ window.LESSON_DATA = {
               ],
               "zh": "滑冰",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイス"
+              ],
               "audio": "audio/seg-005.mp3"
             }
           ]
@@ -309,7 +319,9 @@ window.LESSON_DATA = {
               ],
               "zh": "妙点子",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイデア"
+              ],
               "audio": "audio/seg-006.mp3"
             },
             {
@@ -364,7 +376,9 @@ window.LESSON_DATA = {
               ],
               "zh": "浮现出一个好主意。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイデア"
+              ],
               "audio": "audio/seg-007.mp3"
             }
           ]
@@ -429,7 +443,9 @@ window.LESSON_DATA = {
               ],
               "zh": "最好不要凭一时兴起行动。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "思いつき"
+              ],
               "audio": "audio/seg-008.mp3"
             }
           ]
@@ -485,7 +501,9 @@ window.LESSON_DATA = {
               ],
               "zh": "真不凑巧，是坏天气。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あいにく"
+              ],
               "audio": "audio/seg-009.mp3"
             },
             {
@@ -533,7 +551,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不巧卖光了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あいにく"
+              ],
               "audio": "audio/seg-010.mp3"
             }
           ]
@@ -581,7 +601,9 @@ window.LESSON_DATA = {
               ],
               "zh": "真不凑巧，很遗憾。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "おあいにく様"
+              ],
               "audio": "audio/seg-011.mp3"
             }
           ]
@@ -633,7 +655,9 @@ window.LESSON_DATA = {
               ],
               "zh": "户外运动",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アウト"
+              ],
               "audio": "audio/seg-012.mp3"
             },
             {
@@ -667,7 +691,9 @@ window.LESSON_DATA = {
               ],
               "zh": "出局，球出界。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アウト"
+              ],
               "audio": "audio/seg-013.mp3"
             }
           ]
@@ -708,7 +734,9 @@ window.LESSON_DATA = {
               ],
               "zh": "发送信号。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "合図"
+              ],
               "audio": "audio/seg-014.mp3"
             },
             {
@@ -748,7 +776,9 @@ window.LESSON_DATA = {
               ],
               "zh": "用手势打暗号。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "合図"
+              ],
               "audio": "audio/seg-015.mp3"
             }
           ]
@@ -796,7 +826,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在合同上签字。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "サイン"
+              ],
               "audio": "audio/seg-016.mp3"
             }
           ]
@@ -830,7 +862,9 @@ window.LESSON_DATA = {
               ],
               "zh": "苍白的脸",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "青白い"
+              ],
               "audio": "audio/seg-017.mp3"
             }
           ]
@@ -866,7 +900,9 @@ window.LESSON_DATA = {
               ],
               "zh": "出现赤字。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "赤字"
+              ],
               "audio": "audio/seg-018.mp3"
             },
             {
@@ -902,7 +938,9 @@ window.LESSON_DATA = {
               ],
               "zh": "填补赤字。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "赤字"
+              ],
               "audio": "audio/seg-019.mp3"
             }
           ]
@@ -943,7 +981,9 @@ window.LESSON_DATA = {
               ],
               "zh": "偶像歌手",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイドル"
+              ],
               "audio": "audio/seg-020.mp3"
             },
             {
@@ -986,7 +1026,9 @@ window.LESSON_DATA = {
               ],
               "zh": "崇拜偶像。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アイドル"
+              ],
               "audio": "audio/seg-021.mp3"
             }
           ]
@@ -1040,7 +1082,9 @@ window.LESSON_DATA = {
               ],
               "zh": "价格、物价上涨。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上がる"
+              ],
               "audio": "audio/seg-022.mp3"
             },
             {
@@ -1076,7 +1120,9 @@ window.LESSON_DATA = {
               ],
               "zh": "雨停了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上がる"
+              ],
               "audio": "audio/seg-023.mp3"
             },
             {
@@ -1147,7 +1193,9 @@ window.LESSON_DATA = {
               ],
               "zh": "面试时紧张，没能顺利进行。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上がって"
+              ],
               "audio": "audio/seg-024.mp3"
             },
             {
@@ -1190,7 +1238,9 @@ window.LESSON_DATA = {
               ],
               "zh": "请多吃（喝）点。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上がって"
+              ],
               "audio": "audio/seg-025.mp3"
             },
             {
@@ -1243,7 +1293,9 @@ window.LESSON_DATA = {
               ],
               "zh": "我来拜访您，想听听您的意见。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上がりました"
+              ],
               "audio": "audio/seg-026.mp3"
             }
           ]
@@ -1288,7 +1340,9 @@ window.LESSON_DATA = {
               ],
               "zh": "互相握手。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "握手"
+              ],
               "audio": "audio/seg-027.mp3"
             }
           ]
@@ -1333,7 +1387,9 @@ window.LESSON_DATA = {
               ],
               "zh": "跳起来。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上がる"
+              ],
               "audio": "audio/seg-028.mp3"
             },
             {
@@ -1360,7 +1416,9 @@ window.LESSON_DATA = {
               ],
               "zh": "完成。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "上がる"
+              ],
               "audio": "audio/seg-029.mp3"
             }
           ]
@@ -1424,7 +1482,9 @@ window.LESSON_DATA = {
               ],
               "zh": "访问人气网站。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アクセス"
+              ],
               "audio": "audio/seg-030.mp3"
             },
             {
@@ -1500,7 +1560,9 @@ window.LESSON_DATA = {
               ],
               "zh": "从这家酒店到市中心交通方便。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アクセス"
+              ],
               "audio": "audio/seg-031.mp3"
             }
           ]
@@ -1548,7 +1610,9 @@ window.LESSON_DATA = {
               ],
               "zh": "打哈欠。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あくび"
+              ],
               "audio": "audio/seg-032.mp3"
             }
           ]
@@ -1620,7 +1684,9 @@ window.LESSON_DATA = {
               ],
               "zh": "利用空闲时间读书。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "空き"
+              ],
               "audio": "audio/seg-033.mp3"
             },
             {
@@ -1668,7 +1734,9 @@ window.LESSON_DATA = {
               ],
               "zh": "职位出现空缺。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "空き"
+              ],
               "audio": "audio/seg-034.mp3"
             }
           ]
@@ -1701,7 +1769,9 @@ window.LESSON_DATA = {
               ],
               "zh": "魔鬼行径",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "悪魔"
+              ],
               "audio": "audio/seg-035.mp3"
             }
           ]
@@ -1745,7 +1815,9 @@ window.LESSON_DATA = {
               ],
               "zh": "坚决反对。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あくまで"
+              ],
               "audio": "audio/seg-036.mp3"
             },
             {
@@ -1793,7 +1865,9 @@ window.LESSON_DATA = {
               ],
               "zh": "无论如何要尽全力。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あくまで"
+              ],
               "audio": "audio/seg-037.mp3"
             }
           ]
@@ -1835,7 +1909,9 @@ window.LESSON_DATA = {
               ],
               "zh": "容易厌烦的性格",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "飽きっぽい"
+              ],
               "audio": "audio/seg-038.mp3"
             }
           ]
@@ -1873,7 +1949,9 @@ window.LESSON_DATA = {
               ],
               "zh": "第二天",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "明くる"
+              ],
               "audio": "audio/seg-039.mp3"
             },
             {
@@ -1902,7 +1980,9 @@ window.LESSON_DATA = {
               ],
               "zh": "翌年",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "明くる"
+              ],
               "audio": "audio/seg-040.mp3"
             }
           ]
@@ -1959,7 +2039,9 @@ window.LESSON_DATA = {
               ],
               "zh": "吃得多得让人惊讶。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "呆れる"
+              ],
               "audio": "audio/seg-041.mp3"
             },
             {
@@ -2003,7 +2085,9 @@ window.LESSON_DATA = {
               ],
               "zh": "惊讶得哑口无言。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "呆れて"
+              ],
               "audio": "audio/seg-042.mp3"
             }
           ]
@@ -2057,7 +2141,9 @@ window.LESSON_DATA = {
               ],
               "zh": "学习到了拂晓。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "明け方"
+              ],
               "audio": "audio/seg-043.mp3"
             }
           ]
@@ -2115,7 +2201,9 @@ window.LESSON_DATA = {
               ],
               "zh": "空出这周六。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "空けて"
+              ],
               "audio": "audio/seg-044.mp3"
             },
             {
@@ -2147,7 +2235,9 @@ window.LESSON_DATA = {
               ],
               "zh": "外出，不在家。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "空ける"
+              ],
               "audio": "audio/seg-045.mp3"
             }
           ]
@@ -2197,7 +2287,9 @@ window.LESSON_DATA = {
               ],
               "zh": "干坏事。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "悪"
+              ],
               "audio": "audio/seg-046.mp3"
             },
             {
@@ -2233,7 +2325,9 @@ window.LESSON_DATA = {
               ],
               "zh": "变坏，染上恶习。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "悪"
+              ],
               "audio": "audio/seg-047.mp3"
             }
           ]
@@ -2278,7 +2372,9 @@ window.LESSON_DATA = {
               ],
               "zh": "带来不良影响。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "悪影響"
+              ],
               "audio": "audio/seg-048.mp3"
             }
           ]
@@ -2319,7 +2415,9 @@ window.LESSON_DATA = {
               ],
               "zh": "陷入恶性循环。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "悪循環"
+              ],
               "audio": "audio/seg-049.mp3"
             }
           ]
@@ -2360,7 +2458,9 @@ window.LESSON_DATA = {
               ],
               "zh": "压缩气体。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "圧縮"
+              ],
               "audio": "audio/seg-050.mp3"
             },
             {
@@ -2392,7 +2492,9 @@ window.LESSON_DATA = {
               ],
               "zh": "削减预算。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "圧縮"
+              ],
               "audio": "audio/seg-051.mp3"
             }
           ]
@@ -2437,7 +2539,9 @@ window.LESSON_DATA = {
               ],
               "zh": "早晚变凉了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "朝夕"
+              ],
               "audio": "audio/seg-052.mp3"
             }
           ]
@@ -2488,7 +2592,9 @@ window.LESSON_DATA = {
               ],
               "zh": "能力提高。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アップ"
+              ],
               "audio": "audio/seg-053.mp3"
             },
             {
@@ -2515,7 +2621,9 @@ window.LESSON_DATA = {
               ],
               "zh": "成本提高",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アップ"
+              ],
               "audio": "audio/seg-054.mp3"
             }
           ]
@@ -2565,7 +2673,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在沙滩上留下脚印。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "足跡"
+              ],
               "audio": "audio/seg-055.mp3"
             },
             {
@@ -2619,7 +2729,9 @@ window.LESSON_DATA = {
               ],
               "zh": "警察在追查犯人的踪迹。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "足跡"
+              ],
               "audio": "audio/seg-056.mp3"
             }
           ]
@@ -2685,7 +2797,9 @@ window.LESSON_DATA = {
               ],
               "zh": "仔细咀嚼品尝着吃。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "味わって"
+              ],
               "audio": "audio/seg-057.mp3"
             },
             {
@@ -2721,7 +2835,9 @@ window.LESSON_DATA = {
               ],
               "zh": "经历苦痛。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "味わう"
+              ],
               "audio": "audio/seg-058.mp3"
             }
           ]
@@ -2746,7 +2862,9 @@ window.LESSON_DATA = {
               ],
               "zh": "压力计",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "圧力"
+              ],
               "audio": "audio/seg-059.mp3"
             },
             {
@@ -2777,7 +2895,9 @@ window.LESSON_DATA = {
               ],
               "zh": "施加压力。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "圧力"
+              ],
               "audio": "audio/seg-060.mp3"
             }
           ]
@@ -2820,7 +2940,9 @@ window.LESSON_DATA = {
               ],
               "zh": "向往的名校",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "憧れ"
+              ],
               "audio": "audio/seg-061.mp3"
             }
           ]
@@ -2870,7 +2992,9 @@ window.LESSON_DATA = {
               ],
               "zh": "憧憬都市生活。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "憧れる"
+              ],
               "audio": "audio/seg-062.mp3"
             },
             {
@@ -2913,7 +3037,9 @@ window.LESSON_DATA = {
               ],
               "zh": "向往成为偶像。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "憧れる"
+              ],
               "audio": "audio/seg-063.mp3"
             }
           ]
@@ -2966,7 +3092,9 @@ window.LESSON_DATA = {
               ],
               "zh": "轻而易举地迅速搞定。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "朝飯前"
+              ],
               "audio": "audio/seg-064.mp3"
             }
           ]
@@ -3007,7 +3135,9 @@ window.LESSON_DATA = {
               ],
               "zh": "国际形势恶化。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "悪化"
+              ],
               "audio": "audio/seg-065.mp3"
             }
           ]
@@ -3068,7 +3198,9 @@ window.LESSON_DATA = {
               ],
               "zh": "我有个不情之请。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "厚かましい"
+              ],
               "audio": "audio/seg-066.mp3"
             }
           ]
@@ -3106,7 +3238,9 @@ window.LESSON_DATA = {
               ],
               "zh": "寄给铃木先生（女士）",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "宛て"
+              ],
               "audio": "audio/seg-067.mp3"
             }
           ]
@@ -3160,7 +3294,9 @@ window.LESSON_DATA = {
               ],
               "zh": "符合（一定）条件。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "当て嵌まる"
+              ],
               "audio": "audio/seg-068.mp3"
             },
             {
@@ -3205,7 +3341,9 @@ window.LESSON_DATA = {
               ],
               "zh": "使符合条件。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "当て嵌める"
+              ],
               "audio": "audio/seg-069.mp3"
             }
           ]
@@ -3243,7 +3381,9 @@ window.LESSON_DATA = {
               ],
               "zh": "温暖的阳光",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "暖か"
+              ],
               "audio": "audio/seg-070.mp3"
             },
             {
@@ -3268,7 +3408,9 @@ window.LESSON_DATA = {
               ],
               "zh": "温馨的家庭",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "温かな"
+              ],
               "audio": "audio/seg-071.mp3"
             }
           ]
@@ -3325,7 +3467,9 @@ window.LESSON_DATA = {
               ],
               "zh": "把球打在墙上。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "当てる"
+              ],
               "audio": "audio/seg-072.mp3"
             },
             {
@@ -3374,7 +3518,9 @@ window.LESSON_DATA = {
               ],
               "zh": "放在太阳下晒干。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "当てて"
+              ],
               "audio": "audio/seg-073.mp3"
             },
             {
@@ -3410,7 +3556,9 @@ window.LESSON_DATA = {
               ],
               "zh": "中一等奖。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "当てる"
+              ],
               "audio": "audio/seg-074.mp3"
             }
           ]
@@ -3451,7 +3599,9 @@ window.LESSON_DATA = {
               ],
               "zh": "长膘；（工作）越干越顺手。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "脂"
+              ],
               "audio": "audio/seg-075.mp3"
             }
           ]
@@ -3492,7 +3642,9 @@ window.LESSON_DATA = {
               ],
               "zh": "烤紫菜。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "炙る"
+              ],
               "audio": "audio/seg-076.mp3"
             },
             {
@@ -3536,7 +3688,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在暖炉旁烘手。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "炙る"
+              ],
               "audio": "audio/seg-077.mp3"
             }
           ]
@@ -3597,7 +3751,9 @@ window.LESSON_DATA = {
               ],
               "zh": "事先约好（时间、地点）。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アポ"
+              ],
               "audio": "audio/seg-078.mp3"
             }
           ]
@@ -3631,7 +3787,9 @@ window.LESSON_DATA = {
               ],
               "zh": "手术后的疤痕",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "跡"
+              ],
               "audio": "audio/seg-079.mp3"
             },
             {
@@ -3672,7 +3830,9 @@ window.LESSON_DATA = {
               ],
               "zh": "追查犯人的行踪。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "跡"
+              ],
               "audio": "audio/seg-080.mp3"
             }
           ]
@@ -3721,7 +3881,9 @@ window.LESSON_DATA = {
               ],
               "zh": "清理（收拾）会场。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "後片付け"
+              ],
               "audio": "audio/seg-081.mp3"
             }
           ]
@@ -3802,7 +3964,9 @@ window.LESSON_DATA = {
               ],
               "zh": "他虽是业余爱好者，但技艺不输专业选手。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アマ"
+              ],
               "audio": "audio/seg-082.mp3"
             }
           ]
@@ -3881,7 +4045,9 @@ window.LESSON_DATA = {
               ],
               "zh": "自己开的头，自己收拾善后。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "後始末"
+              ],
               "audio": "audio/seg-083.mp3"
             }
           ]
@@ -3922,7 +4088,9 @@ window.LESSON_DATA = {
               ],
               "zh": "打开护窗板。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "雨戸"
+              ],
               "audio": "audio/seg-084.mp3"
             }
           ]
@@ -3976,7 +4144,9 @@ window.LESSON_DATA = {
               ],
               "zh": "找出对手的破绽。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "穴"
+              ],
               "audio": "audio/seg-085.mp3"
             },
             {
@@ -4021,7 +4191,9 @@ window.LESSON_DATA = {
               ],
               "zh": "填补资金空缺。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "穴"
+              ],
               "audio": "audio/seg-086.mp3"
             }
           ]
@@ -4067,7 +4239,9 @@ window.LESSON_DATA = {
               ],
               "zh": "整晚风雨交加。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "雨風"
+              ],
               "audio": "audio/seg-087.mp3"
             }
           ]
@@ -4108,7 +4282,9 @@ window.LESSON_DATA = {
               ],
               "zh": "喝醉酒胡闹。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "暴れる"
+              ],
               "audio": "audio/seg-088.mp3"
             },
             {
@@ -4166,7 +4342,9 @@ window.LESSON_DATA = {
               ],
               "zh": "今天的比赛要大显身手。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "暴れる"
+              ],
               "audio": "audio/seg-089.mp3"
             }
           ]
@@ -4215,7 +4393,9 @@ window.LESSON_DATA = {
               ],
               "zh": "娇惯孩子。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "甘やかす"
+              ],
               "audio": "audio/seg-090.mp3"
             }
           ]
@@ -4259,7 +4439,9 @@ window.LESSON_DATA = {
               ],
               "zh": "出现剩余。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あまり"
+              ],
               "audio": "audio/seg-091.mp3"
             },
             {
@@ -4319,7 +4501,9 @@ window.LESSON_DATA = {
               ],
               "zh": "因太高兴而跳了起来。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あまり"
+              ],
               "audio": "audio/seg-092.mp3"
             }
           ]
@@ -4375,7 +4559,9 @@ window.LESSON_DATA = {
               ],
               "zh": "冲淋浴。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "浴びる"
+              ],
               "audio": "audio/seg-093.mp3"
             },
             {
@@ -4411,7 +4597,9 @@ window.LESSON_DATA = {
               ],
               "zh": "遭受非难。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "浴びる"
+              ],
               "audio": "audio/seg-094.mp3"
             }
           ]
@@ -4483,7 +4671,9 @@ window.LESSON_DATA = {
               ],
               "zh": "太安静了，反而无法集中精力。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あまりに"
+              ],
               "audio": "audio/seg-095.mp3"
             }
           ]
@@ -4533,7 +4723,9 @@ window.LESSON_DATA = {
               ],
               "zh": "讲述电影的梗概。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "粗筋"
+              ],
               "audio": "audio/seg-096.mp3"
             }
           ]
@@ -4591,7 +4783,9 @@ window.LESSON_DATA = {
               ],
               "zh": "计划的大致方针已经定下来了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "大筋"
+              ],
               "audio": "audio/seg-097.mp3"
             }
           ]
@@ -4640,7 +4834,9 @@ window.LESSON_DATA = {
               ],
               "zh": "争论不休。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "争い"
+              ],
               "audio": "audio/seg-098.mp3"
             }
           ]
@@ -4690,7 +4886,9 @@ window.LESSON_DATA = {
               ],
               "zh": "争夺首位。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "争う"
+              ],
               "audio": "audio/seg-099.mp3"
             }
           ]
@@ -4731,7 +4929,9 @@ window.LESSON_DATA = {
               ],
               "zh": "撒网。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "網"
+              ],
               "audio": "audio/seg-100.mp3"
             }
           ]
@@ -4811,7 +5011,9 @@ window.LESSON_DATA = {
               ],
               "zh": "争先恐后地购买新发售的游戏机。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "争って"
+              ],
               "audio": "audio/seg-101.mp3"
             }
           ]
@@ -4872,7 +5074,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在危急时刻被救了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "危うい"
+              ],
               "audio": "audio/seg-102.mp3"
             }
           ]
@@ -4917,7 +5121,9 @@ window.LESSON_DATA = {
               ],
               "zh": "迎来新的一年。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "改まる"
+              ],
               "audio": "audio/seg-103.mp3"
             },
             {
@@ -4946,7 +5152,9 @@ window.LESSON_DATA = {
               ],
               "zh": "客气拘谨的寒暄",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "改まった"
+              ],
               "audio": "audio/seg-104.mp3"
             }
           ]
@@ -4987,7 +5195,9 @@ window.LESSON_DATA = {
               ],
               "zh": "能否成功还很难说。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "危ない"
+              ],
               "audio": "audio/seg-105.mp3"
             }
           ]
@@ -5021,7 +5231,9 @@ window.LESSON_DATA = {
               ],
               "zh": "诡异的声音",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "怪しい"
+              ],
               "audio": "audio/seg-106.mp3"
             },
             {
@@ -5053,7 +5265,9 @@ window.LESSON_DATA = {
               ],
               "zh": "天空的样子看着要变天。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "怪しい"
+              ],
               "audio": "audio/seg-107.mp3"
             }
           ]
@@ -5107,7 +5321,9 @@ window.LESSON_DATA = {
               ],
               "zh": "改日再登门拜访。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "改めて"
+              ],
               "audio": "audio/seg-108.mp3"
             }
           ]
@@ -5160,7 +5376,9 @@ window.LESSON_DATA = {
               ],
               "zh": "无需再作说明。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "改めて"
+              ],
               "audio": "audio/seg-109.mp3"
             },
             {
@@ -5196,7 +5414,9 @@ window.LESSON_DATA = {
               ],
               "zh": "端正坐姿。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "改める"
+              ],
               "audio": "audio/seg-110.mp3"
             }
           ]
@@ -5254,7 +5474,9 @@ window.LESSON_DATA = {
               ],
               "zh": "怀疑他的诚实。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "怪しむ"
+              ],
               "audio": "audio/seg-111.mp3"
             },
             {
@@ -5303,7 +5525,9 @@ window.LESSON_DATA = {
               ],
               "zh": "对人深信不疑。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "怪しまない"
+              ],
               "audio": "audio/seg-112.mp3"
             }
           ]
@@ -5348,7 +5572,9 @@ window.LESSON_DATA = {
               ],
               "zh": "犯错误。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "誤り"
+              ],
               "audio": "audio/seg-113.mp3"
             }
           ]
@@ -5398,7 +5624,9 @@ window.LESSON_DATA = {
               ],
               "zh": "写有关教育方面的书。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "著す"
+              ],
               "audio": "audio/seg-114.mp3"
             }
           ]
@@ -5460,7 +5688,9 @@ window.LESSON_DATA = {
               ],
               "zh": "他终于露出了本性。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "現した"
+              ],
               "audio": "audio/seg-115.mp3"
             }
           ]
@@ -5502,7 +5732,9 @@ window.LESSON_DATA = {
               ],
               "zh": "幸福的体现",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "現れ"
+              ],
               "audio": "audio/seg-116.mp3"
             }
           ]
@@ -5556,7 +5788,9 @@ window.LESSON_DATA = {
               ],
               "zh": "因暴风雨电车停运了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "嵐"
+              ],
               "audio": "audio/seg-117.mp3"
             }
           ]
@@ -5590,7 +5824,9 @@ window.LESSON_DATA = {
               ],
               "zh": "浅蓝色",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "淡い"
+              ],
               "audio": "audio/seg-118.mp3"
             },
             {
@@ -5631,7 +5867,9 @@ window.LESSON_DATA = {
               ],
               "zh": "怀有淡淡的爱慕之心。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "淡い"
+              ],
               "audio": "audio/seg-119.mp3"
             }
           ]
@@ -5684,7 +5922,9 @@ window.LESSON_DATA = {
               ],
               "zh": "拿出所有的钱。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "有り金"
+              ],
               "audio": "audio/seg-120.mp3"
             }
           ]
@@ -5717,7 +5957,9 @@ window.LESSON_DATA = {
               ],
               "zh": "碰头，会面",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "合わせ"
+              ],
               "audio": "audio/seg-121.mp3"
             },
             {
@@ -5746,7 +5988,9 @@ window.LESSON_DATA = {
               ],
               "zh": "背靠背",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "合わせ"
+              ],
               "audio": "audio/seg-122.mp3"
             }
           ]
@@ -5808,7 +6052,9 @@ window.LESSON_DATA = {
               ],
               "zh": "调和配料。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "合わせる"
+              ],
               "audio": "audio/seg-123.mp3"
             },
             {
@@ -5857,7 +6103,9 @@ window.LESSON_DATA = {
               ],
               "zh": "约好在车站碰头。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "合わせる"
+              ],
               "audio": "audio/seg-124.mp3"
             }
           ]
@@ -5914,7 +6162,9 @@ window.LESSON_DATA = {
               ],
               "zh": "都那么努力了却还是失败了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あれだけ"
+              ],
               "audio": "audio/seg-125.mp3"
             }
           ]
@@ -5955,7 +6205,9 @@ window.LESSON_DATA = {
               ],
               "zh": "会议闹翻。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "荒れる"
+              ],
               "audio": "audio/seg-126.mp3"
             },
             {
@@ -5987,7 +6239,9 @@ window.LESSON_DATA = {
               ],
               "zh": "手变粗糙。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "荒れる"
+              ],
               "audio": "audio/seg-127.mp3"
             },
             {
@@ -6041,7 +6295,9 @@ window.LESSON_DATA = {
               ],
               "zh": "荒芜的庭院也迎来了春天。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "荒れた"
+              ],
               "audio": "audio/seg-128.mp3"
             }
           ]
@@ -6086,7 +6342,9 @@ window.LESSON_DATA = {
               ],
               "zh": "匆忙做准备。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "慌しく"
+              ],
               "audio": "audio/seg-129.mp3"
             }
           ]
@@ -6165,7 +6423,9 @@ window.LESSON_DATA = {
               ],
               "zh": "妹妹是急性子，又忘了什么东西。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "慌て者"
+              ],
               "audio": "audio/seg-130.mp3"
             }
           ]
@@ -6221,7 +6481,9 @@ window.LESSON_DATA = {
               ],
               "zh": "对鸡蛋过敏。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アレルギー"
+              ],
               "audio": "audio/seg-131.mp3"
             },
             {
@@ -6277,7 +6539,9 @@ window.LESSON_DATA = {
               ],
               "zh": "引发过敏症状。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アレルギー"
+              ],
               "audio": "audio/seg-132.mp3"
             }
           ]
@@ -6315,7 +6579,9 @@ window.LESSON_DATA = {
               ],
               "zh": "可怜的样子",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "哀れ"
+              ],
               "audio": "audio/seg-133.mp3"
             },
             {
@@ -6344,7 +6610,9 @@ window.LESSON_DATA = {
               ],
               "zh": "悲惨的故事",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "哀れ"
+              ],
               "audio": "audio/seg-134.mp3"
             }
           ]
@@ -6382,7 +6650,9 @@ window.LESSON_DATA = {
               ],
               "zh": "肥皂泡",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "泡"
+              ],
               "audio": "audio/seg-135.mp3"
             },
             {
@@ -6443,7 +6713,9 @@ window.LESSON_DATA = {
               ],
               "zh": "辛辛苦苦的努力也化为泡影。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "泡"
+              ],
               "audio": "audio/seg-136.mp3"
             }
           ]
@@ -6496,7 +6768,9 @@ window.LESSON_DATA = {
               ],
               "zh": "想出一个好点子。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "案"
+              ],
               "audio": "audio/seg-137.mp3"
             }
           ]
@@ -6521,7 +6795,9 @@ window.LESSON_DATA = {
               ],
               "zh": "死记硬背",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "暗記"
+              ],
               "audio": "audio/seg-138.mp3"
             },
             {
@@ -6553,7 +6829,9 @@ window.LESSON_DATA = {
               ],
               "zh": "背诵方程式。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "暗記"
+              ],
               "audio": "audio/seg-139.mp3"
             }
           ]
@@ -6601,7 +6879,9 @@ window.LESSON_DATA = {
               ],
               "zh": "电视天线",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アンテナ"
+              ],
               "audio": "audio/seg-140.mp3"
             },
             {
@@ -6661,7 +6941,9 @@ window.LESSON_DATA = {
               ],
               "zh": "从各行各业收集信息。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "アンテナ"
+              ],
               "audio": "audio/seg-141.mp3"
             }
           ]
@@ -6705,7 +6987,9 @@ window.LESSON_DATA = {
               ],
               "zh": "适可而止吧！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いい加減"
+              ],
               "audio": "audio/seg-142.mp3"
             },
             {
@@ -6734,7 +7018,9 @@ window.LESSON_DATA = {
               ],
               "zh": "敷衍的回答",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いい加減"
+              ],
               "audio": "audio/seg-143.mp3"
             }
           ]
@@ -6784,7 +7070,9 @@ window.LESSON_DATA = {
               ],
               "zh": "吩咐工作。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "言い付ける"
+              ],
               "audio": "audio/seg-144.mp3"
             },
             {
@@ -6854,7 +7142,9 @@ window.LESSON_DATA = {
               ],
               "zh": "一有什么事就立刻向老师打小报告。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "言い付ける"
+              ],
               "audio": "audio/seg-145.mp3"
             }
           ]
@@ -6883,7 +7173,9 @@ window.LESSON_DATA = {
               ],
               "zh": "第一名",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "位"
+              ],
               "audio": "audio/seg-146.mp3"
             },
             {
@@ -6899,7 +7191,9 @@ window.LESSON_DATA = {
               ],
               "zh": "最后一名",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "位"
+              ],
               "audio": "audio/seg-147.mp3"
             }
           ]
@@ -6924,7 +7218,9 @@ window.LESSON_DATA = {
               ],
               "zh": "外科医生",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "医"
+              ],
               "audio": "audio/seg-148.mp3"
             },
             {
@@ -6940,7 +7236,9 @@ window.LESSON_DATA = {
               ],
               "zh": "牙医",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "医"
+              ],
               "audio": "audio/seg-149.mp3"
             }
           ]
@@ -6990,7 +7288,9 @@ window.LESSON_DATA = {
               ],
               "zh": "转达事情。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "言い伝える"
+              ],
               "audio": "audio/seg-150.mp3"
             },
             {
@@ -7041,7 +7341,9 @@ window.LESSON_DATA = {
               ],
               "zh": "代代相传的故事",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "言い伝えられて"
+              ],
               "audio": "audio/seg-151.mp3"
             }
           ]
@@ -7086,7 +7388,9 @@ window.LESSON_DATA = {
               ],
               "zh": "找借口，辩解。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "言い訳"
+              ],
               "audio": "audio/seg-152.mp3"
             }
           ]
@@ -7152,7 +7456,9 @@ window.LESSON_DATA = {
               ],
               "zh": "因为一点小事吵了起来。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "言い合い"
+              ],
               "audio": "audio/seg-153.mp3"
             }
           ]
@@ -7206,7 +7512,9 @@ window.LESSON_DATA = {
               ],
               "zh": "无法用言语表达。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "言い表せ"
+              ],
               "audio": "audio/seg-154.mp3"
             }
           ]
@@ -7231,7 +7539,9 @@ window.LESSON_DATA = {
               ],
               "zh": "班干部",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "委員"
+              ],
               "audio": "audio/seg-155.mp3"
             }
           ]
@@ -7293,7 +7603,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在附近的诊所看了病。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "医院"
+              ],
               "audio": "audio/seg-156.mp3"
             }
           ]
@@ -7345,7 +7657,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在飞机事故中幸存下来的人",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "生き残った"
+              ],
               "audio": "audio/seg-157.mp3"
             },
             {
@@ -7395,7 +7709,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在激烈的竞争中幸存下来。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "生き残る"
+              ],
               "audio": "audio/seg-158.mp3"
             }
           ]
@@ -7444,7 +7760,9 @@ window.LESSON_DATA = {
               ],
               "zh": "有价值（值得做）的工作",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "やりがい"
+              ],
               "audio": "audio/seg-159.mp3"
             }
           ]
@@ -7493,7 +7811,9 @@ window.LESSON_DATA = {
               ],
               "zh": "离家出走后一直没回来。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "家出"
+              ],
               "audio": "audio/seg-160.mp3"
             }
           ]
@@ -7518,7 +7838,9 @@ window.LESSON_DATA = {
               ],
               "zh": "育儿假",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "育児"
+              ],
               "audio": "audio/seg-161.mp3"
             }
           ]
@@ -7571,7 +7893,9 @@ window.LESSON_DATA = {
               ],
               "zh": "夫妻都上班，一起带孩子。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "子育て"
+              ],
               "audio": "audio/seg-162.mp3"
             }
           ]
@@ -7616,7 +7940,9 @@ window.LESSON_DATA = {
               ],
               "zh": "惹人发怒。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "怒り"
+              ],
               "audio": "audio/seg-163.mp3"
             }
           ]
@@ -7670,7 +7996,9 @@ window.LESSON_DATA = {
               ],
               "zh": "最近天气有点转凉了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "幾分"
+              ],
               "audio": "audio/seg-164.mp3"
             }
           ]
@@ -7740,7 +8068,9 @@ window.LESSON_DATA = {
               ],
               "zh": "去时坐地铁，回来坐公交。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "行き"
+              ],
               "audio": "audio/seg-165.mp3"
             }
           ]
@@ -7790,7 +8120,9 @@ window.LESSON_DATA = {
               ],
               "zh": "学习插花。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "生け花"
+              ],
               "audio": "audio/seg-166.mp3"
             }
           ]
@@ -7831,7 +8163,9 @@ window.LESSON_DATA = {
               ],
               "zh": "插花。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "生ける"
+              ],
               "audio": "audio/seg-167.mp3"
             }
           ]
@@ -7885,7 +8219,9 @@ window.LESSON_DATA = {
               ],
               "zh": "火势很旺。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "勢い"
+              ],
               "audio": "audio/seg-168.mp3"
             }
           ]
@@ -7935,7 +8271,9 @@ window.LESSON_DATA = {
               ],
               "zh": "有意义的人生",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "生きがい"
+              ],
               "audio": "audio/seg-169.mp3"
             },
             {
@@ -8005,7 +8343,9 @@ window.LESSON_DATA = {
               ],
               "zh": "通过工作找到生活的意义。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "生きがい"
+              ],
               "audio": "audio/seg-170.mp3"
             }
           ]
@@ -8035,7 +8375,9 @@ window.LESSON_DATA = {
               ],
               "zh": "明治时代之后",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "以降"
+              ],
               "audio": "audio/seg-171.mp3"
             },
             {
@@ -8076,7 +8418,9 @@ window.LESSON_DATA = {
               ],
               "zh": "晚上十点以后禁止外出。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "以降"
+              ],
               "audio": "audio/seg-172.mp3"
             }
           ]
@@ -8131,7 +8475,9 @@ window.LESSON_DATA = {
               ],
               "zh": "在小酒馆喝一杯回家。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "居酒屋"
+              ],
               "audio": "audio/seg-173.mp3"
             }
           ]
@@ -8180,7 +8526,9 @@ window.LESSON_DATA = {
               ],
               "zh": "说话刁难人。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "意地悪い"
+              ],
               "audio": "audio/seg-174.mp3"
             }
           ]
@@ -8230,7 +8578,9 @@ window.LESSON_DATA = {
               ],
               "zh": "泉水涌出。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "泉"
+              ],
               "audio": "audio/seg-175.mp3"
             },
             {
@@ -8255,7 +8605,9 @@ window.LESSON_DATA = {
               ],
               "zh": "知识的源泉",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "泉"
+              ],
               "audio": "audio/seg-176.mp3"
             }
           ]
@@ -8293,7 +8645,9 @@ window.LESSON_DATA = {
               ],
               "zh": "勇敢的战士",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "勇ましい"
+              ],
               "audio": "audio/seg-177.mp3"
             },
             {
@@ -8329,7 +8683,9 @@ window.LESSON_DATA = {
               ],
               "zh": "英勇奋战。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "勇ましく"
+              ],
               "audio": "audio/seg-178.mp3"
             }
           ]
@@ -8403,7 +8759,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不管怎样，总要先做做看。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いずれにしても"
+              ],
               "audio": "audio/seg-179.mp3"
             }
           ]
@@ -8456,7 +8814,9 @@ window.LESSON_DATA = {
               ],
               "zh": "为紧急关头做准备。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いざという時"
+              ],
               "audio": "audio/seg-180.mp3"
             }
           ]
@@ -8528,7 +8888,9 @@ window.LESSON_DATA = {
               ],
               "zh": "一旦真出事，立刻就逃跑。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いざとなると"
+              ],
               "audio": "audio/seg-181.mp3"
             }
           ]
@@ -8599,7 +8961,9 @@ window.LESSON_DATA = {
               ],
               "zh": "他在异性面前会紧张。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "異性"
+              ],
               "audio": "audio/seg-182.mp3"
             }
           ]
@@ -8633,7 +8997,9 @@ window.LESSON_DATA = {
               ],
               "zh": "铁板",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "板"
+              ],
               "audio": "audio/seg-183.mp3"
             }
           ]
@@ -8683,7 +9049,9 @@ window.LESSON_DATA = {
               ],
               "zh": "遵从医生的指示。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "医師"
+              ],
               "audio": "audio/seg-184.mp3"
             }
           ]
@@ -8717,7 +9085,9 @@ window.LESSON_DATA = {
               ],
               "zh": "伟大的业绩",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "偉大"
+              ],
               "audio": "audio/seg-185.mp3"
             },
             {
@@ -8742,7 +9112,9 @@ window.LESSON_DATA = {
               ],
               "zh": "伟人",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "偉大"
+              ],
               "audio": "audio/seg-186.mp3"
             }
           ]
@@ -8808,7 +9180,9 @@ window.LESSON_DATA = {
               ],
               "zh": "明确表达自己的想法。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "意思"
+              ],
               "audio": "audio/seg-187.mp3"
             }
           ]
@@ -8849,7 +9223,9 @@ window.LESSON_DATA = {
               ],
               "zh": "传达意思。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "意志"
+              ],
               "audio": "audio/seg-188.mp3"
             }
           ]
@@ -8874,7 +9250,9 @@ window.LESSON_DATA = {
               ],
               "zh": "维持现状",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "維持"
+              ],
               "audio": "audio/seg-189.mp3"
             },
             {
@@ -8906,7 +9284,9 @@ window.LESSON_DATA = {
               ],
               "zh": "维持和平。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "維持"
+              ],
               "audio": "audio/seg-190.mp3"
             }
           ]
@@ -8942,7 +9322,9 @@ window.LESSON_DATA = {
               ],
               "zh": "故意刁难人，使坏心眼。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "意地悪"
+              ],
               "audio": "audio/seg-191.mp3"
             }
           ]
@@ -8999,7 +9381,9 @@ window.LESSON_DATA = {
               ],
               "zh": "鞋磨损得很厉害。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "傷み"
+              ],
               "audio": "audio/seg-192.mp3"
             },
             {
@@ -9066,7 +9450,9 @@ window.LESSON_DATA = {
               ],
               "zh": "天热，食物容易坏得快。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "傷み"
+              ],
               "audio": "audio/seg-193.mp3"
             }
           ]
@@ -9111,7 +9497,9 @@ window.LESSON_DATA = {
               ],
               "zh": "伤脑筋。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "痛める"
+              ],
               "audio": "audio/seg-194.mp3"
             },
             {
@@ -9164,7 +9552,9 @@ window.LESSON_DATA = {
               ],
               "zh": "伤了腿走不了路。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "痛めて"
+              ],
               "audio": "audio/seg-195.mp3"
             }
           ]
@@ -9223,7 +9613,9 @@ window.LESSON_DATA = {
               ],
               "zh": "经横滨到达东京。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "至る"
+              ],
               "audio": "audio/seg-196.mp3"
             },
             {
@@ -9265,7 +9657,9 @@ window.LESSON_DATA = {
               ],
               "zh": "从社长到普通员工",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "至る"
+              ],
               "audio": "audio/seg-197.mp3"
             }
           ]
@@ -9319,7 +9713,9 @@ window.LESSON_DATA = {
               ],
               "zh": "处处可见。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "至る所"
+              ],
               "audio": "audio/seg-198.mp3"
             }
           ]
@@ -9360,7 +9756,9 @@ window.LESSON_DATA = {
               ],
               "zh": "完全无所谓。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一向に"
+              ],
               "audio": "audio/seg-199.mp3"
             },
             {
@@ -9418,7 +9816,9 @@ window.LESSON_DATA = {
               ],
               "zh": "她完全不追求流行。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一向に"
+              ],
               "audio": "audio/seg-200.mp3"
             }
           ]
@@ -9468,7 +9868,9 @@ window.LESSON_DATA = {
               ],
               "zh": "负全部责任。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一切"
+              ],
               "audio": "audio/seg-201.mp3"
             },
             {
@@ -9514,7 +9916,9 @@ window.LESSON_DATA = {
               ],
               "zh": "一律不允许无故缺勤。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一切"
+              ],
               "audio": "audio/seg-202.mp3"
             }
           ]
@@ -9562,7 +9966,9 @@ window.LESSON_DATA = {
               ],
               "zh": "逐一做出解释。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いちいち"
+              ],
               "audio": "audio/seg-203.mp3"
             },
             {
@@ -9634,7 +10040,9 @@ window.LESSON_DATA = {
               ],
               "zh": "对别人做的事事事挑毛病。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いちいち"
+              ],
               "audio": "audio/seg-204.mp3"
             }
           ]
@@ -9683,7 +10091,9 @@ window.LESSON_DATA = {
               ],
               "zh": "变得更加漂亮了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一段と"
+              ],
               "audio": "audio/seg-205.mp3"
             },
             {
@@ -9732,7 +10142,9 @@ window.LESSON_DATA = {
               ],
               "zh": "雨越下越大了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一段と"
+              ],
               "audio": "audio/seg-206.mp3"
             }
           ]
@@ -9762,7 +10174,9 @@ window.LESSON_DATA = {
               ],
               "zh": "上等品，头等货",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一流"
+              ],
               "audio": "audio/seg-207.mp3"
             },
             {
@@ -9787,7 +10201,9 @@ window.LESSON_DATA = {
               ],
               "zh": "一流的演奏",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一流"
+              ],
               "audio": "audio/seg-208.mp3"
             }
           ]
@@ -9849,7 +10265,9 @@ window.LESSON_DATA = {
               ],
               "zh": "一口气把啤酒喝干。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一気に"
+              ],
               "audio": "audio/seg-209.mp3"
             }
           ]
@@ -9895,7 +10313,9 @@ window.LESSON_DATA = {
               ],
               "zh": "大体上准备好了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一応"
+              ],
               "audio": "audio/seg-210.mp3"
             },
             {
@@ -9935,7 +10355,9 @@ window.LESSON_DATA = {
               ],
               "zh": "动乱暂时平息了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一応"
+              ],
               "audio": "audio/seg-211.mp3"
             }
           ]
@@ -10007,7 +10429,9 @@ window.LESSON_DATA = {
               ],
               "zh": "前天在车站偶然遇到了大学时代的朋友。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一昨日"
+              ],
               "audio": "audio/seg-212.mp3"
             }
           ]
@@ -10069,7 +10493,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不能一概说是不好。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一概に"
+              ],
               "audio": "audio/seg-213.mp3"
             }
           ]
@@ -10119,7 +10545,9 @@ window.LESSON_DATA = {
               ],
               "zh": "请注意一氧化碳中毒。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一酸化炭素"
+              ],
               "audio": "audio/seg-214.mp3"
             }
           ]
@@ -10158,7 +10586,9 @@ window.LESSON_DATA = {
               ],
               "zh": "灵长类动物的一种",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一種"
+              ],
               "audio": "audio/seg-215.mp3"
             },
             {
@@ -10183,7 +10613,9 @@ window.LESSON_DATA = {
               ],
               "zh": "某种独特的氛围",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一種"
+              ],
               "audio": "audio/seg-216.mp3"
             }
           ]
@@ -10224,7 +10656,9 @@ window.LESSON_DATA = {
               ],
               "zh": "证词相符。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一致"
+              ],
               "audio": "audio/seg-217.mp3"
             },
             {
@@ -10240,7 +10674,9 @@ window.LESSON_DATA = {
               ],
               "zh": "团结一致",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一致"
+              ],
               "audio": "audio/seg-218.mp3"
             }
           ]
@@ -10265,7 +10701,9 @@ window.LESSON_DATA = {
               ],
               "zh": "环游世界旅行",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一周"
+              ],
               "audio": "audio/seg-219.mp3"
             },
             {
@@ -10302,7 +10740,9 @@ window.LESSON_DATA = {
               ],
               "zh": "游遍世博会场。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一周"
+              ],
               "audio": "audio/seg-220.mp3"
             }
           ]
@@ -10336,7 +10776,9 @@ window.LESSON_DATA = {
               ],
               "zh": "一定的评价",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一定"
+              ],
               "audio": "audio/seg-221.mp3"
             }
           ]
@@ -10386,7 +10828,9 @@ window.LESSON_DATA = {
               ],
               "zh": "一齐往前跑。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一斉に"
+              ],
               "audio": "audio/seg-222.mp3"
             }
           ]
@@ -10423,7 +10867,9 @@ window.LESSON_DATA = {
               ],
               "zh": "更加努力。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一層"
+              ],
               "audio": "audio/seg-223.mp3"
             }
           ]
@@ -10502,7 +10948,9 @@ window.LESSON_DATA = {
               ],
               "zh": "形势突然一变，对我方有利了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一転"
+              ],
               "audio": "audio/seg-224.mp3"
             }
           ]
@@ -10552,7 +11000,9 @@ window.LESSON_DATA = {
               ],
               "zh": "先回家一趟，再重新出发。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一旦"
+              ],
               "audio": "audio/seg-225.mp3"
             }
           ]
@@ -10612,7 +11062,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不知不觉喜欢上了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いつとなく"
+              ],
               "audio": "audio/seg-226.mp3"
             }
           ]
@@ -10686,7 +11138,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不知不觉外面已经天黑了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いつの間にか"
+              ],
               "audio": "audio/seg-227.mp3"
             }
           ]
