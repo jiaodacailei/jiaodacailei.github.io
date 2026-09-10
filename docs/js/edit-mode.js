@@ -102,12 +102,18 @@
 
   var currentCardId = null, currentCard = null, currentIcon = null;
 
+  // 标题栏用日文原句定位是在编辑哪一句（校对转录/挖空片段时看的就是日文），
+  // 中文译文已经在下面文本框的 JSON（zh 字段）里，不重复放进标题。
+  function sentenceJaText(s) {
+    return (s.tokens || []).map(function (t) { return t.text || ""; }).join("");
+  }
+
   function openEditor(cardId, card, icon) {
     currentCardId = cardId;
     currentCard = card;
     currentIcon = icon;
     var s = byId[cardId];
-    titleEl.textContent = "card-a" + cardId + "（" + (s.zh || "").slice(0, 24) + "）";
+    titleEl.textContent = "card-a" + cardId + "（" + sentenceJaText(s).slice(0, 24) + "）";
     textarea.value = JSON.stringify(pickEditable(s), null, 2);
     errorEl.textContent = "";
     overlay.classList.add("open");
