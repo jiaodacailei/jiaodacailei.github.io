@@ -17,8 +17,19 @@
 //     options: [{idx: 1, tokens: [...]}, ...]——选项，idx跟教材原版编号
 //       一致（1~4，不一定从1连续，取决于是不是问题2语序题这种直接把
 //       候选词列出来的形式）,
-//     answer: 正确选项的idx（不是数组下标）,
-//     explanationZh: 中文解析（可选，没有就不显示这块）
+//     answer: 正确选项的idx（不是数组下标），也可以是idx数组——真实案例
+//       （N2语法01"パートI問題2"词库选择题，13/20两题参考答案标的是
+//       "F/H"，两个语法点在那个语境下都讲得通）：判分/揭晓正确答案时
+//       统一用"idx是否在accepted数组里"判断，单个数字会先被[].concat()
+//       包成单元素数组，跟数组形式走同一条判断逻辑，不用分两套代码,
+//     kind: 可选，"complete"表示这题没有options/answer（教材原版这题就是
+//       "无选项、自己写一句续完"的主观题，只有参考例句，没有唯一标准
+//       答案），此时不读options/answer，改读referenceJa；不传这个字段
+//       就是默认的四选一题,
+//     referenceJa: kind:"complete"专用，书上给的参考例句（点"查看参考
+//       答案"后显示，不参与自动判分——由用户自己点"我答对了/答错了"
+//       自评，跟四选一共用同一套markDone()/bumpErr()错题记录）,
+//     explanationZh: 中文解析（可选，没有就不显示这块，两种kind都能用）
 //   }
 (function () {
   var dataEl = document.getElementById("mcq-quiz-data");
@@ -167,6 +178,16 @@
   var statusEl = document.getElementById("mcqStatus");
   var explanationEl = document.getElementById("mcqExplanation");
   var resetBtn = document.getElementById("mcqResetErrors");
+  // kind:"complete"（自由续写）专用的几个元素——没有这几个id的旧版
+  // page-renderer.js（还没升级）渲染出来的页面上不存在，用变量本身是否
+  // 为null判断要不要走这条分支，不强制要求存在。
+  var completeRowEl = document.getElementById("mcqCompleteRow");
+  var completeInputEl = document.getElementById("mcqCompleteInput");
+  var completeShowBtn = document.getElementById("mcqCompleteShowBtn");
+  var completeRevealEl = document.getElementById("mcqCompleteReveal");
+  var completeRefEl = document.getElementById("mcqCompleteRef");
+  var completeCorrectBtn = document.getElementById("mcqCompleteCorrectBtn");
+  var completeWrongBtn = document.getElementById("mcqCompleteWrongBtn");
 
   function progressHtml(current) {
     return current + " / " + TOTAL_THIS_ROUND +
@@ -208,37 +229,43 @@
     explanationEl.innerHTML = "";
 
     stemEl.innerHTML = renderTokensHtml(it.stemTokens);
-    optionsEl.innerHTML = it.options.map(function (opt) {
-      return '<div class="mcq-option" data-idx="' + opt.idx + '">' +
-        '<span class="mcq-option-num">' + opt.idx + "</span>" +
-        '<span class="mcq-option-text">' + renderTokensHtml(opt.tokens) + "</span></div>";
-    }).join("");
+
+    if (it.kind === "complete") {
+      optionsEl.style.display = "none";
+      if (completeRowEl) {
+        completeRowEl.style.display = "";
+        completeRevealEl.style.display = "none";
+        completeInputEl.value = "";
+        completeInputEl.disabled = false;
+        completeShowBtn.disabled = false;
+      }
+    } else {
+      optionsEl.style.display = "";
+      if (completeRowEl) completeRowEl.style.display = "none";
+      optionsEl.innerHTML = it.options.map(function (opt) {
+        return '<div class="mcq-option" data-idx="' + opt.idx + '">' +
+          '<span class="mcq-option-num">' + opt.idx + "</span>" +
+          '<span class="mcq-option-text">' + renderTokensHtml(opt.tokens) + "</span></div>";
+      }).join("");
+    }
   }
 
-  function selectOption(idx, it) {
-    if (resolved) return;
-    resolved = true;
-    var ok = String(idx) === String(it.answer);
+  // 判对/判错之后共用的收尾逻辑（记错题/进度、显示解析、定时自动跳下一
+  // 题）——四选一（selectOption）和自由续写自评（selectSelfReport）两条
+  // 路径判"对/错"的方式完全不同，但收尾这部分是同一套，不重复写。
+  function finishQuestion(it, ok, statusText) {
     if (ok) {
       markDone(it);
     } else {
       queue.push(it);
     }
     if (!ok && !countedWrong) { bumpErr(it.id); countedWrong = true; refreshProgress(); }
-
-    Array.prototype.forEach.call(optionsEl.querySelectorAll(".mcq-option"), function (el) {
-      el.classList.add("disabled");
-      var oIdx = el.getAttribute("data-idx");
-      if (String(oIdx) === String(it.answer)) el.classList.add("correct");
-      else if (String(oIdx) === String(idx)) el.classList.add("wrong");
-    });
-    statusEl.textContent = ok ? "✓ 正解！" : "✗ 不正解";
+    statusEl.textContent = statusText;
     statusEl.className = "quiz-status " + (ok ? "ok" : "rev");
     if (it.explanationZh) {
       explanationEl.textContent = it.explanationZh;
       explanationEl.className = "mcq-explanation show";
     }
-
     autoAdvanceTimer = setTimeout(function () {
       autoAdvanceTimer = null;
       qi++;
@@ -246,11 +273,52 @@
     }, advanceDelay * 1000);
   }
 
+  function selectOption(idx, it) {
+    if (resolved) return;
+    resolved = true;
+    // it.answer 通常是单个idx，[].concat()统一包成数组——13/20这类"两个
+    // 选项都算对"的题answer本来就是数组，两种形状走同一条判断逻辑。
+    var accepted = [].concat(it.answer);
+    var ok = accepted.some(function (a) { return String(a) === String(idx); });
+
+    Array.prototype.forEach.call(optionsEl.querySelectorAll(".mcq-option"), function (el) {
+      el.classList.add("disabled");
+      var oIdx = el.getAttribute("data-idx");
+      if (accepted.some(function (a) { return String(a) === String(oIdx); })) el.classList.add("correct");
+      else if (String(oIdx) === String(idx)) el.classList.add("wrong");
+    });
+    finishQuestion(it, ok, ok ? "✓ 正解！" : "✗ 不正解");
+  }
+
+  // kind:"complete"（自由续写）没有唯一标准答案，判分交给用户自己看完
+  // 参考例句后点"我答对了/我答错了"——跟selectOption()共用finishQuestion()
+  // 收尾，只是"ok"的来源从"点了哪个选项"变成"用户自评"。
+  function selectSelfReport(ok, it) {
+    if (resolved) return;
+    resolved = true;
+    completeInputEl.disabled = true;
+    completeShowBtn.disabled = true;
+    finishQuestion(it, ok, ok ? "✓ 正解！" : "✗ 不正解");
+  }
+
   optionsEl.addEventListener("click", function (e) {
     var opt = e.target.closest(".mcq-option");
     if (!opt || resolved) return;
     selectOption(opt.getAttribute("data-idx"), queue[qi]);
   });
+
+  if (completeShowBtn) {
+    completeShowBtn.addEventListener("click", function () {
+      var it = queue[qi];
+      if (resolved) return;
+      completeRevealEl.style.display = "";
+      completeRefEl.textContent = it.referenceJa || "";
+      completeInputEl.disabled = true;
+      completeShowBtn.disabled = true;
+    });
+    completeCorrectBtn.addEventListener("click", function () { selectSelfReport(true, queue[qi]); });
+    completeWrongBtn.addEventListener("click", function () { selectSelfReport(false, queue[qi]); });
+  }
 
   resetBtn.addEventListener("click", function () {
     errors = {};

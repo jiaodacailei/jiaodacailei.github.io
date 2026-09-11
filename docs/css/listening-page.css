@@ -782,6 +782,15 @@ body.mode-blank #blankProgressReset { display: inline-block; }
 }
 .mcq-explanation.show { display: block; }
 
+/* kind:"complete"（无选项自由续写）——输入行复用 .quiz-input-row 布局，
+   这里只补参考答案揭晓区/自评按钮组的样式，不新造视觉体系。 */
+.mcq-complete-reveal { margin-top: 12px; }
+.mcq-complete-ref {
+  padding: 10px 12px; background: var(--bg-soft); border-radius: 8px;
+  font-size: 15px; line-height: 1.6; margin-bottom: 8px;
+}
+.mcq-complete-selfreport { display: flex; gap: 8px; }
+
 #gate {
   position: fixed; inset: 0; background: var(--navy); display: flex;
   align-items: center; justify-content: center; z-index: 999; flex-direction: column;

@@ -430,6 +430,22 @@
           '<div class="quiz-card" id="mcqCard">' +
             '<div class="mcq-stem" id="mcqStem"></div>' +
             '<div class="mcq-options" id="mcqOptions"></div>' +
+            // kind:"complete"（无选项自由续写，见 mcq-quiz.js 顶部注释）
+            // 专用——mcqOptions 隐藏时显示，mcq-quiz.js 按题目 kind 切换
+            // 这两块的显隐，静态外壳本身不需要知道题目内容。
+            '<div class="mcq-complete-row" id="mcqCompleteRow" style="display:none">' +
+              '<div class="quiz-input-row">' +
+                '<input type="text" class="quiz-input" id="mcqCompleteInput" autocomplete="off" placeholder="在此写一句续完…">' +
+                '<button type="button" class="quiz-btn" id="mcqCompleteShowBtn">查看参考答案</button>' +
+              "</div>" +
+              '<div class="mcq-complete-reveal" id="mcqCompleteReveal" style="display:none">' +
+                '<div class="mcq-complete-ref" id="mcqCompleteRef"></div>' +
+                '<div class="mcq-complete-selfreport">' +
+                  '<button type="button" class="quiz-btn quiz-next" id="mcqCompleteCorrectBtn">我答对了</button>' +
+                  '<button type="button" class="quiz-btn" id="mcqCompleteWrongBtn">我答错了</button>' +
+                "</div>" +
+              "</div>" +
+            "</div>" +
             '<div class="quiz-status" id="mcqStatus"></div>' +
             '<div class="mcq-explanation" id="mcqExplanation"></div>' +
           "</div>" +

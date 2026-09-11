@@ -436,7 +436,18 @@ def build_mcq_items(mcq_units):
     """把 MCQ_UNITS 展开成 mcq-quiz.js 要吃的扁平JSON数组——纯文本注音，
     不配TTS音频（教材原版这几种题型本身就是阅读/语法判断题，不是听力题，
     用户没有提出"练习题也要能听"的需求，跟语法点/单词条目的例句音频是
-    两回事，不能因为"反正都要tokenize_ja()"就顺手也配一份不需要的音频）。"""
+    两回事，不能因为"反正都要tokenize_ja()"就顺手也配一份不需要的音频）。
+
+    `q["answer"]`可以是单个idx，也可以是idx列表（真实案例：N2语法01
+    "パートI問題2"词库选择题，参考答案页13/20两题标的是"F/H"，两个语法点
+    在那个语境下都讲得通，原样传给mcq-quiz.js，判分时按"是否在列表里"
+    处理，这里不用拆分/特殊处理）。
+
+    `q["kind"]=="complete"`（书上没给选项、只给参考例句的自由续写题，比如
+    "パートI問題3"）没有`options`/`answer`，不生成这两个字段，改传
+    `referenceJa`（参考例句原文）——mcq-quiz.js 遇到这个kind会跳过选项
+    渲染，换成输入框+自评按钮，判分靠用户自己点"我答对了/答错了"，不是
+    这个函数能自动算出来的。"""
     items = []
     mcq_id = 0
     for unit in mcq_units:
@@ -448,15 +459,20 @@ def build_mcq_items(mcq_units):
                 stem_tokens = tokenize_ja(before) + [{"text": "____", "blank": True}] + tokenize_ja(after)
             else:
                 stem_tokens = tokenize_ja(q["stem"])
-            options = [
-                {"idx": i + 1, "tokens": tokenize_ja(opt)}
-                for i, opt in enumerate(q["options"])
-            ]
-            items.append({
+            item = {
                 "id": mcq_id, "category": unit["label"],
-                "stemTokens": stem_tokens, "options": options,
-                "answer": q["answer"], "explanationZh": q.get("explanation", ""),
-            })
+                "stemTokens": stem_tokens, "explanationZh": q.get("explanation", ""),
+            }
+            if q.get("kind") == "complete":
+                item["kind"] = "complete"
+                item["referenceJa"] = q["reference"]
+            else:
+                item["options"] = [
+                    {"idx": i + 1, "tokens": tokenize_ja(opt)}
+                    for i, opt in enumerate(q["options"])
+                ]
+                item["answer"] = q["answer"]
+            items.append(item)
     return items
 
 
