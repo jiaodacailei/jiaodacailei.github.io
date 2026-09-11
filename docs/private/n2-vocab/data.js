@@ -1943,7 +1943,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "日",
-                  "kana": "にち",
+                  "kana": "ひ",
                   "t": 0.76
                 }
               ],
@@ -1974,7 +1974,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "年",
-                  "kana": "ねん",
+                  "kana": "とし",
                   "t": 1.42
                 }
               ],
@@ -5095,7 +5095,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "年",
-                  "kana": "ねん",
+                  "kana": "とし",
                   "t": 0
                 },
                 {
@@ -11245,6 +11245,16 @@ window.LESSON_DATA = {
       "audio": "audio/word-005.mp3"
     },
     {
+      "id": 2000001,
+      "kind": "related",
+      "mainText": "思いつき",
+      "relation": "类义词",
+      "text": "アイデア",
+      "zh": "想法，主意",
+      "category": "组1",
+      "unit": "第1单元"
+    },
+    {
       "id": 1000006,
       "text": "あいにく",
       "kana": "あいにく",
@@ -11301,6 +11311,16 @@ window.LESSON_DATA = {
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-008.mp3"
+    },
+    {
+      "id": 2000002,
+      "kind": "related",
+      "mainText": "アウト",
+      "relation": "反义词",
+      "text": "イン",
+      "zh": "内部，内侧；界内球，场内球",
+      "category": "组1",
+      "unit": "第1单元"
     },
     {
       "id": 1000009,
@@ -11375,6 +11395,16 @@ window.LESSON_DATA = {
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-012.mp3"
+    },
+    {
+      "id": 2000003,
+      "kind": "related",
+      "mainText": "赤字",
+      "relation": "反义词",
+      "text": "黒字",
+      "zh": "黑字，盈余",
+      "category": "组2",
+      "unit": "第1单元"
     },
     {
       "id": 1000013,
@@ -11640,6 +11670,16 @@ window.LESSON_DATA = {
       "audio": "audio/word-025.mp3"
     },
     {
+      "id": 2000004,
+      "kind": "related",
+      "mainText": "明け方",
+      "relation": "反义词",
+      "text": "暮れ方",
+      "zh": "傍晚，日暮时分",
+      "category": "组3",
+      "unit": "第1单元"
+    },
+    {
       "id": 1000026,
       "text": "空ける",
       "kana": "あける",
@@ -11770,6 +11810,16 @@ window.LESSON_DATA = {
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-032.mp3"
+    },
+    {
+      "id": 2000005,
+      "kind": "related",
+      "mainText": "アップ",
+      "relation": "反义词",
+      "text": "ダウン",
+      "zh": "下降，降低",
+      "category": "组4",
+      "unit": "第1单元"
     },
     {
       "id": 1000033,
@@ -11904,6 +11954,16 @@ window.LESSON_DATA = {
       "audio": "audio/word-039.mp3"
     },
     {
+      "id": 2000006,
+      "kind": "related",
+      "mainText": "悪化",
+      "relation": "反义词",
+      "text": "好転",
+      "zh": "好转",
+      "category": "组4",
+      "unit": "第1单元"
+    },
+    {
       "id": 1000040,
       "text": "厚かましい",
       "kana": "あつかましい",
@@ -11918,6 +11978,16 @@ window.LESSON_DATA = {
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-040.mp3"
+    },
+    {
+      "id": 2000007,
+      "kind": "related",
+      "mainText": "厚かましい",
+      "relation": "同义词",
+      "text": "ずうずうしい",
+      "zh": "厚脸皮的，无耻的",
+      "category": "组4",
+      "unit": "第1单元"
     },
     {
       "id": 1000041,
@@ -12108,6 +12178,16 @@ window.LESSON_DATA = {
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-050.mp3"
+    },
+    {
+      "id": 2000008,
+      "kind": "related",
+      "mainText": "アマ",
+      "relation": "反义词",
+      "text": "プロ",
+      "zh": "专家，内行",
+      "category": "组5",
+      "unit": "第1单元"
     },
     {
       "id": 1000051,
@@ -12601,6 +12681,16 @@ window.LESSON_DATA = {
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-078.mp3"
+    },
+    {
+      "id": 2000009,
+      "kind": "related",
+      "mainText": "淡い",
+      "relation": "反义词",
+      "text": "濃い",
+      "zh": "（颜色）浓的，深的；（味道）浓重的",
+      "category": "组8",
+      "unit": "第1单元"
     },
     {
       "id": 1000079,
@@ -13402,6 +13492,16 @@ window.LESSON_DATA = {
       "audio": "audio/word-122.mp3"
     },
     {
+      "id": 2000010,
+      "kind": "related",
+      "mainText": "異性",
+      "relation": "反义词",
+      "text": "同性",
+      "zh": "同性",
+      "category": "组13",
+      "unit": "第1单元"
+    },
+    {
       "id": 1000123,
       "text": "板",
       "kana": "いた",
@@ -13706,6 +13806,16 @@ window.LESSON_DATA = {
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-138.mp3"
+    },
+    {
+      "id": 2000011,
+      "kind": "related",
+      "mainText": "一流",
+      "relation": "反义词",
+      "text": "三流",
+      "zh": "低级，三流",
+      "category": "组14",
+      "unit": "第1单元"
     },
     {
       "id": 1000139,

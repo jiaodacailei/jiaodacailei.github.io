@@ -2090,6 +2090,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function scopedAllItems() {
     var all = [];
     categoryWords().forEach(function(w) {
+      // "近义词/反义词"条目（build_vocab_quiz_items() 里 kind=="related" 的
+      // pseudo-word，来自内容模块 point["related"] 字段）跟常规词条是两种
+      // 数据形状——没有 kana/sentences/audio，只出一道"related"题，不跟
+      // 常规词条一样套 TYPES 那4种题型，真实反馈"如果提到近义词或者反义词，
+      // 需要在单词测试中增加相应近义词或者反义词填空"。每个 related 条目的
+      // id 全局唯一（RELATED_ID_OFFSET 偏移量），errType 不用像 blank 那样
+      // 加序号区分。
+      if (w.kind === "related") {
+        if (scope === "wrong" && getErr(errKey(w.id, "related")) <= 0) return;
+        all.push({ word: w, type: "related", errType: "related" });
+        return;
+      }
       TYPES.forEach(function(t) {
         if (t === "blank") {
           blankSentences(w).forEach(function(s, i) {
@@ -2208,6 +2220,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
 
   function answerFor(q) {
     if (q.type === "blank") return q.sentence.blank;
+    if (q.type === "related") return q.word.text;
     if (q.type === "audio2kana" || q.type === "zh2kana") return q.word.kana;
     return null; // ja2zh 是多选一匹配，见 checkJa2Zh
   }
@@ -2313,7 +2326,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var q = queue[qi];
     resolved = false;
     countedWrong = false;
-    quizTypeLabel.innerHTML = TYPE_LABELS[q.type];
+    // "related"题型的标签是动态的（反义词/同义词/类义词，来自内容模块自己
+    // 标注的relation字段，不是固定4选1），TYPE_LABELS这张静态表放不下，
+    // 单独拼一份保持跟其它题型同样"高亮关键部分"的视觉风格。
+    quizTypeLabel.innerHTML = q.type === "related"
+      ? '写出<span class="quiz-type-highlight">' + q.word.relation + '</span>'
+      : TYPE_LABELS[q.type];
     quizInput.value = "";
     quizInput.disabled = false;
     quizStatus.textContent = "";
@@ -2343,6 +2361,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var zhSuffix = ZH_DISAMBIGUATE_SUFFIX[q.word.id];
       var zhShown = q.word.zh + (zhSuffix ? '<span class="quiz-dedupe-badge">' + zhSuffix + '</span>' : "");
       quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + zhShown + '</div>';
+    } else if (q.type === "related") {
+      // 题面："「主词」的反义词/同义词/类义词是？"+中文释义提示，答案是
+      // q.word.text（参照词自己的日文原文，不是假名读音）——真实反馈"不是
+      // 写假名，而是日文"。q.word.mainText 是被参照的主词条本身的原文
+      // （build_vocab_quiz_items() 里的 word_text，可能带"/"分隔的多个
+      // 写法，跟ja2zh题面显示逻辑不是同一套，这里不需要注音/去重后缀，
+      // 直接原样显示即可——主词条已经在别的题型里单独测过读音了）。
+      quizPrompt.innerHTML = '<div class="quiz-hint-text">「' + q.word.mainText + '」的' +
+        q.word.relation + '是？</div>' + '<div class="quiz-zh-hint">' + q.word.zh + '</div>';
     } else {
       var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
         ? q.word.text + "（" + q.word.kana + "）" : q.word.text;

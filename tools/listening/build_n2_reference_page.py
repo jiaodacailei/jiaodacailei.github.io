@@ -334,6 +334,25 @@ def build_vocab_quiz_items(units):
     只靠category区分），供前端顶部"单元选择"下拉框先按单元筛一遍词表、
     再在筛出来的子集里重新算这个单元自己的"组N"选项。
 
+    词条如果在 `point["related"]` 里登记了近义词/反义词（`[{relation, text,
+    kana, zh}, ...]`，`relation`是"反义词"/"同义词"/"类义词"这种关系标签，
+    其余三个字段是那个参照词自己的原文/读音/中文释义——跟 overview 里给人看
+    的自由文本注释是两份独立数据，不是解析 overview 反推出来的，这份是专门
+    给单词测试用的结构化字段），每条 `related` 会额外生成一条`kind":"related"`
+    的 pseudo-word 条目（`{id, kind, mainText, relation, text, zh, category,
+    unit}`，没有`sentences`/`kana`/`audio`——不需要，这类题不读音频也不用
+    例句）——真实反馈"如果提到近义词或者反义词，需要在单词测试中增加相应
+    近义词或者反义词填空"，进一步澄清"不是写假名，而是日文"：`listening-
+    page.js`只给`kind=="related"`的条目出**一道**新题型"related"（题面是
+    "「主词」的反义词/同义词/类义词是？"+中文释义提示，答案是`text`本身，
+    不是`kana`），不跟`blank`/`audio2kana`/`zh2kana`/`ja2zh`那四种题型混在
+    一起——这类参照词本身没有独立的读音/例句/音频数据（overview里的注释
+    只给了"词+读音+释义"三项，比正常词条缺少例句和TTS音频），达不到常规
+    四种题型的数据要求，所以另开一种不依赖音频/例句的新题型，而不是勉强
+    把参照词也套进`build_point_sentences()`那条常规词条流水线（会需要现造
+    一条例句、重新合成音频，改动范围大得多，用户明确说"不用例句，测法
+    不同"）。
+
     "id"字段特意加了个很大的偏移量（QUIZ_ID_OFFSET）——真实踩过的坑：
     build_page.py 的 sentence_to_data() 里有一段"生词卡片没有自己的
     blanks时，从quiz_by_id按相同id借一份填空例句"的逻辑（专为"生词卡片
@@ -348,8 +367,10 @@ def build_vocab_quiz_items(units):
     id（要跟build_point_sentences()里synth_word_audio()用的word_id对上，
     那边没有偏移），单独留一个word_id变量。"""
     QUIZ_ID_OFFSET = 1000000
+    RELATED_ID_OFFSET = 2000000
     items = []
     word_id = 0
+    related_id = 0
     problems = []
     for unit in units:
         unit_label = unit.get("label", "")
@@ -395,6 +416,14 @@ def build_vocab_quiz_items(units):
                 "category": group_label, "unit": unit_label,
                 "audio": f"audio/word-{word_id:03d}.mp3",
             })
+            for rel in point.get("related") or []:
+                related_id += 1
+                items.append({
+                    "id": RELATED_ID_OFFSET + related_id, "kind": "related",
+                    "mainText": word_text, "relation": rel["relation"],
+                    "text": rel["text"], "zh": rel["zh"],
+                    "category": group_label, "unit": unit_label,
+                })
     if problems:
         print("FAIL: 以下词条无法生成单词测试数据：")
         for p in problems:
