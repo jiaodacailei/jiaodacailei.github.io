@@ -2775,12 +2775,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       numMarkResolved(ok, ans);
     }
 
-    // 解析用户输入：逗号/全角逗号/空格/换行都认作分隔符；超出题号范围、
+    // 解析用户输入：半角/全角逗号、顿号、分号、空格（含全角空格）、换行——
+    // 常见的"列举几个数字"场景会用到的分隔写法基本都认，不用逼用户统一成
+    // 一种格式（真实反馈"要支持空格、标点符号半全角、回车"）。\s 本身在
+    // JS 正则里就包含换行和全角空格 U+3000，不用额外列。超出题号范围、
     // 非数字、带小数点这类一律当无效编号单独提示，不悄悄丢弃也不让整次
     // 提交失败——合法的部分照样开始测试。重复编号去重，按用户输入的
     // 先后顺序决定出题顺序（不重新排序），照顾"就想优先测某几道"的用法。
     numQuizStartBtn.addEventListener("click", function() {
-      var raw = numQuizNumberInputEl.value.split(/[,，\s]+/).map(function(s) { return s.trim(); }).filter(Boolean);
+      var raw = numQuizNumberInputEl.value.split(/[,，、;；\s]+/).map(function(s) { return s.trim(); }).filter(Boolean);
       var all = fullOrderedItems();
       var seen = {};
       var picked = [];
