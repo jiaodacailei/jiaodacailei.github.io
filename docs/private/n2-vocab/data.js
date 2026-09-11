@@ -1323,7 +1323,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "交",
-                  "kana": "まじ",
+                  "kana": "か",
                   "t": 0.86
                 },
                 {
