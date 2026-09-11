@@ -363,6 +363,58 @@
     );
   }
 
+  // "错题编号"tab——单词测试的一个配套小工具，不是独立的题目来源，不需要
+  // 后端另外产出数据：直接复用単語テスト tab 已经嵌进页面的那份
+  // <script id="vocab-quiz-data">，listening-page.js 里同一个 IIFE 读两次
+  // （一次给単語テスト自己用，一次给这个tab算题号/建自定义队列用）。真实
+  // 反馈"单词测试错题编号是否可以导出，并提供一个可以指定题目编号的tab"——
+  // 用户明确要求做成独立顶层tab（不是塞进単語テスト tab内部的一个模式），
+  // 这里只是搭一个静态HTML外壳（导出文本框+导入文本框+一套跟単語テスト
+  // 同款但id前缀换成numQuiz*的测验卡片，量少不需要专门的CSS），真正的
+  // 题号计算/localStorage读写/判分逻辑都在listening-page.js。
+  function renderNumberedQuizSection(mondaiIdx, active) {
+    var cls = "mondai-section" + (active ? " tab-active" : "");
+    return (
+      '<section class="' + cls + '" id="m-' + mondaiIdx + '" data-scope="mondai">' +
+        "<h2>错题编号</h2>" +
+        '<div class="numquiz-io">' +
+          '<div class="numquiz-block">' +
+            '<div class="numquiz-label">当前错题编号（点击文本框全选复制）' +
+              '<button type="button" class="quiz-reset-btn numquiz-refresh" id="numQuizRefresh">刷新</button>' +
+            "</div>" +
+            '<textarea class="numquiz-textarea" id="numQuizExport" rows="2" readonly placeholder="暂无错题"></textarea>' +
+          "</div>" +
+          '<div class="numquiz-block">' +
+            '<div class="numquiz-label">输入题号开始测试（逗号/空格/换行分隔）</div>' +
+            '<textarea class="numquiz-textarea" id="numQuizNumberInput" rows="2" placeholder="例如：12, 45, 67"></textarea>' +
+            '<div class="numquiz-actions">' +
+              '<button type="button" class="quiz-btn quiz-next" id="numQuizStartBtn">开始测试</button>' +
+              '<div class="numquiz-status" id="numQuizParseStatus"></div>' +
+            "</div>" +
+          "</div>" +
+        "</div>" +
+        '<div class="quiz-app" id="numQuizApp" style="display:none">' +
+          '<div class="quiz-toolbar">' +
+            '<div class="quiz-progress" id="numQuizProgress">0 / 0</div>' +
+            '<button type="button" class="quiz-reset-btn" id="numQuizBackBtn">返回编号输入</button>' +
+          "</div>" +
+          '<div class="quiz-card" id="numQuizCard">' +
+            '<div class="quiz-type-label" id="numQuizTypeLabel"></div>' +
+            '<div class="quiz-prompt" id="numQuizPrompt"></div>' +
+            '<button type="button" class="quiz-play-btn" id="numQuizPlayBtn" style="display:none">▶ 播放发音</button>' +
+            '<div class="quiz-input-row">' +
+              '<input type="text" class="quiz-input" id="numQuizAnswerInput" autocomplete="off" placeholder="在此输入…">' +
+              '<button type="button" class="quiz-btn quiz-check" id="numQuizCheckBtn">確認</button>' +
+              '<button type="button" class="quiz-btn quiz-next" id="numQuizNextBtn" style="display:none">次へ</button>' +
+            "</div>" +
+            '<div class="quiz-status" id="numQuizAnswerStatus"></div>' +
+          "</div>" +
+          '<div class="quiz-done" id="numQuizDone" style="display:none">🎉 本轮全部完成！</div>' +
+        "</div>" +
+      "</section>"
+    );
+  }
+
   // 跟 build_page.py 的 mcq_section_html() 一一对应——独立于単语テスト的
   // "四选一"练习引擎（docs/js/mcq-quiz.js），N2语法/词汇页面专用。
   function renderMcqSection(mondaiIdx, mcqData, active) {
@@ -514,6 +566,7 @@
     rerenderCardContent: rerenderCardContent,
     renderCard: renderCard,
     renderQuizSection: renderQuizSection,
+    renderNumberedQuizSection: renderNumberedQuizSection,
     renderMcqSection: renderMcqSection
   };
 
@@ -551,13 +604,24 @@
     navLists.push(renderSideNavList(quizIdx, [], false));
     navNumsMobile.push(renderMobileNumsList(quizIdx, [], false));
     tabLabels.push("単語テスト");
+
+    // "错题编号"tab 跟"単語テスト"绑在一起出现（同一个 DATA.quiz 门槛）——
+    // 它靠読取単語テスト那份 <script id="vocab-quiz-data"> 反算题号/错题，
+    // 没有独立数据源，不用单独判断存不存在。紧跟在単語テスト后面，练习tab
+    // 之前，真实反馈"页面顶部新增一个独立大tab"。
+    var numQuizIdx = (DATA.tabs || []).length + 2;
+    sections.push(renderNumberedQuizSection(numQuizIdx, false));
+    navLists.push(renderSideNavList(numQuizIdx, [], false));
+    navNumsMobile.push(renderMobileNumsList(numQuizIdx, [], false));
+    tabLabels.push("错题编号");
   }
 
   // DATA.mcq——N2语法/词汇页面的"练习"tab（docs/js/mcq-quiz.js接管），
   // 跟DATA.quiz（単语テスト）是两个独立字段，一个页面理论上可以同时有
-  // 两种tab（虽然目前的用法里两者互斥），互不影响，顺序跟在quiz后面。
+  // 两种tab（虽然目前的用法里两者互斥），互不影响，顺序跟在quiz/错题编号
+  // 后面。
   if (DATA.mcq) {
-    var mcqIdx = (DATA.tabs || []).length + (DATA.quiz ? 1 : 0) + 1;
+    var mcqIdx = (DATA.tabs || []).length + (DATA.quiz ? 2 : 0) + 1;
     sections.push(renderMcqSection(mcqIdx, DATA.mcq, false));
     navLists.push(renderSideNavList(mcqIdx, [], false));
     navNumsMobile.push(renderMobileNumsList(mcqIdx, [], false));

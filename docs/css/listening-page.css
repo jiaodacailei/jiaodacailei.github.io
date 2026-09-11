@@ -723,6 +723,24 @@ body.mode-blank #blankProgressReset { display: inline-block; }
   padding: 60px 20px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
 }
 
+/* "错题编号"tab——导出/导入两块，复用 .quiz-input/.quiz-btn 的视觉风格，
+   不引入新的颜色/圆角体系。.numquiz-io 里两块导出/导入在窄屏下堆叠，宽屏
+   下并排，跟 .quiz-category-bar 之类别的横向排布方式保持同一套断点习惯。 */
+.numquiz-io { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.numquiz-block { flex: 1; min-width: 260px; }
+.numquiz-label {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  font-size: 13px; color: var(--text-muted); margin-bottom: 6px;
+}
+.numquiz-refresh { padding: 4px 10px; font-size: 12px; }
+.numquiz-textarea {
+  width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1px solid var(--border);
+  border-radius: 8px; font-size: 14px; font-family: inherit; resize: vertical;
+}
+.numquiz-textarea[readonly] { background: var(--bg-soft); color: var(--text); cursor: text; }
+.numquiz-actions { display: flex; align-items: center; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+.numquiz-status { font-size: 13px; color: #dc2626; }
+
 /* ── 四选一练习引擎（docs/js/mcq-quiz.js）——N2语法/词汇页面专用，跟単语
    テスト（.quiz-*，一个词自动衍生4种打字题）是完全独立的两套引擎，数据
    模型不同（教材原版固定选项+标准答案，不是从一个词现算），但沿用同一套

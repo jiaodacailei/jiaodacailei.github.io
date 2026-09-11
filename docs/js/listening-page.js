@@ -2078,6 +2078,69 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // pruneOrphans()靠最后一个冒号切出wordId的逻辑不用跟着改。
   function blankErrType(idx) { return idx === 0 ? "blank" : "blank" + idx; }
 
+  // "错题编号"tab用——题号是全局统一编号，不受当前"单元/组N"筛选影响（真实
+  // 反馈"全局统一编号，不受当前筛选影响"）：按 words 数组自身顺序（不做任何
+  // unit/category/scope 过滤）展开成一份完整题目列表，下标+1就是题号，第一次
+  // 用到时算一遍、缓存住（words 在页面生命周期内不会变，缓存不会失效）。
+  // 局限：题号是纯按数组顺序算的位置编号，只要以后新增内容都是"追加新单元/
+  // 新词条"（这仓库 seg_id/word_id 分配方式本来就要求的"只能追加、不能中途
+  // 插入"约定），题号就稳定；给某个已存在的词条中途新增一条例句会导致这条
+  // 以后所有题目的题号整体后移，跟这仓库其它地方"id按追加顺序分配"已经接受
+  // 的同一类局限，不是这次新引入的风险。
+  var FULL_ITEMS = null;
+  function fullOrderedItems() {
+    if (FULL_ITEMS) return FULL_ITEMS;
+    FULL_ITEMS = [];
+    words.forEach(function(w) {
+      if (w.kind === "related") {
+        FULL_ITEMS.push({ word: w, type: "related", errType: "related" });
+        return;
+      }
+      TYPES.forEach(function(t) {
+        if (t === "blank") {
+          blankSentences(w).forEach(function(s, i) {
+            FULL_ITEMS.push({ word: w, type: "blank", errType: blankErrType(i), sentence: s });
+          });
+          return;
+        }
+        FULL_ITEMS.push({ word: w, type: t, errType: t });
+      });
+    });
+    return FULL_ITEMS;
+  }
+
+  // 导出错题编号要跨"单元/组N"筛选合并，不能只读内存里当前那份 errors——
+  // errors 是按 stateKeys() 的 (pathname, unitSuffix, category) 分桶存
+  // localStorage 的，同一道题在"全部"视图下答错一次和在"组1"视图下答错
+  // 一次记在两个不同 key 下（见 stateKeys() 注释）。这里按 words 数组自己
+  // 反推出所有实际存在过的 (unitSuffix, category) 组合，依次读取解析、
+  // 合并——任意一个桶里某道题的错误次数>0，就算这道题当前是错题。
+  function allWrongErrKeysMerged() {
+    var unitSuffixes = [""];
+    if (HAS_UNIT_SELECT) {
+      var seenUnit = {};
+      words.forEach(function(w) {
+        if (w.unit && !seenUnit[w.unit]) { seenUnit[w.unit] = true; unitSuffixes.push(":" + w.unit); }
+      });
+    }
+    var categories = ["all"];
+    var seenCat = {};
+    words.forEach(function(w) {
+      var c = w.category || "other";
+      if (!seenCat[c]) { seenCat[c] = true; categories.push(c); }
+    });
+    var wrong = {};
+    unitSuffixes.forEach(function(unitSuffix) {
+      categories.forEach(function(cat) {
+        var key = "n2listen-quiz-errors:" + location.pathname + unitSuffix + ":" + cat;
+        var bucket;
+        try { bucket = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { bucket = {}; }
+        Object.keys(bucket).forEach(function(k) { if (bucket[k] > 0) wrong[k] = true; });
+      });
+    });
+    return wrong;
+  }
+
   // 队列：每个词 × 4 种题型（填空题按例句条数可能不止1道），全量不抽样；
   // 按"这道题之前错过几次"降序排列，之前错得越多排越前。同错误次数的题目
   // 顺序要随机——先整体洗牌一次，再用稳定排序按错误次数分组，稳定排序不会
@@ -2167,8 +2230,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 的第一次尝试触发不够及时），必须在真正触发播放的这几个入口（题目一出现
   // 自动播、点▶重听）同步先标记 loading，再交给 playing/pause/error 这几个
   // 可靠的原生事件负责摘掉。
+  // "错题编号"tab有自己独立的▶按钮（numQuizPlayBtn），但音频播放器
+  // （quizAudio/quizLoadAndPlay）是全站共用的单例——两个tab不可能同时在
+  // 播放，用activePlayBtn记"当前是哪个▶按钮在等这次播放"，每次真正触发
+  // 播放前把它指向对应session自己的按钮，loading态就不会点错地方。
+  var activePlayBtn = null;
   function setQuizAudioLoading(loading) {
-    quizPlayBtn.classList.toggle("loading", loading);
+    if (activePlayBtn) activePlayBtn.classList.toggle("loading", loading);
   }
   quizAudio.addEventListener("waiting", function() { setQuizAudioLoading(true); });
   quizAudio.addEventListener("playing", function() { setQuizAudioLoading(false); });
@@ -2291,6 +2359,53 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       '<span class="quiz-progress-err">(' + totalErrorCount() + ')</span>';
   }
 
+  // 题型标签/题面 HTML 这两块是纯函数（只读 q，不碰任何 DOM/session 状态）——
+  // "错题编号"tab要开第二份独立的测验卡片（跟単語テスト tab同时存在于DOM里，
+  // 靠tab切换显隐），这两块渲染逻辑两边完全一样，抽出来共用，不重复写一份
+  // 容易走样的复制粘贴代码。真正touch DOM的部分（哪个quizPrompt元素、要不要
+  // 显示▶按钮）留在各自的render()里。
+  function typeLabelHtml(q) {
+    // "related"题型的标签是动态的（反义词/同义词/类义词，来自内容模块自己
+    // 标注的relation字段，不是固定4选1），TYPE_LABELS这张静态表放不下，
+    // 单独拼一份保持跟其它题型同样"高亮关键部分"的视觉风格。
+    return q.type === "related"
+      ? '写出<span class="quiz-type-highlight">' + q.word.relation + '</span>'
+      : TYPE_LABELS[q.type];
+  }
+
+  function promptHtmlFor(q) {
+    if (q.type === "blank") {
+      var idx = q.sentence.sentence.indexOf(q.sentence.blank);
+      var blanked = idx === -1 ? q.sentence.sentence
+        : q.sentence.sentence.slice(0, idx) + "____" + q.sentence.sentence.slice(idx + q.sentence.blank.length);
+      return '<div class="quiz-ja">' + blanked + '</div>' +
+        '<div class="quiz-zh-hint">' + q.sentence.sentence_zh + '</div>';
+    }
+    if (q.type === "audio2kana") {
+      return '<div class="quiz-hint-text">听发音，写出假名</div>';
+    }
+    if (q.type === "zh2kana") {
+      var zhSuffix = ZH_DISAMBIGUATE_SUFFIX[q.word.id];
+      var zhShown = q.word.zh + (zhSuffix ? '<span class="quiz-dedupe-badge">' + zhSuffix + '</span>' : "");
+      return '<div class="quiz-zh-prompt">' + zhShown + '</div>';
+    }
+    if (q.type === "related") {
+      // 题面："「主词」的反义词/同义词/类义词是？"+中文释义提示，答案是
+      // q.word.text（参照词自己的日文原文，不是假名读音）——真实反馈"不是
+      // 写假名，而是日文"。q.word.mainText 是被参照的主词条本身的原文
+      // （build_vocab_quiz_items() 里的 word_text，可能带"/"分隔的多个
+      // 写法，跟ja2zh题面显示逻辑不是同一套，这里不需要注音/去重后缀，
+      // 直接原样显示即可——主词条已经在别的题型里单独测过读音了）。
+      return '<div class="quiz-hint-text">「' + q.word.mainText + '」的' +
+        q.word.relation + '是？</div>' + '<div class="quiz-zh-hint">' + q.word.zh + '</div>';
+    }
+    var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
+      ? q.word.text + "（" + q.word.kana + "）" : q.word.text;
+    var jaSuffix = JA_DISAMBIGUATE_SUFFIX[q.word.id];
+    if (jaSuffix) shown += '<span class="quiz-dedupe-badge">' + jaSuffix + '</span>';
+    return '<div class="quiz-ja-prompt">' + shown + '</div>';
+  }
+
   // 判错之后立刻刷新括号里的错误数（不调用 render()，那会连题目状态一起重置）
   function refreshProgress() {
     quizProgress.innerHTML = progressHtml(Math.min(doneCountThisRound() + 1, TOTAL_THIS_ROUND));
@@ -2326,12 +2441,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var q = queue[qi];
     resolved = false;
     countedWrong = false;
-    // "related"题型的标签是动态的（反义词/同义词/类义词，来自内容模块自己
-    // 标注的relation字段，不是固定4选1），TYPE_LABELS这张静态表放不下，
-    // 单独拼一份保持跟其它题型同样"高亮关键部分"的视觉风格。
-    quizTypeLabel.innerHTML = q.type === "related"
-      ? '写出<span class="quiz-type-highlight">' + q.word.relation + '</span>'
-      : TYPE_LABELS[q.type];
+    quizTypeLabel.innerHTML = typeLabelHtml(q);
     quizInput.value = "";
     quizInput.disabled = false;
     quizStatus.textContent = "";
@@ -2339,17 +2449,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     quizCheck.style.display = "";
     quizNext.style.display = "none";
     quizPlayBtn.style.display = "none";
-
-    if (q.type === "blank") {
-      var idx = q.sentence.sentence.indexOf(q.sentence.blank);
-      var blanked = idx === -1 ? q.sentence.sentence
-        : q.sentence.sentence.slice(0, idx) + "____" + q.sentence.sentence.slice(idx + q.sentence.blank.length);
-      quizPrompt.innerHTML = '<div class="quiz-ja">' + blanked + '</div>' +
-        '<div class="quiz-zh-hint">' + q.sentence.sentence_zh + '</div>';
-    } else if (q.type === "audio2kana") {
-      quizPrompt.innerHTML = '<div class="quiz-hint-text">听发音，写出假名</div>';
+    quizPrompt.innerHTML = promptHtmlFor(q);
+    if (q.type === "audio2kana") {
       quizPlayBtn.style.display = "";
       currentQuizAudioUrl = audioSrcFor(q.word);
+      activePlayBtn = quizPlayBtn;
       // 题目一出现就自动放一遍，不用用户先手动点▶——这道题本来就是"听音频
       // 写假名"，音频是题目本身的一部分，不放的话用户还得先点一下才能
       // 开始做题。▶ 按钮仍然保留，用来重听。play() 是由"点确认/下一题"这
@@ -2357,25 +2461,6 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 不会被自动播放策略拦截；万一个别浏览器仍然拒绝，静默忽略就行——
       // ▶ 按钮本来就在，用户自己点一下也一样能听。
       quizLoadAndPlay(currentQuizAudioUrl);
-    } else if (q.type === "zh2kana") {
-      var zhSuffix = ZH_DISAMBIGUATE_SUFFIX[q.word.id];
-      var zhShown = q.word.zh + (zhSuffix ? '<span class="quiz-dedupe-badge">' + zhSuffix + '</span>' : "");
-      quizPrompt.innerHTML = '<div class="quiz-zh-prompt">' + zhShown + '</div>';
-    } else if (q.type === "related") {
-      // 题面："「主词」的反义词/同义词/类义词是？"+中文释义提示，答案是
-      // q.word.text（参照词自己的日文原文，不是假名读音）——真实反馈"不是
-      // 写假名，而是日文"。q.word.mainText 是被参照的主词条本身的原文
-      // （build_vocab_quiz_items() 里的 word_text，可能带"/"分隔的多个
-      // 写法，跟ja2zh题面显示逻辑不是同一套，这里不需要注音/去重后缀，
-      // 直接原样显示即可——主词条已经在别的题型里单独测过读音了）。
-      quizPrompt.innerHTML = '<div class="quiz-hint-text">「' + q.word.mainText + '」的' +
-        q.word.relation + '是？</div>' + '<div class="quiz-zh-hint">' + q.word.zh + '</div>';
-    } else {
-      var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
-        ? q.word.text + "（" + q.word.kana + "）" : q.word.text;
-      var jaSuffix = JA_DISAMBIGUATE_SUFFIX[q.word.id];
-      if (jaSuffix) shown += '<span class="quiz-dedupe-badge">' + jaSuffix + '</span>';
-      quizPrompt.innerHTML = '<div class="quiz-ja-prompt">' + shown + '</div>';
     }
     quizInput.focus();
   }
@@ -2429,6 +2514,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   });
   quizNext.addEventListener("click", function() { qi++; render(); });
   quizPlayBtn.addEventListener("click", function() {
+    activePlayBtn = quizPlayBtn;
     if (currentQuizAudioUrl) quizLoadAndPlay(currentQuizAudioUrl);
   });
   quizResetErrors.addEventListener("click", function() {
@@ -2550,6 +2636,184 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       queue = buildQueue();
       qi = 0;
       render();
+    });
+  }
+
+  // "错题编号"tab——page-renderer.js 里 DATA.quiz 存在就一定会渲染这个 tab
+  // 的静态外壳（跟単語テスト tab 同一个门槛条件，见 renderNumberedQuizSection()
+  // 注释），numQuizApp 这个 id 理应总是存在；这里仍然包一层存在性判断，
+  // 防止缓存了旧版 page-renderer.js（还没有这个 tab）的页面配新版
+  // listening-page.js 时在这里报错，页面其它部分不受影响。
+  var numQuizAppEl = document.getElementById("numQuizApp");
+  if (numQuizAppEl) {
+    var numQuizExportEl = document.getElementById("numQuizExport");
+    var numQuizRefreshBtn = document.getElementById("numQuizRefresh");
+    var numQuizNumberInputEl = document.getElementById("numQuizNumberInput");
+    var numQuizStartBtn = document.getElementById("numQuizStartBtn");
+    var numQuizParseStatusEl = document.getElementById("numQuizParseStatus");
+    var numQuizBackBtn = document.getElementById("numQuizBackBtn");
+    var numQuizCardEl = document.getElementById("numQuizCard");
+    var numQuizProgressEl = document.getElementById("numQuizProgress");
+    var numQuizTypeLabelEl = document.getElementById("numQuizTypeLabel");
+    var numQuizPromptEl = document.getElementById("numQuizPrompt");
+    var numQuizPlayBtnEl = document.getElementById("numQuizPlayBtn");
+    var numQuizAnswerInputEl = document.getElementById("numQuizAnswerInput");
+    var numQuizCheckBtnEl = document.getElementById("numQuizCheckBtn");
+    var numQuizNextBtnEl = document.getElementById("numQuizNextBtn");
+    var numQuizAnswerStatusEl = document.getElementById("numQuizAnswerStatus");
+    var numQuizDoneEl = document.getElementById("numQuizDone");
+    var numCurrentAudioUrl = null;
+
+    var numQueue = [];
+    var numQi = 0;
+    var numResolved = false;
+    var numCountedWrong = false;
+    var numAutoAdvanceTimer = null;
+    // 只在内存里，页面刷新就重置——"按编号测试"是一次性针对性复习，不像
+    // 単語テスト那样需要跨刷新保留"这一轮做到哪了"，每次重新输入题号都
+    // 应该是全新的一轮。
+    var numCompleted = {};
+
+    // 答错时把错误次数写回"全部单元+全部分类"这个桶（不带任何单元/分类
+    // 后缀）——真实踩过的坑：一开始按"这个词自己的单元"拼后缀
+    // （word.unit truthy 就加 ":"+word.unit），结果跟"単語テスト tab 里
+    // currentUnit 默认就是'all'时"实际使用的桶（stateKeys() 只有真的选中
+    // 某个具体单元、currentUnit !== 'all' 时才加单元后缀，光是"这个词属于
+    // 哪个单元"不代表用户当前选的就是那个单元）对不上，变成写进了一个
+    // 没人会去读的新桶。固定用不带单元/分类后缀的这个最外层"全部"桶——
+    // 跟 allWrongErrKeysMerged() 第一个必扫的 unitSuffix===""桶是同一个，
+    // 保证按编号测试答错的题，下次导出/単語テスト默认视图下都能看到。
+    // 真实反馈"按编号测试的答题结果要正常累计回同一份错题记录"。
+    function numBumpErr(word, type) {
+      var key = "n2listen-quiz-errors:" + location.pathname + ":all";
+      var bucket;
+      try { bucket = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { bucket = {}; }
+      var ek = errKey(word.id, type);
+      bucket[ek] = (bucket[ek] || 0) + 1;
+      localStorage.setItem(key, JSON.stringify(bucket));
+    }
+
+    function refreshNumberedExport() {
+      var wrong = allWrongErrKeysMerged();
+      var nums = [];
+      fullOrderedItems().forEach(function(item, i) {
+        if (wrong[errKey(item.word.id, item.errType)]) nums.push(i + 1);
+      });
+      numQuizExportEl.value = nums.join(", ");
+    }
+    refreshNumberedExport();
+    numQuizRefreshBtn.addEventListener("click", refreshNumberedExport);
+    numQuizExportEl.addEventListener("click", function() { numQuizExportEl.select(); });
+
+    function numRender() {
+      while (numQi < numQueue.length && numCompleted[errKey(numQueue[numQi].word.id, numQueue[numQi].errType)]) numQi++;
+      if (numQi >= numQueue.length) {
+        numQuizCardEl.style.display = "none";
+        numQuizDoneEl.style.display = "block";
+        numQuizProgressEl.innerHTML = numQueue.length + " / " + numQueue.length;
+        return;
+      }
+      numQuizCardEl.style.display = "";
+      numQuizDoneEl.style.display = "none";
+      var doneCount = 0;
+      numQueue.forEach(function(item) { if (numCompleted[errKey(item.word.id, item.errType)]) doneCount++; });
+      numQuizProgressEl.innerHTML = Math.min(doneCount + 1, numQueue.length) + " / " + numQueue.length;
+
+      if (numAutoAdvanceTimer) { clearTimeout(numAutoAdvanceTimer); numAutoAdvanceTimer = null; }
+
+      var q = numQueue[numQi];
+      numResolved = false;
+      numCountedWrong = false;
+      numQuizTypeLabelEl.innerHTML = typeLabelHtml(q);
+      numQuizAnswerInputEl.value = "";
+      numQuizAnswerInputEl.disabled = false;
+      numQuizAnswerStatusEl.textContent = "";
+      numQuizAnswerStatusEl.className = "quiz-status";
+      numQuizCheckBtnEl.style.display = "";
+      numQuizNextBtnEl.style.display = "none";
+      numQuizPlayBtnEl.style.display = "none";
+      numQuizPromptEl.innerHTML = promptHtmlFor(q);
+      if (q.type === "audio2kana") {
+        numQuizPlayBtnEl.style.display = "";
+        numCurrentAudioUrl = audioSrcFor(q.word);
+        activePlayBtn = numQuizPlayBtnEl;
+        quizLoadAndPlay(numCurrentAudioUrl);
+      }
+      numQuizAnswerInputEl.focus();
+    }
+
+    function numMarkResolved(correct, revealedAnswer) {
+      numResolved = true;
+      numQuizAnswerInputEl.disabled = true;
+      numQuizCheckBtnEl.style.display = "none";
+      numQuizNextBtnEl.style.display = "";
+      if (correct) {
+        numQuizAnswerStatusEl.textContent = "✓ 正解！　答案：" + revealedAnswer;
+        numQuizAnswerStatusEl.className = "quiz-status ok";
+      } else {
+        numQuizAnswerStatusEl.textContent = "✗ 答案：" + revealedAnswer;
+        numQuizAnswerStatusEl.className = "quiz-status rev";
+      }
+      numAutoAdvanceTimer = setTimeout(function() {
+        numAutoAdvanceTimer = null;
+        numQi++;
+        numRender();
+      }, advanceDelay * 1000);
+    }
+
+    function numDoCheck() {
+      if (numResolved) return;
+      var q = numQueue[numQi];
+      var ok = checkAnswer(q, numQuizAnswerInputEl.value);
+      if (ok) {
+        numCompleted[errKey(q.word.id, q.errType)] = 1;
+      } else {
+        numQueue.push(q);
+      }
+      if (!ok && !numCountedWrong) { numBumpErr(q.word, q.errType); numCountedWrong = true; }
+      var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
+      numMarkResolved(ok, ans);
+    }
+
+    // 解析用户输入：逗号/全角逗号/空格/换行都认作分隔符；超出题号范围、
+    // 非数字、带小数点这类一律当无效编号单独提示，不悄悄丢弃也不让整次
+    // 提交失败——合法的部分照样开始测试。重复编号去重，按用户输入的
+    // 先后顺序决定出题顺序（不重新排序），照顾"就想优先测某几道"的用法。
+    numQuizStartBtn.addEventListener("click", function() {
+      var raw = numQuizNumberInputEl.value.split(/[,，\s]+/).map(function(s) { return s.trim(); }).filter(Boolean);
+      var all = fullOrderedItems();
+      var seen = {};
+      var picked = [];
+      var invalid = [];
+      raw.forEach(function(tok) {
+        var n = parseInt(tok, 10);
+        if (!n || n < 1 || n > all.length || String(n) !== tok) { invalid.push(tok); return; }
+        if (seen[n]) return;
+        seen[n] = true;
+        picked.push(all[n - 1]);
+      });
+      if (!picked.length) {
+        numQuizParseStatusEl.textContent = invalid.length ? "无效编号：" + invalid.join(", ") : "请输入至少一个题号";
+        return;
+      }
+      numQuizParseStatusEl.textContent = invalid.length ? "已忽略无效编号：" + invalid.join(", ") : "";
+      numQueue = picked;
+      numQi = 0;
+      numCompleted = {};
+      numQuizAppEl.style.display = "";
+      numRender();
+    });
+    numQuizBackBtn.addEventListener("click", function() {
+      numQuizAppEl.style.display = "none";
+    });
+    numQuizCheckBtnEl.addEventListener("click", numDoCheck);
+    numQuizAnswerInputEl.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") { e.preventDefault(); numDoCheck(); }
+    });
+    numQuizNextBtnEl.addEventListener("click", function() { numQi++; numRender(); });
+    numQuizPlayBtnEl.addEventListener("click", function() {
+      activePlayBtn = numQuizPlayBtnEl;
+      if (numCurrentAudioUrl) quizLoadAndPlay(numCurrentAudioUrl);
     });
   }
 
