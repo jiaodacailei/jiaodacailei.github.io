@@ -131,14 +131,26 @@ SKILL.md` 里更详细的说明（两个skill这部分完全共用同一套实�
 `recomputeCategories()`/`rebuildCategoryBar()`两个可重复调用的函数，
 不再是只在页面刚加载时算一次）。
 
+**每个词有几条例句就出几道填空题**——真实反馈"填空题使用例句，如果有
+多个则有多题"，`build_vocab_quiz_items()` 不再只挑 `examples[0]`：每个
+词的数据里带一个 `sentences` 列表（每条 `examples` 对应一个
+`{sentence, sentence_zh, blank}`），`listening-page.js` 的 `blankSentences()`
+按这个列表逐条生成独立的"填空"题，各自单独记错题/进度（错题/进度 key
+是 `wordId:blank`/`wordId:blank1`/`wordId:blank2`……，第1条不带序号，保证
+只有1条例句的词、以及旧数据完全不受影响）。教材课 `build_vocab_quiz_
+data.py`/N2真题 `build_exam_vocab.py` 这两个姊妹脚本还没跟着改，继续产出
+旧版单条 `sentence`/`sentence_zh`/`blank` 字段，`blankSentences()` 对这种
+旧形状退化成单元素数组，两种数据源共用同一份前端代码，不冲突。
+
 **每个词的例句/挖空片段都是硬性要求，不是可选项**——这套引擎的"填空"
-题型对 `sentence`/`blank` 字段没有任何兜底，缺失或者 `blank` 不是
-`sentence` 的字面子串会直接在前端崩掉（不是"这道题跳过"，是整个单词
-测试卡死）。所以词条如果书上没配例句、或者配的例句用的是活用形（比如
-词典形是"空ける"，例句写的是"空けて"），转录时要在对应 `point` 字典里
-补一个 `quiz_blank` 字段（值是例句里实际出现的那段原文，逐字照抄，不要
-自己归纳成词典形）——`build_vocab_quiz_items()` 发现任何一条凑不出有效
-`sentence`+`blank` 会直接硬失败并列出所有问题词，不会悄悄跳过。
+题型对 `sentence`/`blank` 没有任何兜底，缺失或者 `blank` 不是 `sentence`
+的字面子串会直接在前端崩掉（不是"这道题跳过"，是整个单词测试卡死）。
+`build_vocab_quiz_items()` 现在优先用每条例句自己的 `blanks`（跟"生词"
+tab共用那套三元组格式的第三个元素）当填空片段，只有 `examples[0]` 允许
+退回旧的 `quiz_blank` 字段兜底（词条如果书上没配例句、或者配的例句用的
+是活用形，比如词典形是"空ける"，例句写的是"空けて"）——发现任何**一条**
+例句凑不出有效 `sentence`+`blank`，就让这个词整体硬失败并列出所有问题词
+（不是只丢那一条例句、悄悄少出一道题）。
 
 ## 单元选择下拉框——加第2个单元时自动出现，不用额外做任何事
 

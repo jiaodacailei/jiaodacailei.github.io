@@ -11154,9 +11154,13 @@ window.LESSON_DATA = {
       "text": "相変わらず",
       "kana": "あいかわらず",
       "zh": "依然，照旧；跟从前一样",
-      "sentence": "相変わらず忙しい毎日を送っている。",
-      "sentence_zh": "每天照旧很忙碌。",
-      "blank": "相変わらず",
+      "sentences": [
+        {
+          "sentence": "相変わらず忙しい毎日を送っている。",
+          "sentence_zh": "每天照旧很忙碌。",
+          "blank": "相変わらず"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-001.mp3"
@@ -11166,9 +11170,18 @@ window.LESSON_DATA = {
       "text": "アイロン",
       "kana": "アイロン",
       "zh": "熨斗",
-      "sentence": "スチームアイロン",
-      "sentence_zh": "蒸汽电熨斗",
-      "blank": "アイロン",
+      "sentences": [
+        {
+          "sentence": "スチームアイロン",
+          "sentence_zh": "蒸汽电熨斗",
+          "blank": "アイロン"
+        },
+        {
+          "sentence": "スーツにアイロンをかける。",
+          "sentence_zh": "用熨斗熨西服。",
+          "blank": "アイロン"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-002.mp3"
@@ -11178,9 +11191,18 @@ window.LESSON_DATA = {
       "text": "アイス～",
       "kana": "アイス",
       "zh": "冰……",
-      "sentence": "アイスコーヒー",
-      "sentence_zh": "冰咖啡",
-      "blank": "アイス",
+      "sentences": [
+        {
+          "sentence": "アイスコーヒー",
+          "sentence_zh": "冰咖啡",
+          "blank": "アイス"
+        },
+        {
+          "sentence": "アイススケート",
+          "sentence_zh": "滑冰",
+          "blank": "アイス"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-003.mp3"
@@ -11190,9 +11212,18 @@ window.LESSON_DATA = {
       "text": "アイデア/アイディア",
       "kana": "アイデア",
       "zh": "想法，主意",
-      "sentence": "すばらしいアイデア",
-      "sentence_zh": "妙点子",
-      "blank": "アイデア",
+      "sentences": [
+        {
+          "sentence": "すばらしいアイデア",
+          "sentence_zh": "妙点子",
+          "blank": "アイデア"
+        },
+        {
+          "sentence": "よいアイデアが浮かぶ。",
+          "sentence_zh": "浮现出一个好主意。",
+          "blank": "アイデア"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-004.mp3"
@@ -11202,9 +11233,13 @@ window.LESSON_DATA = {
       "text": "思いつき",
       "kana": "おもいつき",
       "zh": "灵机一动，偶然想起；主意，点子",
-      "sentence": "思いつきで行動しないほうがいい。",
-      "sentence_zh": "最好不要凭一时兴起行动。",
-      "blank": "思いつき",
+      "sentences": [
+        {
+          "sentence": "思いつきで行動しないほうがいい。",
+          "sentence_zh": "最好不要凭一时兴起行动。",
+          "blank": "思いつき"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-005.mp3"
@@ -11214,9 +11249,18 @@ window.LESSON_DATA = {
       "text": "あいにく",
       "kana": "あいにく",
       "zh": "不凑巧，不随人愿",
-      "sentence": "あいにくのお天気だ。",
-      "sentence_zh": "真不凑巧，是坏天气。",
-      "blank": "あいにく",
+      "sentences": [
+        {
+          "sentence": "あいにくのお天気だ。",
+          "sentence_zh": "真不凑巧，是坏天气。",
+          "blank": "あいにく"
+        },
+        {
+          "sentence": "あいにく売り切れた。",
+          "sentence_zh": "不巧卖光了。",
+          "blank": "あいにく"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-006.mp3"
@@ -11226,9 +11270,13 @@ window.LESSON_DATA = {
       "text": "おあいにくさま",
       "kana": "おあいにくさま",
       "zh": "真不凑巧，很遗憾（用于婉拒或表示遗憾）",
-      "sentence": "おあいにく様。",
-      "sentence_zh": "真不凑巧，很遗憾。",
-      "blank": "おあいにく様",
+      "sentences": [
+        {
+          "sentence": "おあいにく様。",
+          "sentence_zh": "真不凑巧，很遗憾。",
+          "blank": "おあいにく様"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-007.mp3"
@@ -11238,9 +11286,18 @@ window.LESSON_DATA = {
       "text": "アウト",
       "kana": "アウト",
       "zh": "外側，外部；（球）出界，出局",
-      "sentence": "アウトドアスポーツ",
-      "sentence_zh": "户外运动",
-      "blank": "アウト",
+      "sentences": [
+        {
+          "sentence": "アウトドアスポーツ",
+          "sentence_zh": "户外运动",
+          "blank": "アウト"
+        },
+        {
+          "sentence": "アウトになる。",
+          "sentence_zh": "出局，球出界。",
+          "blank": "アウト"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-008.mp3"
@@ -11250,9 +11307,18 @@ window.LESSON_DATA = {
       "text": "合図",
       "kana": "あいず",
       "zh": "信号，暗号",
-      "sentence": "合図を送る。",
-      "sentence_zh": "发送信号。",
-      "blank": "合図",
+      "sentences": [
+        {
+          "sentence": "合図を送る。",
+          "sentence_zh": "发送信号。",
+          "blank": "合図"
+        },
+        {
+          "sentence": "手まねで合図する。",
+          "sentence_zh": "用手势打暗号。",
+          "blank": "合図"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-009.mp3"
@@ -11262,9 +11328,13 @@ window.LESSON_DATA = {
       "text": "サイン",
       "kana": "サイン",
       "zh": "署名，签字；暗号，示意动作",
-      "sentence": "契約書にサインする。",
-      "sentence_zh": "在合同上签字。",
-      "blank": "サイン",
+      "sentences": [
+        {
+          "sentence": "契約書にサインする。",
+          "sentence_zh": "在合同上签字。",
+          "blank": "サイン"
+        }
+      ],
       "category": "组1",
       "unit": "第1单元",
       "audio": "audio/word-010.mp3"
@@ -11274,9 +11344,13 @@ window.LESSON_DATA = {
       "text": "青白い",
       "kana": "あおじろい",
       "zh": "青白色的；苍白的",
-      "sentence": "青白い顔",
-      "sentence_zh": "苍白的脸",
-      "blank": "青白い",
+      "sentences": [
+        {
+          "sentence": "青白い顔",
+          "sentence_zh": "苍白的脸",
+          "blank": "青白い"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-011.mp3"
@@ -11286,9 +11360,18 @@ window.LESSON_DATA = {
       "text": "赤字",
       "kana": "あかじ",
       "zh": "赤字，亏空",
-      "sentence": "赤字になる。",
-      "sentence_zh": "出现赤字。",
-      "blank": "赤字",
+      "sentences": [
+        {
+          "sentence": "赤字になる。",
+          "sentence_zh": "出现赤字。",
+          "blank": "赤字"
+        },
+        {
+          "sentence": "赤字を埋める。",
+          "sentence_zh": "填补赤字。",
+          "blank": "赤字"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-012.mp3"
@@ -11298,9 +11381,18 @@ window.LESSON_DATA = {
       "text": "アイドル",
       "kana": "アイドル",
       "zh": "偶像，被人崇拜的对象",
-      "sentence": "アイドル歌手",
-      "sentence_zh": "偶像歌手",
-      "blank": "アイドル",
+      "sentences": [
+        {
+          "sentence": "アイドル歌手",
+          "sentence_zh": "偶像歌手",
+          "blank": "アイドル"
+        },
+        {
+          "sentence": "アイドルに憧れる。",
+          "sentence_zh": "崇拜偶像。",
+          "blank": "アイドル"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-013.mp3"
@@ -11310,9 +11402,33 @@ window.LESSON_DATA = {
       "text": "上がる",
       "kana": "あがる",
       "zh": "（价格、水平等）提高，上升；（雨、烟花等）停，住；",
-      "sentence": "価格や物価が上がる。",
-      "sentence_zh": "价格、物价上涨。",
-      "blank": "上がる",
+      "sentences": [
+        {
+          "sentence": "価格や物価が上がる。",
+          "sentence_zh": "价格、物价上涨。",
+          "blank": "上がる"
+        },
+        {
+          "sentence": "雨が上がる。",
+          "sentence_zh": "雨停了。",
+          "blank": "上がる"
+        },
+        {
+          "sentence": "面接では上がってしまい、うまくいかなかった。",
+          "sentence_zh": "面试时紧张，没能顺利进行。",
+          "blank": "上がって"
+        },
+        {
+          "sentence": "たくさん上がってください。",
+          "sentence_zh": "请多吃（喝）点。",
+          "blank": "上がって"
+        },
+        {
+          "sentence": "ご意見を伺いに上がりました。",
+          "sentence_zh": "我来拜访您，想听听您的意见。",
+          "blank": "上がりました"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-014.mp3"
@@ -11322,9 +11438,13 @@ window.LESSON_DATA = {
       "text": "握手",
       "kana": "あくしゅ",
       "zh": "握手",
-      "sentence": "握手を交わす。",
-      "sentence_zh": "互相握手。",
-      "blank": "握手",
+      "sentences": [
+        {
+          "sentence": "握手を交わす。",
+          "sentence_zh": "互相握手。",
+          "blank": "握手"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-015.mp3"
@@ -11334,9 +11454,18 @@ window.LESSON_DATA = {
       "text": "～上がる",
       "kana": "～あがる",
       "zh": "（接在动词连用形后）表示动作向上或彻底完成",
-      "sentence": "飛び上がる。",
-      "sentence_zh": "跳起来。",
-      "blank": "上がる",
+      "sentences": [
+        {
+          "sentence": "飛び上がる。",
+          "sentence_zh": "跳起来。",
+          "blank": "上がる"
+        },
+        {
+          "sentence": "出来上がる。",
+          "sentence_zh": "完成。",
+          "blank": "上がる"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-016.mp3"
@@ -11346,9 +11475,18 @@ window.LESSON_DATA = {
       "text": "アクセス",
       "kana": "アクセス",
       "zh": "访问，连接；通道，（去某地）交通的便利性",
-      "sentence": "人気サイトにアクセスする。",
-      "sentence_zh": "访问人气网站。",
-      "blank": "アクセス",
+      "sentences": [
+        {
+          "sentence": "人気サイトにアクセスする。",
+          "sentence_zh": "访问人气网站。",
+          "blank": "アクセス"
+        },
+        {
+          "sentence": "このホテルは都心へのアクセスが便利だ。",
+          "sentence_zh": "从这家酒店到市中心交通方便。",
+          "blank": "アクセス"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-017.mp3"
@@ -11358,9 +11496,13 @@ window.LESSON_DATA = {
       "text": "あくび",
       "kana": "あくび",
       "zh": "哈欠",
-      "sentence": "あくびが出る。",
-      "sentence_zh": "打哈欠。",
-      "blank": "あくび",
+      "sentences": [
+        {
+          "sentence": "あくびが出る。",
+          "sentence_zh": "打哈欠。",
+          "blank": "あくび"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-018.mp3"
@@ -11370,9 +11512,18 @@ window.LESSON_DATA = {
       "text": "空き～",
       "kana": "あき～",
       "zh": "空的，无内容的；空闲",
-      "sentence": "空きの時間を利用して本を読む。",
-      "sentence_zh": "利用空闲时间读书。",
-      "blank": "空き",
+      "sentences": [
+        {
+          "sentence": "空きの時間を利用して本を読む。",
+          "sentence_zh": "利用空闲时间读书。",
+          "blank": "空き"
+        },
+        {
+          "sentence": "ポストに空きが出る。",
+          "sentence_zh": "职位出现空缺。",
+          "blank": "空き"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-019.mp3"
@@ -11382,9 +11533,13 @@ window.LESSON_DATA = {
       "text": "悪魔",
       "kana": "あくま",
       "zh": "恶魔，魔鬼",
-      "sentence": "悪魔のしわざ",
-      "sentence_zh": "魔鬼行径",
-      "blank": "悪魔",
+      "sentences": [
+        {
+          "sentence": "悪魔のしわざ",
+          "sentence_zh": "魔鬼行径",
+          "blank": "悪魔"
+        }
+      ],
       "category": "组2",
       "unit": "第1单元",
       "audio": "audio/word-020.mp3"
@@ -11394,9 +11549,18 @@ window.LESSON_DATA = {
       "text": "あくまで",
       "kana": "あくまで",
       "zh": "无论如何……，彻底地；坚决地",
-      "sentence": "あくまで反対だ。",
-      "sentence_zh": "坚决反对。",
-      "blank": "あくまで",
+      "sentences": [
+        {
+          "sentence": "あくまで反対だ。",
+          "sentence_zh": "坚决反对。",
+          "blank": "あくまで"
+        },
+        {
+          "sentence": "あくまで最善を尽くす。",
+          "sentence_zh": "无论如何要尽全力。",
+          "blank": "あくまで"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-021.mp3"
@@ -11406,9 +11570,13 @@ window.LESSON_DATA = {
       "text": "飽きっぽい",
       "kana": "あきっぽい",
       "zh": "没长性的，容易厌烦的性格",
-      "sentence": "飽きっぽい性格",
-      "sentence_zh": "容易厌烦的性格",
-      "blank": "飽きっぽい",
+      "sentences": [
+        {
+          "sentence": "飽きっぽい性格",
+          "sentence_zh": "容易厌烦的性格",
+          "blank": "飽きっぽい"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-022.mp3"
@@ -11418,9 +11586,18 @@ window.LESSON_DATA = {
       "text": "明くる",
       "kana": "あくる",
       "zh": "下一个，第二个",
-      "sentence": "明くる日",
-      "sentence_zh": "第二天",
-      "blank": "明くる",
+      "sentences": [
+        {
+          "sentence": "明くる日",
+          "sentence_zh": "第二天",
+          "blank": "明くる"
+        },
+        {
+          "sentence": "明くる年",
+          "sentence_zh": "翌年",
+          "blank": "明くる"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-023.mp3"
@@ -11430,9 +11607,18 @@ window.LESSON_DATA = {
       "text": "呆れる",
       "kana": "あきれる",
       "zh": "惊呆，因意外而无语；吃惊",
-      "sentence": "呆れるほどよく食べる。",
-      "sentence_zh": "吃得多得让人惊讶。",
-      "blank": "呆れる",
+      "sentences": [
+        {
+          "sentence": "呆れるほどよく食べる。",
+          "sentence_zh": "吃得多得让人惊讶。",
+          "blank": "呆れる"
+        },
+        {
+          "sentence": "呆れてものが言えない。",
+          "sentence_zh": "惊讶得哑口无言。",
+          "blank": "呆れて"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-024.mp3"
@@ -11442,9 +11628,13 @@ window.LESSON_DATA = {
       "text": "明け方",
       "kana": "あけがた",
       "zh": "黎明，拂晓，天亮时分",
-      "sentence": "明け方まで勉強していた。",
-      "sentence_zh": "学习到了拂晓。",
-      "blank": "明け方",
+      "sentences": [
+        {
+          "sentence": "明け方まで勉強していた。",
+          "sentence_zh": "学习到了拂晓。",
+          "blank": "明け方"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-025.mp3"
@@ -11454,9 +11644,18 @@ window.LESSON_DATA = {
       "text": "空ける",
       "kana": "あける",
       "zh": "空出，腾出（时间/空间）；不在家",
-      "sentence": "今度の土曜日を空けておく。",
-      "sentence_zh": "空出这周六。",
-      "blank": "空けて",
+      "sentences": [
+        {
+          "sentence": "今度の土曜日を空けておく。",
+          "sentence_zh": "空出这周六。",
+          "blank": "空けて"
+        },
+        {
+          "sentence": "家を空ける。",
+          "sentence_zh": "外出，不在家。",
+          "blank": "空ける"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-026.mp3"
@@ -11466,9 +11665,18 @@ window.LESSON_DATA = {
       "text": "悪",
       "kana": "あく",
       "zh": "恶，坏",
-      "sentence": "悪の道に走る。",
-      "sentence_zh": "干坏事。",
-      "blank": "悪",
+      "sentences": [
+        {
+          "sentence": "悪の道に走る。",
+          "sentence_zh": "干坏事。",
+          "blank": "悪"
+        },
+        {
+          "sentence": "悪に染まる。",
+          "sentence_zh": "变坏，染上恶习。",
+          "blank": "悪"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-027.mp3"
@@ -11478,9 +11686,13 @@ window.LESSON_DATA = {
       "text": "悪影響",
       "kana": "あくえいきょう",
       "zh": "不良影响",
-      "sentence": "悪影響を及ぼす。",
-      "sentence_zh": "带来不良影响。",
-      "blank": "悪影響",
+      "sentences": [
+        {
+          "sentence": "悪影響を及ぼす。",
+          "sentence_zh": "带来不良影响。",
+          "blank": "悪影響"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-028.mp3"
@@ -11490,9 +11702,13 @@ window.LESSON_DATA = {
       "text": "悪循環",
       "kana": "あくじゅんかん",
       "zh": "恶性循环",
-      "sentence": "悪循環に陥る。",
-      "sentence_zh": "陷入恶性循环。",
-      "blank": "悪循環",
+      "sentences": [
+        {
+          "sentence": "悪循環に陥る。",
+          "sentence_zh": "陷入恶性循环。",
+          "blank": "悪循環"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-029.mp3"
@@ -11502,9 +11718,18 @@ window.LESSON_DATA = {
       "text": "圧縮",
       "kana": "あっしゅく",
       "zh": "压缩，缩减；（预算/篇幅等）削减",
-      "sentence": "気体を圧縮する。",
-      "sentence_zh": "压缩气体。",
-      "blank": "圧縮",
+      "sentences": [
+        {
+          "sentence": "気体を圧縮する。",
+          "sentence_zh": "压缩气体。",
+          "blank": "圧縮"
+        },
+        {
+          "sentence": "予算を圧縮する。",
+          "sentence_zh": "削减预算。",
+          "blank": "圧縮"
+        }
+      ],
       "category": "组3",
       "unit": "第1单元",
       "audio": "audio/word-030.mp3"
@@ -11514,9 +11739,13 @@ window.LESSON_DATA = {
       "text": "朝夕",
       "kana": "あさゆう",
       "zh": "早晚；朝夕，成天",
-      "sentence": "朝夕涼しくなった。",
-      "sentence_zh": "早晚变凉了。",
-      "blank": "朝夕",
+      "sentences": [
+        {
+          "sentence": "朝夕涼しくなった。",
+          "sentence_zh": "早晚变凉了。",
+          "blank": "朝夕"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-031.mp3"
@@ -11526,9 +11755,18 @@ window.LESSON_DATA = {
       "text": "アップ",
       "kana": "アップ",
       "zh": "上涨，上升；提高",
-      "sentence": "レベルがアップする。",
-      "sentence_zh": "能力提高。",
-      "blank": "アップ",
+      "sentences": [
+        {
+          "sentence": "レベルがアップする。",
+          "sentence_zh": "能力提高。",
+          "blank": "アップ"
+        },
+        {
+          "sentence": "コストアップ",
+          "sentence_zh": "成本提高",
+          "blank": "アップ"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-032.mp3"
@@ -11538,9 +11776,18 @@ window.LESSON_DATA = {
       "text": "足跡",
       "kana": "あしあと",
       "zh": "足迹，脚印；踪迹",
-      "sentence": "砂浜に足跡を残す。",
-      "sentence_zh": "在沙滩上留下脚印。",
-      "blank": "足跡",
+      "sentences": [
+        {
+          "sentence": "砂浜に足跡を残す。",
+          "sentence_zh": "在沙滩上留下脚印。",
+          "blank": "足跡"
+        },
+        {
+          "sentence": "警察が犯人の足跡を追っている。",
+          "sentence_zh": "警察在追查犯人的踪迹。",
+          "blank": "足跡"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-033.mp3"
@@ -11550,9 +11797,18 @@ window.LESSON_DATA = {
       "text": "味わう",
       "kana": "あじわう",
       "zh": "品尝，品味；经历，体验",
-      "sentence": "よく噛んで味わって食べる。",
-      "sentence_zh": "仔细咀嚼品尝着吃。",
-      "blank": "味わって",
+      "sentences": [
+        {
+          "sentence": "よく噛んで味わって食べる。",
+          "sentence_zh": "仔细咀嚼品尝着吃。",
+          "blank": "味わって"
+        },
+        {
+          "sentence": "苦痛を味わう。",
+          "sentence_zh": "经历苦痛。",
+          "blank": "味わう"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-034.mp3"
@@ -11562,9 +11818,18 @@ window.LESSON_DATA = {
       "text": "圧力",
       "kana": "あつりょく",
       "zh": "压力",
-      "sentence": "圧力計",
-      "sentence_zh": "压力计",
-      "blank": "圧力",
+      "sentences": [
+        {
+          "sentence": "圧力計",
+          "sentence_zh": "压力计",
+          "blank": "圧力"
+        },
+        {
+          "sentence": "圧力をかける。",
+          "sentence_zh": "施加压力。",
+          "blank": "圧力"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-035.mp3"
@@ -11574,9 +11839,13 @@ window.LESSON_DATA = {
       "text": "憧れ",
       "kana": "あこがれ",
       "zh": "憧憬，向往",
-      "sentence": "憧れの名門校",
-      "sentence_zh": "向往的名校",
-      "blank": "憧れ",
+      "sentences": [
+        {
+          "sentence": "憧れの名門校",
+          "sentence_zh": "向往的名校",
+          "blank": "憧れ"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-036.mp3"
@@ -11586,9 +11855,18 @@ window.LESSON_DATA = {
       "text": "憧れる",
       "kana": "あこがれる",
       "zh": "憧憬，向往",
-      "sentence": "都会の生活に憧れる。",
-      "sentence_zh": "憧憬都市生活。",
-      "blank": "憧れる",
+      "sentences": [
+        {
+          "sentence": "都会の生活に憧れる。",
+          "sentence_zh": "憧憬都市生活。",
+          "blank": "憧れる"
+        },
+        {
+          "sentence": "アイドルに憧れる。",
+          "sentence_zh": "向往成为偶像。",
+          "blank": "憧れる"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-037.mp3"
@@ -11598,9 +11876,13 @@ window.LESSON_DATA = {
       "text": "朝飯（あさめし）/朝飯前",
       "kana": "あさめしまえ",
       "zh": "早饭（比“朝食”更随意的男性用语）",
-      "sentence": "朝飯前でパッと済ませる。",
-      "sentence_zh": "轻而易举地迅速搞定。",
-      "blank": "朝飯前",
+      "sentences": [
+        {
+          "sentence": "朝飯前でパッと済ませる。",
+          "sentence_zh": "轻而易举地迅速搞定。",
+          "blank": "朝飯前"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-038.mp3"
@@ -11610,9 +11892,13 @@ window.LESSON_DATA = {
       "text": "悪化",
       "kana": "あっか",
       "zh": "（状态、病情等）恶化",
-      "sentence": "国際情勢が悪化する。",
-      "sentence_zh": "国际形势恶化。",
-      "blank": "悪化",
+      "sentences": [
+        {
+          "sentence": "国際情勢が悪化する。",
+          "sentence_zh": "国际形势恶化。",
+          "blank": "悪化"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-039.mp3"
@@ -11622,9 +11908,13 @@ window.LESSON_DATA = {
       "text": "厚かましい",
       "kana": "あつかましい",
       "zh": "厚脸皮的，无耻的",
-      "sentence": "厚かましいお願いですが。",
-      "sentence_zh": "我有个不情之请。",
-      "blank": "厚かましい",
+      "sentences": [
+        {
+          "sentence": "厚かましいお願いですが。",
+          "sentence_zh": "我有个不情之请。",
+          "blank": "厚かましい"
+        }
+      ],
       "category": "组4",
       "unit": "第1单元",
       "audio": "audio/word-040.mp3"
@@ -11634,9 +11924,13 @@ window.LESSON_DATA = {
       "text": "～宛て",
       "kana": "～あて",
       "zh": "寄往……，送往……（人名/地址后）",
-      "sentence": "鈴木さん宛て",
-      "sentence_zh": "寄给铃木先生（女士）",
-      "blank": "宛て",
+      "sentences": [
+        {
+          "sentence": "鈴木さん宛て",
+          "sentence_zh": "寄给铃木先生（女士）",
+          "blank": "宛て"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-041.mp3"
@@ -11646,9 +11940,18 @@ window.LESSON_DATA = {
       "text": "当て嵌まる（あてはまる）/当て嵌める",
       "kana": "あてはめる",
       "zh": "当て嵌まる [自動1] 符合（一定条件），相配",
-      "sentence": "条件に当て嵌まる。",
-      "sentence_zh": "符合（一定）条件。",
-      "blank": "当て嵌まる",
+      "sentences": [
+        {
+          "sentence": "条件に当て嵌まる。",
+          "sentence_zh": "符合（一定）条件。",
+          "blank": "当て嵌まる"
+        },
+        {
+          "sentence": "条件に当て嵌める。",
+          "sentence_zh": "使符合条件。",
+          "blank": "当て嵌める"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-042.mp3"
@@ -11658,9 +11961,18 @@ window.LESSON_DATA = {
       "text": "暖か/温か・暖かい/温かい（あたた（かい））",
       "kana": "暖か",
       "zh": "（气温）温暖的；（气氛、内心等）温馨的",
-      "sentence": "暖かな日差し",
-      "sentence_zh": "温暖的阳光",
-      "blank": "暖か",
+      "sentences": [
+        {
+          "sentence": "暖かな日差し",
+          "sentence_zh": "温暖的阳光",
+          "blank": "暖か"
+        },
+        {
+          "sentence": "温かな家庭",
+          "sentence_zh": "温馨的家庭",
+          "blank": "温かな"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-043.mp3"
@@ -11670,9 +11982,23 @@ window.LESSON_DATA = {
       "text": "当てる",
       "kana": "あてる",
       "zh": "打中，碰上；使接触；晒；中奖；猜测",
-      "sentence": "ボールを壁に当てる。",
-      "sentence_zh": "把球打在墙上。",
-      "blank": "当てる",
+      "sentences": [
+        {
+          "sentence": "ボールを壁に当てる。",
+          "sentence_zh": "把球打在墙上。",
+          "blank": "当てる"
+        },
+        {
+          "sentence": "日光に当てて乾かす。",
+          "sentence_zh": "放在太阳下晒干。",
+          "blank": "当てて"
+        },
+        {
+          "sentence": "一等賞を当てる。",
+          "sentence_zh": "中一等奖。",
+          "blank": "当てる"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-044.mp3"
@@ -11682,9 +12008,13 @@ window.LESSON_DATA = {
       "text": "脂",
       "kana": "あぶら",
       "zh": "脂肪，油脂",
-      "sentence": "脂が乗る。",
-      "sentence_zh": "长膘；（工作）越干越顺手。",
-      "blank": "脂",
+      "sentences": [
+        {
+          "sentence": "脂が乗る。",
+          "sentence_zh": "长膘；（工作）越干越顺手。",
+          "blank": "脂"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-045.mp3"
@@ -11694,9 +12024,18 @@ window.LESSON_DATA = {
       "text": "炙る",
       "kana": "あぶる",
       "zh": "烧，烤；靠近火源取暖",
-      "sentence": "海苔を炙る。",
-      "sentence_zh": "烤紫菜。",
-      "blank": "炙る",
+      "sentences": [
+        {
+          "sentence": "海苔を炙る。",
+          "sentence_zh": "烤紫菜。",
+          "blank": "炙る"
+        },
+        {
+          "sentence": "ストーブで手を炙る。",
+          "sentence_zh": "在暖炉旁烘手。",
+          "blank": "炙る"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-046.mp3"
@@ -11706,9 +12045,13 @@ window.LESSON_DATA = {
       "text": "アポ",
       "kana": "アポ",
       "zh": "约定，约会（“アポイントメント”的略语）",
-      "sentence": "事前にアポを取っておく。",
-      "sentence_zh": "事先约好（时间、地点）。",
-      "blank": "アポ",
+      "sentences": [
+        {
+          "sentence": "事前にアポを取っておく。",
+          "sentence_zh": "事先约好（时间、地点）。",
+          "blank": "アポ"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-047.mp3"
@@ -11718,9 +12061,18 @@ window.LESSON_DATA = {
       "text": "跡",
       "kana": "あと",
       "zh": "踪迹，痕迹；行踪，下落",
-      "sentence": "手術の跡",
-      "sentence_zh": "手术后的疤痕",
-      "blank": "跡",
+      "sentences": [
+        {
+          "sentence": "手術の跡",
+          "sentence_zh": "手术后的疤痕",
+          "blank": "跡"
+        },
+        {
+          "sentence": "犯人の跡を追う。",
+          "sentence_zh": "追查犯人的行踪。",
+          "blank": "跡"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-048.mp3"
@@ -11730,9 +12082,13 @@ window.LESSON_DATA = {
       "text": "後片付け",
       "kana": "あとかたづけ",
       "zh": "整理，收拾（善后）",
-      "sentence": "会場の後片付けをする。",
-      "sentence_zh": "清理（收拾）会场。",
-      "blank": "後片付け",
+      "sentences": [
+        {
+          "sentence": "会場の後片付けをする。",
+          "sentence_zh": "清理（收拾）会场。",
+          "blank": "後片付け"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-049.mp3"
@@ -11742,9 +12098,13 @@ window.LESSON_DATA = {
       "text": "アマ",
       "kana": "アマ",
       "zh": "业余爱好者（“アマチュア(amateur)”的略语）",
-      "sentence": "彼はアマながら、プロ顔負けの腕前だ。",
-      "sentence_zh": "他虽是业余爱好者，但技艺不输专业选手。",
-      "blank": "アマ",
+      "sentences": [
+        {
+          "sentence": "彼はアマながら、プロ顔負けの腕前だ。",
+          "sentence_zh": "他虽是业余爱好者，但技艺不输专业选手。",
+          "blank": "アマ"
+        }
+      ],
       "category": "组5",
       "unit": "第1单元",
       "audio": "audio/word-050.mp3"
@@ -11754,9 +12114,13 @@ window.LESSON_DATA = {
       "text": "後始末",
       "kana": "あとしまつ",
       "zh": "善后，收尾",
-      "sentence": "自分で始めたことは自分で後始末をつける。",
-      "sentence_zh": "自己开的头，自己收拾善后。",
-      "blank": "後始末",
+      "sentences": [
+        {
+          "sentence": "自分で始めたことは自分で後始末をつける。",
+          "sentence_zh": "自己开的头，自己收拾善后。",
+          "blank": "後始末"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-051.mp3"
@@ -11766,9 +12130,13 @@ window.LESSON_DATA = {
       "text": "雨戸",
       "kana": "あまど",
       "zh": "防雨门，护窗板",
-      "sentence": "雨戸を開ける。",
-      "sentence_zh": "打开护窗板。",
-      "blank": "雨戸",
+      "sentences": [
+        {
+          "sentence": "雨戸を開ける。",
+          "sentence_zh": "打开护窗板。",
+          "blank": "雨戸"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-052.mp3"
@@ -11778,9 +12146,18 @@ window.LESSON_DATA = {
       "text": "穴",
       "kana": "あな",
       "zh": "洞，窟窿；破绽，缺点；亏空",
-      "sentence": "相手の穴を見つける。",
-      "sentence_zh": "找出对手的破绽。",
-      "blank": "穴",
+      "sentences": [
+        {
+          "sentence": "相手の穴を見つける。",
+          "sentence_zh": "找出对手的破绽。",
+          "blank": "穴"
+        },
+        {
+          "sentence": "資金の穴を埋める。",
+          "sentence_zh": "填补资金空缺。",
+          "blank": "穴"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-053.mp3"
@@ -11790,9 +12167,13 @@ window.LESSON_DATA = {
       "text": "雨風",
       "kana": "あめかぜ",
       "zh": "风雨；又刮风又下雨",
-      "sentence": "一晩中雨風が強かった。",
-      "sentence_zh": "整晚风雨交加。",
-      "blank": "雨風",
+      "sentences": [
+        {
+          "sentence": "一晩中雨風が強かった。",
+          "sentence_zh": "整晚风雨交加。",
+          "blank": "雨風"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-054.mp3"
@@ -11802,9 +12183,18 @@ window.LESSON_DATA = {
       "text": "暴れる",
       "kana": "あばれる",
       "zh": "胡闹，乱闹；大显身手",
-      "sentence": "酔って暴れる。",
-      "sentence_zh": "喝醉酒胡闹。",
-      "blank": "暴れる",
+      "sentences": [
+        {
+          "sentence": "酔って暴れる。",
+          "sentence_zh": "喝醉酒胡闹。",
+          "blank": "暴れる"
+        },
+        {
+          "sentence": "今日の試合では大いに暴れるぞ。",
+          "sentence_zh": "今天的比赛要大显身手。",
+          "blank": "暴れる"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-055.mp3"
@@ -11814,9 +12204,13 @@ window.LESSON_DATA = {
       "text": "甘やかす",
       "kana": "あまやかす",
       "zh": "宠，娇惯（孩子）",
-      "sentence": "子供を甘やかす。",
-      "sentence_zh": "娇惯孩子。",
-      "blank": "甘やかす",
+      "sentences": [
+        {
+          "sentence": "子供を甘やかす。",
+          "sentence_zh": "娇惯孩子。",
+          "blank": "甘やかす"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-056.mp3"
@@ -11826,9 +12220,18 @@ window.LESSON_DATA = {
       "text": "あまり",
       "kana": "あまり",
       "zh": "剩余，剩下的部分；过于……，过分（不）……；因过于……（导致后项结果）",
-      "sentence": "あまりが出る。",
-      "sentence_zh": "出现剩余。",
-      "blank": "あまり",
+      "sentences": [
+        {
+          "sentence": "あまりが出る。",
+          "sentence_zh": "出现剩余。",
+          "blank": "あまり"
+        },
+        {
+          "sentence": "うれしさのあまり跳び上がった。",
+          "sentence_zh": "因太高兴而跳了起来。",
+          "blank": "あまり"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-057.mp3"
@@ -11838,9 +12241,18 @@ window.LESSON_DATA = {
       "text": "浴びる",
       "kana": "あびる",
       "zh": "淋，浇；照，晒；遭受",
-      "sentence": "シャワーを浴びる。",
-      "sentence_zh": "冲淋浴。",
-      "blank": "浴びる",
+      "sentences": [
+        {
+          "sentence": "シャワーを浴びる。",
+          "sentence_zh": "冲淋浴。",
+          "blank": "浴びる"
+        },
+        {
+          "sentence": "非難を浴びる。",
+          "sentence_zh": "遭受非难。",
+          "blank": "浴びる"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-058.mp3"
@@ -11850,9 +12262,13 @@ window.LESSON_DATA = {
       "text": "あまりに",
       "kana": "あまりにも",
       "zh": "过于……，太……",
-      "sentence": "あまりに静かなので、かえって集中できない。",
-      "sentence_zh": "太安静了，反而无法集中精力。",
-      "blank": "あまりに",
+      "sentences": [
+        {
+          "sentence": "あまりに静かなので、かえって集中できない。",
+          "sentence_zh": "太安静了，反而无法集中精力。",
+          "blank": "あまりに"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-059.mp3"
@@ -11862,9 +12278,13 @@ window.LESSON_DATA = {
       "text": "粗筋",
       "kana": "あらすじ",
       "zh": "概要，大纲",
-      "sentence": "映画の粗筋を語る。",
-      "sentence_zh": "讲述电影的梗概。",
-      "blank": "粗筋",
+      "sentences": [
+        {
+          "sentence": "映画の粗筋を語る。",
+          "sentence_zh": "讲述电影的梗概。",
+          "blank": "粗筋"
+        }
+      ],
       "category": "组6",
       "unit": "第1单元",
       "audio": "audio/word-060.mp3"
@@ -11874,9 +12294,13 @@ window.LESSON_DATA = {
       "text": "大筋",
       "kana": "おおすじ",
       "zh": "梗概，大纲，要点",
-      "sentence": "計画の大筋はもう決まった。",
-      "sentence_zh": "计划的大致方针已经定下来了。",
-      "blank": "大筋",
+      "sentences": [
+        {
+          "sentence": "計画の大筋はもう決まった。",
+          "sentence_zh": "计划的大致方针已经定下来了。",
+          "blank": "大筋"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-061.mp3"
@@ -11886,9 +12310,13 @@ window.LESSON_DATA = {
       "text": "争い",
       "kana": "あらそい",
       "zh": "争论，纠纷",
-      "sentence": "争いが絶えない。",
-      "sentence_zh": "争论不休。",
-      "blank": "争い",
+      "sentences": [
+        {
+          "sentence": "争いが絶えない。",
+          "sentence_zh": "争论不休。",
+          "blank": "争い"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-062.mp3"
@@ -11898,9 +12326,13 @@ window.LESSON_DATA = {
       "text": "争う",
       "kana": "あらそう",
       "zh": "争吵，争斗；竞争",
-      "sentence": "首位の座を争う。",
-      "sentence_zh": "争夺首位。",
-      "blank": "争う",
+      "sentences": [
+        {
+          "sentence": "首位の座を争う。",
+          "sentence_zh": "争夺首位。",
+          "blank": "争う"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-063.mp3"
@@ -11910,9 +12342,13 @@ window.LESSON_DATA = {
       "text": "網",
       "kana": "あみ",
       "zh": "网",
-      "sentence": "網を打つ。",
-      "sentence_zh": "撒网。",
-      "blank": "網",
+      "sentences": [
+        {
+          "sentence": "網を打つ。",
+          "sentence_zh": "撒网。",
+          "blank": "網"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-064.mp3"
@@ -11922,9 +12358,13 @@ window.LESSON_DATA = {
       "text": "争って",
       "kana": "あらそって",
       "zh": "争先恐后地",
-      "sentence": "争って新発売のゲーム機を買い求める。",
-      "sentence_zh": "争先恐后地购买新发售的游戏机。",
-      "blank": "争って",
+      "sentences": [
+        {
+          "sentence": "争って新発売のゲーム機を買い求める。",
+          "sentence_zh": "争先恐后地购买新发售的游戏机。",
+          "blank": "争って"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-065.mp3"
@@ -11934,9 +12374,13 @@ window.LESSON_DATA = {
       "text": "危うい",
       "kana": "あやうい",
       "zh": "危险的，不安全的；危急",
-      "sentence": "危ういところを助けられた。",
-      "sentence_zh": "在危急时刻被救了。",
-      "blank": "危うい",
+      "sentences": [
+        {
+          "sentence": "危ういところを助けられた。",
+          "sentence_zh": "在危急时刻被救了。",
+          "blank": "危うい"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-066.mp3"
@@ -11946,9 +12390,18 @@ window.LESSON_DATA = {
       "text": "改まる",
       "kana": "あらたまる",
       "zh": "更新，更替；郑重，庄重起来",
-      "sentence": "年が改まる。",
-      "sentence_zh": "迎来新的一年。",
-      "blank": "改まる",
+      "sentences": [
+        {
+          "sentence": "年が改まる。",
+          "sentence_zh": "迎来新的一年。",
+          "blank": "改まる"
+        },
+        {
+          "sentence": "改まった挨拶",
+          "sentence_zh": "客气拘谨的寒暄",
+          "blank": "改まった"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-067.mp3"
@@ -11958,9 +12411,13 @@ window.LESSON_DATA = {
       "text": "危ない",
       "kana": "あぶない",
       "zh": "危险的；靠不住，令人担心",
-      "sentence": "成功は危ない。",
-      "sentence_zh": "能否成功还很难说。",
-      "blank": "危ない",
+      "sentences": [
+        {
+          "sentence": "成功は危ない。",
+          "sentence_zh": "能否成功还很难说。",
+          "blank": "危ない"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-068.mp3"
@@ -11970,9 +12427,18 @@ window.LESSON_DATA = {
       "text": "怪しい",
       "kana": "あやしい",
       "zh": "可疑的，让人放心不下的；靠不住的，糟糕的",
-      "sentence": "怪しい物音",
-      "sentence_zh": "诡异的声音",
-      "blank": "怪しい",
+      "sentences": [
+        {
+          "sentence": "怪しい物音",
+          "sentence_zh": "诡异的声音",
+          "blank": "怪しい"
+        },
+        {
+          "sentence": "空模様が怪しい。",
+          "sentence_zh": "天空的样子看着要变天。",
+          "blank": "怪しい"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-069.mp3"
@@ -11982,9 +12448,13 @@ window.LESSON_DATA = {
       "text": "改めて",
       "kana": "あらためて",
       "zh": "另（找机会）……，改日；重新",
-      "sentence": "後日改めてお伺いします。",
-      "sentence_zh": "改日再登门拜访。",
-      "blank": "改めて",
+      "sentences": [
+        {
+          "sentence": "後日改めてお伺いします。",
+          "sentence_zh": "改日再登门拜访。",
+          "blank": "改めて"
+        }
+      ],
       "category": "组7",
       "unit": "第1单元",
       "audio": "audio/word-070.mp3"
@@ -11994,9 +12464,18 @@ window.LESSON_DATA = {
       "text": "改める",
       "kana": "あらためる",
       "zh": "改变，更新；端正，郑重其事",
-      "sentence": "改めて説明することはない。",
-      "sentence_zh": "无需再作说明。",
-      "blank": "改めて",
+      "sentences": [
+        {
+          "sentence": "改めて説明することはない。",
+          "sentence_zh": "无需再作说明。",
+          "blank": "改めて"
+        },
+        {
+          "sentence": "正座を改める。",
+          "sentence_zh": "端正坐姿。",
+          "blank": "改める"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-071.mp3"
@@ -12006,9 +12485,18 @@ window.LESSON_DATA = {
       "text": "怪しむ",
       "kana": "あやしむ",
       "zh": "感到奇怪，觉得可疑",
-      "sentence": "彼の誠実さを怪しむ。",
-      "sentence_zh": "怀疑他的诚实。",
-      "blank": "怪しむ",
+      "sentences": [
+        {
+          "sentence": "彼の誠実さを怪しむ。",
+          "sentence_zh": "怀疑他的诚实。",
+          "blank": "怪しむ"
+        },
+        {
+          "sentence": "人を信じて怪しまない。",
+          "sentence_zh": "对人深信不疑。",
+          "blank": "怪しまない"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-072.mp3"
@@ -12018,9 +12506,13 @@ window.LESSON_DATA = {
       "text": "誤り",
       "kana": "あやまり",
       "zh": "错误，失误",
-      "sentence": "誤りを犯す。",
-      "sentence_zh": "犯错误。",
-      "blank": "誤り",
+      "sentences": [
+        {
+          "sentence": "誤りを犯す。",
+          "sentence_zh": "犯错误。",
+          "blank": "誤り"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-073.mp3"
@@ -12030,9 +12522,13 @@ window.LESSON_DATA = {
       "text": "著す",
       "kana": "あらわす",
       "zh": "著（书），写作",
-      "sentence": "教育関係の本を著す。",
-      "sentence_zh": "写有关教育方面的书。",
-      "blank": "著す",
+      "sentences": [
+        {
+          "sentence": "教育関係の本を著す。",
+          "sentence_zh": "写有关教育方面的书。",
+          "blank": "著す"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-074.mp3"
@@ -12042,9 +12538,13 @@ window.LESSON_DATA = {
       "text": "現す",
       "kana": "あらわす",
       "zh": "显现，展现",
-      "sentence": "彼はついに本性を現した。",
-      "sentence_zh": "他终于露出了本性。",
-      "blank": "現した",
+      "sentences": [
+        {
+          "sentence": "彼はついに本性を現した。",
+          "sentence_zh": "他终于露出了本性。",
+          "blank": "現した"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-075.mp3"
@@ -12054,9 +12554,13 @@ window.LESSON_DATA = {
       "text": "現れ",
       "kana": "あらわれ",
       "zh": "显露，体现",
-      "sentence": "幸せの現れ",
-      "sentence_zh": "幸福的体现",
-      "blank": "現れ",
+      "sentences": [
+        {
+          "sentence": "幸せの現れ",
+          "sentence_zh": "幸福的体现",
+          "blank": "現れ"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-076.mp3"
@@ -12066,9 +12570,13 @@ window.LESSON_DATA = {
       "text": "嵐",
       "kana": "あらし",
       "zh": "暴风雨；骚乱",
-      "sentence": "嵐で電車が止まった。",
-      "sentence_zh": "因暴风雨电车停运了。",
-      "blank": "嵐",
+      "sentences": [
+        {
+          "sentence": "嵐で電車が止まった。",
+          "sentence_zh": "因暴风雨电车停运了。",
+          "blank": "嵐"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-077.mp3"
@@ -12078,9 +12586,18 @@ window.LESSON_DATA = {
       "text": "淡い",
       "kana": "あわい",
       "zh": "（颜色）浅的，淡的；微弱的",
-      "sentence": "淡い水色",
-      "sentence_zh": "浅蓝色",
-      "blank": "淡い",
+      "sentences": [
+        {
+          "sentence": "淡い水色",
+          "sentence_zh": "浅蓝色",
+          "blank": "淡い"
+        },
+        {
+          "sentence": "淡い恋心を抱く。",
+          "sentence_zh": "怀有淡淡的爱慕之心。",
+          "blank": "淡い"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-078.mp3"
@@ -12090,9 +12607,13 @@ window.LESSON_DATA = {
       "text": "有り金",
       "kana": "ありがね",
       "zh": "现款，手头有的钱",
-      "sentence": "有り金をはたく。",
-      "sentence_zh": "拿出所有的钱。",
-      "blank": "有り金",
+      "sentences": [
+        {
+          "sentence": "有り金をはたく。",
+          "sentence_zh": "拿出所有的钱。",
+          "blank": "有り金"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-079.mp3"
@@ -12102,9 +12623,18 @@ window.LESSON_DATA = {
       "text": "～合わせ",
       "kana": "～あわせ",
       "zh": "使……一致，配……",
-      "sentence": "顔合わせ",
-      "sentence_zh": "碰头，会面",
-      "blank": "合わせ",
+      "sentences": [
+        {
+          "sentence": "顔合わせ",
+          "sentence_zh": "碰头，会面",
+          "blank": "合わせ"
+        },
+        {
+          "sentence": "背中合わせ",
+          "sentence_zh": "背靠背",
+          "blank": "合わせ"
+        }
+      ],
       "category": "组8",
       "unit": "第1单元",
       "audio": "audio/word-080.mp3"
@@ -12114,9 +12644,18 @@ window.LESSON_DATA = {
       "text": "～合わせる",
       "kana": "～あわせる",
       "zh": "使……组合，配合",
-      "sentence": "眼を凝らせ合わせる。",
-      "sentence_zh": "调和配料。",
-      "blank": "合わせる",
+      "sentences": [
+        {
+          "sentence": "眼を凝らせ合わせる。",
+          "sentence_zh": "调和配料。",
+          "blank": "合わせる"
+        },
+        {
+          "sentence": "駅で待ち合わせる。",
+          "sentence_zh": "约好在车站碰头。",
+          "blank": "合わせる"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-081.mp3"
@@ -12126,9 +12665,13 @@ window.LESSON_DATA = {
       "text": "あれだけ",
       "kana": "あれだけ",
       "zh": "那样，那么多",
-      "sentence": "あれだけ努力したのに失敗した。",
-      "sentence_zh": "都那么努力了却还是失败了。",
-      "blank": "あれだけ",
+      "sentences": [
+        {
+          "sentence": "あれだけ努力したのに失敗した。",
+          "sentence_zh": "都那么努力了却还是失败了。",
+          "blank": "あれだけ"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-082.mp3"
@@ -12138,9 +12681,23 @@ window.LESSON_DATA = {
       "text": "荒れる",
       "kana": "あれる",
       "zh": "（天气）恶劣；（局面）混乱；粗糙；荒芜",
-      "sentence": "会議が荒れる。",
-      "sentence_zh": "会议闹翻。",
-      "blank": "荒れる",
+      "sentences": [
+        {
+          "sentence": "会議が荒れる。",
+          "sentence_zh": "会议闹翻。",
+          "blank": "荒れる"
+        },
+        {
+          "sentence": "手が荒れる。",
+          "sentence_zh": "手变粗糙。",
+          "blank": "荒れる"
+        },
+        {
+          "sentence": "荒れた庭にも春が来る。",
+          "sentence_zh": "荒芜的庭院也迎来了春天。",
+          "blank": "荒れた"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-083.mp3"
@@ -12150,9 +12707,13 @@ window.LESSON_DATA = {
       "text": "慌ただしい",
       "kana": "あわただしい",
       "zh": "慌忙的，匆忙的",
-      "sentence": "慌しく準備する。",
-      "sentence_zh": "匆忙做准备。",
-      "blank": "慌しく",
+      "sentences": [
+        {
+          "sentence": "慌しく準備する。",
+          "sentence_zh": "匆忙做准备。",
+          "blank": "慌しく"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-084.mp3"
@@ -12162,9 +12723,13 @@ window.LESSON_DATA = {
       "text": "慌て者",
       "kana": "あわてもの",
       "zh": "冒失鬼，急性子",
-      "sentence": "妹は慌て者で、また何かを忘れた。",
-      "sentence_zh": "妹妹是急性子，又忘了什么东西。",
-      "blank": "慌て者",
+      "sentences": [
+        {
+          "sentence": "妹は慌て者で、また何かを忘れた。",
+          "sentence_zh": "妹妹是急性子，又忘了什么东西。",
+          "blank": "慌て者"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-085.mp3"
@@ -12174,9 +12739,18 @@ window.LESSON_DATA = {
       "text": "アレルギー",
       "kana": "アレルギー",
       "zh": "过敏反应，过敏",
-      "sentence": "卵アレルギーがある。",
-      "sentence_zh": "对鸡蛋过敏。",
-      "blank": "アレルギー",
+      "sentences": [
+        {
+          "sentence": "卵アレルギーがある。",
+          "sentence_zh": "对鸡蛋过敏。",
+          "blank": "アレルギー"
+        },
+        {
+          "sentence": "アレルギー症状を起こす。",
+          "sentence_zh": "引发过敏症状。",
+          "blank": "アレルギー"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-086.mp3"
@@ -12186,9 +12760,18 @@ window.LESSON_DATA = {
       "text": "哀れ",
       "kana": "あわれ",
       "zh": "悲哀，哀愁；可怜",
-      "sentence": "哀れな姿",
-      "sentence_zh": "可怜的样子",
-      "blank": "哀れ",
+      "sentences": [
+        {
+          "sentence": "哀れな姿",
+          "sentence_zh": "可怜的样子",
+          "blank": "哀れ"
+        },
+        {
+          "sentence": "哀れな物語",
+          "sentence_zh": "悲惨的故事",
+          "blank": "哀れ"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-087.mp3"
@@ -12198,9 +12781,18 @@ window.LESSON_DATA = {
       "text": "泡",
       "kana": "あわ",
       "zh": "泡沫，唾沫；泡影",
-      "sentence": "石けんの泡",
-      "sentence_zh": "肥皂泡",
-      "blank": "泡",
+      "sentences": [
+        {
+          "sentence": "石けんの泡",
+          "sentence_zh": "肥皂泡",
+          "blank": "泡"
+        },
+        {
+          "sentence": "せっかくの努力も水の泡だ。",
+          "sentence_zh": "辛辛苦苦的努力也化为泡影。",
+          "blank": "泡"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-088.mp3"
@@ -12210,9 +12802,13 @@ window.LESSON_DATA = {
       "text": "案",
       "kana": "あん",
       "zh": "想法，主意；方案，草案",
-      "sentence": "いい案を思いつく。",
-      "sentence_zh": "想出一个好点子。",
-      "blank": "案",
+      "sentences": [
+        {
+          "sentence": "いい案を思いつく。",
+          "sentence_zh": "想出一个好点子。",
+          "blank": "案"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-089.mp3"
@@ -12222,9 +12818,18 @@ window.LESSON_DATA = {
       "text": "暗記",
       "kana": "あんき",
       "zh": "记忆，背诵",
-      "sentence": "丸暗記",
-      "sentence_zh": "死记硬背",
-      "blank": "暗記",
+      "sentences": [
+        {
+          "sentence": "丸暗記",
+          "sentence_zh": "死记硬背",
+          "blank": "暗記"
+        },
+        {
+          "sentence": "方程式を暗記する。",
+          "sentence_zh": "背诵方程式。",
+          "blank": "暗記"
+        }
+      ],
       "category": "组9",
       "unit": "第1单元",
       "audio": "audio/word-090.mp3"
@@ -12234,9 +12839,18 @@ window.LESSON_DATA = {
       "text": "アンテナ",
       "kana": "アンテナ",
       "zh": "天线；获取信息所需的手段",
-      "sentence": "テレビのアンテナ",
-      "sentence_zh": "电视天线",
-      "blank": "アンテナ",
+      "sentences": [
+        {
+          "sentence": "テレビのアンテナ",
+          "sentence_zh": "电视天线",
+          "blank": "アンテナ"
+        },
+        {
+          "sentence": "各業界にアンテナを張りめぐらす。",
+          "sentence_zh": "从各行各业收集信息。",
+          "blank": "アンテナ"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-091.mp3"
@@ -12246,9 +12860,18 @@ window.LESSON_DATA = {
       "text": "いい加減",
       "kana": "いいかげん",
       "zh": "适可而止；敷衍，不靠谱；相当，很",
-      "sentence": "いい加減にしろ！",
-      "sentence_zh": "适可而止吧！",
-      "blank": "いい加減",
+      "sentences": [
+        {
+          "sentence": "いい加減にしろ！",
+          "sentence_zh": "适可而止吧！",
+          "blank": "いい加減"
+        },
+        {
+          "sentence": "いい加減な返答",
+          "sentence_zh": "敷衍的回答",
+          "blank": "いい加減"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-092.mp3"
@@ -12258,9 +12881,18 @@ window.LESSON_DATA = {
       "text": "言い付ける",
       "kana": "いいつける",
       "zh": "命令，吩咐；告状",
-      "sentence": "仕事を言い付ける。",
-      "sentence_zh": "吩咐工作。",
-      "blank": "言い付ける",
+      "sentences": [
+        {
+          "sentence": "仕事を言い付ける。",
+          "sentence_zh": "吩咐工作。",
+          "blank": "言い付ける"
+        },
+        {
+          "sentence": "何かあったらすぐ先生に言い付ける。",
+          "sentence_zh": "一有什么事就立刻向老师打小报告。",
+          "blank": "言い付ける"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-093.mp3"
@@ -12270,9 +12902,18 @@ window.LESSON_DATA = {
       "text": "～位",
       "kana": "位",
       "zh": "（表示顺序）第……名；（表示地位、等级）……位",
-      "sentence": "1位",
-      "sentence_zh": "第一名",
-      "blank": "位",
+      "sentences": [
+        {
+          "sentence": "1位",
+          "sentence_zh": "第一名",
+          "blank": "位"
+        },
+        {
+          "sentence": "最下位",
+          "sentence_zh": "最后一名",
+          "blank": "位"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-094.mp3"
@@ -12282,9 +12923,18 @@ window.LESSON_DATA = {
       "text": "～医",
       "kana": "～い",
       "zh": "……医",
-      "sentence": "外科医",
-      "sentence_zh": "外科医生",
-      "blank": "医",
+      "sentences": [
+        {
+          "sentence": "外科医",
+          "sentence_zh": "外科医生",
+          "blank": "医"
+        },
+        {
+          "sentence": "歯科医",
+          "sentence_zh": "牙医",
+          "blank": "医"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-095.mp3"
@@ -12294,9 +12944,18 @@ window.LESSON_DATA = {
       "text": "言い伝える",
       "kana": "いいつたえる",
       "zh": "转达，传话；（传说）代代相传",
-      "sentence": "用事を言い伝える。",
-      "sentence_zh": "转达事情。",
-      "blank": "言い伝える",
+      "sentences": [
+        {
+          "sentence": "用事を言い伝える。",
+          "sentence_zh": "转达事情。",
+          "blank": "言い伝える"
+        },
+        {
+          "sentence": "代々言い伝えられてきた物語",
+          "sentence_zh": "代代相传的故事",
+          "blank": "言い伝えられて"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-096.mp3"
@@ -12306,9 +12965,13 @@ window.LESSON_DATA = {
       "text": "言い訳",
       "kana": "いいわけ",
       "zh": "借口，辩解",
-      "sentence": "言い訳をする。",
-      "sentence_zh": "找借口，辩解。",
-      "blank": "言い訳",
+      "sentences": [
+        {
+          "sentence": "言い訳をする。",
+          "sentence_zh": "找借口，辩解。",
+          "blank": "言い訳"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-097.mp3"
@@ -12318,9 +12981,13 @@ window.LESSON_DATA = {
       "text": "言い合い",
       "kana": "いいあい",
       "zh": "争吵，口角",
-      "sentence": "些細なことで言い合いになった。",
-      "sentence_zh": "因为一点小事吵了起来。",
-      "blank": "言い合い",
+      "sentences": [
+        {
+          "sentence": "些細なことで言い合いになった。",
+          "sentence_zh": "因为一点小事吵了起来。",
+          "blank": "言い合い"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-098.mp3"
@@ -12330,9 +12997,13 @@ window.LESSON_DATA = {
       "text": "言い表す",
       "kana": "いいあらわす",
       "zh": "表达，描述",
-      "sentence": "言葉で言い表せない。",
-      "sentence_zh": "无法用言语表达。",
-      "blank": "言い表せ",
+      "sentences": [
+        {
+          "sentence": "言葉で言い表せない。",
+          "sentence_zh": "无法用言语表达。",
+          "blank": "言い表せ"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-099.mp3"
@@ -12342,9 +13013,13 @@ window.LESSON_DATA = {
       "text": "委員",
       "kana": "いいん",
       "zh": "委员，经选举产生的担任者",
-      "sentence": "学級委員",
-      "sentence_zh": "班干部",
-      "blank": "委員",
+      "sentences": [
+        {
+          "sentence": "学級委員",
+          "sentence_zh": "班干部",
+          "blank": "委員"
+        }
+      ],
       "category": "组10",
       "unit": "第1单元",
       "audio": "audio/word-100.mp3"
@@ -12354,9 +13029,13 @@ window.LESSON_DATA = {
       "text": "医院",
       "kana": "いいん",
       "zh": "（小）医院，通常指个人经营的诊所",
-      "sentence": "近所の医院で診てもらった。",
-      "sentence_zh": "在附近的诊所看了病。",
-      "blank": "医院",
+      "sentences": [
+        {
+          "sentence": "近所の医院で診てもらった。",
+          "sentence_zh": "在附近的诊所看了病。",
+          "blank": "医院"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-101.mp3"
@@ -12366,9 +13045,18 @@ window.LESSON_DATA = {
       "text": "生き残る",
       "kana": "いきのこる",
       "zh": "幸存，活下来",
-      "sentence": "飛行機事故で生き残った人",
-      "sentence_zh": "在飞机事故中幸存下来的人",
-      "blank": "生き残った",
+      "sentences": [
+        {
+          "sentence": "飛行機事故で生き残った人",
+          "sentence_zh": "在飞机事故中幸存下来的人",
+          "blank": "生き残った"
+        },
+        {
+          "sentence": "激しい競争に生き残る。",
+          "sentence_zh": "在激烈的竞争中幸存下来。",
+          "blank": "生き残る"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-102.mp3"
@@ -12378,9 +13066,13 @@ window.LESSON_DATA = {
       "text": "やりがい",
       "kana": "やりがい",
       "zh": "做某事的价值，值得做",
-      "sentence": "やりがいのある仕事",
-      "sentence_zh": "有价值（值得做）的工作",
-      "blank": "やりがい",
+      "sentences": [
+        {
+          "sentence": "やりがいのある仕事",
+          "sentence_zh": "有价值（值得做）的工作",
+          "blank": "やりがい"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-103.mp3"
@@ -12390,9 +13082,13 @@ window.LESSON_DATA = {
       "text": "家出",
       "kana": "いえで",
       "zh": "离家出走",
-      "sentence": "家出して戻ってこない。",
-      "sentence_zh": "离家出走后一直没回来。",
-      "blank": "家出",
+      "sentences": [
+        {
+          "sentence": "家出して戻ってこない。",
+          "sentence_zh": "离家出走后一直没回来。",
+          "blank": "家出"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-104.mp3"
@@ -12402,9 +13098,13 @@ window.LESSON_DATA = {
       "text": "育児",
       "kana": "いくじ",
       "zh": "育婴，育儿",
-      "sentence": "育児休暇",
-      "sentence_zh": "育儿假",
-      "blank": "育児",
+      "sentences": [
+        {
+          "sentence": "育児休暇",
+          "sentence_zh": "育儿假",
+          "blank": "育児"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-105.mp3"
@@ -12414,9 +13114,13 @@ window.LESSON_DATA = {
       "text": "子育て",
       "kana": "こそだて",
       "zh": "抚养孩子",
-      "sentence": "共働きで子育てをする。",
-      "sentence_zh": "夫妻都上班，一起带孩子。",
-      "blank": "子育て",
+      "sentences": [
+        {
+          "sentence": "共働きで子育てをする。",
+          "sentence_zh": "夫妻都上班，一起带孩子。",
+          "blank": "子育て"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-106.mp3"
@@ -12426,9 +13130,13 @@ window.LESSON_DATA = {
       "text": "怒り",
       "kana": "いかり",
       "zh": "愤怒，生气",
-      "sentence": "怒りを買う。",
-      "sentence_zh": "惹人发怒。",
-      "blank": "怒り",
+      "sentences": [
+        {
+          "sentence": "怒りを買う。",
+          "sentence_zh": "惹人发怒。",
+          "blank": "怒り"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-107.mp3"
@@ -12438,9 +13146,13 @@ window.LESSON_DATA = {
       "text": "幾分",
       "kana": "いくぶん",
       "zh": "一部分；少许，有点儿",
-      "sentence": "この頃幾分寒くなった。",
-      "sentence_zh": "最近天气有点转凉了。",
-      "blank": "幾分",
+      "sentences": [
+        {
+          "sentence": "この頃幾分寒くなった。",
+          "sentence_zh": "最近天气有点转凉了。",
+          "blank": "幾分"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-108.mp3"
@@ -12450,9 +13162,13 @@ window.LESSON_DATA = {
       "text": "行き",
       "kana": "行き",
       "zh": "去，往；（接地名后）表示去向",
-      "sentence": "行きは地下鉄で帰りはバスだ。",
-      "sentence_zh": "去时坐地铁，回来坐公交。",
-      "blank": "行き",
+      "sentences": [
+        {
+          "sentence": "行きは地下鉄で帰りはバスだ。",
+          "sentence_zh": "去时坐地铁，回来坐公交。",
+          "blank": "行き"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-109.mp3"
@@ -12462,9 +13178,13 @@ window.LESSON_DATA = {
       "text": "生け花",
       "kana": "いけばな",
       "zh": "插花，花道",
-      "sentence": "生け花を習う。",
-      "sentence_zh": "学习插花。",
-      "blank": "生け花",
+      "sentences": [
+        {
+          "sentence": "生け花を習う。",
+          "sentence_zh": "学习插花。",
+          "blank": "生け花"
+        }
+      ],
       "category": "组11",
       "unit": "第1单元",
       "audio": "audio/word-110.mp3"
@@ -12474,9 +13194,13 @@ window.LESSON_DATA = {
       "text": "生ける",
       "kana": "いける",
       "zh": "插（花）",
-      "sentence": "花を生ける。",
-      "sentence_zh": "插花。",
-      "blank": "生ける",
+      "sentences": [
+        {
+          "sentence": "花を生ける。",
+          "sentence_zh": "插花。",
+          "blank": "生ける"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-111.mp3"
@@ -12486,9 +13210,13 @@ window.LESSON_DATA = {
       "text": "勢い",
       "kana": "いきおい",
       "zh": "气势，势头，气焰",
-      "sentence": "火の勢いが強い。",
-      "sentence_zh": "火势很旺。",
-      "blank": "勢い",
+      "sentences": [
+        {
+          "sentence": "火の勢いが強い。",
+          "sentence_zh": "火势很旺。",
+          "blank": "勢い"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-112.mp3"
@@ -12498,9 +13226,18 @@ window.LESSON_DATA = {
       "text": "生きがい",
       "kana": "いきがい",
       "zh": "生存的意义，生活的目标",
-      "sentence": "生きがいのある人生",
-      "sentence_zh": "有意义的人生",
-      "blank": "生きがい",
+      "sentences": [
+        {
+          "sentence": "生きがいのある人生",
+          "sentence_zh": "有意义的人生",
+          "blank": "生きがい"
+        },
+        {
+          "sentence": "仕事を通じて生きがいを見つける。",
+          "sentence_zh": "通过工作找到生活的意义。",
+          "blank": "生きがい"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-113.mp3"
@@ -12510,9 +13247,18 @@ window.LESSON_DATA = {
       "text": "以降",
       "kana": "いこう",
       "zh": "……以后，……之后",
-      "sentence": "明治時代以降",
-      "sentence_zh": "明治时代之后",
-      "blank": "以降",
+      "sentences": [
+        {
+          "sentence": "明治時代以降",
+          "sentence_zh": "明治时代之后",
+          "blank": "以降"
+        },
+        {
+          "sentence": "夜10時以降は外出禁止だ。",
+          "sentence_zh": "晚上十点以后禁止外出。",
+          "blank": "以降"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-114.mp3"
@@ -12522,9 +13268,13 @@ window.LESSON_DATA = {
       "text": "居酒屋",
       "kana": "いざかや",
       "zh": "小酒馆，小饭店",
-      "sentence": "居酒屋で一杯飲んで帰る。",
-      "sentence_zh": "在小酒馆喝一杯回家。",
-      "blank": "居酒屋",
+      "sentences": [
+        {
+          "sentence": "居酒屋で一杯飲んで帰る。",
+          "sentence_zh": "在小酒馆喝一杯回家。",
+          "blank": "居酒屋"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-115.mp3"
@@ -12534,9 +13284,13 @@ window.LESSON_DATA = {
       "text": "意地悪い",
       "kana": "いじわるい",
       "zh": "使坏的，刁难人的",
-      "sentence": "意地悪いことを言う。",
-      "sentence_zh": "说话刁难人。",
-      "blank": "意地悪い",
+      "sentences": [
+        {
+          "sentence": "意地悪いことを言う。",
+          "sentence_zh": "说话刁难人。",
+          "blank": "意地悪い"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-116.mp3"
@@ -12546,9 +13300,18 @@ window.LESSON_DATA = {
       "text": "泉",
       "kana": "いずみ",
       "zh": "泉，泉水；（比喻）事物的源头",
-      "sentence": "泉が湧き出る。",
-      "sentence_zh": "泉水涌出。",
-      "blank": "泉",
+      "sentences": [
+        {
+          "sentence": "泉が湧き出る。",
+          "sentence_zh": "泉水涌出。",
+          "blank": "泉"
+        },
+        {
+          "sentence": "知識の泉",
+          "sentence_zh": "知识的源泉",
+          "blank": "泉"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-117.mp3"
@@ -12558,9 +13321,18 @@ window.LESSON_DATA = {
       "text": "勇ましい",
       "kana": "いさましい",
       "zh": "勇敢的，勇猛的，威武的",
-      "sentence": "勇ましい兵士",
-      "sentence_zh": "勇敢的战士",
-      "blank": "勇ましい",
+      "sentences": [
+        {
+          "sentence": "勇ましい兵士",
+          "sentence_zh": "勇敢的战士",
+          "blank": "勇ましい"
+        },
+        {
+          "sentence": "勇ましく戦う。",
+          "sentence_zh": "英勇奋战。",
+          "blank": "勇ましく"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-118.mp3"
@@ -12570,9 +13342,13 @@ window.LESSON_DATA = {
       "text": "いずれにしても",
       "kana": "いずれにしても",
       "zh": "不管怎样，反正，总之",
-      "sentence": "いずれにしても、まずやってみることだ。",
-      "sentence_zh": "不管怎样，总要先做做看。",
-      "blank": "いずれにしても",
+      "sentences": [
+        {
+          "sentence": "いずれにしても、まずやってみることだ。",
+          "sentence_zh": "不管怎样，总要先做做看。",
+          "blank": "いずれにしても"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-119.mp3"
@@ -12582,9 +13358,13 @@ window.LESSON_DATA = {
       "text": "いざという時",
       "kana": "いざというとき",
       "zh": "紧要（关键）时刻",
-      "sentence": "いざという時に備える。",
-      "sentence_zh": "为紧急关头做准备。",
-      "blank": "いざという時",
+      "sentences": [
+        {
+          "sentence": "いざという時に備える。",
+          "sentence_zh": "为紧急关头做准备。",
+          "blank": "いざという時"
+        }
+      ],
       "category": "组12",
       "unit": "第1单元",
       "audio": "audio/word-120.mp3"
@@ -12594,9 +13374,13 @@ window.LESSON_DATA = {
       "text": "いざとなると／いざとなれば／いざとなったら",
       "kana": "いざとなると／いざとなれば／いざとなったら",
       "zh": "一旦（真）到了那时候，万一真出现（紧急）状况",
-      "sentence": "いざとなるとすぐ逃げてしまう。",
-      "sentence_zh": "一旦真出事，立刻就逃跑。",
-      "blank": "いざとなると",
+      "sentences": [
+        {
+          "sentence": "いざとなるとすぐ逃げてしまう。",
+          "sentence_zh": "一旦真出事，立刻就逃跑。",
+          "blank": "いざとなると"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-121.mp3"
@@ -12606,9 +13390,13 @@ window.LESSON_DATA = {
       "text": "異性",
       "kana": "いせい",
       "zh": "异性",
-      "sentence": "彼は異性の前だと緊張してしまう。",
-      "sentence_zh": "他在异性面前会紧张。",
-      "blank": "異性",
+      "sentences": [
+        {
+          "sentence": "彼は異性の前だと緊張してしまう。",
+          "sentence_zh": "他在异性面前会紧张。",
+          "blank": "異性"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-122.mp3"
@@ -12618,9 +13406,13 @@ window.LESSON_DATA = {
       "text": "板",
       "kana": "いた",
       "zh": "板；切菜板，厨师，舞台",
-      "sentence": "鉄の板",
-      "sentence_zh": "铁板",
-      "blank": "板",
+      "sentences": [
+        {
+          "sentence": "鉄の板",
+          "sentence_zh": "铁板",
+          "blank": "板"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-123.mp3"
@@ -12630,9 +13422,13 @@ window.LESSON_DATA = {
       "text": "医師",
       "kana": "いし",
       "zh": "医师，医生",
-      "sentence": "医師の指示に従う。",
-      "sentence_zh": "遵从医生的指示。",
-      "blank": "医師",
+      "sentences": [
+        {
+          "sentence": "医師の指示に従う。",
+          "sentence_zh": "遵从医生的指示。",
+          "blank": "医師"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-124.mp3"
@@ -12642,9 +13438,18 @@ window.LESSON_DATA = {
       "text": "偉大",
       "kana": "いだい",
       "zh": "宏伟的，伟大的",
-      "sentence": "偉大な業績",
-      "sentence_zh": "伟大的业绩",
-      "blank": "偉大",
+      "sentences": [
+        {
+          "sentence": "偉大な業績",
+          "sentence_zh": "伟大的业绩",
+          "blank": "偉大"
+        },
+        {
+          "sentence": "偉大な人物",
+          "sentence_zh": "伟人",
+          "blank": "偉大"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-125.mp3"
@@ -12654,9 +13459,13 @@ window.LESSON_DATA = {
       "text": "意思",
       "kana": "いし",
       "zh": "意思，想法，打算",
-      "sentence": "自分の意思をはっきり伝える。",
-      "sentence_zh": "明确表达自己的想法。",
-      "blank": "意思",
+      "sentences": [
+        {
+          "sentence": "自分の意思をはっきり伝える。",
+          "sentence_zh": "明确表达自己的想法。",
+          "blank": "意思"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-126.mp3"
@@ -12666,9 +13475,13 @@ window.LESSON_DATA = {
       "text": "意志",
       "kana": "いし",
       "zh": "意志，明确的想法",
-      "sentence": "意志を伝える。",
-      "sentence_zh": "传达意思。",
-      "blank": "意志",
+      "sentences": [
+        {
+          "sentence": "意志を伝える。",
+          "sentence_zh": "传达意思。",
+          "blank": "意志"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-127.mp3"
@@ -12678,9 +13491,18 @@ window.LESSON_DATA = {
       "text": "維持",
       "kana": "いじ",
       "zh": "维持，保持原有状态",
-      "sentence": "現状維持",
-      "sentence_zh": "维持现状",
-      "blank": "維持",
+      "sentences": [
+        {
+          "sentence": "現状維持",
+          "sentence_zh": "维持现状",
+          "blank": "維持"
+        },
+        {
+          "sentence": "平和を維持する。",
+          "sentence_zh": "维持和平。",
+          "blank": "維持"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-128.mp3"
@@ -12690,9 +13512,13 @@ window.LESSON_DATA = {
       "text": "意地悪",
       "kana": "いじわる",
       "zh": "使坏，故意刁难人；坏心眼的（人）",
-      "sentence": "意地悪をする。",
-      "sentence_zh": "故意刁难人，使坏心眼。",
-      "blank": "意地悪",
+      "sentences": [
+        {
+          "sentence": "意地悪をする。",
+          "sentence_zh": "故意刁难人，使坏心眼。",
+          "blank": "意地悪"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-129.mp3"
@@ -12702,9 +13528,18 @@ window.LESSON_DATA = {
       "text": "傷み（いたみ）／傷む",
       "kana": "いたむ",
       "zh": "傷み [名]（食品）腐坏；（物品）损坏",
-      "sentence": "靴の傷みがひどい。",
-      "sentence_zh": "鞋磨损得很厉害。",
-      "blank": "傷み",
+      "sentences": [
+        {
+          "sentence": "靴の傷みがひどい。",
+          "sentence_zh": "鞋磨损得很厉害。",
+          "blank": "傷み"
+        },
+        {
+          "sentence": "暑くて食べ物の傷みが速い。",
+          "sentence_zh": "天热，食物容易坏得快。",
+          "blank": "傷み"
+        }
+      ],
       "category": "组13",
       "unit": "第1单元",
       "audio": "audio/word-130.mp3"
@@ -12714,9 +13549,18 @@ window.LESSON_DATA = {
       "text": "痛める（いためる）／傷める",
       "kana": "いためる",
       "zh": "痛める [他動2]（身体）使受伤，损伤；使为难，伤脑筋",
-      "sentence": "頭を痛める。",
-      "sentence_zh": "伤脑筋。",
-      "blank": "痛める",
+      "sentences": [
+        {
+          "sentence": "頭を痛める。",
+          "sentence_zh": "伤脑筋。",
+          "blank": "痛める"
+        },
+        {
+          "sentence": "足を痛めてよく歩けない。",
+          "sentence_zh": "伤了腿走不了路。",
+          "blank": "痛めて"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-131.mp3"
@@ -12726,9 +13570,18 @@ window.LESSON_DATA = {
       "text": "至る",
       "kana": "いたる",
       "zh": "到，抵达；（从……）到（……）",
-      "sentence": "横浜を経て東京に至る。",
-      "sentence_zh": "经横滨到达东京。",
-      "blank": "至る",
+      "sentences": [
+        {
+          "sentence": "横浜を経て東京に至る。",
+          "sentence_zh": "经横滨到达东京。",
+          "blank": "至る"
+        },
+        {
+          "sentence": "社長から平社員に至るまで",
+          "sentence_zh": "从社长到普通员工",
+          "blank": "至る"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-132.mp3"
@@ -12738,9 +13591,13 @@ window.LESSON_DATA = {
       "text": "至る所",
       "kana": "いたるところ",
       "zh": "处处，到处",
-      "sentence": "至る所に見られる。",
-      "sentence_zh": "处处可见。",
-      "blank": "至る所",
+      "sentences": [
+        {
+          "sentence": "至る所に見られる。",
+          "sentence_zh": "处处可见。",
+          "blank": "至る所"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-133.mp3"
@@ -12750,9 +13607,18 @@ window.LESSON_DATA = {
       "text": "一向に",
       "kana": "いっこうに",
       "zh": "（下接否定）丝毫（不）……；完全，全然",
-      "sentence": "一向に平気だ。",
-      "sentence_zh": "完全无所谓。",
-      "blank": "一向に",
+      "sentences": [
+        {
+          "sentence": "一向に平気だ。",
+          "sentence_zh": "完全无所谓。",
+          "blank": "一向に"
+        },
+        {
+          "sentence": "彼女は一向に流行を気にしない。",
+          "sentence_zh": "她完全不追求流行。",
+          "blank": "一向に"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-134.mp3"
@@ -12762,9 +13628,18 @@ window.LESSON_DATA = {
       "text": "一切",
       "kana": "いっさい",
       "zh": "一切，全部；（下接否定）一概（不）……",
-      "sentence": "一切の責任を負う。",
-      "sentence_zh": "负全部责任。",
-      "blank": "一切",
+      "sentences": [
+        {
+          "sentence": "一切の責任を負う。",
+          "sentence_zh": "负全部责任。",
+          "blank": "一切"
+        },
+        {
+          "sentence": "無断欠勤は一切許さない。",
+          "sentence_zh": "一律不允许无故缺勤。",
+          "blank": "一切"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-135.mp3"
@@ -12774,9 +13649,18 @@ window.LESSON_DATA = {
       "text": "いちいち",
       "kana": "いちいち",
       "zh": "一一，逐一，件件",
-      "sentence": "いちいち解釈する。",
-      "sentence_zh": "逐一做出解释。",
-      "blank": "いちいち",
+      "sentences": [
+        {
+          "sentence": "いちいち解釈する。",
+          "sentence_zh": "逐一做出解释。",
+          "blank": "いちいち"
+        },
+        {
+          "sentence": "人のやることにいちいち文句をつける。",
+          "sentence_zh": "对别人做的事事事挑毛病。",
+          "blank": "いちいち"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-136.mp3"
@@ -12786,9 +13670,18 @@ window.LESSON_DATA = {
       "text": "一段と",
       "kana": "いちだんと",
       "zh": "格外，更加，越发",
-      "sentence": "一段と美しくなった。",
-      "sentence_zh": "变得更加漂亮了。",
-      "blank": "一段と",
+      "sentences": [
+        {
+          "sentence": "一段と美しくなった。",
+          "sentence_zh": "变得更加漂亮了。",
+          "blank": "一段と"
+        },
+        {
+          "sentence": "雨は一段と激しくなった。",
+          "sentence_zh": "雨越下越大了。",
+          "blank": "一段と"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-137.mp3"
@@ -12798,9 +13691,18 @@ window.LESSON_DATA = {
       "text": "一流",
       "kana": "いちりゅう",
       "zh": "一流，头等",
-      "sentence": "一流品",
-      "sentence_zh": "上等品，头等货",
-      "blank": "一流",
+      "sentences": [
+        {
+          "sentence": "一流品",
+          "sentence_zh": "上等品，头等货",
+          "blank": "一流"
+        },
+        {
+          "sentence": "一流の演奏",
+          "sentence_zh": "一流的演奏",
+          "blank": "一流"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-138.mp3"
@@ -12810,9 +13712,13 @@ window.LESSON_DATA = {
       "text": "一気に",
       "kana": "いっきに",
       "zh": "一口气，中途不休息",
-      "sentence": "ビールを一気に飲み干す。",
-      "sentence_zh": "一口气把啤酒喝干。",
-      "blank": "一気に",
+      "sentences": [
+        {
+          "sentence": "ビールを一気に飲み干す。",
+          "sentence_zh": "一口气把啤酒喝干。",
+          "blank": "一気に"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-139.mp3"
@@ -12822,9 +13728,18 @@ window.LESSON_DATA = {
       "text": "一応",
       "kana": "いちおう",
       "zh": "大致，大体；姑且，暂且",
-      "sentence": "準備は一応整った。",
-      "sentence_zh": "大体上准备好了。",
-      "blank": "一応",
+      "sentences": [
+        {
+          "sentence": "準備は一応整った。",
+          "sentence_zh": "大体上准备好了。",
+          "blank": "一応"
+        },
+        {
+          "sentence": "動乱は一応おさまった。",
+          "sentence_zh": "动乱暂时平息了。",
+          "blank": "一応"
+        }
+      ],
       "category": "组14",
       "unit": "第1单元",
       "audio": "audio/word-140.mp3"
@@ -12834,9 +13749,13 @@ window.LESSON_DATA = {
       "text": "一昨日（いっさくじつ）／一昨年",
       "kana": "いっさくねん",
       "zh": "一昨日 [名] 前天（关联词：昨日(さくじつ)[名] 昨天）",
-      "sentence": "一昨日、駅で偶然大学時代の友人に会った。",
-      "sentence_zh": "前天在车站偶然遇到了大学时代的朋友。",
-      "blank": "一昨日",
+      "sentences": [
+        {
+          "sentence": "一昨日、駅で偶然大学時代の友人に会った。",
+          "sentence_zh": "前天在车站偶然遇到了大学时代的朋友。",
+          "blank": "一昨日"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-141.mp3"
@@ -12846,9 +13765,13 @@ window.LESSON_DATA = {
       "text": "一概に",
       "kana": "いちがいに",
       "zh": "（下接否定）一概（不）……",
-      "sentence": "一概に悪いとは言えない。",
-      "sentence_zh": "不能一概说是不好。",
-      "blank": "一概に",
+      "sentences": [
+        {
+          "sentence": "一概に悪いとは言えない。",
+          "sentence_zh": "不能一概说是不好。",
+          "blank": "一概に"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-142.mp3"
@@ -12858,9 +13781,13 @@ window.LESSON_DATA = {
       "text": "一酸化炭素",
       "kana": "いっさんかたんそ",
       "zh": "一氧化碳",
-      "sentence": "一酸化炭素中毒に注意してください。",
-      "sentence_zh": "请注意一氧化碳中毒。",
-      "blank": "一酸化炭素",
+      "sentences": [
+        {
+          "sentence": "一酸化炭素中毒に注意してください。",
+          "sentence_zh": "请注意一氧化碳中毒。",
+          "blank": "一酸化炭素"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-143.mp3"
@@ -12870,9 +13797,18 @@ window.LESSON_DATA = {
       "text": "一種",
       "kana": "いっしゅ",
       "zh": "一种，一类；说不清的某种",
-      "sentence": "霊長類動物の一種",
-      "sentence_zh": "灵长类动物的一种",
-      "blank": "一種",
+      "sentences": [
+        {
+          "sentence": "霊長類動物の一種",
+          "sentence_zh": "灵长类动物的一种",
+          "blank": "一種"
+        },
+        {
+          "sentence": "一種独特な雰囲気",
+          "sentence_zh": "某种独特的氛围",
+          "blank": "一種"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-144.mp3"
@@ -12882,9 +13818,18 @@ window.LESSON_DATA = {
       "text": "一致",
       "kana": "いっち",
       "zh": "一致，相符；团结",
-      "sentence": "証言が一致する。",
-      "sentence_zh": "证词相符。",
-      "blank": "一致",
+      "sentences": [
+        {
+          "sentence": "証言が一致する。",
+          "sentence_zh": "证词相符。",
+          "blank": "一致"
+        },
+        {
+          "sentence": "一致団結",
+          "sentence_zh": "团结一致",
+          "blank": "一致"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-145.mp3"
@@ -12894,9 +13839,18 @@ window.LESSON_DATA = {
       "text": "一周",
       "kana": "いっしゅう",
       "zh": "一周，环游（世界）一圈",
-      "sentence": "世界一周旅行",
-      "sentence_zh": "环游世界旅行",
-      "blank": "一周",
+      "sentences": [
+        {
+          "sentence": "世界一周旅行",
+          "sentence_zh": "环游世界旅行",
+          "blank": "一周"
+        },
+        {
+          "sentence": "万博会場を一周する。",
+          "sentence_zh": "游遍世博会场。",
+          "blank": "一周"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-146.mp3"
@@ -12906,9 +13860,13 @@ window.LESSON_DATA = {
       "text": "一定",
       "kana": "いってい",
       "zh": "一定，某种；固定的",
-      "sentence": "一定の評価",
-      "sentence_zh": "一定的评价",
-      "blank": "一定",
+      "sentences": [
+        {
+          "sentence": "一定の評価",
+          "sentence_zh": "一定的评价",
+          "blank": "一定"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-147.mp3"
@@ -12918,9 +13876,13 @@ window.LESSON_DATA = {
       "text": "一斉に",
       "kana": "いっせいに",
       "zh": "一齐，同时",
-      "sentence": "一斉に走り出す。",
-      "sentence_zh": "一齐往前跑。",
-      "blank": "一斉に",
+      "sentences": [
+        {
+          "sentence": "一斉に走り出す。",
+          "sentence_zh": "一齐往前跑。",
+          "blank": "一斉に"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-148.mp3"
@@ -12930,9 +13892,13 @@ window.LESSON_DATA = {
       "text": "一層",
       "kana": "いっそう",
       "zh": "更，更加，越发",
-      "sentence": "一層努力する。",
-      "sentence_zh": "更加努力。",
-      "blank": "一層",
+      "sentences": [
+        {
+          "sentence": "一層努力する。",
+          "sentence_zh": "更加努力。",
+          "blank": "一層"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-149.mp3"
@@ -12942,9 +13908,13 @@ window.LESSON_DATA = {
       "text": "一転",
       "kana": "いってん",
       "zh": "突然一变，情况一转",
-      "sentence": "情勢は一転して我がチームに有利となった。",
-      "sentence_zh": "形势突然一变，对我方有利了。",
-      "blank": "一転",
+      "sentences": [
+        {
+          "sentence": "情勢は一転して我がチームに有利となった。",
+          "sentence_zh": "形势突然一变，对我方有利了。",
+          "blank": "一転"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-150.mp3"
@@ -12954,9 +13924,13 @@ window.LESSON_DATA = {
       "text": "一旦",
       "kana": "いったん",
       "zh": "暂时，姑且；一旦（……就……）",
-      "sentence": "一旦帰宅してまた出直す。",
-      "sentence_zh": "先回家一趟，再重新出发。",
-      "blank": "一旦",
+      "sentences": [
+        {
+          "sentence": "一旦帰宅してまた出直す。",
+          "sentence_zh": "先回家一趟，再重新出发。",
+          "blank": "一旦"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-151.mp3"
@@ -12966,9 +13940,13 @@ window.LESSON_DATA = {
       "text": "いつとなく",
       "kana": "いつとなく",
       "zh": "不知不觉，不知什么时候",
-      "sentence": "いつとなく好きになってしまった。",
-      "sentence_zh": "不知不觉喜欢上了。",
-      "blank": "いつとなく",
+      "sentences": [
+        {
+          "sentence": "いつとなく好きになってしまった。",
+          "sentence_zh": "不知不觉喜欢上了。",
+          "blank": "いつとなく"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-152.mp3"
@@ -12978,9 +13956,13 @@ window.LESSON_DATA = {
       "text": "いつの間にか",
       "kana": "いつのまにか",
       "zh": "不知什么时候，不知不觉",
-      "sentence": "いつの間にか外は暗くなっていた。",
-      "sentence_zh": "不知不觉外面已经天黑了。",
-      "blank": "いつの間にか",
+      "sentences": [
+        {
+          "sentence": "いつの間にか外は暗くなっていた。",
+          "sentence_zh": "不知不觉外面已经天黑了。",
+          "blank": "いつの間にか"
+        }
+      ],
       "category": "组15",
       "unit": "第1单元",
       "audio": "audio/word-153.mp3"

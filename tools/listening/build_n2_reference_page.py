@@ -309,13 +309,23 @@ def chunk_group_sizes(n, size=10, min_last=5):
 def build_vocab_quiz_items(units):
     """把 UNITS 展开成"单词测试"tab（跟l17/l18等教材课同一套引擎，
     listening-page.js里读#vocab-quiz-data的那个IIFE）要吃的数据——
-    每个词条一条，{id, text, kana, zh, sentence, sentence_zh, blank,
-    category, unit, audio}。这套引擎的"填空"题型对sentence/blank没有
-    任何兜底，字段缺失或者blank不是sentence的字面子串会直接在前端崩掉，
-    所以这里发现任何一条对不上就整体硬失败（报出所有问题词），不悄悄跳过
-    ——内容模块（n2_vocab_content.py）必须保证每个词至少有一条例句、
-    example[0]要么word_text本身就是字面子串，要么显式给了quiz_blank
-    覆盖字段。
+    每个词条一条，{id, text, kana, zh, sentences, category, unit, audio}。
+    `sentences`是一个列表，每条`examples`（只要能凑出有效blank）对应列表
+    里一个{sentence, sentence_zh, blank}——真实反馈"填空题使用例句，如果
+    有多个则有多题"：一个词有几条例句，前端就出几道独立的填空题（各自
+    单独记错题/进度），不再像旧版那样只挑examples[0]生成唯一一道。旧版
+    单条sentence/sentence_zh/blank字段就此废弃（listening-page.js改成读
+    sentences数组；教材课build_vocab_quiz_data.py/N2真题build_exam_vocab.py
+    这两个姊妹脚本还没跟着改，继续产出旧的单条字段，前端两种形状都认，
+    不冲突）。
+
+    这套引擎的"填空"题型对sentence/blank没有任何兜底，字段缺失或者blank
+    不是sentence的字面子串会直接在前端崩掉，所以这里发现任何一条例句凑不出
+    有效blank，就让这个词整体硬失败（报出所有问题词），不悄悄只丢那一条
+    例句——内容模块（n2_vocab_content.py）必须保证每个词至少有一条例句、
+    每条例句要么word_text本身就是字面子串，要么examples自己的第三元素
+    （`blanks`，跟"生词"tab填空模式共用的那套三元组格式）给出了实际出现
+    的形态，要么（只对examples[0]）显式给了quiz_blank覆盖字段。
 
     category是"组N"，在每个单元内部各自重新分组（不同单元的"组1"是完全
     不同的一批词）——真实反馈"选中某单元，单词测试也只测那个单元，但是
@@ -357,21 +367,31 @@ def build_vocab_quiz_items(units):
             if not examples:
                 problems.append(f"{title}: 没有例句")
                 continue
-            ja, zh_sentence = examples[0][0], examples[0][1]
-            blank = point.get("quiz_blank")
-            if not blank:
-                for alt in word_text.split("/"):
-                    alt = alt.strip("～")
-                    if alt and alt in ja:
-                        blank = alt
-                        break
-            if not blank or blank not in ja:
-                problems.append(f"{title}: 例句 {ja!r} 里找不到有效的挖空片段"
-                                 f"（blank={blank!r}），需要补 quiz_blank 字段")
+            sentences = []
+            word_failed = False
+            for i, ex in enumerate(examples):
+                ja, zh_sentence = ex[0], ex[1]
+                ex_blanks = ex[2] if len(ex) > 2 else None
+                blank = ex_blanks[0] if ex_blanks else None
+                if not blank and i == 0:
+                    blank = point.get("quiz_blank")
+                if not blank:
+                    for alt in word_text.split("/"):
+                        alt = alt.strip("～")
+                        if alt and alt in ja:
+                            blank = alt
+                            break
+                if not blank or blank not in ja:
+                    problems.append(f"{title}: 第{i + 1}条例句 {ja!r} 里找不到有效的挖空"
+                                     f"片段（blank={blank!r}），需要补 blanks/quiz_blank 字段")
+                    word_failed = True
+                    continue
+                sentences.append({"sentence": ja, "sentence_zh": zh_sentence, "blank": blank})
+            if word_failed:
                 continue
             items.append({
                 "id": QUIZ_ID_OFFSET + word_id, "text": word_text, "kana": kana, "zh": zh,
-                "sentence": ja, "sentence_zh": zh_sentence, "blank": blank,
+                "sentences": sentences,
                 "category": group_label, "unit": unit_label,
                 "audio": f"audio/word-{word_id:03d}.mp3",
             })

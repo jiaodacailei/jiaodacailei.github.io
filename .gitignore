@@ -5,3 +5,5 @@
 .claude/scheduled_tasks.lock
 __pycache__/
 *.pyc
+n2test/
+tools/listening/work/

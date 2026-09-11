@@ -2015,7 +2015,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return Object.keys(errors).reduce(function(sum, k) { return sum + errors[k]; }, 0);
   }
   function markDone(q) {
-    completed[errKey(q.word.id, q.type)] = 1;
+    completed[errKey(q.word.id, q.errType)] = 1;
     saveProgress();
   }
 
@@ -2060,12 +2060,30 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return arr;
   }
 
-  // 队列：每个词 × 4 种题型，全量不抽样；按"这道题之前错过几次"降序排列，之前
-  // 错得越多排越前。同错误次数的题目顺序要随机——先整体洗牌一次，再用稳定
-  // 排序按错误次数分组，稳定排序不会打乱同错误次数题目之间的相对顺序，也就
-  // 是洗牌后的随机顺序（不这么做的话，同一个词的4种题型会挨在一起连续出现，
-  // 因为一开始所有词的错误次数都是0，稳定排序会原样保留"逐词展开"时的插入
-  // 顺序）。
+  // 填空题的例句来源——N2语法/词汇页新版数据（build_n2_reference_page.py
+  // 的 build_vocab_quiz_items()）给每个词带一个 sentences 数组（一条例句
+  // 一个 {sentence, sentence_zh, blank}），有几条例句就出几道填空题；旧版
+  // 数据（教材课 build_vocab_quiz_data.py、N2真题 build_exam_vocab.py，
+  // 这两个姊妹脚本还没跟着改）沿用单条 sentence/sentence_zh/blank 字段，
+  // 这里包一层退化成单元素数组，两种数据形状都能生成填空题，不用动旧脚本。
+  function blankSentences(w) {
+    if (w.sentences && w.sentences.length) return w.sentences;
+    if (w.sentence) return [{ sentence: w.sentence, sentence_zh: w.sentence_zh, blank: w.blank }];
+    return [];
+  }
+  // 填空题的错题/进度 key：第1条例句沿用旧格式"wordId:blank"（不带序号，
+  // 保证只有1条例句的词、以及旧数据完全不受影响，老用户已有的记录也不会
+  // 失效），第2条起才加序号后缀变成"blank1"/"blank2"……——这个后缀直接拼
+  // 在"blank"后面、不带冒号，errKey()里"wordId:类型"这个格式没变，
+  // pruneOrphans()靠最后一个冒号切出wordId的逻辑不用跟着改。
+  function blankErrType(idx) { return idx === 0 ? "blank" : "blank" + idx; }
+
+  // 队列：每个词 × 4 种题型（填空题按例句条数可能不止1道），全量不抽样；
+  // 按"这道题之前错过几次"降序排列，之前错得越多排越前。同错误次数的题目
+  // 顺序要随机——先整体洗牌一次，再用稳定排序按错误次数分组，稳定排序不会
+  // 打乱同错误次数题目之间的相对顺序，也就是洗牌后的随机顺序（不这么做的
+  // 话，同一个词的几种题型会挨在一起连续出现，因为一开始所有词的错误次数
+  // 都是0，稳定排序会原样保留"逐词展开"时的插入顺序）。
   // 出题范围先筛一遍（all=全部，wrong=只留累计错过至少一次的），范围本身
   // 决定了"这一轮"的总题数，跟错误次数排序、round 完成后重开是两件独立的事，
   // 顺序不能反——先按范围筛，再在筛出来的这个子集里判断"是不是都做完了"。
@@ -2073,8 +2091,16 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var all = [];
     categoryWords().forEach(function(w) {
       TYPES.forEach(function(t) {
+        if (t === "blank") {
+          blankSentences(w).forEach(function(s, i) {
+            var errType = blankErrType(i);
+            if (scope === "wrong" && getErr(errKey(w.id, errType)) <= 0) return;
+            all.push({ word: w, type: "blank", errType: errType, sentence: s });
+          });
+          return;
+        }
         if (scope === "wrong" && getErr(errKey(w.id, t)) <= 0) return;
-        all.push({ word: w, type: t });
+        all.push({ word: w, type: t, errType: t });
       });
     });
     return all;
@@ -2089,7 +2115,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 留下"永远显示已完成"的死状态。"仅错题"范围下 all 本身就可能是空的
     // （还没积累出任何错题），这种情况不当"一轮做完了"处理，交给调用方
     // （render）显示"还没有错题"，不在这里瞎重置。
-    var q = all.length ? all.filter(function(item) { return !completed[errKey(item.word.id, item.type)]; }) : [];
+    var q = all.length ? all.filter(function(item) { return !completed[errKey(item.word.id, item.errType)]; }) : [];
     if (all.length && !q.length) {
       completed = {};
       saveProgress();
@@ -2097,7 +2123,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
     shuffle(q);
     q.sort(function(a, b) {
-      return getErr(errKey(b.word.id, b.type)) - getErr(errKey(a.word.id, a.type));
+      return getErr(errKey(b.word.id, b.errType)) - getErr(errKey(a.word.id, a.errType));
     });
     TOTAL_THIS_ROUND = all.length;
     return q;
@@ -2181,7 +2207,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   });
 
   function answerFor(q) {
-    if (q.type === "blank") return q.word.blank;
+    if (q.type === "blank") return q.sentence.blank;
     if (q.type === "audio2kana" || q.type === "zh2kana") return q.word.kana;
     return null; // ja2zh 是多选一匹配，见 checkJa2Zh
   }
@@ -2240,7 +2266,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function doneCountThisRound() {
     var n = 0;
     scopedAllItems().forEach(function(item) {
-      if (completed[errKey(item.word.id, item.type)]) n++;
+      if (completed[errKey(item.word.id, item.errType)]) n++;
     });
     return n;
   }
@@ -2261,7 +2287,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 跳过队列里已经答对过的题——答错的题会被重新塞进队列末尾等着重考
     // （见 doCheck()），如果同一道题后来又被答对了，之前排在后面、还没
     // 轮到的旧副本要跳过，不然会重复出这道已经过关的题。
-    while (qi < queue.length && completed[errKey(queue[qi].word.id, queue[qi].type)]) qi++;
+    while (qi < queue.length && completed[errKey(queue[qi].word.id, queue[qi].errType)]) qi++;
 
     if (TOTAL_THIS_ROUND === 0) {
       // "仅错题"范围下，还没有任何累计错误——不是"这一轮做完了"，是压根没题可做
@@ -2297,11 +2323,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     quizPlayBtn.style.display = "none";
 
     if (q.type === "blank") {
-      var idx = q.word.sentence.indexOf(q.word.blank);
-      var blanked = idx === -1 ? q.word.sentence
-        : q.word.sentence.slice(0, idx) + "____" + q.word.sentence.slice(idx + q.word.blank.length);
+      var idx = q.sentence.sentence.indexOf(q.sentence.blank);
+      var blanked = idx === -1 ? q.sentence.sentence
+        : q.sentence.sentence.slice(0, idx) + "____" + q.sentence.sentence.slice(idx + q.sentence.blank.length);
       quizPrompt.innerHTML = '<div class="quiz-ja">' + blanked + '</div>' +
-        '<div class="quiz-zh-hint">' + q.word.sentence_zh + '</div>';
+        '<div class="quiz-zh-hint">' + q.sentence.sentence_zh + '</div>';
     } else if (q.type === "audio2kana") {
       quizPrompt.innerHTML = '<div class="quiz-hint-text">听发音，写出假名</div>';
       quizPlayBtn.style.display = "";
@@ -2365,7 +2391,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     } else {
       queue.push(q);
     }
-    if (!ok && !countedWrong) { bumpErr(errKey(q.word.id, q.type)); countedWrong = true; refreshProgress(); }
+    if (!ok && !countedWrong) { bumpErr(errKey(q.word.id, q.errType)); countedWrong = true; refreshProgress(); }
     var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
     markResolved(ok, ans);
   }
