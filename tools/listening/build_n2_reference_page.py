@@ -41,6 +41,25 @@ MCQ题目各自的出现顺序"分配，不能中途在数组中间插入旧单�
                 # 第一个元素（日语原文）的字面子串，缺省当[]（不给填空）
           ],
         },
+        {
+          # 一个语法点有多个"接续"时（书上"接続1/接続2"或"①②"，各自带
+          # 独立的说明+△例句），用 groups 代替上面的 overview/examples，
+          # 每组各自一份完整的"接续/说明/注意"文字+这组自己的examples——
+          # 渲染时按顺序"这组的文字块→这组的例句卡片→下组的文字块→…"，
+          # 不会把不同接续的例句混在一起平铺。只有一种接续的点继续用
+          # 上面的写法，两种写法可以在同一个UNITS里混用。
+          "title": "6. ～上で(は)",
+          "groups": [
+            {
+              "overview": "接续1：……\\n说明1：……\\n注意1：……",
+              "examples": [("……。", "……译文……"), ...],
+            },
+            {
+              "overview": "接续2：……\\n说明2：……\\n注意2：……",
+              "examples": [("……。", "……译文……"), ...],
+            },
+          ],
+        },
         ...
       ],
     },
@@ -226,11 +245,39 @@ def synth_word_audio(text, audio_dir, word_id, stats):
 def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label):
     """把 UNITS 展开成 build_lesson_data() 要的 (sentences, questions) 扁平
     列表——跟 l17/l18"语法与表达"tab 的数据形状完全一致，每个语法点/单词
-    条目是一个"question"，它的例句是这个question底下的sentences。"""
+    条目是一个"question"，它的例句是这个question底下的sentences。
+
+    一个语法点如果有多个接续（`point["groups"]`，见脚本开头docstring），
+    每组自己的例句照样走seg_id全局递增+TTS/对齐这一套（组与组之间共用
+    同一个计数器，不是各自从1开始），只是额外把每组的seg_id列表记进
+    `question["groups"]`（`[{"overview": 这组自己的文字, "ids": [seg_id,...]}]`），
+    供 build_lesson_data() 按组切分渲染，而不是像普通点那样直接平铺进
+    `sentences`。没有 groups 的点完全不受影响，走原来的逻辑。"""
     sentences = []
     questions = []
     seg_id = 0
     word_id = 0
+
+    def synth_examples(examples, question_label):
+        nonlocal seg_id
+        ids = []
+        for example in examples:
+            ja, zh = example[0], example[1]
+            blanks = example[2] if len(example) > 2 else []
+            seg_id += 1
+            filename, duration, char_times = synth_and_align(
+                model, ja, audio_dir, seg_id, tmp_wav, stats
+            )
+            if filename is None:
+                continue
+            sentences.append({
+                "id": seg_id, "mondai": mondai_label, "question": question_label,
+                "text": ja, "zh": zh, "notes": "", "blanks": blanks,
+                "start": 0.0, "char_times": char_times,
+            })
+            ids.append(seg_id)
+        return ids
+
     for unit in units:
         unit_label = unit.get("label", "")
         for point in unit["points"]:
@@ -238,24 +285,25 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
             word_id += 1
             word_text = word_answer_text(question_label)
             word_audio = synth_word_audio(word_text, audio_dir, word_id, stats) if word_text else None
-            questions.append({
-                "mondai": mondai_label, "question": question_label,
-                "overview": point.get("overview", ""), "answer": "",
-                "unit": unit_label, "wordAudio": word_audio,
-            })
-            for example in point["examples"]:
-                ja, zh = example[0], example[1]
-                blanks = example[2] if len(example) > 2 else []
-                seg_id += 1
-                filename, duration, char_times = synth_and_align(
-                    model, ja, audio_dir, seg_id, tmp_wav, stats
-                )
-                if filename is None:
-                    continue
-                sentences.append({
-                    "id": seg_id, "mondai": mondai_label, "question": question_label,
-                    "text": ja, "zh": zh, "notes": "", "blanks": blanks,
-                    "start": 0.0, "char_times": char_times,
+            groups = point.get("groups")
+            if groups:
+                group_meta = [
+                    {"overview": g.get("overview", ""),
+                     "ids": synth_examples(g["examples"], question_label)}
+                    for g in groups
+                ]
+                questions.append({
+                    "mondai": mondai_label, "question": question_label,
+                    "overview": "\n\n".join(g.get("overview", "") for g in groups),
+                    "answer": "", "unit": unit_label, "wordAudio": word_audio,
+                    "groups": group_meta,
+                })
+            else:
+                synth_examples(point["examples"], question_label)
+                questions.append({
+                    "mondai": mondai_label, "question": question_label,
+                    "overview": point.get("overview", ""), "answer": "",
+                    "unit": unit_label, "wordAudio": word_audio,
                 })
     return sentences, questions
 
@@ -444,9 +492,11 @@ def build_mcq_items(mcq_units):
     处理，这里不用拆分/特殊处理）。
 
     `q["kind"]=="complete"`（书上没给选项、只给参考例句的自由续写题）没有
-    `options`/`answer`，不生成这两个字段，改传`referenceJa`（参考例句
-    原文）——mcq-quiz.js 遇到这个kind会跳过选项渲染，换成输入框+自评
-    按钮，判分靠用户自己点"我答对了/答错了"，不是这个函数能自动算出来的。
+    `options`/`answer`，不生成这两个字段，改传`referenceJa`（参考答案原文，
+    用于精确匹配判分）+`referenceHintZh`（填空括号里显示的中文提示，
+    真实反馈"不需要自评按钮，填空后面加括号显示中文提示，用户输入答案后
+    直接根据答案判断对错"——不再是自评，mcq-quiz.js把用户输入跟
+    referenceJa做归一化精确匹配自动判分，不需要用户自己点"答对了/答错了"）。
 
     `q["kind"]=="passage"`（一段短文里同时挖好几个空，每空四选一，比如
     N2语法01"パートⅡ問題3"）——真实反馈"不能分拆成好几道题，应该按照
@@ -511,7 +561,16 @@ def build_mcq_items(mcq_units):
                 # 一起变成真实反馈里的"下划线有两道"。改用几个不可见的
                 # 全角空格占位——.mcq-blank的min-width:3em本来就保证了这个
                 # 空位的视觉宽度，不需要靠文字内容本身撑开。
-                stem_tokens = tokenize_ja(before) + [{"text": "　　　　", "blank": True}] + tokenize_ja(after)
+                before_tokens = tokenize_ja(before)
+                stem_tokens = before_tokens + [{"text": "　　　　", "blank": True}] + tokenize_ja(after)
+                # kind:"complete"（无选项自由填空）在空位后面紧跟一个纯文本
+                # token插入中文提示"（……）"——真实反馈"填空后面加个括号，
+                # 显示中文提示"，直接复用已有的token渲染管线（这个token没有
+                # kana/blank标记，跟句子里本来就混杂的标点token一样按纯文本
+                # 渲染），不需要mcq-quiz.js/page-renderer.js专门为提示开
+                # 新的HTML结构。
+                if kind == "complete" and q.get("referenceZh"):
+                    stem_tokens.insert(len(before_tokens) + 1, {"text": "（" + q["referenceZh"] + "）"})
             else:
                 stem_tokens = tokenize_ja(q["stem"])
             item = {

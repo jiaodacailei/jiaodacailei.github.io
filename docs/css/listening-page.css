@@ -802,14 +802,13 @@ body.mode-blank #blankProgressReset { display: inline-block; }
 }
 .mcq-explanation.show { display: block; }
 
-/* kind:"complete"（无选项自由续写）——输入行复用 .quiz-input-row 布局，
-   这里只补参考答案揭晓区/自评按钮组的样式，不新造视觉体系。 */
+/* kind:"complete"（无选项自由填空，精确匹配自动判分）——输入行复用
+   .quiz-input-row 布局，这里只补参考答案揭晓区的样式，不新造视觉体系。 */
 .mcq-complete-reveal { margin-top: 12px; }
 .mcq-complete-ref {
   padding: 10px 12px; background: var(--bg-soft); border-radius: 8px;
-  font-size: 15px; line-height: 1.6; margin-bottom: 8px;
+  font-size: 15px; line-height: 1.6;
 }
-.mcq-complete-selfreport { display: flex; gap: 8px; }
 
 /* kind:"passage"（一段短文挖好几个空，一起作答）——每个空自己一组，
    组内复用 .mcq-option 已有的样式，只加个圆形题号标签区分"这是原书

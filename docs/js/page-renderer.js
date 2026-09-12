@@ -281,16 +281,34 @@
   // null——换了场景/段落，不该把上一题最后说话的人顺带延续过来。
   function renderQuestionBlock(mondaiIdx, qIdx, q) {
     var label = q.question || "";
-    var overviewHtml = q.overview ? '<p class="q-overview">' + esc(q.overview) + "</p>" : "";
     var answerHtml = q.answer
       ? '<details class="seg-answer"><summary>答えを見る</summary><div>' + esc(q.answer) + "</div></details>"
       : "";
     var currentSpeaker = null;
-    var cards = q.sentences.map(function (s) {
-      var html = renderCard(s, currentSpeaker);
-      currentSpeaker = s.speaker || currentSpeaker;
-      return html;
-    }).join("");
+    var overviewHtml, cards;
+    if (q.groups && q.groups.length) {
+      // 多接续语法点（N2语法build_n2_reference_page.py的groups字段）——
+      // 按书上原版式"这组接续的文字块→这组自己的例句卡片→下一组接续的
+      // 文字块→…"顺序渲染，不是"整段overview文字+全部例句平铺"，见
+      // jp-n2-grammar-page skill"一个语法点可能有多个接续"那节。
+      overviewHtml = q.groups.map(function (g) {
+        var gOverview = g.overview ? '<p class="q-overview">' + esc(g.overview) + "</p>" : "";
+        var gCards = g.sentences.map(function (s) {
+          var html = renderCard(s, currentSpeaker);
+          currentSpeaker = s.speaker || currentSpeaker;
+          return html;
+        }).join("");
+        return gOverview + gCards;
+      }).join("");
+      cards = "";
+    } else {
+      overviewHtml = q.overview ? '<p class="q-overview">' + esc(q.overview) + "</p>" : "";
+      cards = q.sentences.map(function (s) {
+        var html = renderCard(s, currentSpeaker);
+        currentSpeaker = s.speaker || currentSpeaker;
+        return html;
+      }).join("");
+    }
     var unitAttr = q.unit ? ' data-unit="' + esc(q.unit) + '"' : "";
     // wordAudio：N2语法/词汇页专属（词条/语法点标题本身的发音，独立于
     // 例句音频）——真实反馈"点击单词也要可以发音，和例句一样"，点标题
@@ -430,20 +448,22 @@
           '<div class="quiz-card" id="mcqCard">' +
             '<div class="mcq-stem" id="mcqStem"></div>' +
             '<div class="mcq-options" id="mcqOptions"></div>' +
-            // kind:"complete"（无选项自由续写，见 mcq-quiz.js 顶部注释）
+            // kind:"complete"（无选项自由填空，见 mcq-quiz.js 顶部注释）
             // 专用——mcqOptions 隐藏时显示，mcq-quiz.js 按题目 kind 切换
-            // 这两块的显隐，静态外壳本身不需要知道题目内容。
+            // 这两块的显隐，静态外壳本身不需要知道题目内容。中文提示不在
+            // 这里出现——build_n2_reference_page.py已经把它当成一个token
+            // 塞进了mcqStem的stemTokens里（填空括号紧跟在空位后面），
+            // 不需要静态外壳单独开一块提示区。判分是精确匹配自动判分
+            // （真实反馈"不要自评按钮，直接根据答案判断对错"），提交后
+            // mcqCompleteReveal显示参考答案，不再有"我答对了/我答错了"
+            // 这两个自评按钮。
             '<div class="mcq-complete-row" id="mcqCompleteRow" style="display:none">' +
               '<div class="quiz-input-row">' +
                 '<input type="text" class="quiz-input" id="mcqCompleteInput" autocomplete="off" placeholder="在此写一句续完…">' +
-                '<button type="button" class="quiz-btn" id="mcqCompleteShowBtn">查看参考答案</button>' +
+                '<button type="button" class="quiz-btn quiz-next" id="mcqCompleteSubmitBtn">確認</button>' +
               "</div>" +
               '<div class="mcq-complete-reveal" id="mcqCompleteReveal" style="display:none">' +
                 '<div class="mcq-complete-ref" id="mcqCompleteRef"></div>' +
-                '<div class="mcq-complete-selfreport">' +
-                  '<button type="button" class="quiz-btn quiz-next" id="mcqCompleteCorrectBtn">我答对了</button>' +
-                  '<button type="button" class="quiz-btn" id="mcqCompleteWrongBtn">我答错了</button>' +
-                "</div>" +
               "</div>" +
             "</div>" +
             // kind:"passage"（一段短文挖好几个空，一起作答，见 mcq-quiz.js

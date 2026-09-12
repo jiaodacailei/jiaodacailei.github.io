@@ -1608,6 +1608,13 @@ def _group_by_mondai_question(sentences, questions):
             # （普通课文/听力页，或者标题抽取不出有效文字的极端情况）保持
             # 现状，点标题不播放"单词本身发音"这个新行为。
             qrec["wordAudio"] = meta.get("wordAudio")
+            # groups：N2语法专属（一个语法点有多个接续时，build_n2_reference_
+            # page.py的build_point_sentences()才会给question传这个字段），
+            # 记的是"每组接续自己的overview文字+这组例句的seg_id列表"——
+            # build_lesson_data()按这份id列表去sentences里捞对应的句子，
+            # 不用这个字段的普通question保持None，page-renderer.js按
+            # 有没有这个字段决定渲染成"分组"还是老的"overview+平铺例句"。
+            qrec["groups"] = meta.get("groups")
     return by_mondai
 
 
@@ -1695,6 +1702,11 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
         for s in sentences
         if not s.get("char_times") and s.get("kana")
     }
+    # 多接续语法点（qrec["groups"]非空）按id从这份映射里捞回自己组内的句子，
+    # 不能直接用qrec["sentences"]（那是全组平铺、丢了"哪句属于哪个接续"这个
+    # 分组信息）——sentence_to_data()转换在这里做，跟下面单组分支共用同一份
+    # 转换逻辑，不重复写。
+    sentence_by_id = {s["id"]: s for s in sentences}
     tabs = [
         {
             "mondai": mrec["mondai"],
@@ -1709,6 +1721,16 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
                         sentence_to_data(s, audio_rel, quiz_by_id, vocab_readings)
                         for s in qrec["sentences"]
                     ],
+                    "groups": ([
+                        {
+                            "overview": g["overview"],
+                            "sentences": [
+                                sentence_to_data(sentence_by_id[i], audio_rel, quiz_by_id, vocab_readings)
+                                for i in g["ids"] if i in sentence_by_id
+                            ],
+                        }
+                        for g in qrec["groups"]
+                    ] if qrec.get("groups") else None),
                 }
                 for qrec in mrec["questions"]
             ],

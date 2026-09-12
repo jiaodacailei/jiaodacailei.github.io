@@ -37,9 +37,14 @@
 //       反馈"不能分拆成好几道题，应该按照原资料，几道题同时展示出来，
 //       一起答"），此时不读options/answer，改读blanks；不传这个字段
 //       就是默认的单空四选一题,
-//     referenceJa: kind:"complete"专用，书上给的参考例句（点"查看参考
-//       答案"后显示，不参与自动判分——由用户自己点"我答对了/答错了"
-//       自评，跟四选一共用同一套markDone()/bumpErr()错题记录）,
+//     referenceJa: kind:"complete"专用，书上给的参考答案原文——用户输入
+//       跟这个做归一化（全半角/标点统一）后的精确字符串匹配自动判分，
+//       不是自评（真实反馈"不要自评按钮，直接根据答案判断对错"），判分
+//       后跟四选一一样显示"✓ 正解/✗ 不正解"+参考答案，共用markDone()/
+//       bumpErr()错题记录。填空后面括号里的中文提示不是单独字段——
+//       build_n2_reference_page.py在stemTokens里blank token后面直接
+//       多插一个纯文本token（"（这句的中文提示）"），复用已有的token
+//       渲染管线，不需要mcq-quiz.js专门处理"提示往哪放",
 //     blanks: kind:"passage"专用，[{label, options:[{idx,tokens}], answer}, ...]
 //       ——stemTokens里每个blank:true的token依次对应blanks数组里的一项
 //       （靠出现顺序对应，不是靠字段关联），token的text就是label（比如
@@ -61,6 +66,17 @@
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   }
+
+  // kind:"complete"判分用——跟listening-page.js的normalizeFullwidth()/
+  // stripPunct()同一套归一化规则（全半角统一+去标点/空白后精确比较），
+  // 两个文件没有共享模块机制，各自保留一份。
+  var PUNCT_RE = /[\s　、。，,．.!?！？「」『』()（）:：;；~〜・…\-—―'"]/g;
+  function normalizeFullwidth(s) {
+    return (s || "").replace(/[！-～]/g, function (ch) {
+      return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0);
+    });
+  }
+  function stripPunct(s) { return normalizeFullwidth(s).replace(PUNCT_RE, ""); }
 
   // 跟 exam-page.js 的 renderTokensHtml() 同一套渲染规则（token 是
   // build_page.py 的 tokenize_ja() 现场算好的，不需要兼容编辑模式）——
@@ -182,11 +198,9 @@
   // 为null判断要不要走这条分支，不强制要求存在。
   var completeRowEl = document.getElementById("mcqCompleteRow");
   var completeInputEl = document.getElementById("mcqCompleteInput");
-  var completeShowBtn = document.getElementById("mcqCompleteShowBtn");
+  var completeSubmitBtn = document.getElementById("mcqCompleteSubmitBtn");
   var completeRevealEl = document.getElementById("mcqCompleteReveal");
   var completeRefEl = document.getElementById("mcqCompleteRef");
-  var completeCorrectBtn = document.getElementById("mcqCompleteCorrectBtn");
-  var completeWrongBtn = document.getElementById("mcqCompleteWrongBtn");
   // kind:"passage"（一段短文挖好几个空，一起作答）专用——同样按id是否
   // 为null判断旧版page-renderer.js页面要不要走这条分支。
   var passageBlanksEl = document.getElementById("mcqPassageBlanks");
@@ -242,7 +256,7 @@
         completeRevealEl.style.display = "none";
         completeInputEl.value = "";
         completeInputEl.disabled = false;
-        completeShowBtn.disabled = false;
+        completeSubmitBtn.disabled = false;
       }
     } else if (it.kind === "passage") {
       if (passageBlanksEl) {
@@ -310,14 +324,19 @@
     finishQuestion(it, ok, ok ? "✓ 正解！" : "✗ 不正解");
   }
 
-  // kind:"complete"（自由续写）没有唯一标准答案，判分交给用户自己看完
-  // 参考例句后点"我答对了/我答错了"——跟selectOption()共用finishQuestion()
-  // 收尾，只是"ok"的来源从"点了哪个选项"变成"用户自评"。
-  function selectSelfReport(ok, it) {
+  // kind:"complete"（无选项自由填空）——真实反馈"不要自评按钮，用户输入
+  // 答案后直接根据答案判断对错"：把输入跟it.referenceJa做归一化（全半角/
+  // 标点统一）后的精确字符串匹配自动判分，不再是自评。判对判错都要展示
+  // 参考答案（跟四选一答错时高亮正确选项是同一个道理，让用户知道正确
+  // 写法是什么，不只是知道自己错了）。
+  function submitComplete(it) {
     if (resolved) return;
     resolved = true;
     completeInputEl.disabled = true;
-    completeShowBtn.disabled = true;
+    completeSubmitBtn.disabled = true;
+    var ok = stripPunct(completeInputEl.value) === stripPunct(it.referenceJa || "");
+    completeRevealEl.style.display = "";
+    completeRefEl.textContent = "参考答案：" + (it.referenceJa || "");
     finishQuestion(it, ok, ok ? "✓ 正解！" : "✗ 不正解");
   }
 
@@ -372,17 +391,11 @@
     passageCheckBtn.addEventListener("click", function () { submitPassage(queue[qi]); });
   }
 
-  if (completeShowBtn) {
-    completeShowBtn.addEventListener("click", function () {
-      var it = queue[qi];
-      if (resolved) return;
-      completeRevealEl.style.display = "";
-      completeRefEl.textContent = it.referenceJa || "";
-      completeInputEl.disabled = true;
-      completeShowBtn.disabled = true;
+  if (completeSubmitBtn) {
+    completeSubmitBtn.addEventListener("click", function () { submitComplete(queue[qi]); });
+    completeInputEl.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") submitComplete(queue[qi]);
     });
-    completeCorrectBtn.addEventListener("click", function () { selectSelfReport(true, queue[qi]); });
-    completeWrongBtn.addEventListener("click", function () { selectSelfReport(false, queue[qi]); });
   }
 
   resetBtn.addEventListener("click", function () {
