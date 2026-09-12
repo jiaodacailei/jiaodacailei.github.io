@@ -1,9 +1,17 @@
 // 四选一练习引擎——N2语法/词汇页面的"练习"tab专用，跟 listening-page.js
 // 里的単语テスト（.quiz-*，"一个词自动衍生4种打字题"）是完全独立的两套
 // 引擎：数据模型不一样（这里是教材原版固定选项+标准答案+中文解析，不是
-// 从一个词现算出4种题型），不共用任何状态或函数，但沿用同一套retry-
-// until-correct哲学（错的题重新排到队尾，直到这一轮全部答对）和同一套
-// .quiz-app/.quiz-card/.quiz-category-bar外壳类名，视觉上是一家人。
+// 从一个词现算出4种题型），不共用任何状态或函数。视觉上沿用同一套
+// .quiz-app/.quiz-card/.quiz-category-bar外壳类名，是一家人，但答题流程
+// 故意跟単语テスト不一样：**题目顺序固定按原书顺序，不随机、不按错误
+// 次数重排，答错也不会被塞回队尾重考；提交答案后不自动跳下一题，靠
+// "前へ/次へ"手动翻页，可以自由往回看**——真实反馈"题目顺序保持原书
+// 即可，不要随机""用户提交后不要自动跳到下一步""同时可以返回上一题，
+// 这样可以方便在原书上对比"：这个tab是配合纸质教材使用的练习册，用户
+// 想要的是"跟书上题号对得上、自己控制翻页节奏"，不是"打字游戏"那种
+// 追求速度的做法（単语テスト那套retry-until-correct+自动倒计时跳题
+// 的设计初衷是刷生词卡片，跟这里的使用场景不一样，两边故意分道扬镳，
+// 不是疏忽忘了同步）。
 //
 // 数据来源：页面里 <script type="application/json" id="mcq-quiz-data">，
 // 一个JSON数组，每条：
@@ -86,7 +94,6 @@
   var SCOPE_KEY = "n2mcq-scope:" + SLUG;
   var ERROR_KEY_PREFIX = "n2mcq-errors:" + SLUG;
   var PROGRESS_KEY_PREFIX = "n2mcq-progress:" + SLUG;
-  var DELAY_KEY = "n2listen-quiz-delay"; // 全站共用的"答完自动跳下一题"秒数偏好
 
   // ---- 分类（按第一次出现顺序，跟 listening-page.js 単语テスト同一条规则）----
   var presentCategories = {};
@@ -146,37 +153,16 @@
   var qi = 0;
   var resolved = false;
   var countedWrong = false;
-  var autoAdvanceTimer = null;
-  var advanceDelay = parseInt(localStorage.getItem(DELAY_KEY) || "3", 10);
 
-  function shuffle(arr) {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
-    }
-    return arr;
-  }
-
+  // 固定按原书顺序（items本来就是build_mcq_items()按MCQ_UNITS原始顺序
+  // 展开出来的）——不shuffle、不按错误次数重排、不过滤掉已完成的题，
+  // "仅错题"范围下筛出来的子集也保持它们在原书里的相对顺序，不重新排序。
   function buildQueue() {
     var all = scopedAllItems();
-    var q = all.length ? all.filter(function (it) { return !completed[it.id]; }) : [];
-    if (all.length && !q.length) {
-      completed = {};
-      localStorage.setItem(stateKeys().progress, JSON.stringify(completed));
-      q = all.slice();
-    }
-    shuffle(q);
-    q.sort(function (a, b) { return getErr(b.id) - getErr(a.id); });
     TOTAL_THIS_ROUND = all.length;
-    return q;
+    return all;
   }
   queue = buildQueue();
-
-  function doneCountThisRound() {
-    var n = 0;
-    scopedAllItems().forEach(function (it) { if (completed[it.id]) n++; });
-    return n;
-  }
 
   // ---- DOM ----
   var root = document.getElementById("mcqApp");
@@ -189,6 +175,8 @@
   var statusEl = document.getElementById("mcqStatus");
   var explanationEl = document.getElementById("mcqExplanation");
   var resetBtn = document.getElementById("mcqResetErrors");
+  var prevBtn = document.getElementById("mcqPrevBtn");
+  var nextBtn = document.getElementById("mcqNextBtn");
   // kind:"complete"（自由续写）专用的几个元素——没有这几个id的旧版
   // page-renderer.js（还没升级）渲染出来的页面上不存在，用变量本身是否
   // 为null判断要不要走这条分支，不强制要求存在。
@@ -206,17 +194,18 @@
   var passageCheckBtn = document.getElementById("mcqPassageCheckBtn");
   var passageSelections = {}; // blankIdx(字符串) -> 选中的idx，每次render()重置
 
+  // 进度显示"当前位置 / 总题数(累计错误次数)"——current直接是qi+1（你正在
+  // 看第几题），不再是"已经答对几题"，因为不按错误次数重排/答错不再重考，
+  // "已完成数"这个概念本身不适用了，翻到哪一题就是哪一题。
   function progressHtml(current) {
     return current + " / " + TOTAL_THIS_ROUND +
       '<span class="quiz-progress-err">(' + totalErrorCount() + ')</span>';
   }
   function refreshProgress() {
-    progressEl.innerHTML = progressHtml(Math.min(doneCountThisRound() + 1, TOTAL_THIS_ROUND));
+    progressEl.innerHTML = progressHtml(qi + 1);
   }
 
   function render() {
-    while (qi < queue.length && completed[queue[qi].id]) qi++;
-
     if (TOTAL_THIS_ROUND === 0) {
       cardEl.style.display = "none";
       doneEl.style.display = "block";
@@ -224,18 +213,14 @@
       progressEl.innerHTML = "0 / 0";
       return;
     }
-    if (qi >= queue.length) {
-      cardEl.style.display = "none";
-      doneEl.style.display = "block";
-      doneEl.textContent = "🎉 本轮全部完成！";
-      progressEl.innerHTML = progressHtml(TOTAL_THIS_ROUND);
-      return;
-    }
+    // 分类/单元切换、清除记录之后queue可能变短，qi要夹回合法范围，不然会
+    // 指向一个已经不存在的下标。
+    qi = Math.max(0, Math.min(qi, queue.length - 1));
     cardEl.style.display = "";
     doneEl.style.display = "none";
-    progressEl.innerHTML = progressHtml(Math.min(doneCountThisRound() + 1, TOTAL_THIS_ROUND));
-
-    if (autoAdvanceTimer) { clearTimeout(autoAdvanceTimer); autoAdvanceTimer = null; }
+    progressEl.innerHTML = progressHtml(qi + 1);
+    if (prevBtn) prevBtn.disabled = qi <= 0;
+    if (nextBtn) nextBtn.disabled = qi >= queue.length - 1;
 
     var it = queue[qi];
     resolved = false;
@@ -291,15 +276,14 @@
     }
   }
 
-  // 判对/判错之后共用的收尾逻辑（记错题/进度、显示解析、定时自动跳下一
-  // 题）——四选一（selectOption）和自由续写自评（selectSelfReport）两条
-  // 路径判"对/错"的方式完全不同，但收尾这部分是同一套，不重复写。
+  // 判对/判错之后共用的收尾逻辑（记错题/进度、显示解析）——四选一
+  // （selectOption）和自由续写自评（selectSelfReport）两条路径判"对/错"
+  // 的方式完全不同，但收尾这部分是同一套，不重复写。答错不再塞回队尾
+  // 重考（题目顺序固定跟原书一致），也不自动跳下一题——留在当前这题，
+  // 让用户看完解析后自己点"次へ"翻页，也可以直接点"前へ/次へ"跳过看
+  // 别的题，不强制答完当前题才能走。
   function finishQuestion(it, ok, statusText) {
-    if (ok) {
-      markDone(it);
-    } else {
-      queue.push(it);
-    }
+    if (ok) markDone(it);
     if (!ok && !countedWrong) { bumpErr(it.id); countedWrong = true; refreshProgress(); }
     statusEl.textContent = statusText;
     statusEl.className = "quiz-status " + (ok ? "ok" : "rev");
@@ -307,11 +291,6 @@
       explanationEl.textContent = it.explanationZh;
       explanationEl.className = "mcq-explanation show";
     }
-    autoAdvanceTimer = setTimeout(function () {
-      autoAdvanceTimer = null;
-      qi++;
-      render();
-    }, advanceDelay * 1000);
   }
 
   function selectOption(idx, it) {
@@ -415,6 +394,11 @@
     qi = 0;
     render();
   });
+
+  // 手动翻页——不强制"答完当前题才能走"，跟原书对照着看的时候，用户
+  // 可能只是想先翻页确认一下题号对不对，不一定每题都要在这里作答。
+  if (prevBtn) prevBtn.addEventListener("click", function () { if (qi > 0) { qi--; render(); } });
+  if (nextBtn) nextBtn.addEventListener("click", function () { if (qi < queue.length - 1) { qi++; render(); } });
 
   // 有顶部单元下拉框的页面不再重复渲染这一份分类条——两个UI选同一件事，
   // 留着反而让人搞不清"到底该点哪个"。下拉框换单元时靠下面的

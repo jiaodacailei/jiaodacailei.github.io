@@ -712,8 +712,17 @@ body.mode-blank #blankProgressReset { display: inline-block; }
   border-radius: 8px; padding: 8px 14px; font-size: 13px; cursor: pointer; white-space: nowrap;
 }
 .quiz-btn:hover { background: var(--blue-xlight); border-color: var(--blue-light); }
+.quiz-btn:disabled { opacity: .4; cursor: not-allowed; background: var(--bg-soft); border-color: var(--border); }
+.quiz-btn:disabled:hover { background: var(--bg-soft); border-color: var(--border); }
 .quiz-next { background: var(--blue); border-color: var(--blue); color: #fff; }
 .quiz-next:hover { background: var(--blue-dark); }
+.quiz-next:disabled { background: var(--bg-soft); color: var(--text-muted); border-color: var(--border); }
+.quiz-next:disabled:hover { background: var(--bg-soft); }
+
+/* 練習tab"前へ/次へ"手动翻页——两个按钮左右分开，跟原书"翻到上一页/
+   下一页"对照的操作习惯一致，到边界时禁用而不是隐藏（见 page-renderer.js
+   里 mcqPrevBtn/mcqNextBtn 的说明）。 */
+.mcq-nav-row { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
 .quiz-status { font-size: 13px; font-weight: 700; margin-top: 8px; min-height: 18px; }
 .quiz-status.ok { color: #16a34a; }
 .quiz-status.ng { color: #dc2626; }

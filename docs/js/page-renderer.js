@@ -456,6 +456,16 @@
             "</div>" +
             '<div class="quiz-status" id="mcqStatus"></div>' +
             '<div class="mcq-explanation" id="mcqExplanation"></div>' +
+            // 题目顺序固定跟原书一致、提交后不自动跳题——靠这两个按钮手动
+            // 翻页，可以自由往回看，方便跟纸质教材对照（真实反馈"题目顺序
+            // 保持原书即可，不要随机""同时可以返回上一题"，见 mcq-quiz.js
+            // 顶部注释）。到边界（第一题/最后一题）时 mcq-quiz.js 会禁用
+            // 对应按钮，不是隐藏——一直看得见"前へ/次へ"两个按钮，只是有时
+            // 点不动，比消失更符合"翻页"的直觉。
+            '<div class="mcq-nav-row">' +
+              '<button type="button" class="quiz-btn" id="mcqPrevBtn">← 前へ</button>' +
+              '<button type="button" class="quiz-btn quiz-next" id="mcqNextBtn">次へ →</button>' +
+            "</div>" +
           "</div>" +
           '<div class="quiz-done" id="mcqDone" style="display:none">🎉 本轮全部完成！</div>' +
         "</div>" +
