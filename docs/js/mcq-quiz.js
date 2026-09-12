@@ -24,12 +24,23 @@
 //       包成单元素数组，跟数组形式走同一条判断逻辑，不用分两套代码,
 //     kind: 可选，"complete"表示这题没有options/answer（教材原版这题就是
 //       "无选项、自己写一句续完"的主观题，只有参考例句，没有唯一标准
-//       答案），此时不读options/answer，改读referenceJa；不传这个字段
-//       就是默认的四选一题,
+//       答案），此时不读options/answer，改读referenceJa；"passage"表示
+//       这题是"一段短文挖好几个空，每空四选一，全部答完一起交卷"（真实
+//       反馈"不能分拆成好几道题，应该按照原资料，几道题同时展示出来，
+//       一起答"），此时不读options/answer，改读blanks；不传这个字段
+//       就是默认的单空四选一题,
 //     referenceJa: kind:"complete"专用，书上给的参考例句（点"查看参考
 //       答案"后显示，不参与自动判分——由用户自己点"我答对了/答错了"
 //       自评，跟四选一共用同一套markDone()/bumpErr()错题记录）,
-//     explanationZh: 中文解析（可选，没有就不显示这块，两种kind都能用）
+//     blanks: kind:"passage"专用，[{label, options:[{idx,tokens}], answer}, ...]
+//       ——stemTokens里每个blank:true的token依次对应blanks数组里的一项
+//       （靠出现顺序对应，不是靠字段关联），token的text就是label（比如
+//       "18"，原书题号，不是"____"占位符），前端渲染成一个个小圆点数字，
+//       底下分别列出各自的options，全部选完点"確認"一次性判分，只要有
+//       一个空错了，整段（不是错的那一个空）重新排到队尾重考，跟原书
+//       "这几道题共享同一篇短文"的出题精神一致,
+//     explanationZh: 中文解析（可选，没有就不显示这块，三种kind都能用；
+//       kind:"passage"时这是构建脚本自动拼接好的"每个空各自的解析"）
 //   }
 (function () {
   var dataEl = document.getElementById("mcq-quiz-data");
@@ -188,6 +199,12 @@
   var completeRefEl = document.getElementById("mcqCompleteRef");
   var completeCorrectBtn = document.getElementById("mcqCompleteCorrectBtn");
   var completeWrongBtn = document.getElementById("mcqCompleteWrongBtn");
+  // kind:"passage"（一段短文挖好几个空，一起作答）专用——同样按id是否
+  // 为null判断旧版page-renderer.js页面要不要走这条分支。
+  var passageBlanksEl = document.getElementById("mcqPassageBlanks");
+  var passageActionsEl = document.getElementById("mcqPassageActions");
+  var passageCheckBtn = document.getElementById("mcqPassageCheckBtn");
+  var passageSelections = {}; // blankIdx(字符串) -> 选中的idx，每次render()重置
 
   function progressHtml(current) {
     return current + " / " + TOTAL_THIS_ROUND +
@@ -230,8 +247,11 @@
 
     stemEl.innerHTML = renderTokensHtml(it.stemTokens);
 
+    optionsEl.style.display = "none";
+    if (completeRowEl) completeRowEl.style.display = "none";
+    if (passageBlanksEl) { passageBlanksEl.style.display = "none"; passageActionsEl.style.display = "none"; }
+
     if (it.kind === "complete") {
-      optionsEl.style.display = "none";
       if (completeRowEl) {
         completeRowEl.style.display = "";
         completeRevealEl.style.display = "none";
@@ -239,9 +259,30 @@
         completeInputEl.disabled = false;
         completeShowBtn.disabled = false;
       }
+    } else if (it.kind === "passage") {
+      if (passageBlanksEl) {
+        passageSelections = {};
+        passageBlanksEl.style.display = "";
+        passageActionsEl.style.display = "";
+        passageCheckBtn.disabled = true;
+        passageBlanksEl.innerHTML = it.blanks.map(function (b, bi) {
+          return '<div class="mcq-passage-blank-group" data-blank-idx="' + bi + '">' +
+            '<div class="mcq-passage-blank-label">' + esc(b.label) + "</div>" +
+            '<div class="mcq-options">' + b.options.map(function (opt) {
+              return '<div class="mcq-option" data-blank-idx="' + bi + '" data-idx="' + opt.idx + '">' +
+                '<span class="mcq-option-num">' + opt.idx + "</span>" +
+                '<span class="mcq-option-text">' + renderTokensHtml(opt.tokens) + "</span></div>";
+            }).join("") + "</div></div>";
+        }).join("");
+      }
     } else {
       optionsEl.style.display = "";
-      if (completeRowEl) completeRowEl.style.display = "none";
+      // 词库选择题（比如N2语法01"パートI問題2"，从A~J共10项里选）原书是
+      // 一次性印出整份词库当参考表格（4列网格），不是"1/2/3/4"那种竖排
+      // 四选一列表——真实反馈"part1问题2也需要和原资料一样"。这里不用
+      // 额外的内容字段判断，选项数超过4个（超出常规单句四选一的范围）
+      // 就自动按网格布局渲染，常规4选1题不受影响。
+      optionsEl.classList.toggle("mcq-options-grid", it.options.length > 4);
       optionsEl.innerHTML = it.options.map(function (opt) {
         return '<div class="mcq-option" data-idx="' + opt.idx + '">' +
           '<span class="mcq-option-num">' + opt.idx + "</span>" +
@@ -301,11 +342,56 @@
     finishQuestion(it, ok, ok ? "✓ 正解！" : "✗ 不正解");
   }
 
+  // kind:"passage"——点某个空的某个选项只是"选中"（可以改选），不立刻判分；
+  // 全部空都选完了才能点"確認"一次性交卷。判分时逐个空对比，任何一个空
+  // 错了整道题（不是那一个空）就重新塞回队尾重考，跟原书"这几道题共享
+  // 同一篇短文"的出题精神一致——不按单个空拆分错题记录。
+  function selectPassageOption(bi, idx) {
+    if (resolved) return;
+    passageSelections[bi] = idx;
+    Array.prototype.forEach.call(
+      passageBlanksEl.querySelectorAll('.mcq-passage-blank-group[data-blank-idx="' + bi + '"] .mcq-option'),
+      function (el) { el.classList.toggle("selected", el.getAttribute("data-idx") === idx); }
+    );
+    passageCheckBtn.disabled = Object.keys(passageSelections).length < queue[qi].blanks.length;
+  }
+
+  function submitPassage(it) {
+    if (resolved) return;
+    resolved = true;
+    var allOk = true;
+    it.blanks.forEach(function (b, bi) {
+      var chosen = passageSelections[bi];
+      var ok = String(chosen) === String(b.answer);
+      if (!ok) allOk = false;
+      Array.prototype.forEach.call(
+        passageBlanksEl.querySelectorAll('.mcq-passage-blank-group[data-blank-idx="' + bi + '"] .mcq-option'),
+        function (el) {
+          el.classList.add("disabled");
+          var oIdx = el.getAttribute("data-idx");
+          if (String(oIdx) === String(b.answer)) el.classList.add("correct");
+          else if (String(oIdx) === String(chosen)) el.classList.add("wrong");
+        }
+      );
+    });
+    passageCheckBtn.disabled = true;
+    finishQuestion(it, allOk, allOk ? "✓ 全部正解！" : "✗ 有不正确的地方");
+  }
+
   optionsEl.addEventListener("click", function (e) {
     var opt = e.target.closest(".mcq-option");
     if (!opt || resolved) return;
     selectOption(opt.getAttribute("data-idx"), queue[qi]);
   });
+
+  if (passageBlanksEl) {
+    passageBlanksEl.addEventListener("click", function (e) {
+      var opt = e.target.closest(".mcq-option");
+      if (!opt || resolved) return;
+      selectPassageOption(opt.getAttribute("data-blank-idx"), opt.getAttribute("data-idx"));
+    });
+    passageCheckBtn.addEventListener("click", function () { submitPassage(queue[qi]); });
+  }
 
   if (completeShowBtn) {
     completeShowBtn.addEventListener("click", function () {

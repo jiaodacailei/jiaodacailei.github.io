@@ -443,16 +443,65 @@ def build_mcq_items(mcq_units):
     在那个语境下都讲得通，原样传给mcq-quiz.js，判分时按"是否在列表里"
     处理，这里不用拆分/特殊处理）。
 
-    `q["kind"]=="complete"`（书上没给选项、只给参考例句的自由续写题，比如
-    "パートI問題3"）没有`options`/`answer`，不生成这两个字段，改传
-    `referenceJa`（参考例句原文）——mcq-quiz.js 遇到这个kind会跳过选项
-    渲染，换成输入框+自评按钮，判分靠用户自己点"我答对了/答错了"，不是
-    这个函数能自动算出来的。"""
+    `q["kind"]=="complete"`（书上没给选项、只给参考例句的自由续写题）没有
+    `options`/`answer`，不生成这两个字段，改传`referenceJa`（参考例句
+    原文）——mcq-quiz.js 遇到这个kind会跳过选项渲染，换成输入框+自评
+    按钮，判分靠用户自己点"我答对了/答错了"，不是这个函数能自动算出来的。
+
+    `q["kind"]=="passage"`（一段短文里同时挖好几个空，每空四选一，比如
+    N2语法01"パートⅡ問題3"）——真实反馈"不能分拆成好几道题，应该按照
+    原资料，几道题同时展示出来，一起答"，原书本来就是"一段文章、几个
+    编号空位、底下分别给各自的四个选项"这种一次性作答的呈现方式，拆成
+    独立题目会打散阅读语境。`q["blanks"]`是一个列表，每项
+    `{label, options, answer, explanation}`（label是原书上的题号，比如
+    "18"，不是从1开始重新编号）；`q["stem"]`里每个空位置写一个"___"
+    占位符，占位符出现次数必须跟`len(q["blanks"])`一致，按各自在文中
+    出现的顺序一一对应第几个blanks条目——用`BLANK_MARKER_RE.split()`
+    切出所有空位（不只是第一个），每个空的显示文字直接用它自己的
+    `label`（比如"18"），不是统一显示"____"，前端靠这个数字知道当前
+    高亮的是原书哪一题。整段只算queue里的**一个**条目——五个空全部
+    答对才算这道题过关，只要有一个错就整段重新塞回队尾重考（不是错哪个
+    空只重考那一个），跟原书"这几道题共享同一篇短文"的出题精神一致。
+    `explanationZh`自动拼接成每个空各自的解析（带label前缀），不需要
+    在`q`里单独再写一份总解析。"""
     items = []
     mcq_id = 0
     for unit in mcq_units:
         for q in unit["questions"]:
             mcq_id += 1
+            kind = q.get("kind")
+            if kind == "passage":
+                parts = BLANK_MARKER_RE.split(q["stem"])
+                blanks = q["blanks"]
+                if len(parts) - 1 != len(blanks):
+                    raise ValueError(
+                        f"passage题 id={mcq_id}：stem里的___占位符数量"
+                        f"（{len(parts) - 1}）跟blanks条目数（{len(blanks)}）对不上"
+                    )
+                stem_tokens = []
+                for i, part in enumerate(parts):
+                    stem_tokens += tokenize_ja(part)
+                    if i < len(blanks):
+                        stem_tokens.append({"text": f"【{blanks[i]['label']}】", "blank": True})
+                items.append({
+                    "id": mcq_id, "category": unit["label"], "kind": "passage",
+                    "stemTokens": stem_tokens,
+                    "blanks": [
+                        {
+                            "label": b["label"],
+                            "options": [
+                                {"idx": i + 1, "tokens": tokenize_ja(opt)}
+                                for i, opt in enumerate(b["options"])
+                            ],
+                            "answer": b["answer"],
+                        }
+                        for b in blanks
+                    ],
+                    "explanationZh": "\n".join(
+                        f"【{b['label']}】{b['explanation']}" for b in blanks if b.get("explanation")
+                    ),
+                })
+                continue
             m = BLANK_MARKER_RE.search(q["stem"])
             if m:
                 before, after = q["stem"][:m.start()], q["stem"][m.end():]
@@ -463,7 +512,7 @@ def build_mcq_items(mcq_units):
                 "id": mcq_id, "category": unit["label"],
                 "stemTokens": stem_tokens, "explanationZh": q.get("explanation", ""),
             }
-            if q.get("kind") == "complete":
+            if kind == "complete":
                 item["kind"] = "complete"
                 item["referenceJa"] = q["reference"]
             else:

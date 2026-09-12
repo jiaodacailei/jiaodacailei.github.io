@@ -753,6 +753,13 @@ body.mode-blank #blankProgressReset { display: inline-block; }
   text-align: center; margin: 0 2px;
 }
 .mcq-options { display: flex; flex-direction: column; gap: 8px; }
+/* 词库选择题（选项数>4，比如从A~J共10项里选）——原书是一次性印出整份
+   词库当参考表格（4列网格），不是竖排单列，用 auto-fit 网格：宽屏下
+   自然铺成4~5列接近原书效果，窄屏（~400px）下自动收缩成1~2列，不用
+   另外写媒体查询断点。 */
+.mcq-options.mcq-options-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px;
+}
 .mcq-option {
   display: flex; align-items: baseline; gap: 8px; border: 1px solid var(--border);
   background: var(--bg-soft); border-radius: 10px; padding: 10px 14px; cursor: pointer;
@@ -779,6 +786,10 @@ body.mode-blank #blankProgressReset { display: inline-block; }
 .mcq-explanation {
   margin-top: 12px; padding: 10px 12px; background: var(--bg-soft); border-radius: 8px;
   font-size: 13px; color: var(--text-muted); line-height: 1.6; display: none;
+  /* kind:"passage"的解析是"【18】…\n【19】…"这种按空拼起来的多行文本
+     （build_n2_reference_page.py 里用 \n 连接），textContent 赋值不会
+     自动换行显示，靠 pre-line 保留源文本里的换行符。 */
+  white-space: pre-line;
 }
 .mcq-explanation.show { display: block; }
 
@@ -790,6 +801,23 @@ body.mode-blank #blankProgressReset { display: inline-block; }
   font-size: 15px; line-height: 1.6; margin-bottom: 8px;
 }
 .mcq-complete-selfreport { display: flex; gap: 8px; }
+
+/* kind:"passage"（一段短文挖好几个空，一起作答）——每个空自己一组，
+   组内复用 .mcq-option 已有的样式，只加个圆形题号标签区分"这是原书
+   第几题"，跟四选一单空题共用同一套视觉语言，不新造按钮/选项样式。 */
+.mcq-passage-blanks { display: flex; flex-direction: column; gap: 18px; margin-top: 4px; }
+.mcq-passage-blank-group { border-top: 1px solid var(--border); padding-top: 14px; }
+.mcq-passage-blank-group:first-child { border-top: none; padding-top: 0; }
+.mcq-passage-blank-label {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px;
+  padding: 0 6px; border-radius: 11px; background: var(--blue); color: #fff;
+  font-size: 12px; font-weight: 700; margin-bottom: 8px;
+}
+/* 原书这几道题的选项是"1　2"一行、"3　4"一行的两列排布（见源图253/254号），
+   不是単语テスト/単句四选一那种竖排一列——只在"一段短文挖好几个空"这个
+   场景下覆盖成两列，其它题型的 .mcq-options 不受影响。 */
+.mcq-passage-blank-group .mcq-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mcq-passage-actions { margin-top: 16px; }
 
 #gate {
   position: fixed; inset: 0; background: var(--navy); display: flex;

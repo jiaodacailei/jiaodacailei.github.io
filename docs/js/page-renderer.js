@@ -446,6 +446,14 @@
                 "</div>" +
               "</div>" +
             "</div>" +
+            // kind:"passage"（一段短文挖好几个空，一起作答，见 mcq-quiz.js
+            // 顶部注释）专用——每个空自己的选项组由 mcq-quiz.js 运行时按
+            // 题目内容动态填进 mcqPassageBlanks，静态外壳只提供容器和
+            // "確認"按钮（这题不是选一个选项就立刻判分，要等全部空都选完）。
+            '<div class="mcq-passage-blanks" id="mcqPassageBlanks" style="display:none"></div>' +
+            '<div class="mcq-passage-actions" id="mcqPassageActions" style="display:none">' +
+              '<button type="button" class="quiz-btn quiz-next" id="mcqPassageCheckBtn" disabled>確認</button>' +
+            "</div>" +
             '<div class="quiz-status" id="mcqStatus"></div>' +
             '<div class="mcq-explanation" id="mcqExplanation"></div>' +
           "</div>" +
