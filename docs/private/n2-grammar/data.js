@@ -1621,7 +1621,7 @@ window.LESSON_DATA = {
           "text": "は"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -1700,7 +1700,7 @@ window.LESSON_DATA = {
           "kana": "きょうし"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -1855,7 +1855,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -1960,7 +1960,7 @@ window.LESSON_DATA = {
           "text": "が"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2094,7 +2094,7 @@ window.LESSON_DATA = {
           "kana": "ゆうしょう"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2152,7 +2152,7 @@ window.LESSON_DATA = {
           "text": ""
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2267,7 +2267,7 @@ window.LESSON_DATA = {
           "text": "に"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2374,7 +2374,7 @@ window.LESSON_DATA = {
           "text": "を"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2500,7 +2500,7 @@ window.LESSON_DATA = {
           "text": "が"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2637,7 +2637,7 @@ window.LESSON_DATA = {
           "text": "ここまで"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2760,7 +2760,7 @@ window.LESSON_DATA = {
           "text": "する"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -2918,7 +2918,7 @@ window.LESSON_DATA = {
           "text": "する"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -3080,7 +3080,7 @@ window.LESSON_DATA = {
           "text": "た"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -3240,7 +3240,7 @@ window.LESSON_DATA = {
           "text": "いる"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -3395,7 +3395,7 @@ window.LESSON_DATA = {
           "text": "た"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -3549,7 +3549,7 @@ window.LESSON_DATA = {
           "text": "さい"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -3747,7 +3747,7 @@ window.LESSON_DATA = {
           "text": "ろ"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -3885,7 +3885,7 @@ window.LESSON_DATA = {
           "text": "になる"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4067,7 +4067,7 @@ window.LESSON_DATA = {
           "text": "る"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4195,7 +4195,7 @@ window.LESSON_DATA = {
           "text": "した"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4362,7 +4362,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4404,7 +4404,7 @@ window.LESSON_DATA = {
           "text": "だんだん"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4426,7 +4426,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4479,7 +4479,7 @@ window.LESSON_DATA = {
           "text": "は"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4505,7 +4505,7 @@ window.LESSON_DATA = {
           "text": ""
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4537,7 +4537,7 @@ window.LESSON_DATA = {
           "text": ""
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4590,7 +4590,7 @@ window.LESSON_DATA = {
           "text": "と"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4664,7 +4664,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4711,7 +4711,7 @@ window.LESSON_DATA = {
           "text": "たちははじめの"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4798,7 +4798,7 @@ window.LESSON_DATA = {
           "text": "する"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -4884,7 +4884,7 @@ window.LESSON_DATA = {
           "text": "がないかどうかを"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5002,7 +5002,7 @@ window.LESSON_DATA = {
           "kana": "いじょう"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5124,7 +5124,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5297,7 +5297,7 @@ window.LESSON_DATA = {
           "text": "ないうちに"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5408,7 +5408,7 @@ window.LESSON_DATA = {
           "text": "ったので"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5506,7 +5506,7 @@ window.LESSON_DATA = {
           "text": "する"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5615,7 +5615,7 @@ window.LESSON_DATA = {
           "text": "して"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5748,7 +5748,7 @@ window.LESSON_DATA = {
           "text": "る"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5821,7 +5821,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -5943,7 +5943,7 @@ window.LESSON_DATA = {
           "text": "た"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -6039,7 +6039,7 @@ window.LESSON_DATA = {
           "text": "）"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -6144,7 +6144,7 @@ window.LESSON_DATA = {
           "text": "）"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -6259,7 +6259,7 @@ window.LESSON_DATA = {
           "text": "）"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -6359,7 +6359,7 @@ window.LESSON_DATA = {
           "text": "）"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -6490,7 +6490,7 @@ window.LESSON_DATA = {
           "text": "）"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {

@@ -29,7 +29,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ら",
-                  "t": 0.8
+                  "t": 0.82
                 },
                 {
                   "text": "ず",
@@ -166,7 +166,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 1.4
+                  "t": 1.42
                 },
                 {
                   "text": "か",
@@ -335,7 +335,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "い",
-                  "t": 0.48
+                  "t": 0.46
                 },
                 {
                   "text": "ア",
@@ -406,7 +406,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "き",
-                  "t": 0.72
+                  "t": 0.74
                 },
                 {
                   "text": "で",
@@ -525,7 +525,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "く",
-                  "t": 0.68
+                  "t": 0.66
                 },
                 {
                   "text": "売",
@@ -572,11 +572,11 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "お",
-                  "t": 0
+                  "t": 0.26
                 },
                 {
                   "text": "あ",
-                  "t": 0.48
+                  "t": 0.5
                 },
                 {
                   "text": "い",
@@ -630,11 +630,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ト",
-                  "t": 0.6
+                  "t": 0.58
                 },
                 {
                   "text": "ド",
-                  "t": 0.72
+                  "t": 0.7
                 },
                 {
                   "text": "ア",
@@ -806,11 +806,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "サ",
-                  "t": 1.06
+                  "t": 1.08
                 },
                 {
                   "text": "イ",
-                  "t": 1.26
+                  "t": 1.24
                 },
                 {
                   "text": "ン",
@@ -888,7 +888,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "にな",
-                  "t": 0.7
+                  "t": 0.72
                 },
                 {
                   "text": "る",
@@ -1009,12 +1009,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.74
+                  "t": 0.72
                 },
                 {
                   "text": "憧",
                   "kana": "あこが",
-                  "t": 0.9
+                  "t": 0.88
                 },
                 {
                   "text": "れる",
@@ -1061,7 +1061,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 1.24
+                  "t": 1.22
                 },
                 {
                   "text": "上",
@@ -1108,7 +1108,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.86
+                  "t": 0.84
                 },
                 {
                   "text": "る",
@@ -1264,7 +1264,7 @@ window.LESSON_DATA = {
                 {
                   "text": "伺",
                   "kana": "うかが",
-                  "t": 0.96
+                  "t": 0.98
                 },
                 {
                   "text": "い",
@@ -1404,11 +1404,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.74
+                  "t": 0.88
                 },
                 {
                   "text": "る",
-                  "t": 0.84
+                  "t": 1.17
                 },
                 {
                   "text": "。"
@@ -1454,7 +1454,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 1.02
+                  "t": 1.04
                 },
                 {
                   "text": "ア",
@@ -1466,7 +1466,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "セ",
-                  "t": 1.48
+                  "t": 1.5
                 },
                 {
                   "text": "ス",
@@ -1857,7 +1857,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "す",
-                  "t": 1.74
+                  "t": 1.76
                 },
                 {
                   "text": "。"
@@ -1944,7 +1944,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日",
                   "kana": "ひ",
-                  "t": 0.76
+                  "t": 0.74
                 }
               ],
               "zh": "第二天",
@@ -2014,7 +2014,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "よ",
-                  "t": 1.02
+                  "t": 1
                 },
                 {
                   "text": "く",
@@ -2060,7 +2060,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "もの",
-                  "t": 0.76
+                  "t": 0.74
                 },
                 {
                   "text": "が",
@@ -2304,7 +2304,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.52
+                  "t": 0.54
                 },
                 {
                   "text": "染",
@@ -2519,7 +2519,7 @@ window.LESSON_DATA = {
                 {
                   "text": "涼",
                   "kana": "すず",
-                  "t": 0.82
+                  "t": 0.84
                 },
                 {
                   "text": "しく",
@@ -2608,7 +2608,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "スト",
-                  "t": 0.54
+                  "t": 0.56
                 },
                 {
                   "text": "ア",
@@ -2616,7 +2616,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ップ",
-                  "t": 0.9
+                  "t": 0.84
                 }
               ],
               "zh": "成本提高",
@@ -2713,7 +2713,7 @@ window.LESSON_DATA = {
                 {
                   "text": "追",
                   "kana": "お",
-                  "t": 2.3
+                  "t": 2.32
                 },
                 {
                   "text": "って",
@@ -2975,7 +2975,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 1.24
+                  "t": 1.26
                 },
                 {
                   "text": "憧",
@@ -3070,13 +3070,17 @@ window.LESSON_DATA = {
                   "t": 1.18
                 },
                 {
-                  "text": "ッと",
+                  "text": "ッ",
                   "t": 1.38
+                },
+                {
+                  "text": "と",
+                  "t": 1.5
                 },
                 {
                   "text": "済",
                   "kana": "す",
-                  "t": 1.56
+                  "t": 1.62
                 },
                 {
                   "text": "ませ",
@@ -3173,16 +3177,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "お",
-                  "t": 1.06
+                  "t": 1.04
                 },
                 {
                   "text": "願",
                   "kana": "ねが",
-                  "t": 1.06
+                  "t": 1.04
                 },
                 {
                   "text": "い",
-                  "t": 1.06
+                  "t": 1.04
                 },
                 {
                   "text": "です",
@@ -3229,7 +3233,7 @@ window.LESSON_DATA = {
                 {
                   "text": "宛",
                   "kana": "あ",
-                  "t": 1.02
+                  "t": 1
                 },
                 {
                   "text": "て",
@@ -3269,7 +3273,7 @@ window.LESSON_DATA = {
                 {
                   "text": "当",
                   "kana": "あ",
-                  "t": 1
+                  "t": 1.02
                 },
                 {
                   "text": "て",
@@ -3376,7 +3380,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "し",
-                  "t": 1.32
+                  "t": 1.34
                 }
               ],
               "zh": "温暖的阳光",
@@ -3446,12 +3450,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 1.06
+                  "t": 1.08
                 },
                 {
                   "text": "当",
                   "kana": "あ",
-                  "t": 1.26
+                  "t": 1.28
                 },
                 {
                   "text": "て",
@@ -3680,7 +3684,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "る",
-                  "t": 1.44
+                  "t": 1.42
                 },
                 {
                   "text": "。"
@@ -3813,7 +3817,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 1.12
+                  "t": 1.14
                 },
                 {
                   "text": "追",
@@ -4025,7 +4029,7 @@ window.LESSON_DATA = {
                 {
                   "text": "後始末",
                   "kana": "あとしまつ",
-                  "t": 2.34
+                  "t": 2.36
                 },
                 {
                   "text": "を",
@@ -4476,7 +4480,7 @@ window.LESSON_DATA = {
                 {
                   "text": "跳",
                   "kana": "と",
-                  "t": 1.28
+                  "t": 1.26
                 },
                 {
                   "text": "び",
@@ -4646,7 +4650,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "か",
-                  "t": 1.84
+                  "t": 1.86
                 },
                 {
                   "text": "えって",
@@ -4702,7 +4706,7 @@ window.LESSON_DATA = {
                 {
                   "text": "粗筋",
                   "kana": "あらすじ",
-                  "t": 0.84
+                  "t": 0.82
                 },
                 {
                   "text": "を",
@@ -4749,7 +4753,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.72
+                  "t": 0.7
                 },
                 {
                   "text": "大筋",
@@ -4805,7 +4809,7 @@ window.LESSON_DATA = {
                 {
                   "text": "争",
                   "kana": "あらそ",
-                  "t": 0.34
+                  "t": 0
                 },
                 {
                   "text": "い",
@@ -4813,7 +4817,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.82
+                  "t": 0.84
                 },
                 {
                   "text": "絶",
@@ -5313,7 +5317,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "します",
-                  "t": 1.94
+                  "t": 1.92
                 },
                 {
                   "text": "。"
@@ -5449,11 +5453,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "さ",
-                  "t": 1.16
+                  "t": 1.14
                 },
                 {
                   "text": "を",
-                  "t": 1.36
+                  "t": 1.34
                 },
                 {
                   "text": "怪",
@@ -5667,7 +5671,7 @@ window.LESSON_DATA = {
                 {
                   "text": "本性",
                   "kana": "ほんしょう",
-                  "t": 1.24
+                  "t": 1.26
                 },
                 {
                   "text": "を",
@@ -5723,7 +5727,7 @@ window.LESSON_DATA = {
                 {
                   "text": "現",
                   "kana": "あらわ",
-                  "t": 1.12
+                  "t": 1.14
                 },
                 {
                   "text": "れ",
@@ -5772,7 +5776,7 @@ window.LESSON_DATA = {
                 {
                   "text": "止",
                   "kana": "と",
-                  "t": 1.38
+                  "t": 1.4
                 },
                 {
                   "text": "ま",
@@ -5906,7 +5910,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "は",
-                  "t": 0.96
+                  "t": 0.98
                 },
                 {
                   "text": "た",
@@ -5979,7 +5983,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "わ",
-                  "t": 0.96
+                  "t": 0.98
                 },
                 {
                   "text": "せ",
@@ -6036,7 +6040,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "わ",
-                  "t": 1.28
+                  "t": 1.26
                 },
                 {
                   "text": "せ",
@@ -6074,11 +6078,11 @@ window.LESSON_DATA = {
                 {
                   "text": "待",
                   "kana": "ま",
-                  "t": 0.76
+                  "t": 0.74
                 },
                 {
                   "text": "ち",
-                  "t": 0.98
+                  "t": 0.96
                 },
                 {
                   "text": "合",
@@ -6188,7 +6192,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.66
+                  "t": 0.64
                 },
                 {
                   "text": "荒",
@@ -6269,7 +6273,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "も",
-                  "t": 1.06
+                  "t": 1.08
                 },
                 {
                   "text": "春",
@@ -6461,7 +6465,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ギ",
-                  "t": 1.12
+                  "t": 1.1
                 },
                 {
                   "text": "ー",
@@ -6733,17 +6737,13 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "い",
+                  "text": "いい",
                   "t": 0
-                },
-                {
-                  "text": "い",
-                  "t": 0.54
                 },
                 {
                   "text": "案",
                   "kana": "あん",
-                  "t": 0.64
+                  "t": 0.6
                 },
                 {
                   "text": "を",
@@ -6821,7 +6821,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "する",
-                  "t": 1.46
+                  "t": 1.48
                 },
                 {
                   "text": "。"
@@ -6862,11 +6862,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.64
+                  "t": 0.62
                 },
                 {
                   "text": "ア",
-                  "t": 0.82
+                  "t": 0.8
                 },
                 {
                   "text": "ンテ",
@@ -6900,7 +6900,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ア",
-                  "t": 1.38
+                  "t": 1.36
                 },
                 {
                   "text": "ンテ",
@@ -6971,7 +6971,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.88
+                  "t": 0.86
                 },
                 {
                   "text": "し",
@@ -7380,7 +7380,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "する",
-                  "t": 0.96
+                  "t": 0.94
                 },
                 {
                   "text": "。"
@@ -7487,7 +7487,7 @@ window.LESSON_DATA = {
                 {
                   "text": "言",
                   "kana": "い",
-                  "t": 0.82
+                  "t": 0.8
                 },
                 {
                   "text": "い",
@@ -7803,7 +7803,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ない",
-                  "t": 1.6
+                  "t": 1.62
                 },
                 {
                   "text": "。"
@@ -7923,7 +7923,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 0.68
+                  "t": 0.7
                 },
                 {
                   "text": "買",
@@ -7932,7 +7932,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "う",
-                  "t": 0.98
+                  "t": 1
                 },
                 {
                   "text": "。"
@@ -8297,7 +8297,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "じ",
-                  "t": 1.1
+                  "t": 1.12
                 },
                 {
                   "text": "て",
@@ -8392,7 +8392,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "10",
-                  "t": 0.54
+                  "t": 0.52
                 },
                 {
                   "text": "時以降",
@@ -8509,7 +8509,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 1.22
+                  "t": 1.24
                 },
                 {
                   "text": "言",
@@ -8735,7 +8735,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "やって",
-                  "t": 1.8
+                  "t": 1.82
                 },
                 {
                   "text": "み",
@@ -8855,7 +8855,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "す",
-                  "t": 1.1
+                  "t": 1.08
                 },
                 {
                   "text": "ぐ",
@@ -8932,7 +8932,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "だ",
-                  "t": 1.36
+                  "t": 1.34
                 },
                 {
                   "text": "と",
@@ -8987,7 +8987,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.54
+                  "t": 0.56
                 },
                 {
                   "text": "板",
@@ -9028,7 +9028,7 @@ window.LESSON_DATA = {
                 {
                   "text": "指示",
                   "kana": "しじ",
-                  "t": 0.8
+                  "t": 0.78
                 },
                 {
                   "text": "に",
@@ -9143,7 +9143,7 @@ window.LESSON_DATA = {
                 {
                   "text": "意思",
                   "kana": "いし",
-                  "t": 0.82
+                  "t": 0.8
                 },
                 {
                   "text": "を",
@@ -9151,7 +9151,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "は",
-                  "t": 1.3
+                  "t": 1.28
                 },
                 {
                   "text": "っ",
@@ -9605,7 +9605,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "る",
-                  "t": 2.12
+                  "t": 2.1
                 },
                 {
                   "text": "。"
@@ -9688,7 +9688,7 @@ window.LESSON_DATA = {
                 {
                   "text": "所",
                   "kana": "ところ",
-                  "t": 0.7
+                  "t": 0.72
                 },
                 {
                   "text": "に",
@@ -9791,7 +9791,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 1.82
+                  "t": 1.8
                 },
                 {
                   "text": "気",
@@ -9941,24 +9941,28 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ち",
-                  "t": 0.44
+                  "t": 0.27
                 },
                 {
                   "text": "い",
-                  "t": 0.6
+                  "t": 0.54
                 },
                 {
                   "text": "ち",
-                  "t": 0.68
+                  "t": 0.81
                 },
                 {
                   "text": "解釈",
                   "kana": "かいしゃく",
-                  "t": 0.9
+                  "t": 1.08
                 },
                 {
-                  "text": "する",
-                  "t": 1.28
+                  "text": "す",
+                  "t": 1.62
+                },
+                {
+                  "text": "る",
+                  "t": 1.89
                 },
                 {
                   "text": "。"
@@ -10007,11 +10011,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ち",
-                  "t": 1.5
+                  "t": 1.52
                 },
                 {
                   "text": "い",
-                  "t": 1.6
+                  "t": 1.62
                 },
                 {
                   "text": "ち",
@@ -10083,7 +10087,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "った",
-                  "t": 1.72
+                  "t": 1.76
                 },
                 {
                   "text": "。"
@@ -10126,7 +10130,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "しく",
-                  "t": 1.58
+                  "t": 1.56
                 },
                 {
                   "text": "な",
@@ -10169,7 +10173,7 @@ window.LESSON_DATA = {
                 {
                   "text": "品",
                   "kana": "ひん",
-                  "t": 0.76
+                  "t": 0.78
                 }
               ],
               "zh": "上等品，头等货",
@@ -10239,7 +10243,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 1.3
+                  "t": 1.32
                 },
                 {
                   "text": "飲",
@@ -10399,7 +10403,7 @@ window.LESSON_DATA = {
                 {
                   "text": "大学時代",
                   "kana": "だいがくじだい",
-                  "t": 1.92
+                  "t": 1.94
                 },
                 {
                   "text": "の",
@@ -10802,7 +10806,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.7
+                  "t": 0.72
                 },
                 {
                   "text": "走",
@@ -10859,7 +10863,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "する",
-                  "t": 1.18
+                  "t": 1.16
                 },
                 {
                   "text": "。"
@@ -14101,7 +14105,7 @@ window.LESSON_DATA = {
           "text": "で"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -14111,6 +14115,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14153,8 +14158,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 2,
@@ -14168,7 +14172,7 @@ window.LESSON_DATA = {
           "text": "は"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -14205,6 +14209,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14254,8 +14259,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 3,
@@ -14276,7 +14280,7 @@ window.LESSON_DATA = {
           "text": "さに"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -14296,6 +14300,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14334,8 +14339,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 4,
@@ -14356,7 +14360,7 @@ window.LESSON_DATA = {
           "text": "による"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -14376,6 +14380,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14426,8 +14431,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 5,
@@ -14437,7 +14441,7 @@ window.LESSON_DATA = {
           "text": ""
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -14457,6 +14461,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14495,8 +14500,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 6,
@@ -14538,13 +14542,14 @@ window.LESSON_DATA = {
           "text": "を"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14594,8 +14599,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 7,
@@ -14633,7 +14637,7 @@ window.LESSON_DATA = {
           "text": "の"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -14653,6 +14657,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14688,8 +14693,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 3,
-      "explanationZh": ""
+      "answer": 3
     },
     {
       "id": 8,
@@ -14720,7 +14724,7 @@ window.LESSON_DATA = {
           "text": "を"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -14753,6 +14757,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14794,8 +14799,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 9,
@@ -14828,13 +14832,14 @@ window.LESSON_DATA = {
           "text": "て"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14873,8 +14878,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 10,
@@ -14897,13 +14901,14 @@ window.LESSON_DATA = {
           "text": "にも"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -14952,8 +14957,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 11,
@@ -14977,13 +14981,14 @@ window.LESSON_DATA = {
           "text": "を"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15043,8 +15048,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 12,
@@ -15057,7 +15061,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15074,6 +15078,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15116,8 +15121,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 13,
@@ -15127,7 +15131,7 @@ window.LESSON_DATA = {
           "text": ""
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15184,6 +15188,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15222,8 +15227,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 14,
@@ -15237,7 +15241,7 @@ window.LESSON_DATA = {
           "text": "な"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15277,6 +15281,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15315,8 +15320,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 3,
-      "explanationZh": ""
+      "answer": 3
     },
     {
       "id": 15,
@@ -15337,7 +15341,7 @@ window.LESSON_DATA = {
           "text": "を"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15367,6 +15371,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15409,8 +15414,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 16,
@@ -15450,7 +15454,7 @@ window.LESSON_DATA = {
           "text": "すでに"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15470,6 +15474,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15513,8 +15518,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 17,
@@ -15555,7 +15559,7 @@ window.LESSON_DATA = {
           "text": "は"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15572,6 +15576,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15610,8 +15615,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 18,
@@ -15635,7 +15639,7 @@ window.LESSON_DATA = {
           "text": "は"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15662,6 +15666,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15697,8 +15702,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 19,
@@ -15732,7 +15736,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15752,6 +15756,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15786,8 +15791,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 2,
-      "explanationZh": ""
+      "answer": 2
     },
     {
       "id": 20,
@@ -15818,7 +15822,7 @@ window.LESSON_DATA = {
           "text": "が"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15828,6 +15832,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15866,8 +15871,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 21,
@@ -15881,7 +15885,7 @@ window.LESSON_DATA = {
           "text": "は"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -15905,6 +15909,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -15948,8 +15953,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 1,
-      "explanationZh": ""
+      "answer": 1
     },
     {
       "id": 22,
@@ -15987,7 +15991,7 @@ window.LESSON_DATA = {
           "text": "、"
         },
         {
-          "text": "____",
+          "text": "　　　　",
           "blank": true
         },
         {
@@ -16011,6 +16015,7 @@ window.LESSON_DATA = {
           "text": "。"
         }
       ],
+      "explanationZh": "",
       "options": [
         {
           "idx": 1,
@@ -16055,8 +16060,7 @@ window.LESSON_DATA = {
           ]
         }
       ],
-      "answer": 4,
-      "explanationZh": ""
+      "answer": 4
     }
   ],
   "titleDictate": true

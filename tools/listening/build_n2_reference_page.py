@@ -505,7 +505,13 @@ def build_mcq_items(mcq_units):
             m = BLANK_MARKER_RE.search(q["stem"])
             if m:
                 before, after = q["stem"][:m.start()], q["stem"][m.end():]
-                stem_tokens = tokenize_ja(before) + [{"text": "____", "blank": True}] + tokenize_ja(after)
+                # 空位token的文字不能真写"____"——mcq-quiz.js的.mcq-blank样式
+                # 已经靠border-bottom画了一条蓝色下划线，"____"这四个下划线
+                # 字符本身又会在字形基线附近画出另一条黑色细线，两条线叠在
+                # 一起变成真实反馈里的"下划线有两道"。改用几个不可见的
+                # 全角空格占位——.mcq-blank的min-width:3em本来就保证了这个
+                # 空位的视觉宽度，不需要靠文字内容本身撑开。
+                stem_tokens = tokenize_ja(before) + [{"text": "　　　　", "blank": True}] + tokenize_ja(after)
             else:
                 stem_tokens = tokenize_ja(q["stem"])
             item = {
