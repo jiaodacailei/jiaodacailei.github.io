@@ -139,6 +139,13 @@ def synth_tts(text, out_path):
 # 才是对的，不能不分场合把所有"町"都替换成"まち"。
 TTS_READING_OVERRIDES = {
     "町で": "まちで",
+    # "扇ぐ"（あおぐ，用扇子扇风）孤立成词/词条标题本身没有上下文，
+    # edge-tts容易按"扇"字更常见的音读（扇子せんす/扇風機せんぷうき）
+    # 猜成せん系读音——真实反馈"扇ぐ（あおぐ），音频的发音不对哟"。
+    # 只替换"扇ぐ"这两个字的literal组合（不会误伤"扇子"，那是"扇"+"子"
+    # 两个不同字符），词条标题"扇ぐ"和例句"扇子で扇ぐ。"里的"扇ぐ"都会
+    # 走到这条替换。
+    "扇ぐ": "あおぐ",
 }
 
 
@@ -284,7 +291,17 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
             question_label = point["title"]
             word_id += 1
             word_text = word_answer_text(question_label)
-            word_audio = synth_word_audio(word_text, audio_dir, word_id, stats) if word_text else None
+            # 词条标题本身带"/"或"／"（一个词两种写法，比如"暖か/温か"）时，
+            # 不能把这段原样喂给TTS——真实反馈"暖か/温か的发音是
+            # atatakanaatataka，应该是atataka吧"：TTS会把两种写法都当成
+            # 独立文字念一遍，读成"两遍读音拼在一起"，不是"/"本身被念出来
+            # 那么简单。这种情况改喂derive_reading()已经推导出的那份唯一
+            # 权威读音（对这条就是纯假名"あたたか"），跟着音发音不会有歧义；
+            # 没有"/"的词条不受影响，继续用原来的word_text（保留汉字喂给
+            # TTS，让它自己按汉字选读音，多音字读错的个例走
+            # TTS_READING_OVERRIDES单独订正，不在这里放大整改范围）。
+            word_tts_text = derive_reading(question_label, word_text) if ("/" in word_text or "／" in word_text) else word_text
+            word_audio = synth_word_audio(word_tts_text, audio_dir, word_id, stats) if word_text else None
             groups = point.get("groups")
             if groups:
                 group_meta = [
@@ -318,12 +335,19 @@ def derive_reading(title, word_text):
     全角括注，如果整段内容本身就是纯假名（"（あいかわらず）"这种），那就是
     读音；如果不是纯假名（"（iron）"这种英文词源提示，不是读音），说明这个
     词本身已经是假名了（外来语片假名词自己就能读，标题结尾的英文纯粹是
-    给人看词源用的），读音就是word_text本身。"多个写法用"/"分隔"（"アイデア/
-    アイディア"）这种取第一个当权威读音，不需要两个都收。"""
+    给人看词源用的），读音就是word_text本身。"多个写法用"/"或"／"分隔"
+    （"アイデア/アイディア"半角、"いざとなると／いざとなれば／
+    いざとなったら"全角，两种都出现过）这种取第一个当权威读音，不需要
+    全部都收——真实反馈"0118. いざとなると／いざとなれば／いざとなったら"
+    这条audio2kana/zh2kana的答案检查发现，之前只按半角"/"切分，这条词
+    整段没有末尾读音括注（本身已经是纯假名，不需要另外标注读音）又用的是
+    全角"／"分隔三种写法，两次判断都没生效，"kana"直接变成了三种写法
+    原样拼在一起的完整字符串，用户不可能打对这种答案。改成同时按半角/
+    全角两种斜杠切分，不区分标题实际用的是哪一种。"""
     m = _TRAILING_PAREN_CONTENT_RE.search(_WORD_NUM_PREFIX_RE.sub("", title))
     if m and _KANA_ONLY_RE.match(m.group(1)):
         return m.group(1)
-    return word_text.split("/")[0].strip("～")
+    return re.split(r"[/／]", word_text)[0].strip("～")
 
 
 def quiz_zh_text(overview):
