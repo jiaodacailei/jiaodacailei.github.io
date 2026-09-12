@@ -120,8 +120,14 @@
   });
   var availableCategories = [{ key: "all", label: "全部" }]
     .concat(categoryOrder.map(function (k) { return { key: k, label: k }; }));
-  var category = localStorage.getItem(CATEGORY_KEY) || "all";
-  if (category !== "all" && !presentCategories[category]) category = "all";
+  // 有单元选择下拉框的页面默认选中第一个单元（跟 page-renderer.js 里
+  // n2-unit-select 的默认值保持一致，两边共用同一个localStorage
+  // key——这里category==unit label，categoryOrder[0]就是第一个单元）；
+  // 没有下拉框的旧场景（独立的 n2mcq-category 分类）继续默认"全部"，
+  // 行为不变。
+  var category = localStorage.getItem(CATEGORY_KEY);
+  if (category === null) category = HAS_UNIT_SELECT ? categoryOrder[0] : "all";
+  else if (category !== "all" && !presentCategories[category]) category = "all";
 
   function categoryItems() {
     if (category === "all") return ITEMS;

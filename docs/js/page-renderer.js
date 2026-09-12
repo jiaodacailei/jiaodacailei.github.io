@@ -711,8 +711,15 @@
     });
     if (unitOrder.length > 1) {
       var UNIT_KEY = "n2-unit:" + location.pathname;
-      var currentUnit = localStorage.getItem(UNIT_KEY) || "all";
-      if (currentUnit !== "all" && unitSeen[currentUnit] !== true) currentUnit = "all";
+      // 默认选中第一个单元，不是"全部单元"——真实反馈"默认选中第一单元，
+      // 而不是全部单元"：内容持续追加新单元，新用户/清过缓存的用户一
+      // 打开页面就该看到最新在学的单元，而不是一次性看到所有单元的
+      // 内容混在一起。只有 localStorage 里从没存过这个页面的选择时才
+      // 用这个默认值，用户手动选过"全部单元"之后依然会记住"all"。
+      var currentUnit = localStorage.getItem(UNIT_KEY);
+      if (currentUnit === null || (currentUnit !== "all" && unitSeen[currentUnit] !== true)) {
+        currentUnit = unitOrder[0];
+      }
 
       function applyUnitFilter(unit) {
         // 正文卡片、桌面/手机侧栏目录、手机悬浮数字条——四处都要跟着筛，

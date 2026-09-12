@@ -1852,7 +1852,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // unitWords() 直接返回完整 words，跟改动前行为完全一样。
   var HAS_UNIT_SELECT = document.body.classList.contains("has-title-dictate");
   var UNIT_KEY = "n2-unit:" + location.pathname;
-  var currentUnit = HAS_UNIT_SELECT ? (localStorage.getItem(UNIT_KEY) || "all") : "all";
+  // 默认选中第一个单元，不是"全部单元"——跟 page-renderer.js 里
+  // n2-unit-select 的默认值保持一致，两边共用同一个 localStorage key。
+  var wordUnitOrder = [];
+  if (HAS_UNIT_SELECT) {
+    var wordUnitSeen = {};
+    words.forEach(function (w) {
+      if (w.unit && !wordUnitSeen[w.unit]) { wordUnitSeen[w.unit] = true; wordUnitOrder.push(w.unit); }
+    });
+  }
+  var currentUnit = HAS_UNIT_SELECT ? localStorage.getItem(UNIT_KEY) : "all";
+  if (HAS_UNIT_SELECT && currentUnit === null) currentUnit = wordUnitOrder[0] || "all";
   function unitWords() {
     if (!HAS_UNIT_SELECT || currentUnit === "all") return words;
     return words.filter(function(w) { return w.unit === currentUnit; });

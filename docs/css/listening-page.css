@@ -260,8 +260,23 @@ body.lang-zh-only .seg-example { display: none; }
 .tab-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
 /* 单元选择下拉框（N2语法/词汇页，只有2个以上单元时才会出现，见
    page-renderer.js 里的 n2-unit-select）——沿用 .tab-btn 的外观，只是
-   标签元素换成了 <select>，补几条原生表单控件跟按钮不一样的属性。 */
-.n2-unit-select { font-family: inherit; appearance: none; -webkit-appearance: none; }
+   标签元素换成了 <select>，补几条原生表单控件跟按钮不一样的属性。
+   真实反馈"做成下拉框，让大家明确知道这里可以点击后选择"——原来
+   appearance:none 把浏览器原生的下拉箭头整个去掉了，外观上跟旁边普通的
+   .tab-btn（"语法点"/"練習"这些不可选、只能点一下切换的纯按钮）完全
+   一样，用户看不出这是个可以展开选项的下拉框。<select> 元素不支持
+   ::after 伪元素画箭头，改用 background-image 画一个小三角形（跟
+   .toc-float-panel 里已有的向下箭头同一种画法，纯CSS渐变三角形，不用
+   额外引入图片/图标字体），再留出 padding-right 给箭头腾地方。 */
+.n2-unit-select {
+  font-family: inherit; appearance: none; -webkit-appearance: none;
+  padding-right: 28px;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                     linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 14px center, right 10px center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
 
 /* ── 小题导航：复用博客 toc.js 同款样式（.toc 桌面右侧栏 / .toc-float 手机悬浮），
    只是内容改成"当前 tab 的小题列表"，随 tab 切换动态换一批 ── */
