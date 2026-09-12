@@ -7550,7 +7550,7 @@ window.LESSON_DATA = {
         },
         {
           "text": "金",
-          "kana": "きん"
+          "kana": "かね"
         },
         {
           "text": "をためたいと"
