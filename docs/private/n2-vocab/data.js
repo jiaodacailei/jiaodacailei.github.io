@@ -4441,7 +4441,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "開",
-                  "kana": "ひら",
+                  "kana": "あ",
                   "t": 0.86
                 },
                 {
@@ -4466,7 +4466,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "一晩中",
-                  "kana": "いちばんちゅう",
+                  "kana": "ひとばんじゅう",
                   "t": 0
                 },
                 {
@@ -30961,7 +30961,7 @@ window.LESSON_DATA = {
           "tokens": [
             {
               "text": "開",
-              "kana": "ひら"
+              "kana": "あ"
             },
             {
               "text": "け"
