@@ -6958,7 +6958,7 @@ window.LESSON_DATA = {
           "groups": null
         },
         {
-          "question": "0079. 慌ただしい（あわただしい）",
+          "question": "0079. 慌しい（あわただしい）",
           "overview": "[イ形] 慌忙的，匆忙的",
           "answer": "",
           "unit": "第1单元",
@@ -26099,7 +26099,7 @@ window.LESSON_DATA = {
     },
     {
       "id": 1000079,
-      "text": "慌ただしい",
+      "text": "慌しい",
       "kana": "あわただしい",
       "zh": "慌忙的，匆忙的",
       "sentences": [
