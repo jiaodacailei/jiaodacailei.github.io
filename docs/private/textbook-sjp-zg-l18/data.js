@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "売",
                   "kana": "う",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "り",
@@ -37,7 +37,9 @@ window.LESSON_DATA = {
               ],
               "zh": "推销",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "売り込み"
+              ],
               "audio": "audio/seg-001.mp3"
             },
             {
@@ -51,7 +53,7 @@ window.LESSON_DATA = {
                 {
                   "text": "金星",
                   "kana": "きんせい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "」"
@@ -96,7 +98,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -398,7 +400,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本酒",
                   "kana": "にほんしゅ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "は",
@@ -416,7 +418,7 @@ window.LESSON_DATA = {
                 {
                   "text": "好",
                   "kana": "この",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "ま",
@@ -490,7 +492,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -616,7 +618,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ません",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "。"
@@ -643,7 +645,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "でも",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，"
@@ -727,7 +729,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 5
+                  "t": 5.0
                 },
                 {
                   "text": "です",
@@ -752,7 +754,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -855,7 +857,6 @@ window.LESSON_DATA = {
               "notes": "「Nをベースにした」＝“以N为基础的”。",
               "blanks": [
                 "弊社",
-                "をベースにした",
                 "ベースにした新感覚のカクテル"
               ],
               "audio": "audio/seg-013.mp3"
@@ -867,7 +868,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "こちら",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "でした",
@@ -972,7 +973,8 @@ window.LESSON_DATA = {
               "zh": "我想要是这种酒的话，不仅日本人，中国人也会愿意品尝的。",
               "notes": "「Nだけでなく，Mにも」＝“不仅N，M也……”，「〜ていただける」是「もらう」的自谦表达。",
               "blanks": [
-                "日本人だけでなく，中国の方にも召し上がっていただける"
+                "日本人だけでなく",
+                "中国の方にも召し上がっていただける"
               ],
               "audio": "audio/seg-014.mp3"
             },
@@ -1066,7 +1068,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "サ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "ンプ",
@@ -1262,7 +1264,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -1513,7 +1515,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あり",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "がとう",
@@ -1540,7 +1542,7 @@ window.LESSON_DATA = {
                 {
                   "text": "北京",
                   "kana": "ぺきん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -1638,7 +1640,8 @@ window.LESSON_DATA = {
               "zh": "我们在北京的几家酒吧里让顾客品尝过，评价非常好。",
               "notes": "「〜てもらう」表示请别人为自己做某事。",
               "blanks": [
-                "試飲してもらったのですが，たいへん好評でした"
+                "いくつか",
+                "試飲してもらったのですが"
               ],
               "audio": "audio/seg-024.mp3"
             },
@@ -1649,7 +1652,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "に",
@@ -1755,7 +1758,7 @@ window.LESSON_DATA = {
               "zh": "哦，是这样啊。",
               "notes": "",
               "blanks": [
-                "なるほど，分かりました"
+                "なるほど"
               ],
               "audio": "audio/seg-026.mp3"
             },
@@ -1857,7 +1860,7 @@ window.LESSON_DATA = {
                 {
                   "text": "手紙",
                   "kana": "てがみ",
-                  "t": 0
+                  "t": 0.0
                 }
               ],
               "zh": "信函",
@@ -2040,7 +2043,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -2049,7 +2052,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "，"
@@ -2137,7 +2140,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6
+                  "t": 6.0
                 },
                 {
                   "text": "と",
@@ -2962,7 +2965,6 @@ window.LESSON_DATA = {
               "blanks": [
                 "勝手なお願い",
                 "ご迷惑をおかけいたします",
-                "おかけいたします",
                 "よろしくご検討くださいますようお願い申し上げます"
               ],
               "audio": "audio/seg-042.mp3"
@@ -3060,7 +3062,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "パ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "ンフ",
@@ -3145,7 +3147,7 @@ window.LESSON_DATA = {
                 {
                   "text": "上海",
                   "kana": "しゃんはい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "P",
@@ -3209,7 +3211,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "度",
@@ -3258,7 +3260,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "請求",
@@ -3401,7 +3403,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -3598,7 +3600,7 @@ window.LESSON_DATA = {
                 {
                   "text": "願",
                   "kana": "ねが",
-                  "t": 3
+                  "t": 3.0
                 },
                 {
                   "text": "いい",
@@ -3647,7 +3649,7 @@ window.LESSON_DATA = {
                 {
                   "text": "竜虎",
                   "kana": "りゅうこ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "酒造",
@@ -4203,7 +4205,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "でも",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，"
@@ -4287,7 +4289,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 5
+                  "t": 5.0
                 },
                 {
                   "text": "です",
@@ -4373,7 +4375,7 @@ window.LESSON_DATA = {
                 {
                   "text": "金星",
                   "kana": "きんせい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "」"
@@ -4416,7 +4418,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -4450,7 +4452,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -5516,7 +5518,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -5708,7 +5710,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -5879,7 +5881,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -6435,7 +6437,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -6444,7 +6446,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "，"
@@ -6532,7 +6534,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6
+                  "t": 6.0
                 },
                 {
                   "text": "と",
@@ -7084,7 +7086,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -7093,7 +7095,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "，"
@@ -7181,7 +7183,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6
+                  "t": 6.0
                 },
                 {
                   "text": "と",
@@ -10146,7 +10148,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "度",
@@ -10195,7 +10197,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "請求",
@@ -10509,7 +10511,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -10738,7 +10740,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -10878,7 +10880,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
