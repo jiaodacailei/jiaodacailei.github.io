@@ -113,6 +113,13 @@
   //      时不用每次重新拖。 ----
   (function () {
     var dragging = false, startX, startY, startLeft, startTop;
+    // move/up 监听挂在 document 上，不挂在 header 自己身上——header 只是
+    // 顶部一条细长条，正常拖拽时鼠标只要稍微移动快一点、或者往下拖动的
+    // 幅度大一点，指针立刻就会离开 header 的实际像素范围，挂在 header 上
+    // 的 pointermove 从那一刻起就再也收不到事件，拖拽像是"卡住不动"——
+    // 真实反馈"点击弹框标题，无法移动"。挂在 document 上就不依赖指针是否
+    // 还悬停在 header 上，只要 dragging 标记为真，鼠标移到页面任何位置都
+    // 能继续跟踪。
     header.addEventListener("pointerdown", function (e) {
       if (e.target.closest("button")) return;
       var rect = modal.getBoundingClientRect();
@@ -130,9 +137,8 @@
       dragging = true;
       startX = e.clientX; startY = e.clientY;
       startLeft = rect.left; startTop = rect.top;
-      header.setPointerCapture(e.pointerId);
     });
-    header.addEventListener("pointermove", function (e) {
+    document.addEventListener("pointermove", function (e) {
       if (!dragging) return;
       var maxLeft = window.innerWidth - modal.offsetWidth;
       var maxTop = window.innerHeight - modal.offsetHeight;
@@ -141,8 +147,8 @@
       modal.style.left = Math.min(Math.max(0, left), Math.max(0, maxLeft)) + "px";
       modal.style.top = Math.min(Math.max(0, top), Math.max(0, maxTop)) + "px";
     });
-    header.addEventListener("pointerup", function () { dragging = false; });
-    header.addEventListener("pointercancel", function () { dragging = false; });
+    document.addEventListener("pointerup", function () { dragging = false; });
+    document.addEventListener("pointercancel", function () { dragging = false; });
   })();
 
   var currentCardId = null, currentCard = null, currentIcon = null;
