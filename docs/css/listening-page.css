@@ -440,7 +440,9 @@ body.repeat-mode-on .seg-ja .tw { padding: 2px 1px; }
 .edit-modal-header {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   font-size: 13px; font-weight: 700; color: var(--text);
+  cursor: move; touch-action: none;
 }
+.edit-modal-header button { cursor: pointer; }
 .edit-modal-play {
   border: 1px solid var(--blue-light); background: var(--blue-xlight); color: var(--blue-dark);
   border-radius: 999px; padding: 4px 12px; font-size: 12px; cursor: pointer; white-space: nowrap;

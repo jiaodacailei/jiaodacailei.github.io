@@ -99,6 +99,51 @@
   var errorEl = overlay.querySelector("#editModalError");
   var cancelBtn = overlay.querySelector("#editModalCancel");
   var applyBtn = overlay.querySelector("#editModalApply");
+  var modal = overlay.querySelector(".edit-modal");
+  var header = overlay.querySelector(".edit-modal-header");
+
+  // ---- 弹框可拖动——真实反馈"编辑句子json数据的弹框，做成可移动"：弹框
+  //      默认居中显示，但常常正好挡住这句在页面里的原始位置（跟读高亮/
+  //      挖空效果要对着原文看），拖开一点方便对照。拖拽只认header（标题栏），
+  //      不认"▶ 播放"按钮，不然点播放会被误判成拖拽起点。第一次拖拽时才把
+  //      弹框从"overlay flex居中"切到"position:fixed + 具体像素位置"（用
+  //      当时的 getBoundingClientRect() 保证视觉位置不跳），之后每次拖拽
+  //      基于那份固定定位累加，直到下次刷新页面才恢复默认居中——同一个
+  //      overlay 反复复用编辑不同句子，拖开的位置故意不重置，连续编辑多句
+  //      时不用每次重新拖。 ----
+  (function () {
+    var dragging = false, startX, startY, startLeft, startTop;
+    header.addEventListener("pointerdown", function (e) {
+      if (e.target.closest("button")) return;
+      var rect = modal.getBoundingClientRect();
+      if (modal.style.position !== "fixed") {
+        // width/height 也要在切成 fixed 定位的同一刻锁死成当前像素值——不锁的
+        // 话原来的 "width:100%" 会从"占 overlay 内容区宽度"变成"占整个视口
+        // 宽度"（fixed 元素的包含块是视口），弹框会在刚开始拖的瞬间突然变宽。
+        modal.style.position = "fixed";
+        modal.style.margin = "0";
+        modal.style.width = rect.width + "px";
+        modal.style.height = rect.height + "px";
+        modal.style.left = rect.left + "px";
+        modal.style.top = rect.top + "px";
+      }
+      dragging = true;
+      startX = e.clientX; startY = e.clientY;
+      startLeft = rect.left; startTop = rect.top;
+      header.setPointerCapture(e.pointerId);
+    });
+    header.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      var maxLeft = window.innerWidth - modal.offsetWidth;
+      var maxTop = window.innerHeight - modal.offsetHeight;
+      var left = startLeft + (e.clientX - startX);
+      var top = startTop + (e.clientY - startY);
+      modal.style.left = Math.min(Math.max(0, left), Math.max(0, maxLeft)) + "px";
+      modal.style.top = Math.min(Math.max(0, top), Math.max(0, maxTop)) + "px";
+    });
+    header.addEventListener("pointerup", function () { dragging = false; });
+    header.addEventListener("pointercancel", function () { dragging = false; });
+  })();
 
   var currentCardId = null, currentCard = null, currentIcon = null;
 
