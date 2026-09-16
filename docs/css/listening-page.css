@@ -505,7 +505,13 @@ body.mode-dictate .seg-card .seg-example { display: none; }
 .dictate-ui { display: none; }
 body.mode-dictate .dictate-ui { display: block; }
 
-.dictate-hint { color: var(--text-muted); font-size: 13px; font-style: italic; margin: 0 0 8px; }
+.dictate-hint {
+  color: var(--text-muted); font-size: 13px; font-style: italic; margin: 0 0 8px;
+  /* hintText（listening-page.js）多接续语法点会带着"\n\n"把几组接续的
+     说明接起来，默认white-space会把这些换行全部吃掉挤成一整段——真实
+     反馈"已有的换行给去掉了，应该要保留的"。 */
+  white-space: pre-line;
+}
 /* 标题默写（N2语法/词汇页）自己的播放发音按钮——跟中文提示同一行（不是
    独立成行），locked/active/done 任何状态下都要看得见（跟 .dictate-row
    本身会在locked/done状态被隐藏不一样），所以外面包一层 flex 容器

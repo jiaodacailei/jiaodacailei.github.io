@@ -1357,8 +1357,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var acceptable = answer.split("/").map(stripPunct).filter(Boolean);
       if (!acceptable.length) return;
 
-      var overviewEl = block.querySelector(".q-overview");
-      var hintText = overviewEl ? safeOverviewHint(overviewEl.textContent) : "";
+      // 有多个接续的语法点（point["groups"]），page-renderer.js给每组各渲染
+      // 一个独立的<p class="q-overview">（不是合成一整段），之前这里用
+      // querySelector()只抓第一个匹配，后面几组接续的说明整段消失——真实
+      // 反馈"有多个接续时，默写/填空只显示了第一个相关的文字"。改成
+      // querySelectorAll()抓全部，组间用"\n\n"重新接起来（对应它们在
+      // DOM里本来就是各自独立段落这件事）。
+      var overviewEls = Array.from(block.querySelectorAll(".q-overview"));
+      var hintText = safeOverviewHint(overviewEls.map(function(el) { return el.textContent; }).join("\n\n"));
 
       // 默写/填空模式下标题文字（.q-title-text）被 CSS 藏起来，<h3> 里就
       // 只剩一个不占视觉空间的 <audio>（没有 controls），整个 <h3> 塌缩成
