@@ -1482,11 +1482,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         if (t) { tokens.push({ start: offset, end: offset + t.length, node: node, text: t }); offset += t.length; }
       } else if (node.nodeType === 1) {
         if (node.tagName === "BR") { tokens.push({ start: offset, end: offset + 1, node: node, text: "\n" }); offset += 1; return; }
-        if (node.classList.contains("tw")) {
-          var txt = plainTextOf(node);
-          tokens.push({ start: offset, end: offset + txt.length, node: node, text: txt });
-          offset += txt.length;
-        }
+        // .tw 是"这个token有跟读时间戳"才会加的包装span（page-renderer.js的
+        // renderTokens()，tok.t有值才包一层.tw）——没有音频、只做了假名注音的
+        // 补充例句（语法点追加的例句，audio留null，见build_page.py docstring）
+        // 每个token都没有t，带ruby注音的汉字就会以裸<ruby>元素的形式直接出现
+        // 在.seg-ja下面，不会被包进.tw。这里原来只认text节点/BR/.tw三种，裸
+        // <ruby>三种都不占，会被整个跳过——那个汉字的文字就从拼出来的plain
+        // 字符串里彻底消失，导致blanks数组里任何包含这个汉字的挖空目标都会
+        // "在原文里找不到"（真实反馈：一大批audio:null的补充例句在控制台报
+        // "data-blanks里的XX没有在原文中找到"）。改成"except BR之外的任何
+        // element节点都当成一个token"，不再要求必须有.tw类名。
+        var txt = plainTextOf(node);
+        tokens.push({ start: offset, end: offset + txt.length, node: node, text: txt });
+        offset += txt.length;
       }
     });
     return tokens;
@@ -1564,7 +1572,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 按 range 精确裁切，不能把命中到的整个 token 一起挖空，不然要求用户打
     // 的"正确答案"会比语法点本身长一大截，用户对着 notes 打不出来。
     function isPlainToken(t) {
-      return t.node.nodeType === 3 || (t.node.nodeType === 1 && !t.node.querySelector("ruby"));
+      // t.node 自己就是裸 <ruby>（见 baseTokens() 的注释——没有 .tw 包装、
+      // audio:null 补充例句里带注音的汉字）时，querySelector("ruby") 只找
+      // 后代、找不到它自己，会误判成"纯文本没有ruby标注"，要单独排除。
+      return t.node.nodeType === 3 ||
+        (t.node.nodeType === 1 && t.node.tagName !== "RUBY" && !t.node.querySelector("ruby"));
     }
 
     var anyBuilt = false;
