@@ -556,7 +556,13 @@
   function renderSideNavList(mondaiIdx, questions, active) {
     var cls = "side-nav-list" + (active ? " tab-active" : "");
     var items;
-    if (questions.length > NAV_GROUP_SIZE) {
+    // 分组导航是给N2语法/词汇页这种"标题=词条本身"的页面设计的——真实反馈
+    // "第18课的侧栏变成了1-10/11-20，应该保持之前的不变，只有课文需要这样
+    // 处理，N2词汇保持不变"：教材课文页（会话/课文）句子数一样能轻松超过
+    // NAV_GROUP_SIZE，但侧栏本来就该逐句列出方便定位，不该被误判成"词条多
+    // 就分组"。改成跟 has-title-dictate 那个开关（见上面 DATA.titleDictate
+    // 那段注释）同一个判断依据，不能只看数量。
+    if (DATA.titleDictate && questions.length > NAV_GROUP_SIZE) {
       // 分组导航：每条链接指向这一组第一个词，文字是"起-止"的位置范围
       // （不是词条本身的编号，避免依赖标题里的数字前缀这种词汇页特有的
       // 排版习惯）——纯数字范围不含日语原文，不算泄题，日语/中文两个
@@ -594,7 +600,8 @@
   function renderMobileNumsList(mondaiIdx, questions, active) {
     var cls = "snm-nums-list" + (active ? " tab-active" : "");
     var btns;
-    if (questions.length > NAV_GROUP_SIZE) {
+    // 跟 renderSideNavList() 同一个开关，理由见那边的注释。
+    if (DATA.titleDictate && questions.length > NAV_GROUP_SIZE) {
       btns = groupQuestionsByUnit(questions).map(function (g, gi) {
         var unitAttr = g.unit ? ' data-unit="' + esc(g.unit) + '"' : "";
         return '<button class="toc-float-num side-nav-btn" data-target="q-' + mondaiIdx + "-" + (g.startIdx + 1) + '"' + unitAttr + ">" + (gi + 1) + "</button>";
