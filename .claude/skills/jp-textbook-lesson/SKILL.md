@@ -611,20 +611,38 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
      天然可用，不用额外写代码）。**例句音频**：每张语法点卡片的第1条
      例句通常直接引自本课真实会话/课文（跟原文精确文本匹配就复用那句
      现成的`tokens`/`audio`/跟读时间戳），后面追加的补充例句是教材app
-     自己另写的，本课音频里没有对应录音，只能`tokenize_ja()`做假名
-     注音、`audio`留`null`（默写/跟读这两个依赖音频的模式对这些句子
-     自然不可用，填空/纯阅读不受影响，不算缺陷）。**tab顺序**：插在
-     "课文"和"生词"之间（会话/课文/语法与表达/生词），跟教材app自己的
-     tab顺序一致（app里还有"練習"是第5个tab，这个skill没有对应产出，
-     不用管）。这套"文字匹配复用录音、匹配不上就只做注音不配音"的合并
-     逻辑已经抽成通用工具`tools/listening/build_grammar_notes_tab.py`
-     （吃`<data.js> <content模块.py>`两个参数，内容模块只需要定义
-     `KAISHIWA`/`KEWEN`两个`[(标题, 中文讲解, [(日语例句, 中文翻译),...]
-     ), ...]`列表；对已经带"语法与表达"tab的data.js重跑会报错拒绝，
-     不会静默重复插入）——**这是这个skill的可选扩展步骤，只在这一课的
-     素材目录确实有"语法与表达/{会话,课文}"截图时才需要跑，不是每课
-     默认都做**（截图来自教材app本身，用户要专门去点开、截图，多数课
+     自己另写的，本课音频里没有对应录音，`build_grammar_notes_tab.py`
+     这一步只能先`tokenize_ja()`做假名注音、`audio`留`null`占位。**tab
+     顺序**：插在"课文"和"生词"之间（会话/课文/语法与表达/生词），跟
+     教材app自己的tab顺序一致（app里还有"練習"是第5个tab，这个skill
+     没有对应产出，不用管）。这套"文字匹配复用录音、匹配不上就只做注音
+     不配音"的合并逻辑已经抽成通用工具`tools/listening/build_grammar_
+     notes_tab.py`（吃`<data.js> <content模块.py>`两个参数，内容模块
+     只需要定义`KAISHIWA`/`KEWEN`两个`[(标题, 中文讲解, [(日语例句, 中文
+     翻译),...]), ...]`列表；对已经带"语法与表达"tab的data.js重跑会
+     报错拒绝，不会静默重复插入）——**这是这个skill的可选扩展步骤，只在
+     这一课的素材目录确实有"语法与表达/{会话,课文}"截图时才需要跑，不是
+     每课默认都做**（截图来自教材app本身，用户要专门去点开、截图，多数课
      大概率不会补这一份）。
+  9a. **`build_grammar_notes_tab.py`跑完之后，必须紧接着跑
+      `tools/listening/build_grammar_notes_audio.py <data.js>`补齐上一步
+      留下的`audio: null`占位——这不是"不算缺陷、可以不管"的最终状态，
+      只是中间状态**：真实教训是第17课当时上线时就停在了`audio: null`
+      这一步，用户后来反馈"这句是自行增加的音频"才发现有配套脚本却没跑，
+      而第18课复刻"语法与表达"tab时同一步又漏了一次——两次都是同一个
+      疏漏，说明光靠"记得住"不可靠，必须把这一步写成清单里紧跟在
+      `build_grammar_notes_tab.py`后面的强制步骤，不能自己判断"要不要
+      跑"。这个脚本给还是`audio: null`的补充例句合成edge-tts音频
+      （`ja-JP-NanamiNeural`，跟`build_exam_audio.py`同一个voice）+
+      faster-whisper逐字符对齐，原地回填`audio`/`duration`/
+      `tokens[].t`；同一句话如果也是"生词"tab某个词条的例句
+      （`sentenceAudio`同样是null），一并同步填上同一个音频路径，不
+      重复合成。跟`build_exam_audio.py`一样支持`--start-from`/`--limit`
+      断点续跑，判断"是不是已经跑过"靠检查`audio/seg-{id:03d}.mp3`
+      是否已存在，可以反复安全重跑；先跑`--count-only`看看有多少句待
+      合成。**这几句本来就不是这一课的真人朗读**，合成出来是edge-tts的
+      机器音，跟这一课其余会话/课文/生词的真人录音音色不一样——这是
+      预期的、没法避免的，不是bug，只是听感上能分辨出"这几句是后配的"。
   10. **用户提出"要更全面"之后，第9点的这套"语法与表达"内容进一步默认
       联动了三处，不再只是一个孤立的阅读tab**（`build_grammar_notes_tab.py`
       同一次跑就全做了，见脚本docstring）：①编号语法点（不含专题卡）的

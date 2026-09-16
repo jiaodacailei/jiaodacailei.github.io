@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "売",
                   "kana": "う",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "り",
@@ -53,7 +53,7 @@ window.LESSON_DATA = {
                 {
                   "text": "金星",
                   "kana": "きんせい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "」"
@@ -98,7 +98,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -400,7 +400,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本酒",
                   "kana": "にほんしゅ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "は",
@@ -418,7 +418,7 @@ window.LESSON_DATA = {
                 {
                   "text": "好",
                   "kana": "この",
-                  "t": 2.0
+                  "t": 2
                 },
                 {
                   "text": "ま",
@@ -492,7 +492,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -618,7 +618,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ません",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "。"
@@ -645,7 +645,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "でも",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -729,7 +729,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "です",
@@ -754,7 +754,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "では",
@@ -868,7 +868,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "こちら",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "でした",
@@ -1068,7 +1068,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "サ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ンプ",
@@ -1264,7 +1264,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -1516,7 +1516,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あり",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "がとう",
@@ -1543,7 +1543,7 @@ window.LESSON_DATA = {
                 {
                   "text": "北京",
                   "kana": "ぺきん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -1653,7 +1653,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "に",
@@ -1861,7 +1861,7 @@ window.LESSON_DATA = {
                 {
                   "text": "手紙",
                   "kana": "てがみ",
-                  "t": 0.0
+                  "t": 0
                 }
               ],
               "zh": "信函",
@@ -2044,7 +2044,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -2053,7 +2053,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "，"
@@ -2141,7 +2141,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "と",
@@ -3063,7 +3063,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "パ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "ンフ",
@@ -3148,7 +3148,7 @@ window.LESSON_DATA = {
                 {
                   "text": "上海",
                   "kana": "しゃんはい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "P",
@@ -3212,7 +3212,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "度",
@@ -3261,7 +3261,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "請求",
@@ -3404,7 +3404,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "お",
@@ -3601,7 +3601,7 @@ window.LESSON_DATA = {
                 {
                   "text": "願",
                   "kana": "ねが",
-                  "t": 3.0
+                  "t": 3
                 },
                 {
                   "text": "いい",
@@ -3650,7 +3650,7 @@ window.LESSON_DATA = {
                 {
                   "text": "竜虎",
                   "kana": "りゅうこ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "酒造",
@@ -3824,58 +3824,74 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "正直",
-                  "kana": "しょうじき"
+                  "kana": "しょうじき",
+                  "t": 0
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 0.78
                 },
                 {
                   "text": "言",
-                  "kana": "い"
+                  "kana": "い",
+                  "t": 1
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 1.1
                 },
                 {
-                  "text": "ば"
+                  "text": "ば",
+                  "t": 1.1
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.46
                 },
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 1.46
                 },
                 {
                   "text": "報告書",
-                  "kana": "ほうこくしょ"
+                  "kana": "ほうこくしょ",
+                  "t": 1.96
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 2.56
                 },
                 {
-                  "text": "データ"
+                  "text": "データ",
+                  "t": 2.78
                 },
                 {
-                  "text": "はすべて"
+                  "text": "はすべて",
+                  "t": 3.12
                 },
                 {
                   "text": "正",
-                  "kana": "ただ"
+                  "kana": "ただ",
+                  "t": 3.74
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 4.08
                 },
                 {
-                  "text": "わけではありません"
+                  "text": "わけではありません",
+                  "t": 4.28
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.08
                 }
               ],
               "zh": "老实说，这份报告的数据并不完全准确。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-182.mp3",
+              "duration": 6.24
             },
             {
               "id": 183,
@@ -3884,56 +3900,71 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "面倒",
-                  "kana": "めんどう"
+                  "kana": "めんどう",
+                  "t": 0
                 },
                 {
-                  "text": "くさい"
+                  "text": "くさい",
+                  "t": 0.72
                 },
                 {
                   "text": "仕事",
-                  "kana": "しごと"
+                  "kana": "しごと",
+                  "t": 1.18
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 1.48
                 },
                 {
                   "text": "多",
-                  "kana": "おお"
+                  "kana": "おお",
+                  "t": 1.68
                 },
                 {
-                  "text": "く"
+                  "text": "く",
+                  "t": 1.86
                 },
                 {
-                  "text": "て"
+                  "text": "て",
+                  "t": 2.04
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.58
                 },
                 {
                   "text": "正直",
-                  "kana": "しょうじき"
+                  "kana": "しょうじき",
+                  "t": 2.58
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 3.2
                 },
                 {
                   "text": "疲",
-                  "kana": "つか"
+                  "kana": "つか",
+                  "t": 3.2
                 },
                 {
-                  "text": "れ"
+                  "text": "れ",
+                  "t": 3.58
                 },
                 {
-                  "text": "てしまった"
+                  "text": "てしまった",
+                  "t": 3.58
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.08
                 }
               ],
               "zh": "多是麻烦的工作，老实说，累死了。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-183.mp3",
+              "duration": 5.136
             },
             {
               "id": 184,
@@ -3941,29 +3972,36 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "それはちょっと"
+                  "text": "それはちょっと",
+                  "t": 0
                 },
                 {
-                  "text": "…"
+                  "text": "…",
+                  "t": 1.26
                 },
                 {
                   "text": "困",
-                  "kana": "こま"
+                  "kana": "こま",
+                  "t": 1.26
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 1.6
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 1.6
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.6
                 }
               ],
               "zh": "这个有点儿……为难。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-184.mp3",
+              "duration": 2.808
             },
             {
               "id": 185,
@@ -3971,73 +4009,93 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "「"
+                  "text": "「",
+                  "t": 0
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0
                 },
                 {
                   "text": "刺",
-                  "kana": "さ"
+                  "kana": "さ",
+                  "t": 0.44
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 0.6
                 },
                 {
                   "text": "身",
-                  "kana": "み"
+                  "kana": "み",
+                  "t": 0.6
                 },
                 {
-                  "text": "」"
+                  "text": "」",
+                  "t": 0.82
                 },
                 {
-                  "text": "というのは"
+                  "text": "というのは",
+                  "t": 0.82
                 },
                 {
                   "text": "生",
-                  "kana": "なま"
+                  "kana": "なま",
+                  "t": 1.44
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 1.7
                 },
                 {
                   "text": "魚",
-                  "kana": "さかな"
+                  "kana": "さかな",
+                  "t": 1.96
                 },
                 {
-                  "text": "ですから"
+                  "text": "ですから",
+                  "t": 2.22
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 3.04
                 },
                 {
                   "text": "中国",
-                  "kana": "ちゅうごく"
+                  "kana": "ちゅうごく",
+                  "t": 3.04
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 3.54
                 },
                 {
                   "text": "方",
-                  "kana": "かた"
+                  "kana": "かた",
+                  "t": 3.78
                 },
                 {
-                  "text": "にはちょっと"
+                  "text": "にはちょっと",
+                  "t": 3.92
                 },
                 {
-                  "text": "…"
+                  "text": "…",
+                  "t": 4.2
                 },
                 {
-                  "text": "…"
+                  "text": "…",
+                  "t": 4.2
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.2
                 }
               ],
               "zh": "“生鱼片”是生的鱼肉，所以对中国人来说有点……",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-185.mp3",
+              "duration": 5.52
             },
             {
               "id": 186,
@@ -4046,19 +4104,23 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "状況",
-                  "kana": "じょうきょう"
+                  "kana": "じょうきょう",
+                  "t": 0
                 },
                 {
-                  "text": "はあまりよくありません"
+                  "text": "はあまりよくありません",
+                  "t": 0.78
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2
                 }
               ],
               "zh": "情况并不是太好。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-186.mp3",
+              "duration": 3.12
             },
             {
               "id": 187,
@@ -4066,29 +4128,36 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "「"
+                  "text": "「",
+                  "t": 0
                 },
                 {
                   "text": "上海",
-                  "kana": "しゃんはい"
+                  "kana": "しゃんはい",
+                  "t": 0.52
                 },
                 {
-                  "text": "パール"
+                  "text": "パール",
+                  "t": 0.86
                 },
                 {
-                  "text": "」"
+                  "text": "」",
+                  "t": 1.14
                 },
                 {
-                  "text": "はありますか"
+                  "text": "はありますか",
+                  "t": 1.28
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.76
                 }
               ],
               "zh": "有“上海珍珠”吗？",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-187.mp3",
+              "duration": 2.832
             },
             {
               "id": 188,
@@ -4096,46 +4165,58 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "すみません"
+                  "text": "すみません",
+                  "t": 0
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.42
                 },
                 {
                   "text": "今",
-                  "kana": "いま"
+                  "kana": "いま",
+                  "t": 1.42
                 },
                 {
-                  "text": "ちょっと"
+                  "text": "ちょっと",
+                  "t": 1.58
                 },
                 {
                   "text": "売",
-                  "kana": "う"
+                  "kana": "う",
+                  "t": 1.94
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 2.18
                 },
                 {
                   "text": "切",
-                  "kana": "き"
+                  "kana": "き",
+                  "t": 2.28
                 },
                 {
-                  "text": "れ"
+                  "text": "れ",
+                  "t": 2.38
                 },
                 {
-                  "text": "でして"
+                  "text": "でして",
+                  "t": 2.52
                 },
                 {
-                  "text": "…"
+                  "text": "…",
+                  "t": 2.64
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.64
                 }
               ],
               "zh": "对不起，这会儿卖完了……",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-188.mp3",
+              "duration": 3.648
             },
             {
               "id": 189,
@@ -4144,60 +4225,77 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "何",
-                  "kana": "なん"
+                  "kana": "なん",
+                  "t": 0
                 },
                 {
-                  "text": "と"
+                  "text": "と",
+                  "t": 0.58
                 },
                 {
-                  "text": "いうか"
+                  "text": "いうか",
+                  "t": 0.58
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.26
                 },
                 {
-                  "text": "うまく"
+                  "text": "うまく",
+                  "t": 1.26
                 },
                 {
                   "text": "言",
-                  "kana": "い"
+                  "kana": "い",
+                  "t": 1.72
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 1.8
                 },
                 {
-                  "text": "ませんが"
+                  "text": "ませんが",
+                  "t": 1.94
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.76
                 },
                 {
-                  "text": "ほかにもっといい"
+                  "text": "ほかにもっといい",
+                  "t": 2.76
                 },
                 {
-                  "text": "アイデア"
+                  "text": "アイデア",
+                  "t": 3.86
                 },
                 {
-                  "text": "がありそうに"
+                  "text": "がありそうに",
+                  "t": 4.3
                 },
                 {
                   "text": "思",
-                  "kana": "おも"
+                  "kana": "おも",
+                  "t": 5.06
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 5.24
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 5.24
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.24
                 }
               ],
               "zh": "怎么说呢，我也说不好，不过我觉得应该还有其他更好的法子。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-189.mp3",
+              "duration": 6.432
             },
             {
               "id": 190,
@@ -4206,7 +4304,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "でも",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "，"
@@ -4290,7 +4388,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 5.0
+                  "t": 5
                 },
                 {
                   "text": "です",
@@ -4311,52 +4409,66 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "よく"
+                  "text": "よく",
+                  "t": 0
                 },
                 {
                   "text": "分",
-                  "kana": "わ"
+                  "kana": "わ",
+                  "t": 0.68
                 },
                 {
-                  "text": "か"
+                  "text": "か",
+                  "t": 0.68
                 },
                 {
-                  "text": "りました"
+                  "text": "りました",
+                  "t": 0.88
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.9
                 },
                 {
-                  "text": "ただし"
+                  "text": "ただし",
+                  "t": 1.9
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 3.08
                 },
                 {
                   "text": "予算",
-                  "kana": "よさん"
+                  "kana": "よさん",
+                  "t": 3.08
                 },
                 {
-                  "text": "には"
+                  "text": "には",
+                  "t": 3.46
                 },
                 {
                   "text": "限",
-                  "kana": "かぎ"
+                  "kana": "かぎ",
+                  "t": 3.78
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 4.04
                 },
                 {
-                  "text": "がありますよ"
+                  "text": "がありますよ",
+                  "t": 4.22
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.68
                 }
               ],
               "zh": "我明白您的意思了。不过，预算可是有限的呀。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-191.mp3",
+              "duration": 5.712
             }
           ]
         },
@@ -4376,7 +4488,7 @@ window.LESSON_DATA = {
                 {
                   "text": "金星",
                   "kana": "きんせい",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "」"
@@ -4419,7 +4531,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -4453,7 +4565,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -4486,33 +4598,41 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0
                 },
                 {
                   "text": "気",
-                  "kana": "き"
+                  "kana": "き",
+                  "t": 0.48
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 0.58
                 },
                 {
                   "text": "召",
-                  "kana": "め"
+                  "kana": "め",
+                  "t": 0.7
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 0.9
                 },
                 {
-                  "text": "ましたでしょうか"
+                  "text": "ましたでしょうか",
+                  "t": 0.9
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.68
                 }
               ],
               "zh": "合您的心意吗？",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-195.mp3",
+              "duration": 2.664
             }
           ]
         },
@@ -4656,62 +4776,79 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "今回",
-                  "kana": "こんかい"
+                  "kana": "こんかい",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.62
                 },
                 {
                   "text": "企画",
-                  "kana": "きかく"
+                  "kana": "きかく",
+                  "t": 0.88
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 1.18
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.6
                 },
                 {
-                  "text": "イベント"
+                  "text": "イベント",
+                  "t": 1.6
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 2.34
                 },
                 {
                   "text": "力",
-                  "kana": "ちから"
+                  "kana": "ちから",
+                  "t": 2.52
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 2.8
                 },
                 {
                   "text": "入",
-                  "kana": "い"
+                  "kana": "い",
+                  "t": 3
                 },
                 {
-                  "text": "れ"
+                  "text": "れ",
+                  "t": 3.08
                 },
                 {
-                  "text": "たいと"
+                  "text": "たいと",
+                  "t": 3.22
                 },
                 {
                   "text": "考",
-                  "kana": "かんが"
+                  "kana": "かんが",
+                  "t": 3.56
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 3.86
                 },
                 {
-                  "text": "ています"
+                  "text": "ています",
+                  "t": 3.86
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.06
                 }
               ],
               "zh": "这次的策划，我想在宣传活动方面多下点工夫。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-199.mp3",
+              "duration": 5.28
             },
             {
               "id": 200,
@@ -4990,64 +5127,82 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "中国",
-                  "kana": "ちゅうごく"
+                  "kana": "ちゅうごく",
+                  "t": 0
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 0.68
                 },
                 {
                   "text": "旧暦",
-                  "kana": "きゅうれき"
+                  "kana": "きゅうれき",
+                  "t": 1.1
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 1.56
                 },
                 {
                   "text": "正月",
-                  "kana": "しょうがつ"
+                  "kana": "しょうがつ",
+                  "t": 1.8
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 2.24
                 },
                 {
                   "text": "祝",
-                  "kana": "いわ"
+                  "kana": "いわ",
+                  "t": 2.5
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 2.66
                 },
                 {
-                  "text": "ますが"
+                  "text": "ますが",
+                  "t": 2.66
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 3.46
                 },
                 {
                   "text": "日本",
-                  "kana": "にほん"
+                  "kana": "にほん",
+                  "t": 3.46
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 3.82
                 },
                 {
                   "text": "新暦",
-                  "kana": "しんれき"
+                  "kana": "しんれき",
+                  "t": 4.18
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 4.7
                 },
                 {
                   "text": "祝",
-                  "kana": "いわ"
+                  "kana": "いわ",
+                  "t": 4.88
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 5.06
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 5.06
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.06
                 }
               ],
               "zh": "在中国庆祝农历新年，而在日本庆祝阳历新年。",
@@ -5055,7 +5210,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "では"
               ],
-              "audio": null
+              "audio": "audio/seg-203.mp3",
+              "duration": 6.216
             },
             {
               "id": 204,
@@ -5064,57 +5220,73 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "当店",
-                  "kana": "とうてん"
+                  "kana": "とうてん",
+                  "t": 0
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 0.68
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.2
                 },
                 {
                   "text": "最高",
-                  "kana": "さいこう"
+                  "kana": "さいこう",
+                  "t": 1.2
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 1.92
                 },
                 {
                   "text": "料理",
-                  "kana": "りょうり"
+                  "kana": "りょうり",
+                  "t": 2.12
                 },
                 {
-                  "text": "をご"
+                  "text": "をご",
+                  "t": 2.44
                 },
                 {
                   "text": "用意",
-                  "kana": "ようい"
+                  "kana": "ようい",
+                  "t": 2.86
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 3.16
                 },
                 {
-                  "text": "てお"
+                  "text": "てお",
+                  "t": 3.16
                 },
                 {
                   "text": "客様",
-                  "kana": "きゃくさま"
+                  "kana": "きゃくさま",
+                  "t": 3.64
                 },
                 {
-                  "text": "をお"
+                  "text": "をお",
+                  "t": 4.08
                 },
                 {
                   "text": "待",
-                  "kana": "ま"
+                  "kana": "ま",
+                  "t": 4.5
                 },
                 {
-                  "text": "ち"
+                  "text": "ち",
+                  "t": 4.66
                 },
                 {
-                  "text": "しております"
+                  "text": "しております",
+                  "t": 4.78
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.12
                 }
               ],
               "zh": "本店为您准备了上好的饭菜，恭候您的光临。",
@@ -5122,7 +5294,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "では"
               ],
-              "audio": null
+              "audio": "audio/seg-204.mp3",
+              "duration": 6.288
             }
           ]
         },
@@ -5248,34 +5421,43 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 0
                 },
                 {
                   "text": "村",
-                  "kana": "むら"
+                  "kana": "むら",
+                  "t": 0.5
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 0.7
                 },
                 {
                   "text": "畑",
-                  "kana": "はたけ"
+                  "kana": "はたけ",
+                  "t": 1
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 1.38
                 },
                 {
                   "text": "減",
-                  "kana": "へ"
+                  "kana": "へ",
+                  "t": 1.56
                 },
                 {
-                  "text": "っ"
+                  "text": "っ",
+                  "t": 1.78
                 },
                 {
-                  "text": "てきている"
+                  "text": "てきている",
+                  "t": 1.78
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.22
                 }
               ],
               "zh": "在这个村子，耕地面积在持续减少。",
@@ -5283,7 +5465,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "減ってきている"
               ],
-              "audio": null
+              "audio": "audio/seg-206.mp3",
+              "duration": 3.24
             },
             {
               "id": 207,
@@ -5291,41 +5474,52 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "このまま"
+                  "text": "このまま",
+                  "t": 0
                 },
                 {
                   "text": "失業者",
-                  "kana": "しつぎょうしゃ"
+                  "kana": "しつぎょうしゃ",
+                  "t": 0.82
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 1.42
                 },
                 {
                   "text": "増",
-                  "kana": "ふ"
+                  "kana": "ふ",
+                  "t": 1.62
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 1.8
                 },
                 {
                   "text": "続",
-                  "kana": "つづ"
+                  "kana": "つづ",
+                  "t": 1.94
                 },
                 {
-                  "text": "け"
+                  "text": "け",
+                  "t": 2.18
                 },
                 {
-                  "text": "ていくのではないかと"
+                  "text": "ていくのではないかと",
+                  "t": 2.18
                 },
                 {
                   "text": "心配",
-                  "kana": "しんぱい"
+                  "kana": "しんぱい",
+                  "t": 3.5
                 },
                 {
-                  "text": "です"
+                  "text": "です",
+                  "t": 3.96
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.96
                 }
               ],
               "zh": "我担心失业者会这样不断增多。",
@@ -5333,7 +5527,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "増え続けていく"
               ],
-              "audio": null
+              "audio": "audio/seg-207.mp3",
+              "duration": 5.064
             },
             {
               "id": 208,
@@ -5342,36 +5537,46 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "最近",
-                  "kana": "さいきん"
+                  "kana": "さいきん",
+                  "t": 0.66
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1
                 },
                 {
                   "text": "作業",
-                  "kana": "さぎょう"
+                  "kana": "さぎょう",
+                  "t": 1
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 1.5
                 },
                 {
-                  "text": "ミス"
+                  "text": "ミス",
+                  "t": 1.64
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 1.94
                 },
                 {
                   "text": "増",
-                  "kana": "ふ"
+                  "kana": "ふ",
+                  "t": 2.08
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 2.28
                 },
                 {
-                  "text": "てきてしまっている"
+                  "text": "てきてしまっている",
+                  "t": 2.28
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.24
                 }
               ],
               "zh": "近来，操作失误在不断增多。",
@@ -5379,7 +5584,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "増えてきてしまっている"
               ],
-              "audio": null
+              "audio": "audio/seg-208.mp3",
+              "duration": 4.224
             }
           ]
         },
@@ -5395,37 +5601,47 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "日本酒",
-                  "kana": "にほんしゅ"
+                  "kana": "にほんしゅ",
+                  "t": 0
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 0.86
                 },
                 {
                   "text": "日本人",
-                  "kana": "にほんじん"
+                  "kana": "にほんじん",
+                  "t": 1.06
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 1.66
                 },
                 {
                   "text": "好",
-                  "kana": "この"
+                  "kana": "この",
+                  "t": 1.94
                 },
                 {
-                  "text": "ま"
+                  "text": "ま",
+                  "t": 2.1
                 },
                 {
-                  "text": "れると"
+                  "text": "れると",
+                  "t": 2.3
                 },
                 {
                   "text": "思",
-                  "kana": "おも"
+                  "kana": "おも",
+                  "t": 2.48
                 },
                 {
-                  "text": "う"
+                  "text": "う",
+                  "t": 2.78
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.78
                 }
               ],
               "zh": "日本酒肯定受日本人的欢迎。",
@@ -5433,7 +5649,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "好まれる"
               ],
-              "audio": null
+              "audio": "audio/seg-209.mp3",
+              "duration": 3.792
             },
             {
               "id": 210,
@@ -5441,60 +5658,77 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 0
                 },
                 {
                   "text": "国",
-                  "kana": "くに"
+                  "kana": "くに",
+                  "t": 0.52
                 },
                 {
-                  "text": "でも"
+                  "text": "でも",
+                  "t": 0.72
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.22
                 },
                 {
                   "text": "日本",
-                  "kana": "にほん"
+                  "kana": "にほん",
+                  "t": 1.22
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 1.74
                 },
                 {
-                  "text": "アニメ"
+                  "text": "アニメ",
+                  "t": 2
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 2.34
                 },
                 {
                   "text": "多",
-                  "kana": "おお"
+                  "kana": "おお",
+                  "t": 2.64
                 },
                 {
-                  "text": "く"
+                  "text": "く",
+                  "t": 2.86
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 3
                 },
                 {
                   "text": "若者",
-                  "kana": "わかもの"
+                  "kana": "わかもの",
+                  "t": 3.16
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 3.6
                 },
                 {
                   "text": "好",
-                  "kana": "この"
+                  "kana": "この",
+                  "t": 3.82
                 },
                 {
-                  "text": "ま"
+                  "text": "ま",
+                  "t": 3.98
                 },
                 {
-                  "text": "れている"
+                  "text": "れている",
+                  "t": 4.18
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.42
                 }
               ],
               "zh": "日本动画片在这个国家也受到众多年轻人的青睐。",
@@ -5502,7 +5736,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "好まれている"
               ],
-              "audio": null
+              "audio": "audio/seg-210.mp3",
+              "duration": 5.448
             }
           ]
         },
@@ -5519,7 +5754,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "か",
@@ -5570,43 +5805,55 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "わたしが"
+                  "text": "わたしが",
+                  "t": 0
                 },
                 {
                   "text": "説明",
-                  "kana": "せつめい"
+                  "kana": "せつめい",
+                  "t": 0.88
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 1.26
                 },
                 {
-                  "text": "たとおりにやれば"
+                  "text": "たとおりにやれば",
+                  "t": 1.26
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.74
                 },
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 2.74
                 },
                 {
                   "text": "故障",
-                  "kana": "こしょう"
+                  "kana": "こしょう",
+                  "t": 3.06
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 3.42
                 },
                 {
                   "text": "直",
-                  "kana": "なお"
+                  "kana": "なお",
+                  "t": 3.68
                 },
                 {
-                  "text": "せ"
+                  "text": "せ",
+                  "t": 3.86
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 4.06
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.06
                 }
               ],
               "zh": "照我说的去做，这个故障就能排除。",
@@ -5614,7 +5861,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "とおり"
               ],
-              "audio": null
+              "audio": "audio/seg-212.mp3",
+              "duration": 5.112
             },
             {
               "id": 213,
@@ -5623,37 +5871,47 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "兄",
-                  "kana": "あに"
+                  "kana": "あに",
+                  "t": 0
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 0.48
                 },
                 {
                   "text": "教",
-                  "kana": "おし"
+                  "kana": "おし",
+                  "t": 0.72
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 0.96
                 },
                 {
-                  "text": "てくれたとおりの"
+                  "text": "てくれたとおりの",
+                  "t": 0.96
                 },
                 {
                   "text": "方法",
-                  "kana": "ほうほう"
+                  "kana": "ほうほう",
+                  "t": 2.1
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 2.44
                 },
                 {
                   "text": "勉強",
-                  "kana": "べんきょう"
+                  "kana": "べんきょう",
+                  "t": 2.62
                 },
                 {
-                  "text": "しました"
+                  "text": "しました",
+                  "t": 3.06
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.06
                 }
               ],
               "zh": "我按哥哥教的方法学习。",
@@ -5661,7 +5919,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "とおり"
               ],
-              "audio": null
+              "audio": "audio/seg-213.mp3",
+              "duration": 4.392
             },
             {
               "id": 214,
@@ -5670,23 +5929,29 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "先",
-                  "kana": "さき"
+                  "kana": "さき",
+                  "t": 0
                 },
                 {
-                  "text": "ほど"
+                  "text": "ほど",
+                  "t": 0.56
                 },
                 {
                   "text": "申",
-                  "kana": "もう"
+                  "kana": "もう",
+                  "t": 0.84
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 1.14
                 },
                 {
-                  "text": "ましたとおりでございます"
+                  "text": "ましたとおりでございます",
+                  "t": 1.14
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.06
                 }
               ],
               "zh": "正如刚才我陈述的。",
@@ -5694,7 +5959,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "とおり"
               ],
-              "audio": null
+              "audio": "audio/seg-214.mp3",
+              "duration": 3.432
             }
           ]
         },
@@ -5711,7 +5977,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "では",
@@ -5824,40 +6090,51 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "商品",
-                  "kana": "しょうひん"
+                  "kana": "しょうひん",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.76
                 },
                 {
                   "text": "情報",
-                  "kana": "じょうほう"
+                  "kana": "じょうほう",
+                  "t": 1
                 },
                 {
-                  "text": "については"
+                  "text": "については",
+                  "t": 1.36
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.42
                 },
                 {
                   "text": "弊店",
-                  "kana": "へいてん"
+                  "kana": "へいてん",
+                  "t": 2.42
                 },
                 {
-                  "text": "ホームページ"
+                  "text": "ホームページ",
+                  "t": 2.9
                 },
                 {
-                  "text": "をご"
+                  "text": "をご",
+                  "t": 3.64
                 },
                 {
                   "text": "覧",
-                  "kana": "らん"
+                  "kana": "らん",
+                  "t": 3.94
                 },
                 {
-                  "text": "ください"
+                  "text": "ください",
+                  "t": 4.1
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.1
                 }
               ],
               "zh": "关于产品信息，请查询我店主页。",
@@ -5865,7 +6142,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "弊店"
               ],
-              "audio": null
+              "audio": "audio/seg-216.mp3",
+              "duration": 5.4
             }
           ]
         },
@@ -5882,7 +6160,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "では",
@@ -5994,42 +6272,54 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 0
                 },
                 {
                   "text": "服",
-                  "kana": "ふく"
+                  "kana": "ふく",
+                  "t": 0.52
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 0.72
                 },
                 {
-                  "text": "「"
+                  "text": "「",
+                  "t": 1.26
                 },
                 {
-                  "text": "エコロジー"
+                  "text": "エコロジー",
+                  "t": 1.26
                 },
                 {
-                  "text": "」"
+                  "text": "」",
+                  "t": 2
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 2
                 },
                 {
-                  "text": "コンセプト"
+                  "text": "コンセプト",
+                  "t": 2.14
                 },
                 {
-                  "text": "とした"
+                  "text": "とした",
+                  "t": 2.78
                 },
                 {
                   "text": "素材",
-                  "kana": "そざい"
+                  "kana": "そざい",
+                  "t": 3.06
                 },
                 {
-                  "text": "でできています"
+                  "text": "でできています",
+                  "t": 3.42
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4
                 }
               ],
               "zh": "这件衣服是用“环保”为宗旨的材料制作而成的。",
@@ -6037,7 +6327,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "をコンセプトとした"
               ],
-              "audio": null
+              "audio": "audio/seg-218.mp3",
+              "duration": 5.136
             }
           ]
         },
@@ -6053,56 +6344,72 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "弊社",
-                  "kana": "へいしゃ"
+                  "kana": "へいしゃ",
+                  "t": 0
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 0.64
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.22
                 },
                 {
                   "text": "日本酒",
-                  "kana": "にほんしゅ"
+                  "kana": "にほんしゅ",
+                  "t": 1.22
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 1.9
                 },
                 {
-                  "text": "ベース"
+                  "text": "ベース",
+                  "t": 2.06
                 },
                 {
-                  "text": "にした"
+                  "text": "にした",
+                  "t": 2.34
                 },
                 {
                   "text": "新",
-                  "kana": "しん"
+                  "kana": "しん",
+                  "t": 2.8
                 },
                 {
                   "text": "感覚",
-                  "kana": "かんかく"
+                  "kana": "かんかく",
+                  "t": 3.12
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 3.5
                 },
                 {
-                  "text": "カクテル"
+                  "text": "カクテル",
+                  "t": 3.7
                 },
                 {
-                  "text": "をご"
+                  "text": "をご",
+                  "t": 4.2
                 },
                 {
                   "text": "用意",
-                  "kana": "ようい"
+                  "kana": "ようい",
+                  "t": 4.58
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 4.9
                 },
                 {
-                  "text": "ています"
+                  "text": "ています",
+                  "t": 4.9
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.08
                 }
               ],
               "zh": "敝公司准备了以日本酒为基础的新感觉鸡尾酒。",
@@ -6110,7 +6417,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "新感覚"
               ],
-              "audio": null
+              "audio": "audio/seg-219.mp3",
+              "duration": 6.288
             }
           ]
         },
@@ -6234,63 +6542,81 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "子供",
-                  "kana": "こども"
+                  "kana": "こども",
+                  "t": 0
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 0.64
                 },
                 {
-                  "text": "2"
+                  "text": "2",
+                  "t": 0.8
                 },
                 {
                   "text": "人",
-                  "kana": "ふたり"
+                  "kana": "ふたり",
+                  "t": 1.02
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 1.18
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.54
                 },
                 {
                   "text": "上",
-                  "kana": "うえ"
+                  "kana": "うえ",
+                  "t": 1.54
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 1.78
                 },
                 {
-                  "text": "ほうが"
+                  "text": "ほうが",
+                  "t": 2.04
                 },
                 {
                   "text": "娘",
-                  "kana": "むすめ"
+                  "kana": "むすめ",
+                  "t": 2.34
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 2.66
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 3.24
                 },
                 {
                   "text": "下",
-                  "kana": "した"
+                  "kana": "した",
+                  "t": 3.24
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 3.46
                 },
                 {
-                  "text": "ほうが"
+                  "text": "ほうが",
+                  "t": 3.7
                 },
                 {
                   "text": "息子",
-                  "kana": "むすこ"
+                  "kana": "むすこ",
+                  "t": 3.98
                 },
                 {
-                  "text": "です"
+                  "text": "です",
+                  "t": 4.38
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.38
                 }
               ],
               "zh": "有两个孩子，大的是女儿，小的是儿子。",
@@ -6299,7 +6625,8 @@ window.LESSON_DATA = {
                 "上のほう",
                 "下のほう"
               ],
-              "audio": null
+              "audio": "audio/seg-221.mp3",
+              "duration": 5.448
             }
           ]
         },
@@ -6314,23 +6641,29 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "バー"
+                  "text": "バー",
+                  "t": 0
                 },
                 {
-                  "text": "にも"
+                  "text": "にも",
+                  "t": 0.56
                 },
                 {
                   "text": "置",
-                  "kana": "お"
+                  "kana": "お",
+                  "t": 0.8
                 },
                 {
-                  "text": "け"
+                  "text": "け",
+                  "t": 0.92
                 },
                 {
-                  "text": "ますし"
+                  "text": "ますし",
+                  "t": 1.02
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.28
                 }
               ],
               "zh": "也可以放在酒吧里卖。",
@@ -6338,7 +6671,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "置け"
               ],
-              "audio": null
+              "audio": "audio/seg-222.mp3",
+              "duration": 2.328
             },
             {
               "id": 223,
@@ -6346,68 +6680,87 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "あの"
+                  "text": "あの",
+                  "t": 0
                 },
                 {
                   "text": "店",
-                  "kana": "みせ"
+                  "kana": "みせ",
+                  "t": 0.52
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 0.74
                 },
                 {
                   "text": "中国製",
-                  "kana": "ちゅうごくせい"
+                  "kana": "ちゅうごくせい",
+                  "t": 1.22
                 },
                 {
-                  "text": "のいい"
+                  "text": "のいい",
+                  "t": 1.98
                 },
                 {
                   "text": "筆",
-                  "kana": "ふで"
+                  "kana": "ふで",
+                  "t": 2.36
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 2.48
                 },
                 {
                   "text": "置",
-                  "kana": "お"
+                  "kana": "お",
+                  "t": 2.66
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 2.92
                 },
                 {
-                  "text": "ているので"
+                  "text": "ているので",
+                  "t": 2.92
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 4
                 },
                 {
                   "text": "時々",
-                  "kana": "ときどき"
+                  "kana": "ときどき",
+                  "t": 4
                 },
                 {
                   "text": "買",
-                  "kana": "か"
+                  "kana": "か",
+                  "t": 4.38
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 4.58
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 4.76
                 },
                 {
                   "text": "行",
-                  "kana": "い"
+                  "kana": "い",
+                  "t": 4.88
                 },
                 {
-                  "text": "き"
+                  "text": "き",
+                  "t": 5
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 5
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5
                 }
               ],
               "zh": "那家店有中国产的好毛笔，所以我时常去买。",
@@ -6415,7 +6768,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "置いている"
               ],
-              "audio": null
+              "audio": "audio/seg-223.mp3",
+              "duration": 6.144
             }
           ]
         },
@@ -6438,7 +6792,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -6447,7 +6801,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "，"
@@ -6535,7 +6889,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "と",
@@ -6570,42 +6924,53 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "桜",
-                  "kana": "さくら"
+                  "kana": "さくら",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.66
                 },
                 {
                   "text": "季節",
-                  "kana": "きせつ"
+                  "kana": "きせつ",
+                  "t": 0.88
                 },
                 {
-                  "text": "となりましたが"
+                  "text": "となりましたが",
+                  "t": 1.22
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.5
                 },
                 {
-                  "text": "いかがお"
+                  "text": "いかがお",
+                  "t": 2.5
                 },
                 {
                   "text": "過",
-                  "kana": "す"
+                  "kana": "す",
+                  "t": 3.04
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 3.2
                 },
                 {
-                  "text": "しでしょうか"
+                  "text": "しでしょうか",
+                  "t": 3.3
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.74
                 }
               ],
               "zh": "已是樱花盛开的时节，不知近况可好？",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-225.mp3",
+              "duration": 4.752
             },
             {
               "id": 226,
@@ -6614,83 +6979,106 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "若葉",
-                  "kana": "わかば"
+                  "kana": "わかば",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.7
                 },
                 {
                   "text": "候",
-                  "kana": "こう"
+                  "kana": "こう",
+                  "t": 0.9
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 0.9
                 },
                 {
                   "text": "暑",
-                  "kana": "あつ"
+                  "kana": "あつ",
+                  "t": 1.46
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 1.62
                 },
                 {
                   "text": "日",
-                  "kana": "ひ"
+                  "kana": "ひ",
+                  "t": 1.74
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 1.9
                 },
                 {
                   "text": "続",
-                  "kana": "つづ"
+                  "kana": "つづ",
+                  "t": 2.06
                 },
                 {
-                  "text": "き"
+                  "text": "き",
+                  "t": 2.3
                 },
                 {
-                  "text": "ますが"
+                  "text": "ますが",
+                  "t": 2.3
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.54
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 3.16
                 },
                 {
                   "text": "元気",
-                  "kana": "げんき"
+                  "kana": "げんき",
+                  "t": 3.26
                 },
                 {
-                  "text": "でお"
+                  "text": "でお",
+                  "t": 3.62
                 },
                 {
                   "text": "過",
-                  "kana": "す"
+                  "kana": "す",
+                  "t": 3.94
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 4.06
                 },
                 {
-                  "text": "しのことと"
+                  "text": "しのことと",
+                  "t": 4.18
                 },
                 {
                   "text": "存",
-                  "kana": "ぞん"
+                  "kana": "ぞん",
+                  "t": 4.8
                 },
                 {
-                  "text": "じ"
+                  "text": "じ",
+                  "t": 5
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 5.16
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.16
                 }
               ],
               "zh": "嫩叶初发，虽暑日连连，想必一切安好！",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-226.mp3",
+              "duration": 6.24
             },
             {
               "id": 227,
@@ -6699,33 +7087,41 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "桜",
-                  "kana": "さくら"
+                  "kana": "さくら",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.64
                 },
                 {
                   "text": "美",
-                  "kana": "うつく"
+                  "kana": "うつく",
+                  "t": 0.86
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 1.24
                 },
                 {
                   "text": "季節",
-                  "kana": "きせつ"
+                  "kana": "きせつ",
+                  "t": 1.46
                 },
                 {
-                  "text": "となりました"
+                  "text": "となりました",
+                  "t": 1.82
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.16
                 }
               ],
               "zh": "已是樱花盛开的时节。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-227.mp3",
+              "duration": 3.408
             },
             {
               "id": 228,
@@ -6734,33 +7130,41 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "紅葉",
-                  "kana": "こうよう"
+                  "kana": "こうよう",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.66
                 },
                 {
                   "text": "美",
-                  "kana": "うつく"
+                  "kana": "うつく",
+                  "t": 0.84
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 1.22
                 },
                 {
                   "text": "季節",
-                  "kana": "きせつ"
+                  "kana": "きせつ",
+                  "t": 1.44
                 },
                 {
-                  "text": "となりました"
+                  "text": "となりました",
+                  "t": 1.82
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.14
                 }
               ],
               "zh": "已是红叶迷人的时节。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-228.mp3",
+              "duration": 3.408
             },
             {
               "id": 229,
@@ -6769,45 +7173,57 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "早",
-                  "kana": "はや"
+                  "kana": "はや",
+                  "t": 0
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 0.54
                 },
                 {
-                  "text": "もので"
+                  "text": "もので",
+                  "t": 0.7
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.34
                 },
                 {
                   "text": "今年",
-                  "kana": "ことし"
+                  "kana": "ことし",
+                  "t": 1.34
                 },
                 {
-                  "text": "もあと"
+                  "text": "もあと",
+                  "t": 1.78
                 },
                 {
-                  "text": "1"
+                  "text": "1",
+                  "t": 2.36
                 },
                 {
-                  "text": "か"
+                  "text": "か",
+                  "t": 2.66
                 },
                 {
                   "text": "月",
-                  "kana": "げつ"
+                  "kana": "げつ",
+                  "t": 2.78
                 },
                 {
-                  "text": "となりました"
+                  "text": "となりました",
+                  "t": 2.98
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.3
                 }
               ],
               "zh": "时光飞逝，今年也只剩下1个月了。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-229.mp3",
+              "duration": 4.536
             },
             {
               "id": 230,
@@ -6815,23 +7231,28 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "まずはお"
+                  "text": "まずはお",
+                  "t": 0
                 },
                 {
                   "text": "礼",
-                  "kana": "れい"
+                  "kana": "れい",
+                  "t": 0.92
                 },
                 {
-                  "text": "までに"
+                  "text": "までに",
+                  "t": 1.06
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.3
                 }
               ],
               "zh": "暂且先写信向您道谢。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-230.mp3",
+              "duration": 2.304
             },
             {
               "id": 231,
@@ -6839,40 +7260,50 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0
                 },
                 {
                   "text": "忙",
-                  "kana": "いそが"
+                  "kana": "いそが",
+                  "t": 0.44
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 0.68
                 },
                 {
                   "text": "毎日",
-                  "kana": "まいにち"
+                  "kana": "まいにち",
+                  "t": 0.98
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.86
                 },
                 {
-                  "text": "くれぐれもご"
+                  "text": "くれぐれもご",
+                  "t": 1.86
                 },
                 {
                   "text": "自愛",
-                  "kana": "じあい"
+                  "kana": "じあい",
+                  "t": 2.86
                 },
                 {
-                  "text": "ください"
+                  "text": "ください",
+                  "t": 3.1
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.1
                 }
               ],
               "zh": "百忙当中，请您一定多多保重。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-231.mp3",
+              "duration": 4.416
             },
             {
               "id": 232,
@@ -6881,29 +7312,36 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "風邪",
-                  "kana": "かぜ"
+                  "kana": "かぜ",
+                  "t": 0
                 },
                 {
-                  "text": "など"
+                  "text": "など",
+                  "t": 0.46
                 },
                 {
                   "text": "引",
-                  "kana": "ひ"
+                  "kana": "ひ",
+                  "t": 0.82
                 },
                 {
-                  "text": "か"
+                  "text": "か",
+                  "t": 1.02
                 },
                 {
-                  "text": "れませんよう"
+                  "text": "れませんよう",
+                  "t": 1.12
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.56
                 }
               ],
               "zh": "请注意不要感冒。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-232.mp3",
+              "duration": 2.664
             },
             {
               "id": 233,
@@ -6912,50 +7350,63 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "一層",
-                  "kana": "いっそう"
+                  "kana": "いっそう",
+                  "t": 0.3
                 },
                 {
-                  "text": "のご"
+                  "text": "のご",
+                  "t": 0.72
                 },
                 {
                   "text": "自愛",
-                  "kana": "じあい"
+                  "kana": "じあい",
+                  "t": 1.04
                 },
                 {
-                  "text": "をお"
+                  "text": "をお",
+                  "t": 1.26
                 },
                 {
                   "text": "祈",
-                  "kana": "いの"
+                  "kana": "いの",
+                  "t": 1.74
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 1.96
                 },
                 {
                   "text": "申",
-                  "kana": "もう"
+                  "kana": "もう",
+                  "t": 2.1
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 2.38
                 },
                 {
                   "text": "上",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 2.46
                 },
                 {
-                  "text": "げ"
+                  "text": "げ",
+                  "t": 2.54
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 2.66
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.66
                 }
               ],
               "zh": "请务必多多保重。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-233.mp3",
+              "duration": 3.696
             }
           ]
         },
@@ -6971,51 +7422,65 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "北上",
-                  "kana": "きたかみ"
+                  "kana": "きたかみ",
+                  "t": 0
                 },
                 {
                   "text": "貿易",
-                  "kana": "ぼうえき"
+                  "kana": "ぼうえき",
+                  "t": 0.8
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 1.2
                 },
                 {
                   "text": "皆様",
-                  "kana": "みなさま"
+                  "kana": "みなさま",
+                  "t": 1.5
                 },
                 {
-                  "text": "におかれましてはお"
+                  "text": "におかれましてはお",
+                  "t": 1.9
                 },
                 {
                   "text": "元気",
-                  "kana": "げんき"
+                  "kana": "げんき",
+                  "t": 3.32
                 },
                 {
-                  "text": "でお"
+                  "text": "でお",
+                  "t": 3.68
                 },
                 {
                   "text": "過",
-                  "kana": "す"
+                  "kana": "す",
+                  "t": 3.98
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 4.08
                 },
                 {
-                  "text": "しのことと"
+                  "text": "しのことと",
+                  "t": 4.22
                 },
                 {
                   "text": "存",
-                  "kana": "ぞん"
+                  "kana": "ぞん",
+                  "t": 4.82
                 },
                 {
-                  "text": "じ"
+                  "text": "じ",
+                  "t": 5.04
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 5.2
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.2
                 }
               ],
               "zh": "想必北上贸易公司诸位一切安好吧！",
@@ -7023,7 +7488,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "におかれましては"
               ],
-              "audio": null
+              "audio": "audio/seg-234.mp3",
+              "duration": 6.288
             },
             {
               "id": 235,
@@ -7032,37 +7498,47 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "委員",
-                  "kana": "いいん"
+                  "kana": "いいん",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.66
                 },
                 {
                   "text": "皆様",
-                  "kana": "みなさま"
+                  "kana": "みなさま",
+                  "t": 0.86
                 },
                 {
-                  "text": "にはお"
+                  "text": "にはお",
+                  "t": 1.26
                 },
                 {
                   "text": "元気",
-                  "kana": "げんき"
+                  "kana": "げんき",
+                  "t": 2
                 },
                 {
-                  "text": "でお"
+                  "text": "でお",
+                  "t": 2.3
                 },
                 {
                   "text": "過",
-                  "kana": "す"
+                  "kana": "す",
+                  "t": 2.6
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 2.68
                 },
                 {
-                  "text": "しでしょうか"
+                  "text": "しでしょうか",
+                  "t": 2.8
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.24
                 }
               ],
               "zh": "各位委员一切安好？",
@@ -7070,7 +7546,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "には"
               ],
-              "audio": null
+              "audio": "audio/seg-235.mp3",
+              "duration": 4.224
             }
           ]
         },
@@ -7087,7 +7564,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "の",
@@ -7096,7 +7573,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1.0
+                  "t": 1
                 },
                 {
                   "text": "，"
@@ -7184,7 +7661,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6.0
+                  "t": 6
                 },
                 {
                   "text": "と",
@@ -7221,33 +7698,42 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "先生",
-                  "kana": "せんせい"
+                  "kana": "せんせい",
+                  "t": 0
                 },
                 {
-                  "text": "におかれましてはますますお"
+                  "text": "におかれましてはますますお",
+                  "t": 0.7
                 },
                 {
                   "text": "忙",
-                  "kana": "いそが"
+                  "kana": "いそが",
+                  "t": 2.66
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 2.92
                 },
                 {
-                  "text": "ことと"
+                  "text": "ことと",
+                  "t": 3.18
                 },
                 {
                   "text": "存",
-                  "kana": "ぞん"
+                  "kana": "ぞん",
+                  "t": 3.58
                 },
                 {
-                  "text": "じ"
+                  "text": "じ",
+                  "t": 3.78
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 3.96
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.96
                 }
               ],
               "zh": "想必老师您更加繁忙了吧！",
@@ -7255,7 +7741,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "ことと存じます"
               ],
-              "audio": null
+              "audio": "audio/seg-237.mp3",
+              "duration": 5.04
             }
           ]
         },
@@ -7352,27 +7839,34 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "警察",
-                  "kana": "けいさつ"
+                  "kana": "けいさつ",
+                  "t": 0
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 0.72
                 },
                 {
                   "text": "目撃者",
-                  "kana": "もくげきしゃ"
+                  "kana": "もくげきしゃ",
+                  "t": 1.04
                 },
                 {
-                  "text": "がいなかったか"
+                  "text": "がいなかったか",
+                  "t": 1.78
                 },
                 {
                   "text": "調査",
-                  "kana": "ちょうさ"
+                  "kana": "ちょうさ",
+                  "t": 2.62
                 },
                 {
-                  "text": "をしている"
+                  "text": "をしている",
+                  "t": 3.02
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.36
                 }
               ],
               "zh": "警察正在调查是否有目击者。",
@@ -7380,7 +7874,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "では"
               ],
-              "audio": null
+              "audio": "audio/seg-239.mp3",
+              "duration": 4.44
             },
             {
               "id": 240,
@@ -7388,38 +7883,48 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "わたしたちの"
+                  "text": "わたしたちの",
+                  "t": 0
                 },
                 {
                   "text": "研究所",
-                  "kana": "けんきゅうじょ"
+                  "kana": "けんきゅうじょ",
+                  "t": 1.16
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 1.66
                 },
                 {
                   "text": "動物",
-                  "kana": "どうぶつ"
+                  "kana": "どうぶつ",
+                  "t": 1.96
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 2.52
                 },
                 {
                   "text": "進化",
-                  "kana": "しんか"
+                  "kana": "しんか",
+                  "t": 2.76
                 },
                 {
-                  "text": "について"
+                  "text": "について",
+                  "t": 3.02
                 },
                 {
                   "text": "研究",
-                  "kana": "けんきゅう"
+                  "kana": "けんきゅう",
+                  "t": 3.64
                 },
                 {
-                  "text": "しています"
+                  "text": "しています",
+                  "t": 4.12
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.36
                 }
               ],
               "zh": "我们研究所正在研究动物的进化。",
@@ -7427,7 +7932,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "では"
               ],
-              "audio": null
+              "audio": "audio/seg-240.mp3",
+              "duration": 5.544
             }
           ]
         },
@@ -7572,34 +8078,43 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "貴社",
-                  "kana": "きしゃ"
+                  "kana": "きしゃ",
+                  "t": 0
                 },
                 {
                   "text": "宛",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 0.6
                 },
                 {
-                  "text": "て"
+                  "text": "て",
+                  "t": 0.72
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 0.72
                 },
                 {
                   "text": "請求書",
-                  "kana": "せいきゅうしょ"
+                  "kana": "せいきゅうしょ",
+                  "t": 1.04
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 1.64
                 },
                 {
                   "text": "送付",
-                  "kana": "そうふ"
+                  "kana": "そうふ",
+                  "t": 1.88
                 },
                 {
-                  "text": "させていただきます"
+                  "text": "させていただきます",
+                  "t": 2.04
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.84
                 }
               ],
               "zh": "我们拟向贵公司寄出一份帐单。",
@@ -7607,7 +8122,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "貴社"
               ],
-              "audio": null
+              "audio": "audio/seg-242.mp3",
+              "duration": 4.032
             }
           ]
         },
@@ -7752,46 +8268,59 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "今日",
-                  "kana": "きょう"
+                  "kana": "きょう",
+                  "t": 0
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 0
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0.64
                 },
                 {
                   "text": "忙",
-                  "kana": "いそが"
+                  "kana": "いそが",
+                  "t": 0.96
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 1.22
                 },
                 {
-                  "text": "ようですから"
+                  "text": "ようですから",
+                  "t": 1.48
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.48
                 },
                 {
-                  "text": "また"
+                  "text": "また",
+                  "t": 2.48
                 },
                 {
                   "text": "明後日",
-                  "kana": "みょうごにち"
+                  "kana": "みょうごにち",
+                  "t": 3.04
                 },
                 {
                   "text": "伺",
-                  "kana": "うかが"
+                  "kana": "うかが",
+                  "t": 3.52
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 3.76
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 3.76
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.76
                 }
               ],
               "zh": "您今天太忙了，我后天再来拜访吧。",
@@ -7799,7 +8328,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "お忙しい"
               ],
-              "audio": null
+              "audio": "audio/seg-244.mp3",
+              "duration": 5.016
             }
           ]
         },
@@ -8138,56 +8668,72 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "みんなが"
+                  "text": "みんなが",
+                  "t": 0
                 },
                 {
                   "text": "寝",
-                  "kana": "ね"
+                  "kana": "ね",
+                  "t": 0.78
                 },
                 {
-                  "text": "て"
+                  "text": "て",
+                  "t": 0.96
                 },
                 {
-                  "text": "いるうちに"
+                  "text": "いるうちに",
+                  "t": 1.1
                 },
                 {
-                  "text": "（"
+                  "text": "（",
+                  "t": 2
                 },
                 {
-                  "text": "="
+                  "text": "=",
+                  "t": 2
                 },
                 {
                   "text": "間",
-                  "kana": "あいだ"
+                  "kana": "あいだ",
+                  "t": 2
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 2.14
                 },
                 {
-                  "text": "）"
+                  "text": "）",
+                  "t": 2.66
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.66
                 },
                 {
-                  "text": "こっそり"
+                  "text": "こっそり",
+                  "t": 2.66
                 },
                 {
                   "text": "出",
-                  "kana": "で"
+                  "kana": "で",
+                  "t": 3.26
                 },
                 {
-                  "text": "て"
+                  "text": "て",
+                  "t": 3.38
                 },
                 {
                   "text": "行",
-                  "kana": "い"
+                  "kana": "い",
+                  "t": 3.54
                 },
                 {
-                  "text": "った"
+                  "text": "った",
+                  "t": 3.68
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.68
                 }
               ],
               "zh": "趁大家正睡觉，悄悄出去了。",
@@ -8195,7 +8741,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "うちに"
               ],
-              "audio": null
+              "audio": "audio/seg-247.mp3",
+              "duration": 4.656
             },
             {
               "id": 248,
@@ -8204,53 +8751,68 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "母",
-                  "kana": "はは"
+                  "kana": "はは",
+                  "t": 0
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 0.46
                 },
                 {
                   "text": "外出",
-                  "kana": "がいしゅつ"
+                  "kana": "がいしゅつ",
+                  "t": 0.68
                 },
                 {
-                  "text": "しているうちに"
+                  "text": "しているうちに",
+                  "t": 1.12
                 },
                 {
-                  "text": "（"
+                  "text": "（",
+                  "t": 2.38
                 },
                 {
-                  "text": "="
+                  "text": "=",
+                  "t": 2.38
                 },
                 {
                   "text": "間",
-                  "kana": "あいだ"
+                  "kana": "あいだ",
+                  "t": 2.38
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 2.56
                 },
                 {
-                  "text": "）"
+                  "text": "）",
+                  "t": 3.02
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 3.02
                 },
                 {
                   "text": "掃除",
-                  "kana": "そうじ"
+                  "kana": "そうじ",
+                  "t": 3.02
                 },
                 {
-                  "text": "をして"
+                  "text": "をして",
+                  "t": 3.4
                 },
                 {
                   "text": "部屋",
-                  "kana": "へや"
+                  "kana": "へや",
+                  "t": 3.78
                 },
                 {
-                  "text": "をぴかぴかにしよう"
+                  "text": "をぴかぴかにしよう",
+                  "t": 4.14
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.28
                 }
               ],
               "zh": "趁母亲外出时间，把房间打扫得干干净净的吧。",
@@ -8258,7 +8820,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "うちに"
               ],
-              "audio": null
+              "audio": "audio/seg-248.mp3",
+              "duration": 6.288
             },
             {
               "id": 249,
@@ -8267,55 +8830,71 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "休",
-                  "kana": "やす"
+                  "kana": "やす",
+                  "t": 0
                 },
                 {
-                  "text": "み"
+                  "text": "み",
+                  "t": 0.56
                 },
                 {
                   "text": "時間",
-                  "kana": "じかん"
+                  "kana": "じかん",
+                  "t": 0.76
                 },
                 {
-                  "text": "のうちに"
+                  "text": "のうちに",
+                  "t": 1.08
                 },
                 {
-                  "text": "（"
+                  "text": "（",
+                  "t": 2.04
                 },
                 {
-                  "text": "="
+                  "text": "=",
+                  "t": 2.04
                 },
                 {
                   "text": "間",
-                  "kana": "あいだ"
+                  "kana": "あいだ",
+                  "t": 2.04
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 2.22
                 },
                 {
-                  "text": "）"
+                  "text": "）",
+                  "t": 2.66
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.66
                 },
                 {
-                  "text": "トイレ"
+                  "text": "トイレ",
+                  "t": 2.66
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 3.06
                 },
                 {
                   "text": "行",
-                  "kana": "い"
+                  "kana": "い",
+                  "t": 3.2
                 },
                 {
-                  "text": "って"
+                  "text": "って",
+                  "t": 3.38
                 },
                 {
-                  "text": "おきなさい"
+                  "text": "おきなさい",
+                  "t": 3.52
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.96
                 }
               ],
               "zh": "趁着休息时间，去把厕所上了吧！",
@@ -8323,7 +8902,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "うちに"
               ],
-              "audio": null
+              "audio": "audio/seg-249.mp3",
+              "duration": 4.944
             },
             {
               "id": 250,
@@ -8332,66 +8912,85 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "近",
-                  "kana": "ちか"
+                  "kana": "ちか",
+                  "t": 0
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 0.58
                 },
                 {
-                  "text": "うちに"
+                  "text": "うちに",
+                  "t": 0.58
                 },
                 {
                   "text": "一度",
-                  "kana": "いちど"
+                  "kana": "いちど",
+                  "t": 1.16
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 1.58
                 },
                 {
                   "text": "目",
-                  "kana": "め"
+                  "kana": "め",
+                  "t": 1.68
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 1.78
                 },
                 {
-                  "text": "かかり"
+                  "text": "かかり",
+                  "t": 1.96
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.56
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 2.56
                 },
                 {
                   "text": "話",
-                  "kana": "はなし"
+                  "kana": "はなし",
+                  "t": 2.76
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 3.02
                 },
                 {
                   "text": "伺",
-                  "kana": "うかが"
+                  "kana": "うかが",
+                  "t": 3.28
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 3.58
                 },
                 {
-                  "text": "ればと"
+                  "text": "ればと",
+                  "t": 3.72
                 },
                 {
                   "text": "存",
-                  "kana": "ぞん"
+                  "kana": "ぞん",
+                  "t": 4.1
                 },
                 {
-                  "text": "じ"
+                  "text": "じ",
+                  "t": 4.26
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 4.44
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.44
                 }
               ],
               "zh": "近期内我想拜会一次，聆听指教。",
@@ -8399,7 +8998,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "うちに"
               ],
-              "audio": null
+              "audio": "audio/seg-250.mp3",
+              "duration": 5.52
             },
             {
               "id": 251,
@@ -8408,52 +9008,66 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "歩",
-                  "kana": "ある"
+                  "kana": "ある",
+                  "t": 0
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 0.56
                 },
                 {
-                  "text": "ているうちは"
+                  "text": "ているうちは",
+                  "t": 0.56
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.58
                 },
                 {
                   "text": "足",
-                  "kana": "あし"
+                  "kana": "あし",
+                  "t": 1.58
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 1.98
                 },
                 {
                   "text": "痛",
-                  "kana": "いた"
+                  "kana": "いた",
+                  "t": 2.2
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 2.38
                 },
                 {
-                  "text": "ことに"
+                  "text": "ことに",
+                  "t": 2.56
                 },
                 {
                   "text": "気",
-                  "kana": "き"
+                  "kana": "き",
+                  "t": 2.94
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 3.14
                 },
                 {
-                  "text": "つかなかった"
+                  "text": "つかなかった",
+                  "t": 3.26
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.56
                 }
               ],
               "zh": "走着的时候没觉得脚疼。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-251.mp3",
+              "duration": 4.776
             },
             {
               "id": 252,
@@ -8462,35 +9076,44 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "夜",
-                  "kana": "よる"
+                  "kana": "よる",
+                  "t": 0
                 },
                 {
-                  "text": "のうちは"
+                  "text": "のうちは",
+                  "t": 0.48
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.34
                 },
                 {
-                  "text": "ここから"
+                  "text": "ここから",
+                  "t": 1.34
                 },
                 {
                   "text": "動",
-                  "kana": "うご"
+                  "kana": "うご",
+                  "t": 1.94
                 },
                 {
-                  "text": "か"
+                  "text": "か",
+                  "t": 2.18
                 },
                 {
-                  "text": "ないほうがいいでしょう"
+                  "text": "ないほうがいいでしょう",
+                  "t": 2.32
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3
                 }
               ],
               "zh": "晚上最好别离开这里。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-252.mp3",
+              "duration": 4.2
             },
             {
               "id": 253,
@@ -8499,56 +9122,71 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "体",
-                  "kana": "からだ"
+                  "kana": "からだ",
+                  "t": 0
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 0.58
                 },
                 {
                   "text": "健康",
-                  "kana": "けんこう"
+                  "kana": "けんこう",
+                  "t": 0.82
                 },
                 {
-                  "text": "なうちは"
+                  "text": "なうちは",
+                  "t": 1.26
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.02
                 },
                 {
                   "text": "妻",
-                  "kana": "つま"
+                  "kana": "つま",
+                  "t": 2.02
                 },
                 {
-                  "text": "と"
+                  "text": "と",
+                  "t": 2.42
                 },
                 {
-                  "text": "2"
+                  "text": "2",
+                  "t": 2.6
                 },
                 {
                   "text": "人",
-                  "kana": "ふたり"
+                  "kana": "ふたり",
+                  "t": 2.74
                 },
                 {
-                  "text": "でのんびり"
+                  "text": "でのんびり",
+                  "t": 2.94
                 },
                 {
                   "text": "暮",
-                  "kana": "く"
+                  "kana": "く",
+                  "t": 3.62
                 },
                 {
-                  "text": "らし"
+                  "text": "らし",
+                  "t": 3.78
                 },
                 {
-                  "text": "たい"
+                  "text": "たい",
+                  "t": 3.88
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.02
                 }
               ],
               "zh": "趁着身体还健康，想和妻子两人悠闲地生活。",
               "notes": "",
               "blanks": [],
-              "audio": null
+              "audio": "audio/seg-253.mp3",
+              "duration": 4.944
             }
           ]
         },
@@ -8564,66 +9202,85 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "近",
-                  "kana": "ちか"
+                  "kana": "ちか",
+                  "t": 0
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 0.58
                 },
                 {
-                  "text": "うちに"
+                  "text": "うちに",
+                  "t": 0.58
                 },
                 {
                   "text": "一度",
-                  "kana": "いちど"
+                  "kana": "いちど",
+                  "t": 1.16
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 1.58
                 },
                 {
                   "text": "目",
-                  "kana": "め"
+                  "kana": "め",
+                  "t": 1.68
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 1.78
                 },
                 {
-                  "text": "かかり"
+                  "text": "かかり",
+                  "t": 1.96
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.56
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 2.56
                 },
                 {
                   "text": "話",
-                  "kana": "はなし"
+                  "kana": "はなし",
+                  "t": 2.76
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 3.02
                 },
                 {
                   "text": "伺",
-                  "kana": "うかが"
+                  "kana": "うかが",
+                  "t": 3.28
                 },
                 {
-                  "text": "え"
+                  "text": "え",
+                  "t": 3.58
                 },
                 {
-                  "text": "ればと"
+                  "text": "ればと",
+                  "t": 3.72
                 },
                 {
                   "text": "存",
-                  "kana": "ぞん"
+                  "kana": "ぞん",
+                  "t": 4.1
                 },
                 {
-                  "text": "じ"
+                  "text": "じ",
+                  "t": 4.26
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 4.44
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.44
                 }
               ],
               "zh": "近期内我想拜会一次，聆听指教。",
@@ -8631,7 +9288,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "お目にかかり"
               ],
-              "audio": null
+              "audio": "audio/seg-254.mp3",
+              "duration": 5.52
             },
             {
               "id": 255,
@@ -8640,44 +9298,56 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "一度",
-                  "kana": "いちど"
+                  "kana": "いちど",
+                  "t": 0
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 0.9
                 },
                 {
                   "text": "仕事",
-                  "kana": "しごと"
+                  "kana": "しごと",
+                  "t": 0.9
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 1.38
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.92
                 },
                 {
                   "text": "木村",
-                  "kana": "きむら"
+                  "kana": "きむら",
+                  "t": 1.92
                 },
                 {
                   "text": "先生",
-                  "kana": "せんせい"
+                  "kana": "せんせい",
+                  "t": 2.4
                 },
                 {
-                  "text": "にお"
+                  "text": "にお",
+                  "t": 2.84
                 },
                 {
                   "text": "目",
-                  "kana": "め"
+                  "kana": "め",
+                  "t": 3.26
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 3.38
                 },
                 {
-                  "text": "かかったことがある"
+                  "text": "かかったことがある",
+                  "t": 3.56
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.4
                 }
               ],
               "zh": "因为工作关系，我曾经见过木村老师一面。",
@@ -8685,7 +9355,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "お目にかかった"
               ],
-              "audio": null
+              "audio": "audio/seg-255.mp3",
+              "duration": 5.4
             },
             {
               "id": 256,
@@ -8694,51 +9365,65 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "今回",
-                  "kana": "こんかい"
+                  "kana": "こんかい",
+                  "t": 0
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.6
                 },
                 {
                   "text": "特別",
-                  "kana": "とくべつ"
+                  "kana": "とくべつ",
+                  "t": 0.86
                 },
                 {
                   "text": "展示品",
-                  "kana": "てんじひん"
+                  "kana": "てんじひん",
+                  "t": 1.3
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 1.9
                 },
                 {
                   "text": "皆様",
-                  "kana": "みなさま"
+                  "kana": "みなさま",
+                  "t": 2.12
                 },
                 {
-                  "text": "のお"
+                  "text": "のお",
+                  "t": 2.64
                 },
                 {
                   "text": "目",
-                  "kana": "め"
+                  "kana": "め",
+                  "t": 2.9
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 2.96
                 },
                 {
-                  "text": "かけたいと"
+                  "text": "かけたいと",
+                  "t": 3.2
                 },
                 {
                   "text": "思",
-                  "kana": "おも"
+                  "kana": "おも",
+                  "t": 3.7
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 3.7
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 3.7
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.7
                 }
               ],
               "zh": "我们想向各位展示本次的特殊展品。",
@@ -8746,7 +9431,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "お目にかけ"
               ],
-              "audio": null
+              "audio": "audio/seg-256.mp3",
+              "duration": 5.208
             }
           ]
         },
@@ -8883,23 +9569,29 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "後日",
-                  "kana": "ごじつ"
+                  "kana": "ごじつ",
+                  "t": 0
                 },
                 {
-                  "text": "あいさつに"
+                  "text": "あいさつに",
+                  "t": 0.72
                 },
                 {
                   "text": "伺",
-                  "kana": "うかが"
+                  "kana": "うかが",
+                  "t": 1.42
                 },
                 {
-                  "text": "わ"
+                  "text": "わ",
+                  "t": 1.68
                 },
                 {
-                  "text": "せていただきます"
+                  "text": "せていただきます",
+                  "t": 1.88
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.46
                 }
               ],
               "zh": "改日我将登门拜访。",
@@ -8907,7 +9599,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "後日"
               ],
-              "audio": null
+              "audio": "audio/seg-258.mp3",
+              "duration": 3.648
             }
           ]
         },
@@ -9044,61 +9737,78 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "先日",
-                  "kana": "せんじつ"
+                  "kana": "せんじつ",
+                  "t": 0
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.14
                 },
                 {
                   "text": "中国",
-                  "kana": "ちゅうごく"
+                  "kana": "ちゅうごく",
+                  "t": 1.14
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 1.64
                 },
                 {
                   "text": "参",
-                  "kana": "まい"
+                  "kana": "まい",
+                  "t": 1.92
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 2.12
                 },
                 {
-                  "text": "ました"
+                  "text": "ました",
+                  "t": 2.12
                 },
                 {
                   "text": "折",
-                  "kana": "おり"
+                  "kana": "おり",
+                  "t": 2.5
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 2.74
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 3.36
                 },
                 {
                   "text": "朱",
-                  "kana": "しゅ"
+                  "kana": "しゅ",
+                  "t": 3.36
                 },
                 {
                   "text": "先生",
-                  "kana": "せんせい"
+                  "kana": "せんせい",
+                  "t": 3.64
                 },
                 {
-                  "text": "にお"
+                  "text": "にお",
+                  "t": 3.96
                 },
                 {
                   "text": "会",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 4.38
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 4.5
                 },
                 {
-                  "text": "しました"
+                  "text": "しました",
+                  "t": 4.58
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.58
                 }
               ],
               "zh": "前些日子我去中国时，见到了朱老师。",
@@ -9106,7 +9816,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "折に"
               ],
-              "audio": null
+              "audio": "audio/seg-260.mp3",
+              "duration": 5.856
             },
             {
               "id": 261,
@@ -9114,54 +9825,69 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0
                 },
                 {
                   "text": "近",
-                  "kana": "ちか"
+                  "kana": "ちか",
+                  "t": 0.44
                 },
                 {
-                  "text": "く"
+                  "text": "く",
+                  "t": 0.64
                 },
                 {
-                  "text": "にいらっしゃる"
+                  "text": "にいらっしゃる",
+                  "t": 0.82
                 },
                 {
                   "text": "折",
-                  "kana": "おり"
+                  "kana": "おり",
+                  "t": 1.54
                 },
                 {
-                  "text": "には"
+                  "text": "には",
+                  "t": 1.7
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.22
                 },
                 {
                   "text": "我",
-                  "kana": "わ"
+                  "kana": "わ",
+                  "t": 2.22
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 2.6
                 },
                 {
                   "text": "家",
-                  "kana": "や"
+                  "kana": "や",
+                  "t": 2.68
                 },
                 {
-                  "text": "にもお"
+                  "text": "にもお",
+                  "t": 2.78
                 },
                 {
                   "text": "寄",
-                  "kana": "よ"
+                  "kana": "よ",
+                  "t": 3.2
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 3.26
                 },
                 {
-                  "text": "ください"
+                  "text": "ください",
+                  "t": 3.42
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.42
                 }
               ],
               "zh": "如若有机会到附近来，请顺便到我家坐坐。",
@@ -9169,7 +9895,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "折には"
               ],
-              "audio": null
+              "audio": "audio/seg-261.mp3",
+              "duration": 4.68
             },
             {
               "id": 262,
@@ -9178,40 +9905,51 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "北京",
-                  "kana": "ぺきん"
+                  "kana": "ぺきん",
+                  "t": 0
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 0.6
                 },
                 {
                   "text": "来",
-                  "kana": "き"
+                  "kana": "き",
+                  "t": 0.78
                 },
                 {
-                  "text": "た"
+                  "text": "た",
+                  "t": 0.94
                 },
                 {
                   "text": "際",
-                  "kana": "さい"
+                  "kana": "さい",
+                  "t": 1.1
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 1.32
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.76
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 1.76
                 },
                 {
                   "text": "連絡",
-                  "kana": "れんらく"
+                  "kana": "れんらく",
+                  "t": 1.9
                 },
                 {
-                  "text": "ください"
+                  "text": "ください",
+                  "t": 2.3
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.3
                 }
               ],
               "zh": "如来北京，请与我联系。",
@@ -9219,7 +9957,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "際は"
               ],
-              "audio": null
+              "audio": "audio/seg-262.mp3",
+              "duration": 3.624
             },
             {
               "id": 263,
@@ -9227,24 +9966,30 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "その"
+                  "text": "その",
+                  "t": 0
                 },
                 {
                   "text": "節",
-                  "kana": "せつ"
+                  "kana": "せつ",
+                  "t": 0.58
                 },
                 {
-                  "text": "はたいへんお"
+                  "text": "はたいへんお",
+                  "t": 0.82
                 },
                 {
                   "text": "世話",
-                  "kana": "せわ"
+                  "kana": "せわ",
+                  "t": 1.8
                 },
                 {
-                  "text": "になりました"
+                  "text": "になりました",
+                  "t": 1.98
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.26
                 }
               ],
               "zh": "那时承蒙您多方关照了。",
@@ -9252,7 +9997,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "その節"
               ],
-              "audio": null
+              "audio": "audio/seg-263.mp3",
+              "duration": 3.552
             }
           ]
         },
@@ -9388,51 +10134,65 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0
                 },
                 {
                   "text": "忙",
-                  "kana": "いそが"
+                  "kana": "いそが",
+                  "t": 0.44
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 0.7
                 },
                 {
                   "text": "中",
-                  "kana": "ちゅう"
+                  "kana": "ちゅう",
+                  "t": 1
                 },
                 {
                   "text": "恐縮",
-                  "kana": "きょうしゅく"
+                  "kana": "きょうしゅく",
+                  "t": 1.3
                 },
                 {
-                  "text": "ですが"
+                  "text": "ですが",
+                  "t": 1.7
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.34
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 2.34
                 },
                 {
                   "text": "連絡",
-                  "kana": "れんらく"
+                  "kana": "れんらく",
+                  "t": 2.58
                 },
                 {
-                  "text": "いただければ"
+                  "text": "いただければ",
+                  "t": 3
                 },
                 {
                   "text": "幸",
-                  "kana": "さいわ"
+                  "kana": "さいわ",
+                  "t": 3.82
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 4.04
                 },
                 {
-                  "text": "です"
+                  "text": "です",
+                  "t": 4.22
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.22
                 }
               ],
               "zh": "非常抱歉百忙之中打搅您，希望您能与我联系。",
@@ -9440,7 +10200,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "ければ幸いです"
               ],
-              "audio": null
+              "audio": "audio/seg-265.mp3",
+              "duration": 5.304
             }
           ]
         },
@@ -9601,20 +10362,25 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "弊社",
-                  "kana": "へいしゃ"
+                  "kana": "へいしゃ",
+                  "t": 0
                 },
                 {
-                  "text": "からまたお"
+                  "text": "からまたお",
+                  "t": 0.64
                 },
                 {
                   "text": "電話",
-                  "kana": "でんわ"
+                  "kana": "でんわ",
+                  "t": 1.4
                 },
                 {
-                  "text": "いたします"
+                  "text": "いたします",
+                  "t": 1.72
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 1.94
                 }
               ],
               "zh": "我公司还会再给您去电话。",
@@ -9622,7 +10388,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "お電話いたします"
               ],
-              "audio": null
+              "audio": "audio/seg-267.mp3",
+              "duration": 3.144
             },
             {
               "id": 268,
@@ -9631,50 +10398,64 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "今",
-                  "kana": "いま"
+                  "kana": "いま",
+                  "t": 0
                 },
                 {
-                  "text": "か"
+                  "text": "か",
+                  "t": 0.5
                 },
                 {
-                  "text": "ら"
+                  "text": "ら",
+                  "t": 0.5
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.06
                 },
                 {
                   "text": "全員",
-                  "kana": "ぜんいん"
+                  "kana": "ぜんいん",
+                  "t": 1.06
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 1.6
                 },
                 {
                   "text": "方",
-                  "kana": "かた"
+                  "kana": "かた",
+                  "t": 1.78
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 1.92
                 },
                 {
                   "text": "昼食",
-                  "kana": "ちゅうしょく"
+                  "kana": "ちゅうしょく",
+                  "t": 2.26
                 },
                 {
-                  "text": "をお"
+                  "text": "をお",
+                  "t": 2.74
                 },
                 {
                   "text": "配",
-                  "kana": "くば"
+                  "kana": "くば",
+                  "t": 3.06
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 3.26
                 },
                 {
-                  "text": "いたします"
+                  "text": "いたします",
+                  "t": 3.46
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.64
                 }
               ],
               "zh": "现在开始向各位发放午餐。",
@@ -9682,7 +10463,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "お配りいたします"
               ],
-              "audio": null
+              "audio": "audio/seg-268.mp3",
+              "duration": 4.8
             },
             {
               "id": 269,
@@ -9690,24 +10472,30 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "わたしの"
+                  "text": "わたしの",
+                  "t": 0
                 },
                 {
                   "text": "妻",
-                  "kana": "つま"
+                  "kana": "つま",
+                  "t": 0.84
                 },
                 {
-                  "text": "がご"
+                  "text": "がご",
+                  "t": 1.06
                 },
                 {
                   "text": "案内",
-                  "kana": "あんない"
+                  "kana": "あんない",
+                  "t": 1.48
                 },
                 {
-                  "text": "いたします"
+                  "text": "いたします",
+                  "t": 1.84
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.1
                 }
               ],
               "zh": "由我妻子带您去。",
@@ -9715,7 +10503,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "ご案内いたします"
               ],
-              "audio": null
+              "audio": "audio/seg-269.mp3",
+              "duration": 3.288
             }
           ]
         },
@@ -9876,40 +10665,51 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "本当",
-                  "kana": "ほんとう"
+                  "kana": "ほんとう",
+                  "t": 0
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 0.66
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.14
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 1.14
                 },
                 {
                   "text": "迷惑",
-                  "kana": "めいわく"
+                  "kana": "めいわく",
+                  "t": 1.32
                 },
                 {
-                  "text": "をかけて"
+                  "text": "をかけて",
+                  "t": 1.74
                 },
                 {
                   "text": "申",
-                  "kana": "もう"
+                  "kana": "もう",
+                  "t": 2.3
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 2.64
                 },
                 {
                   "text": "訳",
-                  "kana": "わけ"
+                  "kana": "わけ",
+                  "t": 2.74
                 },
                 {
-                  "text": "ありません"
+                  "text": "ありません",
+                  "t": 2.94
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.18
                 }
               ],
               "zh": "实在很抱歉，给您添麻烦了。",
@@ -9917,7 +10717,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "ご迷惑をかけて"
               ],
-              "audio": null
+              "audio": "audio/seg-271.mp3",
+              "duration": 4.32
             },
             {
               "id": 272,
@@ -9925,30 +10726,38 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 0
                 },
                 {
                   "text": "度",
-                  "kana": "たび"
+                  "kana": "たび",
+                  "t": 0.52
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 0.82
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.24
                 },
                 {
-                  "text": "ご"
+                  "text": "ご",
+                  "t": 1.24
                 },
                 {
                   "text": "迷惑",
-                  "kana": "めいわく"
+                  "kana": "めいわく",
+                  "t": 1.4
                 },
                 {
-                  "text": "をおかけしました"
+                  "text": "をおかけしました",
+                  "t": 1.84
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.42
                 }
               ],
               "zh": "这次给您添麻烦了。",
@@ -9956,7 +10765,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "ご迷惑をおかけしました"
               ],
-              "audio": null
+              "audio": "audio/seg-272.mp3",
+              "duration": 3.696
             }
           ]
         },
@@ -9971,41 +10781,52 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "よろしくご"
+                  "text": "よろしくご",
+                  "t": 0
                 },
                 {
                   "text": "検討",
-                  "kana": "けんとう"
+                  "kana": "けんとう",
+                  "t": 1
                 },
                 {
-                  "text": "くださいますようお"
+                  "text": "くださいますようお",
+                  "t": 1.38
                 },
                 {
                   "text": "願",
-                  "kana": "ねが"
+                  "kana": "ねが",
+                  "t": 2.5
                 },
                 {
-                  "text": "い"
+                  "text": "い",
+                  "t": 2.5
                 },
                 {
                   "text": "申",
-                  "kana": "もう"
+                  "kana": "もう",
+                  "t": 2.9
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 3.28
                 },
                 {
                   "text": "上",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 3.34
                 },
                 {
-                  "text": "げ"
+                  "text": "げ",
+                  "t": 3.44
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 3.56
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.56
                 }
               ],
               "zh": "恳请予以考虑。",
@@ -10013,7 +10834,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "申し上げます"
               ],
-              "audio": null
+              "audio": "audio/seg-273.mp3",
+              "duration": 4.608
             },
             {
               "id": 274,
@@ -10021,61 +10843,78 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "これから"
+                  "text": "これから",
+                  "t": 0
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 0.94
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0.94
                 },
                 {
                   "text": "客様",
-                  "kana": "きゃくさま"
+                  "kana": "きゃくさま",
+                  "t": 1.2
                 },
                 {
-                  "text": "を"
+                  "text": "を",
+                  "t": 1.62
                 },
                 {
                   "text": "自動車",
-                  "kana": "じどうしゃ"
+                  "kana": "じどうしゃ",
+                  "t": 1.82
                 },
                 {
-                  "text": "で"
+                  "text": "で",
+                  "t": 2.3
                 },
                 {
                   "text": "駅",
-                  "kana": "えき"
+                  "kana": "えき",
+                  "t": 2.44
                 },
                 {
-                  "text": "までお"
+                  "text": "までお",
+                  "t": 2.68
                 },
                 {
                   "text": "送",
-                  "kana": "おく"
+                  "kana": "おく",
+                  "t": 3.2
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 3.36
                 },
                 {
                   "text": "申",
-                  "kana": "もう"
+                  "kana": "もう",
+                  "t": 3.54
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 3.8
                 },
                 {
                   "text": "上",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 3.88
                 },
                 {
-                  "text": "げ"
+                  "text": "げ",
+                  "t": 3.96
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 4.08
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.08
                 }
               ],
               "zh": "现在我开车送您去车站。",
@@ -10083,7 +10922,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "申し上げます"
               ],
-              "audio": null
+              "audio": "audio/seg-274.mp3",
+              "duration": 5.136
             },
             {
               "id": 275,
@@ -10091,41 +10931,52 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 0.42
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 0.82
                 },
                 {
                   "text": "後",
-                  "kana": "のち"
+                  "kana": "のち",
+                  "t": 0.82
                 },
                 {
-                  "text": "ほどご"
+                  "text": "ほどご",
+                  "t": 1.16
                 },
                 {
                   "text": "連絡",
-                  "kana": "れんらく"
+                  "kana": "れんらく",
+                  "t": 1.62
                 },
                 {
                   "text": "申",
-                  "kana": "もう"
+                  "kana": "もう",
+                  "t": 2.02
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 2.36
                 },
                 {
                   "text": "上",
-                  "kana": "あ"
+                  "kana": "あ",
+                  "t": 2.46
                 },
                 {
-                  "text": "げ"
+                  "text": "げ",
+                  "t": 2.54
                 },
                 {
-                  "text": "ます"
+                  "text": "ます",
+                  "t": 2.66
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 2.66
                 }
               ],
               "zh": "那么，稍后再联系您。",
@@ -10133,7 +10984,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "申し上げます"
               ],
-              "audio": null
+              "audio": "audio/seg-275.mp3",
+              "duration": 3.72
             }
           ]
         },
@@ -10149,7 +11001,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "度",
@@ -10198,7 +11050,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 4.0
+                  "t": 4
                 },
                 {
                   "text": "請求",
@@ -10245,47 +11097,60 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 0
                 },
                 {
                   "text": "度",
-                  "kana": "たび"
+                  "kana": "たび",
+                  "t": 0.52
                 },
                 {
-                  "text": "の"
+                  "text": "の",
+                  "t": 0.7
                 },
                 {
                   "text": "地震",
-                  "kana": "じしん"
+                  "kana": "じしん",
+                  "t": 0.98
                 },
                 {
-                  "text": "では"
+                  "text": "では",
+                  "t": 1.22
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 1.84
                 },
                 {
-                  "text": "100"
+                  "text": "100",
+                  "t": 1.84
                 },
                 {
                   "text": "人以上",
-                  "kana": "にんいじょう"
+                  "kana": "にんいじょう",
+                  "t": 2.22
                 },
                 {
-                  "text": "が"
+                  "text": "が",
+                  "t": 2.78
                 },
                 {
                   "text": "亡",
-                  "kana": "な"
+                  "kana": "な",
+                  "t": 3.02
                 },
                 {
-                  "text": "く"
+                  "text": "く",
+                  "t": 3.14
                 },
                 {
-                  "text": "なりました"
+                  "text": "なりました",
+                  "t": 3.26
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.38
                 }
               ],
               "zh": "在这次地震中，有100多人遇难。",
@@ -10293,7 +11158,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "この度"
               ],
-              "audio": null
+              "audio": "audio/seg-277.mp3",
+              "duration": 4.608
             },
             {
               "id": 278,
@@ -10301,42 +11167,53 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 0
                 },
                 {
                   "text": "度",
-                  "kana": "たび"
+                  "kana": "たび",
+                  "t": 0.52
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 0.7
                 },
                 {
                   "text": "弊社",
-                  "kana": "へいしゃ"
+                  "kana": "へいしゃ",
+                  "t": 1.14
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 1.56
                 },
                 {
                   "text": "上海",
-                  "kana": "しゃんはい"
+                  "kana": "しゃんはい",
+                  "t": 1.98
                 },
                 {
                   "text": "保険",
-                  "kana": "ほけん"
+                  "kana": "ほけん",
+                  "t": 2.44
                 },
                 {
-                  "text": "と"
+                  "text": "と",
+                  "t": 2.78
                 },
                 {
                   "text": "合併",
-                  "kana": "がっぺい"
+                  "kana": "がっぺい",
+                  "t": 2.98
                 },
                 {
-                  "text": "することになりました"
+                  "text": "することになりました",
+                  "t": 3.36
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.12
                 }
               ],
               "zh": "这次，敝公司与上海保险公司决定合并了。",
@@ -10344,7 +11221,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "この度"
               ],
-              "audio": null
+              "audio": "audio/seg-278.mp3",
+              "duration": 5.4
             }
           ]
         },
@@ -10452,43 +11330,55 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "この"
+                  "text": "この",
+                  "t": 0
                 },
                 {
                   "text": "新",
-                  "kana": "あたら"
+                  "kana": "あたら",
+                  "t": 0.52
                 },
                 {
-                  "text": "しい"
+                  "text": "しい",
+                  "t": 0.96
                 },
                 {
-                  "text": "ゲームセンター"
+                  "text": "ゲームセンター",
+                  "t": 1.16
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.22
                 },
                 {
-                  "text": "おもしろそうだなあ"
+                  "text": "おもしろそうだなあ",
+                  "t": 2.22
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 4.54
                 },
                 {
                   "text": "早速",
-                  "kana": "さっそく"
+                  "kana": "さっそく",
+                  "t": 4.64
                 },
                 {
                   "text": "行",
-                  "kana": "い"
+                  "kana": "い",
+                  "t": 4.9
                 },
                 {
-                  "text": "って"
+                  "text": "って",
+                  "t": 5.1
                 },
                 {
-                  "text": "みよう"
+                  "text": "みよう",
+                  "t": 5.24
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 5.42
                 }
               ],
               "zh": "这个新游戏厅看起来很有意思啊！赶紧去看看。",
@@ -10496,7 +11386,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "早速"
               ],
-              "audio": null
+              "audio": "audio/seg-280.mp3",
+              "duration": 6.432
             }
           ]
         },
@@ -10512,7 +11403,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "お",
@@ -10645,79 +11536,102 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "飲",
-                  "kana": "の"
+                  "kana": "の",
+                  "t": 0
                 },
                 {
-                  "text": "み"
+                  "text": "み",
+                  "t": 0.5
                 },
                 {
                   "text": "物",
-                  "kana": "もの"
+                  "kana": "もの",
+                  "t": 0.64
                 },
                 {
-                  "text": "はご"
+                  "text": "はご",
+                  "t": 0.8
                 },
                 {
                   "text": "自由",
-                  "kana": "じゆう"
+                  "kana": "じゆう",
+                  "t": 1.22
                 },
                 {
-                  "text": "にお"
+                  "text": "にお",
+                  "t": 1.5
                 },
                 {
                   "text": "取",
-                  "kana": "と"
+                  "kana": "と",
+                  "t": 1.84
                 },
                 {
-                  "text": "り"
+                  "text": "り",
+                  "t": 1.9
                 },
                 {
-                  "text": "ください"
+                  "text": "ください",
+                  "t": 2.04
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.1
                 },
                 {
-                  "text": "なお"
+                  "text": "なお",
+                  "t": 3.1
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 4.16
                 },
                 {
                   "text": "一度",
-                  "kana": "いちど"
+                  "kana": "いちど",
+                  "t": 4.16
                 },
                 {
                   "text": "使",
-                  "kana": "つか"
+                  "kana": "つか",
+                  "t": 4.56
                 },
                 {
-                  "text": "った"
+                  "text": "った",
+                  "t": 4.76
                 },
                 {
-                  "text": "コップ"
+                  "text": "コップ",
+                  "t": 4.96
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 5.34
                 },
                 {
-                  "text": "カウンター"
+                  "text": "カウンター",
+                  "t": 5.58
                 },
                 {
-                  "text": "へお"
+                  "text": "へお",
+                  "t": 6.16
                 },
                 {
                   "text": "戻",
-                  "kana": "もど"
+                  "kana": "もど",
+                  "t": 6.46
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 6.66
                 },
                 {
-                  "text": "ください"
+                  "text": "ください",
+                  "t": 6.78
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 6.78
                 }
               ],
               "zh": "饮料自由领取。另外，使用过的杯子请交还到柜台处。",
@@ -10725,7 +11639,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "なお"
               ],
-              "audio": null
+              "audio": "audio/seg-282.mp3",
+              "duration": 8.04
             }
           ]
         },
@@ -10741,7 +11656,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "お",
@@ -10881,7 +11796,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0.0
+                  "t": 0
                 },
                 {
                   "text": "お",
@@ -11013,53 +11928,68 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 0
                 },
                 {
                   "text": "近",
-                  "kana": "ちか"
+                  "kana": "ちか",
+                  "t": 0.44
                 },
                 {
-                  "text": "く"
+                  "text": "く",
+                  "t": 0.62
                 },
                 {
-                  "text": "にいらっしゃった"
+                  "text": "にいらっしゃった",
+                  "t": 0.82
                 },
                 {
                   "text": "際",
-                  "kana": "さい"
+                  "kana": "さい",
+                  "t": 1.6
                 },
                 {
-                  "text": "に"
+                  "text": "に",
+                  "t": 1.78
                 },
                 {
-                  "text": "は"
+                  "text": "は",
+                  "t": 1.78
                 },
                 {
-                  "text": "，"
+                  "text": "，",
+                  "t": 2.3
                 },
                 {
-                  "text": "お"
+                  "text": "お",
+                  "t": 2.3
                 },
                 {
                   "text": "気軽",
-                  "kana": "きがる"
+                  "kana": "きがる",
+                  "t": 2.64
                 },
                 {
-                  "text": "にお"
+                  "text": "にお",
+                  "t": 2.92
                 },
                 {
                   "text": "越",
-                  "kana": "こ"
+                  "kana": "こ",
+                  "t": 3.3
                 },
                 {
-                  "text": "し"
+                  "text": "し",
+                  "t": 3.38
                 },
                 {
-                  "text": "ください"
+                  "text": "ください",
+                  "t": 3.52
                 },
                 {
-                  "text": "。"
+                  "text": "。",
+                  "t": 3.52
                 }
               ],
               "zh": "如若有机会到附近来，请顺便到我家坐坐。",
@@ -11067,7 +11997,8 @@ window.LESSON_DATA = {
               "blanks": [
                 "お気軽に"
               ],
-              "audio": null
+              "audio": "audio/seg-285.mp3",
+              "duration": 4.776
             }
           ]
         }
