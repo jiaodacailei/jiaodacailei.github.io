@@ -314,6 +314,27 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (player.loop) { player.idx = 0; } else { finishPlayer(); return; }
     }
     var a = player.audios[player.idx];
+    if (!a || !a.getAttribute("src")) {
+      // 补充例句没有真实录音时（audio:null，比如语法点追加的例句、教材app
+      // 自己补写的例句）page-renderer.js的renderCard()仍然会渲染一个没有
+      // src的空<audio>占位（给"点击这句播放"之类的逻辑一个统一能找到的
+      // 元素，不用整段整段判断有没有audio），playScope()按选择器抓到的
+      // 播放队列里这条也在，原来直接喂给safePlay()，play()必然被拒绝
+      // （NotSupportedError），走safePlay()的失败兜底==finishPlayer()，
+      // 效果是"连续播放整句/整题/整个大题"碰到第一条没录音的补充例句就
+      // 整个停掉，后面还有真录音的句子也听不到了——真实反馈"控制台报
+      // audio.play()被拒绝/blob地址ERR_FILE_NOT_FOUND"。改成直接跳过，
+      // 继续播下一条。循环模式下如果这一圈里所有条目都没有真实录音（比如
+      // 某道题的补充例句全部audio:null），不能靠idx回绕0之后再跳过一遍
+      // 陷入无限同步递归，这种情况直接按"播完"处理。
+      if (player.loop && !player.audios.some(function(x) { return x && x.getAttribute("src"); })) {
+        finishPlayer();
+        return;
+      }
+      player.idx++;
+      playNext();
+      return;
+    }
     a.onended = function() { player.idx++; playNext(); };
     // setPlayingCard() 同步执行（立刻显示 loading 转圈），prepareAudioSrc()
     // 命中本地缓存时可能有一点 Blob 转换的耗时——把这段耗时放在"卡片已经
