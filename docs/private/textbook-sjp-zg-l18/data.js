@@ -3742,7 +3742,9 @@ window.LESSON_DATA = {
               ],
               "zh": "这个嘛……",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "そうですねえ"
+              ],
               "audio": "audio/seg-004.mp3"
             },
             {
@@ -3814,7 +3816,9 @@ window.LESSON_DATA = {
               ],
               "zh": "老实说，恐怕有点困难啊。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "正直に言って"
+              ],
               "audio": "audio/seg-005.mp3"
             },
             {
@@ -3889,7 +3893,9 @@ window.LESSON_DATA = {
               ],
               "zh": "老实说，这份报告的数据并不完全准确。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "正直に言えば"
+              ],
               "audio": "audio/seg-182.mp3",
               "duration": 6.24
             },
@@ -3962,7 +3968,9 @@ window.LESSON_DATA = {
               ],
               "zh": "多是麻烦的工作，老实说，累死了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "正直"
+              ],
               "audio": "audio/seg-183.mp3",
               "duration": 5.136
             },
@@ -3999,7 +4007,9 @@ window.LESSON_DATA = {
               ],
               "zh": "这个有点儿……为难。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ちょっと"
+              ],
               "audio": "audio/seg-184.mp3",
               "duration": 2.808
             },
@@ -4093,7 +4103,9 @@ window.LESSON_DATA = {
               ],
               "zh": "“生鱼片”是生的鱼肉，所以对中国人来说有点……",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ちょっと"
+              ],
               "audio": "audio/seg-185.mp3",
               "duration": 5.52
             },
@@ -4118,7 +4130,9 @@ window.LESSON_DATA = {
               ],
               "zh": "情况并不是太好。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あまりよくありません"
+              ],
               "audio": "audio/seg-186.mp3",
               "duration": 3.12
             },
@@ -4155,7 +4169,9 @@ window.LESSON_DATA = {
               ],
               "zh": "有“上海珍珠”吗？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "あります"
+              ],
               "audio": "audio/seg-187.mp3",
               "duration": 2.832
             },
@@ -4214,7 +4230,9 @@ window.LESSON_DATA = {
               ],
               "zh": "对不起，这会儿卖完了……",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ちょっと"
+              ],
               "audio": "audio/seg-188.mp3",
               "duration": 3.648
             },
@@ -4293,7 +4311,10 @@ window.LESSON_DATA = {
               ],
               "zh": "怎么说呢，我也说不好，不过我觉得应该还有其他更好的法子。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "何というか",
+                "うまく言えませんが"
+              ],
               "audio": "audio/seg-189.mp3",
               "duration": 6.432
             },
@@ -4400,7 +4421,9 @@ window.LESSON_DATA = {
               ],
               "zh": "但是，“金星”在日本酒当中也算是很受外国人欢迎的产品。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "でも"
+              ],
               "audio": "audio/seg-012.mp3"
             },
             {
@@ -4466,7 +4489,9 @@ window.LESSON_DATA = {
               ],
               "zh": "我明白您的意思了。不过，预算可是有限的呀。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ただし"
+              ],
               "audio": "audio/seg-191.mp3",
               "duration": 5.712
             }
@@ -4521,7 +4546,9 @@ window.LESSON_DATA = {
               ],
               "zh": "以上是对“金星”酒的说明。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "以上です"
+              ],
               "audio": "audio/seg-002.mp3"
             },
             {
@@ -4555,7 +4582,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不知您意下如何？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いかがでしょうか"
+              ],
               "audio": "audio/seg-003.mp3"
             },
             {
@@ -4589,7 +4618,9 @@ window.LESSON_DATA = {
               ],
               "zh": "您觉得怎么样？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "いかがでしょうか"
+              ],
               "audio": "audio/seg-003.mp3"
             },
             {
@@ -4630,7 +4661,9 @@ window.LESSON_DATA = {
               ],
               "zh": "合您的心意吗？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "お気に召しました"
+              ],
               "audio": "audio/seg-195.mp3",
               "duration": 2.664
             }
@@ -4660,7 +4693,9 @@ window.LESSON_DATA = {
               ],
               "zh": "这个嘛……",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "そうですねえ"
+              ],
               "audio": "audio/seg-004.mp3"
             },
             {
@@ -4732,7 +4767,9 @@ window.LESSON_DATA = {
               ],
               "zh": "老实说，恐怕有点困难啊。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "正直に言って"
+              ],
               "audio": "audio/seg-005.mp3"
             },
             {
@@ -4766,7 +4803,9 @@ window.LESSON_DATA = {
               ],
               "zh": "您的意思是……？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "とおっしゃいますと"
+              ],
               "audio": "audio/seg-006.mp3"
             },
             {
@@ -4846,7 +4885,9 @@ window.LESSON_DATA = {
               ],
               "zh": "这次的策划，我想在宣传活动方面多下点工夫。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "力を入れたい"
+              ],
               "audio": "audio/seg-199.mp3",
               "duration": 5.28
             },
@@ -4881,7 +4922,9 @@ window.LESSON_DATA = {
               ],
               "zh": "您的意思是……",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "とおっしゃいますと"
+              ],
               "audio": "audio/seg-006.mp3"
             }
           ]
@@ -6914,7 +6957,10 @@ window.LESSON_DATA = {
               ],
               "zh": "时值新春，想必北上贸易公司的诸位一切安好吧！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "の候",
+                "ことと存じます"
+              ],
               "audio": "audio/seg-035.mp3"
             },
             {
@@ -6968,7 +7014,10 @@ window.LESSON_DATA = {
               ],
               "zh": "已是樱花盛开的时节，不知近况可好？",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "季節となりました",
+                "いかがお過ごしでしょうか"
+              ],
               "audio": "audio/seg-225.mp3",
               "duration": 4.752
             },
@@ -7076,7 +7125,10 @@ window.LESSON_DATA = {
               ],
               "zh": "嫩叶初发，虽暑日连连，想必一切安好！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "の候",
+                "ことと存じます"
+              ],
               "audio": "audio/seg-226.mp3",
               "duration": 6.24
             },
@@ -7119,7 +7171,9 @@ window.LESSON_DATA = {
               ],
               "zh": "已是樱花盛开的时节。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "季節となりました"
+              ],
               "audio": "audio/seg-227.mp3",
               "duration": 3.408
             },
@@ -7162,7 +7216,9 @@ window.LESSON_DATA = {
               ],
               "zh": "已是红叶迷人的时节。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "季節となりました"
+              ],
               "audio": "audio/seg-228.mp3",
               "duration": 3.408
             },
@@ -7221,7 +7277,9 @@ window.LESSON_DATA = {
               ],
               "zh": "时光飞逝，今年也只剩下1个月了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "早いもので，今年もあと1か月となりました"
+              ],
               "audio": "audio/seg-229.mp3",
               "duration": 4.536
             },
@@ -7250,7 +7308,9 @@ window.LESSON_DATA = {
               ],
               "zh": "暂且先写信向您道谢。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "まずはお礼までに"
+              ],
               "audio": "audio/seg-230.mp3",
               "duration": 2.304
             },
@@ -7301,7 +7361,9 @@ window.LESSON_DATA = {
               ],
               "zh": "百忙当中，请您一定多多保重。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "お忙しい毎日，くれぐれもご自愛ください"
+              ],
               "audio": "audio/seg-231.mp3",
               "duration": 4.416
             },
@@ -7339,7 +7401,9 @@ window.LESSON_DATA = {
               ],
               "zh": "请注意不要感冒。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "風邪など引かれませんよう"
+              ],
               "audio": "audio/seg-232.mp3",
               "duration": 2.664
             },
@@ -7404,7 +7468,9 @@ window.LESSON_DATA = {
               ],
               "zh": "请务必多多保重。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "一層のご自愛をお祈り申し上げます"
+              ],
               "audio": "audio/seg-233.mp3",
               "duration": 3.696
             }
@@ -9065,7 +9131,9 @@ window.LESSON_DATA = {
               ],
               "zh": "走着的时候没觉得脚疼。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "うちは"
+              ],
               "audio": "audio/seg-251.mp3",
               "duration": 4.776
             },
@@ -9111,7 +9179,9 @@ window.LESSON_DATA = {
               ],
               "zh": "晚上最好别离开这里。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "うちは"
+              ],
               "audio": "audio/seg-252.mp3",
               "duration": 4.2
             },
@@ -9184,7 +9254,9 @@ window.LESSON_DATA = {
               ],
               "zh": "趁着身体还健康，想和妻子两人悠闲地生活。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "うちは"
+              ],
               "audio": "audio/seg-253.mp3",
               "duration": 4.944
             }
