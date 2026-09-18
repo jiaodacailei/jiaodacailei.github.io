@@ -12550,7 +12550,7 @@ window.LESSON_DATA = {
                 {
                   "quizSentence": "わたしが説明したとおりにやれば，この故障は直せます。",
                   "blanks": [
-                    "とおり"
+                    "故障"
                   ],
                   "sentenceAudio": null
                 }
@@ -12665,7 +12665,7 @@ window.LESSON_DATA = {
                 {
                   "quizSentence": "あの店は中国製のいい筆を置いているので，時々買いに行きます。",
                   "blanks": [
-                    "置いている"
+                    "筆"
                   ],
                   "sentenceAudio": null
                 }
@@ -12704,7 +12704,9 @@ window.LESSON_DATA = {
               "moreExamples": [
                 {
                   "quizSentence": "お気に召しましたでしょうか。",
-                  "blanks": [],
+                  "blanks": [
+                    "お気に召しました"
+                  ],
                   "sentenceAudio": null
                 }
               ]
@@ -14129,7 +14131,7 @@ window.LESSON_DATA = {
                 {
                   "quizSentence": "お忙しい中恐縮ですが，ご連絡いただければ幸いです。",
                   "blanks": [
-                    "ければ幸いです"
+                    "恐縮"
                   ],
                   "sentenceAudio": null
                 }
@@ -14156,7 +14158,7 @@ window.LESSON_DATA = {
                 {
                   "quizSentence": "今から，全員の方に昼食をお配りいたします。",
                   "blanks": [
-                    "お配りいたします"
+                    "昼食"
                   ],
                   "sentenceAudio": null
                 }
@@ -14186,7 +14188,7 @@ window.LESSON_DATA = {
                 {
                   "quizSentence": "この度，弊社は上海保険と合併することになりました。",
                   "blanks": [
-                    "この度"
+                    "合併する"
                   ],
                   "sentenceAudio": null
                 }
@@ -14212,7 +14214,7 @@ window.LESSON_DATA = {
                 {
                   "quizSentence": "この新しいゲームセンター，おもしろそうだなあ。早速行ってみよう。",
                   "blanks": [
-                    "早速"
+                    "ゲームセンター"
                   ],
                   "sentenceAudio": null
                 }
@@ -14238,7 +14240,7 @@ window.LESSON_DATA = {
                 {
                   "quizSentence": "飲み物はご自由にお取りください。なお，一度使ったコップはカウンターへお戻しください。",
                   "blanks": [
-                    "なお"
+                    "カウンター"
                   ],
                   "sentenceAudio": null
                 }
@@ -14871,7 +14873,7 @@ window.LESSON_DATA = {
       "zh": "[名] 故障",
       "sentence": "わたしが説明したとおりにやれば，この故障は直せます。",
       "sentence_zh": "照我说的去做，这个故障就能排除。",
-      "blank": "とおり",
+      "blank": "故障",
       "category": "生词表2·语法与表达"
     },
     {
@@ -14941,7 +14943,7 @@ window.LESSON_DATA = {
       "zh": "[名] 笔，毛笔",
       "sentence": "あの店は中国製のいい筆を置いているので，時々買いに行きます。",
       "sentence_zh": "那家店有中国产的好毛笔，所以我时常去买。",
-      "blank": "置いている",
+      "blank": "筆",
       "category": "生词表2·语法与表达"
     },
     {
@@ -14961,7 +14963,7 @@ window.LESSON_DATA = {
       "zh": "中意，合意",
       "sentence": "お気に召しましたでしょうか。",
       "sentence_zh": "合您的心意吗？",
-      "blank": "",
+      "blank": "お気に召しました",
       "category": "生词表2·语法与表达"
     },
     {
@@ -15761,7 +15763,7 @@ window.LESSON_DATA = {
       "zh": "[名] 抱歉，对不起，过意不去",
       "sentence": "お忙しい中恐縮ですが，ご連絡いただければ幸いです。",
       "sentence_zh": "非常抱歉百忙之中打搅您，希望您能与我联系。",
-      "blank": "ければ幸いです",
+      "blank": "恐縮",
       "category": "生词表4·语法与表达"
     },
     {
@@ -15781,7 +15783,7 @@ window.LESSON_DATA = {
       "zh": "[名] 午餐，午饭",
       "sentence": "今から，全員の方に昼食をお配りいたします。",
       "sentence_zh": "现在开始向各位发放午餐。",
-      "blank": "お配りいたします",
+      "blank": "昼食",
       "category": "生词表4·语法与表达"
     },
     {
@@ -15801,7 +15803,7 @@ window.LESSON_DATA = {
       "zh": "[动3] 合并",
       "sentence": "この度，弊社は上海保険と合併することになりました。",
       "sentence_zh": "这次，敝公司与上海保险公司决定合并了。",
-      "blank": "この度",
+      "blank": "合併する",
       "category": "生词表4·语法与表达"
     },
     {
@@ -15821,7 +15823,7 @@ window.LESSON_DATA = {
       "zh": "[名] 游戏厅，游戏中心",
       "sentence": "この新しいゲームセンター，おもしろそうだなあ。早速行ってみよう。",
       "sentence_zh": "这个新游戏厅看起来很有意思啊！赶紧去看看。",
-      "blank": "早速",
+      "blank": "ゲームセンター",
       "category": "生词表4·语法与表达"
     },
     {
@@ -15841,7 +15843,7 @@ window.LESSON_DATA = {
       "zh": "[名] 柜台，服务台",
       "sentence": "飲み物はご自由にお取りください。なお，一度使ったコップはカウンターへお戻しください。",
       "sentence_zh": "饮料自由领取。另外，使用过的杯子请交还到柜台处。",
-      "blank": "なお",
+      "blank": "カウンター",
       "category": "生词表4·语法与表达"
     },
     {

@@ -39,7 +39,24 @@ tab结构，插到"课文"和"生词"之间（跟教材app自己的tab顺序一�
                                        人工核实，不是自动模糊匹配出来的——很
                                        多语法点本身不是词，"抜きで""ことに"
                                        这类语法结构就没有对应的vocab_id，是
-                                       正常情况，不是漏配）。
+                                       正常情况，不是漏配）。这句挂到"生词"
+                                       卡片/单词测试时该挖的空默认是词条
+                                       原文本身在这句里的子串，自动算，不用
+                                       传；只有词在这句里是活用形（比如
+                                       "お気に召す"写成"お気に召しました"）
+                                       跟词条原文对不上时，才需要用下一种
+                                       五元组形式显式指定。
+  (日语, 中文, blanks, vocab_id,
+   vocab_blank)                     —— 同上，多一个vocab_blank：词条挂到
+                                       "生词"卡片/单词测试时显式指定要挖的
+                                       空（原文子串），覆盖自动匹配——**不要
+                                       拿这句自己的blanks凑数**，blanks测的
+                                       是语法点本身，vocab_blank测的是这个
+                                       词条，同一句话对两边经常不是同一个空
+                                       （真实坑：例句被"7. 〜とおりだ"和生词
+                                       "故障"同时引用，blanks=["とおり"]测
+                                       语法点，但"故障"的填空题该挖"故障"
+                                       自己，不是"とおり"）。
 卡片标题：不带编号的专题卡里的例句不参与下面的"挖空默认联动"逻辑（专题卡
 一张卡里塞好几个不同表达，不是"一卡一语法点"的干净结构，没法批量挖空）。
 
@@ -240,15 +257,29 @@ def merge_blanks(sentence_obj, new_blanks):
 
 
 def make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label, vocab_readings):
-    """ex是变长tuple：(ja, zh) / (ja, zh, blanks) / (ja, zh, blanks, vocab_id)。
+    """ex是变长tuple：(ja, zh) / (ja, zh, blanks) / (ja, zh, blanks, vocab_id) /
+    (ja, zh, blanks, vocab_id, vocab_blank)。
     返回(sentence_dict, matched)，matched表示这句是不是复用了会话/课文的
     真实录音（source=="dialogue"/"text"）还是新造例句没有音频
     （source=="other"）——只用来统计"matched/new"这两个audio复用数字，
     不再用来决定单词测试新记录的category（那个现在直接照抄原词条的
-    category，见apply_vocab_extensions()）。"""
+    category，见apply_vocab_extensions()）。
+
+    第5个可选元素`vocab_blank`：这句挂到"生词"卡片/单词测试时该挖哪个空——
+    默认（不传）会在apply_vocab_extensions()里自动用这个词条自己的原文
+    去这句里找子串，多数情况够用（词以原形/未活用形式出现）；只有词在这句
+    里是活用形、跟词条原文对不上时才需要显式传这个参数（比如"お気に召す"
+    在例句里是"お気に召しました"）。**不能直接照抄`blanks`（第3个元素）
+    当成vocab_blank**——`blanks`是这句给"语法与表达"tab自己出题用的挖空
+    目标，测的是这个语法点本身，跟这句挂到某个生词卡片时"应该挖这个词
+    自己"完全是两回事，同一句话可能对语法点和对生词是两个不同的空（真实
+    坑：textbook-sjp-zg-l18"7. 〜とおりだ"的例句被同时link到生词"故障"，
+    之前直接复用了blanks[0]="とおり"，导致"故障"这个词的填空题挖的是
+    "とおり"、跟"故障"毫无关系）。"""
     ja, zh = ex[0], ex[1]
     blanks = list(ex[2]) if len(ex) >= 3 else []
     vocab_id = ex[3] if len(ex) >= 4 else None
+    vocab_blank = ex[4] if len(ex) >= 5 else None
 
     found = lookup.get(ja)
     sid = next_id()
@@ -281,7 +312,10 @@ def make_sentence(ex, lookup, next_id, vocab_extensions, dialogue_label, vocab_r
         }
 
     if vocab_id is not None:
-        vocab_extensions.append({"vocab_id": vocab_id, "ja": ja, "zh_ignored": zh, "blanks": blanks})
+        vocab_extensions.append({
+            "vocab_id": vocab_id, "ja": ja, "zh_ignored": zh, "blanks": blanks,
+            "vocab_blank": vocab_blank,
+        })
         # sentence本身携带的audio既是"这句真句子的audio"也是生词tab新卡要用的
         # sentenceAudio来源，vocab_extensions里额外存一份，避免下面处理时
         # 还要回头重新查一遍lookup。
@@ -345,13 +379,36 @@ def apply_vocab_extensions(data, vocab_extensions, next_id, stats, vocab_label):
         # audio（词本身的读音）完全不动，moreExamples只追加不覆盖已有的。
         more_examples = orig.setdefault("moreExamples", [])
         existing_sentences = {orig.get("quizSentence")} | {e["quizSentence"] for e in more_examples}
+        word_text = "".join(t["text"] for t in orig["tokens"])
         for ext in exts:
             if ext["ja"] in existing_sentences:
                 stats["vocab_skip_identical"] += 1
                 continue
+            # 这句话挂到"生词"卡片/单词测试时该挖哪个空，测的是这个词条
+            # 本身，不是这句给"语法与表达"tab自己出题用的blanks（那个测的
+            # 是语法点，同一句话对两边可能是不同的空，见make_sentence()里
+            # vocab_blank参数的说明）。优先用content模块显式传的vocab_blank
+            # （活用形跟词条原文对不上时必须传），没传就用词条原文本身在
+            # 这句里找子串——大多数词以原形出现，能直接命中；两者都失败就
+            # 直接报错，不能静默退化成blanks[0]（那正是这个函数最初的bug：
+            # 词条"故障"链到"7. 〜とおりだ"的例句时，直接复用了那个语法点
+            # 自己的blanks[0]="とおり"，"故障"这个词的填空题因此挖的是
+            # 跟它毫不相干的"とおり"）。
+            if ext.get("vocab_blank"):
+                vocab_blank = ext["vocab_blank"]
+            elif word_text in ext["ja"]:
+                vocab_blank = word_text
+            else:
+                raise SystemExit(
+                    f"vocab_id={vocab_id}（词条{word_text!r}）链到例句{ext['ja']!r}，"
+                    f"但词条原文不是这句的子串（大概率是活用形），且content模块没有"
+                    f"给这条传第5个元素vocab_blank——不能直接照抄这句给语法点自己用的"
+                    f"blanks{ext['blanks']!r}（那测的是语法点，不是这个词），必须显式"
+                    f"指定这个词在这句里的原文片段"
+                )
             more_examples.append({
                 "quizSentence": ext["ja"],
-                "blanks": list(ext["blanks"]),
+                "blanks": [vocab_blank],
                 "sentenceAudio": ext.get("sentence_audio"),
             })
             existing_sentences.add(ext["ja"])
@@ -374,7 +431,7 @@ def apply_vocab_extensions(data, vocab_extensions, next_id, stats, vocab_label):
                         "zh": orig_quiz["zh"],
                         "sentence": ext["ja"],
                         "sentence_zh": ext["zh_ignored"],
-                        "blank": ext["blanks"][0] if ext["blanks"] else "",
+                        "blank": vocab_blank,
                         "category": orig_quiz["category"],
                     }
                     orig_qidx = quiz_index[vocab_id]

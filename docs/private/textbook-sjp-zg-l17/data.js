@@ -12267,7 +12267,7 @@ window.LESSON_DATA = {
       "category": "生词表1"
     },
     {
-      "id": 59,
+      "id": 255,
       "text": "売り込む",
       "kana": "うりこむ",
       "zh": "[动1] 销售，促销，推销",
@@ -12317,7 +12317,7 @@ window.LESSON_DATA = {
       "category": "生词表1"
     },
     {
-      "id": 63,
+      "id": 256,
       "text": "間",
       "kana": "あいだ",
       "zh": "[名] 当中，之间，期间",
@@ -12337,7 +12337,7 @@ window.LESSON_DATA = {
       "category": "生词表1"
     },
     {
-      "id": 64,
+      "id": 252,
       "text": "たいした",
       "kana": "たいした",
       "zh": "[连体] 了不起的，惊人的",
@@ -12347,7 +12347,7 @@ window.LESSON_DATA = {
       "category": "生词表1"
     },
     {
-      "id": 64,
+      "id": 257,
       "text": "たいした",
       "kana": "たいした",
       "zh": "[连体] 了不起的，惊人的",
@@ -12377,7 +12377,7 @@ window.LESSON_DATA = {
       "category": "生词表1"
     },
     {
-      "id": 66,
+      "id": 258,
       "text": "〜ども",
       "kana": "ども",
       "zh": "〜们（自谦语）",
@@ -12477,7 +12477,7 @@ window.LESSON_DATA = {
       "category": "生词表2·语法与表达"
     },
     {
-      "id": 75,
+      "id": 259,
       "text": "飛び込む",
       "kana": "とびこむ",
       "zh": "[动1] 跳入，跳进",
@@ -12507,7 +12507,7 @@ window.LESSON_DATA = {
       "category": "生词表2·语法与表达"
     },
     {
-      "id": 77,
+      "id": 260,
       "text": "投げ込む",
       "kana": "なげこむ",
       "zh": "[动1] 投进，投入，扔进",
@@ -12747,7 +12747,7 @@ window.LESSON_DATA = {
       "category": "生词表3"
     },
     {
-      "id": 100,
+      "id": 261,
       "text": "無数",
       "kana": "むすう",
       "zh": "[名] 无数",
@@ -12777,7 +12777,7 @@ window.LESSON_DATA = {
       "category": "生词表3"
     },
     {
-      "id": 102,
+      "id": 253,
       "text": "さかのぼる",
       "kana": "さかのぼる",
       "zh": "[动1] 追溯，上溯",
@@ -12787,7 +12787,7 @@ window.LESSON_DATA = {
       "category": "生词表3"
     },
     {
-      "id": 102,
+      "id": 262,
       "text": "さかのぼる",
       "kana": "さかのぼる",
       "zh": "[动1] 追溯，上溯",
@@ -13027,7 +13027,7 @@ window.LESSON_DATA = {
       "category": "生词表3"
     },
     {
-      "id": 125,
+      "id": 254,
       "text": "せいぜい",
       "kana": "せいぜい",
       "zh": "[副] 最多，充其量；尽量，尽可能",
@@ -13037,7 +13037,7 @@ window.LESSON_DATA = {
       "category": "生词表3"
     },
     {
-      "id": 125,
+      "id": 263,
       "text": "せいぜい",
       "kana": "せいぜい",
       "zh": "[副] 最多，充其量；尽量，尽可能",
@@ -13147,7 +13147,7 @@ window.LESSON_DATA = {
       "category": "生词表3"
     },
     {
-      "id": 135,
+      "id": 264,
       "text": "〜連れ",
       "kana": "つれ",
       "zh": "带着〜",
@@ -13217,7 +13217,7 @@ window.LESSON_DATA = {
       "category": "生词表4·语法与表达"
     },
     {
-      "id": 141,
+      "id": 265,
       "text": "南東",
       "kana": "なんとう",
       "zh": "[名] 东南",
