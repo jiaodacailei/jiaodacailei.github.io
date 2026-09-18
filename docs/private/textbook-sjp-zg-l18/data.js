@@ -19,7 +19,7 @@ window.LESSON_DATA = {
                 {
                   "text": "売",
                   "kana": "う",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "り",
@@ -53,7 +53,7 @@ window.LESSON_DATA = {
                 {
                   "text": "金星",
                   "kana": "きんせい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "」"
@@ -98,7 +98,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -400,7 +400,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本酒",
                   "kana": "にほんしゅ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "は",
@@ -418,7 +418,7 @@ window.LESSON_DATA = {
                 {
                   "text": "好",
                   "kana": "この",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "ま",
@@ -492,7 +492,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -618,7 +618,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ません",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "。"
@@ -645,7 +645,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "でも",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，"
@@ -729,7 +729,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 5
+                  "t": 5.0
                 },
                 {
                   "text": "です",
@@ -754,7 +754,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -868,7 +868,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "こちら",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "でした",
@@ -1068,7 +1068,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "サ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "ンプ",
@@ -1264,7 +1264,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -1516,7 +1516,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あり",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "がとう",
@@ -1543,7 +1543,7 @@ window.LESSON_DATA = {
                 {
                   "text": "北京",
                   "kana": "ぺきん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -1653,7 +1653,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "に",
@@ -1861,7 +1861,7 @@ window.LESSON_DATA = {
                 {
                   "text": "手紙",
                   "kana": "てがみ",
-                  "t": 0
+                  "t": 0.0
                 }
               ],
               "zh": "信函",
@@ -2044,7 +2044,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -2053,7 +2053,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "，"
@@ -2141,7 +2141,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6
+                  "t": 6.0
                 },
                 {
                   "text": "と",
@@ -3063,7 +3063,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "パ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "ンフ",
@@ -3148,7 +3148,7 @@ window.LESSON_DATA = {
                 {
                   "text": "上海",
                   "kana": "しゃんはい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "P",
@@ -3212,7 +3212,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "度",
@@ -3261,7 +3261,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "請求",
@@ -3404,7 +3404,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -3601,7 +3601,7 @@ window.LESSON_DATA = {
                 {
                   "text": "願",
                   "kana": "ねが",
-                  "t": 3
+                  "t": 3.0
                 },
                 {
                   "text": "いい",
@@ -3650,7 +3650,7 @@ window.LESSON_DATA = {
                 {
                   "text": "竜虎",
                   "kana": "りゅうこ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "酒造",
@@ -3744,9 +3744,7 @@ window.LESSON_DATA = {
               ],
               "zh": "这个嘛……",
               "notes": "",
-              "blanks": [
-                "そうですねえ"
-              ],
+              "blanks": [],
               "audio": "audio/seg-004.mp3"
             },
             {
@@ -3831,7 +3829,7 @@ window.LESSON_DATA = {
                 {
                   "text": "正直",
                   "kana": "しょうじき",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "に",
@@ -3840,7 +3838,7 @@ window.LESSON_DATA = {
                 {
                   "text": "言",
                   "kana": "い",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "え",
@@ -3896,7 +3894,8 @@ window.LESSON_DATA = {
               "zh": "老实说，这份报告的数据并不完全准确。",
               "notes": "",
               "blanks": [
-                "正直に言えば"
+                "正直に言えば",
+                "わけではありません"
               ],
               "audio": "audio/seg-182.mp3",
               "duration": 6.24
@@ -3909,7 +3908,7 @@ window.LESSON_DATA = {
                 {
                   "text": "面倒",
                   "kana": "めんどう",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "くさい",
@@ -3983,7 +3982,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "それはちょっと",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "…",
@@ -4022,11 +4021,11 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "「",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "刺",
@@ -4119,7 +4118,7 @@ window.LESSON_DATA = {
                 {
                   "text": "状況",
                   "kana": "じょうきょう",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "はあまりよくありません",
@@ -4127,7 +4126,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "。",
-                  "t": 2
+                  "t": 2.0
                 }
               ],
               "zh": "情况并不是太好。",
@@ -4145,7 +4144,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "「",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "上海",
@@ -4184,7 +4183,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "すみません",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，",
@@ -4246,7 +4245,7 @@ window.LESSON_DATA = {
                 {
                   "text": "何",
                   "kana": "なん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "と",
@@ -4315,7 +4314,8 @@ window.LESSON_DATA = {
               "notes": "",
               "blanks": [
                 "何というか",
-                "うまく言えませんが"
+                "うまく言えませんが",
+                "ありそうに"
               ],
               "audio": "audio/seg-189.mp3",
               "duration": 6.432
@@ -4327,7 +4327,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "でも",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，"
@@ -4411,7 +4411,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 5
+                  "t": 5.0
                 },
                 {
                   "text": "です",
@@ -4435,7 +4435,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "よく",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "分",
@@ -4516,7 +4516,7 @@ window.LESSON_DATA = {
                 {
                   "text": "金星",
                   "kana": "きんせい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "」"
@@ -4561,7 +4561,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -4597,7 +4597,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "い",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -4633,7 +4633,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "お",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "気",
@@ -4696,9 +4696,7 @@ window.LESSON_DATA = {
               ],
               "zh": "这个嘛……",
               "notes": "",
-              "blanks": [
-                "そうですねえ"
-              ],
+              "blanks": [],
               "audio": "audio/seg-004.mp3"
             },
             {
@@ -4819,7 +4817,7 @@ window.LESSON_DATA = {
                 {
                   "text": "今回",
                   "kana": "こんかい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -4858,7 +4856,7 @@ window.LESSON_DATA = {
                 {
                   "text": "入",
                   "kana": "い",
-                  "t": 3
+                  "t": 3.0
                 },
                 {
                   "text": "れ",
@@ -5174,7 +5172,7 @@ window.LESSON_DATA = {
                 {
                   "text": "中国",
                   "kana": "ちゅうごく",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -5254,7 +5252,9 @@ window.LESSON_DATA = {
               "zh": "在中国庆祝农历新年，而在日本庆祝阳历新年。",
               "notes": "",
               "blanks": [
-                "では"
+                "では",
+                "旧暦で正月を祝いますが",
+                "新暦で祝います"
               ],
               "audio": "audio/seg-203.mp3",
               "duration": 6.216
@@ -5267,7 +5267,7 @@ window.LESSON_DATA = {
                 {
                   "text": "当店",
                   "kana": "とうてん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -5338,7 +5338,9 @@ window.LESSON_DATA = {
               "zh": "本店为您准备了上好的饭菜，恭候您的光临。",
               "notes": "",
               "blanks": [
-                "では"
+                "では",
+                "ご用意",
+                "お待ち"
               ],
               "audio": "audio/seg-204.mp3",
               "duration": 6.288
@@ -5468,7 +5470,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "村",
@@ -5482,7 +5484,7 @@ window.LESSON_DATA = {
                 {
                   "text": "畑",
                   "kana": "はたけ",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "が",
@@ -5509,6 +5511,7 @@ window.LESSON_DATA = {
               "zh": "在这个村子，耕地面积在持续减少。",
               "notes": "",
               "blanks": [
+                "畑",
                 "減ってきている"
               ],
               "audio": "audio/seg-206.mp3",
@@ -5521,7 +5524,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "このまま",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "失業者",
@@ -5571,7 +5574,7 @@ window.LESSON_DATA = {
               "zh": "我担心失业者会这样不断增多。",
               "notes": "",
               "blanks": [
-                "増え続けていく"
+                "増え続けていくのではないか"
               ],
               "audio": "audio/seg-207.mp3",
               "duration": 5.064
@@ -5588,12 +5591,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "，",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "作業",
                   "kana": "さぎょう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "の",
@@ -5648,7 +5651,7 @@ window.LESSON_DATA = {
                 {
                   "text": "日本酒",
                   "kana": "にほんしゅ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "は",
@@ -5705,7 +5708,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "国",
@@ -5731,7 +5734,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "アニメ",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "は",
@@ -5748,7 +5751,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 3
+                  "t": 3.0
                 },
                 {
                   "text": "若者",
@@ -5800,7 +5803,7 @@ window.LESSON_DATA = {
                 {
                   "text": "確",
                   "kana": "たし",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -5852,7 +5855,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "わたしが",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "説明",
@@ -5905,7 +5908,8 @@ window.LESSON_DATA = {
               "zh": "照我说的去做，这个故障就能排除。",
               "notes": "",
               "blanks": [
-                "とおり"
+                "とおり",
+                "直せます"
               ],
               "audio": "audio/seg-212.mp3",
               "duration": 5.112
@@ -5918,7 +5922,7 @@ window.LESSON_DATA = {
                 {
                   "text": "兄",
                   "kana": "あに",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "が",
@@ -5963,7 +5967,8 @@ window.LESSON_DATA = {
               "zh": "我按哥哥教的方法学习。",
               "notes": "",
               "blanks": [
-                "とおり"
+                "が",
+                "くれたとおり"
               ],
               "audio": "audio/seg-213.mp3",
               "duration": 4.392
@@ -5976,7 +5981,7 @@ window.LESSON_DATA = {
                 {
                   "text": "先",
                   "kana": "さき",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "ほど",
@@ -6003,7 +6008,7 @@ window.LESSON_DATA = {
               "zh": "正如刚才我陈述的。",
               "notes": "",
               "blanks": [
-                "とおり"
+                "申しましたとおり"
               ],
               "audio": "audio/seg-214.mp3",
               "duration": 3.432
@@ -6023,7 +6028,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -6125,7 +6130,8 @@ window.LESSON_DATA = {
               "zh": "敝公司还准备了以“金星”为基础的新感觉鸡尾酒。",
               "notes": "",
               "blanks": [
-                "弊社"
+                "弊社",
+                "も"
               ],
               "audio": "audio/seg-013.mp3"
             },
@@ -6137,7 +6143,7 @@ window.LESSON_DATA = {
                 {
                   "text": "商品",
                   "kana": "しょうひん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -6146,7 +6152,7 @@ window.LESSON_DATA = {
                 {
                   "text": "情報",
                   "kana": "じょうほう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "については",
@@ -6186,7 +6192,8 @@ window.LESSON_DATA = {
               "zh": "关于产品信息，请查询我店主页。",
               "notes": "",
               "blanks": [
-                "弊店"
+                "弊店",
+                "ご覧ください"
               ],
               "audio": "audio/seg-216.mp3",
               "duration": 5.4
@@ -6206,7 +6213,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -6319,7 +6326,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "服",
@@ -6340,11 +6347,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "」",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "を",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "コンセプト",
@@ -6365,13 +6372,15 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "。",
-                  "t": 4
+                  "t": 4.0
                 }
               ],
               "zh": "这件衣服是用“环保”为宗旨的材料制作而成的。",
               "notes": "",
               "blanks": [
-                "をコンセプトとした"
+                "エコロジー",
+                "をコンセプトとした",
+                "できています"
               ],
               "audio": "audio/seg-218.mp3",
               "duration": 5.136
@@ -6391,7 +6400,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -6589,7 +6598,7 @@ window.LESSON_DATA = {
                 {
                   "text": "子供",
                   "kana": "こども",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "は",
@@ -6688,7 +6697,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "バー",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "にも",
@@ -6727,7 +6736,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "あの",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "店",
@@ -6771,12 +6780,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "，",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "時々",
                   "kana": "ときどき",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "買",
@@ -6798,20 +6807,21 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "き",
-                  "t": 5
+                  "t": 5.0
                 },
                 {
                   "text": "ます",
-                  "t": 5
+                  "t": 5.0
                 },
                 {
                   "text": "。",
-                  "t": 5
+                  "t": 5.0
                 }
               ],
               "zh": "那家店有中国产的好毛笔，所以我时常去买。",
               "notes": "",
               "blanks": [
+                "いい筆",
                 "置いている"
               ],
               "audio": "audio/seg-223.mp3",
@@ -6840,7 +6850,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -6849,7 +6859,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "，"
@@ -6937,7 +6947,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6
+                  "t": 6.0
                 },
                 {
                   "text": "と",
@@ -6976,7 +6986,7 @@ window.LESSON_DATA = {
                 {
                   "text": "桜",
                   "kana": "さくら",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -7034,7 +7044,7 @@ window.LESSON_DATA = {
                 {
                   "text": "若葉",
                   "kana": "わかば",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -7117,7 +7127,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "じ",
-                  "t": 5
+                  "t": 5.0
                 },
                 {
                   "text": "ます",
@@ -7145,7 +7155,7 @@ window.LESSON_DATA = {
                 {
                   "text": "桜",
                   "kana": "さくら",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -7190,7 +7200,7 @@ window.LESSON_DATA = {
                 {
                   "text": "紅葉",
                   "kana": "こうよう",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -7235,7 +7245,7 @@ window.LESSON_DATA = {
                 {
                   "text": "早",
                   "kana": "はや",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "い",
@@ -7295,7 +7305,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "まずはお",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "礼",
@@ -7326,7 +7336,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "お",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "忙",
@@ -7380,7 +7390,7 @@ window.LESSON_DATA = {
                 {
                   "text": "風邪",
                   "kana": "かぜ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "など",
@@ -7494,7 +7504,7 @@ window.LESSON_DATA = {
                 {
                   "text": "北上",
                   "kana": "きたかみ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "貿易",
@@ -7570,7 +7580,7 @@ window.LESSON_DATA = {
                 {
                   "text": "委員",
                   "kana": "いいん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -7588,7 +7598,7 @@ window.LESSON_DATA = {
                 {
                   "text": "元気",
                   "kana": "げんき",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "でお",
@@ -7635,7 +7645,7 @@ window.LESSON_DATA = {
                 {
                   "text": "新春",
                   "kana": "しんしゅん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -7644,7 +7654,7 @@ window.LESSON_DATA = {
                 {
                   "text": "候",
                   "kana": "こう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "，"
@@ -7732,7 +7742,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "こと",
-                  "t": 6
+                  "t": 6.0
                 },
                 {
                   "text": "と",
@@ -7770,7 +7780,7 @@ window.LESSON_DATA = {
                 {
                   "text": "先生",
                   "kana": "せんせい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "におかれましてはますますお",
@@ -7911,7 +7921,7 @@ window.LESSON_DATA = {
                 {
                   "text": "警察",
                   "kana": "けいさつ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "では",
@@ -7955,7 +7965,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "わたしたちの",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "研究所",
@@ -8150,7 +8160,7 @@ window.LESSON_DATA = {
                 {
                   "text": "貴社",
                   "kana": "きしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "宛",
@@ -8340,11 +8350,11 @@ window.LESSON_DATA = {
                 {
                   "text": "今日",
                   "kana": "きょう",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "は",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -8740,7 +8750,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "みんなが",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "寝",
@@ -8757,16 +8767,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "（",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "=",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "間",
                   "kana": "あいだ",
-                  "t": 2
+                  "t": 2.0
                 },
                 {
                   "text": "に",
@@ -8823,7 +8833,7 @@ window.LESSON_DATA = {
                 {
                   "text": "母",
                   "kana": "はは",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "が",
@@ -8902,7 +8912,7 @@ window.LESSON_DATA = {
                 {
                   "text": "休",
                   "kana": "やす",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "み",
@@ -8984,7 +8994,7 @@ window.LESSON_DATA = {
                 {
                   "text": "近",
                   "kana": "ちか",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "い",
@@ -9080,7 +9090,7 @@ window.LESSON_DATA = {
                 {
                   "text": "歩",
                   "kana": "ある",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "い",
@@ -9150,7 +9160,7 @@ window.LESSON_DATA = {
                 {
                   "text": "夜",
                   "kana": "よる",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "のうちは",
@@ -9179,7 +9189,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "。",
-                  "t": 3
+                  "t": 3.0
                 }
               ],
               "zh": "晚上最好别离开这里。",
@@ -9198,7 +9208,7 @@ window.LESSON_DATA = {
                 {
                   "text": "体",
                   "kana": "からだ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "が",
@@ -9280,7 +9290,7 @@ window.LESSON_DATA = {
                 {
                   "text": "近",
                   "kana": "ちか",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "い",
@@ -9376,7 +9386,7 @@ window.LESSON_DATA = {
                 {
                   "text": "一度",
                   "kana": "いちど",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，",
@@ -9443,7 +9453,7 @@ window.LESSON_DATA = {
                 {
                   "text": "今回",
                   "kana": "こんかい",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "の",
@@ -9647,7 +9657,7 @@ window.LESSON_DATA = {
                 {
                   "text": "後日",
                   "kana": "ごじつ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "あいさつに",
@@ -9815,7 +9825,7 @@ window.LESSON_DATA = {
                 {
                   "text": "先日",
                   "kana": "せんじつ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，",
@@ -9903,7 +9913,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "お",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "近",
@@ -9983,7 +9993,7 @@ window.LESSON_DATA = {
                 {
                   "text": "北京",
                   "kana": "ぺきん",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "に",
@@ -10044,7 +10054,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "その",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "節",
@@ -10212,7 +10222,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "お",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "忙",
@@ -10226,7 +10236,7 @@ window.LESSON_DATA = {
                 {
                   "text": "中",
                   "kana": "ちゅう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "恐縮",
@@ -10252,7 +10262,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "いただければ",
-                  "t": 3
+                  "t": 3.0
                 },
                 {
                   "text": "幸",
@@ -10440,7 +10450,7 @@ window.LESSON_DATA = {
                 {
                   "text": "弊社",
                   "kana": "へいしゃ",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "からまたお",
@@ -10476,7 +10486,7 @@ window.LESSON_DATA = {
                 {
                   "text": "今",
                   "kana": "いま",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "か",
@@ -10550,7 +10560,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "わたしの",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "妻",
@@ -10743,7 +10753,7 @@ window.LESSON_DATA = {
                 {
                   "text": "本当",
                   "kana": "ほんとう",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "に",
@@ -10804,7 +10814,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "度",
@@ -10859,12 +10869,12 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "よろしくご",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "検討",
                   "kana": "けんとう",
-                  "t": 1
+                  "t": 1.0
                 },
                 {
                   "text": "くださいますようお",
@@ -10921,7 +10931,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "これから",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "，",
@@ -11078,7 +11088,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "度",
@@ -11127,7 +11137,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ご",
-                  "t": 4
+                  "t": 4.0
                 },
                 {
                   "text": "請求",
@@ -11175,7 +11185,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "度",
@@ -11245,7 +11255,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "度",
@@ -11408,7 +11418,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "この",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "新",
@@ -11480,7 +11490,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -11614,7 +11624,7 @@ window.LESSON_DATA = {
                 {
                   "text": "飲",
                   "kana": "の",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "み",
@@ -11733,7 +11743,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -11873,7 +11883,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "な",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "お",
@@ -12006,7 +12016,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "お",
-                  "t": 0
+                  "t": 0.0
                 },
                 {
                   "text": "近",
