@@ -279,7 +279,19 @@
   // 跟 build_page.py 的 question_block_html() 一一对应。currentSpeaker 这个
   // "当前对话轮到谁说"的状态每道小题（question-block）开始时重置为
   // null——换了场景/段落，不该把上一题最后说话的人顺带延续过来。
-  function renderQuestionBlock(mondaiIdx, qIdx, q) {
+  // "语法与表达"这类tab（jp-textbook-lesson skill，build_grammar_notes_tab.py
+  // 产出）里"一卡一语法点"的编号卡，标题本身就是这张卡要挖空/默写的日语原文
+  // （比如"3. 当〜"的"当"、"8. 〜うちに"的"うちに"直接就是blanks里的答案），
+  // 默写/填空模式下照常显示标题等于把答案写在标题里——真实反馈"填空或者
+  // 默写时，小结的标题如果是日文，需要隐藏一下，只留下序号即可"。这跟
+  // has-title-dictate（N2语法/词汇页"标题默写"练习，见下面.q-title-dictate
+  // 那段CSS注释）不是一回事：这里不需要多一套"默写标题"的练习UI，单纯是
+  // "这个标题会泄题，先只留数字编号"。只在mondai命中这个白名单的tab里才
+  // 考虑隐藏，不影响会话/课文/生词tab自己的question分组标题（那些是"商量
+  // 行程"这种中文场景说明，从来不是被考的日语原文，一直保持照常显示）。
+  var GRAMMAR_NOTES_MONDAI = ["语法与表达"];
+
+  function renderQuestionBlock(mondaiIdx, qIdx, q, isGrammarNotesTab) {
     var label = q.question || "";
     var answerHtml = q.answer
       ? '<details class="seg-answer"><summary>答えを見る</summary><div>' + esc(q.answer) + "</div></details>"
@@ -327,8 +339,15 @@
     var numMatch = /^(\d+\.\s*)/.exec(label);
     var numPart = numMatch ? numMatch[1] : "";
     var restPart = numMatch ? label.slice(numMatch[1].length) : label;
+    // 专题卡（一张卡塞好几个不同表达点，标题是中文话题概述，比如"协调意见
+    // 分歧"/"1. 对顾客的用语"）标题本身不是某一句的挖空目标，不用隐藏——
+    // 内容作者在这类question对象上标`titleSafe: true`排除，默认（没写这个
+    // 字段）当作"标题=答案，需要隐藏"处理，因为"语法与表达"tab里绝大多数
+    // 编号卡确实都是"一卡一语法点、标题就是答案"这种。
+    var spoilerTitle = !!(isGrammarNotesTab && !q.titleSafe);
+    var blockCls = "question-block" + (spoilerTitle ? " spoiler-title" : "");
     return (
-      '<div class="question-block" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question"' + unitAttr + '>' +
+      '<div class="' + blockCls + '" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question"' + unitAttr + '>' +
         '<h3><span class="q-title-num">' + esc(numPart) + '</span><span class="q-title-text">' + esc(restPart) + "</span>" + wordAudioHtml + "</h3>" +
         overviewHtml + answerHtml + cards +
       "</div>"
@@ -338,8 +357,9 @@
   // 跟 build_page.py 的 mondai_section_html() 一一对应。
   function renderMondaiSection(mondaiIdx, tab, active) {
     var label = tab.question || tab.mondai;
+    var isGrammarNotesTab = GRAMMAR_NOTES_MONDAI.indexOf(tab.mondai) !== -1;
     var blocks = tab.questions.map(function (q, qi) {
-      return renderQuestionBlock(mondaiIdx, qi + 1, q);
+      return renderQuestionBlock(mondaiIdx, qi + 1, q, isGrammarNotesTab);
     }).join("");
     var cls = "mondai-section" + (active ? " tab-active" : "");
     return (

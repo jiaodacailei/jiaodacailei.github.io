@@ -738,6 +738,36 @@ description: Turn a Japanese textbook lesson (photographed/screenshotted vocab l
       对着真实DOM断言（多例句卡片渲染出几块、挖空输入框数量对不对、
       模拟输入正确答案能不能判对）——比只读代码走查更可信，跑完删掉
       `node_modules`，不留作项目依赖。
+  12. **"语法与表达"tab编号语法点卡的标题本身就是这张卡的答案**（比如
+      "3. 当〜"的"当"、"8. 〜うちに"的"うちに"直接是这句`blanks`里的
+      挖空目标），默写/填空模式下照常显示标题等于把答案写在标题上——
+      真实反馈"填空或者默写时，小结的标题如果是日文，需要隐藏一下，只
+      留下序号即可"。`page-renderer.js`/`listening-page.css`已经统一
+      处理：`tab.mondai`命中`GRAMMAR_NOTES_MONDAI`白名单（目前只有
+      "语法与表达"这一个值）的tab，其`question-block`默认在
+      `mode-dictate`/`mode-blank`下隐藏标题日语部分（`.q-title-text`），
+      只留编号（`.q-title-num`）——不需要新增练习UI，跟"标题默写"
+      （`has-title-dictate`，N2语法/词汇页专属，把标题本身变成一道
+      默写题）是两回事，这里单纯是"防止标题泄题"。**但这个tab里也有
+      少数"专题卡"**（一张卡塞好几个不同表达点，标题是中文话题概述，
+      不对应任何一句具体的挖空答案，比如l17的"称赞・谦虚"/"词语之窗"、
+      l18的"协调意见分歧"/"1. 对顾客的用语"/"1. 书信的写法"，以及"会話"
+      /"課文"这种分隔用的空标题），**必须在对应的question对象上手动加
+      `"titleSafe": true`**，否则会被默认规则误伤隐藏掉（这类标题本来
+      就不泄题，白白挡住有用信息）。**跑完`build_grammar_notes_tab.py`
+      之后，新增的这一步是必做的**：把这批"专题卡/空分隔"标题过一遍，
+      在`data.js`里给对应question补上`titleSafe: true`（`build_
+      grammar_notes_tab.py`目前不区分这两类，产出的每个question默认都
+      会被当成"标题=答案"，需要人工介入，脚本本身没有报错提示，容易
+      漏做）。**已发布的l17/l18**都已经手动patch过这个字段（各自4/5个
+      专题卡+空分隔标题）。**这套`GRAMMAR_NOTES_MONDAI`白名单+
+      `titleSafe`字段目前只在`page-renderer.js`（data-driven渲染路径）
+      里实现**，`build_page.py`的`question_block_html()`/
+      `mondai_section_html()`（旧式烘焙HTML路径）还没有对应逻辑——目前
+      "语法与表达"tab只出现在data-driven页面（`build_grammar_notes_tab.py`
+      只处理`data.js`），暂时不影响任何现有页面，但如果以后哪一课直接
+      用`build_page.py`烘焙出"语法与表达"tab，要记得把这里也补一份同样
+      的逻辑，不能只改`page-renderer.js`这一侧。
 - `docs/private/textbook-sjp-zg-l18/` — 《标准日本语》中级第18课（売り込み、
   手紙，会话/課文/生词三个tab，122个生词条目）用户后来补了"语法与表达"
   素材（会话13张+课文22张截图），跑 `build_grammar_notes_tab.py` 时暴露出

@@ -606,6 +606,18 @@ body.has-title-dictate.mode-dictate .q-title-dictate,
 body.has-title-dictate.mode-blank .q-title-dictate { display: block; }
 .q-title-dictate { margin: 4px 0 10px; }
 
+/* ── "语法与表达"tab编号语法点卡：标题本身=答案，默写/填空模式下只留编号 ──
+   跟上面has-title-dictate是两码事：has-title-dictate是"把标题也变成一道
+   默写题"，这里单纯是"这个标题会泄题，先把日语部分藏起来"，不需要额外的
+   练习UI，藏起来之后留白也不用补别的内容（编号.q-title-num一直可见）。
+   .spoiler-title这个class由page-renderer.js按tab.mondai是否命中
+   GRAMMAR_NOTES_MONDAI白名单加，专题卡（标题是中文话题概述，内容作者标了
+   titleSafe:true）没有这个class，不受影响。 */
+body.mode-dictate .question-block.spoiler-title .q-title-text,
+body.mode-blank .question-block.spoiler-title .q-title-text { display: none; }
+body.mode-dictate .question-block.spoiler-title h3::after,
+body.mode-blank .question-block.spoiler-title h3::after { display: none; }
+
 /* 侧栏目录（.toc-h2 > a）默认只显示日语标题——.side-nav-cn 这份中文候补
    永远渲染在 DOM 里（见 renderSideNavList()/side_nav_list_html()），但默认
    隐藏，只有标题默写页（has-title-dictate）在默写/填空模式下才换成显示它、
