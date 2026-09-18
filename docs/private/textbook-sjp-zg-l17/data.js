@@ -4511,7 +4511,9 @@ window.LESSON_DATA = {
               ],
               "zh": "太好了。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "すばらしい"
+              ],
               "audio": "audio/seg-003.mp3"
             },
             {
@@ -4571,7 +4573,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不是恭维，确实很有意思。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "お世辞"
+              ],
               "audio": "audio/seg-004.mp3"
             },
             {
@@ -4606,7 +4610,9 @@ window.LESSON_DATA = {
               ],
               "zh": "到底是王风啊！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "さすが"
+              ],
               "audio": "audio/seg-005.mp3"
             },
             {
@@ -4823,7 +4829,9 @@ window.LESSON_DATA = {
               ],
               "zh": "哪里哪里，没什么了不起的。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "たいした"
+              ],
               "audio": "audio/seg-025.mp3"
             },
             {
@@ -4849,7 +4857,9 @@ window.LESSON_DATA = {
               ],
               "zh": "谢谢。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ありがとうございます"
+              ],
               "audio": "audio/seg-006.mp3"
             },
             {
@@ -4899,7 +4909,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不过还有许多不足之处。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "まだまだ"
+              ],
               "audio": "audio/seg-007.mp3"
             },
             {
@@ -5762,7 +5774,9 @@ window.LESSON_DATA = {
               ],
               "zh": "嗯。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "ええ"
+              ],
               "audio": "audio/seg-018.mp3"
             },
             {
@@ -5841,7 +5855,9 @@ window.LESSON_DATA = {
               ],
               "zh": "不过，那是日本国内的情况啊。",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "でも"
+              ],
               "audio": "audio/seg-014.mp3"
             },
             {
@@ -6528,7 +6544,9 @@ window.LESSON_DATA = {
               ],
               "zh": "哎呀，这个想法非常好啊！",
               "notes": "",
-              "blanks": [],
+              "blanks": [
+                "すばらしい"
+              ],
               "audio": "audio/seg-024.mp3"
             },
             {
