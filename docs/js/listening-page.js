@@ -2073,7 +2073,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var DELAY_KEY = "n2listen-quiz-delay";
   var advanceDelay = parseInt(localStorage.getItem(DELAY_KEY) || "3", 10);
 
-  var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh", "pos"];
+  var TYPES = ["blank", "audio2kana", "zh2kana", "ja2kana", "ja2zh", "pos"];
   // 用户反馈这个小药丸标签太不起眼，四种题型说的其实是"要写出什么格式的
   // 答案"，重点是格式那几个字（假名/中文意思/填空），不是"根据中文""听音频"
   // 这些前置条件——把重点部分包一层 span 用高亮色区分开，前面的部分保持
@@ -2082,10 +2082,21 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     blank: "<span class=\"quiz-type-highlight\">填空</span>题",
     audio2kana: "听音频写<span class=\"quiz-type-highlight\">假名</span>",
     zh2kana: "根据中文写<span class=\"quiz-type-highlight\">假名</span>",
+    ja2kana: "根据日文写<span class=\"quiz-type-highlight\">假名</span>",
     ja2zh: "根据单词写<span class=\"quiz-type-highlight\">中文意思</span>",
     pos: "选择<span class=\"quiz-type-highlight\">词性</span>"
   };
   var KANJI_RE = /[一-鿿]/;
+  // "根据日文写假名"——题面直接给日文原文（不带注音，注音就是答案本身），
+  // 让用户凭汉字写出读音。真实反馈"如果日文本身就是kana，则忽略"：纯假名/
+  // 片假名词（比如"データ"这种外来语、没有汉字的固有词）本身已经是它自己
+  // 的"假名"，没有另一套需要写出来的读音，这道题对这类词没有意义，直接
+  // 跳过——判断条件复用 promptHtmlFor() 里判断"要不要显示括注读音"的同一条
+  // 逻辑（有汉字、有kana字段、kana跟text不完全一样），三个条件同时成立才
+  // 出这道题。
+  function needsJa2Kana(word) {
+    return KANJI_RE.test(word.text) && !!word.kana && word.kana !== word.text;
+  }
   // 词性标签（"[名]"「[动3]」之类）是词典抄来的，不算释义内容，判分前先去掉，
   // 不然用户如果照抄了词性标签会误判、如果没抄也不该因为"少打了标签"算错。
   var POS_RE = /^\s*[「『\[［【]{1}[^\]」』］】]*[\]」』］】]\s*/;
@@ -2185,6 +2196,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           FULL_ITEMS.push({ word: w, type: "pos", errType: "pos" });
           return;
         }
+        if (t === "ja2kana") {
+          if (!needsJa2Kana(w)) return;
+          FULL_ITEMS.push({ word: w, type: "ja2kana", errType: "ja2kana" });
+          return;
+        }
         FULL_ITEMS.push({ word: w, type: t, errType: t });
       });
     });
@@ -2260,6 +2276,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           if (!posFor(w)) return;
           if (scope === "wrong" && getErr(errKey(w.id, "pos")) <= 0) return;
           all.push({ word: w, type: "pos", errType: "pos" });
+          return;
+        }
+        if (t === "ja2kana") {
+          if (!needsJa2Kana(w)) return;
+          if (scope === "wrong" && getErr(errKey(w.id, "ja2kana")) <= 0) return;
+          all.push({ word: w, type: "ja2kana", errType: "ja2kana" });
           return;
         }
         if (scope === "wrong" && getErr(errKey(w.id, t)) <= 0) return;
@@ -2378,7 +2400,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function answerFor(q) {
     if (q.type === "blank") return q.sentence.blank;
     if (q.type === "related") return q.word.text;
-    if (q.type === "audio2kana" || q.type === "zh2kana") return q.word.kana;
+    if (q.type === "audio2kana" || q.type === "zh2kana" || q.type === "ja2kana") return q.word.kana;
     if (q.type === "pos") return posFor(q.word);
     return null; // ja2zh 是多选一匹配，见 checkJa2Zh
   }
@@ -2489,12 +2511,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return '<div class="quiz-hint-text">「' + q.word.mainText + '」的' +
         q.word.relation + '是？</div>' + '<div class="quiz-zh-hint">' + q.word.zh + '</div>';
     }
-    // ja2zh（根据单词写中文意思）题面只显示原文，不带假名注音——真实反馈
-    // "日文写中文时，不要显示kana"：这道题考的是"看到这个词能不能想起
-    // 中文意思"，本来就不要求写出读音，题面上多印一遍假名反而可能变相
-    // 提示/干扰。"词性选择"（走下面的通用兜底分支）不受这条影响，继续
-    // 保留假名注音，只改ja2zh这一种题型。
-    if (q.type === "ja2zh") {
+    // ja2zh（根据单词写中文意思）/ja2kana（根据日文写假名）题面都只显示
+    // 原文，不带假名注音——ja2zh是真实反馈"日文写中文时，不要显示kana"
+    // （考的是"看到这个词能不能想起中文意思"，不要求写出读音，多印一遍
+    // 假名反而变相提示/干扰）；ja2kana更直接——kana本身就是这道题的答案，
+    // 题面上如果先把答案印出来就没法出题了。"词性选择"（走下面的通用
+    // 兜底分支）不受这条影响，继续保留假名注音。
+    if (q.type === "ja2zh" || q.type === "ja2kana") {
       var jaSuffix2 = JA_DISAMBIGUATE_SUFFIX[q.word.id];
       var shown2 = q.word.text + (jaSuffix2 ? '<span class="quiz-dedupe-badge">' + jaSuffix2 + '</span>' : "");
       return '<div class="quiz-ja-prompt">' + shown2 + '</div>';
