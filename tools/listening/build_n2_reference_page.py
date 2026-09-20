@@ -360,7 +360,6 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
 
 _TRAILING_PAREN_CONTENT_RE = re.compile(r"（([^（）]*)）$")
 _KANA_ONLY_RE = re.compile(r"^[぀-ゟ゠-ヿー・～]+$")
-_POS_TAG_RE = re.compile(r"^\[[^\]]*\]\s*")
 
 
 def derive_reading(title, word_text):
@@ -384,12 +383,20 @@ def derive_reading(title, word_text):
 
 
 def quiz_zh_text(overview):
-    """"单词测试"tab的ja2zh/zh2kana两道题型要用的干净中文释义——只取
-    overview第一行、去掉开头的"[词性]"标签（跟词典抄来的标注一样，不算
-    释义内容本身，来源见 listening-page.js 里 POS_RE 同一条逻辑，这里独立
-    写一份是因为这边是Python、那边是JS，没有共享模块的机制）。"""
+    """"单词测试"tab要用的中文释义——只取overview第一行（后面几行是"类义词"
+    这类附加注释，不是这个词本身的释义）。**保留开头的"[词性]"标签，不剥离**
+    ——跟教材课`build_vocab_quiz_data.py`的`entry["zh"] = w["zh"]`一样直接
+    透传原文，两边数据格式保持一致。这个函数早期版本会剥掉标签（当时只有
+    ja2zh/zh2kana两道题型要用这个字段，标签确实不算释义内容），后来"单词
+    测试"新增第5种题型"词性选择"（`listening-page.js`的`posFor()`），要从
+    `zh`字段开头现取这个标签当正确答案——真实反馈"N2词汇的单词测试中，
+    为什么没有词性选择题"，查下来就是这里在生成时把标签提前剥掉了，跟
+    教材课的数据格式不一致，`posFor()`找不到标签，判定"这个词没有词性
+    标注"直接跳过，422个词条全军覆没。ja2zh/zh2kana判分时前端会自己剥掉
+    标签再比较（`listening-page.js`的`POS_RE`/`zhSegments()`），数据这一层
+    保留标签不影响这两道题原有的判分逻辑。"""
     first_line = (overview or "").split("\n")[0]
-    return _POS_TAG_RE.sub("", first_line).strip()
+    return first_line.strip()
 
 
 def chunk_group_sizes(n, size=10, min_last=5):
