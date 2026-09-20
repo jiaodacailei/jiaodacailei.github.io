@@ -2103,25 +2103,59 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // "词性选择"题——跟上面POS_RE共用同一种"[...]"格式，但POS_RE是用来把
   // zh字段开头的词性标签整段剔除、不保留内容的，这里反过来要保留括号
   // 内的文字当正确答案，所以另开一个带捕获组的正则，不能直接复用POS_RE。
-  // 真实数据（全部教材课+N2语法/词汇）扫下来只出现过这12种，固定当选项，
-  // 不按当前词表动态现算——每次都是同一套选项，选项本身的分类名称也是
-  // 要记住的知识点，不需要每次都不一样。没有词性标签的词条（约1/3，
-  // 多是固定搭配/惯用语/前后缀模式，比如"〜食""気がする"这类，词典本身
-  // 就没有单一词性分类）不出这道题，不强行编一个不存在的答案凑数——跟
-  // "填空"题没有例句就不出题（blankSentences()返回空数组）是同一个原则。
+  //
+  // 真实反馈两条，都是"选项固定写死12个"这个最初设计的问题：①教材课
+  // （标准日本语）自己的标注习惯是"名/动1/动2/动3/形1/形2/副/连体/连/代/
+  // 叹/专"这套中文简称，但N2词汇页（新完全掌握系列）用的是更细的日文
+  // 原生说法（他動1/他動2/他動3/自動1/自動2/自動3/自他動1/自他動3/
+  // イ形/ナ形/接尾/接頭/连语……），两套体系几乎不重叠，写死12个选项只
+  // 对教材课有效，N2词汇页的正确答案根本不在选项列表里，这批题目变成
+  // 怎么选都选不中"正解"的死题——**选项改成按当前页面实际用到的标签
+  // 动态生成**（扫一遍words数组），不再写死，天然适配任何一套标注体系。
+  // ②一个词可能同时有好几个词性标签，原文里用"・"（或半角/全角逗号、
+  // 顿号）分隔（比如"名・自動3"是"名词兼三类自动词"，最多见过三个同时
+  // 标注，比如"名・ナ形・副"）——posTagsFor()返回数组而不是单个字符串，
+  // 判分时改成多选：用户要把这个词的全部标签都选中、且不能多选错的，
+  // 才算对（真实反馈"改成多选，全部选中才对"）。
   var POS_TAG_RE = /^\s*[\[［]([^\]］]*)[\]］]/;
-  var POS_OPTIONS = ["名", "动1", "动2", "动3", "形1", "形2", "副", "连体", "连", "代", "叹", "专"];
-  function posFor(word) {
+  var POS_SPLIT_RE = /[・、,，\/]/;
+  function posTagsFor(word) {
     var m = POS_TAG_RE.exec(word.zh || "");
-    return m ? m[1] : null;
+    if (!m) return [];
+    return m[1].split(POS_SPLIT_RE).map(function(s) { return s.trim(); }).filter(Boolean);
+  }
+  // 选项按这个页面实际出现过的标签动态生成，按第一次出现的顺序排列（跟
+  // availableCategories"分类先出现先排"同一条规则）——同一份词表标注
+  // 风格总是统一的（教材课/N2词汇页各自的体系不会混在同一个words数组
+  // 里），不用担心选项爆炸，实测教材课十几个、N2词汇页二十个左右，
+  // 网格布局都装得下；没有任何词性标签的词条（约1/3，多是固定搭配/
+  // 惯用语/前后缀模式，比如"〜食""気がする"这类）不出这道题，不强行编
+  // 一个不存在的答案凑数——跟"填空"题没有例句就不出题
+  // （blankSentences()返回空数组）是同一个原则。
+  var POS_OPTIONS = (function() {
+    var seen = {};
+    var order = [];
+    words.forEach(function(w) {
+      posTagsFor(w).forEach(function(tag) {
+        if (!seen[tag]) { seen[tag] = true; order.push(tag); }
+      });
+    });
+    return order;
+  })();
+  // 多选题的正误判断：用户选中的集合必须跟这个词真实的全部标签集合完全
+  // 一样（不能少选、也不能多选错的），顺序不影响判断结果。
+  function sameTagSet(a, b) {
+    if (a.length !== b.length) return false;
+    var sa = a.slice().sort(), sb = b.slice().sort();
+    return sa.every(function(v, i) { return v === sb[i]; });
   }
   // 词性选择题的选项按钮——复用 mcq-quiz.js（N2语法/词汇页"練習"tab）已有的
-  // .mcq-option/.mcq-options-grid样式，视觉上跟那套"点哪个立刻判分、正解/
-  // 不正解高亮"的四选一交互保持一致，不用再写一套新样式。単語テスト tab和
-  // "错题编号"tab各有自己独立的一份quiz-card DOM（后者id前缀是numQuiz*），
-  // 这个函数只负责拼HTML字符串，点击事件监听各自在render()/numRender()
-  // 调用处单独绑定（两边引用的queue/resolved/quizInput变量不是同一份，
-  // 没法共用同一个监听器）。
+  // .mcq-option/.mcq-options-grid样式（选中态用已有的.selected类），
+  // 视觉上保持一致，不用再写一套新样式。単語テスト tab和"错题编号"tab
+  // 各有自己独立的一份quiz-card DOM（后者id前缀是numQuiz*），这个函数
+  // 只负责拼HTML字符串，点击事件监听/多选状态维护/判分各自在
+  // render()/numRender()调用处单独绑定（两边引用的queue/resolved/
+  // 多选状态变量不是同一份，没法共用同一个监听器）。
   function posOptionsHtml() {
     return POS_OPTIONS.map(function(p) {
       return '<div class="mcq-option" data-pos="' + p + '"><span class="mcq-option-text">' + p + '</span></div>';
@@ -2192,7 +2226,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           return;
         }
         if (t === "pos") {
-          if (!posFor(w)) return;
+          if (!posTagsFor(w).length) return;
           FULL_ITEMS.push({ word: w, type: "pos", errType: "pos" });
           return;
         }
@@ -2273,7 +2307,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           return;
         }
         if (t === "pos") {
-          if (!posFor(w)) return;
+          if (!posTagsFor(w).length) return;
           if (scope === "wrong" && getErr(errKey(w.id, "pos")) <= 0) return;
           all.push({ word: w, type: "pos", errType: "pos" });
           return;
@@ -2319,6 +2353,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var resolved = false;      // 这道题是否已经判完（点过确认），控制按钮显隐
   var countedWrong = false;  // 这道题这一轮是否已经计过一次错，避免反复提交同一道题重复累加
   var autoAdvanceTimer = null; // 点确认后3秒自动跳下一题的计时器，手动点"次へ"或提前进新题要清掉，避免重复推进
+  var quizPosSelected = [];  // "词性选择"多选题当前已选中的标签，点確認时才判分，每道新题在render()里清空
 
   var quizApp = document.getElementById("quizApp");
   var quizProgress = document.getElementById("quizProgress");
@@ -2401,7 +2436,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (q.type === "blank") return q.sentence.blank;
     if (q.type === "related") return q.word.text;
     if (q.type === "audio2kana" || q.type === "zh2kana" || q.type === "ja2kana") return q.word.kana;
-    if (q.type === "pos") return posFor(q.word);
+    if (q.type === "pos") return posTagsFor(q.word).join("、");
     return null; // ja2zh 是多选一匹配，见 checkJa2Zh
   }
 
@@ -2573,12 +2608,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     quizNext.style.display = "none";
     quizPlayBtn.style.display = "none";
     quizPrompt.innerHTML = promptHtmlFor(q);
-    // "词性选择"是点选项立刻判分，不是"打字+確認"——隐藏文本输入框/確認
-    // 按钮，换成一排选项按钮；quizNext还是原来的位置，判完之后一样正常
-    // 露出来，不需要额外处理。
+    // "词性选择"是多选题——隐藏文本输入框，换成一排可以多选的选项按钮，
+    // 但保留"確認"按钮（不是点选项立刻判分，因为一个词可能要选好几个
+    // 标签，点第一个的时候还不知道用户是不是选完了，得等用户自己点確認
+    // 才能判分）。quizNext还是原来的位置，判完之后一样正常露出来。
     if (q.type === "pos") {
+      quizPosSelected = [];
       quizInput.style.display = "none";
-      quizCheck.style.display = "none";
       quizPosOptions.style.display = "";
       quizPosOptions.innerHTML = posOptionsHtml();
     } else {
@@ -2627,7 +2663,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function doCheck() {
     if (resolved) return;
     var q = queue[qi];
-    var ok = checkAnswer(q, quizInput.value);
+    var ok = q.type === "pos" ? sameTagSet(quizPosSelected, posTagsFor(q.word)) : checkAnswer(q, quizInput.value);
     if (ok) {
       // 只有真的答对才算这一轮做完这道题——答错的话不调用 markDone()，
       // 而是把这道题重新塞进队列末尾，之后还会再考一次，一直考到答对为止
@@ -2639,6 +2675,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       queue.push(q);
     }
     if (!ok && !countedWrong) { bumpErr(errKey(q.word.id, q.errType)); countedWrong = true; refreshProgress(); }
+    // 词性选择判完之后要给选项上色："正解"里的每个标签都标绿（不管用户
+    // 选没选，让用户看到完整正确答案），用户自己选中但不在正解里的标红
+    // （多选错了的部分），其余不动——跟mcq-quiz.js"点哪个立刻判分"的
+    // 单选高亮逻辑不完全一样，多选场景没有唯一的"用户点的那一个"。
+    if (q.type === "pos") {
+      var correctTags = posTagsFor(q.word);
+      Array.prototype.forEach.call(quizPosOptions.querySelectorAll(".mcq-option"), function(el) {
+        el.classList.add("disabled");
+        var p = el.getAttribute("data-pos");
+        if (correctTags.indexOf(p) !== -1) el.classList.add("correct");
+        else if (quizPosSelected.indexOf(p) !== -1) el.classList.add("wrong");
+      });
+    }
     var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
     markResolved(ok, ans);
   }
@@ -2647,27 +2696,21 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   quizInput.addEventListener("keydown", function(e) {
     if (e.key === "Enter") { e.preventDefault(); doCheck(); }
   });
-  // 词性选择——点哪个选项就是提交那个答案，不用先打字再点確認。跟
-  // mcq-quiz.js的selectOption()同一个交互：点完立刻disable全部选项、给
-  // 正解/所点错误选项上色，再把选中的值塞进（已隐藏的）quizInput、走
-  // 已有的doCheck()完成判分/记错题/自动跳题这一整套逻辑，不用另外重写
-  // 一遍。事件绑在容器上（委托），因为按钮是每次render()时现拼的HTML，
-  // 没法对着还不存在的按钮提前挂监听。
+  // 词性选择——多选，点选项只是切换选中状态（不立刻判分，因为一个词
+  // 可能要选好几个标签，点第一个的时候还不知道用户选完没有），选中的
+  // 视觉复用mcq-quiz.js已有的.selected类；真正判分要等用户自己点"確認"
+  // （走上面doCheck()里q.type==="pos"那条分支）。事件绑在容器上（委托），
+  // 因为按钮是每次render()时现拼的HTML，没法对着还不存在的按钮提前
+  // 挂监听。
   quizPosOptions.addEventListener("click", function(e) {
     var btn = e.target.closest(".mcq-option");
     if (!btn || resolved) return;
     var q = queue[qi];
     if (q.type !== "pos") return;
-    var chosen = btn.getAttribute("data-pos");
-    var correct = posFor(q.word);
-    Array.prototype.forEach.call(quizPosOptions.querySelectorAll(".mcq-option"), function(el) {
-      el.classList.add("disabled");
-      var p = el.getAttribute("data-pos");
-      if (p === correct) el.classList.add("correct");
-      else if (p === chosen) el.classList.add("wrong");
-    });
-    quizInput.value = chosen;
-    doCheck();
+    var tag = btn.getAttribute("data-pos");
+    var idx = quizPosSelected.indexOf(tag);
+    if (idx === -1) { quizPosSelected.push(tag); btn.classList.add("selected"); }
+    else { quizPosSelected.splice(idx, 1); btn.classList.remove("selected"); }
   });
   quizNext.addEventListener("click", function() { qi++; render(); });
   quizPlayBtn.addEventListener("click", function() {
@@ -2827,6 +2870,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var numResolved = false;
     var numCountedWrong = false;
     var numAutoAdvanceTimer = null;
+    var numQuizPosSelected = [];
     // 只在内存里，页面刷新就重置——"按编号测试"是一次性针对性复习，不像
     // 単語テスト那样需要跨刷新保留"这一轮做到哪了"，每次重新输入题号都
     // 应该是全新的一轮。
@@ -2892,8 +2936,8 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       numQuizPlayBtnEl.style.display = "none";
       numQuizPromptEl.innerHTML = promptHtmlFor(q);
       if (q.type === "pos") {
+        numQuizPosSelected = [];
         numQuizAnswerInputEl.style.display = "none";
-        numQuizCheckBtnEl.style.display = "none";
         numQuizPosOptionsEl.style.display = "";
         numQuizPosOptionsEl.innerHTML = posOptionsHtml();
       } else {
@@ -2931,13 +2975,22 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     function numDoCheck() {
       if (numResolved) return;
       var q = numQueue[numQi];
-      var ok = checkAnswer(q, numQuizAnswerInputEl.value);
+      var ok = q.type === "pos" ? sameTagSet(numQuizPosSelected, posTagsFor(q.word)) : checkAnswer(q, numQuizAnswerInputEl.value);
       if (ok) {
         numCompleted[errKey(q.word.id, q.errType)] = 1;
       } else {
         numQueue.push(q);
       }
       if (!ok && !numCountedWrong) { numBumpErr(q.word, q.errType); numCountedWrong = true; }
+      if (q.type === "pos") {
+        var correctTags = posTagsFor(q.word);
+        Array.prototype.forEach.call(numQuizPosOptionsEl.querySelectorAll(".mcq-option"), function(el) {
+          el.classList.add("disabled");
+          var p = el.getAttribute("data-pos");
+          if (correctTags.indexOf(p) !== -1) el.classList.add("correct");
+          else if (numQuizPosSelected.indexOf(p) !== -1) el.classList.add("wrong");
+        });
+      }
       var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
       numMarkResolved(ok, ans);
     }
@@ -2980,23 +3033,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     numQuizAnswerInputEl.addEventListener("keydown", function(e) {
       if (e.key === "Enter") { e.preventDefault(); numDoCheck(); }
     });
-    // 跟単語テスト tab里quizPosOptions的点击逻辑完全一样，只是读写的是
-    // "按编号测试"自己这一份 numQueue/numQi/numResolved/numQuizAnswerInputEl。
+    // 跟単語テスト tab里quizPosOptions的点击逻辑完全一样（多选，点选项只
+    // 切换选中状态，点確認才判分），只是读写的是"按编号测试"自己这一份
+    // numQueue/numQi/numResolved/numQuizPosSelected。
     numQuizPosOptionsEl.addEventListener("click", function(e) {
       var btn = e.target.closest(".mcq-option");
       if (!btn || numResolved) return;
       var q = numQueue[numQi];
       if (q.type !== "pos") return;
-      var chosen = btn.getAttribute("data-pos");
-      var correct = posFor(q.word);
-      Array.prototype.forEach.call(numQuizPosOptionsEl.querySelectorAll(".mcq-option"), function(el) {
-        el.classList.add("disabled");
-        var p = el.getAttribute("data-pos");
-        if (p === correct) el.classList.add("correct");
-        else if (p === chosen) el.classList.add("wrong");
-      });
-      numQuizAnswerInputEl.value = chosen;
-      numDoCheck();
+      var tag = btn.getAttribute("data-pos");
+      var idx = numQuizPosSelected.indexOf(tag);
+      if (idx === -1) { numQuizPosSelected.push(tag); btn.classList.add("selected"); }
+      else { numQuizPosSelected.splice(idx, 1); btn.classList.remove("selected"); }
     });
     numQuizNextBtnEl.addEventListener("click", function() { numQi++; numRender(); });
     numQuizPlayBtnEl.addEventListener("click", function() {
