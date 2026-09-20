@@ -2489,6 +2489,16 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return '<div class="quiz-hint-text">「' + q.word.mainText + '」的' +
         q.word.relation + '是？</div>' + '<div class="quiz-zh-hint">' + q.word.zh + '</div>';
     }
+    // ja2zh（根据单词写中文意思）题面只显示原文，不带假名注音——真实反馈
+    // "日文写中文时，不要显示kana"：这道题考的是"看到这个词能不能想起
+    // 中文意思"，本来就不要求写出读音，题面上多印一遍假名反而可能变相
+    // 提示/干扰。"词性选择"（走下面的通用兜底分支）不受这条影响，继续
+    // 保留假名注音，只改ja2zh这一种题型。
+    if (q.type === "ja2zh") {
+      var jaSuffix2 = JA_DISAMBIGUATE_SUFFIX[q.word.id];
+      var shown2 = q.word.text + (jaSuffix2 ? '<span class="quiz-dedupe-badge">' + jaSuffix2 + '</span>' : "");
+      return '<div class="quiz-ja-prompt">' + shown2 + '</div>';
+    }
     var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
       ? q.word.text + "（" + q.word.kana + "）" : q.word.text;
     var jaSuffix = JA_DISAMBIGUATE_SUFFIX[q.word.id];
