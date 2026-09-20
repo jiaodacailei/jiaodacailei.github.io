@@ -152,7 +152,9 @@ SKILL.md` 里更详细的说明（两个skill这部分完全共用同一套实�
 ## 单词测试tab——跟教材课l17/l18同一套引擎，`--vocab-quiz`开关生成
 
 `listening-page.js` 里读 `#vocab-quiz-data` 的那套"单词测试"引擎（填空/
-听音频写假名/中文写假名/日文写中文四种题型）跟N2语法/词汇页原本的
+听音频写假名/中文写假名/日文写中文/词性选择五种题型，最后一种是纯前端
+从`zh`字段开头已有的词性标签现算出来的，不需要额外传数据，见
+`jp-textbook-lesson/SKILL.md`"6f."那节）跟N2语法/词汇页原本的
 `mcq-quiz.js`（"练习"tab，教材原版四选一）是两套完全独立的东西——用户
 反馈"另外增加一个单独的单词测试，仿照课文中的单词测试即可"，加了
 `build_n2_reference_page.py` 的 `build_vocab_quiz_items()`，`--vocab-quiz`

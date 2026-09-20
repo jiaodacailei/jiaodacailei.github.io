@@ -2073,7 +2073,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var DELAY_KEY = "n2listen-quiz-delay";
   var advanceDelay = parseInt(localStorage.getItem(DELAY_KEY) || "3", 10);
 
-  var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh"];
+  var TYPES = ["blank", "audio2kana", "zh2kana", "ja2zh", "pos"];
   // 用户反馈这个小药丸标签太不起眼，四种题型说的其实是"要写出什么格式的
   // 答案"，重点是格式那几个字（假名/中文意思/填空），不是"根据中文""听音频"
   // 这些前置条件——把重点部分包一层 span 用高亮色区分开，前面的部分保持
@@ -2082,12 +2082,40 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     blank: "<span class=\"quiz-type-highlight\">填空</span>题",
     audio2kana: "听音频写<span class=\"quiz-type-highlight\">假名</span>",
     zh2kana: "根据中文写<span class=\"quiz-type-highlight\">假名</span>",
-    ja2zh: "根据单词写<span class=\"quiz-type-highlight\">中文意思</span>"
+    ja2zh: "根据单词写<span class=\"quiz-type-highlight\">中文意思</span>",
+    pos: "选择<span class=\"quiz-type-highlight\">词性</span>"
   };
   var KANJI_RE = /[一-鿿]/;
   // 词性标签（"[名]"「[动3]」之类）是词典抄来的，不算释义内容，判分前先去掉，
   // 不然用户如果照抄了词性标签会误判、如果没抄也不该因为"少打了标签"算错。
   var POS_RE = /^\s*[「『\[［【]{1}[^\]」』］】]*[\]」』］】]\s*/;
+  // "词性选择"题——跟上面POS_RE共用同一种"[...]"格式，但POS_RE是用来把
+  // zh字段开头的词性标签整段剔除、不保留内容的，这里反过来要保留括号
+  // 内的文字当正确答案，所以另开一个带捕获组的正则，不能直接复用POS_RE。
+  // 真实数据（全部教材课+N2语法/词汇）扫下来只出现过这12种，固定当选项，
+  // 不按当前词表动态现算——每次都是同一套选项，选项本身的分类名称也是
+  // 要记住的知识点，不需要每次都不一样。没有词性标签的词条（约1/3，
+  // 多是固定搭配/惯用语/前后缀模式，比如"〜食""気がする"这类，词典本身
+  // 就没有单一词性分类）不出这道题，不强行编一个不存在的答案凑数——跟
+  // "填空"题没有例句就不出题（blankSentences()返回空数组）是同一个原则。
+  var POS_TAG_RE = /^\s*[\[［]([^\]］]*)[\]］]/;
+  var POS_OPTIONS = ["名", "动1", "动2", "动3", "形1", "形2", "副", "连体", "连", "代", "叹", "专"];
+  function posFor(word) {
+    var m = POS_TAG_RE.exec(word.zh || "");
+    return m ? m[1] : null;
+  }
+  // 词性选择题的选项按钮——复用 mcq-quiz.js（N2语法/词汇页"練習"tab）已有的
+  // .mcq-option/.mcq-options-grid样式，视觉上跟那套"点哪个立刻判分、正解/
+  // 不正解高亮"的四选一交互保持一致，不用再写一套新样式。単語テスト tab和
+  // "错题编号"tab各有自己独立的一份quiz-card DOM（后者id前缀是numQuiz*），
+  // 这个函数只负责拼HTML字符串，点击事件监听各自在render()/numRender()
+  // 调用处单独绑定（两边引用的queue/resolved/quizInput变量不是同一份，
+  // 没法共用同一个监听器）。
+  function posOptionsHtml() {
+    return POS_OPTIONS.map(function(p) {
+      return '<div class="mcq-option" data-pos="' + p + '"><span class="mcq-option-text">' + p + '</span></div>';
+    }).join("");
+  }
 
   // word.audio 有值就直接用（N2语法/词汇页专属：词条标题自己的发音，
   // "audio/word-{id:03d}.mp3"，不是例句音频——"听音频写假名"这道题问的是
@@ -2150,6 +2178,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           blankSentences(w).forEach(function(s, i) {
             FULL_ITEMS.push({ word: w, type: "blank", errType: blankErrType(i), sentence: s });
           });
+          return;
+        }
+        if (t === "pos") {
+          if (!posFor(w)) return;
+          FULL_ITEMS.push({ word: w, type: "pos", errType: "pos" });
           return;
         }
         FULL_ITEMS.push({ word: w, type: t, errType: t });
@@ -2223,6 +2256,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           });
           return;
         }
+        if (t === "pos") {
+          if (!posFor(w)) return;
+          if (scope === "wrong" && getErr(errKey(w.id, "pos")) <= 0) return;
+          all.push({ word: w, type: "pos", errType: "pos" });
+          return;
+        }
         if (scope === "wrong" && getErr(errKey(w.id, t)) <= 0) return;
         all.push({ word: w, type: t, errType: t });
       });
@@ -2266,6 +2305,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var quizTypeLabel = document.getElementById("quizTypeLabel");
   var quizPrompt = document.getElementById("quizPrompt");
   var quizPlayBtn = document.getElementById("quizPlayBtn");
+  var quizPosOptions = document.getElementById("quizPosOptions");
   var quizInput = document.getElementById("quizInput");
   var quizCheck = document.getElementById("quizCheck");
   var quizNext = document.getElementById("quizNext");
@@ -2339,6 +2379,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (q.type === "blank") return q.sentence.blank;
     if (q.type === "related") return q.word.text;
     if (q.type === "audio2kana" || q.type === "zh2kana") return q.word.kana;
+    if (q.type === "pos") return posFor(q.word);
     return null; // ja2zh 是多选一匹配，见 checkJa2Zh
   }
 
@@ -2499,6 +2540,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     quizNext.style.display = "none";
     quizPlayBtn.style.display = "none";
     quizPrompt.innerHTML = promptHtmlFor(q);
+    // "词性选择"是点选项立刻判分，不是"打字+確認"——隐藏文本输入框/確認
+    // 按钮，换成一排选项按钮；quizNext还是原来的位置，判完之后一样正常
+    // 露出来，不需要额外处理。
+    if (q.type === "pos") {
+      quizInput.style.display = "none";
+      quizCheck.style.display = "none";
+      quizPosOptions.style.display = "";
+      quizPosOptions.innerHTML = posOptionsHtml();
+    } else {
+      quizInput.style.display = "";
+      quizPosOptions.style.display = "none";
+    }
     if (q.type === "audio2kana") {
       quizPlayBtn.style.display = "";
       currentQuizAudioUrl = audioSrcFor(q.word);
@@ -2560,6 +2613,28 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   quizCheck.addEventListener("click", doCheck);
   quizInput.addEventListener("keydown", function(e) {
     if (e.key === "Enter") { e.preventDefault(); doCheck(); }
+  });
+  // 词性选择——点哪个选项就是提交那个答案，不用先打字再点確認。跟
+  // mcq-quiz.js的selectOption()同一个交互：点完立刻disable全部选项、给
+  // 正解/所点错误选项上色，再把选中的值塞进（已隐藏的）quizInput、走
+  // 已有的doCheck()完成判分/记错题/自动跳题这一整套逻辑，不用另外重写
+  // 一遍。事件绑在容器上（委托），因为按钮是每次render()时现拼的HTML，
+  // 没法对着还不存在的按钮提前挂监听。
+  quizPosOptions.addEventListener("click", function(e) {
+    var btn = e.target.closest(".mcq-option");
+    if (!btn || resolved) return;
+    var q = queue[qi];
+    if (q.type !== "pos") return;
+    var chosen = btn.getAttribute("data-pos");
+    var correct = posFor(q.word);
+    Array.prototype.forEach.call(quizPosOptions.querySelectorAll(".mcq-option"), function(el) {
+      el.classList.add("disabled");
+      var p = el.getAttribute("data-pos");
+      if (p === correct) el.classList.add("correct");
+      else if (p === chosen) el.classList.add("wrong");
+    });
+    quizInput.value = chosen;
+    doCheck();
   });
   quizNext.addEventListener("click", function() { qi++; render(); });
   quizPlayBtn.addEventListener("click", function() {
@@ -2706,6 +2781,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var numQuizTypeLabelEl = document.getElementById("numQuizTypeLabel");
     var numQuizPromptEl = document.getElementById("numQuizPrompt");
     var numQuizPlayBtnEl = document.getElementById("numQuizPlayBtn");
+    var numQuizPosOptionsEl = document.getElementById("numQuizPosOptions");
     var numQuizAnswerInputEl = document.getElementById("numQuizAnswerInput");
     var numQuizCheckBtnEl = document.getElementById("numQuizCheckBtn");
     var numQuizNextBtnEl = document.getElementById("numQuizNextBtn");
@@ -2782,6 +2858,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       numQuizNextBtnEl.style.display = "none";
       numQuizPlayBtnEl.style.display = "none";
       numQuizPromptEl.innerHTML = promptHtmlFor(q);
+      if (q.type === "pos") {
+        numQuizAnswerInputEl.style.display = "none";
+        numQuizCheckBtnEl.style.display = "none";
+        numQuizPosOptionsEl.style.display = "";
+        numQuizPosOptionsEl.innerHTML = posOptionsHtml();
+      } else {
+        numQuizAnswerInputEl.style.display = "";
+        numQuizPosOptionsEl.style.display = "none";
+      }
       if (q.type === "audio2kana") {
         numQuizPlayBtnEl.style.display = "";
         numCurrentAudioUrl = audioSrcFor(q.word);
@@ -2861,6 +2946,24 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     numQuizCheckBtnEl.addEventListener("click", numDoCheck);
     numQuizAnswerInputEl.addEventListener("keydown", function(e) {
       if (e.key === "Enter") { e.preventDefault(); numDoCheck(); }
+    });
+    // 跟単語テスト tab里quizPosOptions的点击逻辑完全一样，只是读写的是
+    // "按编号测试"自己这一份 numQueue/numQi/numResolved/numQuizAnswerInputEl。
+    numQuizPosOptionsEl.addEventListener("click", function(e) {
+      var btn = e.target.closest(".mcq-option");
+      if (!btn || numResolved) return;
+      var q = numQueue[numQi];
+      if (q.type !== "pos") return;
+      var chosen = btn.getAttribute("data-pos");
+      var correct = posFor(q.word);
+      Array.prototype.forEach.call(numQuizPosOptionsEl.querySelectorAll(".mcq-option"), function(el) {
+        el.classList.add("disabled");
+        var p = el.getAttribute("data-pos");
+        if (p === correct) el.classList.add("correct");
+        else if (p === chosen) el.classList.add("wrong");
+      });
+      numQuizAnswerInputEl.value = chosen;
+      numDoCheck();
     });
     numQuizNextBtnEl.addEventListener("click", function() { numQi++; numRender(); });
     numQuizPlayBtnEl.addEventListener("click", function() {

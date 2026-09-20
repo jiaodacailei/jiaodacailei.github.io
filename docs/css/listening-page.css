@@ -745,6 +745,12 @@ body.mode-blank #blankProgressReset { display: inline-block; }
   border-radius: 50%; animation: seg-loading-spin .7s linear infinite;
 }
 .quiz-input-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+/* "词性选择"题复用mcq-quiz.js的.mcq-option网格样式（见listening-page.js的
+   posOptionsHtml()），这里只补一个跟quiz-play-btn同款的下边距——这两个
+   id平时display:none不占位，选项显示时如果没有这行，选项格子会紧贴在
+   .quiz-status(margin-top:8px)上面，没有.quiz-play-btn/.quiz-input-row
+   那种自带的呼吸感。 */
+#quizPosOptions, #numQuizPosOptions { margin-bottom: 10px; }
 .quiz-input {
   flex: 1; min-width: 160px; padding: 8px 12px; border: 1px solid var(--border);
   border-radius: 8px; font-size: 15px; font-family: inherit;

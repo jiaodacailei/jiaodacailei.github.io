@@ -1224,6 +1224,7 @@ def quiz_section_html(mondai_idx, quiz_json_data, active):
           <div class="quiz-type-label" id="quizTypeLabel"></div>
           <div class="quiz-prompt" id="quizPrompt"></div>
           <button type="button" class="quiz-play-btn" id="quizPlayBtn" style="display:none">▶ 播放发音</button>
+          <div class="mcq-options mcq-options-grid" id="quizPosOptions" style="display:none"></div>
           <div class="quiz-input-row">
             <input type="text" class="quiz-input" id="quizInput" autocomplete="off" placeholder="在此输入…">
             <button type="button" class="quiz-btn quiz-check" id="quizCheck">確認</button>

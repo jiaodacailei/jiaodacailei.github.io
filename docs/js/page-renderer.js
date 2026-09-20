@@ -387,6 +387,7 @@
             '<div class="quiz-type-label" id="quizTypeLabel"></div>' +
             '<div class="quiz-prompt" id="quizPrompt"></div>' +
             '<button type="button" class="quiz-play-btn" id="quizPlayBtn" style="display:none">▶ 播放发音</button>' +
+            '<div class="mcq-options mcq-options-grid" id="quizPosOptions" style="display:none"></div>' +
             '<div class="quiz-input-row">' +
               '<input type="text" class="quiz-input" id="quizInput" autocomplete="off" placeholder="在此输入…">' +
               '<button type="button" class="quiz-btn quiz-check" id="quizCheck">確認</button>' +
@@ -440,6 +441,7 @@
             '<div class="quiz-type-label" id="numQuizTypeLabel"></div>' +
             '<div class="quiz-prompt" id="numQuizPrompt"></div>' +
             '<button type="button" class="quiz-play-btn" id="numQuizPlayBtn" style="display:none">▶ 播放发音</button>' +
+            '<div class="mcq-options mcq-options-grid" id="numQuizPosOptions" style="display:none"></div>' +
             '<div class="quiz-input-row">' +
               '<input type="text" class="quiz-input" id="numQuizAnswerInput" autocomplete="off" placeholder="在此输入…">' +
               '<button type="button" class="quiz-btn quiz-check" id="numQuizCheckBtn">確認</button>' +
