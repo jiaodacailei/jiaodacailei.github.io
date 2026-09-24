@@ -7,3 +7,4 @@ __pycache__/
 *.pyc
 n2test/
 tools/listening/work/
+.align_cache.json

@@ -184,6 +184,18 @@ TTS_READING_OVERRIDES = {
     # 三份内容模块里目前只有这一个词条用到，且只有"あわ"这一种读音，全局
     # 替换安全。
     "泡": "あわ",
+    # "0138. 一昨日（いっさくじつ）"（前天）孤立成词条标题+例句里单独出现的
+    # "一昨日"，edge-tts猜成了更常见的训读"おととい"——真实反馈"0138. 一昨日
+    # （いっさくじつ）的音频不对，还有例句中的音频也不对"。"一昨日"在这三份
+    # 内容模块里目前只有这一个词条用到，全局替换安全。
+    "一昨日": "いっさくじつ",
+    # "0144. 一周（いちしゅう）"孤立成词条标题+例句里单独出现的"一周"，
+    # edge-tts（跟pykakasi默认猜测同一个坑，见build_page.py的
+    # _TOKEN_READING_OVERRIDES_UNCONDITIONAL里同一条覆盖）猜成了词典最常见
+    # 标准读音"いっしゅう"，但书上两条例句的振り仮名都明确标的是いちしゅう
+    # ——真实反馈"一周的注音标错了"，用户直接贴出书上原始振り仮名。这个词
+    # 在这三份内容模块里目前只有这一个词条用到，全局替换安全。
+    "一周": "いちしゅう",
 }
 
 
@@ -223,11 +235,21 @@ def whisper_align(model, wav_path, text):
     return char_times_per_sentence[0]
 
 
-def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats):
+def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats, cache=None):
     """合成+对齐一句话，返回(audio_rel_filename, duration, char_times)。
-    已经合成过（音频文件已存在）就跳过TTS这一步，仍然会重新对齐一遍
-    ——对齐结果不落盘在别处，每次跑都要现算，重新算一遍比维护一份
-    "对齐结果缓存"简单，faster-whisper跑一句几秒钟，量级上不需要省这个。"""
+    已经合成过（音频文件已存在）就跳过TTS这一步。
+
+    对齐结果按seg_id+文本+音频文件mtime存进一份JSON缓存（`cache`参数，
+    load/save在main()里做），命中缓存（文件没被删过重新合成、文本也没变）
+    就直接复用旧的char_times，不用每次全量重新跑一遍whisper——这条原来
+    的设计是"每次都现算，不维护缓存"（理由是"faster-whisper跑一句几秒钟，
+    量级上不需要省这个"），词汇页句子数从最初的206条涨到515条之后，这个
+    假设不再成立：单改一两个词的读音，也要陪跑全部515句的whisper对齐，
+    实测一次要花十几到二十分钟。真实反馈"是不是搞错了"/"只需要比对出错的
+    即可哟"——用户直接指出了这个效率问题。mtime而不是文件内容hash判断
+    "音频有没有变"：这个场景下音频要么原封不动、要么整个被删除重新合成
+    （没有"内容悄悄变了但mtime没变"这种中间状态），mtime足够可靠且不用
+    读整个文件计算哈希。"""
     filename = "seg-{:03d}.mp3".format(seg_id)
     out_path = os.path.join(audio_dir, filename)
     if not os.path.exists(out_path):
@@ -237,6 +259,14 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats):
             print(f"[id={seg_id}] TTS FAILED: {e}")
             stats["failed"] += 1
             return None, None, None
+
+    mtime = os.path.getmtime(out_path)
+    cache_key = str(seg_id)
+    if cache is not None:
+        cached = cache.get(cache_key)
+        if cached and cached.get("text") == text and cached.get("mtime") == mtime:
+            stats["cached"] = stats.get("cached", 0) + 1
+            return filename, cached["duration"], cached["char_times"]
 
     duration = probe_duration(out_path)
     subprocess.run(
@@ -251,6 +281,10 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats):
             char_times = [round(duration * k / n, 2) for k in range(n)]
     else:
         stats["ok"] += 1
+    if cache is not None:
+        cache[cache_key] = {
+            "text": text, "mtime": mtime, "duration": duration, "char_times": char_times,
+        }
     return filename, duration, char_times
 
 
@@ -287,7 +321,7 @@ def synth_word_audio(text, audio_dir, word_id, stats):
     return filename
 
 
-def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label):
+def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label, cache=None):
     """把 UNITS 展开成 build_lesson_data() 要的 (sentences, questions) 扁平
     列表——跟 l17/l18"语法与表达"tab 的数据形状完全一致，每个语法点/单词
     条目是一个"question"，它的例句是这个question底下的sentences。
@@ -311,7 +345,7 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label)
             blanks = example[2] if len(example) > 2 else []
             seg_id += 1
             filename, duration, char_times = synth_and_align(
-                model, ja, audio_dir, seg_id, tmp_wav, stats
+                model, ja, audio_dir, seg_id, tmp_wav, stats, cache
             )
             if filename is None:
                 continue
@@ -687,14 +721,28 @@ def main():
     model = WhisperModel("medium", device="cpu", compute_type="int8")
     tmp_wav = os.path.join(tempfile.gettempdir(), "n2_reference_tmp.wav")
 
+    # 对齐结果缓存——见 synth_and_align() 文档字符串，命中缓存的句子不用
+    # 重新跑whisper。缓存文件跟音频放在一起（audio_dir 下），不是内容
+    # 模块的一部分，不影响"内容模块是唯一真相源"这条约定；缓存损坏/缺失
+    # 时退化成全量重新对齐（json.load失败就当成空缓存），不会导致构建失败。
+    align_cache_path = os.path.join(audio_dir, ".align_cache.json")
+    try:
+        with open(align_cache_path, encoding="utf-8") as f:
+            align_cache = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        align_cache = {}
+
     stats = {"ok": 0, "fallback": 0, "failed": 0}
     sentences, questions = build_point_sentences(
-        units, model, audio_dir, tmp_wav, stats, args.tab_label
+        units, model, audio_dir, tmp_wav, stats, args.tab_label, align_cache
     )
     if os.path.exists(tmp_wav):
         os.remove(tmp_wav)
+    with open(align_cache_path, "w", encoding="utf-8") as f:
+        json.dump(align_cache, f, ensure_ascii=False)
     print(f"TTS+对齐：{len(sentences)} 句（aligned {stats['ok']}, "
-          f"fallback {stats['fallback']}, failed {stats['failed']}）")
+          f"cached {stats.get('cached', 0)}, fallback {stats['fallback']}, "
+          f"failed {stats['failed']}）")
 
     mcq_data = build_mcq_items(mcq_units)
     print(f"练习题：{len(mcq_data)} 道")
