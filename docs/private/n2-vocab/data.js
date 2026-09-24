@@ -1055,20 +1055,20 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.74
+                  "t": 0.6
                 },
                 {
                   "text": "上",
                   "kana": "あ",
-                  "t": 0.94
+                  "t": 0.89
                 },
                 {
                   "text": "が",
-                  "t": 1.1
+                  "t": 1.19
                 },
                 {
                   "text": "る",
-                  "t": 1.16
+                  "t": 1.49
                 },
                 {
                   "text": "。"
@@ -7410,12 +7410,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "んの",
-                  "t": 0.78
+                  "t": 0.76
                 },
                 {
                   "text": "泡",
                   "kana": "あわ",
-                  "t": 0.94
+                  "t": 0.96
                 }
               ],
               "zh": "肥皂泡",
@@ -7436,11 +7436,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "っ",
-                  "t": 0.54
+                  "t": 0.52
                 },
                 {
                   "text": "か",
-                  "t": 0.64
+                  "t": 0.62
                 },
                 {
                   "text": "く",
@@ -7448,7 +7448,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.86
+                  "t": 0.84
                 },
                 {
                   "text": "努力",
@@ -7457,25 +7457,25 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "も",
-                  "t": 1.3
+                  "t": 1.28
                 },
                 {
                   "text": "水",
                   "kana": "みず",
-                  "t": 1.5
+                  "t": 1.48
                 },
                 {
                   "text": "の",
-                  "t": 1.8
+                  "t": 1.78
                 },
                 {
                   "text": "泡",
                   "kana": "あわ",
-                  "t": 1.98
+                  "t": 2
                 },
                 {
                   "text": "だ",
-                  "t": 2.16
+                  "t": 2.14
                 },
                 {
                   "text": "。"
@@ -20465,7 +20465,7 @@ window.LESSON_DATA = {
                 {
                   "text": "都市",
                   "kana": "とし",
-                  "t": 0.78
+                  "t": 0.98
                 }
               ],
               "zh": "卫星城市",
@@ -24395,7 +24395,7 @@ window.LESSON_DATA = {
       "id": 1000008,
       "text": "扇ぐ",
       "kana": "あおぐ",
-      "zh": "[他動1] （用扇子等）扇风，使起风",
+      "zh": "[他動1]（用扇子等）扇风，使起风",
       "sentences": [
         {
           "sentence": "扇子で扇ぐ。",
@@ -27183,7 +27183,7 @@ window.LESSON_DATA = {
       "id": 1000126,
       "text": "傷み",
       "kana": "いたみ",
-      "zh": "[名] （食品）腐坏；（物品）损坏",
+      "zh": "[名]（食品）腐坏；（物品）损坏",
       "sentences": [
         {
           "sentence": "靴の傷みがひどい。",
@@ -27214,7 +27214,7 @@ window.LESSON_DATA = {
       "id": 1000127,
       "text": "傷む",
       "kana": "いたむ",
-      "zh": "[自動1] （食品）腐坏；（物品）损坏",
+      "zh": "[自動1]（食品）腐坏；（物品）损坏",
       "sentences": [
         {
           "sentence": "リンゴが傷む。",
@@ -27245,7 +27245,7 @@ window.LESSON_DATA = {
       "id": 1000128,
       "text": "痛める",
       "kana": "いためる",
-      "zh": "[他動2] （身体）使受伤，损伤；使为难，伤脑筋",
+      "zh": "[他動2]（身体）使受伤，损伤；使为难，伤脑筋",
       "sentences": [
         {
           "sentence": "借金で頭を痛める。",
@@ -27913,7 +27913,7 @@ window.LESSON_DATA = {
       "id": 1000156,
       "text": "威張る",
       "kana": "いばる",
-      "zh": "[自動1] （气焰）嚣张，摆架子，飞扬跋扈",
+      "zh": "[自動1]（气焰）嚣张，摆架子，飞扬跋扈",
       "sentences": [
         {
           "sentence": "威張るほどのことでもない。",
@@ -28180,7 +28180,7 @@ window.LESSON_DATA = {
       "id": 1000168,
       "text": "イラスト",
       "kana": "イラスト",
-      "zh": "[名] （“イラストレーション（illustration）”的略）插图，插画",
+      "zh": "[名]（“イラストレーション（illustration）”的略）插图，插画",
       "sentences": [
         {
           "sentence": "雑誌にイラストを載せる。",
@@ -28328,7 +28328,7 @@ window.LESSON_DATA = {
       "id": 1000176,
       "text": "インストール",
       "kana": "インストール",
-      "zh": "[名・他動3] （install）安装，使计算机达到能使用的状态",
+      "zh": "[名・他動3]（install）安装，使计算机达到能使用的状态",
       "sentences": [
         {
           "sentence": "ソフトをインストールする。",
@@ -28385,7 +28385,7 @@ window.LESSON_DATA = {
       "id": 1000178,
       "text": "インフルエンザ",
       "kana": "インフルエンザ",
-      "zh": "[名] （influenza）流行性感冒，流感",
+      "zh": "[名]（influenza）流行性感冒，流感",
       "sentences": [
         {
           "sentence": "鳥インフルエンザ",
@@ -28401,7 +28401,7 @@ window.LESSON_DATA = {
       "id": 1000179,
       "text": "インフレ",
       "kana": "インフレ",
-      "zh": "[名] （“インフレーション（inflation）”的略）通货膨胀，物价上涨",
+      "zh": "[名]（“インフレーション（inflation）”的略）通货膨胀，物价上涨",
       "sentences": [
         {
           "sentence": "政府がインフレの対策を打ち出した。",
@@ -28500,7 +28500,7 @@ window.LESSON_DATA = {
       "id": 1000183,
       "text": "ウイルス",
       "kana": "ウイルス",
-      "zh": "[名] （virus）病毒；计算机病毒",
+      "zh": "[名]（virus）病毒；计算机病毒",
       "sentences": [
         {
           "sentence": "ウイルス性の胃腸炎",
@@ -28526,7 +28526,7 @@ window.LESSON_DATA = {
       "id": 1000184,
       "text": "ウーマン",
       "kana": "ウーマン",
-      "zh": "[名] （woman）女人，女性，妇女",
+      "zh": "[名]（woman）女人，女性，妇女",
       "sentences": [
         {
           "sentence": "キャリアウーマン",
@@ -28557,7 +28557,7 @@ window.LESSON_DATA = {
       "id": 1000185,
       "text": "ウール",
       "kana": "ウール",
-      "zh": "[名] （wool）羊毛，毛线",
+      "zh": "[名]（wool）羊毛，毛线",
       "sentences": [
         {
           "sentence": "ウールマーク",
@@ -28583,7 +28583,7 @@ window.LESSON_DATA = {
       "id": 1000186,
       "text": "ウエーター",
       "kana": "ウエーター",
-      "zh": "[名] （waiter）男侍者，男服务员",
+      "zh": "[名]（waiter）男侍者，男服务员",
       "sentences": [
         {
           "sentence": "レストランのウエーターに水を頼む。",
@@ -28599,7 +28599,7 @@ window.LESSON_DATA = {
       "id": 1000187,
       "text": "ウエートレス",
       "kana": "ウエートレス",
-      "zh": "[名] （waitress）女侍者，女服务员",
+      "zh": "[名]（waitress）女侍者，女服务员",
       "sentences": [
         {
           "sentence": "彼女はカフェでウエートレスとして働いている。",
@@ -28667,7 +28667,7 @@ window.LESSON_DATA = {
       "id": 1000190,
       "text": "ウエスト",
       "kana": "ウエスト",
-      "zh": "[名] （waist）腰围，腰身",
+      "zh": "[名]（waist）腰围，腰身",
       "sentences": [
         {
           "sentence": "ウエストサイズ",
@@ -29986,7 +29986,7 @@ window.LESSON_DATA = {
       "id": 1000244,
       "text": "エアメール",
       "kana": "エアメール",
-      "zh": "[名] （airmail）航空邮件",
+      "zh": "[名]（airmail）航空邮件",
       "sentences": [
         {
           "sentence": "エアメールで手紙を送る。",
@@ -30216,7 +30216,7 @@ window.LESSON_DATA = {
       "id": 1000254,
       "text": "エチケット",
       "kana": "エチケット",
-      "zh": "[名] （仏etiquette）礼貌，礼仪",
+      "zh": "[名]（仏etiquette）礼貌，礼仪",
       "sentences": [
         {
           "sentence": "エチケットに反する。",
@@ -30242,7 +30242,7 @@ window.LESSON_DATA = {
       "id": 1000255,
       "text": "NHK",
       "kana": "NHK",
-      "zh": "[名] （エヌエイチケー）日本广播协会",
+      "zh": "[名]（エヌエイチケー）日本广播协会",
       "sentences": [
         {
           "sentence": "NHKのニュースを見る。",
@@ -30274,7 +30274,7 @@ window.LESSON_DATA = {
       "id": 1000257,
       "text": "エプロン",
       "kana": "エプロン",
-      "zh": "[名] （apron）围裙",
+      "zh": "[名]（apron）围裙",
       "sentences": [
         {
           "sentence": "エプロンをかける。",
@@ -30740,7 +30740,7 @@ window.LESSON_DATA = {
       "id": 1000278,
       "text": "応じる",
       "kana": "おうじる",
-      "zh": "[自動2] （=応ずる）回应，响应；相应，相称",
+      "zh": "[自動2]（=応ずる）回应，响应；相应，相称",
       "sentences": [
         {
           "sentence": "挑戦に応じる。",
@@ -30859,7 +30859,7 @@ window.LESSON_DATA = {
       "id": 1000282,
       "text": "OL",
       "kana": "OL",
-      "zh": "[名] （オーエル，和制英语）（年轻）女职员",
+      "zh": "[名]（オーエル，和制英语）（年轻）女职员",
       "sentences": [
         {
           "sentence": "彼女は東京でOLをしている。",
@@ -30948,7 +30948,7 @@ window.LESSON_DATA = {
       "id": 1000286,
       "text": "OK",
       "kana": "OK",
-      "zh": "[叹・名・自動3] （オーケー）同意，答应；好，可以",
+      "zh": "[叹・名・自動3]（オーケー）同意，答应；好，可以",
       "sentences": [
         {
           "sentence": "OKを出す。",
@@ -30969,7 +30969,7 @@ window.LESSON_DATA = {
       "id": 1000287,
       "text": "オーケストラ",
       "kana": "オーケストラ",
-      "zh": "[名] （orchestra）管弦乐，管弦乐团",
+      "zh": "[名]（orchestra）管弦乐，管弦乐团",
       "sentences": [
         {
           "sentence": "オーケストラを結成する。",
@@ -31006,7 +31006,7 @@ window.LESSON_DATA = {
       "id": 1000289,
       "text": "オートメ",
       "kana": "オートメ",
-      "zh": "[名] （“オートメーション（automation）”的略）自动化，自动装置",
+      "zh": "[名]（“オートメーション（automation）”的略）自动化，自动装置",
       "sentences": [
         {
           "sentence": "オートメ化",
@@ -31022,7 +31022,7 @@ window.LESSON_DATA = {
       "id": 1000290,
       "text": "オーバー",
       "kana": "オーバー",
-      "zh": "[名・他動3・ナ形] （over）超出，超越（某程度、限度）；夸张，过分",
+      "zh": "[名・他動3・ナ形]（over）超出，超越（某程度、限度）；夸张，过分",
       "sentences": [
         {
           "sentence": "予算をオーバーする。",
