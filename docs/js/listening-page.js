@@ -957,13 +957,25 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 找不到匹配，侧栏就会完全停在原地不跟着滚动更新——真实反馈"页面向下
   // 滑动时，右侧的导航没有跟着改变焦点"。改成只在"导航按钮真的指向的那些
   // 目标元素"里找当前位置，不管有没有分组、哪种分组方式都按同一个逻辑走。
+  //
+  // target.offsetParent !== null 这个判断是后来加的：N2语法/词汇页出现
+  // 第2个单元之后，"单元选择"下拉框会把不属于当前单元的 .question-block
+  // 整个 display:none 隐藏（见page-renderer.js的applyUnitFilter()）——
+  // display:none 元素的 offsetTop 恒为0，而这里的判断是"offsetTop <= y"，
+  // 对任意 y>=0 恒成立，被隐藏单元的导航目标反而会一直命中，且因为
+  // forEach 按DOM顺序遍历、命中了就覆盖curTarget，隐藏单元的条目通常排在
+  // 可见单元后面，最终curTarget会一直被"最后一个隐藏目标"占着，不管真实
+  // 滚动位置在哪——真实反馈"主页面滑动时，右侧的导航小节的选中没有跟上"，
+  // 实测症状是切到默认单元后侧栏高亮从页面顶部开始就直接卡死在最后一组，
+  // 完全不随滚动变化。offsetParent在元素（或其祖先）display:none时恒为
+  // null，用它排除掉这些不可见目标，可见目标不受影响。
   function highlightCurrentQuestion() {
     var activeSection = document.querySelector(".mondai-section.tab-active");
     if (!activeSection) return;
     var y = window.scrollY + 130, curTarget = null;
     document.querySelectorAll(".side-nav-btn").forEach(function(b) {
       var target = document.getElementById(b.dataset.target);
-      if (target && activeSection.contains(target) && target.offsetTop <= y) {
+      if (target && target.offsetParent !== null && activeSection.contains(target) && target.offsetTop <= y) {
         curTarget = b.dataset.target;
       }
     });
