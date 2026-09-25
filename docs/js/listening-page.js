@@ -2282,18 +2282,26 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var kvJK = wordVariants(w);
       var byTextJK = distinctByKey(kvJK, "text");
       if (byTextJK.length > 1) {
+        // 写法不同，题面（日文原文）天然不一样，不需要额外标记。
         return byTextJK.map(function(v, i) {
           return { word: w, type: "ja2kana", errType: "ja2kana" + i, variantText: v.text, variantKana: v.kana };
         });
       }
-      // 同一写法、多个合法读音（"行き"型）：只出1道题，判分放宽成接受
-      // variants里任意一个读音——用distinctByKey去重（比如"暖か/温か"这类
-      // 走到这个分支时kvJK里两个变体读音相同，不去重会在"答案揭晓"文字
-      // 里重复显示成"あたたか／あたたか"）。
-      return [{
-        word: w, type: "ja2kana", errType: "ja2kana", variantText: byTextJK[0].text,
-        acceptedKanas: distinctByKey(kvJK, "kana").map(function(v) { return v.kana; }),
-      }];
+      var byKanaJK = distinctByKey(kvJK, "kana");
+      if (byKanaJK.length > 1) {
+        // 同一写法、多个合法读音（"行き"型）：题面（日文原文）会完全一样，
+        // 靠①②这类小标记区分是哪一道题，每道题钉死自己该写的那一个读音
+        // ——真实反馈"题目一样的情况下，标记1/2即可，不需要在答案上放宽"，
+        // 不接受"写对任意一个读音都算对"这种放宽判分，要考的就是"记不记得
+        // 这个词有几种读音、分别是什么"。
+        return byKanaJK.map(function(v, i) {
+          return {
+            word: w, type: "ja2kana", errType: "ja2kana" + i,
+            variantText: byTextJK[0].text, variantKana: v.kana, variantBadge: i + 1,
+          };
+        });
+      }
+      return [{ word: w, type: "ja2kana", errType: "ja2kana", variantText: byTextJK[0].text, variantKana: byKanaJK[0].kana }];
     }
     if (t === "ja2zh") {
       var byTextJZ = distinctByKey(wordVariants(w), "text");
@@ -2302,21 +2310,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       });
     }
     if (t === "zh2kana") {
+      // "中→假名"的题面永远是中文释义（word.zh，不随写法变化），所以这里
+      // 只看读音本身有几种（byKanaZK），不需要像ja2zh/ja2kana那样先看写法
+      // 数——"暖か/温か"写法有2种但读音只有1种，不拆题；"行き"写法只有1种
+      // 但读音有2种，一样要拆题+标①②（跟ja2kana同一条"题面完全相同就必须
+      // 标号、不能放宽判分"的规则，不再对"行き"这类单一写法的情况法外开恩）。
       var kvZK = wordVariants(w);
-      var byTextZK = distinctByKey(kvZK, "text");
       var byKanaZK = distinctByKey(kvZK, "kana");
-      if (byTextZK.length > 1 && byKanaZK.length > 1) {
-        // 每种写法各自对应不同读音（"いざとなると"型）：中文题面相同，
-        // 答案不同，钉死每道题该写哪一种，靠①②③小标记区分。
-        return byTextZK.map(function(v, i) {
+      if (byKanaZK.length > 1) {
+        return byKanaZK.map(function(v, i) {
           return { word: w, type: "zh2kana", errType: "zh2kana" + i, variantKana: v.kana, variantBadge: i + 1 };
         });
       }
-      // 读音共享（"暖か/温か"型，只需1道，byKanaZK天然只有1个不重复元素）
-      // 或者单一写法多读音（"行き"型，同样只出1道、判分放宽）——两种情况
-      // 都直接用已经去重过的byKanaZK，不用kvZK.map()，避免"暖か/温か"这类
-      // 共享读音的词在"答案揭晓"文字里重复显示成"あたたか／あたたか"。
-      return [{ word: w, type: "zh2kana", errType: "zh2kana", acceptedKanas: byKanaZK.map(function(v) { return v.kana; }) }];
+      return [{ word: w, type: "zh2kana", errType: "zh2kana", variantKana: byKanaZK[0] ? byKanaZK[0].kana : w.kana }];
     }
     return [{ word: w, type: t, errType: t }];
   }
@@ -2565,23 +2571,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (q.type === "blank") return q.sentence.blank;
     if (q.type === "related") return q.word.text;
     if (q.type === "audio2kana") return q.word.kana;
-    // zh2kana/ja2kana：多写法各自钉死读音的实例（q.variantKana，见
-    // buildTypeItems()）优先；没有variantKana说明这道题走的是"任意一个
-    // 已知读音都算对"（q.acceptedKanas），判分逻辑在checkAnswer()里单独
-    // 处理，这里退回q.word.kana只是给"没有variants的普通词条"这个最常见
-    // case用。
+    // zh2kana/ja2kana：q.variantKana（见buildTypeItems()）是这道题钉死的
+    // 那一个答案，没有variants的普通词条没有这个字段，退回q.word.kana。
     if (q.type === "zh2kana" || q.type === "ja2kana") return q.variantKana || q.word.kana;
     if (q.type === "pos") return posTagsFor(q.word).join("、");
     return null; // ja2zh 是多选一匹配，见 checkJa2Zh
   }
 
   // 答错/答对后揭晓的"正确答案"文字——ja2zh本来就是"多选一匹配"，没有
-  // 唯一标准答案，展示释义原文；acceptedKanas（"同一写法多个合法读音都
-  // 算对"的题，见buildTypeItems()）同理没有唯一答案，把几个都列出来，
-  // 不能只展示answerFor()随便返回的某一个，会让用户以为另一个是错的。
+  // 唯一标准答案，展示释义原文；其余类型都有唯一钉死的答案，直接用
+  // answerFor()。
   function revealAnswerText(q) {
     if (q.type === "ja2zh") return q.word.zh.replace(POS_RE, "");
-    if (q.acceptedKanas) return q.acceptedKanas.join("／");
     return answerFor(q);
   }
 
@@ -2618,13 +2619,6 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return zhSegments(q.word.zh).some(function(seg) {
         return quizStripPunct(seg).indexOf(vStripped) !== -1;
       });
-    }
-    // acceptedKanas（"同一写法有多个合法读音"，比如"行き"可以是いき也
-    // 可以是ゆき，见buildTypeItems()）——只要命中其中任意一个就算对，不
-    // 要求猜中题目内部到底钉的是哪一个（这类题本来就没有钉死单一答案）。
-    if (q.acceptedKanas) {
-      var vAccepted = quizStripPunct(v);
-      return q.acceptedKanas.some(function(k) { return quizStripPunct(k) === vAccepted; });
     }
     // blank（填空题）/audio2kana（听音频写假名）/zh2kana（中文写假名）都按
     // 去除标点符号后的内容比较——标准答案本身可能带着标点（blank 摘自例句
@@ -2714,8 +2708,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // variantText（见buildTypeItems()）优先——一个词有多种写法时，每道题
       // 展示的是这道题具体对应的那一种写法（"暖か"还是"温か"），不是死用
       // word.text（那会永远显示带"/"的完整拼接字符串"暖か/温か"）。
+      // variantBadge：ja2kana"同一写法多个读音"（"行き"型）的题面会完全
+      // 一样（两道题都显示"行き"），靠①②标记区分——跟zh2kana共用同一个
+      // circledDigit()/.quiz-dedupe-badge，但这里跟JA_DISAMBIGUATE_SUFFIX
+      // （不同词撞车用的1/2）是两套独立机制，variantBadge存在时优先显示。
       var jaSuffix2 = JA_DISAMBIGUATE_SUFFIX[q.word.id];
-      var shown2 = (q.variantText || q.word.text) + (jaSuffix2 ? '<span class="quiz-dedupe-badge">' + jaSuffix2 + '</span>' : "");
+      var jaBadgeText = q.variantBadge ? circledDigit(q.variantBadge) : jaSuffix2;
+      var shown2 = (q.variantText || q.word.text) + (jaBadgeText ? '<span class="quiz-dedupe-badge">' + jaBadgeText + '</span>' : "");
       return '<div class="quiz-ja-prompt">' + shown2 + '</div>';
     }
     var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
