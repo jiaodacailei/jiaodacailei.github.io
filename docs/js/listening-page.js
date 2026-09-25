@@ -2696,6 +2696,56 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return zh.replace(POS_RE, "").split(/[,，、;；]/).map(function(s) { return s.trim(); }).filter(Boolean);
   }
 
+  // ja2zh"多义项"判分——真实反馈"对于日中题，如果中文有多个意思（分号
+  // 区分），用户填写答案时也需要有多个……顺序不要求一致，每个答案都需要
+  // 分别包含在对应的答案中即可，不需要完全相等……漏答就算错"：分号和
+  // 逗号/顿号不是同一个层级，分号分隔的是**不同的意思**（比如"一致，
+  // 相符；团结，齐心"是两个独立义项），逗号/顿号分隔的是**同一个意思内
+  // 的近义说法**（"一致"和"相符"是同一层意思的两种说法，写对其中一种
+  // 就行）。原来的zhSegments()把两个层级压平成同一级处理，导致只答上
+  // 其中一个义项的一个近义词碎片（比如只打"相符"）也能蒙对，测不出用户
+  // 是否真的知道全部义项。
+  //
+  // zhMeaningGroups()返回二维数组：外层按分号分组（每组是一个独立义项），
+  // 内层按逗号/顿号切出这个义项内的近义说法。长度<=1（没有分号，绝大多数
+  // 词条）时外层只有一组，退化成跟原来zhSegments()完全一样的效果。
+  function zhMeaningGroups(zh) {
+    var stripped = zh.replace(POS_RE, "");
+    return stripped.split(/[;；]/).map(function(group) {
+      return group.split(/[,，、]/).map(function(s) { return s.trim(); }).filter(Boolean);
+    }).filter(function(g) { return g.length; });
+  }
+  // 用户输入按空格或标点切成多个答案（"空格或者标点间隔都可以"）——不能
+  // 先用quizStripPunct()去标点再切，那个会把所有间隔符号一起吃掉，切不出
+  // 边界；顺序是先切、再对每一段分别去标点。
+  var ZH_ANSWER_SPLIT_RE = /[\s,，、;；\/／]+/;
+  function splitZhAnswers(raw) {
+    return raw.split(ZH_ANSWER_SPLIT_RE).map(function(s) { return s.trim(); }).filter(Boolean);
+  }
+  // 每个用户答案（token）要能在**某一个**义项组的近义说法里找到（包含
+  // 关系，不要求完全相等）；义项组之间不要求顺序对应，但**每一组都必须
+  // 被至少一个用户答案命中**，漏答任何一组都算错——真实反馈"漏答就算错"，
+  // 不是半对也给分。
+  function checkJa2ZhMulti(zhText, raw) {
+    var groups = zhMeaningGroups(zhText);
+    if (groups.length <= 1) {
+      var vStripped = quizStripPunct(raw);
+      if (!vStripped) return false;
+      return zhSegments(zhText).some(function(seg) {
+        return quizStripPunct(seg).indexOf(vStripped) !== -1;
+      });
+    }
+    var userTokens = splitZhAnswers(raw).map(quizStripPunct).filter(Boolean);
+    if (!userTokens.length) return false;
+    return groups.every(function(group) {
+      return userTokens.some(function(tok) {
+        return group.some(function(phrase) {
+          return quizStripPunct(phrase).indexOf(tok) !== -1;
+        });
+      });
+    });
+  }
+
   // 跟句卡片默写/填空模式（本文件另一个 IIFE 里的 stripPunct()）是同一份
   // 逻辑，两边各自独立一份——单词测试"填空题"考的是这个词本身有没有记住，
   // 不是标点符号打没打对，例句原文里的句读符号不该算进判分；两个 IIFE
@@ -2719,12 +2769,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 表示"进"和"进屋"两种说法都对，但原来直接按原文逐字符判断包含，用户
     // 去掉括号直接连写成"进屋"反而不是"进（屋）"的子串（括号字符本身卡在
     // 中间），会被误判错。两边都去标点再比较，不用单独针对括号写规则。
+    // ——但这条"宽松包含"只在释义**没有分号**（只有一个义项）时才是"随便
+    // 答哪个近义说法都行"；有分号分隔多个独立义项时（checkJa2ZhMulti()），
+    // 义项之间不适用这条宽松规则，每个义项都必须被单独答到，漏答任何一个
+    // 都算错，见该函数的注释。
     if (q.type === "ja2zh") {
       if (!v) return false;
-      var vStripped = quizStripPunct(v);
-      return zhSegments(q.variantZh || q.word.zh).some(function(seg) {
-        return quizStripPunct(seg).indexOf(vStripped) !== -1;
-      });
+      return checkJa2ZhMulti(q.variantZh || q.word.zh, v);
     }
     // blank（填空题）/audio2kana（听音频写假名）/zh2kana（中文写假名）都按
     // 去除标点符号后的内容比较——标准答案本身可能带着标点（blank 摘自例句
@@ -2833,6 +2884,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var jaSuffix2 = JA_DISAMBIGUATE_SUFFIX[q.word.id];
       var jaBadgeText = q.variantZh ? posTagBadgeText(q.variantZh) : (q.variantBadge ? circledDigit(q.variantBadge) : jaSuffix2);
       var shown2 = (q.variantText || q.word.text) + (jaBadgeText ? '<span class="quiz-dedupe-badge">' + jaBadgeText + '</span>' : "");
+      // ja2zh专属：释义本身有多个用分号隔开的独立义项时，题面下面加一行
+      // 提示——真实反馈"每个答案都需要分别包含在对应的答案中，漏答就算
+      // 错"，判分（checkJa2ZhMulti()）已经要求答满全部义项，题面上不提示
+      // 的话用户根本不知道这道题要写几个答案，会一直卡在"只写了一个却总
+      // 判错"，不知道发生了什么。
+      if (q.type === "ja2zh" && zhMeaningGroups(q.variantZh || q.word.zh).length > 1) {
+        shown2 += '<div class="quiz-hint-text">这个词有多个意思，请用空格或标点分开逐一写出</div>';
+      }
       return '<div class="quiz-ja-prompt">' + shown2 + '</div>';
     }
     var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
