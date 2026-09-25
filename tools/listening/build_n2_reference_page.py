@@ -365,7 +365,24 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
             # 没有"/"的词条不受影响，继续用原来的word_text（保留汉字喂给
             # TTS，让它自己按汉字选读音，多音字读错的个例走
             # TTS_READING_OVERRIDES单独订正，不在这里放大整改范围）。
-            word_tts_text = derive_reading(question_label, word_text) if ("/" in word_text or "／" in word_text) else word_text
+            #
+            # 词条本身只有一种写法、但结尾括注里标了多个"/"或"／"分隔的读音
+            # （比如"～位（～い／～くらい）"、"行き（いき／ゆき）"——书上自己
+            # 承认这个词有歧义读音）也要走derive_reading()喂纯假名，不能只看
+            # word_text本身有没有斜杠——真实反馈"单词测试答案不对，应该是
+            # kana才对"揪出的是quiz_kana字段的同一类bug（derive_reading()
+            # 自己判断"整个括注是不是纯假名"时被"／"分隔符干扰误判，已经在
+            # derive_reading()内部修过），这里的word_tts_text是分开维护的
+            # 另一份判断，那次修复没有覆盖到——用edge-tts实测两个词当时凑巧
+            # 蒙对了正确读音（"～位"读出い、"行き"读出いき，都是括注里排在
+            # 第一位的读音，едge-tts自己按汉字猜出来的，不是这段代码保证的），
+            # 不是真的没问题，只是运气好没暴露；不加这条判断，以后遇到运气
+            # 不好的同类词条会真的读错。
+            _paren_m = _TRAILING_PAREN_CONTENT_RE.search(_WORD_NUM_PREFIX_RE.sub("", question_label))
+            _paren_has_multi_reading = bool(_paren_m) and ("/" in _paren_m.group(1) or "／" in _paren_m.group(1))
+            word_tts_text = derive_reading(question_label, word_text) if (
+                "/" in word_text or "／" in word_text or _paren_has_multi_reading
+            ) else word_text
             word_audio = synth_word_audio(word_tts_text, audio_dir, word_id, stats) if word_text else None
             groups = point.get("groups")
             if groups:
