@@ -2519,7 +2519,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0028. 圧縮（あっしゅく）",
-          "overview": "[名・他動3] 压缩，缩减；（预算/篇幅等）削减",
+          "overview": "[名・他動3] 压缩，压榨；缩短文章、字句；缩减",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-028.mp3",
@@ -4779,7 +4779,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0054. あまり",
-          "overview": "[名・ナ形・副] 剩余，剩下的部分；（不）怎么，（不）太……；因过于……（导致后项结果）",
+          "overview": "[名・ナ形・副] 残余，剩余的东西；因过于……而……；（不）怎么，（不）太",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-054.mp3",
@@ -7130,7 +7130,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0082. 哀れ（あわれ）",
-          "overview": "[名・ナ形] 悲哀，哀愁；可怜\n（关联词：哀れむ(あわれむ)[他動1] 怜悯，可怜）",
+          "overview": "[名・ナ形] 悲哀，哀愁的；可怜的；寒碜，凄惨的\n（关联词：哀れむ(あわれむ)[他動1] 怜悯，可怜）",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-082.mp3",
@@ -10397,7 +10397,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0125. 意地悪（いじわる）",
-          "overview": "[名・ナ形] 使坏，故意刁难人；坏心眼的（人）",
+          "overview": "[名・ナ形] 找人麻烦，心术不正的，坏心眼的",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-125.mp3",
@@ -11068,7 +11068,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0132. 一切（いっさい）",
-          "overview": "[名・副] 一切，全部；（下接否定）一概（不）……",
+          "overview": "[名・副] 一切，全部；全然，完全",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-132.mp3",
@@ -11956,7 +11956,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0142. 一種（いっしゅ）",
-          "overview": "[名・副] 一种，一类；说不清的某种",
+          "overview": "[名・副] 一种，一类；说不清的某些感觉",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-142.mp3",
@@ -12025,7 +12025,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0143. 一致（いっち）",
-          "overview": "[名・自動3] 一致，相符；团结",
+          "overview": "[名・自動3] 一致，相符；团结，齐心",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-143.mp3",
@@ -24726,7 +24726,7 @@ window.LESSON_DATA = {
       "id": 1000028,
       "text": "圧縮",
       "kana": "あっしゅく",
-      "zh": "[名・他動3] 压缩，缩减；（预算/篇幅等）削减",
+      "zh": "[名・他動3] 压缩，压榨；缩短文章、字句；缩减",
       "sentences": [
         {
           "sentence": "気体を圧縮する。",
@@ -25397,7 +25397,7 @@ window.LESSON_DATA = {
       "id": 1000054,
       "text": "あまり",
       "kana": "あまり",
-      "zh": "[名・ナ形・副] 剩余，剩下的部分；（不）怎么，（不）太……；因过于……（导致后项结果）",
+      "zh": "[名・ナ形・副] 残余，剩余的东西；因过于……而……；（不）怎么，（不）太",
       "sentences": [
         {
           "sentence": "あまりが出る。",
@@ -26065,7 +26065,7 @@ window.LESSON_DATA = {
       "id": 1000082,
       "text": "哀れ",
       "kana": "あわれ",
-      "zh": "[名・ナ形] 悲哀，哀愁；可怜",
+      "zh": "[名・ナ形] 悲哀，哀愁的；可怜的；寒碜，凄惨的",
       "sentences": [
         {
           "sentence": "哀れな姿",
@@ -27151,7 +27151,7 @@ window.LESSON_DATA = {
       "id": 1000125,
       "text": "意地悪",
       "kana": "いじわる",
-      "zh": "[名・ナ形] 使坏，故意刁难人；坏心眼的（人）",
+      "zh": "[名・ナ形] 找人麻烦，心术不正的，坏心眼的",
       "sentences": [
         {
           "sentence": "意地悪をする。",
@@ -27343,7 +27343,7 @@ window.LESSON_DATA = {
       "id": 1000132,
       "text": "一切",
       "kana": "いっさい",
-      "zh": "[名・副] 一切，全部；（下接否定）一概（不）……",
+      "zh": "[名・副] 一切，全部；全然，完全",
       "sentences": [
         {
           "sentence": "一切の責任を負う。",
@@ -27588,7 +27588,7 @@ window.LESSON_DATA = {
       "id": 1000142,
       "text": "一種",
       "kana": "いっしゅ",
-      "zh": "[名・副] 一种，一类；说不清的某种",
+      "zh": "[名・副] 一种，一类；说不清的某些感觉",
       "sentences": [
         {
           "sentence": "霊長類動物の一種",
@@ -27609,7 +27609,7 @@ window.LESSON_DATA = {
       "id": 1000143,
       "text": "一致",
       "kana": "いっち",
-      "zh": "[名・自動3] 一致，相符；团结",
+      "zh": "[名・自動3] 一致，相符；团结，齐心",
       "sentences": [
         {
           "sentence": "証言が一致する。",
