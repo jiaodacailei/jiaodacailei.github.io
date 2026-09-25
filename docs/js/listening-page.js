@@ -296,6 +296,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     player.rangeEnd = null;
     clearRangeSelection();
     setPlayingCard(null);
+    document.querySelectorAll(".group-play-btn.playing").forEach(function(b) { b.classList.remove("playing"); });
     updateMiniPlayer();
   }
   document.addEventListener("stopAllAudio", stopPlayer);
@@ -378,6 +379,29 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     } else if (navType === "question") {
       audios = Array.from(el.querySelectorAll("audio:not(.seg-example-audio)"));
       label = "小問 " + el.querySelector("h3").textContent.trim();
+    } else if (navType === "group") {
+      // 右侧导航"组N"旁边的连续播放按钮——el 不是单个 DOM 节点，是
+      // {blocks: [...]}（这一组包含的若干 .question-block，见下面
+      // group-play-btn 的点击处理），依次拼接每个词条自己的"词发音+例句"
+      // 音频（跟单独点这个词条 h3 时 navType==="question" 拿到的队列是
+      // 同一套选择器，只是这里跨若干个词条拼接）。
+      audios = [];
+      el.blocks.forEach(function(b) {
+        Array.from(b.querySelectorAll("audio:not(.seg-example-audio)")).forEach(function(a) {
+          audios.push(a);
+        });
+      });
+      label = "组 " + (navIndex + 1) + " / " + navSiblings.length;
+      // 高亮当前正在连续播放的那个"组N"按钮——跟 setPlayingCard() 高亮当前
+      // 播放的 .seg-card 是同一类反馈，桌面 .toc 和手机悬浮目录各有一份自己
+      // 的按钮副本（见 group-play-btn 点击处理里的注释），按 mondaiIdx+
+      // group-start 一起选，两份会同时点亮。
+      document.querySelectorAll(".group-play-btn.playing").forEach(function(b) { b.classList.remove("playing"); });
+      if (el.mondaiIdx !== undefined) {
+        document.querySelectorAll(
+          '.group-play-btn[data-mondai-idx="' + el.mondaiIdx + '"][data-group-start="' + el.start + '"]'
+        ).forEach(function(b) { b.classList.add("playing"); });
+      }
     } else {
       audios = Array.from(el.querySelectorAll("audio:not(.seg-example-audio)"));
       label = "大問 " + el.querySelector("h2").textContent.trim();
@@ -600,6 +624,38 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var mondaiSec = block.closest(".mondai-section");
       var siblings = mondaiSec ? Array.from(mondaiSec.querySelectorAll('.question-block[data-scope="question"]')) : [block];
       playScope("question", siblings, siblings.indexOf(block));
+    });
+  });
+
+  // 右侧导航"组N"旁边的▶按钮——真实反馈"希望可以按照右侧导航分组读单词和
+  // 例句"。group-play-btn 由 page-renderer.js 的 renderSideNavList() 在
+  // 分组导航（词条数超过NAV_GROUP_SIZE的N2语法/词汇页）里渲染，
+  // data-group-start/data-group-size 直接是那边已经算好的分组边界（0-based
+  // 起始下标+组内词条数），不用在这里重新推导一遍分组算法。同一个 mondai
+  // 下的全部按钮按 DOM 顺序取出来当 navSiblings，就能用 playScope() 已有的
+  // 上一组/下一组/最前一组/最后一组导航，不用另起一套。
+  document.querySelectorAll(".group-play-btn").forEach(function(btn) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var mondaiIdx = btn.getAttribute("data-mondai-idx");
+      var mondaiSec = document.getElementById("m-" + mondaiIdx);
+      if (!mondaiSec) return;
+      var allBlocks = Array.from(mondaiSec.querySelectorAll('.question-block[data-scope="question"]'));
+      // 同一份分组导航 HTML 会被 renderSideNavList() 同时塞进桌面 .toc
+      // （#sideNavLists）和手机悬浮目录（#sideNavListsMobile）两处
+      // 容器——按 mondaiIdx 全局选择会把两边的按钮混在一起，navSiblings
+      // 数量翻倍、下标也对不上。用 btn 自己所在的 .side-nav-list 限定范围，
+      // 只取点击的这一份列表里的按钮。
+      var groupBtns = Array.from(btn.closest(".side-nav-list").querySelectorAll(".group-play-btn"));
+      var navSiblings = groupBtns.map(function(b) {
+        var start = parseInt(b.getAttribute("data-group-start"), 10);
+        var size = parseInt(b.getAttribute("data-group-size"), 10);
+        return { blocks: allBlocks.slice(start, start + size), mondaiIdx: mondaiIdx, start: start };
+      });
+      var target = document.getElementById(btn.previousElementSibling.dataset.target);
+      if (target) window.scrollTo({ top: target.offsetTop - 100, behavior: "smooth" });
+      playScope("group", navSiblings, groupBtns.indexOf(btn));
     });
   });
 

@@ -592,10 +592,17 @@
       items = groupQuestionsByUnit(questions).map(function (g) {
         var label = (g.startIdx + 1) + " - " + (g.startIdx + g.size);
         var unitAttr = g.unit ? ' data-unit="' + esc(g.unit) + '"' : "";
+        // group-play-btn：连续播完这一组每个词的发音+例句，见 listening-page.js
+        // 里对这个 class 的点击处理（复用 playScope() 的"group"档位）——真实
+        // 反馈"希望可以按照右侧导航分组读单词和例句"。data-group-start/
+        // data-group-size 直接把这里已经算好的分组边界原样透传给前端，不需要
+        // 前端重新计算一遍 chunkGroupSizes()。
         return '<li class="toc-h2"' + unitAttr + '><a class="side-nav-btn" data-target="q-' + mondaiIdx + "-" + (g.startIdx + 1) + '">' +
           '<span class="side-nav-ja">' + label + "</span>" +
           '<span class="side-nav-cn">' + label + "</span>" +
-          "</a></li>";
+          "</a>" +
+          '<button type="button" class="group-play-btn" data-mondai-idx="' + mondaiIdx + '" data-group-start="' + g.startIdx + '" data-group-size="' + g.size + '" title="连续播放这一组的单词和例句">▶</button>' +
+          "</li>";
       }).join("");
     } else {
       items = questions.map(function (q, i) {
