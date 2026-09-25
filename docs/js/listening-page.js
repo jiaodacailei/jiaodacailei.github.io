@@ -2253,6 +2253,35 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return FULL_ITEMS;
   }
 
+  // 题型筛选——真实反馈"单词测试可以让用户选择题型，默认所有题型"。
+  // 记"哪些题型被用户关掉了"（而不是"哪些题型被选中了"）：localStorage
+  // 只存空数组也不会占地方，默认值天然就是"全部启用"，不用在首次加载时
+  // 写一份"当前有哪些题型"的全量列表——以后这份引擎新增第7/8种题型时，
+  // 老用户已经存过的"关掉的题型"记录不会意外把新题型也带成关闭状态（存
+  // "开了哪些"才会有这个问题：新题型不在旧记录里，会被误判成"没开"）。
+  // AVAILABLE_TYPES 只收这个页面真的会出现的题型（复用 fullOrderedItems()
+  // 已经算过的"这道题在这份数据里存不存在"判断，比如没有例句的词不会有
+  // blank，没有词性标注的页面不会有pos），不存在的题型不渲染成勾选框，
+  // 跟"分类选择条不足两个分类就不渲染"是同一个"没有实际差异就不摆一个
+  // 摆设"原则。"related"（近义词/反义词/类义词）不在 TYPES 数组里（走的是
+  // 完全独立的数据形状，见 scopedAllItems() 那段注释），单独并进来一起筛。
+  var ALL_QUIZ_TYPES = TYPES.concat(["related"]);
+  var QUIZ_TYPE_LABELS = Object.assign({ related: "近义词/反义词/类义词填空" }, TYPE_LABELS);
+  var AVAILABLE_QUIZ_TYPES = (function() {
+    var seen = {};
+    fullOrderedItems().forEach(function(item) { seen[item.type] = true; });
+    return ALL_QUIZ_TYPES.filter(function(t) { return seen[t]; });
+  })();
+  var TYPE_FILTER_KEY = "n2listen-quiz-types-off:" + location.pathname;
+  var disabledTypes = {};
+  try {
+    JSON.parse(localStorage.getItem(TYPE_FILTER_KEY) || "[]").forEach(function(t) { disabledTypes[t] = true; });
+  } catch (e) { /* 解析失败当成"没有关闭任何题型" */ }
+  function isTypeEnabled(t) { return !disabledTypes[t]; }
+  function saveDisabledTypes() {
+    localStorage.setItem(TYPE_FILTER_KEY, JSON.stringify(Object.keys(disabledTypes)));
+  }
+
   // 导出错题编号要跨"单元/组N"筛选合并，不能只读内存里当前那份 errors——
   // errors 是按 stateKeys() 的 (pathname, unitSuffix, category) 分桶存
   // localStorage 的，同一道题在"全部"视图下答错一次和在"组1"视图下答错
@@ -2305,11 +2334,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // id 全局唯一（RELATED_ID_OFFSET 偏移量），errType 不用像 blank 那样
       // 加序号区分。
       if (w.kind === "related") {
+        if (!isTypeEnabled("related")) return;
         if (scope === "wrong" && getErr(errKey(w.id, "related")) <= 0) return;
         all.push({ word: w, type: "related", errType: "related" });
         return;
       }
       TYPES.forEach(function(t) {
+        if (!isTypeEnabled(t)) return;
         if (t === "blank") {
           blankSentences(w).forEach(function(s, i) {
             var errType = blankErrType(i);
@@ -2832,6 +2863,45 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         delayBtns.forEach(function(x) { x.classList.toggle("active", x === b); });
       });
     });
+
+    // 题型选择——默认全部题型都出（disabledTypes 默认空），跟出题范围/
+    // 自动跳题共用同一条"只在単語テスト tab激活时显示"的规则。跟上面两组
+    // 单选按钮不一样，这组是多选（勾掉哪个就不出哪种题型），点击时只切
+    // 自己这一个按钮的 .active，不清空其它按钮——只有 AVAILABLE_QUIZ_TYPES
+    // 里的题型才会渲染成按钮，不到2个可选时（比如页面本来就只有1种题型）
+    // 不渲染这组，没有实际差异的开关不摆出来。
+    if (AVAILABLE_QUIZ_TYPES.length > 1) {
+      var typeGroup = document.createElement("div");
+      typeGroup.className = "settings-group settings-group-quizscope";
+      typeGroup.innerHTML =
+        '<div class="settings-label">出題タイプ</div>' +
+        '<div class="settings-options" id="quizTypeOptions">' +
+        AVAILABLE_QUIZ_TYPES.map(function(t) {
+          return '<button class="settings-opt" data-type="' + t + '">' + QUIZ_TYPE_LABELS[t] + '</button>';
+        }).join("") +
+        '</div>';
+      settingsPanel.appendChild(typeGroup);
+      var typeBtns = Array.from(typeGroup.querySelectorAll(".settings-opt"));
+      typeBtns.forEach(function(b) {
+        b.classList.toggle("active", isTypeEnabled(b.dataset.type));
+        b.addEventListener("click", function() {
+          var t = b.dataset.type;
+          // 至少留一种题型启用——全部关掉的话 scopedAllItems() 会返回空
+          // 数组，単語テスト直接卡死在"没有题目"，不是一个用户想要的状态。
+          if (isTypeEnabled(t) && AVAILABLE_QUIZ_TYPES.filter(isTypeEnabled).length <= 1) return;
+          if (isTypeEnabled(t)) {
+            disabledTypes[t] = true;
+          } else {
+            delete disabledTypes[t];
+          }
+          saveDisabledTypes();
+          b.classList.toggle("active", isTypeEnabled(t));
+          queue = buildQueue();
+          qi = 0;
+          render();
+        });
+      });
+    }
   }
 
   // 顶部单元下拉框（page-renderer.js）换了单元——分类、词表范围都要整个
