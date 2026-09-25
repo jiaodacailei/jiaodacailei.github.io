@@ -515,6 +515,33 @@ def quiz_zh_text(overview):
     return first_line.strip()
 
 
+_QUIZ_ZH_POS_LINE_RE = re.compile(r"^\s*[\[［][^\]］]*[\]］]")
+
+
+def derive_meaning_variants(overview):
+    """跟`derive_reading_variants()`同一类问题，但轴不一样——这里是"一个词
+    条在书上标了不止一个独立义项"（比如"0147. 一層"：overview第一行
+    "[名] 一层，一楼"，第二行"[副] 更，更加，越发"，是两个词性各自独立的
+    意思，不是同一个词性下用顿号并列的近义释义），`quiz_zh_text()`只取
+    第一行会让第二个义项在"单词测试"里彻底从数据层面消失——不只是
+    "根据单词写中文意思"答不出第二个意思，"根据中文写假名"的题面也永远
+    不会用第二个意思出题。真实反馈"一層的中文有两个一个名词，一个副词，
+    但是单词测试中，只有一个名词，副词的答案漏掉了"。
+
+    识别规则：跟前端`posTagsFor()`判断"这一行是不是独立义项"用同一种
+    "以[词性]开头"的格式（`_QUIZ_ZH_POS_LINE_RE`），不满足这个格式的行
+    （比如"（类义词：更に(さらに)[副] 更加）"这种参照词注释，虽然行内
+    含有"[副]"，但不在行首）不算义项。只有匹配到2行及以上才当作"这个
+    词真的有多个独立义项"，返回长度>1的列表；只有1行（绝大多数词条）
+    退回`quiz_zh_text()`的单行结果，包一层长度为1的列表，调用方（
+    `build_vocab_quiz_items()`）不需要对"有没有多义项"分支特殊处理。"""
+    lines = [l.strip() for l in (overview or "").split("\n") if l.strip()]
+    pos_lines = [l for l in lines if _QUIZ_ZH_POS_LINE_RE.match(l)]
+    if len(pos_lines) > 1:
+        return pos_lines
+    return [quiz_zh_text(overview)]
+
+
 def chunk_group_sizes(n, size=10, min_last=5):
     """跟 build_exam_vocab.py 的同名函数完全一样的算法（这里独立复制一份，
     两个脚本没有共享模块的机制）：把n个词按size一组切页，最后一组如果
@@ -613,6 +640,7 @@ def build_vocab_quiz_items(units):
             kana = derive_reading(title, word_text)
             variants = derive_reading_variants(title, word_text)
             zh = quiz_zh_text(point.get("overview", ""))
+            zh_variants = derive_meaning_variants(point.get("overview", ""))
             examples = point.get("examples") or []
             if not examples:
                 problems.append(f"{title}: 没有例句")
@@ -647,9 +675,14 @@ def build_vocab_quiz_items(units):
             }
             # variants只在真的有多个"写法/读音"组合时才写进去（长度>1），
             # 普通词条不带这个字段，前端按"没有variants就当成[{text,kana}]
-            # 单一变体"处理，不用每个词都平白多存一份冗余数据。
+            # 单一变体"处理，不用每个词都平白多存一份冗余数据。zhVariants
+            # 同理，只在真的有多个独立义项时才写进去（derive_meaning_
+            # variants()），跟variants是两条独立的轴（写法/读音 vs 词性/
+            # 释义），一个词条理论上可以同时有两种，互不影响。
             if len(variants) > 1:
                 item["variants"] = variants
+            if len(zh_variants) > 1:
+                item["zhVariants"] = zh_variants
             items.append(item)
             for rel in point.get("related") or []:
                 related_id += 1

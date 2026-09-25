@@ -2306,6 +2306,27 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function wordVariants(w) {
     return (w.variants && w.variants.length) ? w.variants : [{ text: w.text, kana: w.kana }];
   }
+  // 跟wordVariants()同一种"没有就退化成单一元素数组"写法，但轴不一样——
+  // wordVariants()是"写法/读音"有几种，这个是"词性/释义"有几个独立义项
+  // （build_n2_reference_page.py的derive_meaning_variants()算出来的
+  // word.zhVariants，比如"0147. 一層"：[名]一层，一楼／[副]更，更加，
+  // 越发，是两个独立义项，不是同一词性下用顿号并列的近义释义）——真实
+  // 反馈"一層的中文有两个一个名词，一个副词，但是单词测试中，只有一个
+  // 名词，副词的答案漏掉了"：原来ja2zh/zh2kana两道题型都只读word.zh
+  // （数据层面就只保留了overview第一行），第二个义项从"正确答案候选"
+  // 里彻底消失，不是判分逻辑的问题。
+  function wordZhVariants(w) {
+    return (w.zhVariants && w.zhVariants.length) ? w.zhVariants : [w.zh];
+  }
+  // zh变体行本身就是"[词性] 释义"格式（derive_meaning_variants()只收
+  // 这种格式的行），直接把开头的词性标签抠出来当badge文字——比用①②这种
+  // 纯数字标记更好：词性标签本身就是书上原文，学习者看到"[副]"立刻知道
+  // 这一题问的是哪个义项，不需要额外记"①对应名词②对应副词"这种题外的
+  // 编号约定，而且不会像纯数字那样提前泄露具体释义内容。
+  function posTagBadgeText(zh) {
+    var m = POS_TAG_RE.exec(zh || "");
+    return m ? "[" + m[1] + "]" : "";
+  }
   // ①②③……circled-digit Unicode区从U+2460开始连续排列，比维护一张
   // 静态映射表简单；超过20（几乎不会发生，最多见过3种写法）就退化成
   // "(4)"这种半角括号写法，不会报错也不会显示乱码。
@@ -2360,25 +2381,51 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return [{ word: w, type: "ja2kana", errType: "ja2kana", variantText: byTextJK[0].text, variantKana: byKanaJK[0].kana }];
     }
     if (t === "ja2zh") {
+      // 写法（byTextJZ）和义项（zhVariantsJZ）是两条独立的轴——写法不同
+      // 天然题面不同，义项不同题面（日文原文）会完全一样（"一層"不管问的
+      // 是名词还是副词义，日文原文都是"一層"），必须靠posTagBadgeText()
+      // 标出词性标签区分是哪一道题，见wordZhVariants()的注释。两条轴都
+      // 只有1个值时（绝大多数词条）内外层循环各跑一次，errType退回不带
+      // 序号的旧格式，不影响已有词条的错题记录。
       var byTextJZ = distinctByKey(wordVariants(w), "text");
-      return byTextJZ.map(function(v, i) {
-        return { word: w, type: "ja2zh", errType: byTextJZ.length > 1 ? "ja2zh" + i : "ja2zh", variantText: v.text };
+      var zhVariantsJZ = wordZhVariants(w);
+      var multiJZ = byTextJZ.length > 1 || zhVariantsJZ.length > 1;
+      var outJZ = [];
+      byTextJZ.forEach(function(v) {
+        zhVariantsJZ.forEach(function(zhv) {
+          outJZ.push({
+            word: w, type: "ja2zh", errType: multiJZ ? "ja2zh" + outJZ.length : "ja2zh",
+            variantText: v.text, variantZh: zhVariantsJZ.length > 1 ? zhv : undefined,
+          });
+        });
       });
+      return outJZ;
     }
     if (t === "zh2kana") {
-      // "中→假名"的题面永远是中文释义（word.zh，不随写法变化），所以这里
-      // 只看读音本身有几种（byKanaZK），不需要像ja2zh/ja2kana那样先看写法
-      // 数——"暖か/温か"写法有2种但读音只有1种，不拆题；"行き"写法只有1种
-      // 但读音有2种，一样要拆题+标①②（跟ja2kana同一条"题面完全相同就必须
-      // 标号、不能放宽判分"的规则，不再对"行き"这类单一写法的情况法外开恩）。
+      // "中→假名"的题面本来只取决于中文释义（word.zh），现在这个释义本身
+      // 可能有多个独立义项（zhVariantsZK，见wordZhVariants()）——义项不同
+      // 时题面（中文释义原文）天然不一样，不需要额外标记；同一义项内如果
+      // 读音本身还有多种合法写法（byKanaZK，"行き"型），题面（这条义项的
+      // 释义文字）会完全一样，要靠①②标记区分是哪一道题，钉死各自该写的
+      // 读音（真实反馈"题目一样的情况下，标记1/2即可，不需要在答案上
+      // 放宽"，不接受写对任意一个读音都算对）。
       var kvZK = wordVariants(w);
       var byKanaZK = distinctByKey(kvZK, "kana");
-      if (byKanaZK.length > 1) {
-        return byKanaZK.map(function(v, i) {
-          return { word: w, type: "zh2kana", errType: "zh2kana" + i, variantKana: v.kana, variantBadge: i + 1 };
+      var zhVariantsZK = wordZhVariants(w);
+      var multiZK = byKanaZK.length > 1 || zhVariantsZK.length > 1;
+      var outZK = [];
+      zhVariantsZK.forEach(function(zhv) {
+        var kanaList = byKanaZK.length ? byKanaZK : [{ kana: w.kana }];
+        kanaList.forEach(function(v, ki) {
+          outZK.push({
+            word: w, type: "zh2kana", errType: multiZK ? "zh2kana" + outZK.length : "zh2kana",
+            variantKana: v.kana,
+            variantZh: zhVariantsZK.length > 1 ? zhv : undefined,
+            variantBadge: byKanaZK.length > 1 ? ki + 1 : undefined,
+          });
         });
-      }
-      return [{ word: w, type: "zh2kana", errType: "zh2kana", variantKana: byKanaZK[0] ? byKanaZK[0].kana : w.kana }];
+      });
+      return outZK;
     }
     return [{ word: w, type: t, errType: t }];
   }
@@ -2638,7 +2685,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 唯一标准答案，展示释义原文；其余类型都有唯一钉死的答案，直接用
   // answerFor()。
   function revealAnswerText(q) {
-    if (q.type === "ja2zh") return q.word.zh.replace(POS_RE, "");
+    // q.variantZh（见buildTypeItems()）优先——一个词有多个独立义项时，
+    // 揭晓的是这道题实际问的那一个义项，不是死用word.zh（那会永远只显示
+    // overview第一行）。
+    if (q.type === "ja2zh") return (q.variantZh || q.word.zh).replace(POS_RE, "");
     return answerFor(q);
   }
 
@@ -2672,7 +2722,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (q.type === "ja2zh") {
       if (!v) return false;
       var vStripped = quizStripPunct(v);
-      return zhSegments(q.word.zh).some(function(seg) {
+      return zhSegments(q.variantZh || q.word.zh).some(function(seg) {
         return quizStripPunct(seg).indexOf(vStripped) !== -1;
       });
     }
@@ -2740,8 +2790,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 相同但答案不同，必须标出这一题问的是哪一种写法；后者是两个不同的
       // 词凑巧撞了同一句中文释义。variantBadge存在时优先显示，两者理论上
       // 很少会同时出现在同一道题上。
+      // q.variantZh（见buildTypeItems()）优先——一个词有多个独立义项时，
+      // 题面显示的是这道题具体问的那一个义项的中文释义，不是死用word.zh
+      // （那会永远只显示overview第一行）。义项不同天然题面不同，不需要
+      // 额外标记（跟variantBadge是两条独立机制，理论上不会同时出现）。
       var zhBadgeText = q.variantBadge ? circledDigit(q.variantBadge) : ZH_DISAMBIGUATE_SUFFIX[q.word.id];
-      var zhShown = q.word.zh + (zhBadgeText ? '<span class="quiz-dedupe-badge">' + zhBadgeText + '</span>' : "");
+      var zhShown = (q.variantZh || q.word.zh) + (zhBadgeText ? '<span class="quiz-dedupe-badge">' + zhBadgeText + '</span>' : "");
       return '<div class="quiz-zh-prompt">' + zhShown + '</div>';
     }
     if (q.type === "related") {
@@ -2768,8 +2822,16 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 一样（两道题都显示"行き"），靠①②标记区分——跟zh2kana共用同一个
       // circledDigit()/.quiz-dedupe-badge，但这里跟JA_DISAMBIGUATE_SUFFIX
       // （不同词撞车用的1/2）是两套独立机制，variantBadge存在时优先显示。
+      // q.variantZh（ja2zh专属，见buildTypeItems()）：一个词有多个独立
+      // 义项时，日文原文本身不会变（"一層"不管问名词义还是副词义，题面
+      // 都是"一層"），必须标出这道题问的是哪个义项，不然没法作答——直接
+      // 显示这个义项开头的词性标签（"[名]"/"[副]"）比①②这类纯数字标记
+      // 更好：不会泄露具体释义，但比空洞的序号更有信息量，见
+      // posTagBadgeText()的注释。三种badge来源互斥（同一道题不会同时
+      // 出现），按 义项词性 > 读音序号(variantBadge) > 撞车后缀(SUFFIX)
+      // 优先级取第一个存在的。
       var jaSuffix2 = JA_DISAMBIGUATE_SUFFIX[q.word.id];
-      var jaBadgeText = q.variantBadge ? circledDigit(q.variantBadge) : jaSuffix2;
+      var jaBadgeText = q.variantZh ? posTagBadgeText(q.variantZh) : (q.variantBadge ? circledDigit(q.variantBadge) : jaSuffix2);
       var shown2 = (q.variantText || q.word.text) + (jaBadgeText ? '<span class="quiz-dedupe-badge">' + jaBadgeText + '</span>' : "");
       return '<div class="quiz-ja-prompt">' + shown2 + '</div>';
     }

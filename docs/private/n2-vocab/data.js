@@ -27703,7 +27703,11 @@ window.LESSON_DATA = {
       ],
       "category": "组15",
       "unit": "第1单元",
-      "audio": "audio/word-147.mp3"
+      "audio": "audio/word-147.mp3",
+      "zhVariants": [
+        "[名] 一层，一楼",
+        "[副] 更，更加，越发"
+      ]
     },
     {
       "id": 2000067,
