@@ -24127,7 +24127,17 @@ window.LESSON_DATA = {
       ],
       "category": "组1",
       "unit": "第1单元",
-      "audio": "audio/word-004.mp3"
+      "audio": "audio/word-004.mp3",
+      "variants": [
+        {
+          "text": "アイデア",
+          "kana": "アイデア"
+        },
+        {
+          "text": "アイディア",
+          "kana": "アイディア"
+        }
+      ]
     },
     {
       "id": 2000003,
@@ -25070,7 +25080,17 @@ window.LESSON_DATA = {
       ],
       "category": "组5",
       "unit": "第1单元",
-      "audio": "audio/word-042.mp3"
+      "audio": "audio/word-042.mp3",
+      "variants": [
+        {
+          "text": "暖か",
+          "kana": "あたたか"
+        },
+        {
+          "text": "温か",
+          "kana": "あたたか"
+        }
+      ]
     },
     {
       "id": 2000020,
@@ -25439,7 +25459,17 @@ window.LESSON_DATA = {
       ],
       "category": "组6",
       "unit": "第1单元",
-      "audio": "audio/word-056.mp3"
+      "audio": "audio/word-056.mp3",
+      "variants": [
+        {
+          "text": "あまりに",
+          "kana": "あまりに"
+        },
+        {
+          "text": "あまりにも",
+          "kana": "あまりにも"
+        }
+      ]
     },
     {
       "id": 1000057,
@@ -26289,7 +26319,17 @@ window.LESSON_DATA = {
       ],
       "category": "组10",
       "unit": "第1单元",
-      "audio": "audio/word-091.mp3"
+      "audio": "audio/word-091.mp3",
+      "variants": [
+        {
+          "text": "～位",
+          "kana": "～い"
+        },
+        {
+          "text": "～位",
+          "kana": "～くらい"
+        }
+      ]
     },
     {
       "id": 1000092,
@@ -26649,7 +26689,17 @@ window.LESSON_DATA = {
       ],
       "category": "组11",
       "unit": "第1单元",
-      "audio": "audio/word-106.mp3"
+      "audio": "audio/word-106.mp3",
+      "variants": [
+        {
+          "text": "行き",
+          "kana": "いき"
+        },
+        {
+          "text": "行き",
+          "kana": "ゆき"
+        }
+      ]
     },
     {
       "id": 1000107,
@@ -26874,7 +26924,21 @@ window.LESSON_DATA = {
       ],
       "category": "组12",
       "unit": "第1单元",
-      "audio": "audio/word-116.mp3"
+      "audio": "audio/word-116.mp3",
+      "variants": [
+        {
+          "text": "いずれにしても",
+          "kana": "いずれにしても"
+        },
+        {
+          "text": "いずれにせよ",
+          "kana": "いずれにせよ"
+        },
+        {
+          "text": "いずれにしろ",
+          "kana": "いずれにしろ"
+        }
+      ]
     },
     {
       "id": 2000052,
@@ -26916,7 +26980,21 @@ window.LESSON_DATA = {
       ],
       "category": "组12",
       "unit": "第1单元",
-      "audio": "audio/word-118.mp3"
+      "audio": "audio/word-118.mp3",
+      "variants": [
+        {
+          "text": "いざとなると",
+          "kana": "いざとなると"
+        },
+        {
+          "text": "いざとなれば",
+          "kana": "いざとなれば"
+        },
+        {
+          "text": "いざとなったら",
+          "kana": "いざとなったら"
+        }
+      ]
     },
     {
       "id": 1000119,
@@ -28132,7 +28210,17 @@ window.LESSON_DATA = {
       ],
       "category": "组2",
       "unit": "第2单元",
-      "audio": "audio/word-169.mp3"
+      "audio": "audio/word-169.mp3",
+      "variants": [
+        {
+          "text": "炒る",
+          "kana": "いる"
+        },
+        {
+          "text": "煎る",
+          "kana": "いる"
+        }
+      ]
     },
     {
       "id": 1000170,
@@ -29443,7 +29531,17 @@ window.LESSON_DATA = {
       ],
       "category": "组8",
       "unit": "第2单元",
-      "audio": "audio/word-225.mp3"
+      "audio": "audio/word-225.mp3",
+      "variants": [
+        {
+          "text": "産む",
+          "kana": "うむ"
+        },
+        {
+          "text": "生む",
+          "kana": "うむ"
+        }
+      ]
     },
     {
       "id": 1000226,
@@ -30104,7 +30202,17 @@ window.LESSON_DATA = {
       ],
       "category": "组11",
       "unit": "第2单元",
-      "audio": "audio/word-251.mp3"
+      "audio": "audio/word-251.mp3",
+      "variants": [
+        {
+          "text": "栄養",
+          "kana": "えいよう"
+        },
+        {
+          "text": "営養",
+          "kana": "えいよう"
+        }
+      ]
     },
     {
       "id": 1000252,

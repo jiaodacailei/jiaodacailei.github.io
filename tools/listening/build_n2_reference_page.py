@@ -453,6 +453,51 @@ def derive_reading(title, word_text):
     return first_word_form
 
 
+def derive_reading_variants(title, word_text):
+    """返回这个词条标题隐含的全部"写法+读音"组合，供"单词测试"按写法/读音
+    分别出题用——真实反馈"这种需要出三道日-中题，中-日也是三道……这种日中
+    两道题，日kana两道题……这种日kana两道题"，给了三个真实例子：
+    ①"暖か/温か（あたたか）"（2种写法，共用1个读音）该出2道"根据日文写
+    中文"+2道"根据日文写假名"（各写法各配自己的题面）；②"行き（いき／
+    ゆき）"（1种写法，2个读音）该出2道"根据日文写假名"；③"いざとなると／
+    いざとなれば／いざとなったら"（3种写法、每种写法本身就是自己的假名，
+    没有额外读音）该出3道"根据日文写中文"+3道"中文写假名"（中文题面相同，
+    答案不同，需要在题面上加①②③这类小标记区分是哪一种写法）。
+
+    没有"/"或"／"的普通词条返回长度为1的列表，跟`derive_reading()`单一
+    结果一致，调用方（`build_vocab_quiz_items()`）不需要对"有没有变体"
+    分支特殊处理。
+
+    三种真实形态的判断规则：
+    - `word_text`本身有多个"/"或"／"分隔的写法**且**结尾括注是单一的纯
+      假名读音 → 每种写法各自配这同一个共享读音（暖か/温か型）。
+    - `word_text`本身有多个写法**但没有**括注给出共享读音（纯假名的多种
+      口语变体，比如"いざとなると／…"本身就没有额外的读音括注）→ 每种
+      写法各自的读音就是它自己（因为这几种写法本身已经是纯假名）。
+    - `word_text`只有一种写法，但结尾括注本身用"/"或"／"分隔了多个读音
+      → 同一种写法配多个不同读音（行き型）。
+    以上都不满足时退回`derive_reading()`的单一结果，包一层长度为1的列表。
+    """
+    m = _TRAILING_PAREN_CONTENT_RE.search(_WORD_NUM_PREFIX_RE.sub("", title))
+    paren_readings = []
+    if m:
+        paren_readings = [r for r in re.split(r"[/／]", m.group(1)) if _KANA_ONLY_RE.match(r)]
+    # 注意：这里不能像 derive_reading() 的 first_word_form 那样 strip("～")——
+    # 那边只是为了判断"这段本身是不是纯假名"，不影响它自己不对外暴露的
+    # 中间值；这里的 text 是要直接显示给用户看的题面（"根据日文写中文"
+    # 这类题目的日文原文），"～位"这种前缀式词条必须保留"～"才是书上印的
+    # 原样写法，strip 掉会变成"位"，看起来像是另一个词。
+    texts = [t for t in re.split(r"[/／]", word_text) if t]
+    if len(texts) > 1:
+        if paren_readings:
+            shared_kana = paren_readings[0]
+            return [{"text": t, "kana": shared_kana} for t in texts]
+        return [{"text": t, "kana": t} for t in texts]
+    if len(paren_readings) > 1:
+        return [{"text": texts[0], "kana": r} for r in paren_readings]
+    return [{"text": texts[0] if texts else word_text, "kana": derive_reading(title, word_text)}]
+
+
 def quiz_zh_text(overview):
     """"单词测试"tab要用的中文释义——只取overview第一行（后面几行是"类义词"
     这类附加注释，不是这个词本身的释义）。**保留开头的"[词性]"标签，不剥离**
@@ -566,6 +611,7 @@ def build_vocab_quiz_items(units):
             title = point["title"]
             word_text = word_answer_text(title)
             kana = derive_reading(title, word_text)
+            variants = derive_reading_variants(title, word_text)
             zh = quiz_zh_text(point.get("overview", ""))
             examples = point.get("examples") or []
             if not examples:
@@ -593,12 +639,18 @@ def build_vocab_quiz_items(units):
                 sentences.append({"sentence": ja, "sentence_zh": zh_sentence, "blank": blank})
             if word_failed:
                 continue
-            items.append({
+            item = {
                 "id": QUIZ_ID_OFFSET + word_id, "text": word_text, "kana": kana, "zh": zh,
                 "sentences": sentences,
                 "category": group_label, "unit": unit_label,
                 "audio": f"audio/word-{word_id:03d}.mp3",
-            })
+            }
+            # variants只在真的有多个"写法/读音"组合时才写进去（长度>1），
+            # 普通词条不带这个字段，前端按"没有variants就当成[{text,kana}]
+            # 单一变体"处理，不用每个词都平白多存一份冗余数据。
+            if len(variants) > 1:
+                item["variants"] = variants
+            items.append(item)
             for rel in point.get("related") or []:
                 related_id += 1
                 items.append({

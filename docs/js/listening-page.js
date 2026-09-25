@@ -2221,6 +2221,106 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 插入"约定），题号就稳定；给某个已存在的词条中途新增一条例句会导致这条
   // 以后所有题目的题号整体后移，跟这仓库其它地方"id按追加顺序分配"已经接受
   // 的同一类局限，不是这次新引入的风险。
+  // 一个词有多种写法/多种读音时（build_n2_reference_page.py的
+  // derive_reading_variants()算出来、只在真的有分歧时才写进数据的
+  // `word.variants`字段，形状是`[{text,kana}, ...]`），"日→中"/"日→假名"/
+  // "中→假名"三种题型要分别按各自的规则拆成好几道独立小题——真实反馈
+  // "这种需要出三道日-中题，中-日也是三道……这种日中两道题，日kana两道
+  // 题……这种日kana两道题"，给了三个真实例子：
+  // ①"暖か/温か（あたたか）"（2种写法共用1个读音）→ 2道"日→中"（题面
+  //   分别是"暖か"/"温か"）+2道"日→假名"（同样按写法分开出题，答案都是
+  //   共同的"あたたか"）；
+  // ②"行き（いき／ゆき）"（1种写法、2个读音）→ 只出1道"日→中"（写法只有
+  //   一种，题面不会变，出2道没有意义），2道"日→假名"（题面都是"行き"，
+  //   看不出这一题该写哪个读音，所以不强行拆分成"2道各自钉死一个答案"的
+  //   题，改成1道题、判分时接受いき/ゆき任意一个——这是本skill目前对"同一
+  //   写法多个合法读音"这类场景的默认处理方式：判分从"唯一正确答案"放宽
+  //   成"命中任意一个已知读音都算对"，不用额外的小标记）；
+  // ③"いざとなると／いざとなれば／いざとなったら"（3种写法，每种写法
+  //   本身就是自己的读音，没有独立的读音信息）→ 3道"日→中"（题面各自是
+  //   3种写法，不需要标记）+3道"中→假名"（中文释义相同，题面看不出该写
+  //   哪一种写法，所以在中文题面末尾加①②③这类小标记区分，判分钉死这一
+  //   题该写哪一种——这跟"行き"型不一样：这里"写法"本身就是要考的内容，
+  //   不能放宽成"写对任意一种都算对"，那样就测不出学生是不是记住了3种
+  //   写法各自的正确形式）。
+  //
+  // 没有 variants 字段的普通词条（绝大多数）退化成"[{text: word.text,
+  // kana: word.kana}]"单一变体，下面这几个函数不用对"有没有variants"
+  // 分支特殊处理。
+  function wordVariants(w) {
+    return (w.variants && w.variants.length) ? w.variants : [{ text: w.text, kana: w.kana }];
+  }
+  // ①②③……circled-digit Unicode区从U+2460开始连续排列，比维护一张
+  // 静态映射表简单；超过20（几乎不会发生，最多见过3种写法）就退化成
+  // "(4)"这种半角括号写法，不会报错也不会显示乱码。
+  function circledDigit(n) {
+    return (n >= 1 && n <= 20) ? String.fromCodePoint(0x2460 + n - 1) : "(" + n + ")";
+  }
+  function distinctByKey(list, key) {
+    var seen = {}, out = [];
+    list.forEach(function(v) {
+      if (!seen[v[key]]) { seen[v[key]] = true; out.push(v); }
+    });
+    return out;
+  }
+  // 生成某个词在某种题型下的全部题目实例，不考虑"仅错题"这类scope筛选
+  // ——调用方（fullOrderedItems()不筛，scopedAllItems()按errType筛）各自
+  // 决定要不要再过滤，两边要拆成几道题的规则必须完全一致，抽出来共用
+  // 一份，不能各自维护一份容易走样。
+  function buildTypeItems(w, t) {
+    if (t === "blank") {
+      return blankSentences(w).map(function(s, i) {
+        return { word: w, type: "blank", errType: blankErrType(i), sentence: s };
+      });
+    }
+    if (t === "pos") {
+      if (!posTagsFor(w).length) return [];
+      return [{ word: w, type: "pos", errType: "pos" }];
+    }
+    if (t === "ja2kana") {
+      if (!needsJa2Kana(w)) return [];
+      var kvJK = wordVariants(w);
+      var byTextJK = distinctByKey(kvJK, "text");
+      if (byTextJK.length > 1) {
+        return byTextJK.map(function(v, i) {
+          return { word: w, type: "ja2kana", errType: "ja2kana" + i, variantText: v.text, variantKana: v.kana };
+        });
+      }
+      // 同一写法、多个合法读音（"行き"型）：只出1道题，判分放宽成接受
+      // variants里任意一个读音——用distinctByKey去重（比如"暖か/温か"这类
+      // 走到这个分支时kvJK里两个变体读音相同，不去重会在"答案揭晓"文字
+      // 里重复显示成"あたたか／あたたか"）。
+      return [{
+        word: w, type: "ja2kana", errType: "ja2kana", variantText: byTextJK[0].text,
+        acceptedKanas: distinctByKey(kvJK, "kana").map(function(v) { return v.kana; }),
+      }];
+    }
+    if (t === "ja2zh") {
+      var byTextJZ = distinctByKey(wordVariants(w), "text");
+      return byTextJZ.map(function(v, i) {
+        return { word: w, type: "ja2zh", errType: byTextJZ.length > 1 ? "ja2zh" + i : "ja2zh", variantText: v.text };
+      });
+    }
+    if (t === "zh2kana") {
+      var kvZK = wordVariants(w);
+      var byTextZK = distinctByKey(kvZK, "text");
+      var byKanaZK = distinctByKey(kvZK, "kana");
+      if (byTextZK.length > 1 && byKanaZK.length > 1) {
+        // 每种写法各自对应不同读音（"いざとなると"型）：中文题面相同，
+        // 答案不同，钉死每道题该写哪一种，靠①②③小标记区分。
+        return byTextZK.map(function(v, i) {
+          return { word: w, type: "zh2kana", errType: "zh2kana" + i, variantKana: v.kana, variantBadge: i + 1 };
+        });
+      }
+      // 读音共享（"暖か/温か"型，只需1道，byKanaZK天然只有1个不重复元素）
+      // 或者单一写法多读音（"行き"型，同样只出1道、判分放宽）——两种情况
+      // 都直接用已经去重过的byKanaZK，不用kvZK.map()，避免"暖か/温か"这类
+      // 共享读音的词在"答案揭晓"文字里重复显示成"あたたか／あたたか"。
+      return [{ word: w, type: "zh2kana", errType: "zh2kana", acceptedKanas: byKanaZK.map(function(v) { return v.kana; }) }];
+    }
+    return [{ word: w, type: t, errType: t }];
+  }
+
   var FULL_ITEMS = null;
   function fullOrderedItems() {
     if (FULL_ITEMS) return FULL_ITEMS;
@@ -2231,23 +2331,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         return;
       }
       TYPES.forEach(function(t) {
-        if (t === "blank") {
-          blankSentences(w).forEach(function(s, i) {
-            FULL_ITEMS.push({ word: w, type: "blank", errType: blankErrType(i), sentence: s });
-          });
-          return;
-        }
-        if (t === "pos") {
-          if (!posTagsFor(w).length) return;
-          FULL_ITEMS.push({ word: w, type: "pos", errType: "pos" });
-          return;
-        }
-        if (t === "ja2kana") {
-          if (!needsJa2Kana(w)) return;
-          FULL_ITEMS.push({ word: w, type: "ja2kana", errType: "ja2kana" });
-          return;
-        }
-        FULL_ITEMS.push({ word: w, type: t, errType: t });
+        buildTypeItems(w, t).forEach(function(item) { FULL_ITEMS.push(item); });
       });
     });
     return FULL_ITEMS;
@@ -2361,28 +2445,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       }
       TYPES.forEach(function(t) {
         if (!isTypeEnabled(t)) return;
-        if (t === "blank") {
-          blankSentences(w).forEach(function(s, i) {
-            var errType = blankErrType(i);
-            if (scope === "wrong" && getErr(errKey(w.id, errType)) <= 0) return;
-            all.push({ word: w, type: "blank", errType: errType, sentence: s });
-          });
-          return;
-        }
-        if (t === "pos") {
-          if (!posTagsFor(w).length) return;
-          if (scope === "wrong" && getErr(errKey(w.id, "pos")) <= 0) return;
-          all.push({ word: w, type: "pos", errType: "pos" });
-          return;
-        }
-        if (t === "ja2kana") {
-          if (!needsJa2Kana(w)) return;
-          if (scope === "wrong" && getErr(errKey(w.id, "ja2kana")) <= 0) return;
-          all.push({ word: w, type: "ja2kana", errType: "ja2kana" });
-          return;
-        }
-        if (scope === "wrong" && getErr(errKey(w.id, t)) <= 0) return;
-        all.push({ word: w, type: t, errType: t });
+        buildTypeItems(w, t).forEach(function(item) {
+          if (scope === "wrong" && getErr(errKey(w.id, item.errType)) <= 0) return;
+          all.push(item);
+        });
       });
     });
     return all;
@@ -2498,9 +2564,25 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function answerFor(q) {
     if (q.type === "blank") return q.sentence.blank;
     if (q.type === "related") return q.word.text;
-    if (q.type === "audio2kana" || q.type === "zh2kana" || q.type === "ja2kana") return q.word.kana;
+    if (q.type === "audio2kana") return q.word.kana;
+    // zh2kana/ja2kana：多写法各自钉死读音的实例（q.variantKana，见
+    // buildTypeItems()）优先；没有variantKana说明这道题走的是"任意一个
+    // 已知读音都算对"（q.acceptedKanas），判分逻辑在checkAnswer()里单独
+    // 处理，这里退回q.word.kana只是给"没有variants的普通词条"这个最常见
+    // case用。
+    if (q.type === "zh2kana" || q.type === "ja2kana") return q.variantKana || q.word.kana;
     if (q.type === "pos") return posTagsFor(q.word).join("、");
     return null; // ja2zh 是多选一匹配，见 checkJa2Zh
+  }
+
+  // 答错/答对后揭晓的"正确答案"文字——ja2zh本来就是"多选一匹配"，没有
+  // 唯一标准答案，展示释义原文；acceptedKanas（"同一写法多个合法读音都
+  // 算对"的题，见buildTypeItems()）同理没有唯一答案，把几个都列出来，
+  // 不能只展示answerFor()随便返回的某一个，会让用户以为另一个是错的。
+  function revealAnswerText(q) {
+    if (q.type === "ja2zh") return q.word.zh.replace(POS_RE, "");
+    if (q.acceptedKanas) return q.acceptedKanas.join("／");
+    return answerFor(q);
   }
 
   function zhSegments(zh) {
@@ -2536,6 +2618,13 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return zhSegments(q.word.zh).some(function(seg) {
         return quizStripPunct(seg).indexOf(vStripped) !== -1;
       });
+    }
+    // acceptedKanas（"同一写法有多个合法读音"，比如"行き"可以是いき也
+    // 可以是ゆき，见buildTypeItems()）——只要命中其中任意一个就算对，不
+    // 要求猜中题目内部到底钉的是哪一个（这类题本来就没有钉死单一答案）。
+    if (q.acceptedKanas) {
+      var vAccepted = quizStripPunct(v);
+      return q.acceptedKanas.some(function(k) { return quizStripPunct(k) === vAccepted; });
     }
     // blank（填空题）/audio2kana（听音频写假名）/zh2kana（中文写假名）都按
     // 去除标点符号后的内容比较——标准答案本身可能带着标点（blank 摘自例句
@@ -2595,8 +2684,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       return '<div class="quiz-hint-text">听发音，写出假名</div>';
     }
     if (q.type === "zh2kana") {
-      var zhSuffix = ZH_DISAMBIGUATE_SUFFIX[q.word.id];
-      var zhShown = q.word.zh + (zhSuffix ? '<span class="quiz-dedupe-badge">' + zhSuffix + '</span>' : "");
+      // variantBadge（①②③，见buildTypeItems()）跟ZH_DISAMBIGUATE_SUFFIX
+      // （不同词撞车用的1/2/3）是两套独立机制、视觉复用同一个
+      // .quiz-dedupe-badge样式——前者是同一个词自己有多种写法、中文释义
+      // 相同但答案不同，必须标出这一题问的是哪一种写法；后者是两个不同的
+      // 词凑巧撞了同一句中文释义。variantBadge存在时优先显示，两者理论上
+      // 很少会同时出现在同一道题上。
+      var zhBadgeText = q.variantBadge ? circledDigit(q.variantBadge) : ZH_DISAMBIGUATE_SUFFIX[q.word.id];
+      var zhShown = q.word.zh + (zhBadgeText ? '<span class="quiz-dedupe-badge">' + zhBadgeText + '</span>' : "");
       return '<div class="quiz-zh-prompt">' + zhShown + '</div>';
     }
     if (q.type === "related") {
@@ -2616,8 +2711,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 题面上如果先把答案印出来就没法出题了。"词性选择"（走下面的通用
     // 兜底分支）不受这条影响，继续保留假名注音。
     if (q.type === "ja2zh" || q.type === "ja2kana") {
+      // variantText（见buildTypeItems()）优先——一个词有多种写法时，每道题
+      // 展示的是这道题具体对应的那一种写法（"暖か"还是"温か"），不是死用
+      // word.text（那会永远显示带"/"的完整拼接字符串"暖か/温か"）。
       var jaSuffix2 = JA_DISAMBIGUATE_SUFFIX[q.word.id];
-      var shown2 = q.word.text + (jaSuffix2 ? '<span class="quiz-dedupe-badge">' + jaSuffix2 + '</span>' : "");
+      var shown2 = (q.variantText || q.word.text) + (jaSuffix2 ? '<span class="quiz-dedupe-badge">' + jaSuffix2 + '</span>' : "");
       return '<div class="quiz-ja-prompt">' + shown2 + '</div>';
     }
     var shown = KANJI_RE.test(q.word.text) && q.word.kana && q.word.kana !== q.word.text
@@ -2751,7 +2849,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         else if (quizPosSelected.indexOf(p) !== -1) el.classList.add("wrong");
       });
     }
-    var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
+    var ans = revealAnswerText(q);
     markResolved(ok, ans);
   }
 
@@ -3093,7 +3191,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           else if (numQuizPosSelected.indexOf(p) !== -1) el.classList.add("wrong");
         });
       }
-      var ans = q.type === "ja2zh" ? q.word.zh.replace(POS_RE, "") : answerFor(q);
+      var ans = revealAnswerText(q);
       numMarkResolved(ok, ans);
     }
 
