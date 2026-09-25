@@ -2253,12 +2253,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return FULL_ITEMS;
   }
 
-  // 题型筛选——真实反馈"单词测试可以让用户选择题型，默认所有题型"。
+  // 题型筛选——真实反馈"单词测试可以让用户选择题型，默认所有题型"，后续
+  // 反馈改成"默认选中：日中/日kana两类题目"（即 ja2zh/ja2kana）。
   // 记"哪些题型被用户关掉了"（而不是"哪些题型被选中了"）：localStorage
-  // 只存空数组也不会占地方，默认值天然就是"全部启用"，不用在首次加载时
-  // 写一份"当前有哪些题型"的全量列表——以后这份引擎新增第7/8种题型时，
-  // 老用户已经存过的"关掉的题型"记录不会意外把新题型也带成关闭状态（存
-  // "开了哪些"才会有这个问题：新题型不在旧记录里，会被误判成"没开"）。
+  // 只存空数组也不会占地方，以后这份引擎新增第7/8种题型时，老用户已经
+  // 存过的"关掉的题型"记录不会意外把新题型也带成关闭状态（存"开了哪些"
+  // 才会有这个问题：新题型不在旧记录里，会被误判成"没开"）。
   // AVAILABLE_TYPES 只收这个页面真的会出现的题型（复用 fullOrderedItems()
   // 已经算过的"这道题在这份数据里存不存在"判断，比如没有例句的词不会有
   // blank，没有词性标注的页面不会有pos），不存在的题型不渲染成勾选框，
@@ -2267,16 +2267,36 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 完全独立的数据形状，见 scopedAllItems() 那段注释），单独并进来一起筛。
   var ALL_QUIZ_TYPES = TYPES.concat(["related"]);
   var QUIZ_TYPE_LABELS = Object.assign({ related: "近义词/反义词/类义词填空" }, TYPE_LABELS);
+  // 设置面板里的题型开关用短标签（不带高亮span、不带"根据/听/选择"这类
+  // 前置说明），跟答题时题面顶部的长标签是两套独立文案——真实反馈"设置
+  // 面板中的7个选项太占空间了"，长标签（比如"根据单词写中文意思"9个字）
+  // 用作按钮文字时每行只能塞1~2个，短标签能让一行塞下3~4个，明显省空间。
+  var QUIZ_TYPE_SETTINGS_LABELS = {
+    blank: "填空", audio2kana: "听写假名", zh2kana: "中→假名",
+    ja2kana: "日→假名", ja2zh: "日→中文", pos: "词性", related: "近/反义词",
+  };
   var AVAILABLE_QUIZ_TYPES = (function() {
     var seen = {};
     fullOrderedItems().forEach(function(item) { seen[item.type] = true; });
     return ALL_QUIZ_TYPES.filter(function(t) { return seen[t]; });
   })();
+  // 首次访问（localStorage 里还没存过这个页面的题型偏好）默认只开
+  // ja2zh/ja2kana 两种，其余题型默认关闭——跟"完全没存过"和"用户存过
+  // 空数组（等价于全部启用）"必须区分开，不能都当成"没有偏好"：用
+  // `localStorage.getItem()` 返回值是不是 null 判断，不能直接用
+  // `|| "[]"` 这种写法（那样会让"用户主动全部启用"的空数组被误判成
+  // "没有偏好"，重新套上默认值，用户的选择就白设置了）。
+  var DEFAULT_DISABLED_QUIZ_TYPES = ["blank", "audio2kana", "zh2kana", "pos", "related"];
   var TYPE_FILTER_KEY = "n2listen-quiz-types-off:" + location.pathname;
   var disabledTypes = {};
-  try {
-    JSON.parse(localStorage.getItem(TYPE_FILTER_KEY) || "[]").forEach(function(t) { disabledTypes[t] = true; });
-  } catch (e) { /* 解析失败当成"没有关闭任何题型" */ }
+  var storedTypesOff = localStorage.getItem(TYPE_FILTER_KEY);
+  if (storedTypesOff === null) {
+    DEFAULT_DISABLED_QUIZ_TYPES.forEach(function(t) { disabledTypes[t] = true; });
+  } else {
+    try {
+      JSON.parse(storedTypesOff).forEach(function(t) { disabledTypes[t] = true; });
+    } catch (e) { /* 解析失败当成"没有关闭任何题型" */ }
+  }
   function isTypeEnabled(t) { return !disabledTypes[t]; }
   function saveDisabledTypes() {
     localStorage.setItem(TYPE_FILTER_KEY, JSON.stringify(Object.keys(disabledTypes)));
@@ -2877,7 +2897,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         '<div class="settings-label">出題タイプ</div>' +
         '<div class="settings-options" id="quizTypeOptions">' +
         AVAILABLE_QUIZ_TYPES.map(function(t) {
-          return '<button class="settings-opt" data-type="' + t + '">' + QUIZ_TYPE_LABELS[t] + '</button>';
+          return '<button class="settings-opt" data-type="' + t + '">' + QUIZ_TYPE_SETTINGS_LABELS[t] + '</button>';
         }).join("") +
         '</div>';
       settingsPanel.appendChild(typeGroup);
