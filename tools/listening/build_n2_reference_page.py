@@ -407,11 +407,33 @@ def derive_reading(title, word_text):
     整段没有末尾读音括注（本身已经是纯假名，不需要另外标注读音）又用的是
     全角"／"分隔三种写法，两次判断都没生效，"kana"直接变成了三种写法
     原样拼在一起的完整字符串，用户不可能打对这种答案。改成同时按半角/
-    全角两种斜杠切分，不区分标题实际用的是哪一种。"""
+    全角两种斜杠切分，不区分标题实际用的是哪一种。
+
+    **先判断word_text自己是不是已经纯假名**：外来语标题（"アポ"这种）
+    需要优先直接用word_text本身当答案，不能先看括注——真实案例"0046.
+    アポ（アポイントメント／appointment）"，括注里的"アポイントメント"
+    是给人看的全称/词源提示，不是"アポ"这个词自己的读音，如果不先判断
+    word_text本身已经是假名就直接进括注分支，会把答案错误地写成
+    "アポイントメント"而不是词条本身的"アポ"。
+
+    **括注内容如果带"/"或"／"，要先按分隔符切出第一段，再判断这一段是不是
+    纯假名**，不能对整个括注原文做纯假名判断——真实案例"0091. ～位
+    （～い／～くらい）"：括注原文"～い／～くらい"整体因为中间夹着全角
+    斜杠，判定不是纯假名，导致整个函数跳过括注、退回到word_text分支，
+    但word_text是"～位"（词本身，不含斜杠），最终"kana"字段被错误地存成
+    了"位"这个汉字本身——真实反馈"单词测试答案不对，应该是kana才对"。
+    先切分括注内容再逐段判断纯假名，才能在"アポ"（word_text本身已是
+    假名，不看括注）和"～位"（word_text带汉字，要看括注，括注还要再切
+    一次取第一个读音）这两类真实场景下都给出正确答案。"""
+    first_word_form = re.split(r"[/／]", word_text)[0].strip("～")
+    if _KANA_ONLY_RE.match(first_word_form):
+        return first_word_form
     m = _TRAILING_PAREN_CONTENT_RE.search(_WORD_NUM_PREFIX_RE.sub("", title))
-    if m and _KANA_ONLY_RE.match(m.group(1)):
-        return m.group(1)
-    return re.split(r"[/／]", word_text)[0].strip("～")
+    if m:
+        candidate = re.split(r"[/／]", m.group(1))[0]
+        if _KANA_ONLY_RE.match(candidate):
+            return candidate
+    return first_word_form
 
 
 def quiz_zh_text(overview):
