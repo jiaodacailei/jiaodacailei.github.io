@@ -12259,7 +12259,7 @@ window.LESSON_DATA = {
           "groups": null
         },
         {
-          "question": "0144. 一周（いちしゅう）",
+          "question": "0144. 一周（いっしゅう）",
           "overview": "[名・自動3] 一周，环游（世界）一圈",
           "answer": "",
           "unit": "第1单元",
@@ -12272,7 +12272,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "世界一周",
-                  "kana": "せかいいちしゅう",
+                  "kana": "せかいいっしゅう",
                   "t": 0
                 }
               ],
@@ -12300,16 +12300,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 1.26
+                  "t": 1.24
                 },
                 {
                   "text": "一周",
-                  "kana": "いちしゅう",
-                  "t": 1.56
+                  "kana": "いっしゅう",
+                  "t": 1.44
                 },
                 {
                   "text": "する",
-                  "t": 1.9
+                  "t": 1.76
                 },
                 {
                   "text": "。"
@@ -27635,7 +27635,7 @@ window.LESSON_DATA = {
     {
       "id": 1000144,
       "text": "一周",
-      "kana": "いちしゅう",
+      "kana": "いっしゅう",
       "zh": "[名・自動3] 一周，环游（世界）一圈",
       "sentences": [
         {
@@ -33233,7 +33233,7 @@ window.LESSON_DATA = {
           "tokens": [
             {
               "text": "一周",
-              "kana": "いちしゅう"
+              "kana": "いっしゅう"
             }
           ]
         },
