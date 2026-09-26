@@ -1256,7 +1256,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0013. ～上がる（～あがる）",
-          "overview": "[接尾] （接在动词连用形后）表示动作向上或彻底完成",
+          "overview": "[接尾] （接在动词连用形后）向上……；表示完成或结束",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-014.mp3",
@@ -1496,7 +1496,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0015. 空き～（あき～）",
-          "overview": "[接頭] 空的，无内容的",
+          "overview": "[接頭] 空的，无内容的；空闲的，闲置的",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-017.mp3",
@@ -2719,7 +2719,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0031. 朝夕（あさゆう）",
-          "overview": "[名] 早晚；朝夕，成天",
+          "overview": "[名] 早晨和晚上；朝夕，终日",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-029.mp3",
@@ -2755,7 +2755,7 @@ window.LESSON_DATA = {
                   "text": "。"
                 }
               ],
-              "zh": "早晚变凉了。",
+              "zh": "早晚变得凉快了。",
               "notes": "",
               "blanks": [
                 "朝夕"
@@ -3889,7 +3889,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0044. 跡（あと）",
-          "overview": "[名] 踪迹，足迹，痕迹；行踪，下落",
+          "overview": "[名] 踪迹，足迹；痕迹；行踪，下落",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-047.mp3",
@@ -65580,7 +65580,7 @@ window.LESSON_DATA = {
       "id": 1000014,
       "text": "～上がる",
       "kana": "～あがる",
-      "zh": "[接尾] （接在动词连用形后）表示动作向上或彻底完成",
+      "zh": "[接尾] （接在动词连用形后）向上……；表示完成或结束",
       "sentences": [
         {
           "sentence": "飛び上がる。",
@@ -65643,7 +65643,7 @@ window.LESSON_DATA = {
       "id": 1000017,
       "text": "空き～",
       "kana": "あき～",
-      "zh": "[接頭] 空的，无内容的",
+      "zh": "[接頭] 空的，无内容的；空闲的，闲置的",
       "sentences": [
         {
           "sentence": "空き缶",
@@ -65940,11 +65940,11 @@ window.LESSON_DATA = {
       "id": 1000029,
       "text": "朝夕",
       "kana": "あさゆう",
-      "zh": "[名] 早晚；朝夕，成天",
+      "zh": "[名] 早晨和晚上；朝夕，终日",
       "sentences": [
         {
           "sentence": "朝夕涼しくなった。",
-          "sentence_zh": "早晚变凉了。",
+          "sentence_zh": "早晚变得凉快了。",
           "blank": "朝夕"
         },
         {
@@ -66398,7 +66398,7 @@ window.LESSON_DATA = {
       "id": 1000047,
       "text": "跡",
       "kana": "あと",
-      "zh": "[名] 踪迹，足迹，痕迹；行踪，下落",
+      "zh": "[名] 踪迹，足迹；痕迹；行踪，下落",
       "sentences": [
         {
           "sentence": "手術の跡",
