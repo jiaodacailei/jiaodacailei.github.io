@@ -283,6 +283,23 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats, cache=None):
 
 _WORD_NUM_PREFIX_RE = re.compile(r"^\d+\.\s*")
 _WORD_TRAILING_FULLWIDTH_PAREN_RE = re.compile(r"（[^（）]*）$")
+_TITLE_LEADING_NUM_RE = re.compile(r"^(\d+)\.")
+
+
+def title_number(title):
+    """从标题开头抽出书本原始印刷编号（比如"0012. 上がる（あがる）"抽出
+    12）——真实反馈"所有单词的序号要和原文对上"：书本编号必须逐字照抄，
+    但`UNITS`/`points`数组本身的顺序不强制要求跟书本一致（数组顺序决定
+    `word_id`/`seg_id`分配、进而决定音频文件名，一旦改变数组顺序就等于
+    让所有音频文件名跟内容重新对应一遍，必须整批重新合成——用户明确
+    表示"只改编号，页面展示时按照编号排序即可"，不要求真的重排数组）。
+    这个函数只用于"页面展示顺序"（`main()`里给最终的`questions`列表
+    排序、`build_vocab_quiz_items()`里给"组N"分类计算书本序次），不影响
+    `word_id`/`seg_id`分配——那两处分配始终按`unit["points"]`数组自己
+    的原始顺序来，跟这个函数完全无关。找不到编号前缀时返回一个很大的
+    数字垫底，不会让格式异常的标题排到最前面把正常顺序搅乱。"""
+    m = _TITLE_LEADING_NUM_RE.match(title)
+    return int(m.group(1)) if m else 10**9
 
 
 def word_answer_text(title):
@@ -629,11 +646,21 @@ def build_vocab_quiz_items(units):
     problems = []
     for unit in units:
         unit_label = unit.get("label", "")
-        group_sizes = chunk_group_sizes(len(unit["points"]))
+        points = unit["points"]
+        group_sizes = chunk_group_sizes(len(points))
         group_labels = []
         for gi, gsize in enumerate(group_sizes, 1):
             group_labels.extend([f"组{gi}"] * gsize)
-        for point, group_label in zip(unit["points"], group_labels):
+        # "组N"分类要按书本编号顺序分组（比如"组1"是书本第1~10个词），不是
+        # 按`points`数组自己的排列顺序——两者可能不一致（数组顺序不强制要求
+        # 跟书本一致，见title_number()的注释）。这里只重排"分类标签怎么分配
+        # 给每个位置"这一层，`word_id`仍然严格按数组原始顺序递增，不受影响。
+        book_order = sorted(range(len(points)), key=lambda i: title_number(points[i]["title"]))
+        group_label_by_index = {}
+        for rank, orig_idx in enumerate(book_order):
+            group_label_by_index[orig_idx] = group_labels[rank]
+        for point_idx, point in enumerate(points):
+            group_label = group_label_by_index[point_idx]
             word_id += 1
             title = point["title"]
             word_text = word_answer_text(title)
@@ -853,6 +880,14 @@ def main():
     sentences, questions = build_point_sentences(
         units, model, audio_dir, tmp_wav, stats, args.tab_label, align_cache
     )
+    # 页面展示顺序按书本编号排序——真实反馈"所有单词的序号要和原文对上"，
+    # 但`word_id`/`seg_id`（决定音频文件名）已经在build_point_sentences()
+    # 里按`UNITS`/`points`数组自己的原始顺序分配完毕，这里只重排最终要写进
+    # data.js的`questions`列表本身的排列顺序，不会让任何音频文件名跟内容
+    # 的对应关系发生变化，不需要重新合成任何音频。`sentences`列表不需要
+    # 跟着排序——生词卡片的例句内容是靠`build_page.py`按`question`/`id`
+    # 字段匹配填充的，不依赖`sentences`列表自己在数组里的位置顺序。
+    questions.sort(key=lambda q: title_number(q["question"]))
     if os.path.exists(tmp_wav):
         os.remove(tmp_wav)
     with open(align_cache_path, "w", encoding="utf-8") as f:
