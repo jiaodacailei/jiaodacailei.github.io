@@ -2888,9 +2888,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 提示——真实反馈"每个答案都需要分别包含在对应的答案中，漏答就算
       // 错"，判分（checkJa2ZhMulti()）已经要求答满全部义项，题面上不提示
       // 的话用户根本不知道这道题要写几个答案，会一直卡在"只写了一个却总
-      // 判错"，不知道发生了什么。
-      if (q.type === "ja2zh" && zhMeaningGroups(q.variantZh || q.word.zh).length > 1) {
-        shown2 += '<div class="quiz-hint-text">这个词有多个意思，请用空格或标点分开逐一写出</div>';
+      // 判错"，不知道发生了什么。**必须写出具体的组数**（"这个词有多个
+      // 意思"这种模糊说法用户还是不知道到底要写几个）——真实反馈"日中
+      // 题目如果所有多个答案，请提示具体的个数"。
+      var zhGroupCount = q.type === "ja2zh" ? zhMeaningGroups(q.variantZh || q.word.zh).length : 1;
+      if (zhGroupCount > 1) {
+        shown2 += '<div class="quiz-hint-text">这个词有' + zhGroupCount + '个意思，请用空格或标点分开写出全部' + zhGroupCount + '个答案</div>';
       }
       return '<div class="quiz-ja-prompt">' + shown2 + '</div>';
     }
