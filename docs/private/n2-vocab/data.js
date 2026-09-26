@@ -453,7 +453,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0006. あいにく",
-          "overview": "[副・ナ形] 不凑巧，实际情况与期望或目标不符，不合时机",
+          "overview": "[副・ナ形] 不凑巧，实际情况与期望或目标不符；不合时机",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-005.mp3",
@@ -1898,7 +1898,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0021. アクセス（access）",
-          "overview": "[名・自動3] 访问，连接，存取；通道，指交通的便利性",
+          "overview": "[名・自動3] 访问，连接；存取；通道，指交通的便利性",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-015.mp3",
@@ -2164,7 +2164,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0024. あくまで",
-          "overview": "[副] 无论如何也……，彻底地",
+          "overview": "[副] 无论如何也……；彻底地",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-020.mp3",
@@ -3232,7 +3232,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0037. 圧縮（あっしゅく）",
-          "overview": "[名・他動3] 压缩，压榨；缩短文章、字句，缩减",
+          "overview": "[名・他動3] 压缩，压榨；缩短文章、字句；缩减",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-028.mp3",
@@ -3344,7 +3344,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0038. アップ（up）",
-          "overview": "[名・自他動3] 上涨，上升，提高\n（反义词：ダウン(down)[名・自他動3] 下落，降低；（病）倒）",
+          "overview": "[名・自他動3] 上涨，上升；提高\n（反义词：ダウン(down)[名・自他動3] 下落，降低；（病）倒）",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-030.mp3",
@@ -5188,7 +5188,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0058. 危うい（あやうい）",
-          "overview": "[イ形] 危险的，不安全的，危急\n（类义词：危ない(あぶない)[イ形] 危险的；靠不住的，堪忧的；不稳固的）",
+          "overview": "[イ形] 危险的，不安全的；危急\n（类义词：危ない(あぶない)[イ形] 危险的；靠不住的，堪忧的；不稳固的）",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-061.mp3",
@@ -10470,7 +10470,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0126. 傷み（いたみ）",
-          "overview": "[名]（食品）腐烂，（物品）损坏，损伤\n（同音关联词：痛み(いたみ)[名]（身体）疼痛；苦恼，烦恼）",
+          "overview": "[名]（食品）腐烂；（物品）损坏，损伤\n（同音关联词：痛み(いたみ)[名]（身体）疼痛；苦恼，烦恼）",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-126.mp3",
@@ -10599,7 +10599,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0127. 傷む（いたむ）",
-          "overview": "[自動1]（食品）腐烂，（物品）损坏，损伤\n（同音关联词：痛む(いたむ)[自動1]（身体）疼痛；苦恼，烦恼）",
+          "overview": "[自動1]（食品）腐烂；（物品）损坏，损伤\n（同音关联词：痛む(いたむ)[自動1]（身体）疼痛；苦恼，烦恼）",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-127.mp3",
@@ -10796,7 +10796,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0129. 至る（いたる）",
-          "overview": "[自動1] 到，抵达，（从……）到（……）\n（惯用语：事ここに至る 事已至此）",
+          "overview": "[自動1] 到，抵达；（从……）到（……）\n（惯用语：事ここに至る 事已至此）",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-129.mp3",
@@ -10964,7 +10964,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0131. いちいち",
-          "overview": "[名・副] 一一，逐一，全部，全都",
+          "overview": "[名・副] 一一，逐一；全部，全都",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-133.mp3",
@@ -11450,7 +11450,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0136. 一気に（いっきに）",
-          "overview": "[副] 一口气，中途不休息，一下子",
+          "overview": "[副] 一口气，（中途不休息）一下子",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-136.mp3",
@@ -11558,7 +11558,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0137. 一向に（いっこうに）",
-          "overview": "[副] （下接否定）丝毫（不）……，全然，完全\n（类义词：全く(まったく)[副] 全然，完全）",
+          "overview": "[副] （下接否定）丝毫（不）……；全然，完全\n（类义词：全く(まったく)[副] 全然，完全）",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-131.mp3",
@@ -13262,7 +13262,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0160. いまさら",
-          "overview": "[副] 事到如今，事已至此，再次，重新",
+          "overview": "[副] 事到如今，事已至此；再次，重新",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-160.mp3",
@@ -15276,7 +15276,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0188. 植木（うえき）",
-          "overview": "[名] 栽种的花木，盆栽的花木\n（关联词：植林(しょくりん)[名・自動3] 植树造林）",
+          "overview": "[名] 栽种的花木；盆栽的花木\n（关联词：植林(しょくりん)[名・自動3] 植树造林）",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-188.mp3",
@@ -18031,7 +18031,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0222. うなずく",
-          "overview": "[自動1] 点头，首肯，表示知晓、理解或赞同",
+          "overview": "[自動1] 点头；首肯，表示知晓、理解或赞同",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-222.mp3",
@@ -18274,7 +18274,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0224. 生み出す（うみだす）",
-          "overview": "[他動1] 生出，生产，创造",
+          "overview": "[他動1] 生出；生产，创造",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-224.mp3",
@@ -20079,7 +20079,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0245. 永遠（えいえん）",
-          "overview": "[名・ナ形] 永久，永远，永存\n（类义词：永久(えいきゅう)[名・ナ形] 永久，永远／反义词：瞬間(しゅんかん)[名] 瞬间，瞬时）",
+          "overview": "[名・ナ形] 永久，永远；永存\n（类义词：永久(えいきゅう)[名・ナ形] 永久，永远／反义词：瞬間(しゅんかん)[名] 瞬间，瞬时）",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-245.mp3",
@@ -21435,7 +21435,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0268. 延長（えんちょう）",
-          "overview": "[名・他動3] 延长（长度、期限等）；延续\n（类义词：延期(えんき)[名・他動3] 延期，宽限）",
+          "overview": "[名・他動3] 延长（长度，期限等）；延续\n（类义词：延期(えんき)[名・他動3] 延期，宽限）",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-268.mp3",
@@ -22970,7 +22970,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0286. OK",
-          "overview": "[叹・名・自動3]（オーケー）同意，答应，好，可以",
+          "overview": "[叹・名・自動3]（オーケー）同意，答应；好，可以",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-286.mp3",
@@ -23108,7 +23108,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0288. おおざっぱ",
-          "overview": "[ナ形] 粗糙的，粗枝大叶的，粗略的，大概的",
+          "overview": "[ナ形] 粗糙的，粗枝大叶的；粗略的，大概的",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-288.mp3",
@@ -23249,7 +23249,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0290. オーバー",
-          "overview": "[名・他動3・ナ形]（over）超出，超越（某程度、限度）；夸张，过分",
+          "overview": "[名・他動3・ナ形]（over）超出，超越（某程度，限度）；夸张，过分",
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-290.mp3",
@@ -24473,7 +24473,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0306. 収まる（おさまる）",
-          "overview": "[自動1] 收纳，容纳；恢复平复",
+          "overview": "[自動1] 收纳，容纳；恢复，平复",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-306.mp3",
@@ -30163,7 +30163,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0379. ～界（～かい）",
-          "overview": "[接尾] ……界，界限，境界，限定的范围，也可指社会",
+          "overview": "[接尾] ……界，界限，境界；限定的范围，也可指社会",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-379.mp3",
@@ -30459,7 +30459,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0384. 買い入れる（かいいれる）",
-          "overview": "[他動2] 买进，进货，收购",
+          "overview": "[他動2] 买进，进货；收购",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-384.mp3",
@@ -31285,7 +31285,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0397. 解釈（かいしゃく）",
-          "overview": "[名・他動3] 对语句、事物等内容的理解说明，解释，理解",
+          "overview": "[名・他動3] 对语句、事物等内容的理解说明；解释，理解",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-397.mp3",
@@ -33571,7 +33571,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0432. 書き取り（かきとり）",
-          "overview": "[名] 听写，默写，记录",
+          "overview": "[名] 听写，默写；记录",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-432.mp3",
@@ -33621,7 +33621,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0433. 書き取る（かきとる）",
-          "overview": "[他動1] 照原文写下来，记录，听写",
+          "overview": "[他動1] 照原文写下来；记录，听写",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-433.mp3",
@@ -33674,7 +33674,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0434. 垣根（かきね）",
-          "overview": "[名] 篱笆，栅栏，墙根，墙角；障碍（物）",
+          "overview": "[名] 篱笆，栅栏；墙根，墙角；障碍（物）",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-434.mp3",
@@ -33754,7 +33754,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0435. 限りない（かぎりない）",
-          "overview": "[イ形] 无限的，无边无际的，无比的",
+          "overview": "[イ形] 无限的，无边无际的；无比的",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-435.mp3",
@@ -34840,7 +34840,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0450. 学長（がくちょう）",
-          "overview": "[名] 大学校长，统率、监督者\n（类义词：校長(こうちょう)[名] 在日本指小学、初中、高中的校长）",
+          "overview": "[名] 大学校长；统率、监督者\n（类义词：校長(こうちょう)[名] 在日本指小学、初中、高中的校长）",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-450.mp3",
@@ -35024,7 +35024,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0453. 確率（かくりつ）",
-          "overview": "[名] 概率，几率，（预计的）可能性",
+          "overview": "[名] 概率，几率；（预计的）可能性",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-453.mp3",
@@ -35488,7 +35488,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0460. ～加減（～かげん）",
-          "overview": "[接尾] 程度，状况，恰好，表示状态、程度恰到好处",
+          "overview": "[接尾] 程度，状况；恰好，表示状态、程度恰到好处",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-460.mp3",
@@ -35845,7 +35845,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0466. 貸し出し（かしだし）",
-          "overview": "[名] 贷出，出借，（银行等）放款，贷款\n（反义词：借り入れ(かりいれ)[名] 借来，借入）",
+          "overview": "[名] 贷出，出借；（银行等）放款，贷款\n（反义词：借り入れ(かりいれ)[名] 借来，借入）",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-466.mp3",
@@ -35895,7 +35895,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0467. 貸し出す（かしだす）",
-          "overview": "[他動1] 出借，借给，放贷，贷款\n（反义词：借り入れる(かりいれる)[他動2] 借来，租来）",
+          "overview": "[他動1] 出借，借给；放贷，贷款\n（反义词：借り入れる(かりいれる)[他動2] 借来，租来）",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-467.mp3",
@@ -36723,7 +36723,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0479. 課題（かだい）",
-          "overview": "[名] 课题，工作或学习中的问题，题目，必须解决的问题",
+          "overview": "[名] 课题，工作或学习中的问题，题目；必须解决的问题",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-479.mp3",
@@ -37368,7 +37368,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0487. 偏る（かたよる）",
-          "overview": "[自動1] 不均衡，偏向一方，偏颇，偏袒",
+          "overview": "[自動1] 不均衡，偏向一方；偏颇，偏袒",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-487.mp3",
@@ -37680,7 +37680,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0491. 且つ（かつ）",
-          "overview": "[副・接] 一边……一边……，且，既……又……",
+          "overview": "[副・接] 一边……一边……；且，既……又……",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-491.mp3",
@@ -39079,7 +39079,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0511. 株（かぶ）",
-          "overview": "[名] 股份，份额，股份公司的股份，股票及证券交易",
+          "overview": "[名] 股份，份额，股份公司的股份；股票及证券交易",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-511.mp3",
@@ -40994,7 +40994,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0537. 軽々と（かるがると）",
-          "overview": "[副] 轻轻地，轻便地，轻而易举地，不费吹灰之力地",
+          "overview": "[副] 轻轻地，轻便地；轻而易举地，不费吹灰之力地",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-537.mp3",
@@ -41654,7 +41654,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0548. ～巻（～かん）",
-          "overview": "[接尾] 用来计量书籍、成卷物品等的量词，计量胶卷、磁带等物品的量词",
+          "overview": "[接尾] 用来计量书籍、成卷物品等的量词；计量胶卷、磁带等物品的量词",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-548.mp3",
@@ -41734,7 +41734,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0549. 考え事（かんがえごと）",
-          "overview": "[名] 想事，思考事情，心事，头疼的事情",
+          "overview": "[名] 想事，思考事情；心事，头疼的事情",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-549.mp3",
@@ -42386,7 +42386,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0556. 幹事（かんじ）",
-          "overview": "[名] 干事，协会组织或团体的负责人，发起人，联系人，负责人",
+          "overview": "[名] 干事，协会组织或团体的负责人；发起人，联系人，负责人",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-556.mp3",
@@ -43889,7 +43889,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0579. 気軽（きがる）",
-          "overview": "[ナ形] 爽快地，轻松愉快，没有负担的",
+          "overview": "[ナ形] 爽快地；轻松愉快，没有负担的",
           "answer": "",
           "unit": "第4单元",
           "wordAudio": "audio/word-579.mp3",
@@ -45478,7 +45478,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0601. きちっと",
-          "overview": "[副] 整齐地，规整地；准确地，正确，正合适",
+          "overview": "[副] 整齐地，规整地；准确地；正确，正合适",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-601.mp3",
@@ -45659,7 +45659,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0604. 起動（きどう）",
-          "overview": "[名・自動3] 启动，开始运动，机器开始运转\n（同音关联词：軌道(きどう)[名] 轨道，（电车、火车等的）线路；天体、人造卫星等运行的路线）",
+          "overview": "[名・自動3] 启动，开始运动；机器开始运转\n（同音关联词：軌道(きどう)[名] 轨道，（电车、火车等的）线路；天体、人造卫星等运行的路线）",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-604.mp3",
@@ -46756,7 +46756,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0619. 客観（きゃっかん）",
-          "overview": "[名] 客观，与人的思维、行动不发生关系的、独立存在的物质、自然\n（反义词：主観(しゅかん)[名] 主观；感觉、认识外界的主体）",
+          "overview": "[名] 客观；与人的思维、行动不发生关系的、独立存在的物质、自然\n（反义词：主観(しゅかん)[名] 主观；感觉、认识外界的主体）",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-619.mp3",
@@ -47703,7 +47703,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0635. 吸収（きゅうしゅう）",
-          "overview": "[名・他動3] 吸收，吸取，获取，引进",
+          "overview": "[名・他動3] 吸收，吸取；获取，引进",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-635.mp3",
@@ -48561,7 +48561,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0649. 境界（きょうかい）",
-          "overview": "[名] 境界，边界，疆界，分界线，边缘\n（同音关联词：教会(きょうかい)[名] 教堂，教会）",
+          "overview": "[名] 境界，边界，疆界；分界线，边缘\n（同音关联词：教会(きょうかい)[名] 教堂，教会）",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-649.mp3",
@@ -48855,7 +48855,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0655. 行政（ぎょうせい）",
-          "overview": "[名] 行政，与司法、立法并立的国家作用之一，根据法律、政令等而执行的政务",
+          "overview": "[名] 行政，与司法、立法并立的国家作用之一；根据法律、政令等而执行的政务",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-655.mp3",
@@ -51555,7 +51555,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0694. 区切る（くぎる）",
-          "overview": "[他動1] 区分，隔开，划分，（将文章）划分成若干段落",
+          "overview": "[他動1] 区分，隔开，划分；（将文章）划分成若干段落",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-694.mp3",
@@ -53168,7 +53168,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0711. 口先（くちさき）",
-          "overview": "[名] 嘴边，口头上，说法\n（惯用语：口先がうまい 嘴巧，能说会道）",
+          "overview": "[名] 嘴边，口头上；说法\n（惯用语：口先がうまい 嘴巧，能说会道）",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-711.mp3",
@@ -53561,7 +53561,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0717. くっつく",
-          "overview": "[自動1] 紧贴，紧紧连在一起，吸附，黏上，接触，紧挨",
+          "overview": "[自動1] 紧贴，紧紧连在一起；吸附，黏上；接触，紧挨",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-717.mp3",
@@ -53677,7 +53677,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0718. くっつける",
-          "overview": "[他動2] 把……黏上，紧紧贴上，使靠着，使紧挨；拉拢，撮合，召集",
+          "overview": "[他動2] 把……黏上，紧紧贴上；使靠着，使紧挨；拉拢，撮合，召集",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-718.mp3",
@@ -53819,7 +53819,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0719. くつろぐ",
-          "overview": "[自動1] 轻松自在，放松，不拘礼节",
+          "overview": "[自動1] 轻松自在；放松，不拘礼节",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-719.mp3",
@@ -55173,7 +55173,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0733. クレーム（claim）",
-          "overview": "[名] 索赔，申诉，要求\n（类义词：苦情(くじょう)[名] 不开心的事；牢骚，抱怨，意见）",
+          "overview": "[名] 索赔；申诉，要求\n（类义词：苦情(くじょう)[名] 不开心的事；牢骚，抱怨，意见）",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-733.mp3",
@@ -55223,7 +55223,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0734. くれぐれも",
-          "overview": "[副] 仔细周到，反复，非常用心的样子",
+          "overview": "[副] 仔细周到；反复，非常用心的样子",
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-734.mp3",
@@ -56522,7 +56522,7 @@ window.LESSON_DATA = {
       "id": 1000005,
       "text": "あいにく",
       "kana": "あいにく",
-      "zh": "[副・ナ形] 不凑巧，实际情况与期望或目标不符，不合时机",
+      "zh": "[副・ナ形] 不凑巧，实际情况与期望或目标不符；不合时机",
       "sentences": [
         {
           "sentence": "あいにくなお天気。",
@@ -56782,7 +56782,7 @@ window.LESSON_DATA = {
       "id": 1000015,
       "text": "アクセス",
       "kana": "アクセス",
-      "zh": "[名・自動3] 访问，连接，存取；通道，指交通的便利性",
+      "zh": "[名・自動3] 访问，连接；存取；通道，指交通的便利性",
       "sentences": [
         {
           "sentence": "人気サイトにアクセスする。",
@@ -56887,7 +56887,7 @@ window.LESSON_DATA = {
       "id": 1000020,
       "text": "あくまで",
       "kana": "あくまで",
-      "zh": "[副] 无论如何也……，彻底地",
+      "zh": "[副] 无论如何也……；彻底地",
       "sentences": [
         {
           "sentence": "あくまで反対だ。",
@@ -57095,7 +57095,7 @@ window.LESSON_DATA = {
       "id": 1000028,
       "text": "圧縮",
       "kana": "あっしゅく",
-      "zh": "[名・他動3] 压缩，压榨；缩短文章、字句，缩减",
+      "zh": "[名・他動3] 压缩，压榨；缩短文章、字句；缩减",
       "sentences": [
         {
           "sentence": "気体を圧縮する。",
@@ -57142,7 +57142,7 @@ window.LESSON_DATA = {
       "id": 1000030,
       "text": "アップ",
       "kana": "アップ",
-      "zh": "[名・自他動3] 上涨，上升，提高",
+      "zh": "[名・自他動3] 上涨，上升；提高",
       "sentences": [
         {
           "sentence": "レベルがアップする。",
@@ -57938,7 +57938,7 @@ window.LESSON_DATA = {
       "id": 1000061,
       "text": "危うい",
       "kana": "あやうい",
-      "zh": "[イ形] 危险的，不安全的，危急",
+      "zh": "[イ形] 危险的，不安全的；危急",
       "sentences": [
         {
           "sentence": "危ういところを助けられた。",
@@ -59531,7 +59531,7 @@ window.LESSON_DATA = {
       "id": 1000126,
       "text": "傷み",
       "kana": "いたみ",
-      "zh": "[名]（食品）腐烂，（物品）损坏，损伤",
+      "zh": "[名]（食品）腐烂；（物品）损坏，损伤",
       "sentences": [
         {
           "sentence": "靴の傷みがひどい。",
@@ -59562,7 +59562,7 @@ window.LESSON_DATA = {
       "id": 1000127,
       "text": "傷む",
       "kana": "いたむ",
-      "zh": "[自動1]（食品）腐烂，（物品）损坏，损伤",
+      "zh": "[自動1]（食品）腐烂；（物品）损坏，损伤",
       "sentences": [
         {
           "sentence": "リンゴが傷む。",
@@ -59634,7 +59634,7 @@ window.LESSON_DATA = {
       "id": 1000129,
       "text": "至る",
       "kana": "いたる",
-      "zh": "[自動1] 到，抵达，（从……）到（……）",
+      "zh": "[自動1] 到，抵达；（从……）到（……）",
       "sentences": [
         {
           "sentence": "横浜を経て東京に至る。",
@@ -59671,7 +59671,7 @@ window.LESSON_DATA = {
       "id": 1000131,
       "text": "一向に",
       "kana": "いっこうに",
-      "zh": "[副] （下接否定）丝毫（不）……，全然，完全",
+      "zh": "[副] （下接否定）丝毫（不）……；全然，完全",
       "sentences": [
         {
           "sentence": "一向に平気だ。",
@@ -59723,7 +59723,7 @@ window.LESSON_DATA = {
       "id": 1000133,
       "text": "いちいち",
       "kana": "いちいち",
-      "zh": "[名・副] 一一，逐一，全部，全都",
+      "zh": "[名・副] 一一，逐一；全部，全都",
       "sentences": [
         {
           "sentence": "いちいち解釈する。",
@@ -59796,7 +59796,7 @@ window.LESSON_DATA = {
       "id": 1000136,
       "text": "一気に",
       "kana": "いっきに",
-      "zh": "[副] 一口气，中途不休息，一下子",
+      "zh": "[副] 一口气，（中途不休息）一下子",
       "sentences": [
         {
           "sentence": "ビールを一気に飲み干す。",
@@ -60374,7 +60374,7 @@ window.LESSON_DATA = {
       "id": 1000160,
       "text": "いまさら",
       "kana": "いまさら",
-      "zh": "[副] 事到如今，事已至此，再次，重新",
+      "zh": "[副] 事到如今，事已至此；再次，重新",
       "sentences": [
         {
           "sentence": "いまさら後悔しても始まらない。",
@@ -60987,7 +60987,7 @@ window.LESSON_DATA = {
       "id": 1000188,
       "text": "植木",
       "kana": "うえき",
-      "zh": "[名] 栽种的花木，盆栽的花木",
+      "zh": "[名] 栽种的花木；盆栽的花木",
       "sentences": [
         {
           "sentence": "植木に水をやる。",
@@ -61796,7 +61796,7 @@ window.LESSON_DATA = {
       "id": 1000222,
       "text": "うなずく",
       "kana": "うなずく",
-      "zh": "[自動1] 点头，首肯，表示知晓、理解或赞同",
+      "zh": "[自動1] 点头；首肯，表示知晓、理解或赞同",
       "sentences": [
         {
           "sentence": "うなずきながらメモを取る。",
@@ -61853,7 +61853,7 @@ window.LESSON_DATA = {
       "id": 1000224,
       "text": "生み出す",
       "kana": "うみだす",
-      "zh": "[他動1] 生出，生产，创造",
+      "zh": "[他動1] 生出；生产，创造",
       "sentences": [
         {
           "sentence": "利益を生み出す。",
@@ -62404,7 +62404,7 @@ window.LESSON_DATA = {
       "id": 1000245,
       "text": "永遠",
       "kana": "えいえん",
-      "zh": "[名・ナ形] 永久，永远，永存",
+      "zh": "[名・ナ形] 永久，永远；永存",
       "sentences": [
         {
           "sentence": "永遠の真理",
@@ -62937,7 +62937,7 @@ window.LESSON_DATA = {
       "id": 1000268,
       "text": "延長",
       "kana": "えんちょう",
-      "zh": "[名・他動3] 延长（长度、期限等）；延续",
+      "zh": "[名・他動3] 延长（长度，期限等）；延续",
       "sentences": [
         {
           "sentence": "契約期間を延長する。",
@@ -63370,7 +63370,7 @@ window.LESSON_DATA = {
       "id": 1000286,
       "text": "OK",
       "kana": "OK",
-      "zh": "[叹・名・自動3]（オーケー）同意，答应，好，可以",
+      "zh": "[叹・名・自動3]（オーケー）同意，答应；好，可以",
       "sentences": [
         {
           "sentence": "OKを出す。",
@@ -63407,7 +63407,7 @@ window.LESSON_DATA = {
       "id": 1000288,
       "text": "おおざっぱ",
       "kana": "おおざっぱ",
-      "zh": "[ナ形] 粗糙的，粗枝大叶的，粗略的，大概的",
+      "zh": "[ナ形] 粗糙的，粗枝大叶的；粗略的，大概的",
       "sentences": [
         {
           "sentence": "おおざっぱな計画",
@@ -63444,7 +63444,7 @@ window.LESSON_DATA = {
       "id": 1000290,
       "text": "オーバー",
       "kana": "オーバー",
-      "zh": "[名・他動3・ナ形]（over）超出，超越（某程度、限度）；夸张，过分",
+      "zh": "[名・他動3・ナ形]（over）超出，超越（某程度，限度）；夸张，过分",
       "sentences": [
         {
           "sentence": "予算をオーバーする。",
@@ -63840,7 +63840,7 @@ window.LESSON_DATA = {
       "id": 1000306,
       "text": "収まる",
       "kana": "おさまる",
-      "zh": "[自動1] 收纳，容纳；恢复平复",
+      "zh": "[自動1] 收纳，容纳；恢复，平复",
       "sentences": [
         {
           "sentence": "箪笥に収まる。",
@@ -65623,7 +65623,7 @@ window.LESSON_DATA = {
       "id": 1000379,
       "text": "～界",
       "kana": "～かい",
-      "zh": "[接尾] ……界，界限，境界，限定的范围，也可指社会",
+      "zh": "[接尾] ……界，界限，境界；限定的范围，也可指社会",
       "sentences": [
         {
           "sentence": "生物界",
@@ -65743,7 +65743,7 @@ window.LESSON_DATA = {
       "id": 1000384,
       "text": "買い入れる",
       "kana": "かいいれる",
-      "zh": "[他動2] 买进，进货，收购",
+      "zh": "[他動2] 买进，进货；收购",
       "sentences": [
         {
           "sentence": "原料を買い入れる。",
@@ -66081,7 +66081,7 @@ window.LESSON_DATA = {
       "id": 1000397,
       "text": "解釈",
       "kana": "かいしゃく",
-      "zh": "[名・他動3] 对语句、事物等内容的理解说明，解释，理解",
+      "zh": "[名・他動3] 对语句、事物等内容的理解说明；解释，理解",
       "sentences": [
         {
           "sentence": "正しく解釈する。",
@@ -66871,7 +66871,7 @@ window.LESSON_DATA = {
       "id": 1000432,
       "text": "書き取り",
       "kana": "かきとり",
-      "zh": "[名] 听写，默写，记录",
+      "zh": "[名] 听写，默写；记录",
       "sentences": [
         {
           "sentence": "書き取りの練習",
@@ -66887,7 +66887,7 @@ window.LESSON_DATA = {
       "id": 1000433,
       "text": "書き取る",
       "kana": "かきとる",
-      "zh": "[他動1] 照原文写下来，记录，听写",
+      "zh": "[他動1] 照原文写下来；记录，听写",
       "sentences": [
         {
           "sentence": "原文を書き取る。",
@@ -66903,7 +66903,7 @@ window.LESSON_DATA = {
       "id": 1000434,
       "text": "垣根",
       "kana": "かきね",
-      "zh": "[名] 篱笆，栅栏，墙根，墙角；障碍（物）",
+      "zh": "[名] 篱笆，栅栏；墙根，墙角；障碍（物）",
       "sentences": [
         {
           "sentence": "垣根越し",
@@ -66924,7 +66924,7 @@ window.LESSON_DATA = {
       "id": 1000435,
       "text": "限りない",
       "kana": "かぎりない",
-      "zh": "[イ形] 无限的，无边无际的，无比的",
+      "zh": "[イ形] 无限的，无边无际的；无比的",
       "sentences": [
         {
           "sentence": "限りなく続く。",
@@ -67264,7 +67264,7 @@ window.LESSON_DATA = {
       "id": 1000450,
       "text": "学長",
       "kana": "がくちょう",
-      "zh": "[名] 大学校长，统率、监督者",
+      "zh": "[名] 大学校长；统率、监督者",
       "sentences": [
         {
           "sentence": "学長が入学式で挨拶した。",
@@ -67327,7 +67327,7 @@ window.LESSON_DATA = {
       "id": 1000453,
       "text": "確率",
       "kana": "かくりつ",
-      "zh": "[名] 概率，几率，（预计的）可能性",
+      "zh": "[名] 概率，几率；（预计的）可能性",
       "sentences": [
         {
           "sentence": "降水確率が高い。",
@@ -67469,7 +67469,7 @@ window.LESSON_DATA = {
       "id": 1000460,
       "text": "～加減",
       "kana": "～かげん",
-      "zh": "[接尾] 程度，状况，恰好，表示状态、程度恰到好处",
+      "zh": "[接尾] 程度，状况；恰好，表示状态、程度恰到好处",
       "sentences": [
         {
           "sentence": "ばかさ加減",
@@ -67600,7 +67600,7 @@ window.LESSON_DATA = {
       "id": 1000466,
       "text": "貸し出し",
       "kana": "かしだし",
-      "zh": "[名] 贷出，出借，（银行等）放款，贷款",
+      "zh": "[名] 贷出，出借；（银行等）放款，贷款",
       "sentences": [
         {
           "sentence": "図書の貸し出し",
@@ -67626,7 +67626,7 @@ window.LESSON_DATA = {
       "id": 1000467,
       "text": "貸し出す",
       "kana": "かしだす",
-      "zh": "[他動1] 出借，借给，放贷，贷款",
+      "zh": "[他動1] 出借，借给；放贷，贷款",
       "sentences": [
         {
           "sentence": "住宅資金を貸し出す。",
@@ -67918,7 +67918,7 @@ window.LESSON_DATA = {
       "id": 1000479,
       "text": "課題",
       "kana": "かだい",
-      "zh": "[名] 课题，工作或学习中的问题，题目，必须解决的问题",
+      "zh": "[名] 课题，工作或学习中的问题，题目；必须解决的问题",
       "sentences": [
         {
           "sentence": "課題を与える。",
@@ -68116,7 +68116,7 @@ window.LESSON_DATA = {
       "id": 1000487,
       "text": "偏る",
       "kana": "かたよる",
-      "zh": "[自動1] 不均衡，偏向一方，偏颇，偏袒",
+      "zh": "[自動1] 不均衡，偏向一方；偏颇，偏袒",
       "sentences": [
         {
           "sentence": "栄養が偏る。",
@@ -68230,7 +68230,7 @@ window.LESSON_DATA = {
       "id": 1000491,
       "text": "且つ",
       "kana": "かつ",
-      "zh": "[副・接] 一边……一边……，且，既……又……",
+      "zh": "[副・接] 一边……一边……；且，既……又……",
       "sentences": [
         {
           "sentence": "必要且つ充分な条件",
@@ -68690,7 +68690,7 @@ window.LESSON_DATA = {
       "id": 1000511,
       "text": "株",
       "kana": "かぶ",
-      "zh": "[名] 股份，份额，股份公司的股份，股票及证券交易",
+      "zh": "[名] 股份，份额，股份公司的股份；股票及证券交易",
       "sentences": [
         {
           "sentence": "株主",
@@ -69251,7 +69251,7 @@ window.LESSON_DATA = {
       "id": 1000537,
       "text": "軽々と",
       "kana": "かるがると",
-      "zh": "[副] 轻轻地，轻便地，轻而易举地，不费吹灰之力地",
+      "zh": "[副] 轻轻地，轻便地；轻而易举地，不费吹灰之力地",
       "sentences": [
         {
           "sentence": "軽々と持ち上げる。",
@@ -69482,7 +69482,7 @@ window.LESSON_DATA = {
       "id": 1000548,
       "text": "～巻",
       "kana": "～かん",
-      "zh": "[接尾] 用来计量书籍、成卷物品等的量词，计量胶卷、磁带等物品的量词",
+      "zh": "[接尾] 用来计量书籍、成卷物品等的量词；计量胶卷、磁带等物品的量词",
       "sentences": [
         {
           "sentence": "文学全集の第5巻",
@@ -69503,7 +69503,7 @@ window.LESSON_DATA = {
       "id": 1000549,
       "text": "考え事",
       "kana": "かんがえごと",
-      "zh": "[名] 想事，思考事情，心事，头疼的事情",
+      "zh": "[名] 想事，思考事情；心事，头疼的事情",
       "sentences": [
         {
           "sentence": "ずっと考え事をしていた。",
@@ -69660,7 +69660,7 @@ window.LESSON_DATA = {
       "id": 1000556,
       "text": "幹事",
       "kana": "かんじ",
-      "zh": "[名] 干事，协会组织或团体的负责人，发起人，联系人，负责人",
+      "zh": "[名] 干事，协会组织或团体的负责人；发起人，联系人，负责人",
       "sentences": [
         {
           "sentence": "幹事長",
@@ -70218,7 +70218,7 @@ window.LESSON_DATA = {
       "id": 1000579,
       "text": "気軽",
       "kana": "きがる",
-      "zh": "[ナ形] 爽快地，轻松愉快，没有负担的",
+      "zh": "[ナ形] 爽快地；轻松愉快，没有负担的",
       "sentences": [
         {
           "sentence": "気軽に引き受ける。",
@@ -70755,7 +70755,7 @@ window.LESSON_DATA = {
       "id": 1000601,
       "text": "きちっと",
       "kana": "きちっと",
-      "zh": "[副] 整齐地，规整地；准确地，正确，正合适",
+      "zh": "[副] 整齐地，规整地；准确地；正确，正合适",
       "sentences": [
         {
           "sentence": "きちっとした挨拶。",
@@ -70823,7 +70823,7 @@ window.LESSON_DATA = {
       "id": 1000604,
       "text": "起動",
       "kana": "きどう",
-      "zh": "[名・自動3] 启动，开始运动，机器开始运转",
+      "zh": "[名・自動3] 启动，开始运动；机器开始运转",
       "sentences": [
         {
           "sentence": "起動器",
@@ -71148,7 +71148,7 @@ window.LESSON_DATA = {
       "id": 1000619,
       "text": "客観",
       "kana": "きゃっかん",
-      "zh": "[名] 客观，与人的思维、行动不发生关系的、独立存在的物质、自然",
+      "zh": "[名] 客观；与人的思维、行动不发生关系的、独立存在的物质、自然",
       "sentences": [
         {
           "sentence": "客観描写",
@@ -71504,7 +71504,7 @@ window.LESSON_DATA = {
       "id": 1000635,
       "text": "吸収",
       "kana": "きゅうしゅう",
-      "zh": "[名・他動3] 吸收，吸取，获取，引进",
+      "zh": "[名・他動3] 吸收，吸取；获取，引进",
       "sentences": [
         {
           "sentence": "栄養を吸収する。",
@@ -71808,7 +71808,7 @@ window.LESSON_DATA = {
       "id": 1000649,
       "text": "境界",
       "kana": "きょうかい",
-      "zh": "[名] 境界，边界，疆界，分界线，边缘",
+      "zh": "[名] 境界，边界，疆界；分界线，边缘",
       "sentences": [
         {
           "sentence": "境界線",
@@ -71934,7 +71934,7 @@ window.LESSON_DATA = {
       "id": 1000655,
       "text": "行政",
       "kana": "ぎょうせい",
-      "zh": "[名] 行政，与司法、立法并立的国家作用之一，根据法律、政令等而执行的政务",
+      "zh": "[名] 行政，与司法、立法并立的国家作用之一；根据法律、政令等而执行的政务",
       "sentences": [
         {
           "sentence": "行政機関",
@@ -72833,7 +72833,7 @@ window.LESSON_DATA = {
       "id": 1000694,
       "text": "区切る",
       "kana": "くぎる",
-      "zh": "[他動1] 区分，隔开，划分，（将文章）划分成若干段落",
+      "zh": "[他動1] 区分，隔开，划分；（将文章）划分成若干段落",
       "sentences": [
         {
           "sentence": "前期、中期と後期に区切る。",
@@ -73295,7 +73295,7 @@ window.LESSON_DATA = {
       "id": 1000711,
       "text": "口先",
       "kana": "くちさき",
-      "zh": "[名] 嘴边，口头上，说法",
+      "zh": "[名] 嘴边，口头上；说法",
       "sentences": [
         {
           "sentence": "口先だけの約束",
@@ -73411,7 +73411,7 @@ window.LESSON_DATA = {
       "id": 1000717,
       "text": "くっつく",
       "kana": "くっつく",
-      "zh": "[自動1] 紧贴，紧紧连在一起，吸附，黏上，接触，紧挨",
+      "zh": "[自動1] 紧贴，紧紧连在一起；吸附，黏上；接触，紧挨",
       "sentences": [
         {
           "sentence": "ガムが服にくっつく。",
@@ -73432,7 +73432,7 @@ window.LESSON_DATA = {
       "id": 1000718,
       "text": "くっつける",
       "kana": "くっつける",
-      "zh": "[他動2] 把……黏上，紧紧贴上，使靠着，使紧挨；拉拢，撮合，召集",
+      "zh": "[他動2] 把……黏上，紧紧贴上；使靠着，使紧挨；拉拢，撮合，召集",
       "sentences": [
         {
           "sentence": "接着剤でくっつける。",
@@ -73458,7 +73458,7 @@ window.LESSON_DATA = {
       "id": 1000719,
       "text": "くつろぐ",
       "kana": "くつろぐ",
-      "zh": "[自動1] 轻松自在，放松，不拘礼节",
+      "zh": "[自動1] 轻松自在；放松，不拘礼节",
       "sentences": [
         {
           "sentence": "膝をくずしておくつろぎください。",
@@ -73772,7 +73772,7 @@ window.LESSON_DATA = {
       "id": 1000733,
       "text": "クレーム",
       "kana": "クレーム",
-      "zh": "[名] 索赔，申诉，要求",
+      "zh": "[名] 索赔；申诉，要求",
       "sentences": [
         {
           "sentence": "クレームをつける。",
@@ -73798,7 +73798,7 @@ window.LESSON_DATA = {
       "id": 1000734,
       "text": "くれぐれも",
       "kana": "くれぐれも",
-      "zh": "[副] 仔细周到，反复，非常用心的样子",
+      "zh": "[副] 仔细周到；反复，非常用心的样子",
       "sentences": [
         {
           "sentence": "くれぐれもお体を大事になさってください。",
