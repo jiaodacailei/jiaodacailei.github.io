@@ -5842,7 +5842,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0067. 改めて（あらためて）",
-          "overview": "[副] 再……，另外，重新",
+          "overview": "[副] 再……，另外；重新",
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-064.mp3",
@@ -58011,7 +58011,7 @@ window.LESSON_DATA = {
       "id": 1000064,
       "text": "改めて",
       "kana": "あらためて",
-      "zh": "[副] 再……，另外，重新",
+      "zh": "[副] 再……，另外；重新",
       "sentences": [
         {
           "sentence": "後日改めてお伺いします。",
