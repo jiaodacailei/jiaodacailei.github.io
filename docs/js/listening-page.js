@@ -3282,7 +3282,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     function refreshNumberedExport() {
       var counts = mergedErrCounts();
       var entries = [];
+      // 题号本身（i+1）永远按 fullOrderedItems() 的全局顺序算，不受当前
+      // 单元筛选影响——真实反馈"全局统一编号，不受当前筛选影响"，同一道题
+      // 换单元也不能改变它的题号。但导出列表本身要按当前选中单元过滤（真实
+      // 反馈"错题导出，也按当前单元过滤"）：选中具体单元时只保留属于这个
+      // 单元的题，选"全部"（或页面本身没有单元下拉框）时不过滤。两者互不
+      // 冲突：过滤只决定"这道题要不要出现在导出列表里"，不改题号本身的值。
       fullOrderedItems().forEach(function(item, i) {
+        if (HAS_UNIT_SELECT && currentUnit !== "all" && item.word.unit !== currentUnit) return;
         var c = counts[errKey(item.word.id, item.errType)] || 0;
         if (c > 0) entries.push({ num: i + 1, count: c });
       });
@@ -3294,6 +3301,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
     refreshNumberedExport();
     numQuizRefreshBtn.addEventListener("click", refreshNumberedExport);
+    // 换单元时导出列表要跟着重新按新单元过滤一遍——不然切完单元、不手动点
+    // "刷新编号"的话，文本框里还留着上一个单元过滤出来的旧列表。
+    if (HAS_UNIT_SELECT) window.addEventListener("n2unitchange", refreshNumberedExport);
     numQuizExportEl.addEventListener("click", function() { numQuizExportEl.select(); });
 
     function numRender() {
