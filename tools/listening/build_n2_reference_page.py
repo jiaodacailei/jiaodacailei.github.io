@@ -195,10 +195,43 @@ TTS_READING_OVERRIDES = {
     # （いっさくじつ）的音频不对，还有例句中的音频也不对"。"一昨日"在这三份
     # 内容模块里目前只有这一个词条用到，全局替换安全。
     "一昨日": "いっさくじつ",
+    # "0192. 魚（うお）"的两条例句——真实反馈"0192. 魚（うお）……音频不对"。
+    # 跟上面几条不一样，"魚"这个字不能直接当bare单字全局替换（像"泡"/
+    # "一昨日"那样）：这仓库里"魚"字还出现在"0676. 金魚"/"金魚掬い"、以及
+    # 另一条例句"3キロ強の魚"里，这几处"魚"都是别的读音（金魚=きんぎょ，
+    # 后者按さかな读没问题），如果bare替换"魚"→"うお"，会把"金魚"也误伤成
+    # "金うお"。改成只替换这两条例句自己的完整短语（"魚と水"/"水を得た
+    # 魚のよう"），足够长、不会跟"金魚"/"3キロ強の魚"这两处产生子串重叠。
+    # 词条标题本身单独的bare"魚"用下面TTS_EXACT_TEXT_OVERRIDES单独处理。
+    "魚と水": "うおとみず",
+    "水を得た魚のよう": "水を得たうおのよう",
+}
+
+# 有一类多音字词条，这个字单独当标题（word audio唯一的输入文本，就是这
+# 一个字，没有任何上下文）时要读成词条标注的那个音，但这个字同时也是别的
+# 复合词的一部分、在那些复合词里必须读别的音——不能用上面
+# TTS_READING_OVERRIDES那种"文本内部子串替换"处理（会连复合词里的这个字
+# 也一起误伤，比如"魚"单独要读うお，但"金魚"的"魚"必须保留ぎょ读音，
+# bare替换"魚"→"うお"会把"金魚"变成"金うお"）。这份字典只在喂给TTS的
+# 文本整体（`==`，不是子串）就是这个字本身时才生效——被这里处理过的字
+# 不会再进入下面的子串替换循环。
+TTS_EXACT_TEXT_OVERRIDES = {
+    # "0192. 魚（うお）"标题——见上面 TTS_READING_OVERRIDES 里"魚と水"那条
+    # 注释，同一次真实反馈修的两处。
+    "魚": "うお",
+    # "0193. 嗽（うがい）"标题——"嗽"这个字单独作为词条标题时edge-tts读音
+    # 不对，真实反馈"0193. 嗽（うがい）……音频不对"；这个字在三份内容模块
+    # 里没有出现在任何复合词里，理论上直接当bare子串替换也安全，但跟"魚"
+    # 用同一份exact-match字典处理，两条真实反馈是同一次一起报的，写在一起
+    # 方便以后查。这个词条的两条例句本身已经是纯假名"うがい"，不需要额外
+    # 处理。
+    "嗽": "うがい",
 }
 
 
 def apply_tts_reading_overrides(text):
+    if text in TTS_EXACT_TEXT_OVERRIDES:
+        return TTS_EXACT_TEXT_OVERRIDES[text]
     for kanji, kana in TTS_READING_OVERRIDES.items():
         text = text.replace(kanji, kana)
     return text
@@ -380,7 +413,27 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
     不同的hash——两份逻辑分开维护、后续任何一边改了判断条件都很容易只改
     一处漏改另一处。改成这里算好的文件名直接传出去、`build_vocab_quiz_
     items()`只管拿来用，不重新推导，从根上消除"两处独立重建必须保持一致"
-    这个维护负担。"""
+    这个维护负担。
+
+    `point["pitch"]`（词汇页专属，语法点没有这个字段，`point.get("pitch",
+    "")`对语法点始终是空字符串，不影响语法页）——真实反馈"原文中是标了
+    音高的小数字1-5等的，但是本项目中都漏掉了"：书上每个词条在读音括注
+    后面、词性标签前面还印着①～⑤这类圈起来的数字（日语词典标准的"音调
+    核"标记，不是编号，也不影响TTS怎么读——edge-tts不支持按这种标记调
+    音高，这里纯粹是给学习者看的参考信息），转录时一直没收录这个字段。
+    `pitch`存的是原文这个位置印的圈码原样拼接的字符串（比如单一读音配
+    单一音高是"①"，一个词有两种写法各自配一个音高比如"アイデア/
+    アイディア（idea）③①"存"③①"，同一写法有多个合法音高比如"青白い
+    （あおじろい）①④"也是存"①④"——不强行拆分成"每种写法对应哪个数字"
+    这种结构化关系，逐字照抄原文这个位置印的内容就够，跟这份内容模块
+    "严禁改写/编造、只能照抄"的一贯原则一致）。不写进`title`字符串本身
+    （虽然书上物理位置是在`title`里"（读音）"和"[词性]"之间），是因为
+    `title`这个字符串被好几处正则依赖（`word_answer_text()`/
+    `derive_reading()`/默写模式的`extractTitleAnswer()`……），插入这个
+    圈码会打乱"结尾必须是全角括注"这类假设——单开一个字段，
+    `page-renderer.js`渲染时再拼回视觉上"词（读音）音高[词性]"这个书本
+    原有顺序，两边各自负责"数据该长什么样"和"展示该长什么样"，不用互相
+    迁就对方的解析逻辑。"""
     sentences = []
     questions = []
     word_audio_by_id = {}
@@ -453,6 +506,7 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
                     "mondai": mondai_label, "question": question_label,
                     "overview": "\n\n".join(g.get("overview", "") for g in groups),
                     "answer": "", "unit": unit_label, "wordAudio": word_audio,
+                    "pitch": point.get("pitch", ""),
                     "groups": group_meta,
                 })
             else:
@@ -461,6 +515,7 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
                     "mondai": mondai_label, "question": question_label,
                     "overview": point.get("overview", ""), "answer": "",
                     "unit": unit_label, "wordAudio": word_audio,
+                    "pitch": point.get("pitch", ""),
                 })
     return sentences, questions, word_audio_by_id
 

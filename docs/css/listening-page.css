@@ -614,6 +614,8 @@ body.mode-dictate .dictate-ui { display: block; }
    照常显示）。 */
 body.has-title-dictate.mode-dictate .q-title-text,
 body.has-title-dictate.mode-blank .q-title-text,
+body.has-title-dictate.mode-dictate .q-title-pitch,
+body.has-title-dictate.mode-blank .q-title-pitch,
 body.has-title-dictate.mode-dictate .q-overview,
 body.has-title-dictate.mode-blank .q-overview { display: none; }
 /* h3::after 是全站通用的"▶点击可播放"提示图标（见上面 .post-body h3::after），
@@ -624,6 +626,11 @@ body.has-title-dictate.mode-blank .question-block h3::after { display: none; }
 body.has-title-dictate.mode-dictate .q-title-dictate,
 body.has-title-dictate.mode-blank .q-title-dictate { display: block; }
 .q-title-dictate { margin: 4px 0 10px; }
+/* 音高标记①～⑤：字号比标题小一截、颜色调淡，跟标题正文区分开又不抢视觉
+   焦点——书上原样是印在正文里的普通大小文字，但页面上标题本身字号已经
+   放大过，原样大小放在标题里会显得像是词的一部分，故意调小调淡成"参考
+   注解"的观感。 */
+.q-title-pitch { font-size: 0.62em; color: var(--text-muted); margin-left: 2px; }
 
 /* ── "语法与表达"tab编号语法点卡：标题本身=答案，默写/填空模式下只留编号 ──
    跟上面has-title-dictate是两码事：has-title-dictate是"把标题也变成一道

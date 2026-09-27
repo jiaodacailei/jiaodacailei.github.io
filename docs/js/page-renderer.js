@@ -330,6 +330,16 @@
     var wordAudioHtml = q.wordAudio
       ? '<audio class="word-audio" preload="none" src="' + esc(q.wordAudio) + '"></audio>'
       : "";
+    // 音高标记（N2词汇页专属，书上印在"（读音）"和"[词性]"之间的①～⑤这类
+    // 圈码，见build_n2_reference_page.py里point["pitch"]的文档字符串）——
+    // 真实反馈"原文中是标了音高的小数字1-5等的，但是本项目中都漏掉了"。
+    // 单独拼一个span、不并进restPart字符串本身：restPart会被extractTitleAnswer()
+    // 当纯文本读（.textContent），那边靠"结尾是不是全角括注"这条正则判断
+    // 默写答案，如果把圈码字符也算进restPart，会破坏"括注在字符串结尾"这个
+    // 假设，默写模式的判分会把读音也算进答案里。放在.q-title-text外面这个
+    // 独立span，视觉上正好接在restPart"词（读音）"后面，跟书上印刷顺序一致，
+    // 同时不会被那条正则读到。
+    var pitchHtml = q.pitch ? '<span class="q-title-pitch">' + esc(q.pitch) + "</span>" : "";
     // 编号前缀（"0001. "/"1. "）单独拆出来，不跟着 .q-title-text 一起被
     // 默写/填空模式藏起来——真实反馈"默写/填空模式，也请显示序号"。编号
     // 本身不是答案的一部分（默写判分早就在用同一条正则把它去掉了，见
@@ -348,7 +358,7 @@
     var blockCls = "question-block" + (spoilerTitle ? " spoiler-title" : "");
     return (
       '<div class="' + blockCls + '" id="q-' + mondaiIdx + "-" + qIdx + '" data-scope="question"' + unitAttr + '>' +
-        '<h3><span class="q-title-num">' + esc(numPart) + '</span><span class="q-title-text">' + esc(restPart) + "</span>" + wordAudioHtml + "</h3>" +
+        '<h3><span class="q-title-num">' + esc(numPart) + '</span><span class="q-title-text">' + esc(restPart) + "</span>" + pitchHtml + wordAudioHtml + "</h3>" +
         overviewHtml + answerHtml + cards +
       "</div>"
     );

@@ -1665,6 +1665,12 @@ def _group_by_mondai_question(sentences, questions):
             # （普通课文/听力页，或者标题抽取不出有效文字的极端情况）保持
             # 现状，点标题不播放"单词本身发音"这个新行为。
             qrec["wordAudio"] = meta.get("wordAudio")
+            # pitch：N2词汇专属（词条标题本身的音高圈码，见
+            # build_n2_reference_page.py里point["pitch"]的文档字符串）——
+            # 跟上面几个字段一样，这里现造的qrec dict不是原始questions列表
+            # 里那个q的引用，必须显式挑出来拷贝，不会自动带过来。普通课文/
+            # 听力页、N2语法页的question没有这个字段，取到的是None。
+            qrec["pitch"] = meta.get("pitch")
             # groups：N2语法专属（一个语法点有多个接续时，build_n2_reference_
             # page.py的build_point_sentences()才会给question传这个字段），
             # 记的是"每组接续自己的overview文字+这组例句的seg_id列表"——
@@ -1778,6 +1784,11 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
                     "answer": qrec["answer"],
                     "unit": qrec.get("unit", ""),
                     "wordAudio": (audio_rel + qrec["wordAudio"]) if qrec.get("wordAudio") else None,
+                    # 音高标记（词汇页专属，见build_n2_reference_page.py的
+                    # build_point_sentences()文档字符串）——普通课文/听力页
+                    # 的question没有这个key，qrec.get()退回None，跟没写这个
+                    # 字段效果一样，不需要额外分支。
+                    "pitch": qrec.get("pitch") or None,
                     "sentences": [
                         sentence_to_data(s, audio_rel, quiz_by_id, vocab_readings)
                         for s in qrec["sentences"]
