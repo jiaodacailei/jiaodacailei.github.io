@@ -1729,7 +1729,11 @@ def sentence_to_data(s, audio_rel, quiz_by_id=None, vocab_readings=None):
         "zh": s["zh"],
         "notes": s.get("notes") or "",
         "blanks": blanks,
-        "audio": f"{audio_rel}seg-{s['id']:03d}.mp3",
+        # `audio_file`（TTS内容hash命名，见build_n2_reference_page.py的
+        # synth_and_align()）优先；没有这个字段（真人朗读切出来的句子，
+        # id本身就是稳定的位置编号，没有position-shift问题）才退回旧的
+        # 按`id`拼positional文件名的方式，两条数据源共用同一份渲染代码。
+        "audio": f"{audio_rel}{s['audio_file']}" if s.get("audio_file") else f"{audio_rel}seg-{s['id']:03d}.mp3",
     }
     if quiz_sentence:
         result["quizSentence"] = quiz_sentence

@@ -15,13 +15,19 @@ notes_audio.py 同一个 voice）合成 + faster-whisper 对齐拿 char_times，
 固定是0，不需要 refine_boundaries.py 那套"多句边界怎么切"的逻辑）。
 
 **内容模块（增量真相源）**：每次运行都要传全量内容（不是"这次只传新增的
-一个单元"），已经合成过音频的句子会跳过重新合成（判断依据是
-audio/seg-{id:03d}.mp3 是否已存在，不是靠 data.js 里的标记，可以放心
-重复整体重新跑）——以后要加新单元，直接在内容模块里追加，不用管以前
-跑过的单元，脚本自己认得出哪些已经处理过。id 用"整个内容模块里，句子/
-MCQ题目各自的出现顺序"分配，不能中途在数组中间插入旧单元的新内容
-（会导致后面所有id集体错位、旧音频文件全部对不上），只能在数组末尾追加
-新单元。
+一个单元"），已经合成过音频的句子会跳过重新合成（判断依据是对应文件是否
+已存在，不是靠 data.js 里的标记，可以放心重复整体重新跑）——以后要加
+新单元，直接在内容模块里追加，不用管以前跑过的单元，脚本自己认得出哪些
+已经处理过。id（`seg_id`/`word_id`）仍然按"整个内容模块里，句子/词条各自
+的出现顺序"分配，但**音频文件名不再由这个id直接决定**（见
+`synth_and_align()`/`synth_word_audio()`文档字符串：文件名改成对TTS实际
+喂入文本算的内容hash）——这意味着往已有单元中间插入/编辑某个词条的例句
+（不是追加整个新单元，是改动数组中间已有内容）**不再需要整批删除audio
+目录重新合成**：没变的句子hash不变、文件还在，自动跳过；只有文本真的变了
+的那几句会触发重新TTS。以前"只能在数组末尾追加新单元，不能中途插入"这条
+限制是文件名按位置命名的直接后果，这次改成内容hash命名后已经解除；仍然
+建议新单元整块追加在末尾（纯粹为了内容模块本身可读性、方便按单元回溯，
+不再是音频缓存机制强加的技术限制）。
 
 <content_module.py> 必须定义两个模块级变量：
   UNITS = [
@@ -232,29 +238,45 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats, cache=None):
     """合成+对齐一句话，返回(audio_rel_filename, duration, char_times)。
     已经合成过（音频文件已存在）就跳过TTS这一步。
 
-    对齐结果按seg_id+文本+音频文件mtime存进一份JSON缓存（`cache`参数，
-    load/save在main()里做），命中缓存（文件没被删过重新合成、文本也没变）
-    就直接复用旧的char_times，不用每次全量重新跑一遍whisper——这条原来
-    的设计是"每次都现算，不维护缓存"（理由是"faster-whisper跑一句几秒钟，
-    量级上不需要省这个"），词汇页句子数从最初的206条涨到515条之后，这个
-    假设不再成立：单改一两个词的读音，也要陪跑全部515句的whisper对齐，
-    实测一次要花十几到二十分钟。真实反馈"是不是搞错了"/"只需要比对出错的
-    即可哟"——用户直接指出了这个效率问题。mtime而不是文件内容hash判断
-    "音频有没有变"：这个场景下音频要么原封不动、要么整个被删除重新合成
-    （没有"内容悄悄变了但mtime没变"这种中间状态），mtime足够可靠且不用
-    读整个文件计算哈希。"""
-    filename = "seg-{:03d}.mp3".format(seg_id)
+    **文件名按TTS实际喂进去的文本内容算hash，不按seg_id位置命名**——真实
+    反馈"为什么不是按内容存储相关音频名字"：以前文件名直接是`seg-{seg_id:
+    03d}.mp3`，`seg_id`是这句在整个内容模块里的数组位置。往已有词条中间
+    插入一条新例句（哪怕只是给某个词条补一条漏收的例句）会让它后面所有
+    句子的`seg_id`集体后移一位，但磁盘上老的`seg-042.mp3`这个文件名还在、
+    还能通过`os.path.exists()`判断，脚本会误以为"这句已经合成过"直接跳过
+    TTS，实际把错误的旧音频当成新位置那句话的音频用——这正是本skill文档
+    "给已有词条追加例句，把整个音频缓存全部搅乱了"那次事故的根因。改成
+    对`apply_tts_reading_overrides(text)`（TTS真正合成的那份文本，不是
+    合成前的原文——这样`TTS_READING_OVERRIDES`订正表变了也会自动令旧文件
+    失效，不需要手动删）算一次sha1取前12位hex当文件名主体，同一句话不管
+    挪到数组哪个位置、insert在哪个词条中间，hash都不变，天然免疫这类位置
+    错位——以后插入/编辑已有词条的例句不再需要整批删audio目录重新合成，
+    只有文本真的变了的那几句会重新触发TTS。
+
+    对齐结果按内容hash+音频文件mtime存进一份JSON缓存（`cache`参数，
+    load/save在main()里做），命中缓存就直接复用旧的char_times，不用每次
+    全量重新跑一遍whisper——这条原来的设计是"每次都现算，不维护缓存"
+    （理由是"faster-whisper跑一句几秒钟，量级上不需要省这个"），词汇页
+    句子数从最初的206条涨到515条之后，这个假设不再成立：单改一两个词的
+    读音，也要陪跑全部515句的whisper对齐，实测一次要花十几到二十分钟。
+    真实反馈"是不是搞错了"/"只需要比对出错的即可哟"——用户直接指出了这个
+    效率问题。mtime而不是文件内容hash判断"音频有没有变"：这个场景下音频
+    要么原封不动、要么整个被删除重新合成（没有"内容悄悄变了但mtime没变"
+    这种中间状态），mtime足够可靠且不用读整个文件再算一遍哈希。"""
+    tts_text = apply_tts_reading_overrides(text)
+    content_hash = hashlib.sha1(tts_text.encode("utf-8")).hexdigest()[:12]
+    filename = f"seg-{content_hash}.mp3"
     out_path = os.path.join(audio_dir, filename)
     if not os.path.exists(out_path):
         try:
-            synth_tts(apply_tts_reading_overrides(text), out_path)
+            synth_tts(tts_text, out_path)
         except Exception as e:
             print(f"[id={seg_id}] TTS FAILED: {e}")
             stats["failed"] += 1
             return None, None, None
 
     mtime = os.path.getmtime(out_path)
-    cache_key = str(seg_id)
+    cache_key = content_hash
     if cache is not None:
         cached = cache.get(cache_key)
         if cached and cached.get("text") == text and cached.get("mtime") == mtime:
@@ -318,12 +340,19 @@ def synth_word_audio(text, audio_dir, word_id, stats):
     听发音，不需要逐字时间戳，纯TTS，省掉对齐这一步（不需要model/tmp_wav
     参数）。文件名前缀"word-"跟例句的"seg-"分开一套独立编号，不共用同一个
     计数器——例句以后可能因为某条目新增/去掉某句例句而不再对齐，词audio
-    的编号只跟"点"的出现顺序有关，两套编号各自独立递增，互不干扰。"""
-    filename = "word-{:03d}.mp3".format(word_id)
+    的编号只跟"点"的出现顺序有关，两套编号各自独立递增，互不干扰。
+
+    跟`synth_and_align()`同一条"按内容hash命名，不按位置命名"规则——文件名
+    主体是对`apply_tts_reading_overrides(text)`算的sha1前12位，不是
+    `word_id`，理由同样是"中途插入/删除词条会让word_id集体错位，位置命名
+    会导致旧文件被误判成新词条已经合成过"。"""
+    tts_text = apply_tts_reading_overrides(text)
+    content_hash = hashlib.sha1(tts_text.encode("utf-8")).hexdigest()[:12]
+    filename = f"word-{content_hash}.mp3"
     out_path = os.path.join(audio_dir, filename)
     if not os.path.exists(out_path):
         try:
-            synth_tts(apply_tts_reading_overrides(text), out_path)
+            synth_tts(tts_text, out_path)
         except Exception as e:
             print(f"[word_id={word_id}] 单词发音TTS FAILED: {e}")
             stats["word_failed"] = stats.get("word_failed", 0) + 1
@@ -341,9 +370,20 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
     同一个计数器，不是各自从1开始），只是额外把每组的seg_id列表记进
     `question["groups"]`（`[{"overview": 这组自己的文字, "ids": [seg_id,...]}]`），
     供 build_lesson_data() 按组切分渲染，而不是像普通点那样直接平铺进
-    `sentences`。没有 groups 的点完全不受影响，走原来的逻辑。"""
+    `sentences`。没有 groups 的点完全不受影响，走原来的逻辑。
+
+    额外返回一份 `word_audio_by_id`（{word_id: 实际合成出的文件名}）——
+    `build_vocab_quiz_items()` 也要给"单词测试"tab标注音频文件名，以前是
+    独立重新推导一遍`word_tts_text`（跟这里`derive_reading()`那套判断
+    逻辑重复一份），现在文件名已经改成按内容hash而不是`word_id`命名，
+    两处各自独立算hash必须保证用的是完全同一份`word_tts_text`才不会算出
+    不同的hash——两份逻辑分开维护、后续任何一边改了判断条件都很容易只改
+    一处漏改另一处。改成这里算好的文件名直接传出去、`build_vocab_quiz_
+    items()`只管拿来用，不重新推导，从根上消除"两处独立重建必须保持一致"
+    这个维护负担。"""
     sentences = []
     questions = []
+    word_audio_by_id = {}
     seg_id = 0
     word_id = 0
 
@@ -362,7 +402,7 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
             sentences.append({
                 "id": seg_id, "mondai": mondai_label, "question": question_label,
                 "text": ja, "zh": zh, "notes": "", "blanks": blanks,
-                "start": 0.0, "char_times": char_times,
+                "start": 0.0, "char_times": char_times, "audio_file": filename,
             })
             ids.append(seg_id)
         return ids
@@ -401,6 +441,7 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
                 "/" in word_text or "／" in word_text or _paren_has_multi_reading
             ) else word_text
             word_audio = synth_word_audio(word_tts_text, audio_dir, word_id, stats) if word_text else None
+            word_audio_by_id[word_id] = word_audio
             groups = point.get("groups")
             if groups:
                 group_meta = [
@@ -421,7 +462,7 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
                     "overview": point.get("overview", ""), "answer": "",
                     "unit": unit_label, "wordAudio": word_audio,
                 })
-    return sentences, questions
+    return sentences, questions, word_audio_by_id
 
 
 _TRAILING_PAREN_CONTENT_RE = re.compile(r"（([^（）]*)）$")
@@ -578,7 +619,7 @@ def chunk_group_sizes(n, size=10, min_last=5):
     return [size] * full + [rem]
 
 
-def build_vocab_quiz_items(units):
+def build_vocab_quiz_items(units, word_audio_by_id=None):
     """把 UNITS 展开成"单词测试"tab（跟l17/l18等教材课同一套引擎，
     listening-page.js里读#vocab-quiz-data的那个IIFE）要吃的数据——
     每个词条一条，{id, text, kana, zh, sentences, category, unit, audio}。
@@ -635,9 +676,20 @@ def build_vocab_quiz_items(units):
     id=5，这句原本自己就有真实例句的生词卡片会被错误地整个替换成那个
     不相关单词的填空例句。N2词汇每个词现在都有自己真实的例句（fork已经
     把21个空例句的词全部补上），根本不需要"借用"这个机制，加偏移量让两边
-    id永远不可能撞上是最简单可靠的隔离办法。音频文件名不用这个偏移后的
-    id（要跟build_point_sentences()里synth_word_audio()用的word_id对上，
-    那边没有偏移），单独留一个word_id变量。"""
+    id永远不可能撞上是最简单可靠的隔离办法。这里单独留的`word_id`变量只
+    用来在`word_audio_by_id`（`build_point_sentences()`的第三个返回值）
+    里查这个词实际合成出的音频文件名——不加偏移，因为它要跟那边分配的
+    `word_id`键完全对上（两边按同一个units/points顺序遍历，值天然一一
+    对应）。
+
+    `word_audio_by_id`：音频文件名已经改成按TTS文本内容算hash（见
+    `synth_word_audio()`文档字符串），不再是`word_id`本身能反推出来的
+    格式，所以不能像以前那样在这里独立拼一个`f"word-{word_id:03d}.mp3"`
+    ——必须复用`build_point_sentences()`那次调用时实际算出来、真正写到
+    磁盘上的文件名，两处各自重新推导"这个词该喂给TTS的文本是什么"（涉及
+    多写法/多读音判断，逻辑本身不简单）迟早会走样。调用方（`main()`）
+    必须先跑`build_point_sentences()`拿到这份映射再传进来；传`None`只是
+    给旧调用方式一个不崩的兜底，此时这个词条拿不到`audio`字段。"""
     QUIZ_ID_OFFSET = 1000000
     RELATED_ID_OFFSET = 2000000
     items = []
@@ -694,11 +746,12 @@ def build_vocab_quiz_items(units):
                 sentences.append({"sentence": ja, "sentence_zh": zh_sentence, "blank": blank})
             if word_failed:
                 continue
+            word_audio_filename = (word_audio_by_id or {}).get(word_id)
             item = {
                 "id": QUIZ_ID_OFFSET + word_id, "text": word_text, "kana": kana, "zh": zh,
                 "sentences": sentences,
                 "category": group_label, "unit": unit_label,
-                "audio": f"audio/word-{word_id:03d}.mp3",
+                "audio": f"audio/{word_audio_filename}" if word_audio_filename else None,
             }
             # variants只在真的有多个"写法/读音"组合时才写进去（长度>1），
             # 普通词条不带这个字段，前端按"没有variants就当成[{text,kana}]
@@ -877,7 +930,7 @@ def main():
         align_cache = {}
 
     stats = {"ok": 0, "fallback": 0, "failed": 0}
-    sentences, questions = build_point_sentences(
+    sentences, questions, word_audio_by_id = build_point_sentences(
         units, model, audio_dir, tmp_wav, stats, args.tab_label, align_cache
     )
     # 页面展示顺序按书本编号排序——真实反馈"所有单词的序号要和原文对上"，
@@ -899,7 +952,7 @@ def main():
     mcq_data = build_mcq_items(mcq_units)
     print(f"练习题：{len(mcq_data)} 道")
 
-    vocab_quiz_data = build_vocab_quiz_items(units) if args.vocab_quiz else None
+    vocab_quiz_data = build_vocab_quiz_items(units, word_audio_by_id) if args.vocab_quiz else None
     if vocab_quiz_data is not None:
         print(f"单词测试：{len(vocab_quiz_data)} 词")
 
