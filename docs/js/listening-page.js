@@ -2500,8 +2500,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // localStorage 的，同一道题在"全部"视图下答错一次和在"组1"视图下答错
   // 一次记在两个不同 key 下（见 stateKeys() 注释）。这里按 words 数组自己
   // 反推出所有实际存在过的 (unitSuffix, category) 组合，依次读取解析、
-  // 合并——任意一个桶里某道题的错误次数>0，就算这道题当前是错题。
-  function allWrongErrKeysMerged() {
+  // 累加——返回的是每道题在所有桶里的错误次数之和，不再是"是不是错题"的
+  // 布尔值：真实反馈"刷新编号时，应该按照题目错误的次数最多的排在前面"，
+  // 导出列表要按这份合并后的次数降序排，只知道"错没错"不够排序，必须知道
+  // 具体错了几次。
+  function mergedErrCounts() {
     var unitSuffixes = [""];
     if (HAS_UNIT_SELECT) {
       var seenUnit = {};
@@ -2515,16 +2518,18 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var c = w.category || "other";
       if (!seenCat[c]) { seenCat[c] = true; categories.push(c); }
     });
-    var wrong = {};
+    var counts = {};
     unitSuffixes.forEach(function(unitSuffix) {
       categories.forEach(function(cat) {
         var key = "n2listen-quiz-errors:" + location.pathname + unitSuffix + ":" + cat;
         var bucket;
         try { bucket = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { bucket = {}; }
-        Object.keys(bucket).forEach(function(k) { if (bucket[k] > 0) wrong[k] = true; });
+        Object.keys(bucket).forEach(function(k) {
+          if (bucket[k] > 0) counts[k] = (counts[k] || 0) + bucket[k];
+        });
       });
     });
-    return wrong;
+    return counts;
   }
 
   // 队列：每个词 × 4 种题型（填空题按例句条数可能不止1道），全量不抽样；
@@ -3262,7 +3267,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 某个具体单元、currentUnit !== 'all' 时才加单元后缀，光是"这个词属于
     // 哪个单元"不代表用户当前选的就是那个单元）对不上，变成写进了一个
     // 没人会去读的新桶。固定用不带单元/分类后缀的这个最外层"全部"桶——
-    // 跟 allWrongErrKeysMerged() 第一个必扫的 unitSuffix===""桶是同一个，
+    // 跟 mergedErrCounts() 第一个必扫的 unitSuffix===""桶是同一个，
     // 保证按编号测试答错的题，下次导出/単語テスト默认视图下都能看到。
     // 真实反馈"按编号测试的答题结果要正常累计回同一份错题记录"。
     function numBumpErr(word, type) {
@@ -3275,12 +3280,17 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
 
     function refreshNumberedExport() {
-      var wrong = allWrongErrKeysMerged();
-      var nums = [];
+      var counts = mergedErrCounts();
+      var entries = [];
       fullOrderedItems().forEach(function(item, i) {
-        if (wrong[errKey(item.word.id, item.errType)]) nums.push(i + 1);
+        var c = counts[errKey(item.word.id, item.errType)] || 0;
+        if (c > 0) entries.push({ num: i + 1, count: c });
       });
-      numQuizExportEl.value = nums.join(", ");
+      // 真实反馈"刷新编号时，应该按照题目错误的次数最多的排在前面"——错得
+      // 越多的题排越靠前，方便优先复习；错误次数相同的题保持稳定排序
+      // （Array#sort 是稳定的），也就是维持题号本身的升序，不额外打乱。
+      entries.sort(function(a, b) { return b.count - a.count; });
+      numQuizExportEl.value = entries.map(function(e) { return e.num; }).join(", ");
     }
     refreshNumberedExport();
     numQuizRefreshBtn.addEventListener("click", refreshNumberedExport);
