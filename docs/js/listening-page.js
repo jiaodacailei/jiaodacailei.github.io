@@ -2484,10 +2484,15 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 已经算过的"这道题在这份数据里存不存在"判断，比如没有例句的词不会有
   // blank，没有词性标注的页面不会有pos），不存在的题型不渲染成勾选框，
   // 跟"分类选择条不足两个分类就不渲染"是同一个"没有实际差异就不摆一个
-  // 摆设"原则。"related"（近义词/反义词/类义词）不在 TYPES 数组里（走的是
+  // 摆设"原则。"related"（近义词/反义词/类义词/惯用语）不在 TYPES 数组里（走的是
   // 完全独立的数据形状，见 scopedAllItems() 那段注释），单独并进来一起筛。
   var ALL_QUIZ_TYPES = TYPES.concat(["related"]);
-  var QUIZ_TYPE_LABELS = Object.assign({ related: "近义词/反义词/类义词填空" }, TYPE_LABELS);
+  // 真实反馈"惯用语也应该出题哟"，内容模块（n2_vocab_content.py）里补上
+  // relation:"惯用语"的related条目之后，这套"related"引擎不用改代码就能
+  // 直接吃这种新relation值（题面/标签都是从relation字段动态拼的，不是
+  // 写死的3选1），只有这里的筛选框说明文字要跟着提一句，不然用户会以为
+  // 惯用语题不在这几种之内。
+  var QUIZ_TYPE_LABELS = Object.assign({ related: "近义词/反义词/类义词/惯用语填空" }, TYPE_LABELS);
   // 设置面板里的题型开关用短标签（不带高亮span、不带"根据/听/选择"这类
   // 前置说明），跟答题时题面顶部的长标签是两套独立文案——真实反馈"设置
   // 面板中的7个选项太占空间了"，长标签（比如"根据单词写中文意思"9个字）
