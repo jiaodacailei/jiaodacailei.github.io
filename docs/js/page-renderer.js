@@ -672,9 +672,14 @@
           category: category, unit: q.unit,
         };
         // related伪条目自己不是书本独立词条，没有自己的四位流水号——在
-        // 主词条编号后面加"r+序号"（同一主词条内从1开始），确保每条
-        // related伪条目也有一个专属、稳定、不跟数组顺序挂钩的编号。
-        if (numLabel) relItem.numLabel = numLabel + "r" + (relIdx + 1);
+        // 主词条编号后面加"-r+序号"（同一主词条内从1开始），确保每条
+        // related伪条目也有一个专属、稳定、不跟数组顺序挂钩的编号。带"-"
+        // 分隔是为了跟主词条"0061-ja2zh"这种"编号-题型"的拼接风格保持
+        // 一致（真实反馈"0061r1为啥没有-"）——不然"0061r1"看起来像是
+        // 书本自己的编号少打了个"-"，容易被误认成格式错误，跟后面
+        // stableItemCode()再拼一段errType（比如"-related"）连在一起
+        // 也更容易分段读。
+        if (numLabel) relItem.numLabel = numLabel + "-r" + (relIdx + 1);
         items.push(relItem);
       });
     });
