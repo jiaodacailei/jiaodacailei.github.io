@@ -1678,6 +1678,17 @@ def _group_by_mondai_question(sentences, questions):
             # 不用这个字段的普通question保持None，page-renderer.js按
             # 有没有这个字段决定渲染成"分组"还是老的"overview+平铺例句"。
             qrec["groups"] = meta.get("groups")
+            # text/kana/senses/variants/related：N2词汇专属，page-renderer.js
+            # 的 deriveQuizWordsFromTabs() 现算"单词测试"7种题型要用——
+            # 这里现造的qrec dict不是原始questions列表里那个q的引用，
+            # 必须显式挑出来拷贝，不会自动带过来（踩过的坑：一开始只在
+            # build_lesson_data()里的question_data()挑了一遍，没注意到
+            # 这里更早一层也在现造新dict、同样会把没显式点名的字段全部
+            # 丢光，构建产物里senses/related死活找不到）。用get()不用[]，
+            # 语法点/没有多写法多读音多义项的普通词条没有这几个字段，
+            # 取到None，qrec.get(key)在question_data()里天然跳过不写入。
+            for key in ("text", "kana", "senses", "variants", "related"):
+                qrec[key] = meta.get(key)
     return by_mondai
 
 
@@ -1774,36 +1785,55 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
     # 分组信息）——sentence_to_data()转换在这里做，跟下面单组分支共用同一份
     # 转换逻辑，不重复写。
     sentence_by_id = {s["id"]: s for s in sentences}
+
+    def question_data(qrec):
+        # text/kana/senses/variants/related：N2词汇页专属（build_n2_
+        # reference_page.py 的 build_point_sentences() 只给有 senses 字段的
+        # 词条写这几个key），page-renderer.js 的 deriveQuizWordsFromTabs()
+        # 靠这几个字段在浏览器里现算"单词测试"tab 的7种题型，不再需要单独
+        # 构建一份 vocab_quiz_data 塞进 data.js——这里必须原样透传，不能
+        # 像其它字段那样只挑几个固定key，不然这些字段进了 qrec 也会在这一步
+        # 被悄悄丢掉（真实踩过的坑：第一次加完 build_point_sentences() 那边
+        # 的改动，构建产物里死活找不到 senses/related，就是漏了这一步）。
+        # variants/related 只在真的存在时才写（多写法/多读音、有类义词等
+        # 关联词条才有），不给每个普通词条都平白多存几个null值。
+        extra = {}
+        for key in ("text", "kana", "senses", "variants", "related"):
+            if qrec.get(key):
+                extra[key] = qrec[key]
+        return {
+            "question": qrec["question"],
+            "overview": qrec["overview"],
+            "answer": qrec["answer"],
+            "unit": qrec.get("unit", ""),
+            "wordAudio": (audio_rel + qrec["wordAudio"]) if qrec.get("wordAudio") else None,
+            # 音高标记（词汇页专属，见build_n2_reference_page.py的
+            # build_point_sentences()文档字符串）——普通课文/听力页
+            # 的question没有这个key，qrec.get()退回None，跟没写这个
+            # 字段效果一样，不需要额外分支。
+            "pitch": qrec.get("pitch") or None,
+            "sentences": [
+                sentence_to_data(s, audio_rel, quiz_by_id, vocab_readings)
+                for s in qrec["sentences"]
+            ],
+            "groups": ([
+                {
+                    "overview": g["overview"],
+                    "sentences": [
+                        sentence_to_data(sentence_by_id[i], audio_rel, quiz_by_id, vocab_readings)
+                        for i in g["ids"] if i in sentence_by_id
+                    ],
+                }
+                for g in qrec["groups"]
+            ] if qrec.get("groups") else None),
+            **extra,
+        }
+
     tabs = [
         {
             "mondai": mrec["mondai"],
             "questions": [
-                {
-                    "question": qrec["question"],
-                    "overview": qrec["overview"],
-                    "answer": qrec["answer"],
-                    "unit": qrec.get("unit", ""),
-                    "wordAudio": (audio_rel + qrec["wordAudio"]) if qrec.get("wordAudio") else None,
-                    # 音高标记（词汇页专属，见build_n2_reference_page.py的
-                    # build_point_sentences()文档字符串）——普通课文/听力页
-                    # 的question没有这个key，qrec.get()退回None，跟没写这个
-                    # 字段效果一样，不需要额外分支。
-                    "pitch": qrec.get("pitch") or None,
-                    "sentences": [
-                        sentence_to_data(s, audio_rel, quiz_by_id, vocab_readings)
-                        for s in qrec["sentences"]
-                    ],
-                    "groups": ([
-                        {
-                            "overview": g["overview"],
-                            "sentences": [
-                                sentence_to_data(sentence_by_id[i], audio_rel, quiz_by_id, vocab_readings)
-                                for i in g["ids"] if i in sentence_by_id
-                            ],
-                        }
-                        for g in qrec["groups"]
-                    ] if qrec.get("groups") else None),
-                }
+                question_data(qrec)
                 for qrec in mrec["questions"]
             ],
         }

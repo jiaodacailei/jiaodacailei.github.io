@@ -536,12 +536,38 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
                 })
             else:
                 synth_examples(point["examples"], question_label)
-                questions.append({
+                qrec = {
                     "mondai": mondai_label, "question": question_label,
                     "overview": point.get("overview", ""), "answer": "",
                     "unit": unit_label, "wordAudio": word_audio,
                     "pitch": point.get("pitch", ""),
-                })
+                }
+                # N2词汇页专属（"senses"字段是这次overview结构化改造引入的，
+                # 只有词汇内容模块有，语法点没有）：把"单词测试"tab现算7种
+                # 题型需要的全部原始事实（text/kana/senses/variants/
+                # related）一起写进这同一个question对象里，不再由
+                # build_vocab_quiz_items()另外产出一份独立的quiz_data数组
+                # 塞进单独的<script id="vocab-quiz-data">——真实反馈"前端只要
+                # 拿到基础数据，自己就可以生成题目数据，为啥要单独存一份"。
+                # senses本身已经是结构化数据，不需要在这里现算zh/zhVariants
+                # 文本再传过去（那样又会重新引入"JS 端反过来解析文本猜结构"
+                # 这个刚刚才消灭掉的坏模式）——page-renderer.js里的
+                # deriveQuizWordsFromTabs()直接读senses数组自己拼zh/
+                # zhVariants，是纯数组join，不涉及任何正则/文本解析。
+                # variants（多写法/多读音）继续留在Python算（derive_reading_
+                # variants()本身是从title字符串正则解析出来的，这条解析逻辑
+                # 已经跑了很久、行为稳定，没必要在JS里重新维护一份同样脆弱的
+                # 正则，直接把算好的结果当成词条自己的一个事实字段传过去）。
+                if "senses" in point:
+                    variants = derive_reading_variants(question_label, word_text)
+                    qrec["kana"] = derive_reading(question_label, word_text)
+                    qrec["text"] = word_text
+                    qrec["senses"] = point["senses"]
+                    if len(variants) > 1:
+                        qrec["variants"] = variants
+                    if point.get("related"):
+                        qrec["related"] = point["related"]
+                questions.append(qrec)
     return sentences, questions, word_audio_by_id
 
 
@@ -726,7 +752,29 @@ def chunk_group_sizes(n, size=10, min_last=5):
 
 
 def build_vocab_quiz_items(units, word_audio_by_id=None):
-    """把 UNITS 展开成"单词测试"tab（跟l17/l18等教材课同一套引擎，
+    """**2026-09-28起，这个函数的返回值不再写进 data.js**——"单词测试"tab
+    现在由 page-renderer.js 的 deriveQuizWordsFromTabs() 在浏览器里直接从
+    "生词"tab 已经渲染过的 questions[]（build_point_sentences() 写进去的
+    text/kana/senses/variants/related字段）现算，不再需要 Python 端另外
+    产出一份塞进单独的 <script id="vocab-quiz-data">——真实反馈"前端只要
+    拿到基础数据，自己就可以生成题目数据，为啥要单独存一份"。main() 里
+    仍然调用这个函数，但只要它的校验副作用（例句挖空找不到就
+    sys.exit(1)），返回值直接丢弃——这是目前整条流水线唯一还会在构建期
+    校验"每条例句都能凑出有效挖空"的地方，删掉这个调用会让这类错误从
+    "构建时报错"退化成"用户点到那道题才发现"，所以这个函数本身不能删，
+    即使产出的数据不再被使用。
+
+    以下文档字符串描述的仍然是这个函数计算出的数据形状本身（跟
+    deriveQuizWordsFromTabs() 现算出来的形状逐字段一一对应，两边已经用
+    脚本比对过全量900词条+404条related，内容完全一致，只是排序/id
+    编号不同——id改动是这次切换本身带来的、已经跟用户明确讨论过的
+    一次性代价，本地localStorage按id存的错题记录会重置一次）——只是
+    产出方从"Python构建期写进data.js"变成了"JS运行时现算"，跟l17/l18
+    等教材课/N2真题模考页面共用的 listening-page.js #vocab-quiz-data
+    读取逻辑本身完全没有变化，那些页面继续走 Python 构建期产出+写入
+    data.js 这条老路径。
+
+    把 UNITS 展开成"单词测试"tab（跟l17/l18等教材课同一套引擎，
     listening-page.js里读#vocab-quiz-data的那个IIFE）要吃的数据——
     每个词条一条，{id, text, kana, zh, sentences, category, unit, audio}。
     `sentences`是一个列表，每条`examples`（只要能凑出有效blank）对应列表
@@ -1058,14 +1106,23 @@ def main():
     mcq_data = build_mcq_items(mcq_units)
     print(f"练习题：{len(mcq_data)} 道")
 
-    vocab_quiz_data = build_vocab_quiz_items(units, word_audio_by_id) if args.vocab_quiz else None
-    if vocab_quiz_data is not None:
-        print(f"单词测试：{len(vocab_quiz_data)} 词")
+    # --vocab-quiz 时仍然跑一遍 build_vocab_quiz_items()，但只要它的校验
+    # 副作用（例句挖空找不到就 sys.exit(1)，见该函数文档字符串）——真正
+    # 喂给"单词测试"tab的数据不再是这里算出来的 vocab_quiz_data，而是
+    # page-renderer.js 的 deriveQuizWordsFromTabs() 在浏览器里从 questions[]
+    # 现算出来的（数据源头是上面 build_point_sentences() 写进每个词条的
+    # text/kana/senses/variants/related）。保留这次调用只是为了不丢失
+    # "构建期就能发现坏数据"这个安全网，不能因为不再需要它的返回值就干脆
+    # 不跑——那样例句挖空错误会从"构建时报错"退化成"用户点到那道题才出错"。
+    if args.vocab_quiz:
+        vocab_quiz_data = build_vocab_quiz_items(units, word_audio_by_id)
+        print(f"单词测试：{len(vocab_quiz_data)} 词（现算，不再单独写入 data.js）")
 
     lesson_data = build_lesson_data(
         args.title, args.subtitle, "", sentences, questions, "audio/",
-        quiz_data=vocab_quiz_data
     )
+    if args.vocab_quiz:
+        lesson_data["quizFromWords"] = True
     if mcq_data:
         lesson_data["mcq"] = mcq_data
     # titleDictate：question-block 标题本身就是"要记住的语法点/单词"，允许

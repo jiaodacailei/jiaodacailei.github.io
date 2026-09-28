@@ -579,6 +579,94 @@
     return groups;
   }
 
+  // 把一个结构化 sense（{pos, groups:[[近义说法,...],...]}）拼成"[pos]
+  // 义项1；义项2"这种字符串——跟 build_n2_reference_page.py 的
+  // render_sense_line() 是同一个函数的JS版本，纯数组join，不涉及任何
+  // 正则/文本解析（senses本身已经是结构化数据，不是需要反过来猜结构的
+  // 自由文本，见N2词汇overview结构化改造）。
+  function renderSenseLine(sense) {
+    return "[" + sense.pos + "] " + sense.groups.map(function (g) { return g.join("，"); }).join("；");
+  }
+
+  // "单词测试"tab要吃的"words"数组，现在直接从"生词"tab已经渲染过的
+  // questions[] 现算，不再由 build_n2_reference_page.py 的
+  // build_vocab_quiz_items() 在构建期另外产出一份独立的 vocab_quiz_data
+  // 塞进 data.js——真实反馈"前端只要拿到基础数据，自己就可以生成题目
+  // 数据，为啥要单独存一份"。这份"基础数据"就是每个词条在
+  // build_point_sentences() 里已经写进 question 对象的 text/kana/senses/
+  // variants/related 几个字段（只有 N2词汇页的词条才有 senses 字段，
+  // N2语法页的语法点没有，天然被下面的 `if (!q.senses) return;` 跳过，
+  // 不会被误当成单词测试题目）。
+  //
+  // 跟 Python 版 build_vocab_quiz_items() 逐条对应关系：
+  // - "组N"分类：Python版按每个单元内部原始points数组顺序、配合book_order
+  //   重排过；这里因为 questions 数组本身已经是 build_n2_reference_page.py
+  //   main() 里按 title_number 整体排过序的（书本顺序），直接复用现成的
+  //   groupQuestionsByUnit()（跟侧栏导航同一个分组函数/同一套size=10/
+  //   min_last=5参数）就能算出完全等价的"组N"，不需要重新实现book_order
+  //   排序那一层。
+  // - id：Python版用QUIZ_ID_OFFSET/RELATED_ID_OFFSET+递增序号，这里按
+  //   questions数组下标重新分配，数值跟以前不完全一样——单词测试的错题
+  //   记录（localStorage，按id存）会因为这次改造重置一次，是已知的、
+  //   跟用户明确讨论过、可接受的一次性代价，不是bug。
+  // - sentences（"填空"题型用）：Python版从point["examples"]直接读
+  //   ex[2][0]当blank；这里从已经渲染好的富文本sentences[].tokens拼出
+  //   纯文本、blanks[0]当blank，两边最终吃到的blank文本应该完全一样
+  //   （都是内容模块里同一处author写的同一个blank值），只是这里不用
+  //   重新读一遍原始examples元组，直接复用已经算好的token化结果。
+  function deriveQuizWordsFromTabs(tabs) {
+    var vocabTab = null;
+    (tabs || []).forEach(function (t) { if (t.mondai === "生词") vocabTab = t; });
+    if (!vocabTab) return null;
+    var questions = vocabTab.questions || [];
+    var groups = groupQuestionsByUnit(questions);
+    var groupCounters = {};
+    var categoryByIdx = {};
+    groups.forEach(function (g) {
+      groupCounters[g.unit] = (groupCounters[g.unit] || 0) + 1;
+      var label = "组" + groupCounters[g.unit];
+      for (var k = 0; k < g.size; k++) categoryByIdx[g.startIdx + k] = label;
+    });
+    var QUIZ_ID_OFFSET = 1000000, RELATED_ID_OFFSET = 2000000;
+    var items = [];
+    var relatedId = 0;
+    var hasAnySenses = false;
+    questions.forEach(function (q, idx) {
+      if (!q.senses || !q.senses.length) return;
+      hasAnySenses = true;
+      var category = categoryByIdx[idx] || "";
+      var sentences = (q.sentences || []).map(function (s) {
+        var blank = (s.blanks || [])[0];
+        if (!blank) return null;
+        return {
+          sentence: (s.tokens || []).map(function (t) { return t.text; }).join(""),
+          sentence_zh: s.zh, blank: blank,
+        };
+      }).filter(Boolean);
+      var item = {
+        id: QUIZ_ID_OFFSET + (idx + 1), text: q.text, kana: q.kana,
+        zh: renderSenseLine(q.senses[0]), sentences: sentences,
+        category: category, unit: q.unit, audio: q.wordAudio || null,
+      };
+      if (q.variants && q.variants.length > 1) item.variants = q.variants;
+      if (q.senses.length > 1) item.zhVariants = q.senses.map(renderSenseLine);
+      items.push(item);
+      (q.related || []).forEach(function (rel) {
+        relatedId++;
+        items.push({
+          id: RELATED_ID_OFFSET + relatedId, kind: "related",
+          mainText: q.text, relation: rel.relation, text: rel.text, zh: rel.zh,
+          category: category, unit: q.unit,
+        });
+      });
+    });
+    // 这个页面虽然有"生词"tab，但词条都没有senses字段（不是N2词汇页面，
+    // 比如误配置成了别的页面类型）——返回null，跟"根本没有生词tab"一样
+    // 退回"不渲染单词测试tab"，不返回一个空数组（空数组在下面 `if
+    // (quizWords)` 判断里是truthy，会渲染出一个内容空空的单词测试tab）。
+    return hasAnySenses ? items : null;
+  }
+
   // 跟 build_page.py 的 side_nav_list_html() 一一对应（桌面 .toc 和手机
   // .toc-float-panel 共用同一份 <ul> 标记）。questions 传完整对象（不只是
   // 标签字符串）是因为要点里同时要日语标题（跟读模式显示）跟中文提示
@@ -698,14 +786,21 @@
     tabLabels.push(tab.mondai);
   });
 
-  if (DATA.quiz) {
+  // DATA.quiz：教材课/N2真题模考页面，构建期已经把单词测试数据算好塞进
+  // 这个字段。DATA.quizFromWords：N2词汇/语法页面（--vocab-quiz），构建期
+  // 不再重复算一份，只留了个布尔开关，题目数据现在从上面已经渲染过的
+  // "生词"tab questions[] 现算——见 deriveQuizWordsFromTabs() 的注释。两边
+  // 最终都落到同一个 quizWords 数组，下面渲染 <script id="vocab-quiz-data">
+  // 和"错题编号"tab 的逻辑完全不用区分数据来自哪一边。
+  var quizWords = DATA.quiz || (DATA.quizFromWords ? deriveQuizWordsFromTabs(DATA.tabs) : null);
+  if (quizWords) {
     var quizIdx = (DATA.tabs || []).length + 1;
-    sections.push(renderQuizSection(quizIdx, DATA.quiz, false));
+    sections.push(renderQuizSection(quizIdx, quizWords, false));
     navLists.push(renderSideNavList(quizIdx, [], false));
     navNumsMobile.push(renderMobileNumsList(quizIdx, [], false));
     tabLabels.push("単語テスト");
 
-    // "错题编号"tab 跟"単語テスト"绑在一起出现（同一个 DATA.quiz 门槛）——
+    // "错题编号"tab 跟"単語テスト"绑在一起出现（同一个 quizWords 门槛）——
     // 它靠読取単語テスト那份 <script id="vocab-quiz-data"> 反算题号/错题，
     // 没有独立数据源，不用单独判断存不存在。紧跟在単語テスト后面，练习tab
     // 之前，真实反馈"页面顶部新增一个独立大tab"。
@@ -717,11 +812,11 @@
   }
 
   // DATA.mcq——N2语法/词汇页面的"练习"tab（docs/js/mcq-quiz.js接管），
-  // 跟DATA.quiz（単语テスト）是两个独立字段，一个页面理论上可以同时有
+  // 跟quizWords（単语テスト）是两个独立字段，一个页面理论上可以同时有
   // 两种tab（虽然目前的用法里两者互斥），互不影响，顺序跟在quiz/错题编号
   // 后面。
   if (DATA.mcq) {
-    var mcqIdx = (DATA.tabs || []).length + (DATA.quiz ? 2 : 0) + 1;
+    var mcqIdx = (DATA.tabs || []).length + (quizWords ? 2 : 0) + 1;
     sections.push(renderMcqSection(mcqIdx, DATA.mcq, false));
     navLists.push(renderSideNavList(mcqIdx, [], false));
     navNumsMobile.push(renderMobileNumsList(mcqIdx, [], false));
