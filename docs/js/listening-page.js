@@ -920,6 +920,20 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   });
   if (!tabBtns.length) return;
 
+  // 每个tab要各自记住上次滚动到哪个小题，重新进这个tab（点tab按钮、或者
+  // 刷新页面后默认激活）时回到原来的位置，不是每次都从第一个开始——真实
+  // 反馈先是"生词 tab 进入时，要回到上一次的位置"，接着补充"其它tab
+  // （会话/课文/语法与表达）等，也需要哟"，所以不按tab文字挑"只有生词
+  // 生效"，而是对所有真正参与这套side-nav/highlightCurrentQuestion机制
+  // 的tab统一生效——单词测试/练习这类单卡片互动出题tab没有"小题"、也没
+  // 有side-nav-btn，天然不会触发下面的保存逻辑，不用特意排除。key按
+  // location.pathname + mondaiIdx分开存——同一个页面里会话/课文/生词/
+  // 生词测试等好几个tab要各自记自己的位置，不能共用一份，也不能跟别的
+  // 页面混在一起。
+  function tabScrollKey(mondaiIdx) {
+    return "n2listen-tab-scroll:" + location.pathname + ":" + mondaiIdx;
+  }
+
   // 直接标记某小题为当前高亮，不读取任何布局属性（避免强制回流）
   function setCurrent(targetId) {
     document.querySelectorAll(".side-nav-btn").forEach(function(b) {
@@ -958,9 +972,20 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     document.querySelectorAll(".snm-nums-list").forEach(function(list) {
       list.classList.toggle("tab-active", list.getAttribute("data-mondai-idx") === mondaiIdx);
     });
-    // 切换后总是回到顶部，所以新 tab 的第一小题必然是"当前项"，直接设置，不用等滚动测量
-    setCurrent("q-" + mondaiIdx + "-1");
-    if (!opts.skipScroll) window.scrollTo({ top: 0, behavior: "smooth" });
+    // 每个tab要回到自己上次滚动到的位置，不是回到第一个——直接把curTarget
+    // 设成上次记住的位置，不设成第一小题，避免side-nav先闪一下"第1个"又
+    // 跳到实际位置。目标元素如果被"单元选择"下拉框筛选隐藏了（display:
+    // none，offsetParent为null）就退回顶部，不去滚一个看不见的目标。
+    var restoreTarget = null;
+    try { restoreTarget = localStorage.getItem(tabScrollKey(mondaiIdx)); } catch (e) {}
+    var restoreEl = restoreTarget && document.getElementById(restoreTarget);
+    if (restoreEl && restoreEl.offsetParent === null) restoreEl = null;
+    setCurrent(restoreEl ? restoreTarget : ("q-" + mondaiIdx + "-1"));
+    if (restoreEl) {
+      window.scrollTo({ top: restoreEl.offsetTop - 100, behavior: opts.skipScroll ? "auto" : "smooth" });
+    } else if (!opts.skipScroll) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   tabBtns.forEach(function(b) {
@@ -1035,7 +1060,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         curTarget = b.dataset.target;
       }
     });
-    if (curTarget) setCurrent(curTarget);
+    if (curTarget) {
+      setCurrent(curTarget);
+      try { localStorage.setItem(tabScrollKey(sectionMondaiIdx(activeSection)), curTarget); } catch (e) {}
+    }
   }
   var rafPending = false;
   function scheduleHighlight() {
