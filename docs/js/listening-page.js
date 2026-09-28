@@ -2147,7 +2147,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
   loadCategoryState();
 
-  function errKey(wordId, type) { return wordId + ":" + type; }
+  // 真实反馈"错题编号不行，为啥不是单词哈希加小编号，这样稳定，肯定不会
+  // 变化，以后再有插入的单词也不受影响"——word.numLabel（N2词汇/语法页
+  // 专属，page-renderer.js的deriveQuizWordsFromTabs()从书本自己的四位
+  // 编号现算出来的，比对内容取hash更稳：改声调圈码/释义措辞这类内容修正
+  // 不会让它变，只有整个词条被删掉才会失效）存在时优先用它当身份标识，
+  // 不存在时（教材课/N2真题模考，没有书本编号这个概念）退回原来的
+  // word.id——那些页面的错题记录/编号行为完全不受这次改动影响。
+  function errKey(word, type) { return (word.numLabel || word.id) + ":" + type; }
   function getErr(k) { return errors[k] || 0; }
   function bumpErr(k) {
     errors[k] = getErr(k) + 1;
@@ -2160,7 +2167,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return Object.keys(errors).reduce(function(sum, k) { return sum + errors[k]; }, 0);
   }
   function markDone(q) {
-    completed[errKey(q.word.id, q.errType)] = 1;
+    completed[errKey(q.word, q.errType)] = 1;
     saveProgress();
   }
 
@@ -2586,14 +2593,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       // 加序号区分。
       if (w.kind === "related") {
         if (!isTypeEnabled("related")) return;
-        if (scope === "wrong" && getErr(errKey(w.id, "related")) <= 0) return;
+        if (scope === "wrong" && getErr(errKey(w, "related")) <= 0) return;
         all.push({ word: w, type: "related", errType: "related" });
         return;
       }
       TYPES.forEach(function(t) {
         if (!isTypeEnabled(t)) return;
         buildTypeItems(w, t).forEach(function(item) {
-          if (scope === "wrong" && getErr(errKey(w.id, item.errType)) <= 0) return;
+          if (scope === "wrong" && getErr(errKey(w, item.errType)) <= 0) return;
           all.push(item);
         });
       });
@@ -2610,7 +2617,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 留下"永远显示已完成"的死状态。"仅错题"范围下 all 本身就可能是空的
     // （还没积累出任何错题），这种情况不当"一轮做完了"处理，交给调用方
     // （render）显示"还没有错题"，不在这里瞎重置。
-    var q = all.length ? all.filter(function(item) { return !completed[errKey(item.word.id, item.errType)]; }) : [];
+    var q = all.length ? all.filter(function(item) { return !completed[errKey(item.word, item.errType)]; }) : [];
     if (all.length && !q.length) {
       completed = {};
       saveProgress();
@@ -2618,7 +2625,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     }
     shuffle(q);
     q.sort(function(a, b) {
-      return getErr(errKey(b.word.id, b.errType)) - getErr(errKey(a.word.id, a.errType));
+      return getErr(errKey(b.word, b.errType)) - getErr(errKey(a.word, a.errType));
     });
     TOTAL_THIS_ROUND = all.length;
     return q;
@@ -2835,7 +2842,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function doneCountThisRound() {
     var n = 0;
     scopedAllItems().forEach(function(item) {
-      if (completed[errKey(item.word.id, item.errType)]) n++;
+      if (completed[errKey(item.word, item.errType)]) n++;
     });
     return n;
   }
@@ -2951,7 +2958,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 跳过队列里已经答对过的题——答错的题会被重新塞进队列末尾等着重考
     // （见 doCheck()），如果同一道题后来又被答对了，之前排在后面、还没
     // 轮到的旧副本要跳过，不然会重复出这道已经过关的题。
-    while (qi < queue.length && completed[errKey(queue[qi].word.id, queue[qi].errType)]) qi++;
+    while (qi < queue.length && completed[errKey(queue[qi].word, queue[qi].errType)]) qi++;
 
     if (TOTAL_THIS_ROUND === 0) {
       // "仅错题"范围下，还没有任何累计错误——不是"这一轮做完了"，是压根没题可做
@@ -3052,7 +3059,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     } else {
       queue.push(q);
     }
-    if (!ok && !countedWrong) { bumpErr(errKey(q.word.id, q.errType)); countedWrong = true; refreshProgress(); }
+    if (!ok && !countedWrong) { bumpErr(errKey(q.word, q.errType)); countedWrong = true; refreshProgress(); }
     // 词性选择判完之后要给选项上色："正解"里的每个标签都标绿（不管用户
     // 选没选，让用户看到完整正确答案），用户自己选中但不在正解里的标红
     // （多选错了的部分），其余不动——跟mcq-quiz.js"点哪个立刻判分"的
@@ -3307,28 +3314,49 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var key = "n2listen-quiz-errors:" + location.pathname + ":all";
       var bucket;
       try { bucket = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) { bucket = {}; }
-      var ek = errKey(word.id, type);
+      var ek = errKey(word, type);
       bucket[ek] = (bucket[ek] || 0) + 1;
       localStorage.setItem(key, JSON.stringify(bucket));
+    }
+
+    // 题号——真实反馈"这个编号不行，为啥不是单词哈希加小编号，这样稳定，
+    // 肯定不会变化，以后再有插入的单词也不受影响"：原来的题号是
+    // fullOrderedItems() 里的数组下标（i+1），这次改成"单词测试题目改成
+    // 前端现算"之后，words 数组顺序换成了跟"生词"tab展示顺序一致（按书本
+    // 编号排过序），而不是内容模块 points 数组的原始排列顺序，实测900个
+    // 主词条里有125个（约14%）数组位置变了，旧编号大批量跟题目对不上——
+    // 这暴露的是"编号绑定数组位置"这个设计本身的问题，不是这次改动才有的
+    // （数组中途插入新词条早就会导致同样的错位，只是一直没有大规模触发
+    // 过）。改成跟位置完全无关的稳定编号：word.numLabel（N2词汇/语法页
+    // 专属，见 page-renderer.js 的 deriveQuizWordsFromTabs()，来自书本
+    // 自己的四位流水号，related伪条目在主词条编号后面加"r+序号"区分）
+    // 拼上 item.errType（同一个词内部各题型/变体本来就唯一），两段拼起来
+    // 天下无双且跟数组顺序/位置完全脱钩——以后插入新词条、修正任何内容
+    // 都不会再让已有题号漂移，除非把这个词条整个删掉。没有 numLabel 的
+    // 页面（教材课/N2真题模考，走的还是老的Python构建期产出数据）退回
+    // 原来的"数组下标+1"，行为完全不变。
+    function stableItemCode(item, idx) {
+      if (item.word.numLabel) return item.word.numLabel + "-" + item.errType;
+      return String(idx + 1);
     }
 
     function refreshNumberedExport() {
       var counts = mergedErrCounts();
       var entries = [];
-      // 题号本身（i+1）永远按 fullOrderedItems() 的全局顺序算，不受当前
-      // 单元筛选影响——真实反馈"全局统一编号，不受当前筛选影响"，同一道题
-      // 换单元也不能改变它的题号。但导出列表本身要按当前选中单元过滤（真实
-      // 反馈"错题导出，也按当前单元过滤"）：选中具体单元时只保留属于这个
-      // 单元的题，选"全部"（或页面本身没有单元下拉框）时不过滤。两者互不
-      // 冲突：过滤只决定"这道题要不要出现在导出列表里"，不改题号本身的值。
+      // 导出列表本身要按当前选中单元过滤（真实反馈"错题导出，也按当前
+      // 单元过滤"）：选中具体单元时只保留属于这个单元的题，选"全部"（或
+      // 页面本身没有单元下拉框）时不过滤。过滤只决定"这道题要不要出现在
+      // 导出列表里"，不改题号本身的值。
       fullOrderedItems().forEach(function(item, i) {
         if (HAS_UNIT_SELECT && currentUnit !== "all" && item.word.unit !== currentUnit) return;
-        var c = counts[errKey(item.word.id, item.errType)] || 0;
-        if (c > 0) entries.push({ num: i + 1, count: c });
+        var c = counts[errKey(item.word, item.errType)] || 0;
+        if (c > 0) entries.push({ num: stableItemCode(item, i), count: c });
       });
       // 真实反馈"刷新编号时，应该按照题目错误的次数最多的排在前面"——错得
       // 越多的题排越靠前，方便优先复习；错误次数相同的题保持稳定排序
-      // （Array#sort 是稳定的），也就是维持题号本身的升序，不额外打乱。
+      // （Array#sort 是稳定的），也就是维持 fullOrderedItems() 原有顺序，
+      // 不额外打乱（题号换成字符串之后不再是连续整数，"稳定排序"这一条
+      // 比"编号升序"这个提法更准确）。
       entries.sort(function(a, b) { return b.count - a.count; });
       numQuizExportEl.value = entries.map(function(e) { return e.num; }).join(", ");
     }
@@ -3340,7 +3368,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     numQuizExportEl.addEventListener("click", function() { numQuizExportEl.select(); });
 
     function numRender() {
-      while (numQi < numQueue.length && numCompleted[errKey(numQueue[numQi].word.id, numQueue[numQi].errType)]) numQi++;
+      while (numQi < numQueue.length && numCompleted[errKey(numQueue[numQi].word, numQueue[numQi].errType)]) numQi++;
       if (numQi >= numQueue.length) {
         numQuizCardEl.style.display = "none";
         numQuizDoneEl.style.display = "block";
@@ -3350,7 +3378,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       numQuizCardEl.style.display = "";
       numQuizDoneEl.style.display = "none";
       var doneCount = 0;
-      numQueue.forEach(function(item) { if (numCompleted[errKey(item.word.id, item.errType)]) doneCount++; });
+      numQueue.forEach(function(item) { if (numCompleted[errKey(item.word, item.errType)]) doneCount++; });
       numQuizProgressEl.innerHTML = Math.min(doneCount + 1, numQueue.length) + " / " + numQueue.length;
 
       if (numAutoAdvanceTimer) { clearTimeout(numAutoAdvanceTimer); numAutoAdvanceTimer = null; }
@@ -3409,7 +3437,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var q = numQueue[numQi];
       var ok = q.type === "pos" ? sameTagSet(numQuizPosSelected, posTagsFor(q.word)) : checkAnswer(q, numQuizAnswerInputEl.value);
       if (ok) {
-        numCompleted[errKey(q.word.id, q.errType)] = 1;
+        numCompleted[errKey(q.word, q.errType)] = 1;
       } else {
         numQueue.push(q);
       }
@@ -3437,15 +3465,21 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     numQuizStartBtn.addEventListener("click", function() {
       var raw = numQuizNumberInputEl.value.split(/[,，、;；\s]+/).map(function(s) { return s.trim(); }).filter(Boolean);
       var all = fullOrderedItems();
+      // 题号不再是数组下标（见 stableItemCode() 的注释），不能直接
+      // parseInt 当下标用了——反过来建一份"编号→题目"的映射，一次性
+      // 建好，粘贴进来的每个编号直接查表，找不到就是无效编号。数据量
+      // 不大（几千道题），每次点"开始"现建一次表足够快，不用额外缓存。
+      var byCode = {};
+      all.forEach(function(item, i) { byCode[stableItemCode(item, i)] = item; });
       var seen = {};
       var picked = [];
       var invalid = [];
       raw.forEach(function(tok) {
-        var n = parseInt(tok, 10);
-        if (!n || n < 1 || n > all.length || String(n) !== tok) { invalid.push(tok); return; }
-        if (seen[n]) return;
-        seen[n] = true;
-        picked.push(all[n - 1]);
+        var item = byCode[tok];
+        if (!item) { invalid.push(tok); return; }
+        if (seen[tok]) return;
+        seen[tok] = true;
+        picked.push(item);
       });
       if (!picked.length) {
         numQuizParseStatusEl.textContent = invalid.length ? "无效编号：" + invalid.join(", ") : "请输入至少一个题号";

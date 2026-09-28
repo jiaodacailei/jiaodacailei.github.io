@@ -643,21 +643,39 @@
           sentence_zh: s.zh, blank: blank,
         };
       }).filter(Boolean);
+      // numLabel：书本自己印的四位流水号（"0061. 誤り（あやまり）"里的
+      // "0061"），跟 build_n2_reference_page.py 的 title_number() 抽的是
+      // 同一段前缀，只是这里保留原样字符串（含前导0），不转数字——真实
+      // 反馈"错题编号不行，为啥不是单词哈希加小编号，这样稳定，肯定不会
+      // 变化"：listening-page.js 的 errKey()/stableItemCode() 靠这个字段
+      // 拼错题记录key/导出题号，比数组下标稳（不受words数组顺序变化影响）、
+      // 也比对内容取hash稳（改声调圈码/释义措辞这类内容修正不会让它变，
+      // 只有整个词条被删掉才会失效）。找不到编号前缀（理论上不会发生，
+      // N2词汇内容模块的title字段固定是"四位数字. 词"格式）时退回undefined，
+      // 下游 errKey()/stableItemCode() 会自己退回旧逻辑，不会报错。
+      var numMatch = /^(\d+)\./.exec(q.question || "");
+      var numLabel = numMatch ? numMatch[1] : undefined;
       var item = {
         id: QUIZ_ID_OFFSET + (idx + 1), text: q.text, kana: q.kana,
         zh: renderSenseLine(q.senses[0]), sentences: sentences,
         category: category, unit: q.unit, audio: q.wordAudio || null,
       };
+      if (numLabel) item.numLabel = numLabel;
       if (q.variants && q.variants.length > 1) item.variants = q.variants;
       if (q.senses.length > 1) item.zhVariants = q.senses.map(renderSenseLine);
       items.push(item);
-      (q.related || []).forEach(function (rel) {
+      (q.related || []).forEach(function (rel, relIdx) {
         relatedId++;
-        items.push({
+        var relItem = {
           id: RELATED_ID_OFFSET + relatedId, kind: "related",
           mainText: q.text, relation: rel.relation, text: rel.text, zh: rel.zh,
           category: category, unit: q.unit,
-        });
+        };
+        // related伪条目自己不是书本独立词条，没有自己的四位流水号——在
+        // 主词条编号后面加"r+序号"（同一主词条内从1开始），确保每条
+        // related伪条目也有一个专属、稳定、不跟数组顺序挂钩的编号。
+        if (numLabel) relItem.numLabel = numLabel + "r" + (relIdx + 1);
+        items.push(relItem);
       });
     });
     // 这个页面虽然有"生词"tab，但词条都没有senses字段（不是N2词汇页面，
