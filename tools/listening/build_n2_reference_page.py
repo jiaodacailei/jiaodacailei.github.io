@@ -116,11 +116,36 @@ VOICE = "ja-JP-NanamiNeural"
 BLANK_MARKER_RE = re.compile(r"（___）|\(___\)|___")
 
 
+def render_overview(point):
+    """N2词汇内容模块（`n2_vocab_content.py`）不再手写`overview`自由文本，
+    改成结构化的`senses`（释义）+`annotations`（类义词/关联词等注释原文，
+    暂时还没结构化，见设计文档"前端JS：这次不动（留作可选二期）"一节）
+    两个字段——这个函数在`load_content()`里把它们拼回旧版`overview`格式
+    的字符串，回填进`point["overview"]`，`build_point_sentences()`/
+    `build_page.py`这些下游消费者不用改一行代码，仍然读同一个`overview`
+    键，感知不到内容来源已经从"手写文本"换成"从结构化字段生成"。N2语法
+    内容模块（`n2_grammar_content.py`）还没有`senses`字段，`point`原样
+    透传，这个函数对它是空操作。"""
+    senses = point.get("senses")
+    if not senses:
+        return point.get("overview", "")
+    lines = [render_sense_line(s) for s in senses]
+    annotations = point.get("annotations")
+    if annotations:
+        lines.append(annotations)
+    return "\n".join(lines)
+
+
 def load_content(path):
     spec = importlib.util.spec_from_file_location("n2_reference_content", path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    return mod.UNITS, getattr(mod, "MCQ_UNITS", [])
+    units = mod.UNITS
+    for unit in units:
+        for point in unit["points"]:
+            if "senses" in point:
+                point["overview"] = render_overview(point)
+    return units, getattr(mod, "MCQ_UNITS", [])
 
 
 async def _synth(text, out_path):
@@ -611,48 +636,74 @@ def derive_reading_variants(title, word_text):
     return [{"text": texts[0] if texts else word_text, "kana": derive_reading(title, word_text)}]
 
 
-def quiz_zh_text(overview):
-    """"单词测试"tab要用的中文释义——只取overview第一行（后面几行是"类义词"
-    这类附加注释，不是这个词本身的释义）。**保留开头的"[词性]"标签，不剥离**
-    ——跟教材课`build_vocab_quiz_data.py`的`entry["zh"] = w["zh"]`一样直接
-    透传原文，两边数据格式保持一致。这个函数早期版本会剥掉标签（当时只有
-    ja2zh/zh2kana两道题型要用这个字段，标签确实不算释义内容），后来"单词
-    测试"新增第5种题型"词性选择"（`listening-page.js`的`posFor()`），要从
-    `zh`字段开头现取这个标签当正确答案——真实反馈"N2词汇的单词测试中，
-    为什么没有词性选择题"，查下来就是这里在生成时把标签提前剥掉了，跟
-    教材课的数据格式不一致，`posFor()`找不到标签，判定"这个词没有词性
-    标注"直接跳过，422个词条全军覆没。ja2zh/zh2kana判分时前端会自己剥掉
-    标签再比较（`listening-page.js`的`POS_RE`/`zhSegments()`），数据这一层
-    保留标签不影响这两道题原有的判分逻辑。"""
-    first_line = (overview or "").split("\n")[0]
-    return first_line.strip()
-
-
 _QUIZ_ZH_POS_LINE_RE = re.compile(r"^\s*[\[［][^\]］]*[\]］]")
 
 
-def derive_meaning_variants(overview):
-    """跟`derive_reading_variants()`同一类问题，但轴不一样——这里是"一个词
-    条在书上标了不止一个独立义项"（比如"0147. 一層"：overview第一行
-    "[名] 一层，一楼"，第二行"[副] 更，更加，越发"，是两个词性各自独立的
-    意思，不是同一个词性下用顿号并列的近义释义），`quiz_zh_text()`只取
-    第一行会让第二个义项在"单词测试"里彻底从数据层面消失——不只是
-    "根据单词写中文意思"答不出第二个意思，"根据中文写假名"的题面也永远
-    不会用第二个意思出题。真实反馈"一層的中文有两个一个名词，一个副词，
-    但是单词测试中，只有一个名词，副词的答案漏掉了"。
+def render_sense_line(sense):
+    """把一个结构化 sense（{"pos", "groups":[[近义说法,...],...]}）拼成
+    跟旧版overview第一行完全相同形状的字符串——"[词性] 义项1；义项2"，
+    组内近义说法用逗号连接。这是`senses`字段唯一的展示格式，`quiz_zh_
+    text()`/`derive_meaning_variants()`/`render_overview()`三处共用，
+    保证"根据单词写中文意思"题面、"词性选择"题的`[词性]`标签、生词卡片
+    展示的overview文字三者永远读的是同一份数据、不会互相走样。"""
+    body = "；".join("，".join(g) for g in sense["groups"])
+    return f"[{sense['pos']}] {body}"
 
-    识别规则：跟前端`posTagsFor()`判断"这一行是不是独立义项"用同一种
-    "以[词性]开头"的格式（`_QUIZ_ZH_POS_LINE_RE`），不满足这个格式的行
-    （比如"（类义词：更に(さらに)[副] 更加）"这种参照词注释，虽然行内
-    含有"[副]"，但不在行首）不算义项。只有匹配到2行及以上才当作"这个
-    词真的有多个独立义项"，返回长度>1的列表；只有1行（绝大多数词条）
-    退回`quiz_zh_text()`的单行结果，包一层长度为1的列表，调用方（
-    `build_vocab_quiz_items()`）不需要对"有没有多义项"分支特殊处理。"""
-    lines = [l.strip() for l in (overview or "").split("\n") if l.strip()]
+
+def quiz_zh_text(point):
+    """"单词测试"tab要用的中文释义——第一个 sense 拼成的字符串。**保留
+    开头的"[词性]"标签，不剥离**——跟教材课`build_vocab_quiz_data.py`的
+    `entry["zh"] = w["zh"]`一样直接透传原文，两边数据格式保持一致。这个
+    字段早期版本会剥掉标签（当时只有ja2zh/zh2kana两道题型要用这个字段，
+    标签确实不算释义内容），后来"单词测试"新增第5种题型"词性选择"
+    （`listening-page.js`的`posFor()`），要从`zh`字段开头现取这个标签当
+    正确答案——真实反馈"N2词汇的单词测试中，为什么没有词性选择题"，查
+    下来就是这里在生成时把标签提前剥掉了，跟教材课的数据格式不一致，
+    `posFor()`找不到标签，判定"这个词没有词性标注"直接跳过，422个词条
+    全军覆没。ja2zh/zh2kana判分时前端会自己剥掉标签再比较（`listening-
+    page.js`的`POS_RE`/`zhSegments()`），数据这一层保留标签不影响这两道
+    题原有的判分逻辑。
+
+    N2词汇内容模块（`n2_vocab_content.py`）现在直接提供结构化的`senses`
+    字段（见《N2词汇overview结构化-设计文档.md》），不再需要从`overview`
+    自由文本里用正则猜"哪一行是独立义项"——`senses`本身就是显式的义项
+    列表，`quiz_zh_text()`只需要取第一个sense拼成字符串。N2语法内容模块
+    （`n2_grammar_content.py`）还没有迁移到这套结构，`point`没有`senses`
+    字段时退回旧版"读overview第一行"逻辑，两边共用同一个入口函数。"""
+    senses = point.get("senses")
+    if senses:
+        return render_sense_line(senses[0])
+    first_line = (point.get("overview") or "").split("\n")[0]
+    return first_line.strip()
+
+
+def derive_meaning_variants(point):
+    """跟`derive_reading_variants()`同一类问题，但轴不一样——这里是"一个词
+    条在书上标了不止一个独立义项"（比如"0147. 一層"：`senses`第一项
+    {"pos":"名","groups":[["一层","一楼"]]}，第二项{"pos":"副","groups":
+    [["更","更加","越发"]]}，是两个词性各自独立的意思，不是同一个词性下
+    用顿号并列的近义释义），`quiz_zh_text()`只取第一个sense会让第二个
+    义项在"单词测试"里彻底从数据层面消失——不只是"根据单词写中文意思"
+    答不出第二个意思，"根据中文写假名"的题面也永远不会用第二个意思出题。
+    真实反馈"一層的中文有两个一个名词，一个副词，但是单词测试中，只有
+    一个名词，副词的答案漏掉了"。
+
+    `senses`长度>1时才当作"这个词真的有多个独立义项"，返回长度>1的
+    列表；只有1个sense（绝大多数词条）退回`quiz_zh_text()`的单一结果，
+    包一层长度为1的列表，调用方（`build_vocab_quiz_items()`）不需要对
+    "有没有多义项"分支特殊处理。`point`没有`senses`字段（N2语法内容
+    模块）时退回旧版"按行首[词性]格式扫描overview"逻辑。"""
+    senses = point.get("senses")
+    if senses:
+        if len(senses) > 1:
+            return [render_sense_line(s) for s in senses]
+        return [quiz_zh_text(point)]
+    overview = point.get("overview") or ""
+    lines = [l.strip() for l in overview.split("\n") if l.strip()]
     pos_lines = [l for l in lines if _QUIZ_ZH_POS_LINE_RE.match(l)]
     if len(pos_lines) > 1:
         return pos_lines
-    return [quiz_zh_text(overview)]
+    return [quiz_zh_text(point)]
 
 
 def chunk_group_sizes(n, size=10, min_last=5):
@@ -773,8 +824,8 @@ def build_vocab_quiz_items(units, word_audio_by_id=None):
             word_text = word_answer_text(title)
             kana = derive_reading(title, word_text)
             variants = derive_reading_variants(title, word_text)
-            zh = quiz_zh_text(point.get("overview", ""))
-            zh_variants = derive_meaning_variants(point.get("overview", ""))
+            zh = quiz_zh_text(point)
+            zh_variants = derive_meaning_variants(point)
             examples = point.get("examples") or []
             if not examples:
                 problems.append(f"{title}: 没有例句")
