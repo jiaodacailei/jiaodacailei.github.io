@@ -2771,6 +2771,49 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 关系，不要求完全相等）；义项组之间不要求顺序对应，但**每一组都必须
   // 被至少一个用户答案命中**，漏答任何一组都算错——真实反馈"漏答就算错"，
   // 不是半对也给分。
+  //
+  // "每一组命中"必须是**一对一**，不能一个答案同时顶两组——真实反馈
+  // "0015. 空き～：[接頭] 空的，无内容的；空闲的，闲置的，为什么我给出
+  // 答案'空'，你也判定为正确？应该有两个答案才能算对哟"：'空'这一个字
+  // 同时是"空的"（第1组）和"空闲的"（第2组）的子串，原来的实现按
+  // groups.every(group => userTokens.some(...))独立判断每一组"有没有
+  // 任意一个token命中"，同一个token可以被多个组各自重复拿去用一遍，
+  // 相当于1个答案就能顶2组甚至更多组，跟"漏答任何一组都算错"的本意
+  // 完全违背。改成二分图最大匹配（Kuhn算法）：把"组"和"用户token"各当
+  // 一边的顶点，一条边表示"这个token命中这个组"，要求找到一个覆盖全部
+  // 组、且每个token只能用一次的匹配——只有当匹配得上的组数等于总组数
+  // 时才算对，天然保证"答案数至少要跟组数一样多，且每个答案只能顶一组
+  // 自己的份"。组数少（绝大多数词条2~3组）、token数也少，这套标准算法
+  // 的开销可以忽略不计。
+  //
+  // 额外对userTokens去重（同一个字符串出现两次时只留一个）——不去重的话
+  // 用户打"空，空"这种把同一个碎片重复写两遍的答案，会在二分图匹配里被
+  // 当成两个不同的"token槽位"分别顶上两组，绕开刚修的这个漏洞：两次都是
+  // 同一个字，并不代表真的写出了两个不同的正确答案。
+  function bipartiteGroupsMatched(groups, tokens) {
+    var n = tokens.length;
+    var matchOfToken = new Array(n).fill(-1); // token下标 -> 匹配到的组下标
+    function tryAssign(gi, visited) {
+      for (var ti = 0; ti < n; ti++) {
+        if (visited[ti]) continue;
+        var hit = groups[gi].some(function(phrase) {
+          return quizStripPunct(phrase).indexOf(tokens[ti]) !== -1;
+        });
+        if (!hit) continue;
+        visited[ti] = true;
+        if (matchOfToken[ti] === -1 || tryAssign(matchOfToken[ti], visited)) {
+          matchOfToken[ti] = gi;
+          return true;
+        }
+      }
+      return false;
+    }
+    var matched = 0;
+    for (var gi = 0; gi < groups.length; gi++) {
+      if (tryAssign(gi, new Array(n).fill(false))) matched++;
+    }
+    return matched;
+  }
   function checkJa2ZhMulti(zhText, raw) {
     var groups = zhMeaningGroups(zhText);
     if (groups.length <= 1) {
@@ -2780,15 +2823,14 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         return quizStripPunct(seg).indexOf(vStripped) !== -1;
       });
     }
-    var userTokens = splitZhAnswers(raw).map(quizStripPunct).filter(Boolean);
-    if (!userTokens.length) return false;
-    return groups.every(function(group) {
-      return userTokens.some(function(tok) {
-        return group.some(function(phrase) {
-          return quizStripPunct(phrase).indexOf(tok) !== -1;
-        });
-      });
+    var seenTokens = {};
+    var userTokens = splitZhAnswers(raw).map(quizStripPunct).filter(Boolean).filter(function(tok) {
+      if (seenTokens[tok]) return false;
+      seenTokens[tok] = true;
+      return true;
     });
+    if (userTokens.length < groups.length) return false;
+    return bipartiteGroupsMatched(groups, userTokens) === groups.length;
   }
 
   // 跟句卡片默写/填空模式（本文件另一个 IIFE 里的 stripPunct()）是同一份
