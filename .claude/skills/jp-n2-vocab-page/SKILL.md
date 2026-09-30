@@ -962,3 +962,9 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
     完整短语当key，避免误伤）。**改完只验证了数据（音频文件名hash变了、
     只重合成3句），没有真的听/用Whisper转写复核新音频**——下次用户报音频错，
     改完要用 Whisper 转写新音频确认读音，再告诉用户"已修复"。
+- **2026-09-30，单词测试"填空"题题面撞车（追い越す/追い抜く 等）**：不同词的两条
+  例句挖空后句子+中文译文完全相同，用户没法判断填哪个。处理：不合并、不放宽
+  判分（用户要求两题都能练到），`listening-page.js` 的
+  `BLANK_DISAMBIGUATE_BADGE` 按 words 顺序给撞车题加①②标记（key 为
+  "wordId:blankErrType"），只改前端不用重建。目前全站3组：追い越す/追い抜く、
+  生け花/華道、可決/決議。新增单元后可用"例句挖空后+译文"分组扫一遍确认。

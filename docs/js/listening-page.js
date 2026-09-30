@@ -2114,6 +2114,32 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     return text ? text + "|" + (w.kana || "").trim() : "";
   });
 
+  // 填空题题面撞车：挖空后的句子+中文译文完全相同、但答案是不同的词
+  // （真实案例：N2词汇"先進国を追い越す/追い抜く。赶超发达国家。"，答案
+  // 分别是追い越す/追い抜く）——两道题都要能单独练到，所以不合并、不放宽
+  // 判分，跟 ZH_/JA_DISAMBIGUATE_SUFFIX 一样按 words 顺序加①②标记，
+  // key 是"wordId:blankErrType"。没撞车的填空题不加标记。
+  var BLANK_DISAMBIGUATE_BADGE = (function() {
+    var badge = {}, byKey = {};
+    words.forEach(function(w) {
+      var list = (w.sentences && w.sentences.length) ? w.sentences
+        : (w.sentence ? [{ sentence: w.sentence, sentence_zh: w.sentence_zh, blank: w.blank }] : []);
+      list.forEach(function(s, i) {
+        var idx = s.sentence.indexOf(s.blank);
+        if (idx === -1) return;
+        var blanked = s.sentence.slice(0, idx) + "____" + s.sentence.slice(idx + s.blank.length);
+        var key = blanked + "|" + (s.sentence_zh || "").trim();
+        (byKey[key] = byKey[key] || []).push(w.id + ":" + (i === 0 ? "blank" : "blank" + i));
+      });
+    });
+    Object.keys(byKey).forEach(function(key) {
+      var ids = byKey[key];
+      if (ids.length < 2) return;
+      ids.forEach(function(id, i) { badge[id] = i + 1; });
+    });
+    return badge;
+  })();
+
   // 清掉 errors/completed 里 key 对应的 wordId 已经不在当前词表里的孤儿
   // 记录——errKey 格式是 "wordId:type"，取冒号前的部分对比。清完立刻存回
   // localStorage，不是只在内存里筛一下，不然下次读到的还是带孤儿记录的
@@ -2915,8 +2941,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       var idx = q.sentence.sentence.indexOf(q.sentence.blank);
       var blanked = idx === -1 ? q.sentence.sentence
         : q.sentence.sentence.slice(0, idx) + "____" + q.sentence.sentence.slice(idx + q.sentence.blank.length);
+      var blankBadgeN = BLANK_DISAMBIGUATE_BADGE[q.word.id + ":" + q.errType];
       return '<div class="quiz-ja">' + blanked + '</div>' +
-        '<div class="quiz-zh-hint">' + q.sentence.sentence_zh + '</div>';
+        '<div class="quiz-zh-hint">' + q.sentence.sentence_zh +
+        (blankBadgeN ? '<span class="quiz-dedupe-badge">' + circledDigit(blankBadgeN) + '</span>' : "") + '</div>';
     }
     if (q.type === "audio2kana") {
       return '<div class="quiz-hint-text">听发音，写出假名</div>';
