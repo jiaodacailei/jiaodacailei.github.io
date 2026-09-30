@@ -321,6 +321,21 @@ _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
     # 跟孤立"一周"是同一个坑，只是走的是词典里"世界一周"这个复合词条目，
     # 不是"一"+"周"两个语素拼出来的，根因不完全一样但症状一样）。
     "世界一周": "せかいいっしゅう",
+    # "占う"（占卜）辞書形单独出现时，pykakasi 把它切成"占"（orig="占"，
+    # hira误读成おん读せん，来自"独占/占領/占有"这类音读复合词）+"う"两个
+    # token，训读うらなう完全没被识别；但同一个"占"字后面接っ/い/め等其它
+    # 送假名时（"占って"/"占います"/"占める"）pykakasi 自己就能读对
+    # （分别是うらなって/うらないます、占める读し——"占める"训读し跟"占う"
+    # 训读うらなう是同一个汉字的两种不同训读，互不冲突），只有辞書形这一种
+    # 送假名组合会触发这个坑。真实案例（N2词汇0231.占う，例句"トランプで
+    # 占う。"/"運勢を占う。"两句里"占"都被注成せん）。这里覆盖的是"占"这个
+    # 孤立token本身的hira，不是覆盖"占う"整词——覆盖后"占"显示うらな、
+    # 后面紧跟的"う"字面不需要单独注音，两段拼起来视觉上就是"占[うらな]う"，
+    # 读音正确；"独占"/"占領"/"占有"/"占める"这几个词 pykakasi 从来不会把
+    # "占"拆成孤立token（前两个整词合并成一个token直接给对读音，后一个
+    # 送假名是"める"不是"う"，走的是另一条正确路径），不受这条无条件覆盖
+    # 影响。
+    "占": "うらな",
 }
 
 # 有些 token 全是汉字、没有送假名可当 _split_kana_segments() 的切分锚点，
@@ -922,9 +937,15 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
        这个 token 有实际可读内容时才有）}
     换行符单独表示成 {"text": "\\n"}（渲染时转成 <br>，不参与 ruby/高亮）。
 
-    `vocab_readings`（可选）：`{生词原文: 生词读音}` 映射——`jp-textbook-lesson`
-    skill 专用（其它复用这份 build_page.py 的 listening 系 skill 不传，行为
-    不变）。**如果一个词既出现在生词表里、又出现在会话/课文的句子里，两边的
+    `vocab_readings`（可选）：`{生词原文: 生词读音}` 映射——`build_lesson_data()`
+    在内部统一构建并传给下面所有 `sentence_to_data()` 调用，来源有两处：
+    `jp-textbook-lesson` 的生词表（`sentences`里带`kana`字段的条目）+
+    N2词汇页词条自己的权威读音（`questions`里带`text`/`kana`字段的条目，
+    2026-09-30补上，之前这条路径一直没接通，见`build_lesson_data()`里的
+    注释）——不是只有jp-textbook-lesson才会用到，只是2026-09-30之前
+    其它skill的调用点客观上从来没往这份映射里塞过数据，不代表这个机制
+    设计上就不适用。**如果一个词既出现在生词表/词条表里、又出现在会话/
+    课文/例句的句子里，两边的
     注音必须一致，直接用生词表里已经人工核实过的读音，不能让 pykakasi 在
     句子里重新猜一遍**——真实案例（textbook-sjp-zg-l13）："年月"这个词生词表
     里读ねんげつ（人工核实过音频），但课文句子"長い年月が必要だろう"里
@@ -1780,6 +1801,33 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
         for s in sentences
         if not s.get("char_times") and s.get("kana")
     }
+    # N2词汇页专属补充来源：`questions`里每条qrec（词条自己）在`"senses" in
+    # point`时会带`text`（词条汉字原文）/`kana`（derive_reading()推导出的
+    # 权威读音，词典正文括注里的那个）这两个字段（见build_n2_reference_
+    # page.py的build_point_sentences()）——上面只扫`sentences`（例句列表）
+    # 拿不到这份数据，因为词条标题本身不是一条"例句"，从来不会进
+    # `sentences`列表，导致这个词条自己在例句里重新出现时，vocab_readings
+    # 实际上从来没真正生效过（对N2词汇/语法页恒为空字典），例句里的多音字
+    # 只能靠pykakasi/SudachiPy自己猜，猜错了也没有"用词条自己已核实读音
+    # 兜底"这一层——真实案例：0192.魚（うお）的例句"魚と水"/"水を得た魚の
+    # ようだ"，"魚"被猜成更常见的さかな，跟词条本身的うお不一致。
+    #
+    # **不能像上面`sentences`来源那样直接合并成一个全局dict**——真实踩过的
+    # 坑：`vocab_readings.update({q["text"]: q["kana"] for q in questions
+    # ...})`这样写第一次上线后，"0089.～位（～い）"自己例句"1位"里的"位"被
+    # 错误注成了くらい，根因是全局950+词条里"位"这个孤立汉字同时是两个不同
+    # 词条各自的`word_text`（"0089.～位"读い，"0723.位（くらい）"读くらい），
+    # 两条`{"位": ...}`塞进同一个全局dict，后写入的（word_id更大的0723）
+    # 覆盖了先写入的（0089），导致0089自己的例句被张冠李戴成另一个同形词的
+    # 读音——多音同形的汉字（空/来/位这类）在950+词条规模下**必然**会撞，
+    # 全局共享一份`{原文: 读音}`这个数据结构本身就假设了"同一段汉字原文在
+    # 全篇只有一种正确读音"，这个假设在N2词汇整本书的规模下不成立（对
+    # jp-textbook-lesson那种"一课几十个生词"的规模基本不会撞，是这个设计
+    # 最初没考虑跨词条重名的原因）。**正确做法是按"词条自己的例句只用词条
+    # 自己的读音覆盖"这个粒度隔离**，不在这里合并进全局`vocab_readings`，
+    # 改成 `question_data()` 内部按需临时给这一个词条的`text`/`kana`单独
+    # 叠一层（见下面`question_data()`），跟`sentences`来源的全局
+    # `vocab_readings`各自作用域互不干扰。
     # 多接续语法点（qrec["groups"]非空）按id从这份映射里捞回自己组内的句子，
     # 不能直接用qrec["sentences"]（那是全组平铺、丢了"哪句属于哪个接续"这个
     # 分组信息）——sentence_to_data()转换在这里做，跟下面单组分支共用同一份
@@ -1801,6 +1849,14 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
         for key in ("text", "kana", "senses", "variants", "related"):
             if qrec.get(key):
                 extra[key] = qrec[key]
+        # 只给这一个词条自己的例句叠加它自己的读音覆盖，不写回外层共享的
+        # `vocab_readings`——见上面`vocab_readings`构建处"位/来/空这类
+        # 多音同形字在950+词条规模下必然撞车"的说明，每个词条各自一份
+        # 临时dict，词条与词条之间不共享、不会互相覆盖。
+        q_vocab_readings = vocab_readings
+        if qrec.get("text") and qrec.get("kana"):
+            q_vocab_readings = dict(vocab_readings)
+            q_vocab_readings[qrec["text"]] = qrec["kana"]
         return {
             "question": qrec["question"],
             "overview": qrec["overview"],
@@ -1813,14 +1869,14 @@ def build_lesson_data(title, subtitle, side_nav_label, sentences, questions, aud
             # 字段效果一样，不需要额外分支。
             "pitch": qrec.get("pitch") or None,
             "sentences": [
-                sentence_to_data(s, audio_rel, quiz_by_id, vocab_readings)
+                sentence_to_data(s, audio_rel, quiz_by_id, q_vocab_readings)
                 for s in qrec["sentences"]
             ],
             "groups": ([
                 {
                     "overview": g["overview"],
                     "sentences": [
-                        sentence_to_data(sentence_by_id[i], audio_rel, quiz_by_id, vocab_readings)
+                        sentence_to_data(sentence_by_id[i], audio_rel, quiz_by_id, q_vocab_readings)
                         for i in g["ids"] if i in sentence_by_id
                     ],
                 }

@@ -19337,7 +19337,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "魚",
-                  "kana": "さかな",
+                  "kana": "うお",
                   "t": 0
                 },
                 {
@@ -19382,7 +19382,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "魚",
-                  "kana": "さかな",
+                  "kana": "うお",
                   "t": 1
                 },
                 {
@@ -23503,7 +23503,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "占",
-                  "kana": "せん",
+                  "kana": "うらな",
                   "t": 0.9
                 },
                 {
@@ -23537,7 +23537,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "占",
-                  "kana": "せん",
+                  "kana": "うらな",
                   "t": 0.98
                 },
                 {
@@ -41047,7 +41047,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "蛙",
-                  "kana": "かわず",
+                  "kana": "かえる",
                   "t": 0
                 },
                 {
@@ -41065,7 +41065,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "蛙",
-                  "kana": "かわず",
+                  "kana": "かえる",
                   "t": 1.14
                 }
               ],
@@ -48802,7 +48802,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "可燃物",
-                  "kana": "かねんもの",
+                  "kana": "かねんぶつ",
                   "t": 0
                 },
                 {
@@ -49344,7 +49344,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "窯",
-                  "kana": "よう",
+                  "kana": "かま",
                   "t": 0.94
                 }
               ],
@@ -50337,7 +50337,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "空",
-                  "kana": "そら",
+                  "kana": "から",
                   "t": 0
                 },
                 {
@@ -54304,7 +54304,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "冠",
-                  "kana": "かん",
+                  "kana": "かんむり",
                   "t": 0
                 },
                 {
@@ -56911,7 +56911,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "来",
-                  "kana": "く",
+                  "kana": "きた",
                   "t": 0
                 },
                 {
@@ -57581,7 +57581,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "木",
-                  "kana": "こ",
+                  "kana": "き",
                   "t": 2.72
                 },
                 {
@@ -64921,7 +64921,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "潜",
-                  "kana": "もぐ",
+                  "kana": "くぐ",
                   "t": 0.78
                 },
                 {
@@ -64964,7 +64964,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "潜",
-                  "kana": "もぐ",
+                  "kana": "くぐ",
                   "t": 1.3
                 },
                 {
@@ -77048,7 +77048,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "粉",
-                  "kana": "こな",
+                  "kana": "こ",
                   "t": 0.62
                 },
                 {
