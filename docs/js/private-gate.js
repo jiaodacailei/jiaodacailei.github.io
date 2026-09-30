@@ -18,6 +18,9 @@
   function afterUnlock() {
     gate.style.display = "none";
     document.getElementById("content").style.display = "block";
+    // 通知其它脚本"正文现在可见了"（listening-page.js 的 ?qs= 深链接要等正文
+    // 显示之后才能算滚动位置——#content 解锁前是 display:none，offsetTop 恒为0）。
+    document.dispatchEvent(new CustomEvent("gateunlocked"));
   }
   async function tryUnlock(pwd) {
     var h = await sha256(pwd);

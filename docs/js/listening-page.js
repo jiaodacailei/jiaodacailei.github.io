@@ -1073,6 +1073,43 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   }
   window.addEventListener("scroll", scheduleHighlight, { passive: true });
 
+  // 深链接：URL 带 ?qs=<tab序号>[-<小题序号>] 时，打开页面后直接切到对应 tab
+  // 并滚动到对应小题，方便从别的应用跳转到本页的某个位置。序号就是页面里
+  // 卡片 id "q-<tab>-<小题>" 的两个数字（tab 序号跟 data-mondai-idx 一致，从1
+  // 开始）；也接受直接写 "q-1-25"。只写 tab 序号（?qs=2）只切 tab。
+  // 小题所在的单元被"单元选择"下拉框筛掉时，先把下拉框切到那个单元。
+  // 解锁密码前 #content 是 display:none（offsetTop 恒为0），所以要等
+  // private-gate.js 发的 gateunlocked 事件（已解锁的页面正文一开始就可见，
+  // 直接执行）。
+  function applyDeepLink() {
+    var qs;
+    try { qs = new URLSearchParams(location.search).get("qs"); } catch (e) { return; }
+    var m = qs && /^(?:q-)?(\d+)(?:-(\d+))?$/.exec(qs.trim());
+    if (!m || !sectionIdxSet.hasOwnProperty(m[1])) return;
+    activate(m[1], { skipScroll: true });
+    if (!m[2]) { window.scrollTo(0, 0); return; }
+    var targetId = "q-" + m[1] + "-" + m[2];
+    var el = document.getElementById(targetId);
+    if (!el) return;
+    if (el.offsetParent === null && el.dataset.unit) {
+      var unitSel = document.getElementById("n2UnitSelect");
+      if (unitSel) {
+        unitSel.value = el.dataset.unit;
+        unitSel.dispatchEvent(new Event("change"));
+      }
+    }
+    if (el.offsetParent === null) return;
+    window.scrollTo({ top: el.offsetTop - 100, behavior: "auto" });
+    setCurrent(targetId);
+    try { localStorage.setItem(tabScrollKey(m[1]), targetId); } catch (e) {}
+  }
+  var deepLinkContent = document.getElementById("content");
+  if (!deepLinkContent || getComputedStyle(deepLinkContent).display !== "none") {
+    applyDeepLink();
+  } else {
+    document.addEventListener("gateunlocked", applyDeepLink, { once: true });
+  }
+
   var snmToggle = document.getElementById("snmToggle");
   var snmClose = document.getElementById("snmClose");
   if (snmToggle) snmToggle.addEventListener("click", function() { sideNavMobile.classList.add("toc-open"); });

@@ -968,3 +968,13 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   `BLANK_DISAMBIGUATE_BADGE` 按 words 顺序给撞车题加①②标记（key 为
   "wordId:blankErrType"），只改前端不用重建。目前全站3组：追い越す/追い抜く、
   生け花/華道、可決/決議。新增单元后可用"例句挖空后+译文"分组扫一遍确认。
+- **深链接 `?qs=`（2026-09-30，供别的应用跳转到本页某处）**：`listening-page.js`
+  的 `applyDeepLink()` 解析 URL 参数 `qs=<tab序号>[-<小题序号>]`（也接受
+  `q-1-25`），序号就是卡片 id `q-<tab>-<小题>`（tab 序号=`data-mondai-idx`，
+  从1开始，生词=1、単語テスト=2、練習=3；小题序号=该tab里按书本编号排序后
+  的位置，不是书上四位编号，比如 `qs=1-25` 是"0025.明くる"，`1-200` 是
+  "0200.受け持ち"，词条位置=序号，因为整份词表编号连续）。目标在别的单元时自动
+  切"单元选择"下拉框（会顺带改写用户 localStorage 里记住的当前单元）；无效参数
+  静默忽略。密码门解锁前正文是 display:none，所以 `private-gate.js` 解锁后
+  发 `gateunlocked` 事件，深链接等这个事件再滚动。实测用 Edge headless +
+  同源 iframe 页（预先写 sessionStorage 解锁）验证过已解锁/未解锁两条路径。
