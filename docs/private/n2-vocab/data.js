@@ -3966,7 +3966,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-d50a92948e6e.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 54,
@@ -5877,7 +5877,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-71bffe365709.mp3",
-          "pitch": "④①",
+          "pitch": "④⓪",
           "sentences": [
             {
               "id": 101,
@@ -7574,7 +7574,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-3fbb06f1be42.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 133,
@@ -15017,7 +15017,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第1单元",
           "wordAudio": "audio/word-88651d29067d.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 264,
@@ -15822,7 +15822,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-62163b149844.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 273,
@@ -16577,7 +16577,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-beeaebb831c6.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 285,
@@ -16844,7 +16844,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-125fbbcf0108.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 289,
@@ -17188,7 +17188,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-2778ced05db8.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 294,
@@ -17326,7 +17326,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-1232a9d8485f.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 297,
@@ -17829,7 +17829,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-2cb24e2529ab.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 305,
@@ -18058,7 +18058,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-f55deafd8d70.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 308,
@@ -18209,7 +18209,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-97052a51ab37.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 311,
@@ -18970,7 +18970,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-f35a7c1bda96.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 322,
@@ -19438,7 +19438,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-512ce0206f04.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 330,
@@ -19546,7 +19546,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-65df0d4126fc.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 332,
@@ -19737,7 +19737,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-f4892ab22a28.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 336,
@@ -20327,7 +20327,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-b9796aedd159.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 346,
@@ -20997,7 +20997,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-7eba1db06494.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 357,
@@ -21633,7 +21633,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-9559b270c68e.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 366,
@@ -22019,7 +22019,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-01b880e2c96c.mp3",
-          "pitch": "①③",
+          "pitch": "⓪③",
           "sentences": [
             {
               "id": 372,
@@ -23902,7 +23902,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-c0e3cdca4dd9.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 406,
@@ -24567,7 +24567,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-d5d3ea280b3f.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 417,
@@ -24685,7 +24685,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-99165a628c94.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 420,
@@ -24928,7 +24928,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-ddabc5b08907.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 424,
@@ -25030,7 +25030,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-40975243bf1a.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 426,
@@ -25096,7 +25096,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-b93b932f212f.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 427,
@@ -25195,7 +25195,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-17cf4d710301.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 429,
@@ -25259,7 +25259,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-679afa276c9c.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 431,
@@ -25357,7 +25357,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-5d758b31a918.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 433,
@@ -25412,7 +25412,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-5b8d47099e87.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 434,
@@ -25501,7 +25501,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-480f7244cb18.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 436,
@@ -25811,7 +25811,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-27151fc1ba7f.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 441,
@@ -26199,7 +26199,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-49caf2c2467c.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 448,
@@ -26413,7 +26413,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-7cfdb93781e7.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 452,
@@ -26468,7 +26468,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-665f4cc2a159.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 453,
@@ -27621,7 +27621,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-1dd46157bd6f.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 473,
@@ -27754,7 +27754,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-1c18f0b48aed.mp3",
-          "pitch": "①③",
+          "pitch": "⓪③",
           "sentences": [
             {
               "id": 475,
@@ -27981,7 +27981,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-2df46a992515.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 479,
@@ -28073,7 +28073,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-efb7ea69b174.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 481,
@@ -28422,7 +28422,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-4e2d4cd55114.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 486,
@@ -29724,7 +29724,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第2单元",
           "wordAudio": "audio/word-902133b880fb.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 509,
@@ -39112,7 +39112,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-b31ab8595044.mp3",
-          "pitch": "⓪",
+          "pitch": "①",
           "sentences": [
             {
               "id": 677,
@@ -39740,7 +39740,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-06dcc4846c16.mp3",
-          "pitch": "③⓪",
+          "pitch": "⑤",
           "sentences": [
             {
               "id": 691,
@@ -40398,7 +40398,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-adb8934a9c6c.mp3",
-          "pitch": "⓪⑤",
+          "pitch": "⑤",
           "sentences": [
             {
               "id": 703,
@@ -57268,7 +57268,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-2a52e7db4017.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 1024,
@@ -69686,7 +69686,7 @@ window.LESSON_DATA = {
           "answer": "",
           "unit": "第5单元",
           "wordAudio": "audio/word-61dc32e0e7ad.mp3",
-          "pitch": "①",
+          "pitch": "⓪",
           "sentences": [
             {
               "id": 1256,
