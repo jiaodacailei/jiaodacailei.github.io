@@ -31,8 +31,31 @@
       document.getElementById("pwdErr").textContent = "パスワードが違います";
     }
   }
+  // 从 URL 取密码自动解锁（方便从别的应用直接跳进来）：优先 #pw=<密码>
+  // （fragment 不会发给服务器/写进访问日志，也不会进 Referer），也兼容
+  // ?pw=<密码>。取到后立刻从地址栏抹掉，不留在历史记录/分享出去的链接里。
+  // 只是把明文密码放进链接的便利功能——链接本身等于密码，别转发。
+  function takePasswordFromUrl() {
+    var pwd = null;
+    try {
+      var h = new URLSearchParams(location.hash.replace(/^#/, ""));
+      var q = new URLSearchParams(location.search);
+      if (h.has("pw")) { pwd = h.get("pw"); h.delete("pw"); }
+      if (q.has("pw")) { if (pwd === null) pwd = q.get("pw"); q.delete("pw"); }
+      if (pwd !== null) {
+        var qs = q.toString(), hs = h.toString();
+        history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + (hs ? "#" + hs : ""));
+      }
+    } catch (e) {}
+    return pwd;
+  }
+  var urlPwd = takePasswordFromUrl();
   if (sessionStorage.getItem(STORAGE_KEY) === "1") {
     afterUnlock();
+  } else if (urlPwd) {
+    tryUnlock(urlPwd).then(function() {
+      if (gate.style.display !== "none") document.getElementById("pwdInput").focus();
+    });
   } else {
     // HTML 上已经写了 autofocus，这里再用 JS 调一次 .focus() 兜底（defer 脚本
     // 执行时机、部分浏览器对 autofocus 的处理差异等都可能让它不生效）。iOS

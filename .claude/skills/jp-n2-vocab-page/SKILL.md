@@ -981,3 +981,8 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   **按书上词条编号定位（到具体单词）**：`?qs=w271` 或 `?qs=1-w271`（w 前缀 +
   标题编号，前导0可省略，`w0271` 同效），靠卡片里 `.q-title-num` 的数字匹配，
   不用管单元，会自动切到该词所在单元；找不到该编号就静默忽略。
+  **URL 传密码自动解锁（2026-09-30）**：`private-gate.js` 支持 `#pw=<密码>`（推荐，
+  fragment 不发给服务器）和 `?pw=<密码>`，取到后立刻 `history.replaceState`
+  从地址栏抹掉；密码错误则停在密码框。全站所有用 private-gate.js 的私有页通用，
+  可以和 `?qs=` 组合：`/private/n2-vocab/index.html?qs=1-w271#pw=xxx`。
+  链接本身等于密码，别转发/别发到公开地方。
