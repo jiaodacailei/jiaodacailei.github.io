@@ -12467,7 +12467,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 1.46
                 },
                 {
@@ -15776,7 +15776,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 2.34
                 },
                 {
@@ -18539,7 +18539,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "炎",
-                  "kana": "ほのお",
+                  "kana": "えん",
                   "t": 1.56
                 }
               ],
@@ -25426,7 +25426,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "値",
-                  "kana": "あたい",
+                  "kana": "ち",
                   "t": 1.04
                 }
               ],
@@ -28855,7 +28855,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 1.42
                 },
                 {
@@ -29096,7 +29096,7 @@ window.LESSON_DATA = {
           "overview": "[名] 大水，洪水\n（类义词：洪水(こうずい)⓪①[名] 洪水；（物的）泛滥）",
           "answer": "",
           "unit": "第2单元",
-          "wordAudio": "audio/word-d9bc37c40892.mp3",
+          "wordAudio": "audio/word-0ba540668e43.mp3",
           "pitch": "③⓪①",
           "sentences": [
             {
@@ -29111,16 +29111,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.74
+                  "t": 0.68
                 },
                 {
                   "text": "出",
                   "kana": "で",
-                  "t": 0.92
+                  "t": 0.88
                 },
                 {
                   "text": "る",
-                  "t": 1.04
+                  "t": 0.98
                 },
                 {
                   "text": "。"
@@ -29131,7 +29131,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "大水"
               ],
-              "audio": "audio/seg-3ddc923cb87d.mp3"
+              "audio": "audio/seg-d3ada82da0e1.mp3"
             }
           ],
           "groups": null,
@@ -29313,11 +29313,11 @@ window.LESSON_DATA = {
                 {
                   "text": "拝",
                   "kana": "おが",
-                  "t": 0.8
+                  "t": 0.68
                 },
                 {
                   "text": "む",
-                  "t": 1.06
+                  "t": 0.92
                 },
                 {
                   "text": "。"
@@ -29328,7 +29328,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "拝む"
               ],
-              "audio": "audio/seg-1ba885ca1290.mp3"
+              "audio": "audio/seg-10b65be064d6.mp3"
             }
           ],
           "groups": null,
@@ -29625,7 +29625,7 @@ window.LESSON_DATA = {
           "overview": "[名] 屋外，室外，户外",
           "answer": "",
           "unit": "第2单元",
-          "wordAudio": "audio/word-ad4d9cc1b087.mp3",
+          "wordAudio": "audio/word-ce14175cef48.mp3",
           "pitch": "②",
           "sentences": [
             {
@@ -29641,7 +29641,7 @@ window.LESSON_DATA = {
                 {
                   "text": "広告",
                   "kana": "こうこく",
-                  "t": 0.8
+                  "t": 0.78
                 }
               ],
               "zh": "室外广告",
@@ -29649,7 +29649,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "屋外"
               ],
-              "audio": "audio/seg-5f992a424d7b.mp3"
+              "audio": "audio/seg-bb16700107ce.mp3"
             }
           ],
           "groups": null,
@@ -31985,7 +31985,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 0.9
                 },
                 {
@@ -50571,7 +50571,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 1.4
                 },
                 {
@@ -65499,7 +65499,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 0.96
                 },
                 {
@@ -67115,7 +67115,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 1.36
                 },
                 {
@@ -73132,7 +73132,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "言",
-                  "kana": "ゆ",
+                  "kana": "い",
                   "t": 1.38
                 },
                 {
@@ -83319,7 +83319,7 @@ window.LESSON_DATA = {
         },
         {
           "text": "言",
-          "kana": "ゆ"
+          "kana": "い"
         },
         {
           "text": "う"
@@ -84621,7 +84621,7 @@ window.LESSON_DATA = {
         },
         {
           "text": "言",
-          "kana": "ゆ"
+          "kana": "い"
         },
         {
           "text": "う"
@@ -90703,7 +90703,7 @@ window.LESSON_DATA = {
         },
         {
           "text": "言",
-          "kana": "ゆ"
+          "kana": "い"
         },
         {
           "text": "う"
