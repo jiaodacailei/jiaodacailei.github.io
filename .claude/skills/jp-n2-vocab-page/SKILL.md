@@ -941,3 +941,24 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   "0089.～位"自己例句里的"位"被错误注成くらい——最终改成按"词条自己
   的例句只叠加它自己的读音"这个粒度隔离，不写回全局共享dict才解决，
   详见`build_page.py`里`question_data()`附近的注释。
+- **2026-09-30，用户一次反馈6处注音/音频错误（言う注音ゆ、胃腸炎、栄養価値、
+  大水/一目拝む/屋外音频），根因归类与防再犯**：
+  - **"言う"注音ゆ（全站8句）**：pykakasi 本来读对いう，是 SudachiPy 交叉核对
+    覆盖成ゆう——跟"北上""一周"是同一类。**第一次修错了**：凭猜测写了
+    `orig=="言" and hira=="ゆ"`，没先用真实数据看 pykakasi 实际吐出的 token
+    形状（实际是 orig="言う"、hira="いう"），构建后重新扫全站才发现8句一个
+    没改。**写读音覆盖规则前，必须先在 `build_page._kks.convert(真实例句)`
+    里看真实 token，再写条件；改完必须扫全站同类 token（这次是遍历
+    data.js 里所有 kana 以ゆ开头的"言"）确认计数归零，不能只看构建没报错。**
+    另外 SudachiPy 覆盖 pykakasi 的词，只能加进 `_TOKEN_READING_OVERRIDES_
+    UNCONDITIONAL`/`_BY_PREV`（它们先于 Sudachi 检查），`_resolve_hira()`
+    里"hira等于某值才返回"的写法在 pykakasi 已经读对时命中不了。
+  - **炎/価値**：pykakasi 对孤立单字给训读（ほのお/あたい），复合词后缀该读
+    音读。用 `_TOKEN_READING_OVERRIDES_BY_PREV`（("胃腸","炎")、("栄養価","値")）。
+    用户说"X的注音不对"时，先按同类后缀（〜炎/〜値/〜価 等）grep data.js
+    里所有 token 看有没有同一类错。
+  - **大水/一目拝む/屋外音频**：edge-tts 对只有汉字的词猜错读音，是"听到一个
+    订正一个"的被动模式，没法穷举。加到 `TTS_READING_OVERRIDES`（复合词用
+    完整短语当key，避免误伤）。**改完只验证了数据（音频文件名hash变了、
+    只重合成3句），没有真的听/用Whisper转写复核新音频**——下次用户报音频错，
+    改完要用 Whisper 转写新音频确认读音，再告诉用户"已修复"。
