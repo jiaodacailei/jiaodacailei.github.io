@@ -978,3 +978,6 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   静默忽略。密码门解锁前正文是 display:none，所以 `private-gate.js` 解锁后
   发 `gateunlocked` 事件，深链接等这个事件再滚动。实测用 Edge headless +
   同源 iframe 页（预先写 sessionStorage 解锁）验证过已解锁/未解锁两条路径。
+  **按书上词条编号定位（到具体单词）**：`?qs=w271` 或 `?qs=1-w271`（w 前缀 +
+  标题编号，前导0可省略，`w0271` 同效），靠卡片里 `.q-title-num` 的数字匹配，
+  不用管单元，会自动切到该词所在单元；找不到该编号就静默忽略。

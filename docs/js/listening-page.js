@@ -1077,6 +1077,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 并滚动到对应小题，方便从别的应用跳转到本页的某个位置。序号就是页面里
   // 卡片 id "q-<tab>-<小题>" 的两个数字（tab 序号跟 data-mondai-idx 一致，从1
   // 开始）；也接受直接写 "q-1-25"。只写 tab 序号（?qs=2）只切 tab。
+  // 也可以按书上词条编号定位：?qs=w271 / ?qs=1-w271（见下面 wm）。
   // 小题所在的单元被"单元选择"下拉框筛掉时，先把下拉框切到那个单元。
   // 解锁密码前 #content 是 display:none（offsetTop 恒为0），所以要等
   // private-gate.js 发的 gateunlocked 事件（已解锁的页面正文一开始就可见，
@@ -1084,12 +1085,31 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   function applyDeepLink() {
     var qs;
     try { qs = new URLSearchParams(location.search).get("qs"); } catch (e) { return; }
-    var m = qs && /^(?:q-)?(\d+)(?:-(\d+))?$/.exec(qs.trim());
-    if (!m || !sectionIdxSet.hasOwnProperty(m[1])) return;
-    activate(m[1], { skipScroll: true });
-    if (!m[2]) { window.scrollTo(0, 0); return; }
-    var targetId = "q-" + m[1] + "-" + m[2];
-    var el = document.getElementById(targetId);
+    qs = qs && qs.trim();
+    var m = qs && /^(?:q-)?(\d+)(?:-(\d+))?$/.exec(qs);
+    var el, tab, targetId;
+    // 按书上编号定位到具体词条：?qs=w271（任意tab里第一个编号是271的卡片）
+    // 或 ?qs=1-w271（限定在tab 1里）——编号是标题前缀"0271."的数字，跟
+    // 位置序号不同，加 w 前缀区分。
+    var wm = !m && qs && /^(?:(\d+)-)?w(\d+)$/.exec(qs);
+    if (wm) {
+      var wantNum = parseInt(wm[2], 10);
+      allSections.forEach(function(sec) {
+        var secIdx = sectionMondaiIdx(sec);
+        if (el || (wm[1] && wm[1] !== secIdx)) return;
+        sec.querySelectorAll(".question-block").forEach(function(qb) {
+          var numEl = qb.querySelector(".q-title-num");
+          if (!el && numEl && parseInt(numEl.textContent, 10) === wantNum) { el = qb; tab = secIdx; targetId = qb.id; }
+        });
+      });
+      if (!el) return;
+    } else {
+      if (!m || !sectionIdxSet.hasOwnProperty(m[1])) return;
+      tab = m[1];
+      if (m[2]) { targetId = "q-" + tab + "-" + m[2]; el = document.getElementById(targetId); }
+    }
+    activate(tab, { skipScroll: true });
+    if (!targetId) { window.scrollTo(0, 0); return; }
     if (!el) return;
     if (el.offsetParent === null && el.dataset.unit) {
       var unitSel = document.getElementById("n2UnitSelect");
@@ -1101,7 +1121,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     if (el.offsetParent === null) return;
     window.scrollTo({ top: el.offsetTop - 100, behavior: "auto" });
     setCurrent(targetId);
-    try { localStorage.setItem(tabScrollKey(m[1]), targetId); } catch (e) {}
+    try { localStorage.setItem(tabScrollKey(tab), targetId); } catch (e) {}
   }
   var deepLinkContent = document.getElementById("content");
   if (!deepLinkContent || getComputedStyle(deepLinkContent).display !== "none") {
