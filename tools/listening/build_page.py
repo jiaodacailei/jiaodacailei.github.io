@@ -1432,6 +1432,8 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 <title>{title}</title>
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/css/listening-page.css">
+<script>if(/[#?&]pw=/.test(location.href))document.documentElement.classList.add("pw-in-url")</script>
+<style>html.pw-in-url #gate{display:none!important}</style>
 </head>
 <body>
 
@@ -1544,6 +1546,8 @@ SHELL_TEMPLATE = '''<!DOCTYPE html>
 <title>{title}</title>
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/css/listening-page.css">
+<script>if(/[#?&]pw=/.test(location.href))document.documentElement.classList.add("pw-in-url")</script>
+<style>html.pw-in-url #gate{display:none!important}</style>
 </head>
 <body>
 

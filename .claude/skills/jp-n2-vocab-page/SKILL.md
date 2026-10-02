@@ -1010,3 +1010,8 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   （`.post-page-header`）和 tab 内的 h2，只留词条内容；和 `?qs=` 组合使用，
   如 `?bare=1&qs=1-w271#pw=密码`，定位时目标距顶部留 12px（非 bare 是 100px，
   为吸顶标题栏留的）。侧栏小节号（#sideNav/#sideNavMobile）和设置齿轮/面板也一并隐藏。
+  **URL 带密码时不闪登录框**：每个带 `#gate` 的页面 `<head>` 里有一小段内联脚本，
+  URL 含 `pw=` 就给 `<html>` 加 `pw-in-url`（配套 `<style>` 把 `#gate` 藏起来），
+  `private-gate.js` 验证完（无论成败）去掉这个 class。已写进 `build_page.py` 两个
+  页面模板，并批量补到现有 42 个 gate 页面；**以后新增别的 gate 页面模板要带上这段**，
+  否则那种页面在 URL 带密码时验证期间仍会闪一下登录框。

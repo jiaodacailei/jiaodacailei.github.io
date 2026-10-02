@@ -102,7 +102,11 @@
   if (sessionStorage.getItem(STORAGE_KEY) === "1") {
     afterUnlock();
   } else if (urlPwd) {
+    // <head> 里的内联脚本检测到 URL 带 pw 时给 <html> 加了 pw-in-url（把登录框
+    // 藏起来，避免验证期间闪一下）；验证完不管成败都去掉：成功后 afterUnlock
+    // 已经把 #gate 设成 display:none，失败则登录框正常露出来重新输入。
     tryUnlock(urlPwd).then(function() {
+      document.documentElement.classList.remove("pw-in-url");
       if (gate.style.display !== "none") document.getElementById("pwdInput").focus();
     });
   } else {
