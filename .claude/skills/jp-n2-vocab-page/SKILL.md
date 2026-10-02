@@ -997,3 +997,12 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   `postMessage({type:"n2-embed-size",height})` 方便调 iframe 高度。找不到题目
   显示"未找到题目"。只在有 `#vocab-quiz-data` 的页面（N2词汇/语法页）生效。
   实测用 Edge headless + 同源 iframe 页（预写 sessionStorage 解锁）。
+  **嵌入画面的判分接口（postMessage）**：宿主 → iframe
+  `{type:"n2-embed-check", id, index:0, answer:"用户答案"（pos题传标签数组）, reveal:true}`；
+  iframe → 宿主（回给发消息的窗口，目标源取自 e.origin）
+  `{type:"n2-embed-result", id, index, ok, correct}`（`reveal:false` 不带 correct；
+  出错带 `error`）。页面渲染完发 `{type:"n2-embed-ready", items:[{index,type,errType,w}]}`
+  （不含答案）。只接受来自 `window.parent` 的消息；判分直接复用 `checkAnswer()`/
+  `sameTagSet()`，规则（去标点、ja2zh 多义项逐个答到）跟単語テスト完全一致。
+  已知：没有来源白名单——任何能 iframe 嵌入本页的站点都能发判分请求拿到答案
+  （但也得先有密码才能解锁页面）。

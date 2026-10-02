@@ -3665,6 +3665,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     root.id = "embedRoot";
     root.style.display = "none";
     document.body.appendChild(root);
+    var shownItems = [];
     function show() {
       var w = null;
       words.forEach(function(x) {
@@ -3693,12 +3694,46 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
           });
         });
       }
+      shownItems = items;
       root.style.display = "";
-      // 告诉宿主页面内容高度，方便它把 iframe 调到合适大小。
+      // 告诉宿主页面内容高度，方便它把 iframe 调到合适大小；ready 里只带
+      // 题目的元信息（不含答案）。
       try {
         window.parent.postMessage({ type: "n2-embed-size", height: document.documentElement.scrollHeight }, "*");
+        window.parent.postMessage({
+          type: "n2-embed-ready",
+          items: items.map(function(q, i) { return { index: i, type: q.type, errType: q.errType, w: q.word.numLabel }; })
+        }, "*");
       } catch (e) {}
     }
+    // 判分接口：宿主 → 本页
+    //   {type:"n2-embed-check", id:任意, index:0, answer:"用户答案"|["名","自動3"](pos题为标签数组), reveal:true}
+    // 本页 → 宿主（回给发来消息的窗口，目标源取自该消息的 origin）
+    //   {type:"n2-embed-result", id, index, ok:true/false, correct:"标准答案"}（reveal:false 时不带 correct）
+    //   出错：{type:"n2-embed-result", id, index, error:"..."}
+    // 只接受来自直接父窗口（window.parent）的消息，判分复用単語テスト自己的
+    // checkAnswer()/sameTagSet()，规则（去标点、ja2zh 多义项逐个答到等）完全一致。
+    window.addEventListener("message", function(e) {
+      var d = e.data;
+      if (e.source !== window.parent || !d || d.type !== "n2-embed-check") return;
+      var idx = d.index == null ? 0 : parseInt(d.index, 10);
+      function reply(o) {
+        o.type = "n2-embed-result"; o.id = d.id; o.index = idx;
+        e.source.postMessage(o, e.origin === "null" ? "*" : e.origin);
+      }
+      var q = shownItems[idx];
+      if (!q) { reply({ error: "no such item" }); return; }
+      var ok;
+      if (q.type === "pos") {
+        if (!Array.isArray(d.answer)) { reply({ error: "pos answer must be an array of tags" }); return; }
+        ok = sameTagSet(d.answer, posTagsFor(q.word));
+      } else {
+        ok = checkAnswer(q, String(d.answer == null ? "" : d.answer));
+      }
+      var res = { ok: !!ok };
+      if (d.reveal !== false) res.correct = q.type === "pos" ? posTagsFor(q.word) : revealAnswerText(q);
+      reply(res);
+    });
     var contentEl = document.getElementById("content");
     if (!contentEl || contentEl.style.display === "block") show();
     else document.addEventListener("gateunlocked", show, { once: true });
