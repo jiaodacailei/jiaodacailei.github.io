@@ -102,6 +102,19 @@ def _needs_kana_annotation(text):
 # 两种覆盖都只改 `hira`（显示的读音文本），不改 `orig`，字符长度对
 # char_times 下标的计算完全没有影响，不会连带影响跟读高亮的时间戳对齐。
 _TOKEN_READING_OVERRIDES_BY_PREV = {
+    # N2词汇第7单元例句里的真实错读（pykakasi/SudachiPy 都读错的）：
+    # "お金"读おかね（单字"金"默认きん）。
+    ("お", "金"): "かね",
+    # "働き盛り""食べ盛り"：盛り接在动词连用形后读ざかり，pykakasi 读成もり。
+    ("働き", "盛り"): "ざかり",
+    ("食べ", "盛り"): "ざかり",
+    # "玉細工""竹細工"：～細工 作后缀读ざいく（词条"～細工（～ざいく）"）。
+    ("玉", "細工"): "ざいく",
+    ("竹", "細工"): "ざいく",
+    # "住み心地"=すみごこち（心地作后缀浊化），"夢心地"pykakasi 自己合并读对。
+    ("住み", "心地"): "ごこち",
+    # "忘れ事"=わすれごと（词条"～事（～ごと）"）。
+    ("忘れ", "事"): "ごと",
     # "胃腸炎"（いちょうえん）pykakasi 把"炎"当孤立训读ほのお，但接在"胃腸"等
     # 病名后面是音读えん——真实反馈"炎的注音不对：ウイルス性の胃腸炎"。
     ("胃腸", "炎"): "えん",
@@ -183,6 +196,14 @@ _KANJI_MIN_MORA = {
 
 
 _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
+    # "堪える"（こらえる，忍耐）pykakasi 把"堪"读成こた（堪える的另一读法こたえる）——
+    # N2词汇0968，词条读音是こらえる。跟"占"→うらな同一个做法覆盖单字token。
+    "堪": "こら",
+    "堪え": "こらえ",
+    # pykakasi 把"雨がさっと降る"切成"雨がさ"（雨傘あまがさ）+"っと"，单字雨读あめ
+    "雨がさ": "あめがさ",
+    # "雨がさっと降る"里"雨"被 SudachiPy 交叉核对读成あま，单字"雨"一律读あめ。
+    "雨": "あめ",
     # "言う"pykakasi 本来读对いう，但 SudachiPy 交叉核对把它覆盖成ゆう——
     # 真实反馈"很多地方「言」的注音都不对，应该是い而不是ゆ"。无条件覆盖回いう。
     "言う": "いう",
@@ -408,6 +429,19 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # 应该是い而不是ゆ"。"言い合い"等复合词读い本来就对，不受影响。
     if orig == "言" and hira == "ゆ":
         return "い"
+    # N2词汇第7单元：按 next_char 判断的几处单字读音（pykakasi 默认读音在这些搭配里错）
+    # "金"后接助词（金をこしらえる/金などに拘り）读かね（金メダル等"金"+片假名仍读きん）
+    if orig == "金" and next_char in ("を", "が", "は", "も", "な", "に", "で", "と") and not (prev_orig and prev_orig[-1].isdigit()):
+        return "かね"
+    # "数でこなす""数が多い"：数后接助词表示"数量"读かず（数字+数/数学 等合并词不受影响）
+    if orig == "数" and next_char in ("で", "を", "が", "の"):
+        return "かず"
+    # "幼なじみ"=おさななじみ
+    if orig == "幼" and next_char == "な":
+        return "おさな"
+    # "今シーズン"=こんシーズン（词条"今シーズン（こんシーズン）"）
+    if orig == "今" and next_char == "シ":
+        return "こん"
     prev_ends_with_digit = bool(prev_orig) and (
         prev_orig[-1].isdigit() or prev_orig[-1] in "十百千万億兆"
     )
@@ -998,7 +1032,7 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
             tok_start = line_offset
             next_char = line[line_offset + tok_len] if line_offset + tok_len < len(line) else ""
             line_offset += tok_len
-            if vocab_readings and orig in vocab_readings:
+            if vocab_readings and orig in vocab_readings and (prev_orig, orig) not in _TOKEN_READING_OVERRIDES_BY_PREV:
                 hira = vocab_readings[orig]
             elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
                 # BY_PREV 必须先于 UNCONDITIONAL 检查——"君"同时出现在两张表
@@ -1433,7 +1467,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/css/listening-page.css">
 <script>if(/[#?&]pw=/.test(location.href))document.documentElement.classList.add("pw-in-url")</script>
-<style>html.pw-in-url #gate{display:none!important}</style>
+<style>html.pw-in-url #gate{{display:none!important}}</style>
 </head>
 <body>
 
@@ -1547,7 +1581,7 @@ SHELL_TEMPLATE = '''<!DOCTYPE html>
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/css/listening-page.css">
 <script>if(/[#?&]pw=/.test(location.href))document.documentElement.classList.add("pw-in-url")</script>
-<style>html.pw-in-url #gate{display:none!important}</style>
+<style>html.pw-in-url #gate{{display:none!important}}</style>
 </head>
 <body>
 

@@ -630,6 +630,7 @@
     var QUIZ_ID_OFFSET = 1000000, RELATED_ID_OFFSET = 2000000;
     var items = [];
     var relatedId = 0;
+    var seenNumLabels = {};
     var hasAnySenses = false;
     questions.forEach(function (q, idx) {
       if (!q.senses || !q.senses.length) return;
@@ -655,6 +656,13 @@
       // 下游 errKey()/stableItemCode() 会自己退回旧逻辑，不会报错。
       var numMatch = /^(\d+)\./.exec(q.question || "");
       var numLabel = numMatch ? numMatch[1] : undefined;
+      // 书上偶尔会把同一个编号印两次（第7单元"1001. 裁判"/"1001. 裁判所"），
+      // numLabel 是错题记录 key/导出题号，必须全局唯一：后出现的加"b"后缀
+      // （"1001b"）。标题里显示的编号仍然是书上原样的"1001"。
+      if (numLabel) {
+        if (seenNumLabels[numLabel]) numLabel = numLabel + "b";
+        seenNumLabels[numLabel] = true;
+      }
       var item = {
         id: QUIZ_ID_OFFSET + (idx + 1), text: q.text, kana: q.kana,
         zh: renderSenseLine(q.senses[0]), sentences: sentences,

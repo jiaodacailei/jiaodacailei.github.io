@@ -3663,7 +3663,8 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 密码框，可用 #pw= 传密码），解锁后才渲染。
   function initEmbed(P) {
     document.body.classList.add("embed-mode");
-    var wantNum = parseInt(String(P.get("w") || "").replace(/\D/g, ""), 10);
+    // w 可以带字母后缀，对应重号词条的 numLabel（如 1001b，见 page-renderer.js）
+    var wantNum = String(P.get("w") || "").replace(/^0+/, "").toLowerCase();
     var type = P.get("type") || "blank";
     var nParam = P.get("n") || "1";
     var root = document.createElement("div");
@@ -3674,7 +3675,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     function show() {
       var w = null;
       words.forEach(function(x) {
-        if (!w && x.numLabel && parseInt(x.numLabel, 10) === wantNum) w = x;
+        if (!w && x.numLabel && String(x.numLabel).replace(/^0+/, "").toLowerCase() === wantNum) w = x;
       });
       var items = (w && TYPES.indexOf(type) !== -1) ? buildTypeItems(w, type) : [];
       if (nParam !== "all") {
