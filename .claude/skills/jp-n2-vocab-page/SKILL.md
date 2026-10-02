@@ -1009,4 +1009,4 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
 - **`?bare=1`（2026-10-02）**：隐藏顶部标题栏（`.sticky-header`，含 tab 栏）、页面大标题
   （`.post-page-header`）和 tab 内的 h2，只留词条内容；和 `?qs=` 组合使用，
   如 `?bare=1&qs=1-w271#pw=密码`，定位时目标距顶部留 12px（非 bare 是 100px，
-  为吸顶标题栏留的）。侧栏小节号和右下角设置齿轮没隐藏（没被要求）。
+  为吸顶标题栏留的）。侧栏小节号（#sideNav/#sideNavMobile）和设置齿轮/面板也一并隐藏。

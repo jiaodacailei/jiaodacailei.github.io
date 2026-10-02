@@ -934,3 +934,8 @@ body.bare-mode .post-page-header,
 body.bare-mode .mondai-section > h2 { display: none !important; }
 body.bare-mode #content { padding-top: 0 !important; }
 body.bare-mode .post-page { padding-top: 12px !important; margin-top: 0 !important; }
+/* ?bare=1 续：侧栏小节号（桌面 .toc / 手机悬浮 .toc-float）和设置齿轮/面板 */
+body.bare-mode #sideNav,
+body.bare-mode #sideNavMobile,
+body.bare-mode #settingsToggle,
+body.bare-mode #settingsPanel { display: none !important; }
