@@ -986,3 +986,14 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   从地址栏抹掉；密码错误则停在密码框。全站所有用 private-gate.js 的私有页通用，
   可以和 `?qs=` 组合：`/private/n2-vocab/index.html?qs=1-w271#pw=xxx`。
   链接本身等于密码，别转发/别发到公开地方。
+- **嵌入单题画面 `?embed=1`（2026-10-02，给别的系统用 iframe 嵌入）**：
+  `listening-page.js` 的 `initEmbed()`（单词测试 IIFE 末尾）只渲染题面，没有
+  输入框/提交按钮/正确答案/判分。参数：`w`=书上词条编号（0271/271）、
+  `type`=blank(默认)/audio2kana/zh2kana/ja2kana/ja2zh/pos、`n`=该词该题型的
+  第几道题（默认1；填空题一个例句一道，多例句用 n=2、3…；`n=all` 全部竖排）。
+  例：`/private/n2-vocab/index.html?embed=1&w=271&type=blank&n=2#pw=密码`。
+  复用 `buildTypeItems()`/`promptHtmlFor()`，所以①②撞车标记、"有N个意思"提示、
+  多写法拆题跟単語テスト tab 完全一致。密码门照常（`#pw=` 解锁）；渲染完向宿主
+  `postMessage({type:"n2-embed-size",height})` 方便调 iframe 高度。找不到题目
+  显示"未找到题目"。只在有 `#vocab-quiz-data` 的页面（N2词汇/语法页）生效。
+  实测用 Edge headless + 同源 iframe 页（预写 sessionStorage 解锁）。

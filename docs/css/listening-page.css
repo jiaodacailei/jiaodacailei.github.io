@@ -921,3 +921,9 @@ body.mode-blank #blankProgressReset { display: inline-block; }
 }
 #gate .err { color: #ef4444; font-size: 12px; margin-top: 8px; min-height: 16px; }
 #content { display: none; }
+
+/* 嵌入模式（?embed=1，见 listening-page.js initEmbed()）：只留题面 */
+body.embed-mode #content { display: none !important; }
+body.embed-mode #embedRoot { padding: 12px 16px; max-width: 720px; margin: 0 auto; }
+body.embed-mode .embed-card { margin-bottom: 12px; }
+body.embed-mode .embed-empty { color: var(--text-muted); padding: 16px 0; }

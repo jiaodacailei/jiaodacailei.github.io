@@ -3646,5 +3646,65 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     });
   }
 
+  // 嵌入模式（?embed=1）：给别的系统用 iframe 嵌入单题画面——只渲染题面，
+  // 不要输入框/提交按钮/正确答案/判分，答案由宿主系统自己收集。
+  //   ?embed=1&w=271&type=blank&n=2#pw=密码
+  //   w    书上词条编号（0271 或 271）
+  //   type 题型：blank(默认)/audio2kana/zh2kana/ja2kana/ja2zh/pos
+  //   n    该词该题型的第几道题（默认1；填空题一个例句一道，n=2 就是第2个例句；
+  //        n=all 把全部题目竖着排在一起）
+  // 复用上面的 buildTypeItems()/promptHtmlFor()，所以①②标记、多义项提示、
+  // 多写法拆题跟単語テスト tab 里完全一致。密码门仍然有效（没解锁时显示
+  // 密码框，可用 #pw= 传密码），解锁后才渲染。
+  function initEmbed(P) {
+    document.body.classList.add("embed-mode");
+    var wantNum = parseInt(String(P.get("w") || "").replace(/\D/g, ""), 10);
+    var type = P.get("type") || "blank";
+    var nParam = P.get("n") || "1";
+    var root = document.createElement("div");
+    root.id = "embedRoot";
+    root.style.display = "none";
+    document.body.appendChild(root);
+    function show() {
+      var w = null;
+      words.forEach(function(x) {
+        if (!w && x.numLabel && parseInt(x.numLabel, 10) === wantNum) w = x;
+      });
+      var items = (w && TYPES.indexOf(type) !== -1) ? buildTypeItems(w, type) : [];
+      if (nParam !== "all") {
+        var pick = items[parseInt(nParam, 10) - 1];
+        items = pick ? [pick] : [];
+      }
+      if (!items.length) {
+        root.innerHTML = '<div class="embed-empty">未找到题目</div>';
+      } else {
+        root.innerHTML = items.map(function(q, i) {
+          return '<div class="quiz-card embed-card" data-i="' + i + '">' +
+            '<div class="quiz-type-label">' + typeLabelHtml(q) + "</div>" +
+            '<div class="quiz-prompt">' + promptHtmlFor(q) + "</div>" +
+            (q.type === "audio2kana" ? '<button type="button" class="quiz-play-btn">▶ 播放发音</button>' : "") +
+            "</div>";
+        }).join("");
+        root.querySelectorAll(".quiz-play-btn").forEach(function(btn) {
+          btn.addEventListener("click", function() {
+            var q = items[parseInt(btn.parentNode.getAttribute("data-i"), 10)];
+            activePlayBtn = btn;
+            quizLoadAndPlay(audioSrcFor(q.word));
+          });
+        });
+      }
+      root.style.display = "";
+      // 告诉宿主页面内容高度，方便它把 iframe 调到合适大小。
+      try {
+        window.parent.postMessage({ type: "n2-embed-size", height: document.documentElement.scrollHeight }, "*");
+      } catch (e) {}
+    }
+    var contentEl = document.getElementById("content");
+    if (!contentEl || contentEl.style.display === "block") show();
+    else document.addEventListener("gateunlocked", show, { once: true });
+  }
+  var embedParams = new URLSearchParams(location.search);
+  if (embedParams.has("embed")) { initEmbed(embedParams); return; }
+
   render();
 })();
