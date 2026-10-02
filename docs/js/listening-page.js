@@ -1082,6 +1082,11 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 解锁密码前 #content 是 display:none（offsetTop 恒为0），所以要等
   // private-gate.js 发的 gateunlocked 事件（已解锁的页面正文一开始就可见，
   // 直接执行）。
+  // ?bare=1：隐藏顶部标题栏+tab栏和页面大标题，只留词条内容（配合 ?qs= 定位
+  // 到某个词，嵌进别的系统用）。tab 靠 qs 切，隐藏后不影响功能。
+  var BARE = false;
+  try { BARE = new URLSearchParams(location.search).has("bare"); } catch (e) {}
+  if (BARE) document.body.classList.add("bare-mode");
   function applyDeepLink() {
     var qs;
     try { qs = new URLSearchParams(location.search).get("qs"); } catch (e) { return; }
@@ -1119,7 +1124,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       }
     }
     if (el.offsetParent === null) return;
-    window.scrollTo({ top: el.offsetTop - 100, behavior: "auto" });
+    window.scrollTo({ top: el.offsetTop - (BARE ? 12 : 100), behavior: "auto" });
     setCurrent(targetId);
     try { localStorage.setItem(tabScrollKey(tab), targetId); } catch (e) {}
   }

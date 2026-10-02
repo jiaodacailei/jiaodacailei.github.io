@@ -1006,3 +1006,7 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   `sameTagSet()`，规则（去标点、ja2zh 多义项逐个答到）跟単語テスト完全一致。
   已知：没有来源白名单——任何能 iframe 嵌入本页的站点都能发判分请求拿到答案
   （但也得先有密码才能解锁页面）。
+- **`?bare=1`（2026-10-02）**：隐藏顶部标题栏（`.sticky-header`，含 tab 栏）、页面大标题
+  （`.post-page-header`）和 tab 内的 h2，只留词条内容；和 `?qs=` 组合使用，
+  如 `?bare=1&qs=1-w271#pw=密码`，定位时目标距顶部留 12px（非 bare 是 100px，
+  为吸顶标题栏留的）。侧栏小节号和右下角设置齿轮没隐藏（没被要求）。
