@@ -113,6 +113,12 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
     ("竹", "細工"): "ざいく",
     # "住み心地"=すみごこち（心地作后缀浊化），"夢心地"pykakasi 自己合并读对。
     ("住み", "心地"): "ごこち",
+    # N2词汇第8单元例句里的错读：歯触り(はざわり)、四則算(しそくざん)、やり方(やりかた)、
+    # 産出国(さんしゅつこく)——pykakasi 对这几个单字 token 给默认读音。
+    ("歯", "触り"): "ざわり",
+    ("四則", "算"): "ざん",
+    ("なやり", "方"): "かた",
+    ("産出", "国"): "こく",
     # "忘れ事"=わすれごと（词条"～事（～ごと）"）。
     ("忘れ", "事"): "ごと",
     # "胃腸炎"（いちょうえん）pykakasi 把"炎"当孤立训读ほのお，但接在"胃腸"等
@@ -200,6 +206,9 @@ _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
     # N2词汇0968，词条读音是こらえる。跟"占"→うらな同一个做法覆盖单字token。
     "堪": "こら",
     "堪え": "こらえ",
+    # "動乱を鎮める"：pykakasi 把"鎮"读成つつし（鎮む）——词条读音是しずめる。
+    "鎮": "しず",
+    "鎮め": "しずめ",
     # pykakasi 把"雨がさっと降る"切成"雨がさ"（雨傘あまがさ）+"っと"，单字雨读あめ
     "雨がさ": "あめがさ",
     # "雨がさっと降る"里"雨"被 SudachiPy 交叉核对读成あま，单字"雨"一律读あめ。
@@ -436,6 +445,10 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # "数でこなす""数が多い"：数后接助词表示"数量"读かず（数字+数/数学 等合并词不受影响）
     if orig == "数" and next_char in ("で", "を", "が", "の"):
         return "かず"
+    # "躾ける"（しつける）：pykakasi 给"躾"的读音是しつけ（名词"躾"），后面还有送假名"ける"
+    # 会重复——动词形"躾ける"里"躾"只读しつ。
+    if orig == "躾" and next_char == "け":
+        return "しつ"
     # "幼なじみ"=おさななじみ
     if orig == "幼" and next_char == "な":
         return "おさな"
@@ -1280,7 +1293,7 @@ def question_block_html(mondai_idx, q_idx, question_label, overview, answer, sen
     # 编号前缀单独拆出来，不跟着 .q-title-text 一起被默写/填空模式藏起来——
     # 跟 page-renderer.js 里 renderQuestionBlock() 的同名逻辑对应，真实反馈
     # "默写/填空模式，也请显示序号"。
-    num_match = re.match(r"^(\d+\.\s*)", question_label)
+    num_match = re.match(r"^(\d+[a-z]?\.\s*)", question_label)
     num_part = num_match.group(1) if num_match else ""
     rest_part = question_label[len(num_part):]
     return f'''

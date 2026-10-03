@@ -255,6 +255,13 @@ TTS_READING_OVERRIDES = {
     "お骨を拾う": "おこつをひろう",
     "昨春": "さくしゅん",
     "古今東西": "ここんとうざい",
+    # 第8单元
+    "鎮める": "しずめる",
+    "歯触り": "はざわり",
+    "四則算": "しそくざん",
+    "産出国": "さんしゅつこく",
+    "躾ける": "しつける",
+    "今を去る十年": "いまをさるじゅうねん",
 }
 
 # 有一类多音字词条，这个字单独当标题（word audio唯一的输入文本，就是这
@@ -288,6 +295,18 @@ TTS_EXACT_TEXT_OVERRIDES = {
     "遡る": "さかのぼる", "穀物": "こくもつ", "事柄": "ことがら", "雇用": "こよう",
     "昨シーズン": "さくシーズン", "越す": "こす", "焦がす": "こがす", "漕ぐ": "こぐ",
     "応える": "こたえる", "込める": "こめる", "転がす": "ころがす", "小麦": "こむぎ",
+    # 第8单元：孤立单字/少见读法的词条标题
+    "躾": "しつけ", "縞": "しま", "下": "しも", "住": "じゅう", "銃": "じゅう",
+    "萎む": "しぼむ", "絞る": "しぼる", "占める": "しめる", "洒落": "しゃれ",
+    "洒落る": "しゃれる", "下書き": "したがき", "次第": "しだい", "次第に": "しだいに",
+    "地盤": "じばん", "地元": "じもと", "地面": "じめん", "地主": "じぬし",
+    "姉妹": "しまい", "志望": "しぼう", "脂肪": "しぼう", "絨毯": "じゅうたん",
+    "習得": "しゅうとく", "修得": "しゅうとく", "終始": "しゅうし", "収穫": "しゅうかく",
+    "紙幣": "しへい", "蛇口": "じゃぐち", "若干": "じゃっかん", "車掌": "しゃしょう",
+    "縞模様": "しまもよう", "時速": "じそく", "実家": "じっか", "湿気": "しっけ",
+    "市町村": "しちょうそん", "視聴": "しちょう", "下回る": "したまわる",
+    "従って": "したがって", "妨げる": "さまたげる", "冷ます": "さます",
+    "静まる": "しずまる", "沈める": "しずめる", "去る": "さる", "作法": "さほう",
 }
 
 
@@ -327,6 +346,24 @@ def whisper_align(model, wav_path, text):
     if char_times_per_sentence is None:
         return None
     return char_times_per_sentence[0]
+
+
+# 对齐缓存的落盘路径（main() 里设置）。全量重新对齐要几个小时（Whisper medium
+# CPU 约 7 秒/句），曾经跑了 3 个多小时被系统因内存不足杀掉、缓存因为只在最后
+# 一次性写盘而全部白费——所以每对齐 _ALIGN_SAVE_EVERY 句就原子写盘一次，被中断后
+# 重跑只会重算最后不到 20 句。
+_ALIGN_CACHE_PATH = None
+_ALIGN_SAVE_EVERY = 20
+_align_since_save = 0
+
+
+def _save_align_cache(cache):
+    if not _ALIGN_CACHE_PATH or cache is None:
+        return
+    tmp = _ALIGN_CACHE_PATH + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False)
+    os.replace(tmp, _ALIGN_CACHE_PATH)
 
 
 def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats, cache=None):
@@ -371,10 +408,20 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats, cache=None):
             return None, None, None
 
     mtime = os.path.getmtime(out_path)
+    # 缓存现在纳入版本管理（audio/.align_cache.json），所以"音频有没有变"改按音频
+    # 内容的 sha1 判断——git clone/checkout 会改写 mtime，只认 mtime 的话换一台机器
+    # 或重新检出之后缓存全部失效，又要重算几个小时。向后兼容：旧缓存条目没有 sha1，
+    # 退回比 mtime，命中后补上 sha1。
+    with open(out_path, "rb") as _af:
+        audio_sha = hashlib.sha1(_af.read()).hexdigest()
     cache_key = content_hash
     if cache is not None:
         cached = cache.get(cache_key)
-        if cached and cached.get("text") == text and cached.get("mtime") == mtime:
+        if cached and cached.get("text") == text and (
+            cached.get("sha1") == audio_sha
+            or (cached.get("sha1") is None and cached.get("mtime") == mtime)
+        ):
+            cached["sha1"] = audio_sha
             stats["cached"] = stats.get("cached", 0) + 1
             return filename, cached["duration"], cached["char_times"]
 
@@ -393,14 +440,20 @@ def synth_and_align(model, text, audio_dir, seg_id, tmp_wav, stats, cache=None):
         stats["ok"] += 1
     if cache is not None:
         cache[cache_key] = {
-            "text": text, "mtime": mtime, "duration": duration, "char_times": char_times,
+            "text": text, "mtime": mtime, "sha1": audio_sha,
+            "duration": duration, "char_times": char_times,
         }
+        global _align_since_save
+        _align_since_save += 1
+        if _align_since_save >= _ALIGN_SAVE_EVERY:
+            _align_since_save = 0
+            _save_align_cache(cache)
     return filename, duration, char_times
 
 
-_WORD_NUM_PREFIX_RE = re.compile(r"^\d+\.\s*")
+_WORD_NUM_PREFIX_RE = re.compile(r"^\d+[a-z]?\.\s*")
 _WORD_TRAILING_FULLWIDTH_PAREN_RE = re.compile(r"（[^（）]*）$")
-_TITLE_LEADING_NUM_RE = re.compile(r"^(\d+)\.")
+_TITLE_LEADING_NUM_RE = re.compile(r"^(\d+)[a-z]?\.")
 
 
 def title_number(title):
@@ -1114,6 +1167,8 @@ def main():
     # 模块的一部分，不影响"内容模块是唯一真相源"这条约定；缓存损坏/缺失
     # 时退化成全量重新对齐（json.load失败就当成空缓存），不会导致构建失败。
     align_cache_path = os.path.join(audio_dir, ".align_cache.json")
+    global _ALIGN_CACHE_PATH
+    _ALIGN_CACHE_PATH = align_cache_path
     try:
         with open(align_cache_path, encoding="utf-8") as f:
             align_cache = json.load(f)

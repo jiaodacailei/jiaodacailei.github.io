@@ -1096,15 +1096,23 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // 按书上编号定位到具体词条：?qs=w271（任意tab里第一个编号是271的卡片）
     // 或 ?qs=1-w271（限定在tab 1里）——编号是标题前缀"0271."的数字，跟
     // 位置序号不同，加 w 前缀区分。
-    var wm = !m && qs && /^(?:(\d+)-)?w(\d+)$/.exec(qs);
+    var wm = !m && qs && /^(?:(\d+)-)?w(\d+[a-zA-Z]?)$/.exec(qs);
     if (wm) {
-      var wantNum = parseInt(wm[2], 10);
-      allSections.forEach(function(sec) {
-        var secIdx = sectionMondaiIdx(sec);
-        if (el || (wm[1] && wm[1] !== secIdx)) return;
-        sec.querySelectorAll(".question-block").forEach(function(qb) {
-          var numEl = qb.querySelector(".q-title-num");
-          if (!el && numEl && parseInt(numEl.textContent, 10) === wantNum) { el = qb; tab = secIdx; targetId = qb.id; }
+      // 编号可带字母后缀（重号词条 1001a/1001b）：先精确匹配（去前导0、忽略大小写），
+      // 没有精确匹配且只给了数字时，退而匹配第一个"数字相同带字母"的词条（w1001→1001a）。
+      var normNum = function(t) { return String(t).replace(/\.\s*$/, "").trim().replace(/^0+/, "").toLowerCase(); };
+      var wantNum = normNum(wm[2]);
+      [false, true].forEach(function(loose) {
+        if (el || (loose && !/^\d+$/.test(wantNum))) return;
+        allSections.forEach(function(sec) {
+          var secIdx = sectionMondaiIdx(sec);
+          if (el || (wm[1] && wm[1] !== secIdx)) return;
+          sec.querySelectorAll(".question-block").forEach(function(qb) {
+            var numEl = qb.querySelector(".q-title-num");
+            if (el || !numEl) return;
+            var label = normNum(numEl.textContent);
+            if (loose ? label.replace(/[a-z]$/, "") === wantNum : label === wantNum) { el = qb; tab = secIdx; targetId = qb.id; }
+          });
         });
       });
       if (!el) return;
@@ -1472,7 +1480,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     // "(に)"）是语法结构本身的一部分不是读音提示，必须保留——靠这个既有
     // 的全角/半角排版差异就能天然区分两种内容，不需要额外传一个"这是
     // 词汇还是语法"的标记。
-    var TITLE_NUM_PREFIX_RE = /^\d+\.\s*/;
+    var TITLE_NUM_PREFIX_RE = /^\d+[a-z]?\.\s*/;
     var TITLE_TRAILING_FULLWIDTH_PAREN_RE = /（[^（）]*）$/;
     function extractTitleAnswer(raw) {
       return raw.replace(TITLE_NUM_PREFIX_RE, "").replace(TITLE_TRAILING_FULLWIDTH_PAREN_RE, "").trim();
@@ -3674,9 +3682,16 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     var shownItems = [];
     function show() {
       var w = null;
+      var normLabel = function(x) { return String(x.numLabel).replace(/^0+/, "").toLowerCase(); };
       words.forEach(function(x) {
-        if (!w && x.numLabel && String(x.numLabel).replace(/^0+/, "").toLowerCase() === wantNum) w = x;
+        if (!w && x.numLabel && normLabel(x) === wantNum) w = x;
       });
+      // 只给了数字（w=1001）而词条编号带字母（1001a/1001b）时，取第一个
+      if (!w && /^\d+$/.test(wantNum)) {
+        words.forEach(function(x) {
+          if (!w && x.numLabel && x.kind !== "related" && normLabel(x).replace(/[a-z]$/, "") === wantNum) w = x;
+        });
+      }
       var items = (w && TYPES.indexOf(type) !== -1) ? buildTypeItems(w, type) : [];
       if (nParam !== "all") {
         var pick = items[parseInt(nParam, 10) - 1];

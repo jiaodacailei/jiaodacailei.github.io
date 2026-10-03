@@ -346,7 +346,7 @@
     // listening-page.js 的 extractTitleAnswer()），显示编号不会泄题，
     // 反而能让人知道自己正在做第几个词/第几条语法点，配合侧栏分组导航
     // 定位更方便。
-    var numMatch = /^(\d+\.\s*)/.exec(label);
+    var numMatch = /^(\d+[a-z]?\.\s*)/.exec(label);
     var numPart = numMatch ? numMatch[1] : "";
     var restPart = numMatch ? label.slice(numMatch[1].length) : label;
     // 专题卡（一张卡塞好几个不同表达点，标题是中文话题概述，比如"协调意见
@@ -630,7 +630,6 @@
     var QUIZ_ID_OFFSET = 1000000, RELATED_ID_OFFSET = 2000000;
     var items = [];
     var relatedId = 0;
-    var seenNumLabels = {};
     var hasAnySenses = false;
     questions.forEach(function (q, idx) {
       if (!q.senses || !q.senses.length) return;
@@ -654,15 +653,11 @@
       // 只有整个词条被删掉才会失效）。找不到编号前缀（理论上不会发生，
       // N2词汇内容模块的title字段固定是"四位数字. 词"格式）时退回undefined，
       // 下游 errKey()/stableItemCode() 会自己退回旧逻辑，不会报错。
-      var numMatch = /^(\d+)\./.exec(q.question || "");
+      // 编号允许带一个小写字母后缀（"1001a."/"1001b."）：书上偶尔把同一个编号
+      // 印两次（第7单元裁判/裁判所都是1001），内容模块里用字母后缀保持顺序，
+      // numLabel 也带字母，所以仍然全局唯一。
+      var numMatch = /^(\d+[a-z]?)\./.exec(q.question || "");
       var numLabel = numMatch ? numMatch[1] : undefined;
-      // 书上偶尔会把同一个编号印两次（第7单元"1001. 裁判"/"1001. 裁判所"），
-      // numLabel 是错题记录 key/导出题号，必须全局唯一：后出现的加"b"后缀
-      // （"1001b"）。标题里显示的编号仍然是书上原样的"1001"。
-      if (numLabel) {
-        if (seenNumLabels[numLabel]) numLabel = numLabel + "b";
-        seenNumLabels[numLabel] = true;
-      }
       var item = {
         id: QUIZ_ID_OFFSET + (idx + 1), text: q.text, kana: q.kana,
         zh: renderSenseLine(q.senses[0]), sentences: sentences,
