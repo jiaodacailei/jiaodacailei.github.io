@@ -133,6 +133,11 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
     ("教信", "者"): "じゃ",          # キリスト教信者（キリスト教+信者）
     ("淡路", "大震"): "だいしん",    # 阪神淡路大震災
     ("二", "大政"): "だいせい",      # 二大政党
+    # N2词汇第11单元例句里的错读：
+    ("一世", "帯"): "たい",          # 一世帯（いっせたい）
+    ("前世", "紀"): "いき",          # 前世紀（ぜんせいき）：前世(ぜんせ)+紀(いき)
+    ("太鼓", "腹"): "ばら",          # 太鼓腹（たいこばら）
+    ("靴下", "一足"): "いっそく",    # 靴下一足（Sudachi 读成ひとあし）
     # "忘れ事"=わすれごと（词条"～事（～ごと）"）。
     ("忘れ", "事"): "ごと",
     # "胃腸炎"（いちょうえん）pykakasi 把"炎"当孤立训读ほのお，但接在"胃腸"等
@@ -230,6 +235,10 @@ _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
     "鎮め": "しずめ",
     # 第10单元：SudachiPy 把这两个读错（pykakasi 本来是对的）
     "心配事": "しんぱいごと",   # 心配事（しんぱいごと），Sudachi 读成こと
+    # 第11单元：Sudachi 覆盖 pykakasi 的几处
+    "行く": "いく",             # 時代の先端を行く（Sudachi 读成おこなく）
+    "川沿い": "かわぞい",       # 川沿い（Sudachi 读成かわそい）
+    "陽の": "ようの",           # 陰は陽の対だ（Sudachi 读成ひの）
     "富士山": "ふじさん",       # Sudachi/pykakasi 合并后读成ふじやま
     # pykakasi 把"雨がさっと降る"切成"雨がさ"（雨傘あまがさ）+"っと"，单字雨读あめ
     "雨がさ": "あめがさ",
@@ -477,6 +486,24 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # "生を受ける"（この世に生を受ける）：词条"生（せい）"的例句，pykakasi 读 なま
     if orig == "生" and next_char == "を":
         return "せい"
+    # 第11单元：数词/量词搭配的读法
+    # "30分/10分/20分"（以0结尾的数字+分）读ぷん（さんじゅっぷん），pykakasi 默认读ふん
+    if orig == "分" and prev_orig and prev_orig[-1] in "０0":
+        return "ぷん"
+    if orig == "一世" and next_char == "帯":
+        return "いっせ"          # 一世帯（いっせたい）
+    if orig == "三世" and next_char == "代":
+        return "さんせ"          # 三世代（さんせだい）
+    if orig == "一" and next_char == "艘":
+        return "いっ"            # 一艘（いっそう）
+    if orig == "一" and next_char == "揃":
+        return "ひと"            # 一揃い（ひとそろい）
+    # "その節""節を守る"：词条"節（せつ）"，孤立的节读ふし
+    if orig == "節" and (prev_orig == "その" or next_char == "を"):
+        return "せつ"
+    # "陰は陽の対だ"：陰陽（いんよう）
+    if orig == "陰" and next_char == "は":
+        return "いん"
     # "幼なじみ"=おさななじみ
     if orig == "幼" and next_char == "な":
         return "おさな"
