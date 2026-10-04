@@ -2882,10 +2882,10 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   // 自己的份"。组数少（绝大多数词条2~3组）、token数也少，这套标准算法
   // 的开销可以忽略不计。
   //
-  // 额外对userTokens去重（同一个字符串出现两次时只留一个）——不去重的话
-  // 用户打"空，空"这种把同一个碎片重复写两遍的答案，会在二分图匹配里被
-  // 当成两个不同的"token槽位"分别顶上两组，绕开刚修的这个漏洞：两次都是
-  // 同一个字，并不代表真的写出了两个不同的正确答案。
+  // 【2026-10-04 改】原来额外对userTokens去重（同一个字符串出现两次时只留一个），为的是堵"空，空"这种
+  // 把同一个碎片重复写两遍、在二分图匹配里顶上两组的答案。用户反馈：两个意思里都含同一个字 A 时，自己写
+  // "A A"（每个意思各写一遍）被判错，不合理——所以**去掉去重**：每个 token 仍是一对一匹配（一个答案只能
+  // 顶一组），答案数少于组数照样判错；代价是两组都含同一个字时，写"空 空"也能过（用户接受）。
   function bipartiteGroupsMatched(groups, tokens) {
     var n = tokens.length;
     var matchOfToken = new Array(n).fill(-1); // token下标 -> 匹配到的组下标
@@ -2919,12 +2919,9 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
         return quizStripPunct(seg).indexOf(vStripped) !== -1;
       });
     }
-    var seenTokens = {};
-    var userTokens = splitZhAnswers(raw).map(quizStripPunct).filter(Boolean).filter(function(tok) {
-      if (seenTokens[tok]) return false;
-      seenTokens[tok] = true;
-      return true;
-    });
+    // 不对用户答案去重（2026-10-04 改，见 bipartiteGroupsMatched 上方注释）：两个意思里都含同一个字时，
+    // 写"A A"允许各顶一组；仍是一对一匹配，答案数不够组数照样判错。
+    var userTokens = splitZhAnswers(raw).map(quizStripPunct).filter(Boolean);
     if (userTokens.length < groups.length) return false;
     return bipartiteGroupsMatched(groups, userTokens) === groups.length;
   }
