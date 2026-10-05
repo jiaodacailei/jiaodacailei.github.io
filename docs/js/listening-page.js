@@ -1121,8 +1121,12 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       tab = m[1];
       if (m[2]) { targetId = "q-" + tab + "-" + m[2]; el = document.getElementById(targetId); }
     }
-    // 重试（见下面 runDeepLink）：目标词已经在预期位置就什么都不做，不重复切 tab/滚动/播放
-    if (retry && (!el || (el.offsetParent !== null && Math.abs(el.getBoundingClientRect().top - (BARE ? 12 : 100)) < 40))) return;
+    // 重试（见下面 runDeepLink）：目标词已经在预期位置就什么都不做，不重复切 tab/滚动。
+    // 注意：activate() 第一行会派发 stopAllAudio 停掉所有音频，所以 ?play= 的自动播放必须排在所有重试之后（见 runDeepLink），
+    // 重试时才不会碰到正在播的音频（2026-10-05 曾因为重试和自动播放同时发生，用户反馈"现在没有声音了"）。
+    // 另外：有音频在播时一律不重试（播放时页面会把卡片滚到可视位置，目标词位置变化是正常的，不是"错位"）。
+    if (retry && (!el || anyAudioPlaying() ||
+        (el.offsetParent !== null && Math.abs(el.getBoundingClientRect().top - (BARE ? 12 : 100)) < 40))) return;
     activate(tab, { skipScroll: true });
     if (!targetId) { window.scrollTo(0, 0); return; }
     if (!el) return;
@@ -1137,13 +1141,19 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     window.scrollTo({ top: el.offsetTop - (BARE ? 12 : 100), behavior: "auto" });
     setCurrent(targetId);
     try { localStorage.setItem(tabScrollKey(tab), targetId); } catch (e) {}
-    if (!retry) autoPlayAfterDeepLink(el);
+    deepLinkTarget = el;
   }
   // ?play=word | s<序号>（2026-10-05，嵌进别的系统用，配合 ?qs= 定位到词条）：定位完成后自动播放——
   // word = 词条标题自己的发音（等于点了标题），s0/s1/… = 该词条第几个例句（从 0 起，按页面里例句卡片的顺序）的音频
   // （等于点了那张例句卡片）。直接复用点击处理，所以播放队列/视觉反馈/变速和手点完全一致。
   // 浏览器的自动播放限制：被嵌进别的页面（iframe）时，外层页面要给 iframe 加 allow="autoplay"，并且用户之前在外层页面
   // 点过东西（比如点了"学习"按钮）才会真的出声；直接打开本页或限制严格的浏览器（Safari/手机）可能被拦，静默不播，不影响其它功能。
+  var deepLinkTarget = null;   // 最近一次定位到的词条元素，自动播放用
+  function anyAudioPlaying() {
+    var as = document.querySelectorAll("audio");
+    for (var i = 0; i < as.length; i++) { if (!as[i].paused && !as[i].ended) return true; }
+    return false;
+  }
   function autoPlayAfterDeepLink(qb) {
     var what;
     try { what = new URLSearchParams(location.search).get("play"); } catch (e) { return; }
@@ -1172,6 +1182,8 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     [300, 1000].forEach(function(ms) {
       setTimeout(function() { if (!deepLinkUserMoved) applyDeepLink(true); }, ms);
     });
+    // ?play= 的自动播放排在所有重试之后（1.1s）：位置稳定了再播，重试绝不会碰到正在播的音频
+    setTimeout(function() { if (deepLinkTarget) autoPlayAfterDeepLink(deepLinkTarget); }, 1100);
   }
   var deepLinkContent = document.getElementById("content");
   if (!deepLinkContent || getComputedStyle(deepLinkContent).display !== "none") {
