@@ -1017,6 +1017,12 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   `private-gate.js` 验证完（无论成败）去掉这个 class。已写进 `build_page.py` 两个
   页面模板，并批量补到现有 42 个 gate 页面；**以后新增别的 gate 页面模板要带上这段**，
   否则那种页面在 URL 带密码时验证期间仍会闪一下登录框。
+- **`?play=word|s<序号>`（2026-10-05）**：和 `?qs=` 组合，定位到词条后**自动播放**——`word` = 词条标题的单词音频
+  （等于点了 h3），`s0`/`s1`/… = 该词条第几个例句（0 起，按词条内 `.seg-card` 顺序，也就是 data.js `sentences` 的顺序）的音频
+  （等于点了那张例句卡片）。实现是 `applyDeepLink()` 末尾的 `autoPlayAfterDeepLink()`，直接派发点击，所以和手点完全一致
+  （播放队列/变速/视觉反馈）。如 `?bare=1&qs=w0201&play=s1#pw=密码`。**浏览器自动播放限制**：被 iframe 嵌入时外层要给 iframe 加
+  `allow="autoplay"`，且用户之前在外层页面点过东西才会出声；Safari/手机/Firefox 可能被拦，静默不播，不影响其它功能。
+  给 jdc0_jp 的网页学习弹框右栏用（词汇例句填空题播例句音频，其它词汇题播单词音频）。
 
 ## 第7单元（词汇07）实录：5 agent 转录 + 5 agent 校验，踩的坑（2026-10-02）
 

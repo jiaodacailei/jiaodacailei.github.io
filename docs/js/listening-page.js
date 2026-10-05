@@ -1135,6 +1135,28 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     window.scrollTo({ top: el.offsetTop - (BARE ? 12 : 100), behavior: "auto" });
     setCurrent(targetId);
     try { localStorage.setItem(tabScrollKey(tab), targetId); } catch (e) {}
+    autoPlayAfterDeepLink(el);
+  }
+  // ?play=word | s<序号>（2026-10-05，嵌进别的系统用，配合 ?qs= 定位到词条）：定位完成后自动播放——
+  // word = 词条标题自己的发音（等于点了标题），s0/s1/… = 该词条第几个例句（从 0 起，按页面里例句卡片的顺序）的音频
+  // （等于点了那张例句卡片）。直接复用点击处理，所以播放队列/视觉反馈/变速和手点完全一致。
+  // 浏览器的自动播放限制：被嵌进别的页面（iframe）时，外层页面要给 iframe 加 allow="autoplay"，并且用户之前在外层页面
+  // 点过东西（比如点了"学习"按钮）才会真的出声；直接打开本页或限制严格的浏览器（Safari/手机）可能被拦，静默不播，不影响其它功能。
+  function autoPlayAfterDeepLink(qb) {
+    var what;
+    try { what = new URLSearchParams(location.search).get("play"); } catch (e) { return; }
+    if (!what) return;
+    try {
+      if (what === "word") {
+        var h3 = qb.querySelector("h3");
+        if (h3 && qb.querySelector("audio.word-audio")) h3.click();
+        return;
+      }
+      var m = /^s(\d+)$/.exec(what);
+      if (!m) return;
+      var card = qb.querySelectorAll(".seg-card")[parseInt(m[1], 10)];
+      if (card) card.click();
+    } catch (e) {}
   }
   var deepLinkContent = document.getElementById("content");
   if (!deepLinkContent || getComputedStyle(deepLinkContent).display !== "none") {
