@@ -1023,6 +1023,9 @@ python tools/listening/build_n2_reference_page.py docs/private/n2-vocab \
   （播放队列/变速/视觉反馈）。如 `?bare=1&qs=w0201&play=s1#pw=密码`。**浏览器自动播放限制**：被 iframe 嵌入时外层要给 iframe 加
   `allow="autoplay"`，且用户之前在外层页面点过东西才会出声；Safari/手机/Firefox 可能被拦，静默不播，不影响其它功能。
   给 jdc0_jp 的网页学习弹框右栏用（词汇例句填空题播例句音频，其它词汇题播单词音频）。
+- **深链接定位重试（2026-10-05）**：`?qs=` 定位后再补做两次"目标词不在预期位置（bare 距顶 12px，非 bare 100px）就再滚一次"（300ms、1s 后；
+  `runDeepLink()` / `applyDeepLink(retry)`）。起因：嵌在 jdc0_jp 学习弹框右栏时，真实反馈过页面停在单元顶部（0151）没滚到目标词，
+  慢网络下"解锁→切单元→渲染→滚动"的先后不确定。用户在这期间滚动/点击/按键过就不再干预；重试不重复切 tab、不重复自动播放。
 
 ## 第7单元（词汇07）实录：5 agent 转录 + 5 agent 校验，踩的坑（2026-10-02）
 

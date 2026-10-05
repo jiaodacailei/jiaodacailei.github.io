@@ -1087,7 +1087,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
   var BARE = false;
   try { BARE = new URLSearchParams(location.search).has("bare"); } catch (e) {}
   if (BARE) document.body.classList.add("bare-mode");
-  function applyDeepLink() {
+  function applyDeepLink(retry) {
     var qs;
     try { qs = new URLSearchParams(location.search).get("qs"); } catch (e) { return; }
     qs = qs && qs.trim();
@@ -1121,6 +1121,8 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       tab = m[1];
       if (m[2]) { targetId = "q-" + tab + "-" + m[2]; el = document.getElementById(targetId); }
     }
+    // 重试（见下面 runDeepLink）：目标词已经在预期位置就什么都不做，不重复切 tab/滚动/播放
+    if (retry && (!el || (el.offsetParent !== null && Math.abs(el.getBoundingClientRect().top - (BARE ? 12 : 100)) < 40))) return;
     activate(tab, { skipScroll: true });
     if (!targetId) { window.scrollTo(0, 0); return; }
     if (!el) return;
@@ -1135,7 +1137,7 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
     window.scrollTo({ top: el.offsetTop - (BARE ? 12 : 100), behavior: "auto" });
     setCurrent(targetId);
     try { localStorage.setItem(tabScrollKey(tab), targetId); } catch (e) {}
-    autoPlayAfterDeepLink(el);
+    if (!retry) autoPlayAfterDeepLink(el);
   }
   // ?play=word | s<序号>（2026-10-05，嵌进别的系统用，配合 ?qs= 定位到词条）：定位完成后自动播放——
   // word = 词条标题自己的发音（等于点了标题），s0/s1/… = 该词条第几个例句（从 0 起，按页面里例句卡片的顺序）的音频
@@ -1158,11 +1160,24 @@ var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentC
       if (card) card.click();
     } catch (e) {}
   }
+  // 2026-10-05 定位完成后再补做两次"目标词不在预期位置就再滚一次"（300ms、1s 后）：嵌进别的系统（?bare=1）时，慢网络下
+  // 解锁/切单元/内容渲染的先后不确定，真实反馈过"右栏停在单元顶部（0151），没有滚到目标词"。用户在这期间自己滚动/点击过
+  // 就不再干预，避免把用户拉回去。
+  var deepLinkUserMoved = false;
+  function runDeepLink() {
+    applyDeepLink(false);
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach(function(ev) {
+      window.addEventListener(ev, function() { deepLinkUserMoved = true; }, { once: true, passive: true });
+    });
+    [300, 1000].forEach(function(ms) {
+      setTimeout(function() { if (!deepLinkUserMoved) applyDeepLink(true); }, ms);
+    });
+  }
   var deepLinkContent = document.getElementById("content");
   if (!deepLinkContent || getComputedStyle(deepLinkContent).display !== "none") {
-    applyDeepLink();
+    runDeepLink();
   } else {
-    document.addEventListener("gateunlocked", applyDeepLink, { once: true });
+    document.addEventListener("gateunlocked", runDeepLink, { once: true });
   }
 
   var snmToggle = document.getElementById("snmToggle");
