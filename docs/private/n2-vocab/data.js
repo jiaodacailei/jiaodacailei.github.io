@@ -25372,7 +25372,7 @@ window.LESSON_DATA = {
                 {
                   "text": "和訳",
                   "kana": "わやく",
-                  "t": 1.13
+                  "t": 0.74
                 }
               ],
               "zh": "英译日",
@@ -25380,7 +25380,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "英文"
               ],
-              "audio": "audio/seg-63df00000a03.mp3"
+              "audio": "audio/seg-201dbaa72683.mp3"
             }
           ],
           "groups": null,
