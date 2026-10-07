@@ -31903,7 +31903,7 @@ window.LESSON_DATA = {
           "overview": "[名] 雄，公\n（反义词：雌(めす)②[名] 雌，母）",
           "answer": "",
           "unit": "第3单元",
-          "wordAudio": "audio/word-8c5744d0f6d8.mp3",
+          "wordAudio": "audio/word-0f40454243d0.mp3",
           "pitch": "②",
           "sentences": [
             {
@@ -31918,7 +31918,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.56
+                  "t": 0.58
                 },
                 {
                   "text": "犬",
@@ -31931,7 +31931,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "雄"
               ],
-              "audio": "audio/seg-c01009791e33.mp3"
+              "audio": "audio/seg-6ed910da200b.mp3"
             }
           ],
           "groups": null,
