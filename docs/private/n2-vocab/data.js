@@ -33992,7 +33992,7 @@ window.LESSON_DATA = {
           "overview": "[名] 带子，腰带；带状物",
           "answer": "",
           "unit": "第3单元",
-          "wordAudio": "audio/word-bfdc9b8d50c7.mp3",
+          "wordAudio": "audio/word-18b6c0d02fa4.mp3",
           "pitch": "①",
           "sentences": [
             {
@@ -34034,30 +34034,30 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.46
+                  "t": 0.48
                 },
                 {
                   "text": "短",
-                  "kana": "たん",
-                  "t": 0.74
+                  "kana": "みじか",
+                  "t": 0.72
                 },
                 {
                   "text": "し",
-                  "t": 1.1
+                  "t": 1.02
                 },
                 {
                   "text": "襷",
                   "kana": "たすき",
-                  "t": 1.1
+                  "t": 1.02
                 },
                 {
                   "text": "に",
-                  "t": 1.64
+                  "t": 1.62
                 },
                 {
                   "text": "長",
                   "kana": "なが",
-                  "t": 1.78
+                  "t": 1.82
                 },
                 {
                   "text": "し",
@@ -34069,7 +34069,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "帯"
               ],
-              "audio": "audio/seg-689a3615c279.mp3"
+              "audio": "audio/seg-589b96ae733b.mp3"
             }
           ],
           "groups": null,
