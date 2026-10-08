@@ -33061,7 +33061,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "脅",
-                  "kana": "きょう",
+                  "kana": "おど",
                   "t": 0.82
                 },
                 {
@@ -33113,7 +33113,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "脅",
-                  "kana": "きょう",
+                  "kana": "おど",
                   "t": 1.74
                 },
                 {
