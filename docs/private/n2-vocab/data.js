@@ -15581,7 +15581,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "間",
-                  "kana": "あいだ",
+                  "kana": "ま",
                   "t": 0.74
                 },
                 {
