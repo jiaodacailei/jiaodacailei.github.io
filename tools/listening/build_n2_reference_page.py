@@ -714,6 +714,13 @@ def build_point_sentences(units, model, audio_dir, tmp_wav, stats, mondai_label,
             word_tts_text = derive_reading(question_label, word_text) if (
                 "/" in word_text or "／" in word_text or _paren_has_multi_reading
             ) else word_text
+            # 标题带汉字、括号里是单一纯假名读音（"雄（おす）""～下（～か）"）时，
+            # 直接把括号里的读音喂给TTS，不让它对孤立汉字/前后缀猜读音——以前只
+            # 靠TTS_EXACT_TEXT_OVERRIDES逐个补，真实反馈"后面不是有kana吗？为啥
+            # 还读错？"。多读音/斜杠/英文词源括注的词条不走这条，保持原逻辑。
+            if word_tts_text == word_text and not _KANA_ONLY_RE.match(word_text):
+                if _paren_m and _KANA_ONLY_RE.match(_paren_m.group(1)):
+                    word_tts_text = _paren_m.group(1).replace("～", "").replace("・", "") or word_tts_text
             word_tts_text = TTS_WORD_TEXT_BY_LABEL.get(question_label, word_tts_text)
             word_audio = synth_word_audio(word_tts_text, audio_dir, word_id, stats) if word_text else None
             word_audio_by_id[word_id] = word_audio
