@@ -39117,7 +39117,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "正",
-                  "kana": "まさ",
+                  "kana": "ただ",
                   "t": 0
                 },
                 {
@@ -39142,7 +39142,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "解釈する"
               ],
-              "audio": "audio/seg-1340e77b5572.mp3"
+              "audio": "audio/seg-5c99ca06037e.mp3"
             },
             {
               "id": 678,
