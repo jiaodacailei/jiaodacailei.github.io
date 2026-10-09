@@ -36532,7 +36532,7 @@ window.LESSON_DATA = {
           "overview": "[接頭] 增添敬意，凸显礼貌，比「お」更为郑重",
           "answer": "",
           "unit": "第3单元",
-          "wordAudio": "audio/word-0b23495666c0.mp3",
+          "wordAudio": "audio/word-58a7619b240f.mp3",
           "pitch": null,
           "sentences": [
             {
@@ -36542,7 +36542,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "御礼",
-                  "kana": "おれい",
+                  "kana": "おんれい",
                   "t": 0
                 }
               ],
@@ -36551,7 +36551,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "御"
               ],
-              "audio": "audio/seg-84be1533b020.mp3"
+              "audio": "audio/seg-316323f35e4f.mp3"
             }
           ],
           "groups": null,
