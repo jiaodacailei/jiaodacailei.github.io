@@ -37111,7 +37111,7 @@ window.LESSON_DATA = {
           "overview": "[接尾] 在……之下",
           "answer": "",
           "unit": "第3单元",
-          "wordAudio": "audio/word-ea87ff234cae.mp3",
+          "wordAudio": "audio/word-288c9e077190.mp3",
           "pitch": null,
           "sentences": [
             {
