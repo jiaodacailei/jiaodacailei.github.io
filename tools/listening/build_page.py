@@ -125,6 +125,10 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
     ("を", "退か"): "どか", ("を", "退け"): "どけ",
     ("取り", "締"): "しま", ("カツ", "丼"): "どん",
     ("長", "殿"): "どの", (None, "親か"): "おやか",
+    # 第15单元例句
+    ("晴れ", "後"): "のち", (None, "梅雨前線"): "ばいうぜんせん", ("盗み", "見"): "み",
+    ("同年", "配"): "ぱい", ("ものを", "退け"): "どけ",
+    (None, "排気ガス"): "はいきがす", ("年度", "替り"): "がわり",
     # "正しく解释する。"：正しく读ただしく（pykakasi读まさ）
     (None, "正しく"): "ただしく",
     # 0364「御～（おん～）」例句"御礼"：按词条读おんれい（pykakasi读おれい）
@@ -586,6 +590,11 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # 拆成独立的"間"字，不受这条规则影响。）
     # 2061「止まる/留まる（とどまる）」的两条例句里"止まる"读とどまる（pykakasi读とま）；
     # 限定前两个token，不误伤"木に止まる""電車が止まる"之类读とまる的句子。
+    # 第15单元："軒の下で雨宿り"的下读した、"文章の体はまだ為していない"的体读たい（Sudachi/pykakasi默认读もと/からだ）
+    if orig == "下" and prev_orig == "の" and prev2_orig == "軒":
+        return "した"
+    if orig == "体" and prev_orig == "の" and prev2_orig == "文章":
+        return "たい"
     if orig == "止ま" and ((prev_orig == "に" and prev2_orig == "外傷") or (prev_orig == "は" and prev2_orig == "上昇")):
         return "とどま"
     if orig == "間":
@@ -1152,7 +1161,9 @@ def tokenize_ja(text, char_times=None, vocab_readings=None):
             tok_start = line_offset
             next_char = line[line_offset + tok_len] if line_offset + tok_len < len(line) else ""
             line_offset += tok_len
-            if vocab_readings and orig in vocab_readings and (prev_orig, orig) not in _TOKEN_READING_OVERRIDES_BY_PREV:
+            if orig == "何" and line.startswith("何にも", tok_start):
+                hira = "なん"  # 何にも（なんにも）：pykakasi读なに
+            elif vocab_readings and orig in vocab_readings and (prev_orig, orig) not in _TOKEN_READING_OVERRIDES_BY_PREV:
                 hira = vocab_readings[orig]
             elif (prev_orig, orig) in _TOKEN_READING_OVERRIDES_BY_PREV:
                 # BY_PREV 必须先于 UNCONDITIONAL 检查——"君"同时出现在两张表
