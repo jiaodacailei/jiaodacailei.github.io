@@ -134,6 +134,9 @@ _TOKEN_READING_OVERRIDES_BY_PREV = {
     ("か", "月間"): "げつかん", ("引き", "止める"): "とめる", ("引き", "止めら"): "とめら",
     # 第17单元例句
     (None, "一通り"): "ひととおり", ("て", "何も"): "なにも", ("お", "札"): "ふだ",
+    # 第18单元例句
+    ("第一", "編"): "ぺん", ("ぼろ", "車"): "ぐるま", ("ぼろ", "靴"): "ぐつ",
+    (None, "資金繰り"): "しきんぐり",
     # "正しく解释する。"：正しく读ただしく（pykakasi读まさ）
     (None, "正しく"): "ただしく",
     # 0364「御～（おん～）」例句"御礼"：按词条读おんれい（pykakasi读おれい）
@@ -269,6 +272,7 @@ _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
     "出生届": "しゅっせいとど", "幾年月": "いくとしつき",
     "二泊三日": "にはくさんにち",
     "雛祭": "ひなまつ", "古新聞": "ふるしんぶん",
+    "無礼者": "ぶれいもの", "資金繰": "しきんぐ", "八平": "はちへい", "二日": "ふつか", "一歩前": "いっぽまえ", "二本": "にほん",
     "重複": "ちょうふく",
     # 第13单元：pykakasi 把"通行止め/紙包み/二人連れ"的送假名也并进了读音（后面再重复一个め/み/れ）；
     # "尽き"被误读ことごとき；"艶"被Sudachi误读えん；"三千"误读さんせん；"三年間日本"的"間日"被连读まび。
@@ -612,6 +616,17 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # 2419「日の入り」：句首的"日の…"读ひ（pykakasi/Sudachi读にち）
     if orig == "日" and prev_orig is None and next_char == "の":
         return "ひ"
+    # 第18单元：震わせる(ふる)、第一編(だいいっ)、百遍(ひゃっ)、十分ほど(じゅっぷん)、見誤る(み)
+    if orig == "震" and next_char == "わ":
+        return "ふる"
+    if orig == "第一" and next_char == "編":
+        return "だいいっ"
+    if orig == "百" and next_char == "遍":
+        return "ひゃっ"
+    if orig == "十分" and next_char == "ほ":
+        return "じゅっぷん"
+    if orig == "見" and next_char == "誤":
+        return "み"
     if orig == "止ま" and ((prev_orig == "に" and prev2_orig == "外傷") or (prev_orig == "は" and prev2_orig == "上昇")):
         return "とどま"
     if orig == "間":
