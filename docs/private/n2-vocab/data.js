@@ -254860,6 +254860,20381 @@ window.LESSON_DATA = {
               ]
             }
           ]
+        },
+        {
+          "question": "2701. 前もって（まえもって）",
+          "overview": "[副] 事先，预先",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-3c93c5b8f106.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4786,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "前",
+                  "kana": "まえ",
+                  "t": 0
+                },
+                {
+                  "text": "も",
+                  "t": 0.52
+                },
+                {
+                  "text": "って",
+                  "t": 0.7
+                },
+                {
+                  "text": "連絡",
+                  "kana": "れんらく",
+                  "t": 0.9
+                },
+                {
+                  "text": "を",
+                  "t": 1.32
+                },
+                {
+                  "text": "取",
+                  "kana": "と",
+                  "t": 1.5
+                },
+                {
+                  "text": "る",
+                  "t": 1.66
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "事先取得联络。",
+              "notes": "",
+              "blanks": [
+                "前もって"
+              ],
+              "audio": "audio/seg-3d5512a5c9c3.mp3"
+            },
+            {
+              "id": 4787,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "前",
+                  "kana": "まえ",
+                  "t": 0
+                },
+                {
+                  "text": "も",
+                  "t": 0.5
+                },
+                {
+                  "text": "って",
+                  "t": 0.72
+                },
+                {
+                  "text": "準備",
+                  "kana": "じゅんび",
+                  "t": 0.9
+                },
+                {
+                  "text": "して",
+                  "t": 1.26
+                },
+                {
+                  "text": "お",
+                  "t": 1.56
+                },
+                {
+                  "text": "く",
+                  "t": 1.72
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "预先做好准备。",
+              "notes": "",
+              "blanks": [
+                "前もって"
+              ],
+              "audio": "audio/seg-ce99ae3014f2.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "前もって",
+          "kana": "まえもって",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "事先",
+                  "预先"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2702. 負かす（まかす）",
+          "overview": "[他動1] 打败……，战胜\n（关联词：負ける(まける)③⓪[自動2] 战败,输;屈服,示弱;降低价钱,让价,减价）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-be82635824ec.mp3",
+          "pitch": "⓪②",
+          "sentences": [
+            {
+              "id": 4788,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "一点",
+                  "kana": "いちてん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.68
+                },
+                {
+                  "text": "差",
+                  "kana": "さ",
+                  "t": 0.86
+                },
+                {
+                  "text": "で",
+                  "t": 0.96
+                },
+                {
+                  "text": "相手",
+                  "kana": "あいて",
+                  "t": 1.34
+                },
+                {
+                  "text": "を",
+                  "t": 1.7
+                },
+                {
+                  "text": "負",
+                  "kana": "ま",
+                  "t": 1.86
+                },
+                {
+                  "text": "か",
+                  "t": 1.86
+                },
+                {
+                  "text": "す",
+                  "t": 2.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "以一分的优势击败对手。",
+              "notes": "",
+              "blanks": [
+                "負かす"
+              ],
+              "audio": "audio/seg-0fd2c5bfef65.mp3"
+            },
+            {
+              "id": 4789,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ライ",
+                  "t": 0
+                },
+                {
+                  "text": "バ",
+                  "t": 0.54
+                },
+                {
+                  "text": "ル",
+                  "t": 0.68
+                },
+                {
+                  "text": "を",
+                  "t": 0.8
+                },
+                {
+                  "text": "負",
+                  "kana": "ま",
+                  "t": 0.94
+                },
+                {
+                  "text": "かす",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "击败对手。",
+              "notes": "",
+              "blanks": [
+                "負かす"
+              ],
+              "audio": "audio/seg-8cdac9103594.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "負かす",
+          "kana": "まかす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "打败……",
+                  "战胜"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "負ける",
+              "kana": "まける",
+              "zh": "战败,输;屈服,示弱;降低价钱,让价,减价"
+            }
+          ]
+        },
+        {
+          "question": "2703. 薪（まき）",
+          "overview": "[名] 木柴，柴火",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b36f8e6d0f98.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4790,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "薪",
+                  "kana": "まき",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.72
+                },
+                {
+                  "text": "割",
+                  "kana": "わ",
+                  "t": 0.88
+                },
+                {
+                  "text": "る",
+                  "t": 1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "劈柴。",
+              "notes": "",
+              "blanks": [
+                "薪"
+              ],
+              "audio": "audio/seg-efe56995ff19.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "薪",
+          "kana": "まき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "木柴",
+                  "柴火"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2704. 幕（まく）",
+          "overview": "[名] 帐幕，帷幔；场面，时候",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9ead08512a11.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4791,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "幕",
+                  "kana": "まく",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.5
+                },
+                {
+                  "text": "開",
+                  "kana": "ひら",
+                  "t": 0.74
+                },
+                {
+                  "text": "く",
+                  "t": 0.96
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "开幕,开始。",
+              "notes": "",
+              "blanks": [
+                "幕"
+              ],
+              "audio": "audio/seg-61f3b3d7b827.mp3"
+            },
+            {
+              "id": 4792,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "今",
+                  "kana": "いま",
+                  "t": 0
+                },
+                {
+                  "text": "は",
+                  "t": 0.48
+                },
+                {
+                  "text": "まだ",
+                  "t": 0.74
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
+                  "t": 1.04
+                },
+                {
+                  "text": "る",
+                  "t": 1.16
+                },
+                {
+                  "text": "幕",
+                  "kana": "まく",
+                  "t": 1.32
+                },
+                {
+                  "text": "では",
+                  "t": 1.44
+                },
+                {
+                  "text": "ない",
+                  "t": 1.78
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "现在还不是出面的时候。",
+              "notes": "",
+              "blanks": [
+                "幕"
+              ],
+              "audio": "audio/seg-979d827cf5d3.mp3"
+            },
+            {
+              "id": 4793,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "幕",
+                  "kana": "まく",
+                  "t": 0
+                },
+                {
+                  "text": "にな",
+                  "t": 0.54
+                },
+                {
+                  "text": "る",
+                  "t": 0.86
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "结束。",
+              "notes": "",
+              "blanks": [
+                "幕"
+              ],
+              "audio": "audio/seg-89c351d20f22.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "幕",
+          "kana": "まく",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "帐幕",
+                  "帷幔"
+                ],
+                [
+                  "场面",
+                  "时候"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2705. 負け（まけ）",
+          "overview": "[名] 输，败北；降价，打折扣，附赠（的东西）\n（惯用语：負けが込む。/连续败北。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-95912f3a94c0.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4794,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "今回",
+                  "kana": "こんかい",
+                  "t": 0
+                },
+                {
+                  "text": "は",
+                  "t": 0.62
+                },
+                {
+                  "text": "君",
+                  "kana": "きみ",
+                  "t": 0.88
+                },
+                {
+                  "text": "の",
+                  "t": 1.14
+                },
+                {
+                  "text": "負",
+                  "kana": "ま",
+                  "t": 1.36
+                },
+                {
+                  "text": "け",
+                  "t": 1.52
+                },
+                {
+                  "text": "だ",
+                  "t": 1.62
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "这回是你输了。",
+              "notes": "",
+              "blanks": [
+                "負け"
+              ],
+              "audio": "audio/seg-abebe04af220.mp3"
+            },
+            {
+              "id": 4795,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "お",
+                  "t": 0
+                },
+                {
+                  "text": "負",
+                  "kana": "ま",
+                  "t": 0.42
+                },
+                {
+                  "text": "け",
+                  "t": 0.54
+                },
+                {
+                  "text": "が",
+                  "t": 0.7
+                },
+                {
+                  "text": "つ",
+                  "t": 0.84
+                },
+                {
+                  "text": "く",
+                  "t": 1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "附带赠品。",
+              "notes": "",
+              "blanks": [
+                "負け"
+              ],
+              "audio": "audio/seg-1e37b46e7bb2.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "負け",
+          "kana": "まけ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "输",
+                  "败北"
+                ],
+                [
+                  "降价",
+                  "打折扣",
+                  "附赠（的东西）"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2706. 負け組（まけぐみ）",
+          "overview": "[名] （在某一领域或事业中）未成功的团队，败者的一方\n（反义词：勝ち組(かちぐみ)⓪[名] （在某一领域或事业中）取得成功的团队,胜者的一方）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d9df1c001d6c.mp3",
+          "pitch": "⓪②",
+          "sentences": [
+            {
+              "id": 4796,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "これ",
+                  "t": 0
+                },
+                {
+                  "text": "から",
+                  "t": 0.48
+                },
+                {
+                  "text": "も",
+                  "t": 0.74
+                },
+                {
+                  "text": "負",
+                  "kana": "ま",
+                  "t": 0.94
+                },
+                {
+                  "text": "け",
+                  "t": 1.12
+                },
+                {
+                  "text": "組",
+                  "kana": "ぐみ",
+                  "t": 1.24
+                },
+                {
+                  "text": "の",
+                  "t": 1.36
+                },
+                {
+                  "text": "ま",
+                  "t": 1.6
+                },
+                {
+                  "text": "まで",
+                  "t": 1.74
+                },
+                {
+                  "text": "いい",
+                  "t": 1.92
+                },
+                {
+                  "text": "の",
+                  "t": 2.16
+                },
+                {
+                  "text": "か",
+                  "t": 2.36
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "今后也依旧甘愿当败者吗？",
+              "notes": "",
+              "blanks": [
+                "負け組"
+              ],
+              "audio": "audio/seg-681f9a88f085.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "負け組",
+          "kana": "まけぐみ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "（在某一领域或事业中）未成功的团队",
+                  "败者的一方"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "勝ち組",
+              "kana": "かちぐみ",
+              "zh": "（在某一领域或事业中）取得成功的团队,胜者的一方"
+            }
+          ]
+        },
+        {
+          "question": "2707. まごつく",
+          "overview": "[自動1] 徘徊，彷徨；张皇失措",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1a359c8848d0.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4797,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "駅",
+                  "kana": "えき",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.52
+                },
+                {
+                  "text": "出口",
+                  "kana": "でぐち",
+                  "t": 0.7
+                },
+                {
+                  "text": "で",
+                  "t": 1.02
+                },
+                {
+                  "text": "ま",
+                  "t": 1.24
+                },
+                {
+                  "text": "ご",
+                  "t": 1.42
+                },
+                {
+                  "text": "つ",
+                  "t": 1.56
+                },
+                {
+                  "text": "く",
+                  "t": 1.7
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在车站出口处徘徊。",
+              "notes": "",
+              "blanks": [
+                "まごつく"
+              ],
+              "audio": "audio/seg-1690cbbdc214.mp3"
+            },
+            {
+              "id": 4798,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "返事",
+                  "kana": "へんじ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.64
+                },
+                {
+                  "text": "ま",
+                  "t": 0.78
+                },
+                {
+                  "text": "ご",
+                  "t": 0.98
+                },
+                {
+                  "text": "つ",
+                  "t": 1.12
+                },
+                {
+                  "text": "く",
+                  "t": 1.26
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不知如何回答。",
+              "notes": "",
+              "blanks": [
+                "まごつく"
+              ],
+              "audio": "audio/seg-4bf20322ee3a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まごつく",
+          "kana": "まごつく",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "徘徊",
+                  "彷徨"
+                ],
+                [
+                  "张皇失措"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2708. まごまご",
+          "overview": "[副・自動3] 张皇失措，手忙脚乱",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-93923e751e7d.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4799,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "行",
+                  "kana": "い",
+                  "t": 0
+                },
+                {
+                  "text": "く",
+                  "t": 0.46
+                },
+                {
+                  "text": "ところ",
+                  "t": 0.62
+                },
+                {
+                  "text": "が",
+                  "t": 0.84
+                },
+                {
+                  "text": "分",
+                  "kana": "わ",
+                  "t": 1.1
+                },
+                {
+                  "text": "から",
+                  "t": 1.26
+                },
+                {
+                  "text": "ず",
+                  "t": 1.42
+                },
+                {
+                  "text": "ま",
+                  "t": 1.58
+                },
+                {
+                  "text": "ご",
+                  "t": 1.74
+                },
+                {
+                  "text": "ま",
+                  "t": 1.84
+                },
+                {
+                  "text": "ご",
+                  "t": 2
+                },
+                {
+                  "text": "する",
+                  "t": 2.18
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不知往何处去。",
+              "notes": "",
+              "blanks": [
+                "まごまご"
+              ],
+              "audio": "audio/seg-f11f20e72bec.mp3"
+            },
+            {
+              "id": 4800,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "ご",
+                  "t": 0.46
+                },
+                {
+                  "text": "ま",
+                  "t": 0.58
+                },
+                {
+                  "text": "ご",
+                  "t": 0.7
+                },
+                {
+                  "text": "して",
+                  "t": 0.84
+                },
+                {
+                  "text": "いる",
+                  "t": 1.06
+                },
+                {
+                  "text": "う",
+                  "t": 1.26
+                },
+                {
+                  "text": "ち",
+                  "t": 1.42
+                },
+                {
+                  "text": "に",
+                  "t": 1.54
+                },
+                {
+                  "text": "もう",
+                  "t": 1.68
+                },
+                {
+                  "text": "こんな",
+                  "t": 1.94
+                },
+                {
+                  "text": "年",
+                  "kana": "とし",
+                  "t": 2.24
+                },
+                {
+                  "text": "にな",
+                  "t": 2.48
+                },
+                {
+                  "text": "った",
+                  "t": 2.82
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不知不觉中已经到了这把年纪了。",
+              "notes": "",
+              "blanks": [
+                "まごまご"
+              ],
+              "audio": "audio/seg-09909c27383d.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まごまご",
+          "kana": "まごまご",
+          "senses": [
+            {
+              "pos": "副・自動3",
+              "groups": [
+                [
+                  "张皇失措",
+                  "手忙脚乱"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2709. まこと",
+          "overview": "[名・ナ形] 真的，事实；真心诚意；实在，诚然，的确",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e4332ee803c5.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4801,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "こ",
+                  "t": 0.43
+                },
+                {
+                  "text": "と",
+                  "t": 0.86
+                },
+                {
+                  "text": "の",
+                  "t": 1.3
+                },
+                {
+                  "text": "話",
+                  "kana": "はなし",
+                  "t": 1.73
+                }
+              ],
+              "zh": "实话",
+              "notes": "",
+              "blanks": [
+                "まこと"
+              ],
+              "audio": "audio/seg-58aaa260a9ae.mp3"
+            },
+            {
+              "id": 4802,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "まこ",
+                  "t": 0
+                },
+                {
+                  "text": "とを",
+                  "t": 0.7
+                },
+                {
+                  "text": "尽",
+                  "kana": "つ",
+                  "t": 0.96
+                },
+                {
+                  "text": "く",
+                  "t": 1.08
+                },
+                {
+                  "text": "す",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "诚心诚意,竭诚。",
+              "notes": "",
+              "blanks": [
+                "まこと"
+              ],
+              "audio": "audio/seg-12d2f3096c34.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まこと",
+          "kana": "まこと",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "真的",
+                  "事实"
+                ],
+                [
+                  "真心诚意"
+                ],
+                [
+                  "实在",
+                  "诚然",
+                  "的确"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2710. まことに",
+          "overview": "[副] 真，诚然，实在",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-39cd849f8a89.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4803,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "まこ",
+                  "t": 0
+                },
+                {
+                  "text": "とに",
+                  "t": 0.66
+                },
+                {
+                  "text": "ありがとうございます",
+                  "t": 0.9
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "真的谢谢（你）。",
+              "notes": "",
+              "blanks": [
+                "まことに"
+              ],
+              "audio": "audio/seg-bf2b172b1921.mp3"
+            },
+            {
+              "id": 4804,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "こと",
+                  "t": 0.46
+                },
+                {
+                  "text": "に",
+                  "t": 0.7
+                },
+                {
+                  "text": "困",
+                  "kana": "こま",
+                  "t": 0.88
+                },
+                {
+                  "text": "った",
+                  "t": 1.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "实在为难。",
+              "notes": "",
+              "blanks": [
+                "まことに"
+              ],
+              "audio": "audio/seg-bbd1ab37529b.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まことに",
+          "kana": "まことに",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "真",
+                  "诚然",
+                  "实在"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2711. 摩擦（まさつ）",
+          "overview": "[名・自他動3] 摩擦；意见分歧，闹矛盾",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9e608794b96c.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4805,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "手足",
+                  "kana": "てあし",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.62
+                },
+                {
+                  "text": "摩擦",
+                  "kana": "まさつ",
+                  "t": 0.8
+                },
+                {
+                  "text": "する",
+                  "t": 1.16
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "摩擦手脚。",
+              "notes": "",
+              "blanks": [
+                "摩擦"
+              ],
+              "audio": "audio/seg-77187e6a4468.mp3"
+            },
+            {
+              "id": 4806,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "摩擦",
+                  "kana": "まさつ",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.68
+                },
+                {
+                  "text": "生",
+                  "kana": "しょう",
+                  "t": 0.9
+                },
+                {
+                  "text": "じ",
+                  "t": 1.1
+                },
+                {
+                  "text": "る",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "产生摩擦,出现矛盾。",
+              "notes": "",
+              "blanks": [
+                "摩擦"
+              ],
+              "audio": "audio/seg-0fd086981714.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "摩擦",
+          "kana": "まさつ",
+          "senses": [
+            {
+              "pos": "名・自他動3",
+              "groups": [
+                [
+                  "摩擦"
+                ],
+                [
+                  "意见分歧",
+                  "闹矛盾"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2712. まさに",
+          "overview": "[副] 的确，确实；正好，恰好",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-a471488c6dc2.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4807,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "さ",
+                  "t": 0.44
+                },
+                {
+                  "text": "に",
+                  "t": 0.6
+                },
+                {
+                  "text": "運命",
+                  "kana": "うんめい",
+                  "t": 0.72
+                },
+                {
+                  "text": "の",
+                  "t": 1.14
+                },
+                {
+                  "text": "いた",
+                  "t": 1.36
+                },
+                {
+                  "text": "ず",
+                  "t": 1.54
+                },
+                {
+                  "text": "ら",
+                  "t": 1.7
+                },
+                {
+                  "text": "だ",
+                  "t": 1.82
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "正是命运的捉弄。",
+              "notes": "",
+              "blanks": [
+                "まさに"
+              ],
+              "audio": "audio/seg-b34e8b494e94.mp3"
+            },
+            {
+              "id": 4808,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "さ",
+                  "t": 0.25
+                },
+                {
+                  "text": "に",
+                  "t": 0.49
+                },
+                {
+                  "text": "ピ",
+                  "t": 0.74
+                },
+                {
+                  "text": "ッ",
+                  "t": 0.98
+                },
+                {
+                  "text": "タ",
+                  "t": 1.23
+                },
+                {
+                  "text": "リ",
+                  "t": 1.47
+                },
+                {
+                  "text": "だ",
+                  "t": 1.72
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "正相称。",
+              "notes": "",
+              "blanks": [
+                "まさに"
+              ],
+              "audio": "audio/seg-95ed619eb437.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まさに",
+          "kana": "まさに",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "的确",
+                  "确实"
+                ],
+                [
+                  "正好",
+                  "恰好"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2713. 混ざる/交ざる（まざる）",
+          "overview": "[自動1] 混杂，夹杂\n（＝混じる/交じる(まじる)②[自動1] 混杂,夹杂）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-274ab7147f66.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4809,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "白髪",
+                  "kana": "しらが",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.72
+                },
+                {
+                  "text": "混",
+                  "kana": "ま",
+                  "t": 0.88
+                },
+                {
+                  "text": "ざ",
+                  "t": 1.08
+                },
+                {
+                  "text": "る",
+                  "t": 1.16
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "夹杂着白发。",
+              "notes": "",
+              "blanks": [
+                "混ざる"
+              ],
+              "audio": "audio/seg-c31b6f483e4f.mp3"
+            },
+            {
+              "id": 4810,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "異物",
+                  "kana": "いぶつ",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.62
+                },
+                {
+                  "text": "混",
+                  "kana": "ま",
+                  "t": 0.84
+                },
+                {
+                  "text": "ざ",
+                  "t": 1
+                },
+                {
+                  "text": "って",
+                  "t": 1.18
+                },
+                {
+                  "text": "いる",
+                  "t": 1.36
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "混杂着异物。",
+              "notes": "",
+              "blanks": [
+                "混ざっ"
+              ],
+              "audio": "audio/seg-6c41c81bd4c1.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "混ざる/交ざる",
+          "kana": "まざる",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "混杂",
+                  "夹杂"
+                ]
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "text": "混ざる",
+              "kana": "まざる"
+            },
+            {
+              "text": "交ざる",
+              "kana": "まざる"
+            }
+          ]
+        },
+        {
+          "question": "2714. まして",
+          "overview": "[副] 何况，况且",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-2d05a05c01dc.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4811,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "先生",
+                  "kana": "せんせい",
+                  "t": 0
+                },
+                {
+                  "text": "でも",
+                  "t": 0.72
+                },
+                {
+                  "text": "解",
+                  "kana": "と",
+                  "t": 1.02
+                },
+                {
+                  "text": "け",
+                  "t": 1.2
+                },
+                {
+                  "text": "ない",
+                  "t": 1.34
+                },
+                {
+                  "text": "の",
+                  "t": 1.5
+                },
+                {
+                  "text": "に",
+                  "t": 1.7
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "ま",
+                  "t": 2.14
+                },
+                {
+                  "text": "して",
+                  "t": 2.32
+                },
+                {
+                  "text": "僕",
+                  "kana": "ぼく",
+                  "t": 2.54
+                },
+                {
+                  "text": "に",
+                  "t": 2.78
+                },
+                {
+                  "text": "でき",
+                  "t": 3
+                },
+                {
+                  "text": "る",
+                  "t": 3.24
+                },
+                {
+                  "text": "もの",
+                  "t": 3.4
+                },
+                {
+                  "text": "か",
+                  "t": 3.6
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "连老师都无法解答,我怎么可能会呢？",
+              "notes": "",
+              "blanks": [
+                "まして"
+              ],
+              "audio": "audio/seg-18cca673fb9e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まして",
+          "kana": "まして",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "何况",
+                  "况且"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2715. 増す（ます）",
+          "overview": "[名・自他動1] （自）增加，增多，增大；（他）增加，提高",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9510b5e554e5.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4812,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "水",
+                  "kana": "みず",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.54
+                },
+                {
+                  "text": "増",
+                  "kana": "ま",
+                  "t": 0.74
+                },
+                {
+                  "text": "す",
+                  "t": 0.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "水涨高。",
+              "notes": "",
+              "blanks": [
+                "増す"
+              ],
+              "audio": "audio/seg-368949e0acbb.mp3"
+            },
+            {
+              "id": 4813,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "可能性",
+                  "kana": "かのうせい",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.88
+                },
+                {
+                  "text": "増",
+                  "kana": "ま",
+                  "t": 1.02
+                },
+                {
+                  "text": "す",
+                  "t": 1.2
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "可能性增大。",
+              "notes": "",
+              "blanks": [
+                "増す"
+              ],
+              "audio": "audio/seg-677d43df2389.mp3"
+            },
+            {
+              "id": 4814,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ス",
+                  "t": 0
+                },
+                {
+                  "text": "ピ",
+                  "t": 0.5
+                },
+                {
+                  "text": "ード",
+                  "t": 0.62
+                },
+                {
+                  "text": "を",
+                  "t": 0.82
+                },
+                {
+                  "text": "増",
+                  "kana": "ま",
+                  "t": 1
+                },
+                {
+                  "text": "す",
+                  "t": 1.08
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "加速,提速。",
+              "notes": "",
+              "blanks": [
+                "増す"
+              ],
+              "audio": "audio/seg-57f388e4964a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "増す",
+          "kana": "ます",
+          "senses": [
+            {
+              "pos": "名・自他動1",
+              "groups": [
+                [
+                  "（自）增加",
+                  "增多",
+                  "增大"
+                ],
+                [
+                  "（他）增加",
+                  "提高"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2716. マスク（mask）",
+          "overview": "[名] 面具，假面；口罩，（防毒）面具，面罩",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-2691c20d4232.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4815,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "マ",
+                  "t": 0
+                },
+                {
+                  "text": "ス",
+                  "t": 0.5
+                },
+                {
+                  "text": "ク",
+                  "t": 0.64
+                },
+                {
+                  "text": "を",
+                  "t": 0.74
+                },
+                {
+                  "text": "する",
+                  "t": 0.92
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "戴面具,戴口罩。",
+              "notes": "",
+              "blanks": [
+                "マスク"
+              ],
+              "audio": "audio/seg-6f4f376adba0.mp3"
+            },
+            {
+              "id": 4816,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "風邪",
+                  "kana": "かぜ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.5
+                },
+                {
+                  "text": "マ",
+                  "t": 0.74
+                },
+                {
+                  "text": "ス",
+                  "t": 0.96
+                },
+                {
+                  "text": "ク",
+                  "t": 1.06
+                }
+              ],
+              "zh": "感冒用口罩",
+              "notes": "",
+              "blanks": [
+                "マスク"
+              ],
+              "audio": "audio/seg-9275adbc6d3f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "マスク",
+          "kana": "マスク",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "面具",
+                  "假面"
+                ],
+                [
+                  "口罩",
+                  "（防毒）面具",
+                  "面罩"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2717. マスコミ（mass-communication）",
+          "overview": "[名] 大众传媒",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-38407e1b73c9.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4817,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "マ",
+                  "t": 0
+                },
+                {
+                  "text": "ス",
+                  "t": 0.46
+                },
+                {
+                  "text": "コ",
+                  "t": 0.6
+                },
+                {
+                  "text": "ミ",
+                  "t": 0.7
+                },
+                {
+                  "text": "を",
+                  "t": 0.82
+                },
+                {
+                  "text": "通",
+                  "kana": "つう",
+                  "t": 1.04
+                },
+                {
+                  "text": "じ",
+                  "t": 1.18
+                },
+                {
+                  "text": "て",
+                  "t": 1.36
+                },
+                {
+                  "text": "伝達",
+                  "kana": "でんたつ",
+                  "t": 1.46
+                },
+                {
+                  "text": "する",
+                  "t": 1.86
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "通过大众传媒来传达。",
+              "notes": "",
+              "blanks": [
+                "マスコミ"
+              ],
+              "audio": "audio/seg-cf203e30c344.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "マスコミ",
+          "kana": "マスコミ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "大众传媒"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2718. マスター（master）",
+          "overview": "[名・他動3] 雇主，老板；硕士，学位之一；精通，掌握",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-518467dd8f62.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4818,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "マ",
+                  "t": 0
+                },
+                {
+                  "text": "ス",
+                  "t": 0.44
+                },
+                {
+                  "text": "ター",
+                  "t": 0.66
+                },
+                {
+                  "text": "コ",
+                  "t": 0.82
+                },
+                {
+                  "text": "ー",
+                  "t": 0.98
+                },
+                {
+                  "text": "ス",
+                  "t": 1.16
+                }
+              ],
+              "zh": "硕士课程",
+              "notes": "",
+              "blanks": [
+                "マスター"
+              ],
+              "audio": "audio/seg-6c330758584e.mp3"
+            },
+            {
+              "id": 4819,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "日本語",
+                  "kana": "にほんご",
+                  "t": 0.38
+                },
+                {
+                  "text": "を",
+                  "t": 0.9
+                },
+                {
+                  "text": "マ",
+                  "t": 1.02
+                },
+                {
+                  "text": "ス",
+                  "t": 1.12
+                },
+                {
+                  "text": "ター",
+                  "t": 1.26
+                },
+                {
+                  "text": "する",
+                  "t": 1.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "精通日语。",
+              "notes": "",
+              "blanks": [
+                "マスター"
+              ],
+              "audio": "audio/seg-d8f14a09be50.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "マスター",
+          "kana": "マスター",
+          "senses": [
+            {
+              "pos": "名・他動3",
+              "groups": [
+                [
+                  "雇主",
+                  "老板"
+                ],
+                [
+                  "硕士",
+                  "学位之一"
+                ],
+                [
+                  "精通",
+                  "掌握"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2719. マスメディア（mass-media）",
+          "overview": "[名] 大众媒体，宣传媒介",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-de8a0d4b3cf2.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4820,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "マ",
+                  "t": 0
+                },
+                {
+                  "text": "ス",
+                  "t": 0.44
+                },
+                {
+                  "text": "メ",
+                  "t": 0.6
+                },
+                {
+                  "text": "デ",
+                  "t": 0.74
+                },
+                {
+                  "text": "ィ",
+                  "t": 0.86
+                },
+                {
+                  "text": "ア",
+                  "t": 0.88
+                },
+                {
+                  "text": "の",
+                  "t": 1
+                },
+                {
+                  "text": "影響力",
+                  "kana": "えいきょうりょく",
+                  "t": 1.18
+                }
+              ],
+              "zh": "大众媒体的影响力",
+              "notes": "",
+              "blanks": [
+                "マスメディア"
+              ],
+              "audio": "audio/seg-9d2b7b8532bc.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "マスメディア",
+          "kana": "マスメディア",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "大众媒体",
+                  "宣传媒介"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2720. 混ぜる/交ぜる（まぜる）",
+          "overview": "[他動2] 混入，掺杂",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-fe5f0bde71fa.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4821,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "米",
+                  "kana": "べい",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.46
+                },
+                {
+                  "text": "麦",
+                  "kana": "むぎ",
+                  "t": 0.66
+                },
+                {
+                  "text": "を",
+                  "t": 0.92
+                },
+                {
+                  "text": "混",
+                  "kana": "ま",
+                  "t": 1.1
+                },
+                {
+                  "text": "ぜ",
+                  "t": 1.32
+                },
+                {
+                  "text": "る",
+                  "t": 1.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在米中掺入麦。",
+              "notes": "",
+              "blanks": [
+                "混ぜる"
+              ],
+              "audio": "audio/seg-6fb154b9c17f.mp3"
+            },
+            {
+              "id": 4822,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "仲間",
+                  "kana": "なかま",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.72
+                },
+                {
+                  "text": "混",
+                  "kana": "ま",
+                  "t": 0.86
+                },
+                {
+                  "text": "ぜ",
+                  "t": 1.08
+                },
+                {
+                  "text": "る",
+                  "t": 1.16
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "入伙。",
+              "notes": "",
+              "blanks": [
+                "混ぜる"
+              ],
+              "audio": "audio/seg-4ef18e403aa2.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "混ぜる/交ぜる",
+          "kana": "まぜる",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "混入",
+                  "掺杂"
+                ]
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "text": "混ぜる",
+              "kana": "まぜる"
+            },
+            {
+              "text": "交ぜる",
+              "kana": "まぜる"
+            }
+          ]
+        },
+        {
+          "question": "2721. 跨ぐ（またぐ）",
+          "overview": "[他動1] 跨过，双腿叉开站立",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-02cc380a10f2.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4823,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "溝",
+                  "kana": "みぞ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.39
+                },
+                {
+                  "text": "跨",
+                  "kana": "また",
+                  "t": 0.79
+                },
+                {
+                  "text": "ぐ",
+                  "t": 1.18
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "跨过沟。",
+              "notes": "",
+              "blanks": [
+                "跨ぐ"
+              ],
+              "audio": "audio/seg-4963f0e470df.mp3"
+            },
+            {
+              "id": 4824,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "車道",
+                  "kana": "しゃどう",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.66
+                },
+                {
+                  "text": "跨",
+                  "kana": "また",
+                  "t": 0.92
+                },
+                {
+                  "text": "ぐ",
+                  "t": 1.06
+                },
+                {
+                  "text": "歩道橋",
+                  "kana": "ほどうきょう",
+                  "t": 1.24
+                }
+              ],
+              "zh": "跨立在马路之上的天桥",
+              "notes": "",
+              "blanks": [
+                "跨ぐ"
+              ],
+              "audio": "audio/seg-0583594fda65.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "跨ぐ",
+          "kana": "またぐ",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "跨过",
+                  "双腿叉开站立"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2722. 待ち合わせ（まちあわせ）",
+          "overview": "[名] （在事先约定的场所）等待，会面\n（关联词：待ち合わせる(まちあわせる)⑤⓪[自他動2] 约定会面,在约好的地方等待）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ea471806acf6.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4825,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "駅",
+                  "kana": "えき",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.5
+                },
+                {
+                  "text": "待",
+                  "kana": "ま",
+                  "t": 0.74
+                },
+                {
+                  "text": "ち",
+                  "t": 0.96
+                },
+                {
+                  "text": "合",
+                  "kana": "あ",
+                  "t": 1.06
+                },
+                {
+                  "text": "わ",
+                  "t": 1.22
+                },
+                {
+                  "text": "せ",
+                  "t": 1.32
+                },
+                {
+                  "text": "を",
+                  "t": 1.42
+                },
+                {
+                  "text": "する",
+                  "t": 1.6
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在车站会合。",
+              "notes": "",
+              "blanks": [
+                "待ち合わせ"
+              ],
+              "audio": "audio/seg-19ec969ce215.mp3"
+            },
+            {
+              "id": 4826,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "待",
+                  "kana": "ま",
+                  "t": 0.28
+                },
+                {
+                  "text": "ち",
+                  "t": 0.56
+                },
+                {
+                  "text": "合",
+                  "kana": "あ",
+                  "t": 0.66
+                },
+                {
+                  "text": "わ",
+                  "t": 0.78
+                },
+                {
+                  "text": "せ",
+                  "t": 0.9
+                },
+                {
+                  "text": "の",
+                  "t": 1
+                },
+                {
+                  "text": "場所",
+                  "kana": "ばしょ",
+                  "t": 1.16
+                }
+              ],
+              "zh": "约好的地方",
+              "notes": "",
+              "blanks": [
+                "待ち合わせ"
+              ],
+              "audio": "audio/seg-769407bc8e57.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "待ち合わせ",
+          "kana": "まちあわせ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "（在事先约定的场所）等待",
+                  "会面"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "待ち合わせる",
+              "kana": "まちあわせる",
+              "zh": "约定会面,在约好的地方等待"
+            }
+          ]
+        },
+        {
+          "question": "2723. 間近（まぢか）",
+          "overview": "[名・ナ形] 眼前，跟前；临近，接近，眼看就要……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-bf8d87bfe2ce.mp3",
+          "pitch": "①⓪",
+          "sentences": [
+            {
+              "id": 4827,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "間近",
+                  "kana": "まぢか",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.68
+                },
+                {
+                  "text": "迫",
+                  "kana": "せま",
+                  "t": 0.88
+                },
+                {
+                  "text": "る",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "迫在眉睫。",
+              "notes": "",
+              "blanks": [
+                "間近"
+              ],
+              "audio": "audio/seg-646f91562ad0.mp3"
+            },
+            {
+              "id": 4828,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "締",
+                  "kana": "し",
+                  "t": 0
+                },
+                {
+                  "text": "め",
+                  "t": 0.56
+                },
+                {
+                  "text": "切",
+                  "kana": "き",
+                  "t": 0.68
+                },
+                {
+                  "text": "り",
+                  "t": 0.76
+                },
+                {
+                  "text": "も",
+                  "t": 0.92
+                },
+                {
+                  "text": "間近",
+                  "kana": "まぢか",
+                  "t": 1.06
+                },
+                {
+                  "text": "だ",
+                  "t": 1.42
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "眼看就要到截止日期了。",
+              "notes": "",
+              "blanks": [
+                "間近"
+              ],
+              "audio": "audio/seg-760b4f68b80a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "間近",
+          "kana": "まぢか",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "眼前",
+                  "跟前"
+                ],
+                [
+                  "临近",
+                  "接近",
+                  "眼看就要……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2724. 街角（まちかど）",
+          "overview": "[名] 街角，街口，街头",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d65934dc9a6d.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4829,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "街角",
+                  "kana": "まちかど",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "曲",
+                  "kana": "ま",
+                  "t": 0.98
+                },
+                {
+                  "text": "が",
+                  "t": 1.12
+                },
+                {
+                  "text": "る",
+                  "t": 1.22
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "转过街角。",
+              "notes": "",
+              "blanks": [
+                "街角"
+              ],
+              "audio": "audio/seg-909d14e1a725.mp3"
+            },
+            {
+              "id": 4830,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "街角",
+                  "kana": "まちかど",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.76
+                },
+                {
+                  "text": "話題",
+                  "kana": "わだい",
+                  "t": 1.02
+                }
+              ],
+              "zh": "街头巷尾的话题",
+              "notes": "",
+              "blanks": [
+                "街角"
+              ],
+              "audio": "audio/seg-2e0376e6082f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "街角",
+          "kana": "まちかど",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "街角",
+                  "街口",
+                  "街头"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2725. 町並み（まちなみ）",
+          "overview": "[名] 街景，临街建筑",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ef45f7215c1e.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4831,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "昔",
+                  "kana": "むかし",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.66
+                },
+                {
+                  "text": "町並",
+                  "kana": "まちな",
+                  "t": 0.9
+                },
+                {
+                  "text": "み",
+                  "t": 1.3
+                }
+              ],
+              "zh": "昔日的街景",
+              "notes": "",
+              "blanks": [
+                "町並み"
+              ],
+              "audio": "audio/seg-eb54ad45de88.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "町並み",
+          "kana": "まちなみ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "街景",
+                  "临街建筑"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2726. 待ち望む（まちのぞむ）",
+          "overview": "[他動1] 盼望，殷切希望",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d13200a085b5.mp3",
+          "pitch": "④",
+          "sentences": [
+            {
+              "id": 4832,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "平和",
+                  "kana": "へいわ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.66
+                },
+                {
+                  "text": "待",
+                  "kana": "ま",
+                  "t": 0.82
+                },
+                {
+                  "text": "ち",
+                  "t": 0.98
+                },
+                {
+                  "text": "望",
+                  "kana": "のぞ",
+                  "t": 1.08
+                },
+                {
+                  "text": "む",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "盼望和平。",
+              "notes": "",
+              "blanks": [
+                "待ち望む"
+              ],
+              "audio": "audio/seg-c7a33c33c749.mp3"
+            },
+            {
+              "id": 4833,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "終戦",
+                  "kana": "しゅうせん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.8
+                },
+                {
+                  "text": "日",
+                  "kana": "ひ",
+                  "t": 0.94
+                },
+                {
+                  "text": "を",
+                  "t": 1.12
+                },
+                {
+                  "text": "待",
+                  "kana": "ま",
+                  "t": 1.32
+                },
+                {
+                  "text": "ち",
+                  "t": 1.48
+                },
+                {
+                  "text": "望",
+                  "kana": "のぞ",
+                  "t": 1.58
+                },
+                {
+                  "text": "む",
+                  "t": 1.74
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "殷切希望战争早日结束。",
+              "notes": "",
+              "blanks": [
+                "待ち望む"
+              ],
+              "audio": "audio/seg-c3734399a136.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "待ち望む",
+          "kana": "まちのぞむ",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "盼望",
+                  "殷切希望"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2727. マッサージ（massage）",
+          "overview": "[名・他動3] 按摩，推拿（以去除疲劳）\n（类义词：按摩(あんま)⓪[名・他動3] 按摩,按摩疗法;按摩师）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b62b6f9bda9f.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4834,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "マ",
+                  "t": 0
+                },
+                {
+                  "text": "ッ",
+                  "t": 0.54
+                },
+                {
+                  "text": "サ",
+                  "t": 0.64
+                },
+                {
+                  "text": "ージ",
+                  "t": 0.76
+                },
+                {
+                  "text": "師",
+                  "kana": "し",
+                  "t": 0.96
+                }
+              ],
+              "zh": "按摩师",
+              "notes": "",
+              "blanks": [
+                "マッサージ"
+              ],
+              "audio": "audio/seg-7f5ba146c8de.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "マッサージ",
+          "kana": "マッサージ",
+          "senses": [
+            {
+              "pos": "名・他動3",
+              "groups": [
+                [
+                  "按摩",
+                  "推拿（以去除疲劳）"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "按摩",
+              "kana": "あんま",
+              "zh": "按摩,按摩疗法;按摩师"
+            }
+          ]
+        },
+        {
+          "question": "2728. まとも",
+          "overview": "[名・ナ形] 认真，正经；正面，迎面",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-8ba77c4995b6.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4835,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "と",
+                  "t": 0.48
+                },
+                {
+                  "text": "も",
+                  "t": 0.64
+                },
+                {
+                  "text": "に",
+                  "t": 0.76
+                },
+                {
+                  "text": "勉強",
+                  "kana": "べんきょう",
+                  "t": 0.9
+                },
+                {
+                  "text": "する",
+                  "t": 1.36
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "认真学习。",
+              "notes": "",
+              "blanks": [
+                "まとも"
+              ],
+              "audio": "audio/seg-c1f64e55b0d4.mp3"
+            },
+            {
+              "id": 4836,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "と",
+                  "t": 0.48
+                },
+                {
+                  "text": "も",
+                  "t": 0.66
+                },
+                {
+                  "text": "な",
+                  "t": 0.76
+                },
+                {
+                  "text": "商売",
+                  "kana": "しょうばい",
+                  "t": 0.98
+                }
+              ],
+              "zh": "正经买卖",
+              "notes": "",
+              "blanks": [
+                "まとも"
+              ],
+              "audio": "audio/seg-b93bf7bca6a7.mp3"
+            },
+            {
+              "id": 4837,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "と",
+                  "t": 0.48
+                },
+                {
+                  "text": "も",
+                  "t": 0.64
+                },
+                {
+                  "text": "に",
+                  "t": 0.76
+                },
+                {
+                  "text": "ぶ",
+                  "t": 0.88
+                },
+                {
+                  "text": "つ",
+                  "t": 1.06
+                },
+                {
+                  "text": "か",
+                  "t": 1.2
+                },
+                {
+                  "text": "る",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "迎面撞上。",
+              "notes": "",
+              "blanks": [
+                "まとも"
+              ],
+              "audio": "audio/seg-7374464bc98a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まとも",
+          "kana": "まとも",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "认真",
+                  "正经"
+                ],
+                [
+                  "正面",
+                  "迎面"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2729. マナー（manner）",
+          "overview": "[名] 态度，举止；礼节，礼貌；方法，规矩\n（类义词：礼儀(れいぎ)③[名] 礼仪,礼法,礼貌）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9a459cea045e.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4838,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ビ",
+                  "t": 0
+                },
+                {
+                  "text": "ジ",
+                  "t": 0.42
+                },
+                {
+                  "text": "ネ",
+                  "t": 0.58
+                },
+                {
+                  "text": "ス",
+                  "t": 0.68
+                },
+                {
+                  "text": "マ",
+                  "t": 0.86
+                },
+                {
+                  "text": "ナ",
+                  "t": 1.02
+                },
+                {
+                  "text": "ー",
+                  "t": 1.18
+                }
+              ],
+              "zh": "商务礼仪",
+              "notes": "",
+              "blanks": [
+                "マナー"
+              ],
+              "audio": "audio/seg-d3332dae7a76.mp3"
+            },
+            {
+              "id": 4839,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "テ",
+                  "t": 0
+                },
+                {
+                  "text": "ーブ",
+                  "t": 0.46
+                },
+                {
+                  "text": "ル",
+                  "t": 0.66
+                },
+                {
+                  "text": "マ",
+                  "t": 0.78
+                },
+                {
+                  "text": "ナ",
+                  "t": 0.94
+                },
+                {
+                  "text": "ー",
+                  "t": 1.1
+                }
+              ],
+              "zh": "餐桌礼仪",
+              "notes": "",
+              "blanks": [
+                "マナー"
+              ],
+              "audio": "audio/seg-761a3d2833d1.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "マナー",
+          "kana": "マナー",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "态度",
+                  "举止"
+                ],
+                [
+                  "礼节",
+                  "礼貌"
+                ],
+                [
+                  "方法",
+                  "规矩"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "礼儀",
+              "kana": "れいぎ",
+              "zh": "礼仪,礼法,礼貌"
+            }
+          ]
+        },
+        {
+          "question": "2730. マニュアル（manual）",
+          "overview": "[名] 手册，指南，使用说明书",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-c21bd718afed.mp3",
+          "pitch": "⓪①",
+          "sentences": [
+            {
+              "id": 4840,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "作業",
+                  "kana": "さぎょう",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.7
+                },
+                {
+                  "text": "マ",
+                  "t": 0.92
+                },
+                {
+                  "text": "ニ",
+                  "t": 1.02
+                },
+                {
+                  "text": "ュ",
+                  "t": 1.14
+                },
+                {
+                  "text": "ア",
+                  "t": 1.22
+                },
+                {
+                  "text": "ル",
+                  "t": 1.3
+                }
+              ],
+              "zh": "工作指南",
+              "notes": "",
+              "blanks": [
+                "マニュアル"
+              ],
+              "audio": "audio/seg-cd186e7860ef.mp3"
+            },
+            {
+              "id": 4841,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "マ",
+                  "t": 0
+                },
+                {
+                  "text": "ニ",
+                  "t": 0.44
+                },
+                {
+                  "text": "ュ",
+                  "t": 0.56
+                },
+                {
+                  "text": "ア",
+                  "t": 0.68
+                },
+                {
+                  "text": "ル",
+                  "t": 0.72
+                },
+                {
+                  "text": "ど",
+                  "t": 0.84
+                },
+                {
+                  "text": "おり",
+                  "t": 0.98
+                },
+                {
+                  "text": "に",
+                  "t": 1.16
+                },
+                {
+                  "text": "組",
+                  "kana": "く",
+                  "t": 1.3
+                },
+                {
+                  "text": "み",
+                  "t": 1.54
+                },
+                {
+                  "text": "立",
+                  "kana": "た",
+                  "t": 1.66
+                },
+                {
+                  "text": "て",
+                  "t": 1.76
+                },
+                {
+                  "text": "る",
+                  "t": 1.86
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "按说明书上所写的来组装。",
+              "notes": "",
+              "blanks": [
+                "マニュアル"
+              ],
+              "audio": "audio/seg-dce98d81fd36.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "マニュアル",
+          "kana": "マニュアル",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "手册",
+                  "指南",
+                  "使用说明书"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2731. 招き（まねき）",
+          "overview": "[名] 邀请，招待；招牌",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1f5b43f78d30.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4842,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "お",
+                  "t": 0
+                },
+                {
+                  "text": "招",
+                  "kana": "まね",
+                  "t": 0.44
+                },
+                {
+                  "text": "き",
+                  "t": 0.66
+                },
+                {
+                  "text": "に",
+                  "t": 0.84
+                },
+                {
+                  "text": "預",
+                  "kana": "あず",
+                  "t": 1
+                },
+                {
+                  "text": "か",
+                  "t": 1.2
+                },
+                {
+                  "text": "る",
+                  "t": 1.36
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "应邀。",
+              "notes": "",
+              "blanks": [
+                "招き"
+              ],
+              "audio": "audio/seg-3be854abf7af.mp3"
+            },
+            {
+              "id": 4843,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "招",
+                  "kana": "まね",
+                  "t": 0
+                },
+                {
+                  "text": "き",
+                  "t": 0.56
+                },
+                {
+                  "text": "猫",
+                  "kana": "ねこ",
+                  "t": 0.72
+                }
+              ],
+              "zh": "招财猫",
+              "notes": "",
+              "blanks": [
+                "招き"
+              ],
+              "audio": "audio/seg-4a9b9ff1a5f7.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "招き",
+          "kana": "まねき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "邀请",
+                  "招待"
+                ],
+                [
+                  "招牌"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2732. まぶた",
+          "overview": "[名] 眼睑，眼皮\n（惯用语：まぶたの母/永远留在记忆中的母亲，指在心中描绘的、思念的母亲的形象）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-3306c452b28f.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4844,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "ぶ",
+                  "t": 0.44
+                },
+                {
+                  "text": "た",
+                  "t": 0.6
+                },
+                {
+                  "text": "が",
+                  "t": 0.72
+                },
+                {
+                  "text": "重",
+                  "kana": "おも",
+                  "t": 0.86
+                },
+                {
+                  "text": "く",
+                  "t": 1.06
+                },
+                {
+                  "text": "なる",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "眼皮重，犯困，想睡觉。",
+              "notes": "",
+              "blanks": [
+                "まぶた"
+              ],
+              "audio": "audio/seg-c4f57d83ecb1.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まぶた",
+          "kana": "まぶた",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "眼睑",
+                  "眼皮"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2733. 豆（まめ）",
+          "overview": "[名] 豆子，豆科植物，豆类的统称\n[接頭] （后接名词）小型，袖珍",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-2ce6e9637706.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4845,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "豆",
+                  "kana": "まめ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.56
+                },
+                {
+                  "text": "植",
+                  "kana": "う",
+                  "t": 0.74
+                },
+                {
+                  "text": "える",
+                  "t": 0.88
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "种豆子。",
+              "notes": "",
+              "blanks": [
+                "豆"
+              ],
+              "audio": "audio/seg-dc2ef2344e9b.mp3"
+            },
+            {
+              "id": 4846,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "豆",
+                  "kana": "まめ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.54
+                },
+                {
+                  "text": "煮",
+                  "kana": "に",
+                  "t": 0.76
+                },
+                {
+                  "text": "る",
+                  "t": 0.86
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "煮豆子。",
+              "notes": "",
+              "blanks": [
+                "豆"
+              ],
+              "audio": "audio/seg-5824cdbfa597.mp3"
+            },
+            {
+              "id": 4847,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "豆電球",
+                  "kana": "まめでんきゅう",
+                  "t": 0
+                }
+              ],
+              "zh": "电珠，小灯泡",
+              "notes": "",
+              "blanks": [
+                "豆"
+              ],
+              "audio": "audio/seg-e7d42af312ff.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "豆",
+          "kana": "まめ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "豆子",
+                  "豆科植物",
+                  "豆类的统称"
+                ]
+              ]
+            },
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "（后接名词）小型",
+                  "袖珍"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2734. まめに",
+          "overview": "[名・ナ形] 认真，诚实，表里如一；勤恳，勤奋；健康，健壮",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1c8fd9e2a297.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4848,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "まめ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.52
+                },
+                {
+                  "text": "働",
+                  "kana": "はたら",
+                  "t": 0.82
+                },
+                {
+                  "text": "く",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "认真工作。",
+              "notes": "",
+              "blanks": [
+                "まめに"
+              ],
+              "audio": "audio/seg-764f33bb2a3c.mp3"
+            },
+            {
+              "id": 4849,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "まめ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.52
+                },
+                {
+                  "text": "暮",
+                  "kana": "く",
+                  "t": 0.82
+                },
+                {
+                  "text": "ら",
+                  "t": 0.94
+                },
+                {
+                  "text": "す",
+                  "t": 1.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "健在。",
+              "notes": "",
+              "blanks": [
+                "まめに"
+              ],
+              "audio": "audio/seg-3dcc656689f9.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まめに",
+          "kana": "まめに",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "认真",
+                  "诚实",
+                  "表里如一"
+                ],
+                [
+                  "勤恳",
+                  "勤奋"
+                ],
+                [
+                  "健康",
+                  "健壮"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2735. 眉（まゆ）",
+          "overview": "[名] 眉毛，眉黛\n（惯用语：眉に唾をつける。/提高警惕，多加小心。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9953fed960c3.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4850,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "眉",
+                  "kana": "まゆ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.56
+                },
+                {
+                  "text": "引",
+                  "kana": "ひ",
+                  "t": 0.76
+                },
+                {
+                  "text": "く",
+                  "t": 0.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "描眉。",
+              "notes": "",
+              "blanks": [
+                "眉"
+              ],
+              "audio": "audio/seg-67f49506d49e.mp3"
+            },
+            {
+              "id": 4851,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "眉",
+                  "kana": "まゆ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.56
+                },
+                {
+                  "text": "ひ",
+                  "t": 0.8
+                },
+                {
+                  "text": "そ",
+                  "t": 0.94
+                },
+                {
+                  "text": "め",
+                  "t": 1.04
+                },
+                {
+                  "text": "る",
+                  "t": 1.16
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "皱眉。",
+              "notes": "",
+              "blanks": [
+                "眉"
+              ],
+              "audio": "audio/seg-fe8781190a5e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "眉",
+          "kana": "まゆ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "眉毛",
+                  "眉黛"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2736. まるごと",
+          "overview": "[副] 完整，全部，整个儿地",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-c306b51fd9a3.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4852,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "まる",
+                  "t": 0.32
+                },
+                {
+                  "text": "ご",
+                  "t": 0.56
+                },
+                {
+                  "text": "と",
+                  "t": 0.68
+                },
+                {
+                  "text": "飲",
+                  "kana": "の",
+                  "t": 0.8
+                },
+                {
+                  "text": "み",
+                  "t": 1.06
+                },
+                {
+                  "text": "込",
+                  "kana": "こ",
+                  "t": 1.18
+                },
+                {
+                  "text": "む",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "整个儿吞下去。",
+              "notes": "",
+              "blanks": [
+                "まるごと"
+              ],
+              "audio": "audio/seg-ccd5b10a84ce.mp3"
+            },
+            {
+              "id": 4853,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "り",
+                  "t": 0
+                },
+                {
+                  "text": "ん",
+                  "t": 0.48
+                },
+                {
+                  "text": "ご",
+                  "t": 0.62
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "まる",
+                  "t": 0.86
+                },
+                {
+                  "text": "ご",
+                  "t": 1.04
+                },
+                {
+                  "text": "と",
+                  "t": 1.2
+                },
+                {
+                  "text": "か",
+                  "t": 1.32
+                },
+                {
+                  "text": "じ",
+                  "t": 1.52
+                },
+                {
+                  "text": "る",
+                  "t": 1.6
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "整个儿地咬苹果。",
+              "notes": "",
+              "blanks": [
+                "まるごと"
+              ],
+              "audio": "audio/seg-965c85e6efce.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まるごと",
+          "kana": "まるごと",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "完整",
+                  "全部",
+                  "整个儿地"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2737. まるまる",
+          "overview": "[副] 双重圈；某某……，空字，隐字的符号；胖墩墩，圆乎乎；全部，整个，完全",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-f863a5e5a013.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4854,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "まる",
+                  "t": 0
+                },
+                {
+                  "text": "ま",
+                  "t": 0.56
+                },
+                {
+                  "text": "ると",
+                  "t": 0.78
+                },
+                {
+                  "text": "太",
+                  "kana": "ふと",
+                  "t": 0.96
+                },
+                {
+                  "text": "った",
+                  "t": 1.16
+                },
+                {
+                  "text": "赤",
+                  "kana": "あか",
+                  "t": 1.44
+                },
+                {
+                  "text": "ん",
+                  "t": 1.8
+                },
+                {
+                  "text": "坊",
+                  "kana": "ぼう",
+                  "t": 1.94
+                }
+              ],
+              "zh": "胖乎乎的婴儿",
+              "notes": "",
+              "blanks": [
+                "まるまる"
+              ],
+              "audio": "audio/seg-a205858a4141.mp3"
+            },
+            {
+              "id": 4855,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ま",
+                  "t": 0
+                },
+                {
+                  "text": "る",
+                  "t": 0.44
+                },
+                {
+                  "text": "ま",
+                  "t": 0.58
+                },
+                {
+                  "text": "る",
+                  "t": 0.68
+                },
+                {
+                  "text": "1",
+                  "t": 0.82
+                },
+                {
+                  "text": "週間",
+                  "kana": "しゅうかん",
+                  "t": 1.04
+                },
+                {
+                  "text": "休",
+                  "kana": "やす",
+                  "t": 1.44
+                },
+                {
+                  "text": "む",
+                  "t": 1.74
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "整整休息一个礼拜。",
+              "notes": "",
+              "blanks": [
+                "まるまる"
+              ],
+              "audio": "audio/seg-e06c34660059.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "まるまる",
+          "kana": "まるまる",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "双重圈"
+                ],
+                [
+                  "某某……",
+                  "空字",
+                  "隐字的符号"
+                ],
+                [
+                  "胖墩墩",
+                  "圆乎乎"
+                ],
+                [
+                  "全部",
+                  "整个",
+                  "完全"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2738. 稀（まれ）",
+          "overview": "[ナ形] 稀罕，稀奇\n（惯用语：稀に見る。/极少见到，极其稀有。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-26c013400d82.mp3",
+          "pitch": "⓪②",
+          "sentences": [
+            {
+              "id": 4856,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "稀",
+                  "kana": "まれ",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.5
+                },
+                {
+                  "text": "品種",
+                  "kana": "ひんしゅ",
+                  "t": 0.76
+                }
+              ],
+              "zh": "稀有品种",
+              "notes": "",
+              "blanks": [
+                "稀"
+              ],
+              "audio": "audio/seg-37bf12c717fd.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "稀",
+          "kana": "まれ",
+          "senses": [
+            {
+              "pos": "ナ形",
+              "groups": [
+                [
+                  "稀罕",
+                  "稀奇"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2739. 回り道（まわりみち）",
+          "overview": "[名・自動3] 绕道，绕远\n（反义词：近道(ちかみち)②[名・自動3] 捷径，抄近道）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b077657c441c.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4857,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "回",
+                  "kana": "まわ",
+                  "t": 0
+                },
+                {
+                  "text": "り",
+                  "t": 0.54
+                },
+                {
+                  "text": "道",
+                  "kana": "みち",
+                  "t": 0.72
+                },
+                {
+                  "text": "して",
+                  "t": 0.92
+                },
+                {
+                  "text": "帰",
+                  "kana": "かえ",
+                  "t": 1.22
+                },
+                {
+                  "text": "る",
+                  "t": 1.46
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "绕远路回家。",
+              "notes": "",
+              "blanks": [
+                "回り道"
+              ],
+              "audio": "audio/seg-c23abd240c25.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "回り道",
+          "kana": "まわりみち",
+          "senses": [
+            {
+              "pos": "名・自動3",
+              "groups": [
+                [
+                  "绕道",
+                  "绕远"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "近道",
+              "kana": "ちかみち",
+              "zh": "捷径，抄近道"
+            }
+          ]
+        },
+        {
+          "question": "2740. ～回る（～まわる）",
+          "overview": "[接尾] （接在动词连用形后）到处……，在……周围做",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-7159cadc0733.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 4858,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "探",
+                  "kana": "さが",
+                  "t": 0
+                },
+                {
+                  "text": "し",
+                  "t": 0.58
+                },
+                {
+                  "text": "回",
+                  "kana": "まわ",
+                  "t": 0.78
+                },
+                {
+                  "text": "る",
+                  "t": 0.94
+                }
+              ],
+              "zh": "四处寻找，找遍所有的地方",
+              "notes": "",
+              "blanks": [
+                "回る"
+              ],
+              "audio": "audio/seg-a80164ae3f11.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "～回る",
+          "kana": "～まわる",
+          "senses": [
+            {
+              "pos": "接尾",
+              "groups": [
+                [
+                  "（接在动词连用形后）到处……",
+                  "在……周围做"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2741. 万一（まんいち）",
+          "overview": "[名・副] 万分之一，表示极其不可能的事情；万一，假如，倘若\n（同：＝万が一(まんがいち)①[名・副]）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6d193a87e95f.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4859,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "万一",
+                  "kana": "まんいち",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.8
+                },
+                {
+                  "text": "備",
+                  "kana": "そな",
+                  "t": 1.04
+                },
+                {
+                  "text": "える",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "以备不时之需。",
+              "notes": "",
+              "blanks": [
+                "万一"
+              ],
+              "audio": "audio/seg-0da194e3d5f1.mp3"
+            },
+            {
+              "id": 4860,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "万一",
+                  "kana": "まんいち",
+                  "t": 0
+                },
+                {
+                  "text": "台風",
+                  "kana": "たいふう",
+                  "t": 0.86
+                },
+                {
+                  "text": "が",
+                  "t": 1.22
+                },
+                {
+                  "text": "来",
+                  "kana": "き",
+                  "t": 1.4
+                },
+                {
+                  "text": "た",
+                  "t": 1.56
+                },
+                {
+                  "text": "ら",
+                  "t": 1.68
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "万一台风来了的话。",
+              "notes": "",
+              "blanks": [
+                "万一"
+              ],
+              "audio": "audio/seg-82b89a6a0539.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "万一",
+          "kana": "まんいち",
+          "senses": [
+            {
+              "pos": "名・副",
+              "groups": [
+                [
+                  "万分之一",
+                  "表示极其不可能的事情"
+                ],
+                [
+                  "万一",
+                  "假如",
+                  "倘若"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2742. 饅頭（まんじゅう）",
+          "overview": "[名] 包子，点心",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-015d147a5f86.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4861,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "肉饅",
+                  "kana": "にくまん",
+                  "t": 0
+                },
+                {
+                  "text": "頭",
+                  "kana": "じゅう",
+                  "t": 1.28
+                }
+              ],
+              "zh": "肉包",
+              "notes": "",
+              "blanks": [
+                "饅頭"
+              ],
+              "audio": "audio/seg-6c38e2e1cc20.mp3"
+            },
+            {
+              "id": 4862,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "饅頭",
+                  "kana": "まんじゅう",
+                  "t": 0
+                },
+                {
+                  "text": "肌",
+                  "kana": "はだ",
+                  "t": 1.28
+                }
+              ],
+              "zh": "肤色白而细腻，富有弹性的皮肤",
+              "notes": "",
+              "blanks": [
+                "饅頭"
+              ],
+              "audio": "audio/seg-77b90deff16c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "饅頭",
+          "kana": "まんじゅう",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "包子",
+                  "点心"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2743. 真ん前（まんまえ）",
+          "overview": "[名] 眼前，就在眼前，正前方",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e1417dbe8738.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4863,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "団地",
+                  "kana": "だんち",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.7
+                },
+                {
+                  "text": "真",
+                  "kana": "ま",
+                  "t": 0.9
+                },
+                {
+                  "text": "ん",
+                  "t": 0.98
+                },
+                {
+                  "text": "前",
+                  "kana": "まえ",
+                  "t": 1.08
+                },
+                {
+                  "text": "に",
+                  "t": 1.18
+                },
+                {
+                  "text": "コ",
+                  "t": 1.42
+                },
+                {
+                  "text": "ンビ",
+                  "t": 1.66
+                },
+                {
+                  "text": "ニ",
+                  "t": 1.78
+                },
+                {
+                  "text": "が",
+                  "t": 1.94
+                },
+                {
+                  "text": "ある",
+                  "t": 2.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在小区的正前方有便利店。",
+              "notes": "",
+              "blanks": [
+                "真ん前"
+              ],
+              "audio": "audio/seg-2cb997e48411.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "真ん前",
+          "kana": "まんまえ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "眼前",
+                  "就在眼前",
+                  "正前方"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2744. 身（み）",
+          "overview": "[名] 身体，身子；身份；身份，地位，立场\n（惯用语：身から出た錆/自作自受，自食其果）（惯用语：身に覚えがある。/有亲身体验。）（惯用语：身の置き所がない。/无地自容，处境尴尬。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1c5425dae8c9.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4864,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.31
+                },
+                {
+                  "text": "ま",
+                  "t": 0.62
+                },
+                {
+                  "text": "と",
+                  "t": 0.94
+                },
+                {
+                  "text": "う",
+                  "t": 1.25
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "穿戴在身上。",
+              "notes": "",
+              "blanks": [
+                "身"
+              ],
+              "audio": "audio/seg-9d7cc7ed3711.mp3"
+            },
+            {
+              "id": 4865,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.48
+                },
+                {
+                  "text": "ほど",
+                  "t": 0.64
+                },
+                {
+                  "text": "を",
+                  "t": 0.78
+                },
+                {
+                  "text": "知",
+                  "kana": "し",
+                  "t": 1.08
+                },
+                {
+                  "text": "る",
+                  "t": 1.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "有自知之明。",
+              "notes": "",
+              "blanks": [
+                "身"
+              ],
+              "audio": "audio/seg-0b6bee362c71.mp3"
+            },
+            {
+              "id": 4866,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.48
+                },
+                {
+                  "text": "入",
+                  "kana": "い",
+                  "t": 0.64
+                },
+                {
+                  "text": "れる",
+                  "t": 0.74
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "尽心尽力。",
+              "notes": "",
+              "blanks": [
+                "身"
+              ],
+              "audio": "audio/seg-f7337da98736.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "身",
+          "kana": "み",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "身体",
+                  "身子"
+                ],
+                [
+                  "身份"
+                ],
+                [
+                  "身份",
+                  "地位",
+                  "立场"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2745. 実（み）",
+          "overview": "[名] 果实，成果；种子；内容\n（惯用语：実もない。/无内容，毫无长处。）（惯用语：実を結ぶ。/结果；努力有了成果。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1c5425dae8c9.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4867,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "実",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.48
+                },
+                {
+                  "text": "つ",
+                  "t": 0.62
+                },
+                {
+                  "text": "ける",
+                  "t": 0.78
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "结果实。",
+              "notes": "",
+              "blanks": [
+                "実"
+              ],
+              "audio": "audio/seg-e976a21c7c4f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "実",
+          "kana": "み",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "果实",
+                  "成果"
+                ],
+                [
+                  "种子"
+                ],
+                [
+                  "内容"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2746. 未～（み～）",
+          "overview": "[接頭] 未，没，尚未……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1c5425dae8c9.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 4868,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "未完成",
+                  "kana": "みかんせい",
+                  "t": 0
+                }
+              ],
+              "zh": "未完成",
+              "notes": "",
+              "blanks": [
+                "未"
+              ],
+              "audio": "audio/seg-b61b08aec3a9.mp3"
+            },
+            {
+              "id": 4869,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "未発達",
+                  "kana": "みはったつ",
+                  "t": 0
+                }
+              ],
+              "zh": "尚不发达",
+              "notes": "",
+              "blanks": [
+                "未"
+              ],
+              "audio": "audio/seg-78c44086f36d.mp3"
+            },
+            {
+              "id": 4870,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "未解決",
+                  "kana": "みかいけつ",
+                  "t": 0
+                }
+              ],
+              "zh": "尚未解决",
+              "notes": "",
+              "blanks": [
+                "未"
+              ],
+              "audio": "audio/seg-0dd764debd41.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "未～",
+          "kana": "み～",
+          "senses": [
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "未",
+                  "没",
+                  "尚未……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2747. 見合い（みあい）",
+          "overview": "[名・自動3] 对视，互相看对方；相亲；相抵，协调，平衡\n（关联词：見合う(みあう)②⓪[自他動1] （他）对视，互相看；（自）（收支等）均衡，平衡）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e3c40ded245a.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4871,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見合",
+                  "kana": "みあ",
+                  "t": 0
+                },
+                {
+                  "text": "い",
+                  "t": 0.82
+                },
+                {
+                  "text": "結婚",
+                  "kana": "けっこん",
+                  "t": 1.22
+                }
+              ],
+              "zh": "相亲结婚",
+              "notes": "",
+              "blanks": [
+                "見合い"
+              ],
+              "audio": "audio/seg-4f555a9d0ec3.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見合い",
+          "kana": "みあい",
+          "senses": [
+            {
+              "pos": "名・自動3",
+              "groups": [
+                [
+                  "对视",
+                  "互相看对方"
+                ],
+                [
+                  "相亲"
+                ],
+                [
+                  "相抵",
+                  "协调",
+                  "平衡"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "見合う",
+              "kana": "みあう",
+              "zh": "（他）对视，互相看；（自）（收支等）均衡，平衡"
+            }
+          ]
+        },
+        {
+          "question": "2748. ミーティング（meeting）",
+          "overview": "[名] 会议，集会",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-fa5ed8f1193b.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4872,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ミ",
+                  "t": 0
+                },
+                {
+                  "text": "ーテ",
+                  "t": 0.52
+                },
+                {
+                  "text": "ィ",
+                  "t": 0.74
+                },
+                {
+                  "text": "ング",
+                  "t": 0.8
+                },
+                {
+                  "text": "ル",
+                  "t": 1
+                },
+                {
+                  "text": "ーム",
+                  "t": 1.16
+                }
+              ],
+              "zh": "会议室",
+              "notes": "",
+              "blanks": [
+                "ミーティング"
+              ],
+              "audio": "audio/seg-5120e567fd4a.mp3"
+            },
+            {
+              "id": 4873,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ミ",
+                  "t": 0
+                },
+                {
+                  "text": "ーテ",
+                  "t": 0.46
+                },
+                {
+                  "text": "ィ",
+                  "t": 0.7
+                },
+                {
+                  "text": "ング",
+                  "t": 0.8
+                },
+                {
+                  "text": "を",
+                  "t": 0.94
+                },
+                {
+                  "text": "行",
+                  "kana": "おこな",
+                  "t": 1.1
+                },
+                {
+                  "text": "う",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "开会。",
+              "notes": "",
+              "blanks": [
+                "ミーティング"
+              ],
+              "audio": "audio/seg-54bcec963ec6.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "ミーティング",
+          "kana": "ミーティング",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "会议",
+                  "集会"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2749. 見落とす（みおとす）",
+          "overview": "[他動1] 看漏，忽略",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-8b71130d71ef.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4874,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "数字",
+                  "kana": "すうじ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.72
+                },
+                {
+                  "text": "見落",
+                  "kana": "みお",
+                  "t": 0.92
+                },
+                {
+                  "text": "と",
+                  "t": 1.18
+                },
+                {
+                  "text": "す",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "看漏数字。",
+              "notes": "",
+              "blanks": [
+                "見落とす"
+              ],
+              "audio": "audio/seg-5af950249f50.mp3"
+            },
+            {
+              "id": 4875,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "間違",
+                  "kana": "まちが",
+                  "t": 0
+                },
+                {
+                  "text": "い",
+                  "t": 0.72
+                },
+                {
+                  "text": "を",
+                  "t": 0.86
+                },
+                {
+                  "text": "見落",
+                  "kana": "みお",
+                  "t": 1.02
+                },
+                {
+                  "text": "と",
+                  "t": 1.28
+                },
+                {
+                  "text": "す",
+                  "t": 1.46
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "忽略错误。",
+              "notes": "",
+              "blanks": [
+                "見落とす"
+              ],
+              "audio": "audio/seg-6ed2d18a470f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見落とす",
+          "kana": "みおとす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "看漏",
+                  "忽略"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2750. 見覚え（みおぼえ）",
+          "overview": "[名] 眼熟，仿佛见过",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-eaf29fa16e96.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4876,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見覚",
+                  "kana": "みおぼ",
+                  "t": 0
+                },
+                {
+                  "text": "え",
+                  "t": 0.68
+                },
+                {
+                  "text": "の",
+                  "t": 0.82
+                },
+                {
+                  "text": "ある",
+                  "t": 0.94
+                },
+                {
+                  "text": "人",
+                  "kana": "ひと",
+                  "t": 1.1
+                }
+              ],
+              "zh": "眼熟的人",
+              "notes": "",
+              "blanks": [
+                "見覚え"
+              ],
+              "audio": "audio/seg-fcf21a27c169.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見覚え",
+          "kana": "みおぼえ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "眼熟",
+                  "仿佛见过"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2751. 見下ろす（みおろす）",
+          "overview": "[他動1] 往下看，俯视；蔑视，轻视，小瞧",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e9a985986838.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4877,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "山頂",
+                  "kana": "さんちょう",
+                  "t": 0
+                },
+                {
+                  "text": "から",
+                  "t": 0.78
+                },
+                {
+                  "text": "見下",
+                  "kana": "みお",
+                  "t": 1.06
+                },
+                {
+                  "text": "ろ",
+                  "t": 1.38
+                },
+                {
+                  "text": "す",
+                  "t": 1.54
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "从山顶上往下看。",
+              "notes": "",
+              "blanks": [
+                "見下ろす"
+              ],
+              "audio": "audio/seg-8e3f5ecd39cc.mp3"
+            },
+            {
+              "id": 4878,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "人",
+                  "kana": "ひと",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.54
+                },
+                {
+                  "text": "見下",
+                  "kana": "みお",
+                  "t": 0.7
+                },
+                {
+                  "text": "ろ",
+                  "t": 0.94
+                },
+                {
+                  "text": "す",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "小瞧人。",
+              "notes": "",
+              "blanks": [
+                "見下ろす"
+              ],
+              "audio": "audio/seg-40d768abffbe.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見下ろす",
+          "kana": "みおろす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "往下看",
+                  "俯视"
+                ],
+                [
+                  "蔑视",
+                  "轻视",
+                  "小瞧"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2752. 味方（みかた）",
+          "overview": "[名・自動3] 我方，同伙，伙伴\n（同音关联词：見方(みかた)③②[名] 看法；见解，思考）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b84fcc813814.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4879,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "味方",
+                  "kana": "みかた",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.68
+                },
+                {
+                  "text": "裏切",
+                  "kana": "うらぎ",
+                  "t": 0.86
+                },
+                {
+                  "text": "る",
+                  "t": 1.22
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "背叛同伴。",
+              "notes": "",
+              "blanks": [
+                "味方"
+              ],
+              "audio": "audio/seg-4f1ef25d08b1.mp3"
+            },
+            {
+              "id": 4880,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "弱者",
+                  "kana": "じゃくしゃ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.7
+                },
+                {
+                  "text": "味方",
+                  "kana": "みかた",
+                  "t": 0.84
+                },
+                {
+                  "text": "する",
+                  "t": 1.22
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "支持弱者。",
+              "notes": "",
+              "blanks": [
+                "味方"
+              ],
+              "audio": "audio/seg-93469ce532ab.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "味方",
+          "kana": "みかた",
+          "senses": [
+            {
+              "pos": "名・自動3",
+              "groups": [
+                [
+                  "我方",
+                  "同伙",
+                  "伙伴"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "同音关联词",
+              "text": "見方",
+              "kana": "みかた",
+              "zh": "看法；见解，思考"
+            }
+          ]
+        },
+        {
+          "question": "2753. 三日月（みかづき）",
+          "overview": "[名] 新月，月牙，阴历每月三日出现的月亮",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-aca7dcce8192.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4881,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "三日月",
+                  "kana": "みかづき",
+                  "t": 0
+                },
+                {
+                  "text": "眉",
+                  "kana": "まゆ",
+                  "t": 0.82
+                }
+              ],
+              "zh": "月牙形的眉毛",
+              "notes": "",
+              "blanks": [
+                "三日月"
+              ],
+              "audio": "audio/seg-6a731b77bc94.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "三日月",
+          "kana": "みかづき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "新月",
+                  "月牙",
+                  "阴历每月三日出现的月亮"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2754. 岬（みさき）",
+          "overview": "[名] 海角，岬",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4cce894053b3.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4882,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "岬",
+                  "kana": "みさき",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.74
+                },
+                {
+                  "text": "灯台",
+                  "kana": "とうだい",
+                  "t": 0.94
+                }
+              ],
+              "zh": "海角的灯塔",
+              "notes": "",
+              "blanks": [
+                "岬"
+              ],
+              "audio": "audio/seg-63e593bb993a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "岬",
+          "kana": "みさき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "海角",
+                  "岬"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2755. ミシン（sewing-machineから）",
+          "overview": "[名] 缝纫机，齿孔",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6ba9b7bf3c9d.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4883,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ミ",
+                  "t": 0
+                },
+                {
+                  "text": "シ",
+                  "t": 0.5
+                },
+                {
+                  "text": "ン",
+                  "t": 0.64
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "か",
+                  "t": 0.94
+                },
+                {
+                  "text": "ける",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "用缝纫机缝制。",
+              "notes": "",
+              "blanks": [
+                "ミシン"
+              ],
+              "audio": "audio/seg-3b1675824bf1.mp3"
+            },
+            {
+              "id": 4884,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ミ",
+                  "t": 0
+                },
+                {
+                  "text": "シ",
+                  "t": 0.5
+                },
+                {
+                  "text": "ン",
+                  "t": 0.64
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "踏",
+                  "kana": "ふ",
+                  "t": 0.88
+                },
+                {
+                  "text": "む",
+                  "t": 1.02
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "踩缝纫机。",
+              "notes": "",
+              "blanks": [
+                "ミシン"
+              ],
+              "audio": "audio/seg-41dd82d71989.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "ミシン",
+          "kana": "ミシン",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "缝纫机",
+                  "齿孔"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2756. 水色（みずいろ）",
+          "overview": "[名] 淡蓝色，水蓝色",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-25c2aa563939.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4885,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "水色",
+                  "kana": "みずいろ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.78
+                },
+                {
+                  "text": "模様",
+                  "kana": "もよう",
+                  "t": 1.02
+                }
+              ],
+              "zh": "淡蓝色的花纹",
+              "notes": "",
+              "blanks": [
+                "水色"
+              ],
+              "audio": "audio/seg-a9ac4779fa58.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "水色",
+          "kana": "みずいろ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "淡蓝色",
+                  "水蓝色"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2757. 自ら（みずから）",
+          "overview": "[名・副] 自己，自我；亲自，亲身",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-f48d5aa76650.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4886,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "自",
+                  "kana": "みずか",
+                  "t": 0
+                },
+                {
+                  "text": "ら",
+                  "t": 0.54
+                },
+                {
+                  "text": "を",
+                  "t": 0.82
+                },
+                {
+                  "text": "反省",
+                  "kana": "はんせい",
+                  "t": 0.98
+                },
+                {
+                  "text": "する",
+                  "t": 1.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "自我反省。",
+              "notes": "",
+              "blanks": [
+                "自ら"
+              ],
+              "audio": "audio/seg-e0476568ecb2.mp3"
+            },
+            {
+              "id": 4887,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "自",
+                  "kana": "みずか",
+                  "t": 0
+                },
+                {
+                  "text": "ら",
+                  "t": 0.58
+                },
+                {
+                  "text": "指揮",
+                  "kana": "しき",
+                  "t": 0.86
+                },
+                {
+                  "text": "を",
+                  "t": 1.1
+                },
+                {
+                  "text": "と",
+                  "t": 1.28
+                },
+                {
+                  "text": "る",
+                  "t": 1.42
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "亲自指挥。",
+              "notes": "",
+              "blanks": [
+                "自ら"
+              ],
+              "audio": "audio/seg-e3797ae243c4.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "自ら",
+          "kana": "みずから",
+          "senses": [
+            {
+              "pos": "名・副",
+              "groups": [
+                [
+                  "自己",
+                  "自我"
+                ],
+                [
+                  "亲自",
+                  "亲身"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2758. 水っぽい（みずっぽい）",
+          "overview": "[イ形] 水分多而味淡的，淡而无味的",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-554149d6a467.mp3",
+          "pitch": "④⓪",
+          "sentences": [
+            {
+              "id": 4888,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "水",
+                  "kana": "みず",
+                  "t": 0
+                },
+                {
+                  "text": "っぽ",
+                  "t": 0.58
+                },
+                {
+                  "text": "い",
+                  "t": 0.82
+                },
+                {
+                  "text": "酒",
+                  "kana": "さけ",
+                  "t": 1
+                }
+              ],
+              "zh": "淡而无味的酒",
+              "notes": "",
+              "blanks": [
+                "水っぽい"
+              ],
+              "audio": "audio/seg-f82a573bde97.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "水っぽい",
+          "kana": "みずっぽい",
+          "senses": [
+            {
+              "pos": "イ形",
+              "groups": [
+                [
+                  "水分多而味淡的",
+                  "淡而无味的"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2759. 見捨てる（みすてる）",
+          "overview": "[他動2] 抛弃，遗弃；视而不见，弃之不顾",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-edc1647e30d4.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4889,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "医者",
+                  "kana": "いしゃ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.58
+                },
+                {
+                  "text": "見捨",
+                  "kana": "みす",
+                  "t": 0.74
+                },
+                {
+                  "text": "て",
+                  "t": 1.06
+                },
+                {
+                  "text": "ら",
+                  "t": 1.16
+                },
+                {
+                  "text": "れる",
+                  "t": 1.26
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "被医生放弃，指病人膏肓，已无法医治。",
+              "notes": "",
+              "blanks": [
+                "見捨てられる"
+              ],
+              "audio": "audio/seg-188ecc765dad.mp3"
+            },
+            {
+              "id": 4890,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "仲間",
+                  "kana": "なかま",
+                  "t": 0.32
+                },
+                {
+                  "text": "を",
+                  "t": 0.72
+                },
+                {
+                  "text": "見捨",
+                  "kana": "みす",
+                  "t": 0.86
+                },
+                {
+                  "text": "て",
+                  "t": 1.1
+                },
+                {
+                  "text": "て",
+                  "t": 1.2
+                },
+                {
+                  "text": "逃",
+                  "kana": "に",
+                  "t": 1.36
+                },
+                {
+                  "text": "げ",
+                  "t": 1.56
+                },
+                {
+                  "text": "る",
+                  "t": 1.66
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "弃同伴于不顾自己逃走。",
+              "notes": "",
+              "blanks": [
+                "見捨てて"
+              ],
+              "audio": "audio/seg-e213013c1322.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見捨てる",
+          "kana": "みすてる",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "抛弃",
+                  "遗弃"
+                ],
+                [
+                  "视而不见",
+                  "弃之不顾"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2760. 店屋（みせや）",
+          "overview": "[名] 商店，店铺",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-28c0a4eca2a7.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4891,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "駅前",
+                  "kana": "えきまえ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.7
+                },
+                {
+                  "text": "店屋",
+                  "kana": "みせや",
+                  "t": 0.94
+                },
+                {
+                  "text": "に",
+                  "t": 1.34
+                },
+                {
+                  "text": "寄",
+                  "kana": "よ",
+                  "t": 1.48
+                },
+                {
+                  "text": "って",
+                  "t": 1.6
+                },
+                {
+                  "text": "帰",
+                  "kana": "かえ",
+                  "t": 1.78
+                },
+                {
+                  "text": "る",
+                  "t": 2.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "去车站前面的店铺逛一逛再回家。",
+              "notes": "",
+              "blanks": [
+                "店屋"
+              ],
+              "audio": "audio/seg-07dfda891519.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "店屋",
+          "kana": "みせや",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "商店",
+                  "店铺"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2761. 見出し（みだし）",
+          "overview": "[名] 标题，题目；目录，索引",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6d9821fcd8c7.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4892,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "新聞",
+                  "kana": "しんぶん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.8
+                },
+                {
+                  "text": "見出",
+                  "kana": "みだ",
+                  "t": 1.02
+                },
+                {
+                  "text": "し",
+                  "t": 1.36
+                }
+              ],
+              "zh": "报纸的标题",
+              "notes": "",
+              "blanks": [
+                "見出し"
+              ],
+              "audio": "audio/seg-4e9cacecf5f5.mp3"
+            },
+            {
+              "id": 4893,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ノ",
+                  "t": 0
+                },
+                {
+                  "text": "ート",
+                  "t": 0.48
+                },
+                {
+                  "text": "に",
+                  "t": 0.68
+                },
+                {
+                  "text": "見出",
+                  "kana": "みだ",
+                  "t": 0.82
+                },
+                {
+                  "text": "し",
+                  "t": 1.18
+                },
+                {
+                  "text": "を",
+                  "t": 1.32
+                },
+                {
+                  "text": "つ",
+                  "t": 1.46
+                },
+                {
+                  "text": "ける",
+                  "t": 1.6
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在笔记本上标上索引。",
+              "notes": "",
+              "blanks": [
+                "見出し"
+              ],
+              "audio": "audio/seg-67c92da292ab.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見出し",
+          "kana": "みだし",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "标题",
+                  "题目"
+                ],
+                [
+                  "目录",
+                  "索引"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2762. 満たす（みたす）",
+          "overview": "[他動1] 充满，填满；满足",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-5f3312105e0b.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4894,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "腹",
+                  "kana": "はら",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.56
+                },
+                {
+                  "text": "満",
+                  "kana": "み",
+                  "t": 0.76
+                },
+                {
+                  "text": "た",
+                  "t": 0.9
+                },
+                {
+                  "text": "す",
+                  "t": 1.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "填饱肚子。",
+              "notes": "",
+              "blanks": [
+                "満たす"
+              ],
+              "audio": "audio/seg-e225475c2d93.mp3"
+            },
+            {
+              "id": 4895,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "全",
+                  "kana": "すべ",
+                  "t": 0
+                },
+                {
+                  "text": "て",
+                  "t": 0.64
+                },
+                {
+                  "text": "の",
+                  "t": 0.78
+                },
+                {
+                  "text": "条件",
+                  "kana": "じょうけん",
+                  "t": 0.96
+                },
+                {
+                  "text": "を",
+                  "t": 1.3
+                },
+                {
+                  "text": "満",
+                  "kana": "み",
+                  "t": 1.5
+                },
+                {
+                  "text": "た",
+                  "t": 1.68
+                },
+                {
+                  "text": "す",
+                  "t": 1.86
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "满足一切条件。",
+              "notes": "",
+              "blanks": [
+                "満たす"
+              ],
+              "audio": "audio/seg-3b5f585297e8.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "満たす",
+          "kana": "みたす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "充满",
+                  "填满"
+                ],
+                [
+                  "满足"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2763. みだりに",
+          "overview": "[副] 随意，任意；轻率，鲁莽",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-63db695f9417.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4896,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "み",
+                  "t": 0
+                },
+                {
+                  "text": "だ",
+                  "t": 0.48
+                },
+                {
+                  "text": "り",
+                  "t": 0.56
+                },
+                {
+                  "text": "に",
+                  "t": 0.68
+                },
+                {
+                  "text": "口出",
+                  "kana": "くちだ",
+                  "t": 0.8
+                },
+                {
+                  "text": "し",
+                  "t": 1.18
+                },
+                {
+                  "text": "する",
+                  "t": 1.34
+                },
+                {
+                  "text": "もの",
+                  "t": 1.48
+                },
+                {
+                  "text": "では",
+                  "t": 1.74
+                },
+                {
+                  "text": "ない",
+                  "t": 2.06
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不要随意插嘴。",
+              "notes": "",
+              "blanks": [
+                "みだりに"
+              ],
+              "audio": "audio/seg-84b01b6d9fc3.mp3"
+            },
+            {
+              "id": 4897,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "み",
+                  "t": 0
+                },
+                {
+                  "text": "だ",
+                  "t": 0.48
+                },
+                {
+                  "text": "り",
+                  "t": 0.58
+                },
+                {
+                  "text": "に",
+                  "t": 0.68
+                },
+                {
+                  "text": "人",
+                  "kana": "ひと",
+                  "t": 0.82
+                },
+                {
+                  "text": "の",
+                  "t": 1
+                },
+                {
+                  "text": "悪口",
+                  "kana": "わるぐち",
+                  "t": 1.24
+                },
+                {
+                  "text": "を",
+                  "t": 1.66
+                },
+                {
+                  "text": "言",
+                  "kana": "い",
+                  "t": 1.88
+                },
+                {
+                  "text": "う",
+                  "t": 2
+                },
+                {
+                  "text": "な",
+                  "t": 2.12
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不要胡乱说人家坏话。",
+              "notes": "",
+              "blanks": [
+                "みだりに"
+              ],
+              "audio": "audio/seg-cacb5b0cf777.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "みだりに",
+          "kana": "みだりに",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "随意",
+                  "任意"
+                ],
+                [
+                  "轻率",
+                  "鲁莽"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2764. 乱れる（みだれる）",
+          "overview": "[自動2] 紊乱，杂乱；骚乱，不安定；乱，困惑\n（关联词：乱す(みだす)②[他動1] 弄乱，扰乱）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-db46160ae14d.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4898,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "秩序",
+                  "kana": "ちつじょ",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.66
+                },
+                {
+                  "text": "乱",
+                  "kana": "みだ",
+                  "t": 0.84
+                },
+                {
+                  "text": "れる",
+                  "t": 1.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "秩序混乱。",
+              "notes": "",
+              "blanks": [
+                "乱れる"
+              ],
+              "audio": "audio/seg-6fd332e7dac5.mp3"
+            },
+            {
+              "id": 4899,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "脈",
+                  "kana": "みゃく",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.54
+                },
+                {
+                  "text": "乱",
+                  "kana": "みだ",
+                  "t": 0.74
+                },
+                {
+                  "text": "れる",
+                  "t": 0.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "脉象紊乱。",
+              "notes": "",
+              "blanks": [
+                "乱れる"
+              ],
+              "audio": "audio/seg-dc70a912049f.mp3"
+            },
+            {
+              "id": 4900,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "世",
+                  "kana": "よ",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.31
+                },
+                {
+                  "text": "乱",
+                  "kana": "みだ",
+                  "t": 0.62
+                },
+                {
+                  "text": "れ",
+                  "t": 0.94
+                },
+                {
+                  "text": "る",
+                  "t": 1.25
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "天下大乱。",
+              "notes": "",
+              "blanks": [
+                "乱れる"
+              ],
+              "audio": "audio/seg-2a1414a92bf0.mp3"
+            },
+            {
+              "id": 4901,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "心",
+                  "kana": "こころ",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.62
+                },
+                {
+                  "text": "乱",
+                  "kana": "みだ",
+                  "t": 0.84
+                },
+                {
+                  "text": "れる",
+                  "t": 1.02
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "心乱，心神不宁。",
+              "notes": "",
+              "blanks": [
+                "乱れる"
+              ],
+              "audio": "audio/seg-5f1229f2d461.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "乱れる",
+          "kana": "みだれる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "紊乱",
+                  "杂乱"
+                ],
+                [
+                  "骚乱",
+                  "不安定"
+                ],
+                [
+                  "乱",
+                  "困惑"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "乱す",
+              "kana": "みだす",
+              "zh": "弄乱，扰乱"
+            }
+          ]
+        },
+        {
+          "question": "2765. 身近（みぢか）",
+          "overview": "[名・ナ形] 身边，近边",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-acf125e0c742.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4902,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身近",
+                  "kana": "みぢか",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.72
+                },
+                {
+                  "text": "話題",
+                  "kana": "わだい",
+                  "t": 0.94
+                }
+              ],
+              "zh": "切身的话题",
+              "notes": "",
+              "blanks": [
+                "身近"
+              ],
+              "audio": "audio/seg-92f058513eb7.mp3"
+            },
+            {
+              "id": 4903,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "危険",
+                  "kana": "きけん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.64
+                },
+                {
+                  "text": "身近",
+                  "kana": "みぢか",
+                  "t": 0.84
+                },
+                {
+                  "text": "に",
+                  "t": 1.18
+                },
+                {
+                  "text": "感",
+                  "kana": "かん",
+                  "t": 1.38
+                },
+                {
+                  "text": "じ",
+                  "t": 1.38
+                },
+                {
+                  "text": "る",
+                  "t": 1.72
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "切身感到危险。",
+              "notes": "",
+              "blanks": [
+                "身近"
+              ],
+              "audio": "audio/seg-d4807ca90a36.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "身近",
+          "kana": "みぢか",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "身边",
+                  "近边"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2766. 見違える（みちがえる）",
+          "overview": "[他動2] 看错，看差",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-85d8b7199358.mp3",
+          "pitch": "⓪④③",
+          "sentences": [
+            {
+              "id": 4904,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "違",
+                  "kana": "ちが",
+                  "t": 0.48
+                },
+                {
+                  "text": "える",
+                  "t": 0.68
+                },
+                {
+                  "text": "ほど",
+                  "t": 0.88
+                },
+                {
+                  "text": "変",
+                  "kana": "か",
+                  "t": 1.12
+                },
+                {
+                  "text": "わ",
+                  "t": 1.4
+                },
+                {
+                  "text": "った",
+                  "t": 1.58
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "大变样，变得都以为自己是看错了。",
+              "notes": "",
+              "blanks": [
+                "見違える"
+              ],
+              "audio": "audio/seg-914f6250b218.mp3"
+            },
+            {
+              "id": 4905,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "違",
+                  "kana": "ちが",
+                  "t": 0.48
+                },
+                {
+                  "text": "える",
+                  "t": 0.68
+                },
+                {
+                  "text": "ほど",
+                  "t": 0.9
+                },
+                {
+                  "text": "大",
+                  "kana": "おお",
+                  "t": 1.14
+                },
+                {
+                  "text": "き",
+                  "t": 1.46
+                },
+                {
+                  "text": "く",
+                  "t": 1.58
+                },
+                {
+                  "text": "な",
+                  "t": 1.7
+                },
+                {
+                  "text": "った",
+                  "t": 1.88
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "（孩子）长得大得简直认不出了。",
+              "notes": "",
+              "blanks": [
+                "見違える"
+              ],
+              "audio": "audio/seg-3f5142d0bf9d.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見違える",
+          "kana": "みちがえる",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "看错",
+                  "看差"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2767. 道順（みちじゅん）",
+          "overview": "[名] 路线，到达目的地的道路顺序\n（关联词：手順(てじゅん)⓪①[名] （做事情的）次序，顺序）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-f52ac5b9fb99.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4906,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "駅",
+                  "kana": "えき",
+                  "t": 0
+                },
+                {
+                  "text": "へ",
+                  "t": 0.6
+                },
+                {
+                  "text": "行",
+                  "kana": "い",
+                  "t": 0.78
+                },
+                {
+                  "text": "く",
+                  "t": 0.86
+                },
+                {
+                  "text": "道順",
+                  "kana": "みちじゅん",
+                  "t": 1
+                }
+              ],
+              "zh": "去车站的路线",
+              "notes": "",
+              "blanks": [
+                "道順"
+              ],
+              "audio": "audio/seg-5a8729cfc85e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "道順",
+          "kana": "みちじゅん",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "路线",
+                  "到达目的地的道路顺序"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "手順",
+              "kana": "てじゅん",
+              "zh": "（做事情的）次序，顺序"
+            }
+          ]
+        },
+        {
+          "question": "2768. 道端（みちばた）",
+          "overview": "[名] 路边，路旁",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-a45b85357085.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4907,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "道端",
+                  "kana": "みちばた",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.78
+                },
+                {
+                  "text": "遊",
+                  "kana": "あそ",
+                  "t": 1.02
+                },
+                {
+                  "text": "ぶ",
+                  "t": 1.22
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在路边玩耍。",
+              "notes": "",
+              "blanks": [
+                "道端"
+              ],
+              "audio": "audio/seg-0bea30396ba7.mp3"
+            },
+            {
+              "id": 4908,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "道端",
+                  "kana": "みちばた",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.78
+                },
+                {
+                  "text": "財布",
+                  "kana": "さいふ",
+                  "t": 1
+                },
+                {
+                  "text": "を",
+                  "t": 1.4
+                },
+                {
+                  "text": "拾",
+                  "kana": "ひろ",
+                  "t": 1.6
+                },
+                {
+                  "text": "う",
+                  "t": 1.78
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在路旁捡到钱包。",
+              "notes": "",
+              "blanks": [
+                "道端"
+              ],
+              "audio": "audio/seg-81eb97d3b516.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "道端",
+          "kana": "みちばた",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "路边",
+                  "路旁"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2769. 満ちる（みちる）",
+          "overview": "[自動2] 充满，遍及；满（月），满（潮）；达到期限，任满\n（关联词：満たす(みたす)②[他動1] 填满，弥补；满足，达到）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-374f79cc2493.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4909,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "希望",
+                  "kana": "きぼう",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.6
+                },
+                {
+                  "text": "満",
+                  "kana": "み",
+                  "t": 0.84
+                },
+                {
+                  "text": "ち",
+                  "t": 0.98
+                },
+                {
+                  "text": "て",
+                  "t": 1.14
+                },
+                {
+                  "text": "いる",
+                  "t": 1.26
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "充满希望。",
+              "notes": "",
+              "blanks": [
+                "満ちている"
+              ],
+              "audio": "audio/seg-85a91909536c.mp3"
+            },
+            {
+              "id": 4910,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "任期",
+                  "kana": "にんき",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.7
+                },
+                {
+                  "text": "満",
+                  "kana": "み",
+                  "t": 0.84
+                },
+                {
+                  "text": "ち",
+                  "t": 1.06
+                },
+                {
+                  "text": "る",
+                  "t": 1.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "任期届满。",
+              "notes": "",
+              "blanks": [
+                "満ちる"
+              ],
+              "audio": "audio/seg-2c71b4534bbd.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "満ちる",
+          "kana": "みちる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "充满",
+                  "遍及"
+                ],
+                [
+                  "满（月）",
+                  "满（潮）"
+                ],
+                [
+                  "达到期限",
+                  "任满"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "満たす",
+              "kana": "みたす",
+              "zh": "填满，弥补；满足，达到"
+            }
+          ]
+        },
+        {
+          "question": "2770. 蜜（みつ）",
+          "overview": "[名] 蜂蜜；蜜糖，糖浆，指与蜜一样甜的东西",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-8f6dbedec88c.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4911,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "花",
+                  "kana": "はな",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.54
+                },
+                {
+                  "text": "蜜",
+                  "kana": "みつ",
+                  "t": 0.72
+                },
+                {
+                  "text": "を",
+                  "t": 0.92
+                },
+                {
+                  "text": "吸",
+                  "kana": "す",
+                  "t": 1.22
+                },
+                {
+                  "text": "う",
+                  "t": 1.32
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "采花蜜。",
+              "notes": "",
+              "blanks": [
+                "蜜"
+              ],
+              "audio": "audio/seg-15382ab3fe11.mp3"
+            },
+            {
+              "id": 4912,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "甘",
+                  "kana": "あま",
+                  "t": 0
+                },
+                {
+                  "text": "い",
+                  "t": 0.58
+                },
+                {
+                  "text": "蜜",
+                  "kana": "みつ",
+                  "t": 0.72
+                }
+              ],
+              "zh": "甘甜的蜜汁",
+              "notes": "",
+              "blanks": [
+                "蜜"
+              ],
+              "audio": "audio/seg-9275bc0b631e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "蜜",
+          "kana": "みつ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "蜂蜜"
+                ],
+                [
+                  "蜜糖",
+                  "糖浆",
+                  "指与蜜一样甜的东西"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2771. 蜜蜂（みつばち）",
+          "overview": "[名] 蜜蜂\n（关联词：蜂蜜(はちみつ)⓪[名] 蜂蜜）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-61826802042f.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4913,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "蜜蜂",
+                  "kana": "みつばち",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.78
+                },
+                {
+                  "text": "花",
+                  "kana": "はな",
+                  "t": 0.94
+                },
+                {
+                  "text": "の",
+                  "t": 1.2
+                },
+                {
+                  "text": "蜜",
+                  "kana": "みつ",
+                  "t": 1.42
+                },
+                {
+                  "text": "を",
+                  "t": 1.6
+                },
+                {
+                  "text": "集",
+                  "kana": "あつ",
+                  "t": 1.8
+                },
+                {
+                  "text": "めて",
+                  "t": 2.08
+                },
+                {
+                  "text": "いる",
+                  "t": 2.3
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "蜜蜂在采集花蜜。",
+              "notes": "",
+              "blanks": [
+                "蜜蜂"
+              ],
+              "audio": "audio/seg-a214a5ab47d8.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "蜜蜂",
+          "kana": "みつばち",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "蜜蜂"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "蜂蜜",
+              "kana": "はちみつ",
+              "zh": "蜂蜜"
+            }
+          ]
+        },
+        {
+          "question": "2772. 見積もり（みつもり）",
+          "overview": "[名・他動3] 估算，估价，估价单",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-96c0329291c8.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4914,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見積",
+                  "kana": "みつ",
+                  "t": 0
+                },
+                {
+                  "text": "も",
+                  "t": 0.66
+                },
+                {
+                  "text": "り",
+                  "t": 0.74
+                },
+                {
+                  "text": "を",
+                  "t": 0.88
+                },
+                {
+                  "text": "と",
+                  "t": 1.02
+                },
+                {
+                  "text": "る",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "取得报价。",
+              "notes": "",
+              "blanks": [
+                "見積もり"
+              ],
+              "audio": "audio/seg-d03c9f475577.mp3"
+            },
+            {
+              "id": 4915,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "工事",
+                  "kana": "こうじ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.62
+                },
+                {
+                  "text": "見積",
+                  "kana": "みつ",
+                  "t": 0.78
+                },
+                {
+                  "text": "も",
+                  "t": 1.12
+                },
+                {
+                  "text": "り",
+                  "t": 1.18
+                },
+                {
+                  "text": "を",
+                  "t": 1.34
+                },
+                {
+                  "text": "出",
+                  "kana": "だ",
+                  "t": 1.44
+                },
+                {
+                  "text": "す",
+                  "t": 1.62
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "提交工程估价。",
+              "notes": "",
+              "blanks": [
+                "見積もり"
+              ],
+              "audio": "audio/seg-e89810302f1a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見積もり",
+          "kana": "みつもり",
+          "senses": [
+            {
+              "pos": "名・他動3",
+              "groups": [
+                [
+                  "估算",
+                  "估价",
+                  "估价单"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2773. 見積書（みつもりしょ）",
+          "overview": "[名] 估价单",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-5a96982e0de6.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4916,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見積書",
+                  "kana": "みつもりしょ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.92
+                },
+                {
+                  "text": "よ",
+                  "t": 1.1
+                },
+                {
+                  "text": "って",
+                  "t": 1.22
+                },
+                {
+                  "text": "判断",
+                  "kana": "はんだん",
+                  "t": 1.4
+                },
+                {
+                  "text": "する",
+                  "t": 1.88
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "根据估价单来做出判断。",
+              "notes": "",
+              "blanks": [
+                "見積書"
+              ],
+              "audio": "audio/seg-edf8f4bee015.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見積書",
+          "kana": "みつもりしょ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "估价单"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2774. 見積もる（みつもる）",
+          "overview": "[他動1] 粗略估计，概算",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-2094325f5087.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4917,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "経費",
+                  "kana": "けいひ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.68
+                },
+                {
+                  "text": "見積",
+                  "kana": "みつ",
+                  "t": 0.82
+                },
+                {
+                  "text": "も",
+                  "t": 1.16
+                },
+                {
+                  "text": "る",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "粗略估计经费。",
+              "notes": "",
+              "blanks": [
+                "見積もる"
+              ],
+              "audio": "audio/seg-b2064c456e71.mp3"
+            },
+            {
+              "id": 4918,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "安",
+                  "kana": "やす",
+                  "t": 0
+                },
+                {
+                  "text": "く",
+                  "t": 0.52
+                },
+                {
+                  "text": "見積",
+                  "kana": "みつ",
+                  "t": 0.68
+                },
+                {
+                  "text": "も",
+                  "t": 1.06
+                },
+                {
+                  "text": "って",
+                  "t": 1.2
+                },
+                {
+                  "text": "も",
+                  "t": 1.32
+                },
+                {
+                  "text": "100",
+                  "t": 1.6
+                },
+                {
+                  "text": "万円",
+                  "kana": "まんえん",
+                  "t": 1.9
+                },
+                {
+                  "text": "は",
+                  "t": 2.32
+                },
+                {
+                  "text": "か",
+                  "t": 2.52
+                },
+                {
+                  "text": "か",
+                  "t": 2.66
+                },
+                {
+                  "text": "る",
+                  "t": 2.74
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "少算也要花费百万日元。",
+              "notes": "",
+              "blanks": [
+                "見積もっ"
+              ],
+              "audio": "audio/seg-5e126a806b79.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見積もる",
+          "kana": "みつもる",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "粗略估计",
+                  "概算"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2775. 見慣れる（みなれる）",
+          "overview": "[自動2] 看惯，司空见惯",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-da0fbe52e438.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4919,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見慣",
+                  "kana": "みな",
+                  "t": 0
+                },
+                {
+                  "text": "れた",
+                  "t": 0.58
+                },
+                {
+                  "text": "風景",
+                  "kana": "ふうけい",
+                  "t": 0.8
+                }
+              ],
+              "zh": "经常看到的风景",
+              "notes": "",
+              "blanks": [
+                "見慣れた"
+              ],
+              "audio": "audio/seg-a16222f9819e.mp3"
+            },
+            {
+              "id": 4920,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見慣",
+                  "kana": "みな",
+                  "t": 0
+                },
+                {
+                  "text": "れない",
+                  "t": 0.6
+                },
+                {
+                  "text": "顔",
+                  "kana": "かお",
+                  "t": 0.86
+                }
+              ],
+              "zh": "不熟悉的面孔",
+              "notes": "",
+              "blanks": [
+                "見慣れない"
+              ],
+              "audio": "audio/seg-7d27aba0d381.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見慣れる",
+          "kana": "みなれる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "看惯",
+                  "司空见惯"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2776. ミニ～（mini～）",
+          "overview": "[接頭] 迷你……，小型，微型",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-145470795961.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 4921,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ミ",
+                  "t": 0
+                },
+                {
+                  "text": "ニ",
+                  "t": 0.44
+                },
+                {
+                  "text": "ス",
+                  "t": 0.64
+                },
+                {
+                  "text": "カ",
+                  "t": 0.76
+                },
+                {
+                  "text": "ート",
+                  "t": 0.82
+                }
+              ],
+              "zh": "迷你裙，超短裙",
+              "notes": "",
+              "blanks": [
+                "ミニ"
+              ],
+              "audio": "audio/seg-6a74301f83e1.mp3"
+            },
+            {
+              "id": 4922,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ミ",
+                  "t": 0
+                },
+                {
+                  "text": "ニ",
+                  "t": 0.48
+                },
+                {
+                  "text": "カ",
+                  "t": 0.64
+                },
+                {
+                  "text": "ー",
+                  "t": 0.78
+                }
+              ],
+              "zh": "微型汽车",
+              "notes": "",
+              "blanks": [
+                "ミニ"
+              ],
+              "audio": "audio/seg-928d6b43bf62.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "ミニ～",
+          "kana": "ミニ",
+          "senses": [
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "迷你……",
+                  "小型",
+                  "微型"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2777. 見抜く（みぬく）",
+          "overview": "[他動1] 看穿，看透",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-57a17b1c24dd.mp3",
+          "pitch": "②⓪",
+          "sentences": [
+            {
+              "id": 4923,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "うそ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.58
+                },
+                {
+                  "text": "見抜",
+                  "kana": "みぬ",
+                  "t": 0.76
+                },
+                {
+                  "text": "く",
+                  "t": 1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "看穿谎言。",
+              "notes": "",
+              "blanks": [
+                "見抜く"
+              ],
+              "audio": "audio/seg-a602691055f9.mp3"
+            },
+            {
+              "id": 4924,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "本心",
+                  "kana": "ほんしん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "見抜",
+                  "kana": "みぬ",
+                  "t": 0.94
+                },
+                {
+                  "text": "く",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "看透真心。",
+              "notes": "",
+              "blanks": [
+                "見抜く"
+              ],
+              "audio": "audio/seg-1b5f2eaa0431.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見抜く",
+          "kana": "みぬく",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "看穿",
+                  "看透"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2778. 峰（みね）",
+          "overview": "[名] 山顶，山峰，云岭；刀背",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-731aca20ae97.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4925,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "雲",
+                  "kana": "くも",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.58
+                },
+                {
+                  "text": "峰",
+                  "kana": "みね",
+                  "t": 0.74
+                }
+              ],
+              "zh": "云岭",
+              "notes": "",
+              "blanks": [
+                "峰"
+              ],
+              "audio": "audio/seg-208fb0aee6fd.mp3"
+            },
+            {
+              "id": 4926,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "包丁",
+                  "kana": "ほうちょう",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.78
+                },
+                {
+                  "text": "峰",
+                  "kana": "みね",
+                  "t": 0.96
+                }
+              ],
+              "zh": "刀背",
+              "notes": "",
+              "blanks": [
+                "峰"
+              ],
+              "audio": "audio/seg-7b252bd99180.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "峰",
+          "kana": "みね",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "山顶",
+                  "山峰",
+                  "云岭"
+                ],
+                [
+                  "刀背"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2779. ミネラルウォーター（mineral-water）",
+          "overview": "[名] 矿泉水\n（关联词：ミネラル(mineral)①[名] 矿物，无机物，营养素的一种）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-7d39220f43a4.mp3",
+          "pitch": "⑤",
+          "sentences": [
+            {
+              "id": 4927,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ミ",
+                  "t": 0
+                },
+                {
+                  "text": "ネ",
+                  "t": 0.42
+                },
+                {
+                  "text": "ラ",
+                  "t": 0.56
+                },
+                {
+                  "text": "ル",
+                  "t": 0.68
+                },
+                {
+                  "text": "ウ",
+                  "t": 0.84
+                },
+                {
+                  "text": "ォ",
+                  "t": 0.9
+                },
+                {
+                  "text": "ー",
+                  "t": 0.94
+                },
+                {
+                  "text": "ター",
+                  "t": 1.06
+                },
+                {
+                  "text": "を",
+                  "t": 1.22
+                },
+                {
+                  "text": "一本",
+                  "kana": "いちぽん",
+                  "t": 1.42
+                },
+                {
+                  "text": "買",
+                  "kana": "か",
+                  "t": 1.8
+                },
+                {
+                  "text": "う",
+                  "t": 2.02
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "买一瓶矿泉水。",
+              "notes": "",
+              "blanks": [
+                "ミネラルウォーター"
+              ],
+              "audio": "audio/seg-ecbfbd69cf4c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "ミネラルウォーター",
+          "kana": "ミネラルウォーター",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "矿泉水"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "ミネラル",
+              "kana": "mineral",
+              "zh": "矿物，无机物，营养素的一种"
+            }
+          ]
+        },
+        {
+          "question": "2780. 身の回り（みのまわり）",
+          "overview": "[名] 近旁，自己的身边；身上穿戴的衣物，随身携带的物品",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ce0ca68a95f1.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4928,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.46
+                },
+                {
+                  "text": "回",
+                  "kana": "まわ",
+                  "t": 0.6
+                },
+                {
+                  "text": "り",
+                  "t": 0.76
+                },
+                {
+                  "text": "を",
+                  "t": 0.94
+                },
+                {
+                  "text": "整理",
+                  "kana": "せいり",
+                  "t": 1.14
+                },
+                {
+                  "text": "する",
+                  "t": 1.44
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "整理日常必需品。",
+              "notes": "",
+              "blanks": [
+                "身の回り"
+              ],
+              "audio": "audio/seg-d34718d33be4.mp3"
+            },
+            {
+              "id": 4929,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.46
+                },
+                {
+                  "text": "回",
+                  "kana": "まわ",
+                  "t": 0.6
+                },
+                {
+                  "text": "り",
+                  "t": 0.76
+                },
+                {
+                  "text": "の",
+                  "t": 0.92
+                },
+                {
+                  "text": "世話",
+                  "kana": "せわ",
+                  "t": 1.1
+                },
+                {
+                  "text": "を",
+                  "t": 1.32
+                },
+                {
+                  "text": "する",
+                  "t": 1.54
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "照顾日常生活起居。",
+              "notes": "",
+              "blanks": [
+                "身の回り"
+              ],
+              "audio": "audio/seg-b56642d8552a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "身の回り",
+          "kana": "みのまわり",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "近旁",
+                  "自己的身边"
+                ],
+                [
+                  "身上穿戴的衣物",
+                  "随身携带的物品"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2781. 身ぶり（みぶり）",
+          "overview": "[名] 姿势，身体动作",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-185bb524e4f3.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4930,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "ぶ",
+                  "t": 0.48
+                },
+                {
+                  "text": "り",
+                  "t": 0.64
+                },
+                {
+                  "text": "手",
+                  "kana": "て",
+                  "t": 0.76
+                },
+                {
+                  "text": "ぶ",
+                  "t": 0.84
+                },
+                {
+                  "text": "り",
+                  "t": 1.02
+                }
+              ],
+              "zh": "指手画脚，姿势与手势",
+              "notes": "",
+              "blanks": [
+                "身ぶり"
+              ],
+              "audio": "audio/seg-47bb959153c4.mp3"
+            },
+            {
+              "id": 4931,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "身",
+                  "kana": "み",
+                  "t": 0
+                },
+                {
+                  "text": "ぶ",
+                  "t": 0.46
+                },
+                {
+                  "text": "り",
+                  "t": 0.6
+                },
+                {
+                  "text": "で",
+                  "t": 0.74
+                },
+                {
+                  "text": "自分",
+                  "kana": "じぶん",
+                  "t": 0.84
+                },
+                {
+                  "text": "の",
+                  "t": 1.22
+                },
+                {
+                  "text": "意志",
+                  "kana": "いし",
+                  "t": 1.34
+                },
+                {
+                  "text": "を",
+                  "t": 1.64
+                },
+                {
+                  "text": "伝",
+                  "kana": "つた",
+                  "t": 1.8
+                },
+                {
+                  "text": "える",
+                  "t": 2.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "用身体动作来传达自己的意志。",
+              "notes": "",
+              "blanks": [
+                "身ぶり"
+              ],
+              "audio": "audio/seg-f954cf0141e8.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "身ぶり",
+          "kana": "みぶり",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "姿势",
+                  "身体动作"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2782. 見守る（みまもる）",
+          "overview": "[他動1] 凝视，注视；关怀，关注",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9a14406ae9e7.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4932,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ス",
+                  "t": 0
+                },
+                {
+                  "text": "ク",
+                  "t": 0.54
+                },
+                {
+                  "text": "リ",
+                  "t": 0.66
+                },
+                {
+                  "text": "ーン",
+                  "t": 0.76
+                },
+                {
+                  "text": "を",
+                  "t": 0.9
+                },
+                {
+                  "text": "見守",
+                  "kana": "みまも",
+                  "t": 1.04
+                },
+                {
+                  "text": "る",
+                  "t": 1.36
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "凝视着显示屏。",
+              "notes": "",
+              "blanks": [
+                "見守る"
+              ],
+              "audio": "audio/seg-5f8b6d6f3ed4.mp3"
+            },
+            {
+              "id": 4933,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "子供",
+                  "kana": "こども",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.64
+                },
+                {
+                  "text": "成長",
+                  "kana": "せいちょう",
+                  "t": 0.86
+                },
+                {
+                  "text": "を",
+                  "t": 1.26
+                },
+                {
+                  "text": "見守",
+                  "kana": "みまも",
+                  "t": 1.42
+                },
+                {
+                  "text": "る",
+                  "t": 1.76
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "关怀孩子的成长。",
+              "notes": "",
+              "blanks": [
+                "見守る"
+              ],
+              "audio": "audio/seg-1dac5078c21f.mp3"
+            },
+            {
+              "id": 4934,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "事",
+                  "kana": "こと",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.48
+                },
+                {
+                  "text": "成",
+                  "kana": "な",
+                  "t": 0.7
+                },
+                {
+                  "text": "り",
+                  "t": 0.84
+                },
+                {
+                  "text": "行",
+                  "kana": "い",
+                  "t": 0.96
+                },
+                {
+                  "text": "き",
+                  "t": 1.1
+                },
+                {
+                  "text": "を",
+                  "t": 1.22
+                },
+                {
+                  "text": "見守",
+                  "kana": "みまも",
+                  "t": 1.34
+                },
+                {
+                  "text": "る",
+                  "t": 1.7
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "关注事情的发展趋势。",
+              "notes": "",
+              "blanks": [
+                "見守る"
+              ],
+              "audio": "audio/seg-e574dc339136.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見守る",
+          "kana": "みまもる",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "凝视",
+                  "注视"
+                ],
+                [
+                  "关怀",
+                  "关注"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2783. 見回す（みまわす）",
+          "overview": "[他動1] 环视，环顾，张望四周",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-fcf665b2b2b2.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4935,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "あ",
+                  "t": 0
+                },
+                {
+                  "text": "た",
+                  "t": 0.44
+                },
+                {
+                  "text": "り",
+                  "t": 0.54
+                },
+                {
+                  "text": "を",
+                  "t": 0.68
+                },
+                {
+                  "text": "見回",
+                  "kana": "みまわ",
+                  "t": 0.76
+                },
+                {
+                  "text": "す",
+                  "t": 1.22
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "环视四周。",
+              "notes": "",
+              "blanks": [
+                "見回す"
+              ],
+              "audio": "audio/seg-c876a3143747.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見回す",
+          "kana": "みまわす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "环视",
+                  "环顾",
+                  "张望四周"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2784. 見回る（みまわる）",
+          "overview": "[自動1] 巡逻，巡视，监视",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-69a369747c6c.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4936,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "警備員",
+                  "kana": "けいびいん",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.82
+                },
+                {
+                  "text": "ビ",
+                  "t": 0.96
+                },
+                {
+                  "text": "ル",
+                  "t": 1.16
+                },
+                {
+                  "text": "の",
+                  "t": 1.32
+                },
+                {
+                  "text": "中",
+                  "kana": "なか",
+                  "t": 1.44
+                },
+                {
+                  "text": "を",
+                  "t": 1.6
+                },
+                {
+                  "text": "見回",
+                  "kana": "みまわ",
+                  "t": 1.78
+                },
+                {
+                  "text": "る",
+                  "t": 2.12
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "保安人员巡视大楼。",
+              "notes": "",
+              "blanks": [
+                "見回る"
+              ],
+              "audio": "audio/seg-5c8fd8f6fb4e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見回る",
+          "kana": "みまわる",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "巡逻",
+                  "巡视",
+                  "监视"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2785. ～未満（～みまん）",
+          "overview": "[接尾] （多接在数词后）不满，不足，达不到……标准",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-89c26885e913.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 4937,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "１８",
+                  "t": 0
+                },
+                {
+                  "text": "歳",
+                  "kana": "さい",
+                  "t": 0.7
+                },
+                {
+                  "text": "未満",
+                  "kana": "みまん",
+                  "t": 1.06
+                },
+                {
+                  "text": "は",
+                  "t": 1.36
+                },
+                {
+                  "text": "お",
+                  "t": 1.64
+                },
+                {
+                  "text": "断",
+                  "kana": "ことわ",
+                  "t": 1.84
+                },
+                {
+                  "text": "り",
+                  "t": 2.04
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "谢绝未满十八岁者。",
+              "notes": "",
+              "blanks": [
+                "未満"
+              ],
+              "audio": "audio/seg-ccf2ad954fba.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "～未満",
+          "kana": "～みまん",
+          "senses": [
+            {
+              "pos": "接尾",
+              "groups": [
+                [
+                  "（多接在数词后）不满",
+                  "不足",
+                  "达不到……标准"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2786. 都（みやこ）",
+          "overview": "[名] 京城，首都；都市，（大）城市；以某种东西为特色的地方\n（惯用语：住めば都/地以久居为安；住惯了的地方就会产生好感）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-8e55542888a4.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4938,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "花",
+                  "kana": "はな",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.52
+                },
+                {
+                  "text": "都",
+                  "kana": "みやこ",
+                  "t": 0.74
+                },
+                {
+                  "text": "パ",
+                  "t": 0.98
+                },
+                {
+                  "text": "リ",
+                  "t": 1.2
+                }
+              ],
+              "zh": "繁华都市巴黎",
+              "notes": "",
+              "blanks": [
+                "都"
+              ],
+              "audio": "audio/seg-741c102679ed.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "都",
+          "kana": "みやこ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "京城",
+                  "首都"
+                ],
+                [
+                  "都市",
+                  "（大）城市"
+                ],
+                [
+                  "以某种东西为特色的地方"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2787. 妙（みょう）",
+          "overview": "[ナ形] 美妙，不可思议；奇特，不同一般，奇怪",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-8c6ffe9c9f31.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4939,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "夕",
+                  "kana": "ゆう",
+                  "t": 0
+                },
+                {
+                  "text": "べ",
+                  "t": 0.56
+                },
+                {
+                  "text": "は",
+                  "t": 0.66
+                },
+                {
+                  "text": "妙",
+                  "kana": "みょう",
+                  "t": 0.82
+                },
+                {
+                  "text": "な",
+                  "t": 1.16
+                },
+                {
+                  "text": "夢",
+                  "kana": "ゆめ",
+                  "t": 1.28
+                },
+                {
+                  "text": "を",
+                  "t": 1.56
+                },
+                {
+                  "text": "見",
+                  "kana": "み",
+                  "t": 1.68
+                },
+                {
+                  "text": "た",
+                  "t": 1.84
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "昨晚做了个奇怪的梦。",
+              "notes": "",
+              "blanks": [
+                "妙"
+              ],
+              "audio": "audio/seg-5a47f01a223c.mp3"
+            },
+            {
+              "id": 4940,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "彼",
+                  "kana": "かれ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.5
+                },
+                {
+                  "text": "こと",
+                  "t": 0.74
+                },
+                {
+                  "text": "が",
+                  "t": 0.9
+                },
+                {
+                  "text": "妙",
+                  "kana": "みょう",
+                  "t": 1.1
+                },
+                {
+                  "text": "に",
+                  "t": 1.34
+                },
+                {
+                  "text": "気",
+                  "kana": "き",
+                  "t": 1.56
+                },
+                {
+                  "text": "にな",
+                  "t": 1.74
+                },
+                {
+                  "text": "る",
+                  "t": 1.96
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "不知为什么，心里很在乎他。",
+              "notes": "",
+              "blanks": [
+                "妙"
+              ],
+              "audio": "audio/seg-39515730dae8.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "妙",
+          "kana": "みょう",
+          "senses": [
+            {
+              "pos": "ナ形",
+              "groups": [
+                [
+                  "美妙",
+                  "不可思议"
+                ],
+                [
+                  "奇特",
+                  "不同一般",
+                  "奇怪"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2788. 明後日（みょうごにち）",
+          "overview": "[名] 后天，明天的次日\n（类义词：あさって②[名] 后天）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6a197690ad77.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 4941,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "明後日",
+                  "kana": "みょうごにち",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.86
+                },
+                {
+                  "text": "午後",
+                  "kana": "ごご",
+                  "t": 1.12
+                },
+                {
+                  "text": "に",
+                  "t": 1.34
+                },
+                {
+                  "text": "お",
+                  "t": 1.48
+                },
+                {
+                  "text": "伺",
+                  "kana": "うかが",
+                  "t": 1.66
+                },
+                {
+                  "text": "い",
+                  "t": 1.92
+                },
+                {
+                  "text": "します",
+                  "t": 2.08
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "后天下午去拜访您。",
+              "notes": "",
+              "blanks": [
+                "明後日"
+              ],
+              "audio": "audio/seg-8121793218b4.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "明後日",
+          "kana": "みょうごにち",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "后天",
+                  "明天的次日"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "あさって",
+              "kana": "",
+              "zh": "后天"
+            }
+          ]
+        },
+        {
+          "question": "2789. 名字（みょうじ）",
+          "overview": "[名] 姓，家庭的名",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-64f3f0274153.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4942,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "結婚",
+                  "kana": "けっこん",
+                  "t": 0
+                },
+                {
+                  "text": "して",
+                  "t": 0.78
+                },
+                {
+                  "text": "名字",
+                  "kana": "みょうじ",
+                  "t": 1.02
+                },
+                {
+                  "text": "が",
+                  "t": 1.38
+                },
+                {
+                  "text": "変",
+                  "kana": "か",
+                  "t": 1.64
+                },
+                {
+                  "text": "わ",
+                  "t": 1.78
+                },
+                {
+                  "text": "った",
+                  "t": 1.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "结婚后姓改变了。",
+              "notes": "",
+              "blanks": [
+                "名字"
+              ],
+              "audio": "audio/seg-1f38f50ab48e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "名字",
+          "kana": "みょうじ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "姓",
+                  "家庭的名"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2790. 明日（みょうにち）",
+          "overview": "[名] 明日，明天\n（类义词：明日(あした/あす)③[名] 明天，明日，次日）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e0dfac16df1e.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4943,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "明日",
+                  "kana": "みょうにち",
+                  "t": 0
+                },
+                {
+                  "text": "また",
+                  "t": 0.8
+                },
+                {
+                  "text": "お",
+                  "t": 1.1
+                },
+                {
+                  "text": "伺",
+                  "kana": "うかが",
+                  "t": 1.34
+                },
+                {
+                  "text": "い",
+                  "t": 1.6
+                },
+                {
+                  "text": "します",
+                  "t": 1.72
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "明天再来拜访。",
+              "notes": "",
+              "blanks": [
+                "明日"
+              ],
+              "audio": "audio/seg-4eccacede232.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "明日",
+          "kana": "みょうにち",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "明日",
+                  "明天"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "明日",
+              "kana": "あした/あす",
+              "zh": "明天，明日，次日"
+            }
+          ]
+        },
+        {
+          "question": "2791. 明年（みょうねん）",
+          "overview": "[名] （郑重其事的说法）明年，来年\n（类义词：来年(らいねん)⓪[名] 明年,次年,翌年）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-84071bb3a672.mp3",
+          "pitch": "⓪①",
+          "sentences": [
+            {
+              "id": 4944,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "明年",
+                  "kana": "みょうねん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.68
+                },
+                {
+                  "text": "春",
+                  "kana": "はる",
+                  "t": 0.9
+                },
+                {
+                  "text": "に",
+                  "t": 1.04
+                },
+                {
+                  "text": "結婚",
+                  "kana": "けっこん",
+                  "t": 1.3
+                },
+                {
+                  "text": "する",
+                  "t": 1.74
+                },
+                {
+                  "text": "予定",
+                  "kana": "よてい",
+                  "t": 2
+                },
+                {
+                  "text": "です",
+                  "t": 2.38
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "打算明年春天结婚。",
+              "notes": "",
+              "blanks": [
+                "明年"
+              ],
+              "audio": "audio/seg-3bc0989cd0c9.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "明年",
+          "kana": "みょうねん",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "（郑重其事的说法）明年",
+                  "来年"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "来年",
+              "kana": "らいねん",
+              "zh": "明年,次年,翌年"
+            }
+          ]
+        },
+        {
+          "question": "2792. 未来（みらい）",
+          "overview": "[名] 未来，将来\n（类义词：将来(しょうらい)①[名・副] 将来,未来,前途）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-76b8063e106d.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4945,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "未来",
+                  "kana": "みらい",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.62
+                },
+                {
+                  "text": "希望",
+                  "kana": "きぼう",
+                  "t": 0.82
+                },
+                {
+                  "text": "を",
+                  "t": 1.16
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 1.36
+                },
+                {
+                  "text": "つ",
+                  "t": 1.5
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "对未来抱有希望。",
+              "notes": "",
+              "blanks": [
+                "未来"
+              ],
+              "audio": "audio/seg-4f00f3dffaf8.mp3"
+            },
+            {
+              "id": 4946,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "未来",
+                  "kana": "みらい",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.6
+                },
+                {
+                  "text": "ある",
+                  "t": 0.82
+                },
+                {
+                  "text": "若者",
+                  "kana": "わかもの",
+                  "t": 0.94
+                }
+              ],
+              "zh": "有前途的年轻人",
+              "notes": "",
+              "blanks": [
+                "未来"
+              ],
+              "audio": "audio/seg-91744e233e55.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "未来",
+          "kana": "みらい",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "未来",
+                  "将来"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "将来",
+              "kana": "しょうらい",
+              "zh": "将来,未来,前途"
+            }
+          ]
+        },
+        {
+          "question": "2793. 見分ける（みわける）",
+          "overview": "[他動2] 识别，鉴别，辨别",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d1e9f7fc9fb2.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 4947,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "色",
+                  "kana": "いろ",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.48
+                },
+                {
+                  "text": "見分",
+                  "kana": "みわ",
+                  "t": 0.68
+                },
+                {
+                  "text": "ける",
+                  "t": 1.02
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "通过颜色进行辨别。",
+              "notes": "",
+              "blanks": [
+                "見分ける"
+              ],
+              "audio": "audio/seg-dcaadedad31a.mp3"
+            },
+            {
+              "id": 4948,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "不良品",
+                  "kana": "ふりょうひん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.88
+                },
+                {
+                  "text": "見分",
+                  "kana": "みわ",
+                  "t": 1.1
+                },
+                {
+                  "text": "ける",
+                  "t": 1.38
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "识别劣质产品。",
+              "notes": "",
+              "blanks": [
+                "見分ける"
+              ],
+              "audio": "audio/seg-4205f74e01ba.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見分ける",
+          "kana": "みわける",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "识别",
+                  "鉴别",
+                  "辨别"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2794. 見渡す（みわたす）",
+          "overview": "[他動1] 远望，展望",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-14aa75c5ebd5.mp3",
+          "pitch": "③⓪",
+          "sentences": [
+            {
+              "id": 4949,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "周囲",
+                  "kana": "しゅうい",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.74
+                },
+                {
+                  "text": "見渡",
+                  "kana": "みわた",
+                  "t": 0.86
+                },
+                {
+                  "text": "す",
+                  "t": 1.2
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "纵观四周。",
+              "notes": "",
+              "blanks": [
+                "見渡す"
+              ],
+              "audio": "audio/seg-cfbd87a3f582.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見渡す",
+          "kana": "みわたす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "远望",
+                  "展望"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2795. 見渡す限り（みわたすかぎり）",
+          "overview": "[副] 一望无际",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-3ec97e87de32.mp3",
+          "pitch": "⑤",
+          "sentences": [
+            {
+              "id": 4950,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見渡",
+                  "kana": "みわた",
+                  "t": 0
+                },
+                {
+                  "text": "す",
+                  "t": 0.66
+                },
+                {
+                  "text": "限",
+                  "kana": "かぎ",
+                  "t": 0.86
+                },
+                {
+                  "text": "り",
+                  "t": 1.02
+                },
+                {
+                  "text": "砂漠",
+                  "kana": "さばく",
+                  "t": 1.24
+                },
+                {
+                  "text": "が",
+                  "t": 1.6
+                },
+                {
+                  "text": "広",
+                  "kana": "ひろ",
+                  "t": 1.78
+                },
+                {
+                  "text": "が",
+                  "t": 2.04
+                },
+                {
+                  "text": "って",
+                  "t": 2.24
+                },
+                {
+                  "text": "いる",
+                  "t": 2.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "眼前是一望无际的沙漠。",
+              "notes": "",
+              "blanks": [
+                "見渡す限り"
+              ],
+              "audio": "audio/seg-8f9a14e11010.mp3"
+            },
+            {
+              "id": 4951,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "見渡",
+                  "kana": "みわた",
+                  "t": 0
+                },
+                {
+                  "text": "す",
+                  "t": 0.66
+                },
+                {
+                  "text": "限",
+                  "kana": "かぎ",
+                  "t": 0.92
+                },
+                {
+                  "text": "り",
+                  "t": 1.1
+                },
+                {
+                  "text": "の",
+                  "t": 1.28
+                },
+                {
+                  "text": "人込",
+                  "kana": "ひとご",
+                  "t": 1.46
+                },
+                {
+                  "text": "み",
+                  "t": 1.82
+                }
+              ],
+              "zh": "无边无际的人群",
+              "notes": "",
+              "blanks": [
+                "見渡す限り"
+              ],
+              "audio": "audio/seg-aec866386603.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "見渡す限り",
+          "kana": "みわたすかぎり",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "一望无际"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2796. 民主～（みんしゅ～）",
+          "overview": "[接頭] 民主",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d2cf1bfab26d.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 4952,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "民主主義国家",
+                  "kana": "みんしゅしゅぎこっか",
+                  "t": 0
+                }
+              ],
+              "zh": "民主主义国家",
+              "notes": "",
+              "blanks": [
+                "民主"
+              ],
+              "audio": "audio/seg-f3a6ad019d61.mp3"
+            },
+            {
+              "id": 4953,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "民主",
+                  "kana": "みんしゅ",
+                  "t": 0
+                },
+                {
+                  "text": "社会",
+                  "kana": "しゃかい",
+                  "t": 0.74
+                }
+              ],
+              "zh": "民主社会",
+              "notes": "",
+              "blanks": [
+                "民主"
+              ],
+              "audio": "audio/seg-f84da485038e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "民主～",
+          "kana": "みんしゅ～",
+          "senses": [
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "民主"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2797. 民謡（みんよう）",
+          "overview": "[名] 民谣，民俗音乐的一种",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-f598b06c4065.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4954,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ロ",
+                  "t": 0
+                },
+                {
+                  "text": "シ",
+                  "t": 0.5
+                },
+                {
+                  "text": "ア",
+                  "t": 0.64
+                },
+                {
+                  "text": "民謡",
+                  "kana": "みんよう",
+                  "t": 0.78
+                }
+              ],
+              "zh": "俄罗斯民谣",
+              "notes": "",
+              "blanks": [
+                "民謡"
+              ],
+              "audio": "audio/seg-bf00973dce63.mp3"
+            },
+            {
+              "id": 4955,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "民謡",
+                  "kana": "みんよう",
+                  "t": 0
+                },
+                {
+                  "text": "歌手",
+                  "kana": "かしゅ",
+                  "t": 0.74
+                }
+              ],
+              "zh": "民谣歌手",
+              "notes": "",
+              "blanks": [
+                "民謡"
+              ],
+              "audio": "audio/seg-ffd50b8edf37.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "民謡",
+          "kana": "みんよう",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "民谣",
+                  "民俗音乐的一种"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2798. 無（む）",
+          "overview": "[名] 无，没有\n[接頭] 没有……，不……\n（惯用语：無に帰す。/失去,成为泡影。）（惯用语：無になる。/白费,徒劳。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-50029791cb9f.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4956,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "そんな",
+                  "t": 0
+                },
+                {
+                  "text": "約束",
+                  "kana": "やくそく",
+                  "t": 0.64
+                },
+                {
+                  "text": "は",
+                  "t": 1.16
+                },
+                {
+                  "text": "無",
+                  "kana": "む",
+                  "t": 1.32
+                },
+                {
+                  "text": "に",
+                  "t": 1.5
+                },
+                {
+                  "text": "等",
+                  "kana": "ひと",
+                  "t": 1.64
+                },
+                {
+                  "text": "しい",
+                  "t": 1.88
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "那种约定等于没有。",
+              "notes": "",
+              "blanks": [
+                "無"
+              ],
+              "audio": "audio/seg-636046d35b26.mp3"
+            },
+            {
+              "id": 4957,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無反応",
+                  "kana": "むはんのう",
+                  "t": 0
+                }
+              ],
+              "zh": "没反应",
+              "notes": "",
+              "blanks": [
+                "無"
+              ],
+              "audio": "audio/seg-a38b0abb33dc.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無",
+          "kana": "む",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "无",
+                  "没有"
+                ]
+              ]
+            },
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "没有……",
+                  "不……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2799. 無～（む～）",
+          "overview": "[接頭] 没有……，不……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-50029791cb9f.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 4958,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無免許",
+                  "kana": "むめんきょ",
+                  "t": 0
+                }
+              ],
+              "zh": "无证,没有资格",
+              "notes": "",
+              "blanks": [
+                "無"
+              ],
+              "audio": "audio/seg-00f9ebd5c48b.mp3"
+            },
+            {
+              "id": 4959,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無抵抗",
+                  "kana": "むていこう",
+                  "t": 0
+                }
+              ],
+              "zh": "不抵抗",
+              "notes": "",
+              "blanks": [
+                "無"
+              ],
+              "audio": "audio/seg-a92360bf5c22.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無～",
+          "kana": "む～",
+          "senses": [
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "没有……",
+                  "不……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2800. 無意識（むいしき）",
+          "overview": "[名・ナ形] 无意识，丧失意识；不自觉（地做……）\n（关联词：無意識的(むいしきてき)⓪[ナ形] 无意识的,无意当中……）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-55b984b0de71.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4960,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無意識",
+                  "kana": "むいしき",
+                  "t": 0
+                },
+                {
+                  "text": "状態",
+                  "kana": "じょうたい",
+                  "t": 0.82
+                }
+              ],
+              "zh": "无意识状态",
+              "notes": "",
+              "blanks": [
+                "無意識"
+              ],
+              "audio": "audio/seg-b369f956e46a.mp3"
+            },
+            {
+              "id": 4961,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無意識",
+                  "kana": "むいしき",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.78
+                },
+                {
+                  "text": "人",
+                  "kana": "ひと",
+                  "t": 0.94
+                },
+                {
+                  "text": "を",
+                  "t": 1.18
+                },
+                {
+                  "text": "傷",
+                  "kana": "きず",
+                  "t": 1.38
+                },
+                {
+                  "text": "つ",
+                  "t": 1.6
+                },
+                {
+                  "text": "ける",
+                  "t": 1.8
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "无意识中伤害他人。",
+              "notes": "",
+              "blanks": [
+                "無意識"
+              ],
+              "audio": "audio/seg-ca52943697d2.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無意識",
+          "kana": "むいしき",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "无意识",
+                  "丧失意识"
+                ],
+                [
+                  "不自觉（地做……）"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "無意識的",
+              "kana": "むいしきてき",
+              "zh": "无意识的,无意当中……"
+            }
+          ]
+        },
+        {
+          "question": "2801. 無意義（むいぎ）",
+          "overview": "[名・ナ形] 无意义，无聊\n（反义词：有意義(ゆういぎ)③[名・ナ形] 有意义,有价值）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b1d3ab641ba2.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4962,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無意",
+                  "kana": "むい",
+                  "t": 0
+                },
+                {
+                  "text": "義",
+                  "kana": "ぎ",
+                  "t": 0.56
+                },
+                {
+                  "text": "な",
+                  "t": 0.7
+                },
+                {
+                  "text": "行動",
+                  "kana": "こうどう",
+                  "t": 0.92
+                }
+              ],
+              "zh": "无意义的举动",
+              "notes": "",
+              "blanks": [
+                "無意義"
+              ],
+              "audio": "audio/seg-870306b4f6c1.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無意義",
+          "kana": "むいぎ",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "无意义",
+                  "无聊"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "有意義",
+              "kana": "ゆういぎ",
+              "zh": "有意义,有价值"
+            }
+          ]
+        },
+        {
+          "question": "2802. 無意味（むいみ）",
+          "overview": "[ナ形] 无意义，无价值，白费\n（反义词：有意味(ゆういみ)③[名・ナ形] 有意义,有价值）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1fdcc82c9502.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4963,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無意味",
+                  "kana": "むいみ",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.7
+                },
+                {
+                  "text": "計画",
+                  "kana": "けいかく",
+                  "t": 0.86
+                }
+              ],
+              "zh": "没有价值的计划",
+              "notes": "",
+              "blanks": [
+                "無意味"
+              ],
+              "audio": "audio/seg-57ef18a6c8cd.mp3"
+            },
+            {
+              "id": 4964,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無意味",
+                  "kana": "むいみ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.7
+                },
+                {
+                  "text": "過",
+                  "kana": "す",
+                  "t": 0.88
+                },
+                {
+                  "text": "ご",
+                  "t": 1.02
+                },
+                {
+                  "text": "す",
+                  "t": 1.16
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "虚度年华。",
+              "notes": "",
+              "blanks": [
+                "無意味"
+              ],
+              "audio": "audio/seg-f90978511f15.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無意味",
+          "kana": "むいみ",
+          "senses": [
+            {
+              "pos": "ナ形",
+              "groups": [
+                [
+                  "无意义",
+                  "无价值",
+                  "白费"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "有意味",
+              "kana": "ゆういみ",
+              "zh": "有意义,有价值"
+            }
+          ]
+        },
+        {
+          "question": "2803. 無計画（むけいかく）",
+          "overview": "[名・ナ形] 无计划，没有明确计划",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4da200ebbb30.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4965,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無計画",
+                  "kana": "むけいかく",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.86
+                },
+                {
+                  "text": "土地",
+                  "kana": "とち",
+                  "t": 1.1
+                },
+                {
+                  "text": "開発",
+                  "kana": "かいはつ",
+                  "t": 1.42
+                }
+              ],
+              "zh": "无计划的土地开发",
+              "notes": "",
+              "blanks": [
+                "無計画"
+              ],
+              "audio": "audio/seg-167218ffedf0.mp3"
+            },
+            {
+              "id": 4966,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "彼女",
+                  "kana": "かのじょ",
+                  "t": 0
+                },
+                {
+                  "text": "は",
+                  "t": 0.62
+                },
+                {
+                  "text": "無計画",
+                  "kana": "むけいかく",
+                  "t": 0.82
+                },
+                {
+                  "text": "に",
+                  "t": 1.44
+                },
+                {
+                  "text": "お",
+                  "t": 1.68
+                },
+                {
+                  "text": "金",
+                  "kana": "かね",
+                  "t": 1.84
+                },
+                {
+                  "text": "を",
+                  "t": 1.98
+                },
+                {
+                  "text": "使",
+                  "kana": "つか",
+                  "t": 2.22
+                },
+                {
+                  "text": "う",
+                  "t": 2.42
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "她没有计划地消费。",
+              "notes": "",
+              "blanks": [
+                "無計画"
+              ],
+              "audio": "audio/seg-919953054624.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無計画",
+          "kana": "むけいかく",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "无计划",
+                  "没有明确计划"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2804. 向ける（むける）",
+          "overview": "[自他動2] （他）向，对；派遣；挪用，用为……；（自）前往",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-091216887049.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4967,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "顔",
+                  "kana": "かお",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.6
+                },
+                {
+                  "text": "右",
+                  "kana": "みぎ",
+                  "t": 0.72
+                },
+                {
+                  "text": "に",
+                  "t": 0.86
+                },
+                {
+                  "text": "向",
+                  "kana": "む",
+                  "t": 1.1
+                },
+                {
+                  "text": "ける",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "脸朝向右边。",
+              "notes": "",
+              "blanks": [
+                "向ける"
+              ],
+              "audio": "audio/seg-570157fc690d.mp3"
+            },
+            {
+              "id": 4968,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "使者",
+                  "kana": "ししゃ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.58
+                },
+                {
+                  "text": "向",
+                  "kana": "む",
+                  "t": 0.78
+                },
+                {
+                  "text": "ける",
+                  "t": 0.96
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "派遣使者。",
+              "notes": "",
+              "blanks": [
+                "向ける"
+              ],
+              "audio": "audio/seg-a9be813a9cff.mp3"
+            },
+            {
+              "id": 4969,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "会費",
+                  "kana": "かいひ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.68
+                },
+                {
+                  "text": "向",
+                  "kana": "む",
+                  "t": 0.82
+                },
+                {
+                  "text": "ける",
+                  "t": 1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "用作会费。",
+              "notes": "",
+              "blanks": [
+                "向ける"
+              ],
+              "audio": "audio/seg-264da3316764.mp3"
+            },
+            {
+              "id": 4970,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ロ",
+                  "t": 0
+                },
+                {
+                  "text": "ン",
+                  "t": 0.5
+                },
+                {
+                  "text": "ドン",
+                  "t": 0.64
+                },
+                {
+                  "text": "に",
+                  "t": 0.76
+                },
+                {
+                  "text": "向",
+                  "kana": "む",
+                  "t": 0.94
+                },
+                {
+                  "text": "けて",
+                  "t": 1.1
+                },
+                {
+                  "text": "飛",
+                  "kana": "と",
+                  "t": 1.3
+                },
+                {
+                  "text": "ぶ",
+                  "t": 1.46
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "飞往伦敦。",
+              "notes": "",
+              "blanks": [
+                "向けて"
+              ],
+              "audio": "audio/seg-a5374a0d377c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "向ける",
+          "kana": "むける",
+          "senses": [
+            {
+              "pos": "自他動2",
+              "groups": [
+                [
+                  "（他）向",
+                  "对"
+                ],
+                [
+                  "派遣"
+                ],
+                [
+                  "挪用",
+                  "用为……"
+                ],
+                [
+                  "（自）前往"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2805. 無限（むげん）",
+          "overview": "[名・ナ形] 无限\n（反义词：有限(ゆうげん)⓪[名・ナ形] 有限度,有界限）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-3b80d6d21bf2.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4971,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無限",
+                  "kana": "むげん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.66
+                },
+                {
+                  "text": "宇宙",
+                  "kana": "うちゅう",
+                  "t": 0.86
+                }
+              ],
+              "zh": "无限的宇宙",
+              "notes": "",
+              "blanks": [
+                "無限"
+              ],
+              "audio": "audio/seg-e84d8ac1691f.mp3"
+            },
+            {
+              "id": 4972,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無限",
+                  "kana": "むげん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.68
+                },
+                {
+                  "text": "可能性",
+                  "kana": "かのうせい",
+                  "t": 0.98
+                }
+              ],
+              "zh": "无限的可能性",
+              "notes": "",
+              "blanks": [
+                "無限"
+              ],
+              "audio": "audio/seg-99af49d48a43.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無限",
+          "kana": "むげん",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "无限"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "有限",
+              "kana": "ゆうげん",
+              "zh": "有限度,有界限"
+            }
+          ]
+        },
+        {
+          "question": "2806. 無地（むじ）",
+          "overview": "[名] 素色，没有花纹，清一色",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b05edc40c3b6.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4973,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無地",
+                  "kana": "むじ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.6
+                },
+                {
+                  "text": "着物",
+                  "kana": "きもの",
+                  "t": 0.78
+                }
+              ],
+              "zh": "素色的和服",
+              "notes": "",
+              "blanks": [
+                "無地"
+              ],
+              "audio": "audio/seg-b812cf28b0e5.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無地",
+          "kana": "むじ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "素色",
+                  "没有花纹",
+                  "清一色"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2807. 虫歯（むしば）",
+          "overview": "[名] 虫牙，蛀牙，龋齿",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d85cd9ae389a.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4974,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "虫歯",
+                  "kana": "むしば",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.7
+                },
+                {
+                  "text": "予防",
+                  "kana": "よぼう",
+                  "t": 0.9
+                },
+                {
+                  "text": "する",
+                  "t": 1.18
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "预防蛀牙。",
+              "notes": "",
+              "blanks": [
+                "虫歯"
+              ],
+              "audio": "audio/seg-5f19bbd5cf91.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "虫歯",
+          "kana": "むしば",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "虫牙",
+                  "蛀牙",
+                  "龋齿"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2808. 無邪気（むじゃき）",
+          "overview": "[ナ形] 天真烂漫，纯真；单纯，无恶意",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-2e695bac412f.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4975,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無邪気",
+                  "kana": "むじゃき",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.72
+                },
+                {
+                  "text": "子供",
+                  "kana": "こども",
+                  "t": 0.94
+                }
+              ],
+              "zh": "天真可爱的孩子",
+              "notes": "",
+              "blanks": [
+                "無邪気"
+              ],
+              "audio": "audio/seg-c476f5321f57.mp3"
+            },
+            {
+              "id": 4976,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無邪気",
+                  "kana": "むじゃき",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.72
+                },
+                {
+                  "text": "考",
+                  "kana": "かんが",
+                  "t": 0.94
+                },
+                {
+                  "text": "え",
+                  "t": 1.18
+                }
+              ],
+              "zh": "单纯的想法",
+              "notes": "",
+              "blanks": [
+                "無邪気"
+              ],
+              "audio": "audio/seg-915cc0158195.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無邪気",
+          "kana": "むじゃき",
+          "senses": [
+            {
+              "pos": "ナ形",
+              "groups": [
+                [
+                  "天真烂漫",
+                  "纯真"
+                ],
+                [
+                  "单纯",
+                  "无恶意"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2809. 矛盾（むじゅん）",
+          "overview": "[名・自動3] 矛盾，两个事物之间相互否定而不能两立",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1be202a7cf32.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4977,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "矛盾",
+                  "kana": "むじゅん",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.64
+                },
+                {
+                  "text": "満",
+                  "kana": "み",
+                  "t": 0.88
+                },
+                {
+                  "text": "ち",
+                  "t": 1.06
+                },
+                {
+                  "text": "る",
+                  "t": 1.16
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "充满矛盾。",
+              "notes": "",
+              "blanks": [
+                "矛盾"
+              ],
+              "audio": "audio/seg-05592ca01ca9.mp3"
+            },
+            {
+              "id": 4978,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "前後",
+                  "kana": "ぜんご",
+                  "t": 0
+                },
+                {
+                  "text": "矛盾",
+                  "kana": "むじゅん",
+                  "t": 0.68
+                },
+                {
+                  "text": "した",
+                  "t": 1.06
+                },
+                {
+                  "text": "論点",
+                  "kana": "ろんてん",
+                  "t": 1.36
+                }
+              ],
+              "zh": "前后矛盾的论点",
+              "notes": "",
+              "blanks": [
+                "矛盾"
+              ],
+              "audio": "audio/seg-ae26c076ee03.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "矛盾",
+          "kana": "むじゅん",
+          "senses": [
+            {
+              "pos": "名・自動3",
+              "groups": [
+                [
+                  "矛盾",
+                  "两个事物之间相互否定而不能两立"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2810. むしろ",
+          "overview": "[副] 宁可，与其……不如……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-dbb746834101.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4979,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "恥",
+                  "kana": "はじ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.52
+                },
+                {
+                  "text": "か",
+                  "t": 0.74
+                },
+                {
+                  "text": "く",
+                  "t": 0.84
+                },
+                {
+                  "text": "く",
+                  "t": 1.02
+                },
+                {
+                  "text": "らい",
+                  "t": 1.16
+                },
+                {
+                  "text": "なら",
+                  "t": 1.32
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "む",
+                  "t": 1.78
+                },
+                {
+                  "text": "し",
+                  "t": 2.1
+                },
+                {
+                  "text": "ろ",
+                  "t": 2.2
+                },
+                {
+                  "text": "死",
+                  "kana": "し",
+                  "t": 2.34
+                },
+                {
+                  "text": "んだ",
+                  "t": 2.56
+                },
+                {
+                  "text": "ほ",
+                  "t": 2.74
+                },
+                {
+                  "text": "うが",
+                  "t": 2.94
+                },
+                {
+                  "text": "ま",
+                  "t": 3.08
+                },
+                {
+                  "text": "し",
+                  "t": 3.3
+                },
+                {
+                  "text": "だ",
+                  "t": 3.42
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "与其蒙羞,还不如死了算了。",
+              "notes": "",
+              "blanks": [
+                "むしろ"
+              ],
+              "audio": "audio/seg-f349c8187a07.mp3"
+            },
+            {
+              "id": 4980,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "教室",
+                  "kana": "きょうしつ",
+                  "t": 0
+                },
+                {
+                  "text": "という",
+                  "t": 0.74
+                },
+                {
+                  "text": "よ",
+                  "t": 1.02
+                },
+                {
+                  "text": "り",
+                  "t": 1.26
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "む",
+                  "t": 1.76
+                },
+                {
+                  "text": "し",
+                  "t": 1.98
+                },
+                {
+                  "text": "ろ",
+                  "t": 2.1
+                },
+                {
+                  "text": "図書室",
+                  "kana": "としょしつ",
+                  "t": 2.22
+                },
+                {
+                  "text": "と",
+                  "t": 2.76
+                },
+                {
+                  "text": "い",
+                  "t": 2.88
+                },
+                {
+                  "text": "った",
+                  "t": 3
+                },
+                {
+                  "text": "ほ",
+                  "t": 3.14
+                },
+                {
+                  "text": "うが",
+                  "t": 3.32
+                },
+                {
+                  "text": "も",
+                  "t": 3.54
+                },
+                {
+                  "text": "っと",
+                  "t": 3.76
+                },
+                {
+                  "text": "ふ",
+                  "t": 3.96
+                },
+                {
+                  "text": "さ",
+                  "t": 4.12
+                },
+                {
+                  "text": "わ",
+                  "t": 4.22
+                },
+                {
+                  "text": "しい",
+                  "t": 4.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "与其说是教室,还不如说是图书室来得更加确切。",
+              "notes": "",
+              "blanks": [
+                "むしろ"
+              ],
+              "audio": "audio/seg-f368707dbbe7.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "むしろ",
+          "kana": "むしろ",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "宁可",
+                  "与其……不如……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2811. 無神経（むしんけい）",
+          "overview": "[名・ナ形] 神经大条，感觉迟钝；满不在乎",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1546644f0fd1.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4981,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無神経",
+                  "kana": "むしんけい",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.9
+                },
+                {
+                  "text": "発言",
+                  "kana": "はつげん",
+                  "t": 1.12
+                }
+              ],
+              "zh": "无所顾忌的发言",
+              "notes": "",
+              "blanks": [
+                "無神経"
+              ],
+              "audio": "audio/seg-129584ae0ce4.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無神経",
+          "kana": "むしんけい",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "神经大条",
+                  "感觉迟钝"
+                ],
+                [
+                  "满不在乎"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2812. 無数（むすう）",
+          "overview": "[名・ナ形] 无数，无法计量\n（反义词：有数(ゆうすう)⓪[名・ナ形] 有数,为数不多,屈指可数,著名）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-41417acc435e.mp3",
+          "pitch": "②⓪",
+          "sentences": [
+            {
+              "id": 4982,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無数",
+                  "kana": "むすう",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.74
+                },
+                {
+                  "text": "星",
+                  "kana": "ほし",
+                  "t": 0.92
+                }
+              ],
+              "zh": "无数的星星",
+              "notes": "",
+              "blanks": [
+                "無数"
+              ],
+              "audio": "audio/seg-f0cc8d3da49e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無数",
+          "kana": "むすう",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "无数",
+                  "无法计量"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "有数",
+              "kana": "ゆうすう",
+              "zh": "有数,为数不多,屈指可数,著名"
+            }
+          ]
+        },
+        {
+          "question": "2813. 結び（むすび）",
+          "overview": "[名] 结，打结；结合；终了，结束，结尾",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-aa077827a3fa.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4983,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "結",
+                  "kana": "むす",
+                  "t": 0
+                },
+                {
+                  "text": "び",
+                  "t": 0.58
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "解",
+                  "kana": "と",
+                  "t": 0.92
+                },
+                {
+                  "text": "く",
+                  "t": 1.06
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "解开所打的结。",
+              "notes": "",
+              "blanks": [
+                "結び"
+              ],
+              "audio": "audio/seg-a0ac0dc3f1b0.mp3"
+            },
+            {
+              "id": 4984,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "縁結",
+                  "kana": "えんむす",
+                  "t": 0
+                },
+                {
+                  "text": "び",
+                  "t": 0.76
+                }
+              ],
+              "zh": "牵线搭桥",
+              "notes": "",
+              "blanks": [
+                "結び"
+              ],
+              "audio": "audio/seg-23ca72e7f7ed.mp3"
+            },
+            {
+              "id": 4985,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "結",
+                  "kana": "むす",
+                  "t": 0
+                },
+                {
+                  "text": "び",
+                  "t": 0.56
+                },
+                {
+                  "text": "の",
+                  "t": 0.74
+                },
+                {
+                  "text": "言葉",
+                  "kana": "ことば",
+                  "t": 0.96
+                }
+              ],
+              "zh": "结束语",
+              "notes": "",
+              "blanks": [
+                "結び"
+              ],
+              "audio": "audio/seg-be30f739582c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "結び",
+          "kana": "むすび",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "结",
+                  "打结"
+                ],
+                [
+                  "结合"
+                ],
+                [
+                  "终了",
+                  "结束",
+                  "结尾"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2814. 結び付く（むすびつく）",
+          "overview": "[自動1] 结合；有关系，有联系",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-94ae3eed724d.mp3",
+          "pitch": "④",
+          "sentences": [
+            {
+              "id": 4986,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "顔",
+                  "kana": "かお",
+                  "t": 0
+                },
+                {
+                  "text": "と",
+                  "t": 0.54
+                },
+                {
+                  "text": "名前",
+                  "kana": "なまえ",
+                  "t": 0.68
+                },
+                {
+                  "text": "が",
+                  "t": 1
+                },
+                {
+                  "text": "な",
+                  "t": 1.18
+                },
+                {
+                  "text": "かな",
+                  "t": 1.38
+                },
+                {
+                  "text": "か",
+                  "t": 1.56
+                },
+                {
+                  "text": "結",
+                  "kana": "むす",
+                  "t": 1.72
+                },
+                {
+                  "text": "び",
+                  "t": 2
+                },
+                {
+                  "text": "つ",
+                  "t": 2.16
+                },
+                {
+                  "text": "か",
+                  "t": 2.28
+                },
+                {
+                  "text": "ない",
+                  "t": 2.42
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "容貌与名字总不能对上号。",
+              "notes": "",
+              "blanks": [
+                "結びつかない"
+              ],
+              "audio": "audio/seg-e067dbd55972.mp3"
+            },
+            {
+              "id": 4987,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "興味",
+                  "kana": "きょうみ",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.64
+                },
+                {
+                  "text": "成功",
+                  "kana": "せいこう",
+                  "t": 0.86
+                },
+                {
+                  "text": "に",
+                  "t": 1.28
+                },
+                {
+                  "text": "結",
+                  "kana": "むす",
+                  "t": 1.48
+                },
+                {
+                  "text": "び",
+                  "t": 1.72
+                },
+                {
+                  "text": "つ",
+                  "t": 1.9
+                },
+                {
+                  "text": "く",
+                  "t": 2.02
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "成功与兴趣有关。",
+              "notes": "",
+              "blanks": [
+                "結びつく"
+              ],
+              "audio": "audio/seg-139fa9bf9c4c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "結び付く",
+          "kana": "むすびつく",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "结合"
+                ],
+                [
+                  "有关系",
+                  "有联系"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2815. 結び付ける（むすびつける）",
+          "overview": "[他動2] 结上，系上；结合，联结",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6550ee9caddb.mp3",
+          "pitch": "⑤",
+          "sentences": [
+            {
+              "id": 4988,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "旗",
+                  "kana": "はた",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.52
+                },
+                {
+                  "text": "さお",
+                  "t": 0.78
+                },
+                {
+                  "text": "に",
+                  "t": 0.94
+                },
+                {
+                  "text": "結",
+                  "kana": "むす",
+                  "t": 1.12
+                },
+                {
+                  "text": "び",
+                  "t": 1.44
+                },
+                {
+                  "text": "付",
+                  "kana": "つ",
+                  "t": 1.58
+                },
+                {
+                  "text": "ける",
+                  "t": 1.7
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "把旗帜系在旗杆上。",
+              "notes": "",
+              "blanks": [
+                "結び付ける"
+              ],
+              "audio": "audio/seg-803eb3779656.mp3"
+            },
+            {
+              "id": 4989,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "原因",
+                  "kana": "げんいん",
+                  "t": 0
+                },
+                {
+                  "text": "と",
+                  "t": 0.64
+                },
+                {
+                  "text": "結果",
+                  "kana": "けっか",
+                  "t": 0.88
+                },
+                {
+                  "text": "を",
+                  "t": 1.22
+                },
+                {
+                  "text": "結",
+                  "kana": "むす",
+                  "t": 1.48
+                },
+                {
+                  "text": "び",
+                  "t": 1.7
+                },
+                {
+                  "text": "付",
+                  "kana": "つ",
+                  "t": 1.84
+                },
+                {
+                  "text": "ける",
+                  "t": 1.98
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "将原因与结果结合起来。",
+              "notes": "",
+              "blanks": [
+                "結び付ける"
+              ],
+              "audio": "audio/seg-da04c72a60db.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "結び付ける",
+          "kana": "むすびつける",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "结上",
+                  "系上"
+                ],
+                [
+                  "结合",
+                  "联结"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2816. 無責任（むせきにん）",
+          "overview": "[名・ナ形] 不负责任，没有责任",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-a5779da562ef.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4990,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無責任",
+                  "kana": "むせきにん",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.98
+                },
+                {
+                  "text": "発言",
+                  "kana": "はつげん",
+                  "t": 1.18
+                }
+              ],
+              "zh": "不负责任的发言",
+              "notes": "",
+              "blanks": [
+                "無責任"
+              ],
+              "audio": "audio/seg-ae58d01d538c.mp3"
+            },
+            {
+              "id": 4991,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "事故",
+                  "kana": "じこ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.6
+                },
+                {
+                  "text": "つ",
+                  "t": 0.8
+                },
+                {
+                  "text": "いて",
+                  "t": 0.9
+                },
+                {
+                  "text": "の",
+                  "t": 1.12
+                },
+                {
+                  "text": "無責任",
+                  "kana": "むせきにん",
+                  "t": 1.28
+                },
+                {
+                  "text": "を",
+                  "t": 1.86
+                },
+                {
+                  "text": "主張",
+                  "kana": "しゅちょう",
+                  "t": 2.1
+                },
+                {
+                  "text": "する",
+                  "t": 2.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "主张对事故不负有责任。",
+              "notes": "",
+              "blanks": [
+                "無責任"
+              ],
+              "audio": "audio/seg-72644588090c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無責任",
+          "kana": "むせきにん",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "不负责任",
+                  "没有责任"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2817. 無断（むだん）",
+          "overview": "[名] 未事先打招呼；擅自，私自",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-0f089accd57b.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4992,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無断",
+                  "kana": "むだん",
+                  "t": 0
+                },
+                {
+                  "text": "欠勤",
+                  "kana": "けっきん",
+                  "t": 0.72
+                }
+              ],
+              "zh": "无故旷工,擅自不上班",
+              "notes": "",
+              "blanks": [
+                "無断"
+              ],
+              "audio": "audio/seg-086e9e3c2b49.mp3"
+            },
+            {
+              "id": 4993,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無断",
+                  "kana": "むだん",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.6
+                },
+                {
+                  "text": "他人",
+                  "kana": "たにん",
+                  "t": 0.8
+                },
+                {
+                  "text": "の",
+                  "t": 1.2
+                },
+                {
+                  "text": "物",
+                  "kana": "もの",
+                  "t": 1.38
+                },
+                {
+                  "text": "を",
+                  "t": 1.54
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 1.72
+                },
+                {
+                  "text": "ち",
+                  "t": 1.9
+                },
+                {
+                  "text": "帰",
+                  "kana": "かえ",
+                  "t": 2.02
+                },
+                {
+                  "text": "る",
+                  "t": 2.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "擅自把别人的东西带回家。",
+              "notes": "",
+              "blanks": [
+                "無断"
+              ],
+              "audio": "audio/seg-d9b3c1c7866d.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無断",
+          "kana": "むだん",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "未事先打招呼"
+                ],
+                [
+                  "擅自",
+                  "私自"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2818. 鞭（むち）",
+          "overview": "[名] 鞭子，皮鞭，教鞭；鞭策，激励\n（惯用语：愛の鞭/爱的鞭策）（惯用语：飴と鞭/（教育或激励人的方法）软硬兼施,胡萝卜加大棒）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4c4e3aad5a20.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 4994,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "馬",
+                  "kana": "うま",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.5
+                },
+                {
+                  "text": "鞭",
+                  "kana": "むち",
+                  "t": 0.7
+                },
+                {
+                  "text": "を",
+                  "t": 1.02
+                },
+                {
+                  "text": "当",
+                  "kana": "あ",
+                  "t": 1.16
+                },
+                {
+                  "text": "て",
+                  "t": 1.28
+                },
+                {
+                  "text": "て",
+                  "t": 1.4
+                },
+                {
+                  "text": "走",
+                  "kana": "はし",
+                  "t": 1.52
+                },
+                {
+                  "text": "ら",
+                  "t": 1.82
+                },
+                {
+                  "text": "せ",
+                  "t": 2
+                },
+                {
+                  "text": "る",
+                  "t": 2.08
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "用鞭子抽马让它跑。",
+              "notes": "",
+              "blanks": [
+                "鞭"
+              ],
+              "audio": "audio/seg-a433a74f97d7.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "鞭",
+          "kana": "むち",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "鞭子",
+                  "皮鞭",
+                  "教鞭"
+                ],
+                [
+                  "鞭策",
+                  "激励"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2819. 無用（むよう）",
+          "overview": "[名・ナ形] 没用，不起作用；不准，禁止；不用，无需",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-09ec20959c1a.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 4995,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無用",
+                  "kana": "むよう",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.64
+                },
+                {
+                  "text": "物",
+                  "kana": "もの",
+                  "t": 0.86
+                }
+              ],
+              "zh": "没用的东西",
+              "notes": "",
+              "blanks": [
+                "無用"
+              ],
+              "audio": "audio/seg-0cd3442d50bc.mp3"
+            },
+            {
+              "id": 4996,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "天地無用",
+                  "kana": "てんちむよう",
+                  "t": 0
+                }
+              ],
+              "zh": "请勿倒置",
+              "notes": "",
+              "blanks": [
+                "無用"
+              ],
+              "audio": "audio/seg-a8b120753530.mp3"
+            },
+            {
+              "id": 4997,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "心配無用",
+                  "kana": "しんぱいむよう",
+                  "t": 0
+                }
+              ],
+              "zh": "无需担心",
+              "notes": "",
+              "blanks": [
+                "無用"
+              ],
+              "audio": "audio/seg-d4e53c36cb91.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無用",
+          "kana": "むよう",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "没用",
+                  "不起作用"
+                ],
+                [
+                  "不准",
+                  "禁止"
+                ],
+                [
+                  "不用",
+                  "无需"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2820. 紫（むらさき）",
+          "overview": "[名] 紫草；紫色\n（类义词：パープル(purple)①[名] 紫色，紫红色）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-25ed9469e354.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 4998,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "紫芋",
+                  "kana": "むらさきいも",
+                  "t": 0
+                }
+              ],
+              "zh": "紫薯，紫山芋",
+              "notes": "",
+              "blanks": [
+                "紫芋"
+              ],
+              "audio": "audio/seg-d8c377d37b32.mp3"
+            },
+            {
+              "id": 4999,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "紫",
+                  "kana": "むらさき",
+                  "t": 0
+                },
+                {
+                  "text": "立",
+                  "kana": "だ",
+                  "t": 0.66
+                },
+                {
+                  "text": "つ",
+                  "t": 1.31
+                }
+              ],
+              "zh": "呈现紫色",
+              "notes": "",
+              "blanks": [
+                "紫立つ"
+              ],
+              "audio": "audio/seg-f971cdff552a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "紫",
+          "kana": "むらさき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "紫草"
+                ],
+                [
+                  "紫色"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "パープル",
+              "kana": "purple",
+              "zh": "紫色，紫红色"
+            }
+          ]
+        },
+        {
+          "question": "2821. 無理やり（むりやり）",
+          "overview": "[副] 勉强（做），硬（做），强迫",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6a96d878982e.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5000,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "仕事",
+                  "kana": "しごと",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "無理",
+                  "kana": "むり",
+                  "t": 0.92
+                },
+                {
+                  "text": "や",
+                  "t": 1.16
+                },
+                {
+                  "text": "り",
+                  "t": 1.24
+                },
+                {
+                  "text": "押",
+                  "kana": "お",
+                  "t": 1.38
+                },
+                {
+                  "text": "し",
+                  "t": 1.58
+                },
+                {
+                  "text": "付",
+                  "kana": "つ",
+                  "t": 1.62
+                },
+                {
+                  "text": "ける",
+                  "t": 1.76
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "将工作强加于人。",
+              "notes": "",
+              "blanks": [
+                "無理やり"
+              ],
+              "audio": "audio/seg-c1f40e439736.mp3"
+            },
+            {
+              "id": 5001,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無理",
+                  "kana": "むり",
+                  "t": 0.26
+                },
+                {
+                  "text": "や",
+                  "t": 0.62
+                },
+                {
+                  "text": "り",
+                  "t": 0.7
+                },
+                {
+                  "text": "や",
+                  "t": 0.84
+                },
+                {
+                  "text": "め",
+                  "t": 1.08
+                },
+                {
+                  "text": "さ",
+                  "t": 1.18
+                },
+                {
+                  "text": "せ",
+                  "t": 1.3
+                },
+                {
+                  "text": "る",
+                  "t": 1.42
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "强迫（人）辞职。",
+              "notes": "",
+              "blanks": [
+                "無理やり"
+              ],
+              "audio": "audio/seg-aa664529bd66.mp3"
+            },
+            {
+              "id": 5002,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "無理",
+                  "kana": "むり",
+                  "t": 0
+                },
+                {
+                  "text": "や",
+                  "t": 0.6
+                },
+                {
+                  "text": "り",
+                  "t": 0.7
+                },
+                {
+                  "text": "認",
+                  "kana": "みと",
+                  "t": 0.84
+                },
+                {
+                  "text": "め",
+                  "t": 1.12
+                },
+                {
+                  "text": "さ",
+                  "t": 1.28
+                },
+                {
+                  "text": "せ",
+                  "t": 1.4
+                },
+                {
+                  "text": "る",
+                  "t": 1.52
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "强迫让人承认。",
+              "notes": "",
+              "blanks": [
+                "無理やり"
+              ],
+              "audio": "audio/seg-84813d0e693d.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "無理やり",
+          "kana": "むりやり",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "勉强（做）",
+                  "硬（做）",
+                  "强迫"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2822. 群れ（むれ）",
+          "overview": "[名] 群体，伙，伙伴，同类的集聚",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-5429cb18e5f5.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5003,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "牛",
+                  "kana": "うし",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.54
+                },
+                {
+                  "text": "群",
+                  "kana": "む",
+                  "t": 0.74
+                },
+                {
+                  "text": "れ",
+                  "t": 0.88
+                }
+              ],
+              "zh": "牛群",
+              "notes": "",
+              "blanks": [
+                "群れ"
+              ],
+              "audio": "audio/seg-a89d0ce4d3a8.mp3"
+            },
+            {
+              "id": 5004,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "群",
+                  "kana": "む",
+                  "t": 0
+                },
+                {
+                  "text": "れ",
+                  "t": 0.52
+                },
+                {
+                  "text": "を",
+                  "t": 0.62
+                },
+                {
+                  "text": "成",
+                  "kana": "な",
+                  "t": 0.78
+                },
+                {
+                  "text": "す",
+                  "t": 0.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "成群（结队）。",
+              "notes": "",
+              "blanks": [
+                "群れ"
+              ],
+              "audio": "audio/seg-7b7d7d355c3c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "群れ",
+          "kana": "むれ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "群体",
+                  "伙",
+                  "伙伴",
+                  "同类的集聚"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2823. 芽（め）",
+          "overview": "[名] 苗，芽；苗头，迹象\n（惯用语：芽が出る。/（草木）发芽；走运，碰上好运气。）（惯用语：芽を摘む。/摘去草木的芽；扼杀在摇篮状态，防患于未然。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-634540f05d98.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5005,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "春",
+                  "kana": "はる",
+                  "t": 0
+                },
+                {
+                  "text": "にな",
+                  "t": 0.5
+                },
+                {
+                  "text": "って",
+                  "t": 0.84
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "木",
+                  "kana": "き",
+                  "t": 1.32
+                },
+                {
+                  "text": "の",
+                  "t": 1.58
+                },
+                {
+                  "text": "芽",
+                  "kana": "め",
+                  "t": 1.68
+                },
+                {
+                  "text": "が",
+                  "t": 1.8
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
+                  "t": 1.94
+                },
+                {
+                  "text": "て",
+                  "t": 2.04
+                },
+                {
+                  "text": "きた",
+                  "t": 2.18
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "到了春天，树发芽了。",
+              "notes": "",
+              "blanks": [
+                "芽"
+              ],
+              "audio": "audio/seg-d9a05c42bf9e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "芽",
+          "kana": "め",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "苗",
+                  "芽"
+                ],
+                [
+                  "苗头",
+                  "迹象"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2824. 名～（めい～）",
+          "overview": "[接頭] 优秀的，著名的，享有声誉的",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-35d2de6946fc.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5006,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "名文句",
+                  "kana": "めいもんく",
+                  "t": 0
+                }
+              ],
+              "zh": "名句",
+              "notes": "",
+              "blanks": [
+                "名文句"
+              ],
+              "audio": "audio/seg-b418ca25ef66.mp3"
+            },
+            {
+              "id": 5007,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "名選手",
+                  "kana": "めいせんしゅ",
+                  "t": 0
+                }
+              ],
+              "zh": "著名的选手",
+              "notes": "",
+              "blanks": [
+                "名選手"
+              ],
+              "audio": "audio/seg-b936bd3a801a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "名～",
+          "kana": "めい～",
+          "senses": [
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "优秀的",
+                  "著名的",
+                  "享有声誉的"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2825. 明確（めいかく）",
+          "overview": "[名・ナ形] 明确，清晰明白，确凿而没有疑问",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-853d27ccbe5f.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5008,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "明確",
+                  "kana": "めいかく",
+                  "t": 0
+                },
+                {
+                  "text": "な",
+                  "t": 0.72
+                },
+                {
+                  "text": "答",
+                  "kana": "こた",
+                  "t": 0.98
+                },
+                {
+                  "text": "え",
+                  "t": 1.24
+                }
+              ],
+              "zh": "明确的答复",
+              "notes": "",
+              "blanks": [
+                "明確"
+              ],
+              "audio": "audio/seg-900075ca6ba5.mp3"
+            },
+            {
+              "id": 5009,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "事実",
+                  "kana": "じじつ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.7
+                },
+                {
+                  "text": "明確",
+                  "kana": "めいかく",
+                  "t": 0.92
+                },
+                {
+                  "text": "に",
+                  "t": 1.32
+                },
+                {
+                  "text": "する",
+                  "t": 1.58
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "弄清事实。",
+              "notes": "",
+              "blanks": [
+                "明確"
+              ],
+              "audio": "audio/seg-b0d16ca299a3.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "明確",
+          "kana": "めいかく",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "明确",
+                  "清晰明白",
+                  "确凿而没有疑问"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2826. 名作（めいさく）",
+          "overview": "[名] 名作，优秀作品，有名的作品",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-54fef753a1ad.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5010,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "世界",
+                  "kana": "せかい",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.66
+                },
+                {
+                  "text": "名作",
+                  "kana": "めいさく",
+                  "t": 0.92
+                }
+              ],
+              "zh": "世界名作",
+              "notes": "",
+              "blanks": [
+                "名作"
+              ],
+              "audio": "audio/seg-be87780351b8.mp3"
+            },
+            {
+              "id": 5011,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "不朽",
+                  "kana": "ふきゅう",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.62
+                },
+                {
+                  "text": "名作",
+                  "kana": "めいさく",
+                  "t": 0.88
+                }
+              ],
+              "zh": "不朽的名作",
+              "notes": "",
+              "blanks": [
+                "名作"
+              ],
+              "audio": "audio/seg-d360b0917f25.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "名作",
+          "kana": "めいさく",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "名作",
+                  "优秀作品",
+                  "有名的作品"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2827. 名産（めいさん）",
+          "overview": "[名] 名产，当地有名的特产\n（类义词：名物(めいぶつ)①[名] 名产，特产；有名的东西（或人））",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-3b84888dd0ec.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5012,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "この",
+                  "t": 0
+                },
+                {
+                  "text": "地方",
+                  "kana": "ちほう",
+                  "t": 0.52
+                },
+                {
+                  "text": "の",
+                  "t": 0.82
+                },
+                {
+                  "text": "名産",
+                  "kana": "めいさん",
+                  "t": 1.14
+                },
+                {
+                  "text": "は",
+                  "t": 1.48
+                },
+                {
+                  "text": "桃",
+                  "kana": "もも",
+                  "t": 1.68
+                },
+                {
+                  "text": "だ",
+                  "t": 1.92
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "这地方的特产是桃子。",
+              "notes": "",
+              "blanks": [
+                "名産"
+              ],
+              "audio": "audio/seg-5a608b5d5c23.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "名産",
+          "kana": "めいさん",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "名产",
+                  "当地有名的特产"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "名物",
+              "kana": "めいぶつ",
+              "zh": "名产，特产；有名的东西（或人）"
+            }
+          ]
+        },
+        {
+          "question": "2828. 名刺（めいし）",
+          "overview": "[名] 名片",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-38c3d1810b67.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5013,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "名刺",
+                  "kana": "めいし",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.7
+                },
+                {
+                  "text": "交換",
+                  "kana": "こうかん",
+                  "t": 0.94
+                },
+                {
+                  "text": "する",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "交换名片。",
+              "notes": "",
+              "blanks": [
+                "名刺"
+              ],
+              "audio": "audio/seg-c8b37a571511.mp3"
+            },
+            {
+              "id": 5014,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "名刺",
+                  "kana": "めいし",
+                  "t": 0
+                },
+                {
+                  "text": "入",
+                  "kana": "い",
+                  "t": 0.76
+                },
+                {
+                  "text": "れ",
+                  "t": 0.9
+                }
+              ],
+              "zh": "名片夹",
+              "notes": "",
+              "blanks": [
+                "名刺"
+              ],
+              "audio": "audio/seg-b5845bb61de7.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "名刺",
+          "kana": "めいし",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "名片"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2829. 名所旧跡（めいしょきゅうせき）",
+          "overview": "[名] 名胜古迹",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9c943d121aef.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5015,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "名所",
+                  "kana": "めいしょ",
+                  "t": 0
+                },
+                {
+                  "text": "旧跡",
+                  "kana": "きゅうせき",
+                  "t": 0.68
+                },
+                {
+                  "text": "を",
+                  "t": 1.16
+                },
+                {
+                  "text": "見物",
+                  "kana": "けんぶつ",
+                  "t": 1.36
+                },
+                {
+                  "text": "する",
+                  "t": 1.8
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "游览名胜古迹。",
+              "notes": "",
+              "blanks": [
+                "名所旧跡"
+              ],
+              "audio": "audio/seg-a07b6ba8367c.mp3"
+            },
+            {
+              "id": 5016,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "名所",
+                  "kana": "めいしょ",
+                  "t": 0
+                },
+                {
+                  "text": "旧跡",
+                  "kana": "きゅうせき",
+                  "t": 0.68
+                },
+                {
+                  "text": "を",
+                  "t": 1.2
+                },
+                {
+                  "text": "巡",
+                  "kana": "めぐ",
+                  "t": 1.4
+                },
+                {
+                  "text": "る",
+                  "t": 1.6
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "寻访名胜古迹。",
+              "notes": "",
+              "blanks": [
+                "名所旧跡"
+              ],
+              "audio": "audio/seg-eb93277f323d.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "名所旧跡",
+          "kana": "めいしょきゅうせき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "名胜古迹"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2830. 迷信（めいしん）",
+          "overview": "[名] 迷信",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-274d69be7b7d.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5017,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "迷信",
+                  "kana": "めいしん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.74
+                },
+                {
+                  "text": "信",
+                  "kana": "しん",
+                  "t": 1.02
+                },
+                {
+                  "text": "じ",
+                  "t": 1.28
+                },
+                {
+                  "text": "る",
+                  "t": 1.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "迷信。",
+              "notes": "",
+              "blanks": [
+                "迷信"
+              ],
+              "audio": "audio/seg-99c8ad031592.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "迷信",
+          "kana": "めいしん",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "迷信"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2831. メーカー（maker）",
+          "overview": "[名] 制造商，厂商；制造者，引起事物开端的人",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ec092a4eff87.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5018,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "一流",
+                  "kana": "いちりゅう",
+                  "t": 0
+                },
+                {
+                  "text": "メ",
+                  "t": 0.74
+                },
+                {
+                  "text": "ー",
+                  "t": 1.06
+                },
+                {
+                  "text": "カ",
+                  "t": 1.14
+                },
+                {
+                  "text": "ー",
+                  "t": 1.24
+                }
+              ],
+              "zh": "一流厂商",
+              "notes": "",
+              "blanks": [
+                "メーカー"
+              ],
+              "audio": "audio/seg-3cf93adb1f03.mp3"
+            },
+            {
+              "id": 5019,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "チャ",
+                  "t": 0
+                },
+                {
+                  "text": "ン",
+                  "t": 0.48
+                },
+                {
+                  "text": "ス",
+                  "t": 0.6
+                },
+                {
+                  "text": "メ",
+                  "t": 0.74
+                },
+                {
+                  "text": "ー",
+                  "t": 0.9
+                },
+                {
+                  "text": "カ",
+                  "t": 1.04
+                },
+                {
+                  "text": "ー",
+                  "t": 1.16
+                }
+              ],
+              "zh": "机会制造者",
+              "notes": "",
+              "blanks": [
+                "メーカー"
+              ],
+              "audio": "audio/seg-da4b669928d1.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "メーカー",
+          "kana": "メーカー",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "制造商",
+                  "厂商"
+                ],
+                [
+                  "制造者",
+                  "引起事物开端的人"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2832. メーター（meter）",
+          "overview": "[名] 计量器，计量仪",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-f71a5422002d.mp3",
+          "pitch": "⓪①",
+          "sentences": [
+            {
+              "id": 5020,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ガ",
+                  "t": 0
+                },
+                {
+                  "text": "ス",
+                  "t": 0.5
+                },
+                {
+                  "text": "の",
+                  "t": 0.64
+                },
+                {
+                  "text": "メ",
+                  "t": 0.82
+                },
+                {
+                  "text": "ー",
+                  "t": 1
+                },
+                {
+                  "text": "ター",
+                  "t": 1.06
+                },
+                {
+                  "text": "の",
+                  "t": 1.18
+                },
+                {
+                  "text": "検針",
+                  "kana": "けんしん",
+                  "t": 1.44
+                }
+              ],
+              "zh": "查看煤气记表器刻度",
+              "notes": "",
+              "blanks": [
+                "メーター"
+              ],
+              "audio": "audio/seg-125197fb6d66.mp3"
+            },
+            {
+              "id": 5021,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "タ",
+                  "t": 0
+                },
+                {
+                  "text": "ク",
+                  "t": 0.46
+                },
+                {
+                  "text": "シ",
+                  "t": 0.66
+                },
+                {
+                  "text": "ーメ",
+                  "t": 0.76
+                },
+                {
+                  "text": "ー",
+                  "t": 0.98
+                },
+                {
+                  "text": "ター",
+                  "t": 1.16
+                }
+              ],
+              "zh": "出租车打表器",
+              "notes": "",
+              "blanks": [
+                "メーター"
+              ],
+              "audio": "audio/seg-9aa69dc5af65.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "メーター",
+          "kana": "メーター",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "计量器",
+                  "计量仪"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2833. 目方（めかた）",
+          "overview": "[名] 重量，物体的分量\n（类义词：重さ(おもさ)⓪[名] 重量，分量；重的程度）（类义词：重量(じゅうりょう)③[名] 重量；（物体）分量重）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-5c23d55e8590.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5022,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目方",
+                  "kana": "めかた",
+                  "t": 0
+                },
+                {
+                  "text": "売",
+                  "kana": "う",
+                  "t": 0.94
+                },
+                {
+                  "text": "り",
+                  "t": 1.4
+                }
+              ],
+              "zh": "按分量卖",
+              "notes": "",
+              "blanks": [
+                "目方"
+              ],
+              "audio": "audio/seg-696215e03525.mp3"
+            },
+            {
+              "id": 5023,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目方",
+                  "kana": "めかた",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.7
+                },
+                {
+                  "text": "量",
+                  "kana": "はか",
+                  "t": 0.92
+                },
+                {
+                  "text": "る",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "称重。",
+              "notes": "",
+              "blanks": [
+                "目方"
+              ],
+              "audio": "audio/seg-1c70312e6662.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目方",
+          "kana": "めかた",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "重量",
+                  "物体的分量"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "重さ",
+              "kana": "おもさ",
+              "zh": "重量，分量；重的程度"
+            },
+            {
+              "relation": "类义词",
+              "text": "重量",
+              "kana": "じゅうりょう",
+              "zh": "重量；（物体）分量重"
+            }
+          ]
+        },
+        {
+          "question": "2834. 恵まれる（めぐまれる）",
+          "overview": "[自動2] 被赋予，受到恩赐；富有，充足",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-5145d83aaa4e.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5024,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "チャ",
+                  "t": 0
+                },
+                {
+                  "text": "ン",
+                  "t": 0.42
+                },
+                {
+                  "text": "ス",
+                  "t": 0.6
+                },
+                {
+                  "text": "に",
+                  "t": 0.72
+                },
+                {
+                  "text": "恵",
+                  "kana": "めぐ",
+                  "t": 0.84
+                },
+                {
+                  "text": "ま",
+                  "t": 1.08
+                },
+                {
+                  "text": "れる",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "恰逢时机。",
+              "notes": "",
+              "blanks": [
+                "恵まれる"
+              ],
+              "audio": "audio/seg-c7b7c7476f09.mp3"
+            },
+            {
+              "id": 5025,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "恵",
+                  "kana": "めぐ",
+                  "t": 0
+                },
+                {
+                  "text": "ま",
+                  "t": 0.56
+                },
+                {
+                  "text": "れた",
+                  "t": 0.72
+                },
+                {
+                  "text": "生活",
+                  "kana": "せいかつ",
+                  "t": 0.96
+                }
+              ],
+              "zh": "优裕的生活",
+              "notes": "",
+              "blanks": [
+                "恵まれた"
+              ],
+              "audio": "audio/seg-5b0b6a0592a5.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "恵まれる",
+          "kana": "めぐまれる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "被赋予",
+                  "受到恩赐"
+                ],
+                [
+                  "富有",
+                  "充足"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2835. 恵み（めぐみ）",
+          "overview": "[名] 恩赐，恩泽，施舍，恩惠",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-7a1fc922184e.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5026,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "自然",
+                  "kana": "しぜん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.68
+                },
+                {
+                  "text": "恵",
+                  "kana": "めぐ",
+                  "t": 0.9
+                },
+                {
+                  "text": "み",
+                  "t": 1.1
+                }
+              ],
+              "zh": "自然的恩赐",
+              "notes": "",
+              "blanks": [
+                "恵み"
+              ],
+              "audio": "audio/seg-b4fecb85e92f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "恵み",
+          "kana": "めぐみ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "恩赐",
+                  "恩泽",
+                  "施舍",
+                  "恩惠"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2836. 巡り合う（めぐりあう）",
+          "overview": "[自動1] 碰上；意外相逢，邂逅",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-5e530a3b78f2.mp3",
+          "pitch": "④",
+          "sentences": [
+            {
+              "id": 5027,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "良師",
+                  "kana": "りょうし",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.68
+                },
+                {
+                  "text": "巡",
+                  "kana": "めぐ",
+                  "t": 0.9
+                },
+                {
+                  "text": "り",
+                  "t": 1.14
+                },
+                {
+                  "text": "合",
+                  "kana": "あ",
+                  "t": 1.28
+                },
+                {
+                  "text": "う",
+                  "t": 1.38
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "遇上优秀的老师。",
+              "notes": "",
+              "blanks": [
+                "巡り合う"
+              ],
+              "audio": "audio/seg-89e4a54cb5e1.mp3"
+            },
+            {
+              "id": 5028,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "旧友",
+                  "kana": "きゅうゆう",
+                  "t": 0
+                },
+                {
+                  "text": "と",
+                  "t": 0.72
+                },
+                {
+                  "text": "巡",
+                  "kana": "めぐ",
+                  "t": 0.96
+                },
+                {
+                  "text": "り",
+                  "t": 1.28
+                },
+                {
+                  "text": "合",
+                  "kana": "あ",
+                  "t": 1.4
+                },
+                {
+                  "text": "う",
+                  "t": 1.48
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "与老朋友意外相逢。",
+              "notes": "",
+              "blanks": [
+                "巡り合う"
+              ],
+              "audio": "audio/seg-1c6eafc7551c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "巡り合う",
+          "kana": "めぐりあう",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "碰上"
+                ],
+                [
+                  "意外相逢",
+                  "邂逅"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2837. 巡る（めぐる）",
+          "overview": "[自動1] 循环，环绕，旋转一周；绕行；巡游；围绕……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e9e5b328cb33.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5029,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "季節",
+                  "kana": "きせつ",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.64
+                },
+                {
+                  "text": "巡",
+                  "kana": "めぐ",
+                  "t": 0.84
+                },
+                {
+                  "text": "る",
+                  "t": 1.12
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "季节循环。",
+              "notes": "",
+              "blanks": [
+                "巡る"
+              ],
+              "audio": "audio/seg-3c286effecf6.mp3"
+            },
+            {
+              "id": 5030,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "全国各地",
+                  "kana": "ぜんこくかくち",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 1.26
+                },
+                {
+                  "text": "巡",
+                  "kana": "めぐ",
+                  "t": 1.42
+                },
+                {
+                  "text": "る",
+                  "t": 1.58
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "全国各地巡游。",
+              "notes": "",
+              "blanks": [
+                "巡る"
+              ],
+              "audio": "audio/seg-452498d1ff44.mp3"
+            },
+            {
+              "id": 5031,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "教育",
+                  "kana": "きょういく",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.8
+                },
+                {
+                  "text": "巡",
+                  "kana": "めぐ",
+                  "t": 0.96
+                },
+                {
+                  "text": "る",
+                  "t": 1.2
+                },
+                {
+                  "text": "諸問題",
+                  "kana": "しょもんだい",
+                  "t": 1.32
+                }
+              ],
+              "zh": "围绕教育的一系列问题",
+              "notes": "",
+              "blanks": [
+                "巡る"
+              ],
+              "audio": "audio/seg-c503f69d942b.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "巡る",
+          "kana": "めぐる",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "循环",
+                  "环绕",
+                  "旋转一周"
+                ],
+                [
+                  "绕行"
+                ],
+                [
+                  "巡游"
+                ],
+                [
+                  "围绕……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2838. 目先（めさき）",
+          "overview": "[名] 眼前，目前，当前；不远的将来\n（惯用语：目先が利く。/有远见，先见之明。）（惯用语：目先を変える。/改变花样，耳目一新。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ef0b2760793e.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5032,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目先",
+                  "kana": "めさき",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.68
+                },
+                {
+                  "text": "利益",
+                  "kana": "りえき",
+                  "t": 0.86
+                },
+                {
+                  "text": "を",
+                  "t": 1.26
+                },
+                {
+                  "text": "追",
+                  "kana": "お",
+                  "t": 1.26
+                },
+                {
+                  "text": "う",
+                  "t": 1.26
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "追逐眼前利益。",
+              "notes": "",
+              "blanks": [
+                "目先"
+              ],
+              "audio": "audio/seg-8bc693753177.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目先",
+          "kana": "めさき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "眼前",
+                  "目前",
+                  "当前"
+                ],
+                [
+                  "不远的将来"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2839. 目指す（めざす）",
+          "overview": "[他動1] 指向，朝向，以……为目标",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1ef173be9da0.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 5033,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "頂点",
+                  "kana": "ちょうてん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.76
+                },
+                {
+                  "text": "目指",
+                  "kana": "めざ",
+                  "t": 0.94
+                },
+                {
+                  "text": "す",
+                  "t": 1.22
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "指向顶点，朝向最高点。",
+              "notes": "",
+              "blanks": [
+                "目指す"
+              ],
+              "audio": "audio/seg-78fc1248a63c.mp3"
+            },
+            {
+              "id": 5034,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "優勝",
+                  "kana": "ゆうしょう",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.78
+                },
+                {
+                  "text": "目指",
+                  "kana": "めざ",
+                  "t": 0.94
+                },
+                {
+                  "text": "して",
+                  "t": 1.18
+                },
+                {
+                  "text": "頑張",
+                  "kana": "がんば",
+                  "t": 1.42
+                },
+                {
+                  "text": "る",
+                  "t": 1.8
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "以取胜为目标而努力。",
+              "notes": "",
+              "blanks": [
+                "目指して"
+              ],
+              "audio": "audio/seg-a545d124ec18.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目指す",
+          "kana": "めざす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "指向",
+                  "朝向",
+                  "以……为目标"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2840. 目覚まし（めざまし）",
+          "overview": "[名] 叫醒，使……醒来；小孩睡觉醒来时喂食的点心",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-8c04f1d4b6cb.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 5035,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目覚",
+                  "kana": "めざ",
+                  "t": 0
+                },
+                {
+                  "text": "ま",
+                  "t": 0.62
+                },
+                {
+                  "text": "し",
+                  "t": 0.82
+                },
+                {
+                  "text": "時計",
+                  "kana": "とけい",
+                  "t": 1
+                }
+              ],
+              "zh": "闹钟",
+              "notes": "",
+              "blanks": [
+                "目覚まし"
+              ],
+              "audio": "audio/seg-2373b9fda788.mp3"
+            },
+            {
+              "id": 5036,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目覚",
+                  "kana": "めざ",
+                  "t": 0
+                },
+                {
+                  "text": "ま",
+                  "t": 0.62
+                },
+                {
+                  "text": "し",
+                  "t": 0.76
+                },
+                {
+                  "text": "に",
+                  "t": 0.86
+                },
+                {
+                  "text": "コ",
+                  "t": 1.04
+                },
+                {
+                  "text": "ーヒ",
+                  "t": 1.28
+                },
+                {
+                  "text": "ー",
+                  "t": 1.42
+                },
+                {
+                  "text": "を",
+                  "t": 1.56
+                },
+                {
+                  "text": "飲",
+                  "kana": "の",
+                  "t": 1.66
+                },
+                {
+                  "text": "む",
+                  "t": 1.76
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "为了清醒而喝咖啡。",
+              "notes": "",
+              "blanks": [
+                "目覚まし"
+              ],
+              "audio": "audio/seg-e834adff3965.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目覚まし",
+          "kana": "めざまし",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "叫醒",
+                  "使……醒来"
+                ],
+                [
+                  "小孩睡觉醒来时喂食的点心"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2841. 目覚める（めざめる）",
+          "overview": "[自動2] 从睡梦中醒来，清醒；醒悟，觉悟，意识到……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-f5e9a978e050.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5037,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "物音",
+                  "kana": "ものおと",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.74
+                },
+                {
+                  "text": "目覚",
+                  "kana": "めざ",
+                  "t": 1
+                },
+                {
+                  "text": "め",
+                  "t": 1.24
+                },
+                {
+                  "text": "る",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "听到有声音（动静）而醒来。",
+              "notes": "",
+              "blanks": [
+                "目覚める"
+              ],
+              "audio": "audio/seg-fb01836abf14.mp3"
+            },
+            {
+              "id": 5038,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "現実",
+                  "kana": "げんじつ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.78
+                },
+                {
+                  "text": "目覚",
+                  "kana": "めざ",
+                  "t": 1
+                },
+                {
+                  "text": "め",
+                  "t": 1.28
+                },
+                {
+                  "text": "る",
+                  "t": 1.38
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "回到现实。",
+              "notes": "",
+              "blanks": [
+                "目覚める"
+              ],
+              "audio": "audio/seg-1ac89fa0b362.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目覚める",
+          "kana": "めざめる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "从睡梦中醒来",
+                  "清醒"
+                ],
+                [
+                  "醒悟",
+                  "觉悟",
+                  "意识到……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2842. 目印（めじるし）",
+          "overview": "[名] 标记，记号",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-c193530ccba8.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 5039,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目印",
+                  "kana": "めじるし",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.78
+                },
+                {
+                  "text": "つ",
+                  "t": 1.02
+                },
+                {
+                  "text": "ける",
+                  "t": 1.18
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "标记号。",
+              "notes": "",
+              "blanks": [
+                "目印"
+              ],
+              "audio": "audio/seg-085253081af8.mp3"
+            },
+            {
+              "id": 5040,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "北極星",
+                  "kana": "ほっきょくせい",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.94
+                },
+                {
+                  "text": "目印",
+                  "kana": "めじるし",
+                  "t": 1.2
+                },
+                {
+                  "text": "に",
+                  "t": 1.56
+                },
+                {
+                  "text": "する",
+                  "t": 1.84
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "以北极星为标记。",
+              "notes": "",
+              "blanks": [
+                "目印"
+              ],
+              "audio": "audio/seg-8b8c6f074fa0.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目印",
+          "kana": "めじるし",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "标记",
+                  "记号"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2843. 雌（めす）",
+          "overview": "[名] 雌，母\n（反义词：雄(おす)②[名] 雄，公）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-74d5b006fb54.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 5041,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "雌",
+                  "kana": "めす",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.62
+                },
+                {
+                  "text": "犬",
+                  "kana": "いぬ",
+                  "t": 0.76
+                }
+              ],
+              "zh": "母狗",
+              "notes": "",
+              "blanks": [
+                "雌"
+              ],
+              "audio": "audio/seg-1d14c85a149f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "雌",
+          "kana": "めす",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "雌",
+                  "母"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "雄",
+              "kana": "おす",
+              "zh": "雄，公"
+            }
+          ]
+        },
+        {
+          "question": "2844. メダル（medal）",
+          "overview": "[名] 奖牌，纪念牌，金属纪念章",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-0a97acd17464.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5042,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "金",
+                  "kana": "きん",
+                  "t": 0
+                },
+                {
+                  "text": "メ",
+                  "t": 0.5
+                },
+                {
+                  "text": "ダ",
+                  "t": 0.7
+                },
+                {
+                  "text": "ル",
+                  "t": 0.8
+                }
+              ],
+              "zh": "金牌",
+              "notes": "",
+              "blanks": [
+                "メダル"
+              ],
+              "audio": "audio/seg-f8fb63e48a60.mp3"
+            },
+            {
+              "id": 5043,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "銀",
+                  "kana": "ぎん",
+                  "t": 0
+                },
+                {
+                  "text": "メ",
+                  "t": 0.54
+                },
+                {
+                  "text": "ダ",
+                  "t": 0.72
+                },
+                {
+                  "text": "ル",
+                  "t": 0.82
+                }
+              ],
+              "zh": "银牌",
+              "notes": "",
+              "blanks": [
+                "メダル"
+              ],
+              "audio": "audio/seg-c0a69954d788.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "メダル",
+          "kana": "メダル",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "奖牌",
+                  "纪念牌",
+                  "金属纪念章"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2845. めちゃめちゃ",
+          "overview": "[名・ナ形] 乱七八糟，一塌糊涂\n（类义词：めちゃくちゃ⓪[名・ナ形] 不合理，讲不通；严重，过度；乱七八糟，一塌糊涂）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d91e52f34f81.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5044,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "め",
+                  "t": 0
+                },
+                {
+                  "text": "ちゃ",
+                  "t": 0.5
+                },
+                {
+                  "text": "め",
+                  "t": 0.62
+                },
+                {
+                  "text": "ちゃ",
+                  "t": 0.8
+                },
+                {
+                  "text": "に",
+                  "t": 0.9
+                },
+                {
+                  "text": "壊",
+                  "kana": "こわ",
+                  "t": 1.1
+                },
+                {
+                  "text": "れた",
+                  "t": 1.3
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "坏得一塌糊涂。",
+              "notes": "",
+              "blanks": [
+                "めちゃめちゃ"
+              ],
+              "audio": "audio/seg-6961a0b9249b.mp3"
+            },
+            {
+              "id": 5045,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "部屋",
+                  "kana": "へや",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.56
+                },
+                {
+                  "text": "中",
+                  "kana": "なか",
+                  "t": 0.7
+                },
+                {
+                  "text": "は",
+                  "t": 0.88
+                },
+                {
+                  "text": "め",
+                  "t": 1.12
+                },
+                {
+                  "text": "ちゃ",
+                  "t": 1.36
+                },
+                {
+                  "text": "め",
+                  "t": 1.46
+                },
+                {
+                  "text": "ちゃ",
+                  "t": 1.64
+                },
+                {
+                  "text": "だ",
+                  "t": 1.78
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "屋子里面乱七八糟。",
+              "notes": "",
+              "blanks": [
+                "めちゃめちゃ"
+              ],
+              "audio": "audio/seg-64a133655ab3.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "めちゃめちゃ",
+          "kana": "めちゃめちゃ",
+          "senses": [
+            {
+              "pos": "名・ナ形",
+              "groups": [
+                [
+                  "乱七八糟",
+                  "一塌糊涂"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "めちゃくちゃ",
+              "kana": "",
+              "zh": "不合理，讲不通；严重，过度；乱七八糟，一塌糊涂"
+            }
+          ]
+        },
+        {
+          "question": "2846. 目付き（めつき）",
+          "overview": "[名] 眼神，目光\n（惯用语：目付きで殺す。/用眼神刺激对方；用目光杀死对方。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-f5bc5508f9e8.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5046,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目付",
+                  "kana": "めつ",
+                  "t": 0
+                },
+                {
+                  "text": "き",
+                  "t": 0.58
+                },
+                {
+                  "text": "が",
+                  "t": 0.72
+                },
+                {
+                  "text": "怖",
+                  "kana": "こわ",
+                  "t": 0.86
+                },
+                {
+                  "text": "い",
+                  "t": 1.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "目光凶狠。",
+              "notes": "",
+              "blanks": [
+                "目付き"
+              ],
+              "audio": "audio/seg-32b2173a205a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目付き",
+          "kana": "めつき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "眼神",
+                  "目光"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2847. めっきり",
+          "overview": "[副] 显著，明显",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4acc69eb795d.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5047,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "め",
+                  "t": 0
+                },
+                {
+                  "text": "っ",
+                  "t": 0.5
+                },
+                {
+                  "text": "き",
+                  "t": 0.6
+                },
+                {
+                  "text": "り",
+                  "t": 0.68
+                },
+                {
+                  "text": "寒",
+                  "kana": "さむ",
+                  "t": 0.82
+                },
+                {
+                  "text": "く",
+                  "t": 1.1
+                },
+                {
+                  "text": "なる",
+                  "t": 1.32
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "明显变冷，骤然变冷。",
+              "notes": "",
+              "blanks": [
+                "めっきり"
+              ],
+              "audio": "audio/seg-b3b8d83e916e.mp3"
+            },
+            {
+              "id": 5048,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "め",
+                  "t": 0
+                },
+                {
+                  "text": "っ",
+                  "t": 0.5
+                },
+                {
+                  "text": "き",
+                  "t": 0.6
+                },
+                {
+                  "text": "り",
+                  "t": 0.68
+                },
+                {
+                  "text": "と",
+                  "t": 0.8
+                },
+                {
+                  "text": "痩",
+                  "kana": "や",
+                  "t": 0.92
+                },
+                {
+                  "text": "せ",
+                  "t": 1.12
+                },
+                {
+                  "text": "た",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "明显消瘦。",
+              "notes": "",
+              "blanks": [
+                "めっきり"
+              ],
+              "audio": "audio/seg-020c44c542f8.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "めっきり",
+          "kana": "めっきり",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "显著",
+                  "明显"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2848. めったに",
+          "overview": "[副] （后接否定）很少，极少，几乎（不）……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d458a903389e.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5049,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "土日",
+                  "kana": "どにち",
+                  "t": 0
+                },
+                {
+                  "text": "は",
+                  "t": 0.66
+                },
+                {
+                  "text": "め",
+                  "t": 0.88
+                },
+                {
+                  "text": "った",
+                  "t": 1.14
+                },
+                {
+                  "text": "に",
+                  "t": 1.26
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
+                  "t": 1.42
+                },
+                {
+                  "text": "か",
+                  "t": 1.6
+                },
+                {
+                  "text": "け",
+                  "t": 1.74
+                },
+                {
+                  "text": "ない",
+                  "t": 1.88
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "周末很少出门。",
+              "notes": "",
+              "blanks": [
+                "めったに"
+              ],
+              "audio": "audio/seg-63a7cec22c76.mp3"
+            },
+            {
+              "id": 5050,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "外食",
+                  "kana": "がいしょく",
+                  "t": 0
+                },
+                {
+                  "text": "は",
+                  "t": 0.74
+                },
+                {
+                  "text": "め",
+                  "t": 0.96
+                },
+                {
+                  "text": "った",
+                  "t": 1.2
+                },
+                {
+                  "text": "に",
+                  "t": 1.3
+                },
+                {
+                  "text": "し",
+                  "t": 1.52
+                },
+                {
+                  "text": "ない",
+                  "t": 1.68
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "极少在外面吃饭。",
+              "notes": "",
+              "blanks": [
+                "めったに"
+              ],
+              "audio": "audio/seg-2bd8370eddb7.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "めったに",
+          "kana": "めったに",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "（后接否定）很少",
+                  "极少",
+                  "几乎（不）……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2849. 目安（めやす）",
+          "overview": "[名] 大致的目标，标准\n（惯用语：目安が付く。/有头绪，有眉目。）（惯用语：目安をつける。/订出大体的目标。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6facc852f056.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5051,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目安",
+                  "kana": "めやす",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.68
+                },
+                {
+                  "text": "立",
+                  "kana": "た",
+                  "t": 0.92
+                },
+                {
+                  "text": "て",
+                  "t": 1.08
+                },
+                {
+                  "text": "る",
+                  "t": 1.18
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "订立大致目标。",
+              "notes": "",
+              "blanks": [
+                "目安"
+              ],
+              "audio": "audio/seg-d3614491bc26.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目安",
+          "kana": "めやす",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "大致的目标",
+                  "标准"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2850. 面（めん）",
+          "overview": "[名] 脸；表面，正面，外面；相见，会见；方向，方位\n（惯用语：面が割れる。/查清面目。指面相、名字、身份等被警察查清。）（惯用语：面を被る。/戴上面具；掩盖本来面目。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-99d0596a0a67.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5052,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "面",
+                  "kana": "めん",
+                  "t": 0
+                },
+                {
+                  "text": "と",
+                  "t": 0.54
+                },
+                {
+                  "text": "向",
+                  "kana": "む",
+                  "t": 0.7
+                },
+                {
+                  "text": "か",
+                  "t": 0.84
+                },
+                {
+                  "text": "って",
+                  "t": 1.02
+                },
+                {
+                  "text": "話",
+                  "kana": "はな",
+                  "t": 1.16
+                },
+                {
+                  "text": "す",
+                  "t": 1.42
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "面对面讲话。",
+              "notes": "",
+              "blanks": [
+                "面"
+              ],
+              "audio": "audio/seg-51fff265be27.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "面",
+          "kana": "めん",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "脸"
+                ],
+                [
+                  "表面",
+                  "正面",
+                  "外面"
+                ],
+                [
+                  "相见",
+                  "会见"
+                ],
+                [
+                  "方向",
+                  "方位"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2851. 免税（めんぜい）",
+          "overview": "[名・自他動3] 免税\n（类义词：デューティーフリー(duty-free)⑥[名] 免税，海关不征税）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-7a72c72ea49c.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5053,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "免税品",
+                  "kana": "めんぜいひん",
+                  "t": 0
+                }
+              ],
+              "zh": "免税品",
+              "notes": "",
+              "blanks": [
+                "免税"
+              ],
+              "audio": "audio/seg-841873a65d56.mp3"
+            },
+            {
+              "id": 5054,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "免税店",
+                  "kana": "めんぜいてん",
+                  "t": 0
+                }
+              ],
+              "zh": "免税店",
+              "notes": "",
+              "blanks": [
+                "免税"
+              ],
+              "audio": "audio/seg-e6d9e4227556.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "免税",
+          "kana": "めんぜい",
+          "senses": [
+            {
+              "pos": "名・自他動3",
+              "groups": [
+                [
+                  "免税"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "デューティーフリー",
+              "kana": "duty-free",
+              "zh": "免税，海关不征税"
+            }
+          ]
+        },
+        {
+          "question": "2852. 面積（めんせき）",
+          "overview": "[名] 面积，一定的面的大小",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b3c9b4591ab8.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5055,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "面積",
+                  "kana": "めんせき",
+                  "t": 0
+                },
+                {
+                  "text": "グ",
+                  "t": 0.84
+                },
+                {
+                  "text": "ラ",
+                  "t": 1.04
+                },
+                {
+                  "text": "フ",
+                  "t": 1.16
+                }
+              ],
+              "zh": "面积图，用面积表示各种量的关系的图表",
+              "notes": "",
+              "blanks": [
+                "面積"
+              ],
+              "audio": "audio/seg-1993c8c8a1d5.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "面積",
+          "kana": "めんせき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "面积",
+                  "一定的面的大小"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2853. もう",
+          "overview": "[嘆] （用于失望、责备时或讨厌的情绪）真是的，实在是……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1b7f8e02008e.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5056,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "あ",
+                  "t": 0
+                },
+                {
+                  "text": "いつ",
+                  "t": 0.4
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "また",
+                  "t": 1.12
+                },
+                {
+                  "text": "遅",
+                  "kana": "おく",
+                  "t": 1.28
+                },
+                {
+                  "text": "れて",
+                  "t": 1.56
+                },
+                {
+                  "text": "いる",
+                  "t": 1.78
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "もう",
+                  "t": 2.32
+                },
+                {
+                  "text": "～"
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "那家伙又迟到了，真是的。",
+              "notes": "",
+              "blanks": [
+                "もう"
+              ],
+              "audio": "audio/seg-4e35a8fba6c7.mp3"
+            },
+            {
+              "id": 5057,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "もう",
+                  "t": 0.42
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "何度",
+                  "kana": "なんど",
+                  "t": 0.74
+                },
+                {
+                  "text": "言",
+                  "kana": "い",
+                  "t": 1.16
+                },
+                {
+                  "text": "って",
+                  "t": 1.32
+                },
+                {
+                  "text": "も",
+                  "t": 1.44
+                },
+                {
+                  "text": "聞",
+                  "kana": "き",
+                  "t": 1.6
+                },
+                {
+                  "text": "か",
+                  "t": 1.8
+                },
+                {
+                  "text": "ない",
+                  "t": 1.94
+                },
+                {
+                  "text": "んだ",
+                  "t": 2.1
+                },
+                {
+                  "text": "から",
+                  "t": 2.3
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "实在是……，说了多少遍都不听。",
+              "notes": "",
+              "blanks": [
+                "もう"
+              ],
+              "audio": "audio/seg-0bcc9b144b6d.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "もう",
+          "kana": "もう",
+          "senses": [
+            {
+              "pos": "嘆",
+              "groups": [
+                [
+                  "（用于失望、责备时或讨厌的情绪）真是的",
+                  "实在是……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2854. 猛～（もう～）",
+          "overview": "[接頭] 凶猛的，勇猛的，猛烈的",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1b7f8e02008e.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5058,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "猛",
+                  "kana": "もう",
+                  "t": 0
+                },
+                {
+                  "text": "運動",
+                  "kana": "うんどう",
+                  "t": 0.52
+                }
+              ],
+              "zh": "剧烈运动",
+              "notes": "",
+              "blanks": [
+                "猛"
+              ],
+              "audio": "audio/seg-fc2e183620b5.mp3"
+            },
+            {
+              "id": 5059,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "猛勉",
+                  "kana": "もうべん",
+                  "t": 0
+                },
+                {
+                  "text": "強",
+                  "kana": "きょう",
+                  "t": 0.88
+                }
+              ],
+              "zh": "拼命学习，突击学习",
+              "notes": "",
+              "blanks": [
+                "猛"
+              ],
+              "audio": "audio/seg-a278e9eb1305.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "猛～",
+          "kana": "もう～",
+          "senses": [
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "凶猛的",
+                  "勇猛的",
+                  "猛烈的"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2855. 申し出（もうしで）",
+          "overview": "[名] 提出，提议，要求",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-751247c2563c.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5060,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "結婚",
+                  "kana": "けっこん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.78
+                },
+                {
+                  "text": "申",
+                  "kana": "もう",
+                  "t": 1
+                },
+                {
+                  "text": "し",
+                  "t": 1.22
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
+                  "t": 1.34
+                }
+              ],
+              "zh": "提出结婚",
+              "notes": "",
+              "blanks": [
+                "申し出"
+              ],
+              "audio": "audio/seg-97ad35371312.mp3"
+            },
+            {
+              "id": 5061,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "入会",
+                  "kana": "にゅうかい",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.7
+                },
+                {
+                  "text": "申",
+                  "kana": "もう",
+                  "t": 0.98
+                },
+                {
+                  "text": "し",
+                  "t": 1.2
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
+                  "t": 1.3
+                },
+                {
+                  "text": "が",
+                  "t": 1.38
+                },
+                {
+                  "text": "ある",
+                  "t": 1.54
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "提出入会。",
+              "notes": "",
+              "blanks": [
+                "申し出"
+              ],
+              "audio": "audio/seg-c1c2c1365c78.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "申し出",
+          "kana": "もうしで",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "提出",
+                  "提议",
+                  "要求"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2856. 申し出る（もうしでる）",
+          "overview": "[他動2] 提出，申请，申诉",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-793dbd7e7242.mp3",
+          "pitch": "④⓪",
+          "sentences": [
+            {
+              "id": 5062,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "援助",
+                  "kana": "えんじょ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.7
+                },
+                {
+                  "text": "申",
+                  "kana": "もう",
+                  "t": 0.86
+                },
+                {
+                  "text": "し",
+                  "t": 1.1
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
+                  "t": 1.22
+                },
+                {
+                  "text": "る",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "要求提供援助。",
+              "notes": "",
+              "blanks": [
+                "申し出る"
+              ],
+              "audio": "audio/seg-f291a23aad96.mp3"
+            },
+            {
+              "id": 5063,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "辞任",
+                  "kana": "じにん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.66
+                },
+                {
+                  "text": "申",
+                  "kana": "もう",
+                  "t": 0.9
+                },
+                {
+                  "text": "し",
+                  "t": 1.14
+                },
+                {
+                  "text": "出",
+                  "kana": "で",
+                  "t": 1.24
+                },
+                {
+                  "text": "る",
+                  "t": 1.3
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "提出辞去职务。",
+              "notes": "",
+              "blanks": [
+                "申し出る"
+              ],
+              "audio": "audio/seg-7a3eda696729.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "申し出る",
+          "kana": "もうしでる",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "提出",
+                  "申请",
+                  "申诉"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2857. 申し訳（もうしわけ）",
+          "overview": "[名] 申辩，辩解；勉强，敷衍了事\n（惯用语：申し訳が立つ。/申辩得以成立，能够补偿。）（惯用语：申し訳がない。＝申し訳ない。/没有辩解的余地，非常抱歉。）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-0f7f652778f9.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5064,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "申",
+                  "kana": "もう",
+                  "t": 0
+                },
+                {
+                  "text": "し",
+                  "t": 0.62
+                },
+                {
+                  "text": "訳",
+                  "kana": "わけ",
+                  "t": 0.74
+                },
+                {
+                  "text": "を",
+                  "t": 0.88
+                },
+                {
+                  "text": "する",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "申辩，辩解。",
+              "notes": "",
+              "blanks": [
+                "申し訳"
+              ],
+              "audio": "audio/seg-528338d40115.mp3"
+            },
+            {
+              "id": 5065,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "申",
+                  "kana": "もう",
+                  "t": 0
+                },
+                {
+                  "text": "し",
+                  "t": 0.66
+                },
+                {
+                  "text": "訳",
+                  "kana": "わけ",
+                  "t": 0.74
+                },
+                {
+                  "text": "程度",
+                  "kana": "ていど",
+                  "t": 0.92
+                },
+                {
+                  "text": "の",
+                  "t": 1.32
+                },
+                {
+                  "text": "雨",
+                  "kana": "あめ",
+                  "t": 1.48
+                }
+              ],
+              "zh": "极小的雨",
+              "notes": "",
+              "blanks": [
+                "申し訳"
+              ],
+              "audio": "audio/seg-0ad13c954650.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "申し訳",
+          "kana": "もうしわけ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "申辩",
+                  "辩解"
+                ],
+                [
+                  "勉强",
+                  "敷衍了事"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2858. 詣でる（もうでる）",
+          "overview": "[自動2] 参拜（神社、寺院等）\n（类义词：参拝(さんぱい)⓪[名・自動3] 参拜（神社、寺院等））",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4d704bbbecdc.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5066,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "神社",
+                  "kana": "じんじゃ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.62
+                },
+                {
+                  "text": "詣",
+                  "kana": "もう",
+                  "t": 0.93
+                },
+                {
+                  "text": "で",
+                  "t": 1.23
+                },
+                {
+                  "text": "る",
+                  "t": 1.54
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "参拜神社。",
+              "notes": "",
+              "blanks": [
+                "詣でる"
+              ],
+              "audio": "audio/seg-d25e4e6748f5.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "詣でる",
+          "kana": "もうでる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "参拜（神社、寺院等）"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "参拝",
+              "kana": "さんぱい",
+              "zh": "参拜（神社、寺院等）"
+            }
+          ]
+        },
+        {
+          "question": "2859. モーター（motor）",
+          "overview": "[名] 马达，发动机，电动机",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-79642e5e7ef9.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5067,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "モ",
+                  "t": 0
+                },
+                {
+                  "text": "ー",
+                  "t": 0.56
+                },
+                {
+                  "text": "ター",
+                  "t": 0.62
+                },
+                {
+                  "text": "カ",
+                  "t": 0.82
+                },
+                {
+                  "text": "ー",
+                  "t": 1
+                }
+              ],
+              "zh": "汽车",
+              "notes": "",
+              "blanks": [
+                "モーター"
+              ],
+              "audio": "audio/seg-472cb0670b65.mp3"
+            },
+            {
+              "id": 5068,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "モ",
+                  "t": 0
+                },
+                {
+                  "text": "ー",
+                  "t": 0.46
+                },
+                {
+                  "text": "ター",
+                  "t": 0.62
+                },
+                {
+                  "text": "ス",
+                  "t": 0.84
+                },
+                {
+                  "text": "ポ",
+                  "t": 1.02
+                },
+                {
+                  "text": "ーツ",
+                  "t": 1.18
+                }
+              ],
+              "zh": "赛车运动",
+              "notes": "",
+              "blanks": [
+                "モーター"
+              ],
+              "audio": "audio/seg-bb65449e45bf.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "モーター",
+          "kana": "モーター",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "马达",
+                  "发动机",
+                  "电动机"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2860. 目撃（もくげき）",
+          "overview": "[名・他動3] 目击，亲眼看到",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6f21ad6e4f43.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5069,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "目撃者",
+                  "kana": "もくげきしゃ",
+                  "t": 0
+                }
+              ],
+              "zh": "目击者，目击证人",
+              "notes": "",
+              "blanks": [
+                "目撃"
+              ],
+              "audio": "audio/seg-c042a47d0041.mp3"
+            },
+            {
+              "id": 5070,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "犯行",
+                  "kana": "はんこう",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.78
+                },
+                {
+                  "text": "目撃",
+                  "kana": "もくげき",
+                  "t": 0.98
+                },
+                {
+                  "text": "する",
+                  "t": 1.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "亲眼看到犯罪行为。",
+              "notes": "",
+              "blanks": [
+                "目撃"
+              ],
+              "audio": "audio/seg-1ca07cc9f07e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目撃",
+          "kana": "もくげき",
+          "senses": [
+            {
+              "pos": "名・他動3",
+              "groups": [
+                [
+                  "目击",
+                  "亲眼看到"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2861. 木材（もくざい）",
+          "overview": "[名] 木材，用于建筑或加工等材料的木头",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6113a85312c5.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5071,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "木材",
+                  "kana": "もくざい",
+                  "t": 0
+                },
+                {
+                  "text": "パ",
+                  "t": 0.86
+                },
+                {
+                  "text": "ル",
+                  "t": 1
+                },
+                {
+                  "text": "プ",
+                  "t": 1.18
+                }
+              ],
+              "zh": "木浆，以木材为原料的纸浆",
+              "notes": "",
+              "blanks": [
+                "木材"
+              ],
+              "audio": "audio/seg-87d4b81b9ec6.mp3"
+            },
+            {
+              "id": 5072,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "建築",
+                  "kana": "けんちく",
+                  "t": 0
+                },
+                {
+                  "text": "用木",
+                  "kana": "ようもく",
+                  "t": 0.76
+                },
+                {
+                  "text": "材",
+                  "kana": "ざい",
+                  "t": 1.26
+                }
+              ],
+              "zh": "建筑用木材",
+              "notes": "",
+              "blanks": [
+                "木材"
+              ],
+              "audio": "audio/seg-da3b9e9b952a.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "木材",
+          "kana": "もくざい",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "木材",
+                  "用于建筑或加工等材料的木头"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2862. 目次（もくじ）",
+          "overview": "[名] 项目、条款的顺序；目录\n（类义词：目録(もくろく)⓪[名] 目录，清单，一览表）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-feb2c677468d.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5073,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "本",
+                  "kana": "ほん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.48
+                },
+                {
+                  "text": "目次",
+                  "kana": "もくじ",
+                  "t": 0.64
+                },
+                {
+                  "text": "を",
+                  "t": 1.04
+                },
+                {
+                  "text": "見",
+                  "kana": "み",
+                  "t": 1.16
+                },
+                {
+                  "text": "て",
+                  "t": 1.16
+                },
+                {
+                  "text": "読",
+                  "kana": "よ",
+                  "t": 1.4
+                },
+                {
+                  "text": "む",
+                  "t": 1.62
+                },
+                {
+                  "text": "章",
+                  "kana": "しょう",
+                  "t": 1.76
+                },
+                {
+                  "text": "を",
+                  "t": 1.98
+                },
+                {
+                  "text": "決",
+                  "kana": "き",
+                  "t": 2.2
+                },
+                {
+                  "text": "め",
+                  "t": 2.34
+                },
+                {
+                  "text": "る",
+                  "t": 2.44
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "看书的目录决定要读的章节。",
+              "notes": "",
+              "blanks": [
+                "目次"
+              ],
+              "audio": "audio/seg-c80d722a1afb.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "目次",
+          "kana": "もくじ",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "项目、条款的顺序"
+                ],
+                [
+                  "目录"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "目録",
+              "kana": "もくろく",
+              "zh": "目录，清单，一览表"
+            }
+          ]
+        },
+        {
+          "question": "2863. 黙認（もくにん）",
+          "overview": "[名・他動3] 默认，默许，纵容",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-abbf5abdc7bc.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5074,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "二人",
+                  "kana": "ふたり",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.66
+                },
+                {
+                  "text": "交際",
+                  "kana": "こうさい",
+                  "t": 0.9
+                },
+                {
+                  "text": "を",
+                  "t": 1.18
+                },
+                {
+                  "text": "黙認",
+                  "kana": "もくにん",
+                  "t": 1.44
+                },
+                {
+                  "text": "する",
+                  "t": 1.92
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "默许两个人交往。",
+              "notes": "",
+              "blanks": [
+                "黙認"
+              ],
+              "audio": "audio/seg-a9bc8f3fc8b2.mp3"
+            },
+            {
+              "id": 5075,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "カ",
+                  "t": 0
+                },
+                {
+                  "text": "ンニ",
+                  "t": 0.52
+                },
+                {
+                  "text": "ング",
+                  "t": 0.68
+                },
+                {
+                  "text": "を",
+                  "t": 0.86
+                },
+                {
+                  "text": "黙認",
+                  "kana": "もくにん",
+                  "t": 1.06
+                },
+                {
+                  "text": "する",
+                  "t": 1.54
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "纵容作弊。",
+              "notes": "",
+              "blanks": [
+                "黙認"
+              ],
+              "audio": "audio/seg-7ba634fca7d9.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "黙認",
+          "kana": "もくにん",
+          "senses": [
+            {
+              "pos": "名・他動3",
+              "groups": [
+                [
+                  "默认",
+                  "默许",
+                  "纵容"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2864. 潜る（もぐる）",
+          "overview": "[自動1] 潜入，钻进；私自做，偷偷做\n（关联词：潜る(くぐる)②[自動1] （从物体下面）穿过；渡过（难关）；钻空子，趁人不备）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1f6d3b56bbb3.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 5076,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "海",
+                  "kana": "うみ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.48
+                },
+                {
+                  "text": "潜",
+                  "kana": "もぐ",
+                  "t": 0.7
+                },
+                {
+                  "text": "る",
+                  "t": 0.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "潜入海中。",
+              "notes": "",
+              "blanks": [
+                "潜る"
+              ],
+              "audio": "audio/seg-ef0e8f6f79e1.mp3"
+            },
+            {
+              "id": 5077,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "布団",
+                  "kana": "ふとん",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.56
+                },
+                {
+                  "text": "潜",
+                  "kana": "もぐ",
+                  "t": 0.78
+                },
+                {
+                  "text": "る",
+                  "t": 0.96
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "钻进被窝里面去。",
+              "notes": "",
+              "blanks": [
+                "潜る"
+              ],
+              "audio": "audio/seg-7b2fba91b3e4.mp3"
+            },
+            {
+              "id": 5078,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "地下",
+                  "kana": "ちか",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.56
+                },
+                {
+                  "text": "潜",
+                  "kana": "もぐ",
+                  "t": 0.7
+                },
+                {
+                  "text": "る",
+                  "t": 0.92
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "潜入地下，搞地下工作。",
+              "notes": "",
+              "blanks": [
+                "潜る"
+              ],
+              "audio": "audio/seg-749e7ad81143.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "潜る",
+          "kana": "もぐる",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "潜入",
+                  "钻进"
+                ],
+                [
+                  "私自做",
+                  "偷偷做"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "潜る",
+              "kana": "くぐる",
+              "zh": "（从物体下面）穿过；渡过（难关）；钻空子，趁人不备"
+            }
+          ]
+        },
+        {
+          "question": "2865. 模型（もけい）",
+          "overview": "[名] 模子，模型\n（类义词：モデル(model)①⓪[名] 模型，样品；原型；模特儿）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4ed945ede7d9.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5079,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "模型飛行機",
+                  "kana": "もけいひこうき",
+                  "t": 0
+                }
+              ],
+              "zh": "模型飞机",
+              "notes": "",
+              "blanks": [
+                "模型"
+              ],
+              "audio": "audio/seg-f4f1fc958eaa.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "模型",
+          "kana": "もけい",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "模子",
+                  "模型"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "モデル",
+              "kana": "model",
+              "zh": "模型，样品；原型；模特儿"
+            }
+          ]
+        },
+        {
+          "question": "2866. もしかしたら",
+          "overview": "[副] 或许，可能，说不定",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e9f6af76bd1d.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5080,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "も",
+                  "t": 0
+                },
+                {
+                  "text": "しか",
+                  "t": 0.5
+                },
+                {
+                  "text": "した",
+                  "t": 0.7
+                },
+                {
+                  "text": "ら",
+                  "t": 0.9
+                },
+                {
+                  "text": "来",
+                  "kana": "こ",
+                  "t": 1.04
+                },
+                {
+                  "text": "ない",
+                  "t": 1.22
+                },
+                {
+                  "text": "か",
+                  "t": 1.38
+                },
+                {
+                  "text": "もし",
+                  "t": 1.58
+                },
+                {
+                  "text": "れない",
+                  "t": 1.82
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "弄不好还不来呢。",
+              "notes": "",
+              "blanks": [
+                "もしかしたら"
+              ],
+              "audio": "audio/seg-04ddd57c7afd.mp3"
+            },
+            {
+              "id": 5081,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "も",
+                  "t": 0
+                },
+                {
+                  "text": "しか",
+                  "t": 0.48
+                },
+                {
+                  "text": "した",
+                  "t": 0.7
+                },
+                {
+                  "text": "ら",
+                  "t": 0.92
+                },
+                {
+                  "text": "約束",
+                  "kana": "やくそく",
+                  "t": 1.14
+                },
+                {
+                  "text": "の",
+                  "t": 1.58
+                },
+                {
+                  "text": "時間",
+                  "kana": "じかん",
+                  "t": 1.84
+                },
+                {
+                  "text": "を",
+                  "t": 2.04
+                },
+                {
+                  "text": "忘",
+                  "kana": "わす",
+                  "t": 2.26
+                },
+                {
+                  "text": "れた",
+                  "t": 2.52
+                },
+                {
+                  "text": "か",
+                  "t": 2.72
+                },
+                {
+                  "text": "もし",
+                  "t": 2.9
+                },
+                {
+                  "text": "れない",
+                  "t": 3.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "说不定把约会的时间给忘了。",
+              "notes": "",
+              "blanks": [
+                "もしかしたら"
+              ],
+              "audio": "audio/seg-e6be69c3a1f0.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "もしかしたら",
+          "kana": "もしかしたら",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "或许",
+                  "可能",
+                  "说不定"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2867. もしかして",
+          "overview": "[副] 如果，也许",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-2782cca8d06c.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5082,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "も",
+                  "t": 0
+                },
+                {
+                  "text": "しか",
+                  "t": 0.46
+                },
+                {
+                  "text": "して",
+                  "t": 0.7
+                },
+                {
+                  "text": "事故",
+                  "kana": "じこ",
+                  "t": 0.9
+                },
+                {
+                  "text": "に",
+                  "t": 1.24
+                },
+                {
+                  "text": "でも",
+                  "t": 1.38
+                },
+                {
+                  "text": "遭",
+                  "kana": "あ",
+                  "t": 1.56
+                },
+                {
+                  "text": "った",
+                  "t": 1.78
+                },
+                {
+                  "text": "の",
+                  "t": 1.92
+                },
+                {
+                  "text": "か",
+                  "t": 2.12
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "会不会是遇到了什么事故啊。",
+              "notes": "",
+              "blanks": [
+                "もしかして"
+              ],
+              "audio": "audio/seg-8acb592b957e.mp3"
+            },
+            {
+              "id": 5083,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "も",
+                  "t": 0
+                },
+                {
+                  "text": "しか",
+                  "t": 0.48
+                },
+                {
+                  "text": "して",
+                  "t": 0.7
+                },
+                {
+                  "text": "最初",
+                  "kana": "さいしょ",
+                  "t": 1.02
+                },
+                {
+                  "text": "から",
+                  "t": 1.4
+                },
+                {
+                  "text": "や",
+                  "t": 1.68
+                },
+                {
+                  "text": "る",
+                  "t": 1.84
+                },
+                {
+                  "text": "気",
+                  "kana": "き",
+                  "t": 1.94
+                },
+                {
+                  "text": "が",
+                  "t": 2.1
+                },
+                {
+                  "text": "な",
+                  "t": 2.28
+                },
+                {
+                  "text": "かった",
+                  "t": 2.42
+                },
+                {
+                  "text": "の",
+                  "t": 2.66
+                },
+                {
+                  "text": "か",
+                  "t": 2.88
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "莫非从一开始就没想要做？",
+              "notes": "",
+              "blanks": [
+                "もしかして"
+              ],
+              "audio": "audio/seg-86c11e160111.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "もしかして",
+          "kana": "もしかして",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "如果",
+                  "也许"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2868. もしかすると",
+          "overview": "[副] 或许，可能，说不定",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-542a12db4d84.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5084,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "も",
+                  "t": 0
+                },
+                {
+                  "text": "しか",
+                  "t": 0.48
+                },
+                {
+                  "text": "する",
+                  "t": 0.7
+                },
+                {
+                  "text": "と",
+                  "t": 0.98
+                },
+                {
+                  "text": "続",
+                  "kana": "つづ",
+                  "t": 1.24
+                },
+                {
+                  "text": "け",
+                  "t": 1.54
+                },
+                {
+                  "text": "ら",
+                  "t": 1.66
+                },
+                {
+                  "text": "れ",
+                  "t": 1.8
+                },
+                {
+                  "text": "なく",
+                  "t": 1.9
+                },
+                {
+                  "text": "なる",
+                  "t": 2.06
+                },
+                {
+                  "text": "か",
+                  "t": 2.3
+                },
+                {
+                  "text": "もし",
+                  "t": 2.5
+                },
+                {
+                  "text": "れない",
+                  "t": 2.74
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "或许无法再持续下去了。",
+              "notes": "",
+              "blanks": [
+                "もしかすると"
+              ],
+              "audio": "audio/seg-fbfafc37e3c9.mp3"
+            },
+            {
+              "id": 5085,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "も",
+                  "t": 0
+                },
+                {
+                  "text": "しか",
+                  "t": 0.48
+                },
+                {
+                  "text": "する",
+                  "t": 0.7
+                },
+                {
+                  "text": "と",
+                  "t": 0.94
+                },
+                {
+                  "text": "あの",
+                  "t": 1.16
+                },
+                {
+                  "text": "二人",
+                  "kana": "ふたり",
+                  "t": 1.42
+                },
+                {
+                  "text": "は",
+                  "t": 1.8
+                },
+                {
+                  "text": "離婚",
+                  "kana": "りこん",
+                  "t": 1.94
+                },
+                {
+                  "text": "する",
+                  "t": 2.26
+                },
+                {
+                  "text": "か",
+                  "t": 2.52
+                },
+                {
+                  "text": "もし",
+                  "t": 2.72
+                },
+                {
+                  "text": "れない",
+                  "t": 2.96
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "说不定那两人会离婚。",
+              "notes": "",
+              "blanks": [
+                "もしかすると"
+              ],
+              "audio": "audio/seg-472dfeebf2c3.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "もしかすると",
+          "kana": "もしかすると",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "或许",
+                  "可能",
+                  "说不定"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2869. もたらす",
+          "overview": "[他動1] 带来，带去，波及",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-d5a42f2c0d62.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5086,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "台風",
+                  "kana": "たいふう",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.7
+                },
+                {
+                  "text": "も",
+                  "t": 0.88
+                },
+                {
+                  "text": "た",
+                  "t": 1.06
+                },
+                {
+                  "text": "ら",
+                  "t": 1.16
+                },
+                {
+                  "text": "した",
+                  "t": 1.28
+                },
+                {
+                  "text": "被害",
+                  "kana": "ひがい",
+                  "t": 1.46
+                }
+              ],
+              "zh": "台风所带来的灾害",
+              "notes": "",
+              "blanks": [
+                "もたらした"
+              ],
+              "audio": "audio/seg-f8ff9a35d37c.mp3"
+            },
+            {
+              "id": 5087,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "影響",
+                  "kana": "えいきょう",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.8
+                },
+                {
+                  "text": "も",
+                  "t": 0.94
+                },
+                {
+                  "text": "た",
+                  "t": 1.06
+                },
+                {
+                  "text": "ら",
+                  "t": 1.16
+                },
+                {
+                  "text": "す",
+                  "t": 1.32
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "带来影响。",
+              "notes": "",
+              "blanks": [
+                "もたらす"
+              ],
+              "audio": "audio/seg-46a492d92f75.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "もたらす",
+          "kana": "もたらす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "带来",
+                  "带去",
+                  "波及"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2870. 凭れる（もたれる）",
+          "overview": "[自動2] 倚靠，凭靠；（胃）积食，不消化",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-1e924fd835fa.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5088,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "壁",
+                  "kana": "かべ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.54
+                },
+                {
+                  "text": "凭",
+                  "kana": "もた",
+                  "t": 0.74
+                },
+                {
+                  "text": "れる",
+                  "t": 1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "靠在墙上。",
+              "notes": "",
+              "blanks": [
+                "凭れる"
+              ],
+              "audio": "audio/seg-4c6b5e1199b0.mp3"
+            },
+            {
+              "id": 5089,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "胃",
+                  "kana": "い",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.46
+                },
+                {
+                  "text": "凭",
+                  "kana": "もた",
+                  "t": 0.56
+                },
+                {
+                  "text": "れる",
+                  "t": 0.82
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "胃消化不良。",
+              "notes": "",
+              "blanks": [
+                "凭れる"
+              ],
+              "audio": "audio/seg-6275865a2e1c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "凭れる",
+          "kana": "もたれる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "倚靠",
+                  "凭靠"
+                ],
+                [
+                  "（胃）积食",
+                  "不消化"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2871. モダン（modern）",
+          "overview": "[ナ形] 现代的，摩登的，流行的",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6118469c3c9e.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5090,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "モ",
+                  "t": 0
+                },
+                {
+                  "text": "ダ",
+                  "t": 0.44
+                },
+                {
+                  "text": "ンな",
+                  "t": 0.58
+                },
+                {
+                  "text": "デ",
+                  "t": 0.8
+                },
+                {
+                  "text": "ザ",
+                  "t": 1
+                },
+                {
+                  "text": "イ",
+                  "t": 1.14
+                },
+                {
+                  "text": "ン",
+                  "t": 1.28
+                }
+              ],
+              "zh": "流行设计",
+              "notes": "",
+              "blanks": [
+                "モダン"
+              ],
+              "audio": "audio/seg-104eb24c2fe9.mp3"
+            },
+            {
+              "id": 5091,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "モ",
+                  "t": 0
+                },
+                {
+                  "text": "ダ",
+                  "t": 0.48
+                },
+                {
+                  "text": "ン",
+                  "t": 0.6
+                },
+                {
+                  "text": "な",
+                  "t": 0.72
+                },
+                {
+                  "text": "建築",
+                  "kana": "けんちく",
+                  "t": 0.84
+                }
+              ],
+              "zh": "现代建筑",
+              "notes": "",
+              "blanks": [
+                "モダン"
+              ],
+              "audio": "audio/seg-50c6f21c5d1f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "モダン",
+          "kana": "モダン",
+          "senses": [
+            {
+              "pos": "ナ形",
+              "groups": [
+                [
+                  "现代的",
+                  "摩登的",
+                  "流行的"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2872. ～持ち（～もち）",
+          "overview": "[接尾] 拿，携带；……负担；持有者，所有者",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-43e2d59f566e.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5092,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "太刀持",
+                  "kana": "たちも",
+                  "t": 0
+                },
+                {
+                  "text": "ち",
+                  "t": 0.78
+                }
+              ],
+              "zh": "贴身侍卫",
+              "notes": "",
+              "blanks": [
+                "持ち"
+              ],
+              "audio": "audio/seg-67d24210fde0.mp3"
+            },
+            {
+              "id": 5093,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "自分",
+                  "kana": "じぶん",
+                  "t": 0
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.7
+                },
+                {
+                  "text": "ち",
+                  "t": 0.92
+                }
+              ],
+              "zh": "自己负担",
+              "notes": "",
+              "blanks": [
+                "持ち"
+              ],
+              "audio": "audio/seg-4b00e2b9a93a.mp3"
+            },
+            {
+              "id": 5094,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "土地",
+                  "kana": "とち",
+                  "t": 0
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.94
+                },
+                {
+                  "text": "ち",
+                  "t": 1.4
+                }
+              ],
+              "zh": "土地持有者",
+              "notes": "",
+              "blanks": [
+                "持ち"
+              ],
+              "audio": "audio/seg-8c6c30e97b01.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "～持ち",
+          "kana": "～もち",
+          "senses": [
+            {
+              "pos": "接尾",
+              "groups": [
+                [
+                  "拿",
+                  "携带"
+                ],
+                [
+                  "……负担"
+                ],
+                [
+                  "持有者",
+                  "所有者"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2873. 持ち上げる（もちあげる）",
+          "overview": "[他動2] 举起，抬起，高高拿起；吹捧，奉承",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-fee8c3d71eb8.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5095,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "荷物",
+                  "kana": "にもつ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.7
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.9
+                },
+                {
+                  "text": "ち",
+                  "t": 1.12
+                },
+                {
+                  "text": "上",
+                  "kana": "あ",
+                  "t": 1.22
+                },
+                {
+                  "text": "げ",
+                  "t": 1.3
+                },
+                {
+                  "text": "る",
+                  "t": 1.4
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "举起行李。",
+              "notes": "",
+              "blanks": [
+                "持ち上げる"
+              ],
+              "audio": "audio/seg-3f9b70df434c.mp3"
+            },
+            {
+              "id": 5096,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0
+                },
+                {
+                  "text": "ち",
+                  "t": 0.54
+                },
+                {
+                  "text": "上",
+                  "kana": "あ",
+                  "t": 0.64
+                },
+                {
+                  "text": "げ",
+                  "t": 0.72
+                },
+                {
+                  "text": "て",
+                  "t": 0.84
+                },
+                {
+                  "text": "承諾",
+                  "kana": "しょうだく",
+                  "t": 1
+                },
+                {
+                  "text": "さ",
+                  "t": 1.42
+                },
+                {
+                  "text": "せ",
+                  "t": 1.64
+                },
+                {
+                  "text": "る",
+                  "t": 1.78
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "吹捧一番使其答应。",
+              "notes": "",
+              "blanks": [
+                "持ち上げて"
+              ],
+              "audio": "audio/seg-a667c385445d.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "持ち上げる",
+          "kana": "もちあげる",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "举起",
+                  "抬起",
+                  "高高拿起"
+                ],
+                [
+                  "吹捧",
+                  "奉承"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2874. 用いる（もちいる）",
+          "overview": "[他動2] 使用，用；采用，采纳；用心，留意",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-a8b14edc9d32.mp3",
+          "pitch": "③⓪",
+          "sentences": [
+            {
+              "id": 5097,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "道具",
+                  "kana": "どうぐ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.72
+                },
+                {
+                  "text": "用",
+                  "kana": "もち",
+                  "t": 0.86
+                },
+                {
+                  "text": "いる",
+                  "t": 1.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "使用道具。",
+              "notes": "",
+              "blanks": [
+                "用いる"
+              ],
+              "audio": "audio/seg-66fda5f45852.mp3"
+            },
+            {
+              "id": 5098,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "新人",
+                  "kana": "しんじん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.84
+                },
+                {
+                  "text": "用",
+                  "kana": "もち",
+                  "t": 1.06
+                },
+                {
+                  "text": "いる",
+                  "t": 1.3
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "任用新人。",
+              "notes": "",
+              "blanks": [
+                "用いる"
+              ],
+              "audio": "audio/seg-eecce40747af.mp3"
+            },
+            {
+              "id": 5099,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "他人",
+                  "kana": "たにん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.62
+                },
+                {
+                  "text": "意見",
+                  "kana": "いけん",
+                  "t": 0.78
+                },
+                {
+                  "text": "を",
+                  "t": 1.08
+                },
+                {
+                  "text": "用",
+                  "kana": "もち",
+                  "t": 1.28
+                },
+                {
+                  "text": "いる",
+                  "t": 1.52
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "采纳他人意见。",
+              "notes": "",
+              "blanks": [
+                "用いる"
+              ],
+              "audio": "audio/seg-4032f1b63fa4.mp3"
+            },
+            {
+              "id": 5100,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "心",
+                  "kana": "こころ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.62
+                },
+                {
+                  "text": "用",
+                  "kana": "もち",
+                  "t": 0.88
+                },
+                {
+                  "text": "いる",
+                  "t": 1.1
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "用心。",
+              "notes": "",
+              "blanks": [
+                "用いる"
+              ],
+              "audio": "audio/seg-4d74c4bfcb73.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "用いる",
+          "kana": "もちいる",
+          "senses": [
+            {
+              "pos": "他動2",
+              "groups": [
+                [
+                  "使用",
+                  "用"
+                ],
+                [
+                  "采用",
+                  "采纳"
+                ],
+                [
+                  "用心",
+                  "留意"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2875. 持ち込む（もちこむ）",
+          "overview": "[他動1] 带进，携入；进入，达到；带来，提出",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6d6a5e8f6e7d.mp3",
+          "pitch": "⓪③",
+          "sentences": [
+            {
+              "id": 5101,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "車内",
+                  "kana": "しゃない",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.7
+                },
+                {
+                  "text": "危険物",
+                  "kana": "きけんぶつ",
+                  "t": 0.92
+                },
+                {
+                  "text": "を",
+                  "t": 1.5
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 1.7
+                },
+                {
+                  "text": "ち",
+                  "t": 1.9
+                },
+                {
+                  "text": "込",
+                  "kana": "こ",
+                  "t": 2.02
+                },
+                {
+                  "text": "む",
+                  "t": 2.08
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "将危险品带入车内。",
+              "notes": "",
+              "blanks": [
+                "持ち込む"
+              ],
+              "audio": "audio/seg-908f67947c5e.mp3"
+            },
+            {
+              "id": 5102,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "同点",
+                  "kana": "どうてん",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.72
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.92
+                },
+                {
+                  "text": "ち",
+                  "t": 1.12
+                },
+                {
+                  "text": "込",
+                  "kana": "こ",
+                  "t": 1.22
+                },
+                {
+                  "text": "む",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "打成平手。",
+              "notes": "",
+              "blanks": [
+                "持ち込む"
+              ],
+              "audio": "audio/seg-db5903452657.mp3"
+            },
+            {
+              "id": 5103,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "縁談",
+                  "kana": "えんだん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.68
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.9
+                },
+                {
+                  "text": "ち",
+                  "t": 1.06
+                },
+                {
+                  "text": "込",
+                  "kana": "こ",
+                  "t": 1.18
+                },
+                {
+                  "text": "む",
+                  "t": 1.26
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "提亲。",
+              "notes": "",
+              "blanks": [
+                "持ち込む"
+              ],
+              "audio": "audio/seg-2f7594305c82.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "持ち込む",
+          "kana": "もちこむ",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "带进",
+                  "携入"
+                ],
+                [
+                  "进入",
+                  "达到"
+                ],
+                [
+                  "带来",
+                  "提出"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2876. 持ち出す（もちだす）",
+          "overview": "[他動1] 拿出去，搬出去；花自己的钱，自掏腰包；提出，提起（诉讼）；开始持有",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-3a83bc1bae1a.mp3",
+          "pitch": "③⓪",
+          "sentences": [
+            {
+              "id": 5104,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "家財",
+                  "kana": "かざい",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.64
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.84
+                },
+                {
+                  "text": "ち",
+                  "t": 1.02
+                },
+                {
+                  "text": "出",
+                  "kana": "だ",
+                  "t": 1.12
+                },
+                {
+                  "text": "す",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "窃取家里的财产。",
+              "notes": "",
+              "blanks": [
+                "持ち出す"
+              ],
+              "audio": "audio/seg-d7419a519909.mp3"
+            },
+            {
+              "id": 5105,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "条件",
+                  "kana": "じょうけん",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.78
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.94
+                },
+                {
+                  "text": "ち",
+                  "t": 1.14
+                },
+                {
+                  "text": "出",
+                  "kana": "だ",
+                  "t": 1.26
+                },
+                {
+                  "text": "す",
+                  "t": 1.36
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "提出条件。",
+              "notes": "",
+              "blanks": [
+                "持ち出す"
+              ],
+              "audio": "audio/seg-c054bf425623.mp3"
+            },
+            {
+              "id": 5106,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "疑",
+                  "kana": "うたが",
+                  "t": 0.34
+                },
+                {
+                  "text": "い",
+                  "t": 0.66
+                },
+                {
+                  "text": "を",
+                  "t": 0.82
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.94
+                },
+                {
+                  "text": "ち",
+                  "t": 1.1
+                },
+                {
+                  "text": "出",
+                  "kana": "だ",
+                  "t": 1.22
+                },
+                {
+                  "text": "す",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "开始产生怀疑。",
+              "notes": "",
+              "blanks": [
+                "持ち出す"
+              ],
+              "audio": "audio/seg-fbde32603877.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "持ち出す",
+          "kana": "もちだす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "拿出去",
+                  "搬出去"
+                ],
+                [
+                  "花自己的钱",
+                  "自掏腰包"
+                ],
+                [
+                  "提出",
+                  "提起（诉讼）"
+                ],
+                [
+                  "开始持有"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2877. 持ち主（もちぬし）",
+          "overview": "[名] 持有者，所有人",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-98fa1c440074.mp3",
+          "pitch": "②",
+          "sentences": [
+            {
+              "id": 5107,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0
+                },
+                {
+                  "text": "ち",
+                  "t": 0.52
+                },
+                {
+                  "text": "主",
+                  "kana": "ぬし",
+                  "t": 0.64
+                },
+                {
+                  "text": "の",
+                  "t": 0.8
+                },
+                {
+                  "text": "分",
+                  "kana": "わ",
+                  "t": 1.04
+                },
+                {
+                  "text": "から",
+                  "t": 1.2
+                },
+                {
+                  "text": "ない",
+                  "t": 1.38
+                },
+                {
+                  "text": "かばん",
+                  "t": 1.6
+                }
+              ],
+              "zh": "不知道是谁的包",
+              "notes": "",
+              "blanks": [
+                "持ち主"
+              ],
+              "audio": "audio/seg-af5e2524571e.mp3"
+            },
+            {
+              "id": 5108,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "優",
+                  "kana": "すぐ",
+                  "t": 0
+                },
+                {
+                  "text": "れた",
+                  "t": 0.6
+                },
+                {
+                  "text": "才能",
+                  "kana": "さいのう",
+                  "t": 0.9
+                },
+                {
+                  "text": "の",
+                  "t": 1.32
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 1.54
+                },
+                {
+                  "text": "ち",
+                  "t": 1.72
+                },
+                {
+                  "text": "主",
+                  "kana": "ぬし",
+                  "t": 1.84
+                }
+              ],
+              "zh": "出色才能的持有者",
+              "notes": "",
+              "blanks": [
+                "持ち主"
+              ],
+              "audio": "audio/seg-921b38389fdf.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "持ち主",
+          "kana": "もちぬし",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "持有者",
+                  "所有人"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2878. もったいない",
+          "overview": "[イ形] 浪费，（让人觉得）可惜；过分好的，与身份不相符的；不胜惶恐的",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6aadad0b0d94.mp3",
+          "pitch": "⑤",
+          "sentences": [
+            {
+              "id": 5109,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "時間",
+                  "kana": "じかん",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.6
+                },
+                {
+                  "text": "も",
+                  "t": 0.82
+                },
+                {
+                  "text": "った",
+                  "t": 1.06
+                },
+                {
+                  "text": "い",
+                  "t": 1.22
+                },
+                {
+                  "text": "ない",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "时间白白浪费了。",
+              "notes": "",
+              "blanks": [
+                "もったいない"
+              ],
+              "audio": "audio/seg-c333050010d9.mp3"
+            },
+            {
+              "id": 5110,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "彼",
+                  "kana": "かれ",
+                  "t": 0
+                },
+                {
+                  "text": "には",
+                  "t": 0.46
+                },
+                {
+                  "text": "も",
+                  "t": 0.76
+                },
+                {
+                  "text": "った",
+                  "t": 1.04
+                },
+                {
+                  "text": "い",
+                  "t": 1.2
+                },
+                {
+                  "text": "ない",
+                  "t": 1.3
+                },
+                {
+                  "text": "よう",
+                  "t": 1.46
+                },
+                {
+                  "text": "な",
+                  "t": 1.68
+                },
+                {
+                  "text": "奥様",
+                  "kana": "おくさま",
+                  "t": 1.86
+                }
+              ],
+              "zh": "（与他不相配的）过分好的夫人",
+              "notes": "",
+              "blanks": [
+                "もったいない"
+              ],
+              "audio": "audio/seg-8a7f26783b07.mp3"
+            },
+            {
+              "id": 5111,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "も",
+                  "t": 0
+                },
+                {
+                  "text": "った",
+                  "t": 0.52
+                },
+                {
+                  "text": "い",
+                  "t": 0.7
+                },
+                {
+                  "text": "ない",
+                  "t": 0.8
+                },
+                {
+                  "text": "お",
+                  "t": 0.96
+                },
+                {
+                  "text": "言葉",
+                  "kana": "ことば",
+                  "t": 1.16
+                }
+              ],
+              "zh": "令人惶恐的夸奖",
+              "notes": "",
+              "blanks": [
+                "もったいない"
+              ],
+              "audio": "audio/seg-7f4292e3d401.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "もったいない",
+          "kana": "もったいない",
+          "senses": [
+            {
+              "pos": "イ形",
+              "groups": [
+                [
+                  "浪费",
+                  "（让人觉得）可惜"
+                ],
+                [
+                  "过分好的",
+                  "与身份不相符的"
+                ],
+                [
+                  "不胜惶恐的"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2879. 最も（もっとも）",
+          "overview": "[副] 最，第一……，程度最高的",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-fed41efd93a4.mp3",
+          "pitch": "③①",
+          "sentences": [
+            {
+              "id": 5112,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "世界",
+                  "kana": "せかい",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.64
+                },
+                {
+                  "text": "最",
+                  "kana": "もっと",
+                  "t": 0.9
+                },
+                {
+                  "text": "も",
+                  "t": 1.14
+                },
+                {
+                  "text": "大",
+                  "kana": "おお",
+                  "t": 1.44
+                },
+                {
+                  "text": "き",
+                  "t": 1.74
+                },
+                {
+                  "text": "い",
+                  "t": 1.82
+                },
+                {
+                  "text": "海",
+                  "kana": "うみ",
+                  "t": 1.96
+                }
+              ],
+              "zh": "世界上最大的海",
+              "notes": "",
+              "blanks": [
+                "最も"
+              ],
+              "audio": "audio/seg-6cdeface6542.mp3"
+            },
+            {
+              "id": 5113,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "最",
+                  "kana": "もっと",
+                  "t": 0
+                },
+                {
+                  "text": "も",
+                  "t": 0.6
+                },
+                {
+                  "text": "好",
+                  "kana": "す",
+                  "t": 0.84
+                },
+                {
+                  "text": "き",
+                  "t": 1
+                },
+                {
+                  "text": "な",
+                  "t": 1.12
+                },
+                {
+                  "text": "食",
+                  "kana": "た",
+                  "t": 1.28
+                },
+                {
+                  "text": "べ",
+                  "t": 1.28
+                },
+                {
+                  "text": "物",
+                  "kana": "もの",
+                  "t": 1.5
+                }
+              ],
+              "zh": "最喜爱的食物",
+              "notes": "",
+              "blanks": [
+                "最も"
+              ],
+              "audio": "audio/seg-bde9b9059022.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "最も",
+          "kana": "もっとも",
+          "senses": [
+            {
+              "pos": "副",
+              "groups": [
+                [
+                  "最",
+                  "第一……",
+                  "程度最高的"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2880. もっとも",
+          "overview": "[接] 话虽如此，不过……，可是……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-fed41efd93a4.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5114,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "蛋白質",
+                  "kana": "たんぱくしつ",
+                  "t": 0
+                },
+                {
+                  "text": "は",
+                  "t": 0.98
+                },
+                {
+                  "text": "体",
+                  "kana": "からだ",
+                  "t": 1.24
+                },
+                {
+                  "text": "に",
+                  "t": 1.5
+                },
+                {
+                  "text": "いい",
+                  "t": 1.82
+                },
+                {
+                  "text": "。"
+                },
+                {
+                  "text": "も",
+                  "t": 2.74
+                },
+                {
+                  "text": "っと",
+                  "t": 3.2
+                },
+                {
+                  "text": "も",
+                  "t": 3.42
+                },
+                {
+                  "text": "、"
+                },
+                {
+                  "text": "摂",
+                  "kana": "と",
+                  "t": 3.64
+                },
+                {
+                  "text": "り",
+                  "t": 3.82
+                },
+                {
+                  "text": "す",
+                  "t": 3.96
+                },
+                {
+                  "text": "ぎ",
+                  "t": 4.08
+                },
+                {
+                  "text": "て",
+                  "t": 4.22
+                },
+                {
+                  "text": "はい",
+                  "t": 4.38
+                },
+                {
+                  "text": "け",
+                  "t": 4.52
+                },
+                {
+                  "text": "ない",
+                  "t": 4.76
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "蛋白质对身体有益,但也不能摄入过量。",
+              "notes": "",
+              "blanks": [
+                "もっとも"
+              ],
+              "audio": "audio/seg-8a6fa4f1fa63.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "もっとも",
+          "kana": "もっとも",
+          "senses": [
+            {
+              "pos": "接",
+              "groups": [
+                [
+                  "话虽如此",
+                  "不过……",
+                  "可是……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2881. 持て成す（もてなす）",
+          "overview": "[他動1] 接待，对待；招待，请客",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-50d3ebeedc1a.mp3",
+          "pitch": "③⓪",
+          "sentences": [
+            {
+              "id": 5115,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "丁重",
+                  "kana": "ていちょう",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.57
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.85
+                },
+                {
+                  "text": "て",
+                  "t": 1.14
+                },
+                {
+                  "text": "成",
+                  "kana": "な",
+                  "t": 1.42
+                },
+                {
+                  "text": "す",
+                  "t": 1.71
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "热情地接待。",
+              "notes": "",
+              "blanks": [
+                "持て成す"
+              ],
+              "audio": "audio/seg-b46ed61c6d1a.mp3"
+            },
+            {
+              "id": 5116,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "手料理",
+                  "kana": "てりょうり",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.78
+                },
+                {
+                  "text": "持",
+                  "kana": "も",
+                  "t": 0.78
+                },
+                {
+                  "text": "て",
+                  "t": 0.98
+                },
+                {
+                  "text": "成",
+                  "kana": "な",
+                  "t": 1.14
+                },
+                {
+                  "text": "す",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "亲自做饭菜来招待。",
+              "notes": "",
+              "blanks": [
+                "持て成す"
+              ],
+              "audio": "audio/seg-534d7415bd2e.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "持て成す",
+          "kana": "もてなす",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "接待",
+                  "对待"
+                ],
+                [
+                  "招待",
+                  "请客"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2882. 元/基/素（もと）",
+          "overview": "[名] 根源，起源；根基，根本；原料，材料",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ba7cf4fa499f.mp3",
+          "pitch": "⓪②",
+          "sentences": [
+            {
+              "id": 5117,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "元",
+                  "kana": "もと",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.56
+                },
+                {
+                  "text": "ただ",
+                  "t": 0.82
+                },
+                {
+                  "text": "す",
+                  "t": 0.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "追查起源。",
+              "notes": "",
+              "blanks": [
+                "元"
+              ],
+              "audio": "audio/seg-1cce152fef60.mp3"
+            },
+            {
+              "id": 5118,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "農業",
+                  "kana": "のうぎょう",
+                  "t": 0
+                },
+                {
+                  "text": "は",
+                  "t": 0.7
+                },
+                {
+                  "text": "国",
+                  "kana": "くに",
+                  "t": 1.05
+                },
+                {
+                  "text": "の",
+                  "t": 1.4
+                },
+                {
+                  "text": "基",
+                  "kana": "もと",
+                  "t": 1.75
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "农业为国之根本。",
+              "notes": "",
+              "blanks": [
+                "基"
+              ],
+              "audio": "audio/seg-040f09c9523e.mp3"
+            },
+            {
+              "id": 5119,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "元",
+                  "kana": "もと",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.56
+                },
+                {
+                  "text": "切",
+                  "kana": "き",
+                  "t": 0.8
+                },
+                {
+                  "text": "って",
+                  "t": 0.96
+                },
+                {
+                  "text": "売",
+                  "kana": "う",
+                  "t": 1.14
+                },
+                {
+                  "text": "る",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "赔本卖。",
+              "notes": "",
+              "blanks": [
+                "元"
+              ],
+              "audio": "audio/seg-4e0b28ef1f95.mp3"
+            },
+            {
+              "id": 5120,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "大豆",
+                  "kana": "だいず",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.68
+                },
+                {
+                  "text": "素",
+                  "kana": "もと",
+                  "t": 0.8
+                },
+                {
+                  "text": "に",
+                  "t": 1.08
+                },
+                {
+                  "text": "して",
+                  "t": 1.2
+                },
+                {
+                  "text": "作",
+                  "kana": "つく",
+                  "t": 1.38
+                },
+                {
+                  "text": "る",
+                  "t": 1.64
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "以大豆为原料制作。",
+              "notes": "",
+              "blanks": [
+                "素"
+              ],
+              "audio": "audio/seg-37f6de5c17e5.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "元/基/素",
+          "kana": "もと",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "根源",
+                  "起源"
+                ],
+                [
+                  "根基",
+                  "根本"
+                ],
+                [
+                  "原料",
+                  "材料"
+                ]
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "text": "元",
+              "kana": "もと"
+            },
+            {
+              "text": "基",
+              "kana": "もと"
+            },
+            {
+              "text": "素",
+              "kana": "もと"
+            }
+          ]
+        },
+        {
+          "question": "2883. 元～（もと～）",
+          "overview": "[接頭] 原……，前……，表示以前的",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ba7cf4fa499f.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5121,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "元首相",
+                  "kana": "もとしゅしょう",
+                  "t": 0
+                }
+              ],
+              "zh": "前首相",
+              "notes": "",
+              "blanks": [
+                "元"
+              ],
+              "audio": "audio/seg-65ff46c2ae0e.mp3"
+            },
+            {
+              "id": 5122,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "元",
+                  "kana": "もと",
+                  "t": 0
+                },
+                {
+                  "text": "社長",
+                  "kana": "しゃちょう",
+                  "t": 0.56
+                }
+              ],
+              "zh": "前社长",
+              "notes": "",
+              "blanks": [
+                "元"
+              ],
+              "audio": "audio/seg-4a9406cd7919.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "元～",
+          "kana": "もと～",
+          "senses": [
+            {
+              "pos": "接頭",
+              "groups": [
+                [
+                  "原……",
+                  "前……",
+                  "表示以前的"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2884. ～元（～もと）",
+          "overview": "[接尾] 事物产生、起源的场所",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ba7cf4fa499f.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5123,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "火",
+                  "kana": "ひ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.48
+                },
+                {
+                  "text": "元",
+                  "kana": "もと",
+                  "t": 0.64
+                }
+              ],
+              "zh": "起火地点,火源",
+              "notes": "",
+              "blanks": [
+                "元"
+              ],
+              "audio": "audio/seg-c77f1cd1f5ae.mp3"
+            },
+            {
+              "id": 5124,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "出版元",
+                  "kana": "しゅっぱんもと",
+                  "t": 0
+                }
+              ],
+              "zh": "出版地,出版商",
+              "notes": "",
+              "blanks": [
+                "元"
+              ],
+              "audio": "audio/seg-d7f9e4d5c079.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "～元",
+          "kana": "～もと",
+          "senses": [
+            {
+              "pos": "接尾",
+              "groups": [
+                [
+                  "事物产生、起源的场所"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2885. 基づく（もとづく）",
+          "overview": "[自動1] 根据，以……为依据，基于……；由于，起因于",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-c5a7f42fd1f8.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5125,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "事実",
+                  "kana": "じじつ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.68
+                },
+                {
+                  "text": "基",
+                  "kana": "もと",
+                  "t": 0.86
+                },
+                {
+                  "text": "づ",
+                  "t": 1.16
+                },
+                {
+                  "text": "いて",
+                  "t": 1.28
+                },
+                {
+                  "text": "書",
+                  "kana": "か",
+                  "t": 1.5
+                },
+                {
+                  "text": "いた",
+                  "t": 1.66
+                },
+                {
+                  "text": "小説",
+                  "kana": "しょうせつ",
+                  "t": 1.88
+                }
+              ],
+              "zh": "根据事实而写的小说",
+              "notes": "",
+              "blanks": [
+                "基づいて"
+              ],
+              "audio": "audio/seg-729467c72221.mp3"
+            },
+            {
+              "id": 5126,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "法律",
+                  "kana": "ほうりつ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.72
+                },
+                {
+                  "text": "基",
+                  "kana": "もと",
+                  "t": 0.92
+                },
+                {
+                  "text": "づ",
+                  "t": 1.18
+                },
+                {
+                  "text": "いて",
+                  "t": 1.32
+                },
+                {
+                  "text": "罰",
+                  "kana": "ばつ",
+                  "t": 1.54
+                },
+                {
+                  "text": "する",
+                  "t": 1.78
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "依法惩处。",
+              "notes": "",
+              "blanks": [
+                "基づいて"
+              ],
+              "audio": "audio/seg-f513a2104f86.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "基づく",
+          "kana": "もとづく",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "根据",
+                  "以……为依据",
+                  "基于……"
+                ],
+                [
+                  "由于",
+                  "起因于"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2886. モニター（monitor）",
+          "overview": "[名・他動3] 评论员；监视器，监听器；监视，监控",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-9c9c980f457a.mp3",
+          "pitch": "①",
+          "sentences": [
+            {
+              "id": 5127,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "消費者",
+                  "kana": "しょうひしゃ",
+                  "t": 0
+                },
+                {
+                  "text": "モ",
+                  "t": 0.84
+                },
+                {
+                  "text": "ニ",
+                  "t": 1.02
+                },
+                {
+                  "text": "ター",
+                  "t": 1.22
+                }
+              ],
+              "zh": "消费者评论员",
+              "notes": "",
+              "blanks": [
+                "モニター"
+              ],
+              "audio": "audio/seg-7f263fe27642.mp3"
+            },
+            {
+              "id": 5128,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "モ",
+                  "t": 0
+                },
+                {
+                  "text": "ニ",
+                  "t": 0.44
+                },
+                {
+                  "text": "ター",
+                  "t": 0.62
+                },
+                {
+                  "text": "テ",
+                  "t": 0.82
+                },
+                {
+                  "text": "レ",
+                  "t": 0.98
+                },
+                {
+                  "text": "ビ",
+                  "t": 1.1
+                }
+              ],
+              "zh": "监视器,闭路电视",
+              "notes": "",
+              "blanks": [
+                "モニター"
+              ],
+              "audio": "audio/seg-7abf83cce630.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "モニター",
+          "kana": "モニター",
+          "senses": [
+            {
+              "pos": "名・他動3",
+              "groups": [
+                [
+                  "评论员"
+                ],
+                [
+                  "监视器",
+                  "监听器"
+                ],
+                [
+                  "监视",
+                  "监控"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2887. ～物（～もの）",
+          "overview": "[接尾] 表示属于该内容、性质的物品、状态；接在地名之后，表示是该地出产的产品",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6ff4cf0d35bd.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5129,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "夏物",
+                  "kana": "なつもの",
+                  "t": 0
+                }
+              ],
+              "zh": "夏季用品,夏天用的东西,夏季衣服",
+              "notes": "",
+              "blanks": [
+                "物"
+              ],
+              "audio": "audio/seg-77c915f8e4ef.mp3"
+            },
+            {
+              "id": 5130,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "田舎",
+                  "kana": "いなか",
+                  "t": 0
+                },
+                {
+                  "text": "物",
+                  "kana": "もの",
+                  "t": 0.72
+                }
+              ],
+              "zh": "乡下产的东西",
+              "notes": "",
+              "blanks": [
+                "物"
+              ],
+              "audio": "audio/seg-6e703d4b5bb7.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "～物",
+          "kana": "～もの",
+          "senses": [
+            {
+              "pos": "接尾",
+              "groups": [
+                [
+                  "表示属于该内容、性质的物品、状态"
+                ],
+                [
+                  "接在地名之后",
+                  "表示是该地出产的产品"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2888. ～者（～もの）",
+          "overview": "[接尾] ……者，人",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6ff4cf0d35bd.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5131,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "怠",
+                  "kana": "なま",
+                  "t": 0
+                },
+                {
+                  "text": "け",
+                  "t": 0.62
+                },
+                {
+                  "text": "者",
+                  "kana": "もの",
+                  "t": 1.25
+                }
+              ],
+              "zh": "懒人",
+              "notes": "",
+              "blanks": [
+                "者"
+              ],
+              "audio": "audio/seg-6d2a065852fd.mp3"
+            },
+            {
+              "id": 5132,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "慌",
+                  "kana": "あわ",
+                  "t": 0
+                },
+                {
+                  "text": "て",
+                  "t": 0.56
+                },
+                {
+                  "text": "者",
+                  "kana": "もの",
+                  "t": 0.72
+                }
+              ],
+              "zh": "性急的人,冒失鬼",
+              "notes": "",
+              "blanks": [
+                "者"
+              ],
+              "audio": "audio/seg-3b31cfdd5025.mp3"
+            },
+            {
+              "id": 5133,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "田舎者",
+                  "kana": "いなかもの",
+                  "t": 0
+                }
+              ],
+              "zh": "乡下人",
+              "notes": "",
+              "blanks": [
+                "者"
+              ],
+              "audio": "audio/seg-6e703d4b5bb7.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "～者",
+          "kana": "～もの",
+          "senses": [
+            {
+              "pos": "接尾",
+              "groups": [
+                [
+                  "……者",
+                  "人"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2889. 物置（ものおき）",
+          "overview": "[名] 库房，储藏室\n（类义词：納屋(なや)①[名] 仓库,贮藏室,杂货间）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-c5a1d68745b2.mp3",
+          "pitch": "③④⓪",
+          "sentences": [
+            {
+              "id": 5134,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "物置",
+                  "kana": "ものおき",
+                  "t": 0
+                },
+                {
+                  "text": "小屋",
+                  "kana": "こや",
+                  "t": 0.82
+                }
+              ],
+              "zh": "小库房",
+              "notes": "",
+              "blanks": [
+                "物置"
+              ],
+              "audio": "audio/seg-0ad13749cdca.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "物置",
+          "kana": "ものおき",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "库房",
+                  "储藏室"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "类义词",
+              "text": "納屋",
+              "kana": "なや",
+              "zh": "仓库,贮藏室,杂货间"
+            }
+          ]
+        },
+        {
+          "question": "2890. 物語る（ものがたる）",
+          "overview": "[他動1] 讲述，谈；说明，表明，显现出……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-aec1f5924742.mp3",
+          "pitch": "④",
+          "sentences": [
+            {
+              "id": 5135,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "昔",
+                  "kana": "むかし",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.66
+                },
+                {
+                  "text": "経験",
+                  "kana": "けいけん",
+                  "t": 0.9
+                },
+                {
+                  "text": "を",
+                  "t": 1.3
+                },
+                {
+                  "text": "物語",
+                  "kana": "ものがた",
+                  "t": 1.5
+                },
+                {
+                  "text": "る",
+                  "t": 1.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "讲述过往的经历。",
+              "notes": "",
+              "blanks": [
+                "物語る"
+              ],
+              "audio": "audio/seg-3926ea0b9c1d.mp3"
+            },
+            {
+              "id": 5136,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "苦労",
+                  "kana": "くろう",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.54
+                },
+                {
+                  "text": "物語",
+                  "kana": "ものがた",
+                  "t": 0.78
+                },
+                {
+                  "text": "る",
+                  "t": 1.22
+                },
+                {
+                  "text": "顔",
+                  "kana": "かお",
+                  "t": 1.42
+                }
+              ],
+              "zh": "饱经风霜的脸,满脸沧桑",
+              "notes": "",
+              "blanks": [
+                "物語る"
+              ],
+              "audio": "audio/seg-4b2f704ce569.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "物語る",
+          "kana": "ものがたる",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "讲述",
+                  "谈"
+                ],
+                [
+                  "说明",
+                  "表明",
+                  "显现出……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2891. 物差し（ものさし）",
+          "overview": "[名] 尺子，标尺；标准，尺度",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-b48b70c60bc1.mp3",
+          "pitch": "③④",
+          "sentences": [
+            {
+              "id": 5137,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "物差",
+                  "kana": "ものさ",
+                  "t": 0
+                },
+                {
+                  "text": "し",
+                  "t": 0.74
+                },
+                {
+                  "text": "を",
+                  "t": 0.86
+                },
+                {
+                  "text": "当",
+                  "kana": "あ",
+                  "t": 1.02
+                },
+                {
+                  "text": "て",
+                  "t": 1.16
+                },
+                {
+                  "text": "る",
+                  "t": 1.26
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "用尺量尺寸。",
+              "notes": "",
+              "blanks": [
+                "物差し"
+              ],
+              "audio": "audio/seg-c80464de12c4.mp3"
+            },
+            {
+              "id": 5138,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "自分",
+                  "kana": "じぶん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.72
+                },
+                {
+                  "text": "物差",
+                  "kana": "ものさ",
+                  "t": 0.86
+                },
+                {
+                  "text": "し",
+                  "t": 1.24
+                },
+                {
+                  "text": "で",
+                  "t": 1.34
+                },
+                {
+                  "text": "人",
+                  "kana": "ひと",
+                  "t": 1.48
+                },
+                {
+                  "text": "を",
+                  "t": 1.66
+                },
+                {
+                  "text": "は",
+                  "t": 1.88
+                },
+                {
+                  "text": "かる",
+                  "t": 2.06
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "以自己的尺度来衡量他人。",
+              "notes": "",
+              "blanks": [
+                "物差し"
+              ],
+              "audio": "audio/seg-076532d4e071.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "物差し",
+          "kana": "ものさし",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "尺子",
+                  "标尺"
+                ],
+                [
+                  "标准",
+                  "尺度"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2892. モノレール（monorail）",
+          "overview": "[名] 单轨列车，靠单股铁轨运行的列车\n（关联词：モノレールカー(monorail-car)⑤⑥[名] 单轨列车）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-8e39bd0f5fdf.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5139,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "モ",
+                  "t": 0
+                },
+                {
+                  "text": "ノ",
+                  "t": 0.46
+                },
+                {
+                  "text": "レ",
+                  "t": 0.62
+                },
+                {
+                  "text": "ール",
+                  "t": 0.74
+                },
+                {
+                  "text": "で",
+                  "t": 0.88
+                },
+                {
+                  "text": "空港",
+                  "kana": "くうこう",
+                  "t": 1.06
+                },
+                {
+                  "text": "まで",
+                  "t": 1.5
+                },
+                {
+                  "text": "行",
+                  "kana": "い",
+                  "t": 1.74
+                },
+                {
+                  "text": "く",
+                  "t": 1.94
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "乘单轨列车去机场。",
+              "notes": "",
+              "blanks": [
+                "モノレール"
+              ],
+              "audio": "audio/seg-5cb41d4f53c3.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "モノレール",
+          "kana": "モノレール",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "单轨列车",
+                  "靠单股铁轨运行的列车"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "モノレールカー",
+              "kana": "",
+              "zh": "单轨列车"
+            }
+          ]
+        },
+        {
+          "question": "2893. 物忘れ（ものわすれ）",
+          "overview": "[名・自動3] 忘记事情，健忘，忘性大",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-ed546e2f69d7.mp3",
+          "pitch": "③",
+          "sentences": [
+            {
+              "id": 5140,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "物忘",
+                  "kana": "ものわす",
+                  "t": 0
+                },
+                {
+                  "text": "れ",
+                  "t": 0.84
+                },
+                {
+                  "text": "が",
+                  "t": 0.98
+                },
+                {
+                  "text": "多",
+                  "kana": "おお",
+                  "t": 1.1
+                },
+                {
+                  "text": "く",
+                  "t": 1.3
+                },
+                {
+                  "text": "なる",
+                  "t": 1.5
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "忘记的事情越来越多了。",
+              "notes": "",
+              "blanks": [
+                "物忘れ"
+              ],
+              "audio": "audio/seg-c5f4f834a03e.mp3"
+            },
+            {
+              "id": 5141,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "物忘",
+                  "kana": "ものわす",
+                  "t": 0
+                },
+                {
+                  "text": "れ",
+                  "t": 0.82
+                },
+                {
+                  "text": "が",
+                  "t": 0.96
+                },
+                {
+                  "text": "ひ",
+                  "t": 1.1
+                },
+                {
+                  "text": "ど",
+                  "t": 1.3
+                },
+                {
+                  "text": "い",
+                  "t": 1.36
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "太健忘。",
+              "notes": "",
+              "blanks": [
+                "物忘れ"
+              ],
+              "audio": "audio/seg-8667ab370d56.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "物忘れ",
+          "kana": "ものわすれ",
+          "senses": [
+            {
+              "pos": "名・自動3",
+              "groups": [
+                [
+                  "忘记事情",
+                  "健忘",
+                  "忘性大"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2894. 模倣（もほう）",
+          "overview": "[名・他動3] 模仿，仿照，效仿\n（反义词：創造(そうぞう)⓪[名・他動3] 创造,创作）（类义词：倣う(ならう)②[他動1] 模仿,效法,仿照）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-09c127150598.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5142,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "模倣",
+                  "kana": "もほう",
+                  "t": 0
+                },
+                {
+                  "text": "芸術",
+                  "kana": "げいじゅつ",
+                  "t": 0.72
+                }
+              ],
+              "zh": "模仿艺术。指绘画、雕塑等描绘自然景物的艺术",
+              "notes": "",
+              "blanks": [
+                "模倣"
+              ],
+              "audio": "audio/seg-4394fe40b9ca.mp3"
+            },
+            {
+              "id": 5143,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "国",
+                  "kana": "くに",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.48
+                },
+                {
+                  "text": "治",
+                  "kana": "おさ",
+                  "t": 0.74
+                },
+                {
+                  "text": "め",
+                  "t": 0.9
+                },
+                {
+                  "text": "方",
+                  "kana": "かた",
+                  "t": 1.04
+                },
+                {
+                  "text": "を",
+                  "t": 1.26
+                },
+                {
+                  "text": "模倣",
+                  "kana": "もほう",
+                  "t": 1.48
+                },
+                {
+                  "text": "する",
+                  "t": 1.8
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "效仿治国方法。",
+              "notes": "",
+              "blanks": [
+                "模倣"
+              ],
+              "audio": "audio/seg-0659dbb8460f.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "模倣",
+          "kana": "もほう",
+          "senses": [
+            {
+              "pos": "名・他動3",
+              "groups": [
+                [
+                  "模仿",
+                  "仿照",
+                  "效仿"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "反义词",
+              "text": "創造",
+              "kana": "そうぞう",
+              "zh": "创造,创作"
+            },
+            {
+              "relation": "类义词",
+              "text": "倣う",
+              "kana": "ならう",
+              "zh": "模仿,效法,仿照"
+            }
+          ]
+        },
+        {
+          "question": "2895. 揉まれる（もまれる）",
+          "overview": "[自動2] 被揉搓，受巨大的外力作用而不断上下左右移动；受磨炼",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-df0ec0c53928.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5144,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "波",
+                  "kana": "なみ",
+                  "t": 0
+                },
+                {
+                  "text": "に",
+                  "t": 0.52
+                },
+                {
+                  "text": "揉",
+                  "kana": "も",
+                  "t": 0.78
+                },
+                {
+                  "text": "ま",
+                  "t": 0.92
+                },
+                {
+                  "text": "れる",
+                  "t": 1.04
+                },
+                {
+                  "text": "小船",
+                  "kana": "こぶね",
+                  "t": 1.2
+                }
+              ],
+              "zh": "在海浪中颠簸的小船",
+              "notes": "",
+              "blanks": [
+                "揉まれる"
+              ],
+              "audio": "audio/seg-001753cd48f6.mp3"
+            },
+            {
+              "id": 5145,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "世",
+                  "kana": "よ",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.46
+                },
+                {
+                  "text": "中",
+                  "kana": "なか",
+                  "t": 0.6
+                },
+                {
+                  "text": "で",
+                  "t": 0.82
+                },
+                {
+                  "text": "揉",
+                  "kana": "も",
+                  "t": 0.82
+                },
+                {
+                  "text": "ま",
+                  "t": 1.06
+                },
+                {
+                  "text": "れる",
+                  "t": 1.28
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "在社会上经受磨炼。",
+              "notes": "",
+              "blanks": [
+                "揉まれる"
+              ],
+              "audio": "audio/seg-2276abb083a3.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "揉まれる",
+          "kana": "もまれる",
+          "senses": [
+            {
+              "pos": "自動2",
+              "groups": [
+                [
+                  "被揉搓",
+                  "受巨大的外力作用而不断上下左右移动"
+                ],
+                [
+                  "受磨炼"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2896. 催し（もよおし）",
+          "overview": "[名] 举办，主办，聚会，活动；征兆，兆头",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-e224ab4eef9b.mp3",
+          "pitch": "⓪",
+          "sentences": [
+            {
+              "id": 5146,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "歓迎",
+                  "kana": "かんげい",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.7
+                },
+                {
+                  "text": "催",
+                  "kana": "もよお",
+                  "t": 0.88
+                },
+                {
+                  "text": "し",
+                  "t": 1.02
+                },
+                {
+                  "text": "を",
+                  "t": 1.42
+                },
+                {
+                  "text": "開",
+                  "kana": "ひら",
+                  "t": 1.54
+                },
+                {
+                  "text": "く",
+                  "t": 1.74
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "举行欢迎活动。",
+              "notes": "",
+              "blanks": [
+                "催し"
+              ],
+              "audio": "audio/seg-ebcdaeaa5b47.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "催し",
+          "kana": "もよおし",
+          "senses": [
+            {
+              "pos": "名",
+              "groups": [
+                [
+                  "举办",
+                  "主办",
+                  "聚会",
+                  "活动"
+                ],
+                [
+                  "征兆",
+                  "兆头"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2897. 催す（もよおす）",
+          "overview": "[自他動1] （自）有征兆，某种状态即将要发生；（他）举办，主办；想要……，感觉要……",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4af32d4d5017.mp3",
+          "pitch": "③⓪",
+          "sentences": [
+            {
+              "id": 5147,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "吐",
+                  "kana": "は",
+                  "t": 0
+                },
+                {
+                  "text": "き",
+                  "t": 0.48
+                },
+                {
+                  "text": "気",
+                  "kana": "け",
+                  "t": 0.58
+                },
+                {
+                  "text": "を",
+                  "t": 0.72
+                },
+                {
+                  "text": "催",
+                  "kana": "もよお",
+                  "t": 0.88
+                },
+                {
+                  "text": "す",
+                  "t": 1.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "想呕吐。",
+              "notes": "",
+              "blanks": [
+                "催す"
+              ],
+              "audio": "audio/seg-c8aaaa97324c.mp3"
+            },
+            {
+              "id": 5148,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "新人",
+                  "kana": "しんじん",
+                  "t": 0
+                },
+                {
+                  "text": "の",
+                  "t": 0.82
+                },
+                {
+                  "text": "歓迎会",
+                  "kana": "かんげいかい",
+                  "t": 1.04
+                },
+                {
+                  "text": "を",
+                  "t": 1.68
+                },
+                {
+                  "text": "催",
+                  "kana": "もよお",
+                  "t": 1.88
+                },
+                {
+                  "text": "す",
+                  "t": 2.14
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "举办新人的欢迎会。",
+              "notes": "",
+              "blanks": [
+                "催す"
+              ],
+              "audio": "audio/seg-562cb7495cf4.mp3"
+            },
+            {
+              "id": 5149,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "涙",
+                  "kana": "なみだ",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.66
+                },
+                {
+                  "text": "催",
+                  "kana": "もよお",
+                  "t": 0.86
+                },
+                {
+                  "text": "す",
+                  "t": 1.24
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "想哭。",
+              "notes": "",
+              "blanks": [
+                "催す"
+              ],
+              "audio": "audio/seg-feaf0ca0b562.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "催す",
+          "kana": "もよおす",
+          "senses": [
+            {
+              "pos": "自他動1",
+              "groups": [
+                [
+                  "（自）有征兆",
+                  "某种状态即将要发生"
+                ],
+                [
+                  "（他）举办",
+                  "主办"
+                ],
+                [
+                  "想要……",
+                  "感觉要……"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "question": "2898. 盛り上がる（もりあがる）",
+          "overview": "[自動1] 堆起，隆起；（气氛等）高涨，热烈起来\n（关联词：盛り上げる(もりあげる)④[他動2] 堆起,堆高；提高,掀起,使……高涨）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-4c137cd51be4.mp3",
+          "pitch": "④",
+          "sentences": [
+            {
+              "id": 5150,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "地面",
+                  "kana": "じめん",
+                  "t": 0
+                },
+                {
+                  "text": "が",
+                  "t": 0.62
+                },
+                {
+                  "text": "盛",
+                  "kana": "も",
+                  "t": 0.82
+                },
+                {
+                  "text": "り",
+                  "t": 1.02
+                },
+                {
+                  "text": "上",
+                  "kana": "あ",
+                  "t": 1.14
+                },
+                {
+                  "text": "が",
+                  "t": 1.24
+                },
+                {
+                  "text": "る",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "地面隆起。",
+              "notes": "",
+              "blanks": [
+                "盛り上がる"
+              ],
+              "audio": "audio/seg-7907e5a68ed4.mp3"
+            },
+            {
+              "id": 5151,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "パ",
+                  "t": 0.22
+                },
+                {
+                  "text": "ーテ",
+                  "t": 0.42
+                },
+                {
+                  "text": "ィ",
+                  "t": 0.62
+                },
+                {
+                  "text": "ー",
+                  "t": 0.72
+                },
+                {
+                  "text": "が",
+                  "t": 0.74
+                },
+                {
+                  "text": "盛",
+                  "kana": "も",
+                  "t": 0.84
+                },
+                {
+                  "text": "り",
+                  "t": 1.08
+                },
+                {
+                  "text": "上",
+                  "kana": "あ",
+                  "t": 1.18
+                },
+                {
+                  "text": "が",
+                  "t": 1.28
+                },
+                {
+                  "text": "る",
+                  "t": 1.38
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "聚会气氛热烈起来。",
+              "notes": "",
+              "blanks": [
+                "盛り上がる"
+              ],
+              "audio": "audio/seg-d64952e90d6c.mp3"
+            },
+            {
+              "id": 5152,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "世論",
+                  "kana": "よろん",
+                  "t": 0.26
+                },
+                {
+                  "text": "が",
+                  "t": 0.72
+                },
+                {
+                  "text": "盛",
+                  "kana": "も",
+                  "t": 0.82
+                },
+                {
+                  "text": "り",
+                  "t": 1.04
+                },
+                {
+                  "text": "上",
+                  "kana": "あ",
+                  "t": 1.14
+                },
+                {
+                  "text": "が",
+                  "t": 1.26
+                },
+                {
+                  "text": "る",
+                  "t": 1.34
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "舆论高涨。",
+              "notes": "",
+              "blanks": [
+                "盛り上がる"
+              ],
+              "audio": "audio/seg-953ddf41f77c.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "盛り上がる",
+          "kana": "もりあがる",
+          "senses": [
+            {
+              "pos": "自動1",
+              "groups": [
+                [
+                  "堆起",
+                  "隆起"
+                ],
+                [
+                  "（气氛等）高涨",
+                  "热烈起来"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "盛り上げる",
+              "kana": "もりあげる",
+              "zh": "堆起,堆高；提高,掀起,使……高涨"
+            }
+          ]
+        },
+        {
+          "question": "2899. 盛る（もる）",
+          "overview": "[他動1] 盛，装满；堆起来；使服药\n（关联词：盛ん(さかん)①[ナ形] 繁荣,兴盛；热烈,积极；频繁,次数多）",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-22f2449f5622.mp3",
+          "pitch": "⓪①",
+          "sentences": [
+            {
+              "id": 5153,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "ご",
+                  "t": 0
+                },
+                {
+                  "text": "飯",
+                  "kana": "はん",
+                  "t": 0.48
+                },
+                {
+                  "text": "を",
+                  "t": 0.74
+                },
+                {
+                  "text": "盛",
+                  "kana": "も",
+                  "t": 0.82
+                },
+                {
+                  "text": "る",
+                  "t": 0.98
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "盛饭。",
+              "notes": "",
+              "blanks": [
+                "盛る"
+              ],
+              "audio": "audio/seg-62385fb2c3b4.mp3"
+            },
+            {
+              "id": 5154,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "砂",
+                  "kana": "すな",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.6
+                },
+                {
+                  "text": "盛",
+                  "kana": "も",
+                  "t": 0.8
+                },
+                {
+                  "text": "る",
+                  "t": 0.9
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "堆沙子。",
+              "notes": "",
+              "blanks": [
+                "盛る"
+              ],
+              "audio": "audio/seg-a4140108e054.mp3"
+            },
+            {
+              "id": 5155,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "毒",
+                  "kana": "どく",
+                  "t": 0
+                },
+                {
+                  "text": "を",
+                  "t": 0.52
+                },
+                {
+                  "text": "盛",
+                  "kana": "も",
+                  "t": 0.78
+                },
+                {
+                  "text": "る",
+                  "t": 0.9
+                },
+                {
+                  "text": "。"
+                }
+              ],
+              "zh": "下毒。",
+              "notes": "",
+              "blanks": [
+                "盛る"
+              ],
+              "audio": "audio/seg-e55069dcf7dc.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "盛る",
+          "kana": "もる",
+          "senses": [
+            {
+              "pos": "他動1",
+              "groups": [
+                [
+                  "盛",
+                  "装满"
+                ],
+                [
+                  "堆起来"
+                ],
+                [
+                  "使服药"
+                ]
+              ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "盛ん",
+              "kana": "さかん",
+              "zh": "繁荣,兴盛；热烈,积极；频繁,次数多"
+            }
+          ]
+        },
+        {
+          "question": "2900. ～問（～もん）",
+          "overview": "[接尾] ……问，题，表示问题的顺序；计算问题数量的量词",
+          "answer": "",
+          "unit": "第19单元",
+          "wordAudio": "audio/word-6e29b4747f26.mp3",
+          "pitch": null,
+          "sentences": [
+            {
+              "id": 5156,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "第一問",
+                  "kana": "だいいちもん",
+                  "t": 0
+                }
+              ],
+              "zh": "第一题",
+              "notes": "",
+              "blanks": [
+                "問"
+              ],
+              "audio": "audio/seg-6fe99c5f13f1.mp3"
+            },
+            {
+              "id": 5157,
+              "speaker": null,
+              "speakerKana": null,
+              "tokens": [
+                {
+                  "text": "全部",
+                  "kana": "ぜんぶ",
+                  "t": 0
+                },
+                {
+                  "text": "で",
+                  "t": 0.62
+                },
+                {
+                  "text": "十",
+                  "kana": "じゅう",
+                  "t": 0.9
+                },
+                {
+                  "text": "問",
+                  "kana": "もん",
+                  "t": 1.1
+                }
+              ],
+              "zh": "一共十道题",
+              "notes": "",
+              "blanks": [
+                "問"
+              ],
+              "audio": "audio/seg-87032264bc12.mp3"
+            }
+          ],
+          "groups": null,
+          "text": "～問",
+          "kana": "～もん",
+          "senses": [
+            {
+              "pos": "接尾",
+              "groups": [
+                [
+                  "……问",
+                  "题",
+                  "表示问题的顺序"
+                ],
+                [
+                  "计算问题数量的量词"
+                ]
+              ]
+            }
+          ]
         }
       ]
     }
@@ -296779,6 +317154,2152 @@ window.LESSON_DATA = {
         }
       ],
       "answer": 2
+    },
+    {
+      "id": 451,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "今",
+          "kana": "いま"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "目標",
+          "kana": "もくひょう"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "次",
+          "kana": "つぎ"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "試合",
+          "kana": "しあい"
+        },
+        {
+          "text": "で"
+        },
+        {
+          "text": "競争相手",
+          "kana": "きょうそうあいて"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "打",
+          "kana": "う"
+        },
+        {
+          "text": "ち"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "ことである"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“競争相手を打ち負かす”（打败竞争对手）是固定说法，选“まかす（負かす）”；“まける”输、“めざす”以……为目标、“なくす”丧失，都不能构成“打ち～”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まける"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まかす"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "めざす"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "なくす"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 452,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "長",
+          "kana": "なが"
+        },
+        {
+          "text": "い"
+        },
+        {
+          "text": "物語",
+          "kana": "ものがたり"
+        },
+        {
+          "text": "もついに"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "下",
+          "kana": "お"
+        },
+        {
+          "text": "り"
+        },
+        {
+          "text": "た"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“幕が下りる”（落幕）表示事情结束，选“まく（幕）”；“まき”柴火、“まけ”输、“まご”孙子，都不符合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まき"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まく"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まけ"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まご"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 453,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "こちらの"
+        },
+        {
+          "text": "商品",
+          "kana": "しょうひん"
+        },
+        {
+          "text": "につきまして"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "勝手",
+          "kana": "かって"
+        },
+        {
+          "text": "ながらお"
+        },
+        {
+          "text": "客様",
+          "kana": "きゃくさま"
+        },
+        {
+          "text": "のご"
+        },
+        {
+          "text": "注文",
+          "kana": "ちゅうもん"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "キャンセル"
+        },
+        {
+          "text": "させていただきました"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“誠に勝手ながら”（实在是很自私地）是郑重道歉的惯用说法，选“まことに”；“おおいに”大大地、“おもに”主要、“ともに”一起，语气和搭配都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "おおいに"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "おもに"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まことに"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "ともに"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 454,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "「"
+        },
+        {
+          "text": "豚",
+          "kana": "ぶた"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "真珠",
+          "kana": "しんじゅ"
+        },
+        {
+          "text": "」"
+        },
+        {
+          "text": "とは"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "このことだ"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“豚に真珠とはまさにこのことだ”（正是这么回事）是强调“恰恰如此”，选“まさに”；“いまに”不久、“おもに”主要、“まれに”偶尔，都不合文意。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "いまに"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "おもに"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まさに"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まれに"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 455,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "この"
+        },
+        {
+          "text": "物質",
+          "kana": "ぶっしつ"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "水",
+          "kana": "みず"
+        },
+        {
+          "text": "と"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "ことができない"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“水と混ざる”（与水混合）表示物质能否混合，选“まざる”；“とける”溶解、“かざる”装饰、“まがる”弯曲，不能接“水と……ことができない”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "とける"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まざる"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "かざる"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まがる"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 456,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "先生",
+          "kana": "せんせい"
+        },
+        {
+          "text": "でさえいつも"
+        },
+        {
+          "text": "勉強",
+          "kana": "べんきょう"
+        },
+        {
+          "text": "しなければならないのに"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "学生",
+          "kana": "がくせい"
+        },
+        {
+          "text": "はなおさらだ"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“A都……，更何况B”用“まして”（何况）；“まこと”真实、“まさに”正是、“まめに”勤快地，都不能表示“更不用说”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まこと"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まさに"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まして"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まめに"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 457,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "需要",
+          "kana": "じゅよう"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "につれて"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "物価",
+          "kana": "ぶっか"
+        },
+        {
+          "text": "はどんどん"
+        },
+        {
+          "text": "上昇",
+          "kana": "じょうしょう"
+        },
+        {
+          "text": "する"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“需要が増すにつれて”（随着需求增加），选“ます（増す）”；“だす”“かす”“さす”都不能与“需要が”搭配成“增加”的意思。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "だす"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "かす"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "さす"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "ます"
+            }
+          ]
+        }
+      ],
+      "answer": 4
+    },
+    {
+      "id": 458,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "外国語",
+          "kana": "がいこくご"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "するには"
+        },
+        {
+          "text": "長",
+          "kana": "なが"
+        },
+        {
+          "text": "い"
+        },
+        {
+          "text": "時間",
+          "kana": "じかん"
+        },
+        {
+          "text": "と"
+        },
+        {
+          "text": "努力",
+          "kana": "どりょく"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "必要",
+          "kana": "ひつよう"
+        },
+        {
+          "text": "だ"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“外国語をマスターする”（掌握外语）需要长时间努力；“マスク”口罩、“マスコミ”大众传媒、“マフラー”围巾，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "マスク"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "マスコミ"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "マスター"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "マフラー"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 459,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "わたしは"
+        },
+        {
+          "text": "学校",
+          "kana": "がっこう"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "近",
+          "kana": "ちか"
+        },
+        {
+          "text": "く"
+        },
+        {
+          "text": "にある"
+        },
+        {
+          "text": "喫茶店",
+          "kana": "きっさてん"
+        },
+        {
+          "text": "で"
+        },
+        {
+          "text": "彼女",
+          "kana": "かのじょ"
+        },
+        {
+          "text": "と"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "をした"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“彼女と待ち合わせをした”（和她约好见面）是固定说法，选“まちあわせ”；“もちあわせ”身上带的钱、“といあわせ”询问、“うたあわせ”歌合，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まちあわせ"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "もちあわせ"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "といあわせ"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "うたあわせ"
+            }
+          ]
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": 460,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "大学",
+          "kana": "だいがく"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "入学試験",
+          "kana": "にゅうがくしけん"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "迫",
+          "kana": "せま"
+        },
+        {
+          "text": "っ"
+        },
+        {
+          "text": "ている"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“入学試験が間近に迫っている”（入学考试迫近眼前），选“まぢか（間近）”；“まぢかい”不是单词，“まちがい”错误，“まちかど”街角，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まぢかい"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まちがい"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まぢか"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まちかど"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 461,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "古",
+          "kana": "ふる"
+        },
+        {
+          "text": "い"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "保存",
+          "kana": "ほぞん"
+        },
+        {
+          "text": "しようという"
+        },
+        {
+          "text": "運動",
+          "kana": "うんどう"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "全国",
+          "kana": "ぜんこく"
+        },
+        {
+          "text": "で"
+        },
+        {
+          "text": "展開",
+          "kana": "てんかい"
+        },
+        {
+          "text": "されている"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“古い町並みを保存する”（保存古老的街景），选“まちなみ（町並み）”；“まちかど”街角、“まどぎわ”窗边、“まどぐち”窗口，都不合“保存……运动”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まちかど"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まちなみ"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まどぎわ"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まどぐち"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 462,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "近頃",
+          "kana": "ちかごろ"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "知",
+          "kana": "し"
+        },
+        {
+          "text": "ら"
+        },
+        {
+          "text": "ない"
+        },
+        {
+          "text": "子",
+          "kana": "こ"
+        },
+        {
+          "text": "ども"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "増",
+          "kana": "ふ"
+        },
+        {
+          "text": "え"
+        },
+        {
+          "text": "ているような"
+        },
+        {
+          "text": "気",
+          "kana": "き"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "する"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“マナーを知らない子ども”（不懂礼貌的孩子）最合适；“マニュアル”手册、“マーケット”市场、“マッサージ”按摩，都不符合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "マニュアル"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "マナー"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "マーケット"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "マッサージ"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 463,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "小説",
+          "kana": "しょうせつ"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "読",
+          "kana": "よ"
+        },
+        {
+          "text": "んで"
+        },
+        {
+          "text": "いるうちに"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "重",
+          "kana": "おも"
+        },
+        {
+          "text": "く"
+        },
+        {
+          "text": "なった"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“小説を読んでいるうちにまぶたが重くなった”（眼皮变沉）表示困倦，选“まぶた”；“まねき”邀请、“まゆ”眉毛、“まぢか”临近，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まねき"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まゆ"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まぶた"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まぢか"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 464,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "田中",
+          "kana": "たなか"
+        },
+        {
+          "text": "君",
+          "kana": "きみ"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "報告",
+          "kana": "ほうこく"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "聞",
+          "kana": "き"
+        },
+        {
+          "text": "い"
+        },
+        {
+          "text": "た"
+        },
+        {
+          "text": "部長",
+          "kana": "ぶちょう"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "吊",
+          "kana": "つ"
+        },
+        {
+          "text": "り"
+        },
+        {
+          "text": "上",
+          "kana": "あ"
+        },
+        {
+          "text": "げ"
+        },
+        {
+          "text": "た"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“眉を吊り上げる”（吊起眉毛）表示生气，选“まゆ（眉）”；“まめ”豆、“まれ”稀少、“まね”模仿，都不能与“吊り上げる”搭配。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "まゆ"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "まめ"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "まれ"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まね"
+            }
+          ]
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": 465,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "わたしはまっすぐに"
+        },
+        {
+          "text": "家",
+          "kana": "いえ"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "帰",
+          "kana": "かえ"
+        },
+        {
+          "text": "ら"
+        },
+        {
+          "text": "ないで"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "をして"
+        },
+        {
+          "text": "本屋",
+          "kana": "ほんや"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "寄",
+          "kana": "よ"
+        },
+        {
+          "text": "っ"
+        },
+        {
+          "text": "た"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“まっすぐ帰らないで回り道をして本屋に寄った”（绕道去书店）符合文意；“帰り道”“近道”“別れ道”都不能与“をして”表示绕路。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "帰",
+              "kana": "かえ"
+            },
+            {
+              "text": "り"
+            },
+            {
+              "text": "道",
+              "kana": "みち"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "回",
+              "kana": "まわ"
+            },
+            {
+              "text": "り"
+            },
+            {
+              "text": "道",
+              "kana": "みち"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "近道",
+              "kana": "ちかみち"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "別",
+              "kana": "わか"
+            },
+            {
+              "text": "れ"
+            },
+            {
+              "text": "道",
+              "kana": "みち"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 466,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "あの"
+        },
+        {
+          "text": "人",
+          "kana": "ひと"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "があるように"
+        },
+        {
+          "text": "気",
+          "kana": "き"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "する"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "どこかで"
+        },
+        {
+          "text": "会",
+          "kana": "あ"
+        },
+        {
+          "text": "っ"
+        },
+        {
+          "text": "たのかもしれない"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“見覚えがある”（觉得眼熟）符合“好像在哪里见过”；“みあい”相亲、“みおとし”看漏、“みおろし”俯视，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "みあい"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "みおとし"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "みおぼえ"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "みおろし"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 467,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "わたしは"
+        },
+        {
+          "text": "父",
+          "kana": "ちち"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "反対",
+          "kana": "はんたい"
+        },
+        {
+          "text": "してまで"
+        },
+        {
+          "text": "彼女",
+          "kana": "かのじょ"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "になった"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“彼女の味方になる”（成为她的同伴/站在她一边）符合“反对父亲也要……”；“みあい”相亲、“みかけ”外表、“みさき”海角，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "みあい"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "みかた"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "みかけ"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "みさき"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 468,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "時間",
+          "kana": "じかん"
+        },
+        {
+          "text": "がなかったので"
+        },
+        {
+          "text": "新聞",
+          "kana": "しんぶん"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "にざっと"
+        },
+        {
+          "text": "目",
+          "kana": "め"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "通",
+          "kana": "とお"
+        },
+        {
+          "text": "し"
+        },
+        {
+          "text": "て"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "家",
+          "kana": "いえ"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "出",
+          "kana": "で"
+        },
+        {
+          "text": "た"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“新聞の見出しにざっと目を通す”（粗略浏览报纸的标题）是常见说法，选“みだし”；“みあい”相亲、“みちばた”路边、“みせもの”展览品，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "みあい"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "みちばた"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "みせもの"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "みだし"
+            }
+          ]
+        }
+      ],
+      "answer": 4
+    },
+    {
+      "id": 469,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "彼",
+          "kana": "かれ"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "いざというとき"
+        },
+        {
+          "text": "私",
+          "kana": "わたくし"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "ような"
+        },
+        {
+          "text": "男",
+          "kana": "おとこ"
+        },
+        {
+          "text": "ではない"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“私を見捨てるような男ではない”（不是会抛弃我的人），选“みすてる”；“みおとす”看漏、“みおろす”俯视、“みまわす”环顾，都不合“关键时刻”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "みおとす"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "みおろす"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "みすてる"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "みまわす"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 470,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "長",
+          "kana": "なが"
+        },
+        {
+          "text": "く"
+        },
+        {
+          "text": "付",
+          "kana": "つ"
+        },
+        {
+          "text": "き"
+        },
+        {
+          "text": "合",
+          "kana": "あ"
+        },
+        {
+          "text": "っ"
+        },
+        {
+          "text": "ていると"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "自然",
+          "kana": "しぜん"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "彼",
+          "kana": "かれ"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "うそを"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "力",
+          "kana": "ちから"
+        },
+        {
+          "text": "がついてくる"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“嘘を見抜く力”（识破谎言的能力），选“みぬく”；“みつもる”估算、“みなれる”看惯、“みまわる”巡视，都不合“嘘を……力”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "みつもる"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "みなれる"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "みぬく"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "みまわる"
+            }
+          ]
+        }
+      ],
+      "answer": 3
+    },
+    {
+      "id": 471,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": ""
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "な"
+        },
+        {
+          "text": "開発",
+          "kana": "かいはつ"
+        },
+        {
+          "text": "がひどい"
+        },
+        {
+          "text": "環境汚染",
+          "kana": "かんきょうおせん"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "主要",
+          "kana": "しゅよう"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "原因",
+          "kana": "げんいん"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "一",
+          "kana": "ひと"
+        },
+        {
+          "text": "つ"
+        },
+        {
+          "text": "である"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“無計画な開発”（没有规划的开发）是环境污染的原因；“無意識”“無邪気”“無気力”都不与“開発”搭配。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "むいしき"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "むじゃき"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "むきりょく"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "むけいかく"
+            }
+          ]
+        }
+      ],
+      "answer": 4
+    },
+    {
+      "id": 472,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "あの"
+        },
+        {
+          "text": "人",
+          "kana": "ひと"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "外交官",
+          "kana": "がいこうかん"
+        },
+        {
+          "text": "というより"
+        },
+        {
+          "text": "、"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "学者",
+          "kana": "がくしゃ"
+        },
+        {
+          "text": "というべきだ"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“A というより、むしろ B”（与其说是A，不如说是B），选“むしろ”；“むろん”当然、“むだん”擅自、“まして”何况，都不表示这种比较。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "むしろ"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "むろん"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "むだん"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "まして"
+            }
+          ]
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": 473,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "記者会見",
+          "kana": "きしゃかいけん"
+        },
+        {
+          "text": "での"
+        },
+        {
+          "text": "首相",
+          "kana": "しゅしょう"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "発言",
+          "kana": "はつげん"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "さに"
+        },
+        {
+          "text": "欠",
+          "kana": "か"
+        },
+        {
+          "text": "け"
+        },
+        {
+          "text": "ていた"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“明確さに欠ける”（缺乏明确性），选“明確”；“説明”“明暗”“証明”都不能接“さ”构成“……さに欠ける”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "説明",
+              "kana": "せつめい"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "明暗",
+              "kana": "めいあん"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "証明",
+              "kana": "しょうめい"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "明確",
+              "kana": "めいかく"
+            }
+          ]
+        }
+      ],
+      "answer": 4
+    },
+    {
+      "id": 474,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": ""
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "利益",
+          "kana": "りえき"
+        },
+        {
+          "text": "だけにとらわれてはいけない"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“目先の利益にとらわれる”（被眼前利益束缚）是固定搭配，选“目先”；“目方”重量、“目印”标记、“目安”大致标准，都不合。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "目方",
+              "kana": "めかた"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "目先",
+              "kana": "めさき"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "目印",
+              "kana": "めじるし"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "目安",
+              "kana": "めやす"
+            }
+          ]
+        }
+      ],
+      "answer": 2
+    },
+    {
+      "id": 475,
+      "category": "第19单元",
+      "stemTokens": [
+        {
+          "text": "彼",
+          "kana": "かれ"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "司法試験",
+          "kana": "しほうしけん"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "向",
+          "kana": "む"
+        },
+        {
+          "text": "け"
+        },
+        {
+          "text": "て"
+        },
+        {
+          "text": "　　　　",
+          "blank": true
+        },
+        {
+          "text": "勉強",
+          "kana": "べんきょう"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "日々",
+          "kana": "ひび"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "送",
+          "kana": "おく"
+        },
+        {
+          "text": "っ"
+        },
+        {
+          "text": "ている"
+        },
+        {
+          "text": "。"
+        }
+      ],
+      "explanationZh": "“猛勉強”（拼命用功）是固定说法，选“猛”；“激”“烈”“超”都不能构成“～勉強”。",
+      "options": [
+        {
+          "idx": 1,
+          "tokens": [
+            {
+              "text": "激"
+            }
+          ]
+        },
+        {
+          "idx": 2,
+          "tokens": [
+            {
+              "text": "烈",
+              "kana": "れつ"
+            }
+          ]
+        },
+        {
+          "idx": 3,
+          "tokens": [
+            {
+              "text": "猛",
+              "kana": "たけし"
+            }
+          ]
+        },
+        {
+          "idx": 4,
+          "tokens": [
+            {
+              "text": "超",
+              "kana": "ちょう"
+            }
+          ]
+        }
+      ],
+      "answer": 3
     }
   ],
   "titleDictate": true
