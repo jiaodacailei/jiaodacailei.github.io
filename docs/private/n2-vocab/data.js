@@ -42503,7 +42503,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 0.44
+                  "t": 0.48
                 },
                 {
                   "text": "額",
@@ -42512,16 +42512,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.86
+                  "t": 0.82
                 },
                 {
                   "text": "入",
                   "kana": "い",
-                  "t": 1.1
+                  "t": 1.04
                 },
                 {
                   "text": "れる",
-                  "t": 1.22
+                  "t": 1.16
                 },
                 {
                   "text": "。"
@@ -42532,7 +42532,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "額"
               ],
-              "audio": "audio/seg-5e4358016cac.mp3"
+              "audio": "audio/seg-262efae88acf.mp3"
             }
           ],
           "groups": null,
@@ -44492,7 +44492,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "湖",
-                  "kana": "みずうみ",
+                  "kana": "こ",
                   "t": 1.25
                 }
               ],
@@ -44501,7 +44501,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "火口"
               ],
-              "audio": "audio/seg-a81b74afc1c1.mp3"
+              "audio": "audio/seg-4fac4a08f965.mp3"
             }
           ],
           "groups": null,
