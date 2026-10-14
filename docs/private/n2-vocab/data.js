@@ -50437,20 +50437,20 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.32
+                  "t": 0.52
                 },
                 {
                   "text": "大",
                   "kana": "おお",
-                  "t": 0.65
+                  "t": 0.74
                 },
                 {
                   "text": "き",
-                  "t": 0.97
+                  "t": 1.04
                 },
                 {
                   "text": "い",
-                  "t": 1.3
+                  "t": 1.14
                 },
                 {
                   "text": "。"
@@ -50461,7 +50461,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "柄"
               ],
-              "audio": "audio/seg-868980f5098f.mp3"
+              "audio": "audio/seg-35e7c5ef488d.mp3"
             },
             {
               "id": 893,
@@ -50509,16 +50509,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.46
+                  "t": 0.52
                 },
                 {
                   "text": "悪",
                   "kana": "わる",
-                  "t": 0.6
+                  "t": 0.72
                 },
                 {
                   "text": "い",
-                  "t": 0.82
+                  "t": 0.94
                 },
                 {
                   "text": "。"
@@ -50529,7 +50529,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "柄"
               ],
-              "audio": "audio/seg-9482fc7e2ea3.mp3"
+              "audio": "audio/seg-e2ae743e9acc.mp3"
             },
             {
               "id": 895,
@@ -50543,32 +50543,32 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.44
+                  "t": 0.52
                 },
                 {
                   "text": "も",
-                  "t": 0.56
-                },
-                {
-                  "text": "ない",
                   "t": 0.74
                 },
                 {
+                  "text": "ない",
+                  "t": 0.88
+                },
+                {
                   "text": "こと",
-                  "t": 0.9
+                  "t": 1.04
                 },
                 {
                   "text": "を",
-                  "t": 1.18
+                  "t": 1.34
                 },
                 {
                   "text": "言",
                   "kana": "い",
-                  "t": 1.42
+                  "t": 1.56
                 },
                 {
                   "text": "う",
-                  "t": 1.5
+                  "t": 1.64
                 },
                 {
                   "text": "。"
@@ -50579,7 +50579,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "柄"
               ],
-              "audio": "audio/seg-68b49bf478f2.mp3"
+              "audio": "audio/seg-6a8b4661b0a4.mp3"
             }
           ],
           "groups": null,
