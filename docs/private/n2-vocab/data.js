@@ -52157,7 +52157,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "神戸大",
-                  "kana": "こうべだい",
+                  "kana": "こうべおお",
                   "t": 0
                 },
                 {
@@ -52167,7 +52167,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "間",
-                  "kana": "あいだ",
+                  "kana": "かん",
                   "t": 1.2
                 }
               ],
@@ -52176,7 +52176,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "間"
               ],
-              "audio": "audio/seg-b61b60e41ddc.mp3"
+              "audio": "audio/seg-04647a075254.mp3"
             }
           ],
           "groups": null,
