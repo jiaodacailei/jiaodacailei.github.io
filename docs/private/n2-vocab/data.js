@@ -50183,34 +50183,34 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.56
+                  "t": 0.35
                 },
                 {
                   "text": "甲",
-                  "kana": "かぶと",
-                  "t": 0.78
+                  "kana": "こう",
+                  "t": 0.7
                 },
                 {
                   "text": "よ",
-                  "t": 0.88
+                  "t": 1.05
                 },
                 {
                   "text": "り",
-                  "t": 1.1
+                  "t": 1.4
                 },
                 {
                   "text": "年",
                   "kana": "とし",
-                  "t": 1.3
+                  "t": 1.75
                 },
                 {
                   "text": "の",
-                  "t": 1.54
+                  "t": 2.11
                 },
                 {
                   "text": "功",
                   "kana": "こう",
-                  "t": 1.82
+                  "t": 2.46
                 }
               ],
               "zh": "老马识途，姜还是老的辣",
@@ -50218,7 +50218,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "亀"
               ],
-              "audio": "audio/seg-f57fe930cddb.mp3"
+              "audio": "audio/seg-194d151ce3f5.mp3"
             }
           ],
           "groups": null,
