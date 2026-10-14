@@ -49689,7 +49689,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "上"
               ],
-              "audio": "audio/seg-100abaf1531d.mp3"
+              "audio": "audio/seg-16135f5de1bf.mp3"
             }
           ],
           "groups": null,
