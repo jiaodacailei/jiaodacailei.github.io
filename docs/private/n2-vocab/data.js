@@ -48379,7 +48379,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "課程"
               ],
-              "audio": "audio/seg-750f35842421.mp3"
+              "audio": "audio/seg-5e5bf2f925af.mp3"
             }
           ],
           "groups": null,
@@ -211749,7 +211749,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "博士"
               ],
-              "audio": "audio/seg-750f35842421.mp3"
+              "audio": "audio/seg-5e5bf2f925af.mp3"
             },
             {
               "id": 3967,
