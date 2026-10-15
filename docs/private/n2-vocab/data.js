@@ -51366,7 +51366,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "軽々",
-                  "kana": "けいけい",
+                  "kana": "かるがる",
                   "t": 0
                 },
                 {
@@ -51380,12 +51380,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ち",
-                  "t": 1.14
+                  "t": 1.16
                 },
                 {
                   "text": "上",
                   "kana": "あ",
-                  "t": 1.26
+                  "t": 1.28
                 },
                 {
                   "text": "げ",
@@ -51404,7 +51404,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "軽々と"
               ],
-              "audio": "audio/seg-dbd1143bd0c9.mp3"
+              "audio": "audio/seg-4150d5ff31ec.mp3"
             },
             {
               "id": 912,
@@ -51413,7 +51413,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "軽々",
-                  "kana": "けいけい",
+                  "kana": "かるがる",
                   "t": 0
                 },
                 {
