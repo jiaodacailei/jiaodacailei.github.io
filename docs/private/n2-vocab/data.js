@@ -54302,7 +54302,7 @@ window.LESSON_DATA = {
                 {
                   "text": "番組",
                   "kana": "ばんぐみ",
-                  "t": 0.62
+                  "t": 0.78
                 }
               ],
               "zh": "冠名播出的节目",
@@ -54310,7 +54310,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "冠"
               ],
-              "audio": "audio/seg-20e4d1534ebe.mp3"
+              "audio": "audio/seg-644ce0ed195d.mp3"
             },
             {
               "id": 965,
@@ -54329,7 +54329,7 @@ window.LESSON_DATA = {
                 {
                   "text": "曲",
                   "kana": "ま",
-                  "t": 0.86
+                  "t": 0.88
                 },
                 {
                   "text": "げ",
@@ -54348,7 +54348,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "冠"
               ],
-              "audio": "audio/seg-7c35b1448130.mp3"
+              "audio": "audio/seg-54efd2b847c1.mp3"
             }
           ],
           "groups": null,
