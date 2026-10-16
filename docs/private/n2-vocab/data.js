@@ -56053,12 +56053,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.74
+                  "t": 0.76
                 },
                 {
                   "text": "生地",
                   "kana": "きじ",
-                  "t": 1.04
+                  "t": 0.98
                 }
               ],
               "zh": "衣服面料",
@@ -56066,7 +56066,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "生地"
               ],
-              "audio": "audio/seg-af7845409365.mp3"
+              "audio": "audio/seg-d1fa7b6877a0.mp3"
             },
             {
               "id": 1000,
@@ -56080,16 +56080,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.7
+                  "t": 0.5
                 },
                 {
                   "text": "出",
                   "kana": "で",
-                  "t": 0.86
+                  "t": 0.68
                 },
                 {
                   "text": "る",
-                  "t": 0.98
+                  "t": 0.82
                 },
                 {
                   "text": "。"
@@ -56100,7 +56100,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "生地"
               ],
-              "audio": "audio/seg-bad6e47e107f.mp3"
+              "audio": "audio/seg-265b48dd61be.mp3"
             }
           ],
           "groups": null,
