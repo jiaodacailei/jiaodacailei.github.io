@@ -60210,11 +60210,11 @@ window.LESSON_DATA = {
                 {
                   "text": "休息",
                   "kana": "きゅうそく",
-                  "t": 0.82
+                  "t": 0.98
                 },
                 {
                   "text": "する",
-                  "t": 1.58
+                  "t": 1.52
                 },
                 {
                   "text": "。"
@@ -60225,7 +60225,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "休息する"
               ],
-              "audio": "audio/seg-50df60b3f00e.mp3"
+              "audio": "audio/seg-9be5e18eea86.mp3"
             }
           ],
           "groups": null,
@@ -253707,7 +253707,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ん",
-                  "t": 0.5
+                  "t": 0.46
                 },
                 {
                   "text": "の",
@@ -253716,7 +253716,7 @@ window.LESSON_DATA = {
                 {
                   "text": "二三日",
                   "kana": "にさんにち",
-                  "t": 0.7
+                  "t": 0.68
                 }
               ],
               "zh": "仅仅两三天",
@@ -253724,7 +253724,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "ほんの"
               ],
-              "audio": "audio/seg-89b37228f218.mp3"
+              "audio": "audio/seg-32d879aefb67.mp3"
             },
             {
               "id": 4766,
