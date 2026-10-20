@@ -60527,17 +60527,17 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "一本",
-                  "kana": "いちぽん",
+                  "kana": "いっぽん",
                   "t": 0
                 },
                 {
                   "text": "の",
-                  "t": 0.85
+                  "t": 0.86
                 },
                 {
                   "text": "胡瓜",
                   "kana": "きゅうり",
-                  "t": 1.28
+                  "t": 1.3
                 }
               ],
               "zh": "一根黄瓜",
@@ -60545,7 +60545,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "胡瓜"
               ],
-              "audio": "audio/seg-a340ec534c15.mp3"
+              "audio": "audio/seg-38f588d9e225.mp3"
             }
           ],
           "groups": null,
@@ -262724,7 +262724,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "一本",
-                  "kana": "いちぽん",
+                  "kana": "いっぽん",
                   "t": 1.42
                 },
                 {
