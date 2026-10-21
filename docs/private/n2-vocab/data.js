@@ -63300,12 +63300,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "掬",
-                  "kana": "まり",
-                  "t": 0.7
+                  "kana": "すく",
+                  "t": 0.72
                 },
                 {
                   "text": "い",
-                  "t": 1.02
+                  "t": 0.98
                 }
               ],
               "zh": "捞金鱼，在（日本）庙会、祭日等上举行的游戏之一",
@@ -63313,7 +63313,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "金魚掬い"
               ],
-              "audio": "audio/seg-9865511a9751.mp3"
+              "audio": "audio/seg-2b998dccd726.mp3"
             }
           ],
           "groups": null,
