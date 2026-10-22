@@ -539,6 +539,9 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # "金"后接助词（金をこしらえる/金などに拘り）读かね（金メダル等"金"+片假名仍读きん）
     if orig == "金" and next_char in ("を", "が", "は", "も", "な", "に", "で", "と") and not (prev_orig and prev_orig[-1].isdigit()):
         return "かね"
+    # "四つ"（よっつ）：pykakasi 把"四つ"整体当一个 token，读成よんつ。
+    if orig == "四つ":
+        return "よっつ"
     # "数でこなす""数が多い"：数后接助词表示"数量"读かず（数字+数/数学 等合并词不受影响）
     if orig == "数" and next_char in ("で", "を", "が", "の"):
         return "かず"

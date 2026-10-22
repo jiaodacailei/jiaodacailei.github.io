@@ -64814,34 +64814,34 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "四",
-                  "kana": "よん",
+                  "kana": "よっ",
                   "t": 0
                 },
                 {
                   "text": "つ",
-                  "t": 0.5
+                  "t": 0.48
                 },
                 {
                   "text": "の",
-                  "t": 0.7
+                  "t": 0.68
                 },
                 {
                   "text": "段落",
                   "kana": "だんらく",
-                  "t": 0.9
+                  "t": 0.88
                 },
                 {
                   "text": "に",
-                  "t": 1.22
+                  "t": 1.2
                 },
                 {
                   "text": "区切",
                   "kana": "くぎ",
-                  "t": 1.48
+                  "t": 1.46
                 },
                 {
                   "text": "る",
-                  "t": 1.74
+                  "t": 1.72
                 },
                 {
                   "text": "。"
@@ -64852,7 +64852,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "区切る"
               ],
-              "audio": "audio/seg-042dbad3fff4.mp3"
+              "audio": "audio/seg-7d89af29c1c1.mp3"
             }
           ],
           "groups": null,
