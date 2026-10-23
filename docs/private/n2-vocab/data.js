@@ -69147,12 +69147,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.62
+                  "t": 0.58
                 },
                 {
                   "text": "大掃除",
                   "kana": "だいそうじ",
-                  "t": 0.76
+                  "t": 0.74
                 }
               ],
               "zh": "年底的大扫除",
@@ -69160,7 +69160,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "暮れ"
               ],
-              "audio": "audio/seg-0a78147ae5fa.mp3"
+              "audio": "audio/seg-9790630748d0.mp3"
             }
           ],
           "groups": null,
