@@ -70244,8 +70244,8 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "家",
-                  "kana": "か",
-                  "t": 0.72
+                  "kana": "け",
+                  "t": 0.68
                 }
               ],
               "zh": "田中家（族）",
@@ -70253,7 +70253,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "田中家"
               ],
-              "audio": "audio/seg-92b1d0e72844.mp3"
+              "audio": "audio/seg-5f9a7c1f52d1.mp3"
             },
             {
               "id": 1267,

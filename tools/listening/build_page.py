@@ -102,6 +102,8 @@ def _needs_kana_annotation(text):
 # 两种覆盖都只改 `hira`（显示的读音文本），不改 `orig`，字符长度对
 # char_times 下标的计算完全没有影响，不会连带影响跟读高亮的时间戳对齐。
 _TOKEN_READING_OVERRIDES_BY_PREV = {
+    # "田中家"（たなかけ，～家＝一家/家族）：pykakasi 读か。
+    ("田中", "家"): "け",
     # N2词汇第12单元例句：やり方读かた、呼び止める读とめる、段ボールの箱读はこ、
     # "東京着"的着读ちゃく（pykakasi/Sudachi 分别读成ほう/やめ/ばこ/ぎ）。
     ("やり", "方"): "かた",
