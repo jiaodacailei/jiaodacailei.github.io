@@ -64889,7 +64889,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "の",
-                  "t": 0.28
+                  "t": 0
                 },
                 {
                   "text": "れ",
@@ -64897,7 +64897,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ん",
-                  "t": 0.58
+                  "t": 0.56
                 },
                 {
                   "text": "を",
@@ -64906,11 +64906,11 @@ window.LESSON_DATA = {
                 {
                   "text": "潜",
                   "kana": "くぐ",
-                  "t": 0.78
+                  "t": 0.8
                 },
                 {
                   "text": "る",
-                  "t": 1.04
+                  "t": 1.06
                 },
                 {
                   "text": "。"
@@ -64921,7 +64921,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "潜る"
               ],
-              "audio": "audio/seg-b9651b21bcd2.mp3"
+              "audio": "audio/seg-5ad7defe7974.mp3"
             },
             {
               "id": 1173,
@@ -64940,20 +64940,20 @@ window.LESSON_DATA = {
                 {
                   "text": "網",
                   "kana": "あみ",
-                  "t": 0.65
+                  "t": 0.66
                 },
                 {
                   "text": "を",
-                  "t": 0.98
+                  "t": 0.99
                 },
                 {
                   "text": "潜",
                   "kana": "くぐ",
-                  "t": 1.3
+                  "t": 1.32
                 },
                 {
                   "text": "る",
-                  "t": 1.63
+                  "t": 1.65
                 },
                 {
                   "text": "。"
@@ -64964,7 +64964,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "潜る"
               ],
-              "audio": "audio/seg-13c03be8c6b2.mp3"
+              "audio": "audio/seg-caf60418f711.mp3"
             }
           ],
           "groups": null,
