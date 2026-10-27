@@ -1,0 +1,40 @@
+/* 直播背景板：1920x1080 固定画布，等比缩放；人站中间，信息放左右两侧 */
+:root { --bg:#0b1120; --panel:#111a30; --line:#26345a; --text:#f1f5f9; --muted:#9fb0cf; --accent:#fb923c; --accent2:#60a5fa; --live:#ef4444; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:#000;overflow:hidden;cursor:none}
+body{font-family:'Noto Sans SC','Microsoft YaHei',-apple-system,sans-serif;color:var(--text)}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0;background:radial-gradient(1200px 700px at 50% 40%,#16244a 0%,var(--bg) 70%);overflow:hidden}
+/* 顶栏 */
+.topbar{position:absolute;left:0;top:0;right:0;height:96px;padding:0 60px;display:flex;align-items:center;gap:28px;border-bottom:2px solid var(--line);background:rgba(8,12,24,.7)}
+.live-tag{display:flex;align-items:center;gap:12px;font-size:34px;font-weight:800;color:#fff;background:var(--live);padding:6px 22px;border-radius:10px}
+.live-tag i{width:14px;height:14px;border-radius:50%;background:#fff;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+.topbar .title{font-size:44px;font-weight:800;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .where{font-size:30px;color:var(--muted)}
+/* 底栏：微信号常驻文字 */
+.bottombar{position:absolute;left:0;right:0;bottom:0;height:104px;padding:0 60px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--line);background:rgba(8,12,24,.85)}
+.bottombar .who{font-size:38px;font-weight:700}
+.bottombar .who small{font-size:28px;color:var(--muted);font-weight:500;margin-left:16px}
+.bottombar .wx{font-size:44px;font-weight:800;color:var(--accent)}
+.bottombar .wx small{font-size:28px;color:var(--muted);font-weight:500;margin-right:12px}
+/* 场景：左列 60-700，右列 1220-1860，中间 520px 留给人 */
+.scene{position:absolute;left:0;right:0;top:96px;bottom:104px;opacity:0;visibility:hidden;transition:opacity .5s}
+.scene.on{opacity:1;visibility:visible}
+.col{position:absolute;top:40px;bottom:40px;width:640px;display:flex;flex-direction:column;justify-content:center;gap:26px}
+.col.l{left:60px}.col.r{left:1220px}
+.name{font-size:110px;font-weight:900;line-height:1.05}
+.name span{background:linear-gradient(90deg,#fb923c,#fbbf24);-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge{display:flex;align-items:center;gap:18px;font-size:46px;font-weight:700;line-height:1.25;background:var(--panel);border:2px solid var(--line);border-radius:16px;padding:16px 24px}
+.badge b{color:var(--accent);font-size:52px;min-width:2.2em}
+h2.h{font-size:64px;font-weight:900;line-height:1.2}
+h2.h em{font-style:normal;color:var(--accent)}
+.pt{display:flex;gap:20px;font-size:52px;font-weight:700;line-height:1.3}
+.pt i{flex:none;width:76px;height:76px;border-radius:50%;background:var(--accent);color:#1a1205;font-style:normal;font-weight:900;font-size:48px;display:flex;align-items:center;justify-content:center}
+.note{font-size:36px;color:var(--muted);line-height:1.5}
+.todo{outline:3px dashed #eab308;outline-offset:6px} /* 占位内容，开播前替换后去掉 todo 类 */
+.qr{background:#e5e7eb;border-radius:20px;padding:18px;width:420px;margin:0 auto;text-align:center}
+.qr img{width:100%;display:block;border-radius:10px}
+.qr.big{width:520px}
+.wxid{font-size:62px;font-weight:900;text-align:center;color:var(--accent)}
+.hint{position:absolute;right:16px;top:104px;font:20px monospace;color:#64748b;background:rgba(0,0,0,.5);padding:6px 10px;border-radius:6px;z-index:9;display:none}
+body.show-hint .hint{display:block;cursor:default}
