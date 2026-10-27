@@ -38,3 +38,10 @@ h2.h em{font-style:normal;color:var(--accent)}
 .wxid{font-size:62px;font-weight:900;text-align:center;color:var(--accent)}
 .hint{position:absolute;right:16px;top:104px;font:20px monospace;color:#64748b;background:rgba(0,0,0,.5);padding:6px 10px;border-radius:6px;z-index:9;display:none}
 body.show-hint .hint{display:block;cursor:default}
+h2.h.sm{font-size:56px}
+.case{background:var(--panel);border:2px solid var(--line);border-radius:18px;padding:22px 28px;display:flex;flex-direction:column;gap:8px}
+.case .ct{font-size:42px;font-weight:800;line-height:1.25}
+.case .ct b{display:block;font-size:30px;color:var(--accent);margin-bottom:2px}
+.case .cl{font-size:38px;color:#dbe5f7;line-height:1.3}
+.case .cr{font-size:44px;font-weight:800;color:var(--accent2)}
+.case .cr em{font-style:normal;color:var(--accent)}
