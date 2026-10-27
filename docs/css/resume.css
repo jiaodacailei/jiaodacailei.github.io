@@ -312,3 +312,8 @@
       .project-card-body { padding-left: 16px; }
       .resume-section { padding: 40px 20px; }
     }
+
+.edu-certs { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px; }
+.edu-certs a { width: 200px; text-decoration: none; color: #475569; font-size: 12px; text-align: center; }
+.edu-certs img { width: 100%; border: 1px solid #e2e8f0; border-radius: 6px; display: block; margin-bottom: 4px; }
+.edu-cert-note { font-size: 12px; color: #94a3b8; margin-top: 6px; }
