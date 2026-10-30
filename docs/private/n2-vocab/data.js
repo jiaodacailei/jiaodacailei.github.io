@@ -41188,7 +41188,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "0423. 画家（がか）",
-          "overview": "[名] 画家，以绘画为职业的人\n（关联词：自画自賛 自卖自夸）",
+          "overview": "[名] 画家，以绘画为职业的人\n（关联词：自画自賛(じがじさん) 自卖自夸）",
           "answer": "",
           "unit": "第3单元",
           "wordAudio": "audio/word-107a16b84bc8.mp3",
@@ -41200,17 +41200,28 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "自画自賛",
-                  "kana": "じがじさん",
+                  "text": "画家",
+                  "kana": "がか",
                   "t": 0
+                },
+                {
+                  "text": "にな",
+                  "t": 0.54
+                },
+                {
+                  "text": "る",
+                  "t": 0.82
+                },
+                {
+                  "text": "。"
                 }
               ],
-              "zh": "自卖自夸",
+              "zh": "成为画家。",
               "notes": "",
               "blanks": [
-                "画"
+                "画家"
               ],
-              "audio": "audio/seg-f221e92b8059.mp3"
+              "audio": "audio/seg-aacb64698373.mp3"
             }
           ],
           "groups": null,
@@ -41225,6 +41236,14 @@ window.LESSON_DATA = {
                   "以绘画为职业的人"
                 ]
               ]
+            }
+          ],
+          "related": [
+            {
+              "relation": "关联词",
+              "text": "自画自賛",
+              "kana": "じがじさん",
+              "zh": "自卖自夸"
             }
           ]
         },
