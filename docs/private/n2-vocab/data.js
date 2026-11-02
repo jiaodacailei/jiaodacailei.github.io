@@ -75113,7 +75113,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "国",
-                  "kana": "くに",
+                  "kana": "こく",
                   "t": 0.8
                 }
               ],
