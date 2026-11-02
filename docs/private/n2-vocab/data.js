@@ -74792,7 +74792,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "異",
-                  "kana": "い",
+                  "kana": "こと",
                   "t": 0.94
                 },
                 {
