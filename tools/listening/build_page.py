@@ -555,6 +555,9 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # 会重复——动词形"躾ける"里"躾"只读しつ。
     if orig == "躾" and next_char == "け":
         return "しつ"
+    # "小太り"=こぶとり（pykakasi 读 しょうふとり）
+    if orig == "小" and next_char == "太":
+        return "こ"
     # "末っ子"=すえっこ（pykakasi 把"末"读成まつ）
     if orig == "末" and next_char == "っ":
         return "すえ"

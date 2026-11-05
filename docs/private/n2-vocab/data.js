@@ -76926,7 +76926,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "小",
-                  "kana": "しょう",
+                  "kana": "こ",
                   "t": 0
                 },
                 {
