@@ -77047,29 +77047,29 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "を",
-                  "t": 0.48
+                  "t": 0.46
                 },
                 {
                   "text": "粉",
                   "kana": "こ",
-                  "t": 0.62
+                  "t": 0.6
                 },
                 {
                   "text": "に",
-                  "t": 0.8
+                  "t": 0.7
                 },
                 {
                   "text": "して",
-                  "t": 1.04
+                  "t": 0.84
                 },
                 {
                   "text": "働",
                   "kana": "はたら",
-                  "t": 1.26
+                  "t": 1.04
                 },
                 {
                   "text": "く",
-                  "t": 1.64
+                  "t": 1.42
                 },
                 {
                   "text": "。"
@@ -77080,7 +77080,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "身を粉にして"
               ],
-              "audio": "audio/seg-8647bb0fec81.mp3"
+              "audio": "audio/seg-bcdfcbd84ee1.mp3"
             }
           ],
           "groups": null,
@@ -77161,7 +77161,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "粉",
-                  "kana": "こな",
+                  "kana": "こ",
                   "t": 0.9
                 }
               ],
