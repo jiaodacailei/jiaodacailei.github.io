@@ -80074,12 +80074,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.7
+                  "t": 0.72
                 },
                 {
                   "text": "行",
                   "kana": "い",
-                  "t": 0.94
+                  "t": 0.92
                 },
                 {
                   "text": "き",
@@ -80088,15 +80088,15 @@ window.LESSON_DATA = {
                 {
                   "text": "詰",
                   "kana": "つ",
-                  "t": 1.24
+                  "t": 1.22
                 },
                 {
                   "text": "ま",
-                  "t": 1.38
+                  "t": 1.36
                 },
                 {
                   "text": "る",
-                  "t": 1.46
+                  "t": 1.44
                 },
                 {
                   "text": "。"
@@ -80107,7 +80107,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "交渉が行き詰まる"
               ],
-              "audio": "audio/seg-e5b8ea4b9b49.mp3"
+              "audio": "audio/seg-80f04ed0b6ef.mp3"
             },
             {
               "id": 1466,
