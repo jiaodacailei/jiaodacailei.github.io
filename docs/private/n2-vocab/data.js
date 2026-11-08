@@ -47035,7 +47035,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "組",
-                  "kana": "くみ",
+                  "kana": "ぐみ",
                   "t": 1.6
                 },
                 {
@@ -304350,7 +304350,7 @@ window.LESSON_DATA = {
             },
             {
               "text": "組",
-              "kana": "くみ"
+              "kana": "ぐみ"
             }
           ]
         },
