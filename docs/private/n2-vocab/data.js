@@ -81193,16 +81193,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "が",
-                  "t": 0.7
+                  "t": 0.58
                 },
                 {
                   "text": "合同",
                   "kana": "ごうどう",
-                  "t": 0.88
+                  "t": 0.78
                 },
                 {
                   "text": "する",
-                  "t": 1.24
+                  "t": 1.16
                 },
                 {
                   "text": "。"
@@ -81213,7 +81213,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "合同する"
               ],
-              "audio": "audio/seg-09641eff4950.mp3"
+              "audio": "audio/seg-9856da8b9e47.mp3"
             }
           ],
           "groups": null,
