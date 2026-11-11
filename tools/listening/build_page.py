@@ -286,6 +286,7 @@ _KANJI_MIN_MORA = {
 
 
 _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
+    "極ま": "ごくま",   # 0910 極まれ（ごくまれ）：pykakasi 读きわま
     # "スーツ一着"：一着(量词)读いっちゃく，Sudachi 误读いちちゃく。
     "一着": "いっちゃく",
     "一本": "いっぽん",   # Sudachi 误读いちぽん（pykakasi 本来是对的）
@@ -561,6 +562,9 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # 会重复——动词形"躾ける"里"躾"只读しつ。
     if orig == "躾" and next_char == "け":
         return "しつ"
+    # 0910 "極当たり前""極まれ"：副词"極"=ごく（pykakasi 把"極当"读きょく；"極まれ"整体被切成"極ま"+"れ"，在 UNCONDITIONAL 里处理）
+    if orig == "極" and next_char == "当":
+        return "ごく"
     # "小太り"=こぶとり（pykakasi 读 しょうふとり）
     if orig == "小" and next_char == "太":
         return "こ"

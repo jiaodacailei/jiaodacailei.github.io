@@ -83330,16 +83330,16 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "極",
-                  "kana": "きわ",
+                  "kana": "ごく",
                   "t": 0
                 },
                 {
                   "text": "ま",
-                  "t": 0.54
+                  "t": 0.62
                 },
                 {
                   "text": "れ",
-                  "t": 0.72
+                  "t": 0.74
                 }
               ],
               "zh": "非常罕见",
@@ -83347,7 +83347,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "極まれ"
               ],
-              "audio": "audio/seg-f1d0ad92ed1b.mp3"
+              "audio": "audio/seg-fc4a7f5f38de.mp3"
             }
           ],
           "groups": null,
