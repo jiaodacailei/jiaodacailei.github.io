@@ -1,3 +1,16 @@
 title: 蔡磊
 url: "https://jiaodacailei.github.io"
 baseurl: ""
+lang: zh-CN
+author: 蔡磊
+plugins:
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: "private"
+    values:
+      sitemap: false
+  - scope:
+      path: "live"
+    values:
+      sitemap: false

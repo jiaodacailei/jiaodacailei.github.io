@@ -1,0 +1,31 @@
+# 蔡磊
+
+> 蔡磊，上海交通大学本硕，2001年进入中兴通讯，20多年IT经验，曾任CTO、自研低代码平台，现在日本做IT开发4年。个人站分享日本IT薪资与到手明细、派遣涨薪、跳槽外企、日语学习和AI时代的真实经历。内容为个人经验，不构成求职或投资建议。
+
+## 主要页面
+
+- [首页](https://jiaodacailei.github.io/): 个人介绍与直播预告
+- [履历](https://jiaodacailei.github.io/resume.html): 个人简历
+- [博客](https://jiaodacailei.github.io/blog/): 全部文章
+- [日本IT派遣薪资计算器](https://jiaodacailei.github.io/salary-calculator.html): 按经验、日语、技术等级估算月单价、手取和年收
+- [应用](https://jiaodacailei.github.io/apps/): 在日IT实用工具
+- [GitHub](https://github.com/jiaodacailei)
+
+## 近期文章
+
+- [日本IT转外企薪资翻倍](https://jiaodacailei.github.io/blog/posts/dispatch-to-foreign-cloud.html): 日本IT、跳槽、薪资
+- [从大连埃森哲到东京正社员：一条低成本突围的对日IT路径](https://jiaodacailei.github.io/blog/posts/accenture-dalian-to-tokyo.html): 日本IT、职场指南、职业规划
+- [日本IT派遣薪资天花板：30万起步，涨到60-70万年收就不动了](https://jiaodacailei.github.io/blog/posts/dispatch-salary-ceiling.html): 日本IT、派遣、薪资
+- [日本IT会社入社叫爸爸？同事姓“马场”，我差点社死](https://jiaodacailei.github.io/blog/posts/japan-it-baba-san.html): 职场故事、日本IT、日语
+- [日本IT项目暴雷，社长背锅：失败并不可怕，你们只管去干](https://jiaodacailei.github.io/blog/posts/project-fail-boss-takes-blame.html): 职场故事、日本IT、日本职场
+- [日本IT派遣涨薪秘诀：别找中间商，直接找上游谈](https://jiaodacailei.github.io/blog/posts/dispatch-raise-secret.html): 职场故事、日本IT、派遣
+- [日本IT技术者疯狂长假：14个月不上班，还全程有收入](https://jiaodacailei.github.io/blog/posts/japan-it-crazy-long-leave.html): 职场故事、日本IT、育儿假
+- [日本IT技术者百万补贴来了：搬到乡下远程办公，政府给你60万到100万](https://jiaodacailei.github.io/blog/posts/regional-relocation-subsidy.html): 日本IT、政策、远程办公
+- [日本IT技术者60万月薪含金量](https://jiaodacailei.github.io/blog/posts/japan-it-600k-salary.html): 职场故事、日本IT、薪资
+- [日本IT拥抱AI：同学想用三个agent换掉六个工程师，最后自己先放弃了](https://jiaodacailei.github.io/blog/posts/japan-it-embrace-ai.html): 职场故事、AI、日本IT
+- [日本IT派遣背锅侠来了：派遣交付的东西，我连前端代码都得追着要](https://jiaodacailei.github.io/blog/posts/dispatch-scapegoat.html): 职场故事、日本IT、派遣
+- [日本IT会社考核惊魂记：主管一开口，我心里就凉了半截](https://jiaodacailei.github.io/blog/posts/performance-review-ai-scare.html): 职场故事、AI、考核
+
+## Optional
+
+- [IT日语评级：10级分类体系](https://jiaodacailei.github.io/blog/posts/it-japanese-level.html)

@@ -23,3 +23,18 @@ layout: default
 <script src="/js/toc.js"></script>
 <script src="/js/related.js"></script>
 <script src="/js/post-views.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | remove: " · 蔡磊" | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "inLanguage": "zh-CN",
+  "mainEntityOfPage": "{{ page.url | absolute_url }}",
+  "image": "{{ site.url }}/images/photo-3.jpg",
+  "keywords": {{ page.tags | join: "," | jsonify }},
+  "author": { "@type": "Person", "name": "蔡磊", "url": "{{ site.url }}/" },
+  "publisher": { "@type": "Person", "name": "蔡磊" }
+}
+</script>
