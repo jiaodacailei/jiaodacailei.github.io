@@ -52343,7 +52343,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "事",
-                  "kana": "こと",
+                  "kana": "ごと",
                   "t": 1.18
                 },
                 {
@@ -52385,7 +52385,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "事",
-                  "kana": "こと",
+                  "kana": "ごと",
                   "t": 0.74
                 },
                 {
