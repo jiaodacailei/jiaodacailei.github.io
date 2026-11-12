@@ -83903,17 +83903,17 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "、",
-                  "t": 0.52
+                  "t": 0.78
                 },
                 {
                   "text": "三",
-                  "kana": "みっ",
-                  "t": 0.8
+                  "kana": "さん",
+                  "t": 0.78
                 },
                 {
                   "text": "日",
-                  "kana": "か",
-                  "t": 0.8
+                  "kana": "にち",
+                  "t": 0.94
                 }
               ],
               "zh": "最近这两三天",
@@ -83921,7 +83921,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "ここ"
               ],
-              "audio": "audio/seg-63b71333c135.mp3"
+              "audio": "audio/seg-8d92182f3fbe.mp3"
             },
             {
               "id": 1541,
@@ -330189,11 +330189,11 @@ window.LESSON_DATA = {
         },
         {
           "text": "三",
-          "kana": "みっ"
+          "kana": "さん"
         },
         {
           "text": "日中",
-          "kana": "かちゅう"
+          "kana": "にちじゅう"
         },
         {
           "text": "に"

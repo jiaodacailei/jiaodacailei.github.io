@@ -566,6 +566,13 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
     # 0910 "極当たり前""極まれ"：副词"極"=ごく（pykakasi 把"極当"读きょく；"極まれ"整体被切成"極ま"+"れ"，在 UNCONDITIONAL 里处理）
     if orig == "極" and next_char == "当":
         return "ごく"
+    # "ここ二、三日(中に)"=にさんにち(じゅう)：pykakasi 切成"二、三"+"日"(中)，Sudachi 交叉核对会改成みっか/かちゅう
+    if orig == "二、三":
+        return "に、さん"
+    if prev_orig == "二、三" and orig == "日":
+        return "にち"
+    if prev_orig == "二、三" and orig == "日中":
+        return "にちじゅう"
     # "小太り"=こぶとり（pykakasi 读 しょうふとり）
     if orig == "小" and next_char == "太":
         return "こ"
