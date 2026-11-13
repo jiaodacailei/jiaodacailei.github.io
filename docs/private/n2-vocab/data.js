@@ -47175,11 +47175,11 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ら",
-                  "t": 1.42
+                  "t": 1.46
                 },
                 {
                   "text": "ない",
-                  "t": 1.56
+                  "t": 1.58
                 },
                 {
                   "text": "。"
@@ -47190,7 +47190,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "勝ち負け"
               ],
-              "audio": "audio/seg-6c77f83dda0a.mp3"
+              "audio": "audio/seg-62f6a2919e31.mp3"
             }
           ],
           "groups": null,
@@ -85827,12 +85827,12 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "の",
-                  "t": 0.64
+                  "t": 0.62
                 },
                 {
                   "text": "利益",
                   "kana": "りえき",
-                  "t": 0.86
+                  "t": 0.84
                 },
                 {
                   "text": "に",
@@ -85841,7 +85841,7 @@ window.LESSON_DATA = {
                 {
                   "text": "拘",
                   "kana": "こだわ",
-                  "t": 1.46
+                  "t": 1.44
                 },
                 {
                   "text": "る",
@@ -85856,7 +85856,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "拘る"
               ],
-              "audio": "audio/seg-9e8dec2c33da.mp3"
+              "audio": "audio/seg-dc074de58996.mp3"
             },
             {
               "id": 1576,
@@ -85884,16 +85884,16 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 1.64
+                  "t": 1.66
                 },
                 {
                   "text": "拘",
                   "kana": "こだわ",
-                  "t": 1.86
+                  "t": 1.84
                 },
                 {
                   "text": "る",
-                  "t": 2.16
+                  "t": 2.18
                 },
                 {
                   "text": "。"
@@ -85904,7 +85904,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "拘る"
               ],
-              "audio": "audio/seg-9e703d8737f9.mp3"
+              "audio": "audio/seg-ae9a09263b3f.mp3"
             }
           ],
           "groups": null,
