@@ -86932,12 +86932,16 @@ window.LESSON_DATA = {
               "speakerKana": null,
               "tokens": [
                 {
-                  "text": "よろしく",
-                  "t": 0.36
+                  "text": "よろ",
+                  "t": 0
+                },
+                {
+                  "text": "しく",
+                  "t": 0.58
                 },
                 {
                   "text": "と",
-                  "t": 0.72
+                  "t": 0.8
                 },
                 {
                   "text": "言付",
@@ -86946,7 +86950,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "ける",
-                  "t": 1.26
+                  "t": 1.38
                 },
                 {
                   "text": "。"
@@ -86957,7 +86961,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "言付ける"
               ],
-              "audio": "audio/seg-f8d4545fa052.mp3"
+              "audio": "audio/seg-f5cb27d0a423.mp3"
             }
           ],
           "groups": null,
