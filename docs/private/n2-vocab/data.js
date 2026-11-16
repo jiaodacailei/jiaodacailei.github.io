@@ -86848,7 +86848,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "他人事"
               ],
-              "audio": "audio/seg-ba8e72567dd1.mp3"
+              "audio": "audio/seg-a58e2f7a8eb2.mp3"
             }
           ],
           "groups": null,
@@ -124745,7 +124745,7 @@ window.LESSON_DATA = {
         },
         {
           "question": "1377. 心配事（しんぱいごと）",
-          "overview": "[名] 心事，担忧、为难的事情\n（关联词：隠し事(かくしごと)⓪③[名] 隐情，隐瞒 / 他人事(たにんごと)⓪[名] 别人的事情 / 出来事(できごと)②[名] 事情，事件；变故）",
+          "overview": "[名] 心事，担忧、为难的事情\n（关联词：隠し事(かくしごと)⓪③[名] 隐情，隐瞒 / 他人事(ひとごと)⓪[名] 别人的事情 / 出来事(できごと)②[名] 事情，事件；变故）",
           "answer": "",
           "unit": "第10单元",
           "wordAudio": "audio/word-b0dfe50c4916.mp3",
@@ -124814,7 +124814,7 @@ window.LESSON_DATA = {
             {
               "relation": "关联词",
               "text": "他人事",
-              "kana": "たにんごと",
+              "kana": "ひとごと",
               "zh": "别人的事情"
             },
             {
@@ -173016,34 +173016,34 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "に",
-                  "t": 0.96
+                  "t": 0.8
                 },
                 {
                   "text": "首",
                   "kana": "くび",
-                  "t": 1.1
+                  "t": 0.94
                 },
                 {
                   "text": "を",
-                  "t": 1.32
+                  "t": 1.16
                 },
                 {
                   "text": "突",
                   "kana": "つ",
-                  "t": 1.56
+                  "t": 1.4
                 },
                 {
                   "text": "っ",
-                  "t": 1.78
+                  "t": 1.6
                 },
                 {
                   "text": "込",
                   "kana": "こ",
-                  "t": 1.86
+                  "t": 1.72
                 },
                 {
                   "text": "む",
-                  "t": 1.88
+                  "t": 1.74
                 },
                 {
                   "text": "。"
@@ -173054,7 +173054,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "突っ込む"
               ],
-              "audio": "audio/seg-17ecc6f57042.mp3"
+              "audio": "audio/seg-5dbce8483fd8.mp3"
             }
           ],
           "groups": null,
