@@ -87222,7 +87222,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "着",
-                  "kana": "つ",
+                  "kana": "き",
                   "t": 0
                 },
                 {
@@ -87243,7 +87243,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "着こなす"
               ],
-              "audio": "audio/seg-b4a95571ab66.mp3"
+              "audio": "audio/seg-e77e75f04c9d.mp3"
             },
             {
               "id": 1600,

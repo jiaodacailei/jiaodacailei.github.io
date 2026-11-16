@@ -573,6 +573,12 @@ def _resolve_hira(orig, hira, prev_orig, next_char=None, prev2_orig=None):
         return "にち"
     if prev_orig == "二、三" and orig == "日中":
         return "にちじゅう"
+    # "着こなす"=きこなす（pykakasi 读成つこなす）
+    # pykakasi 把"着こ"合成一个 token（读つこ），"着"单独成 token 时后接こ也读き
+    if orig == "着こ":
+        return "きこ"
+    if orig == "着" and next_char == "こ":
+        return "き"
     # "小太り"=こぶとり（pykakasi 读 しょうふとり）
     if orig == "小" and next_char == "太":
         return "こ"
