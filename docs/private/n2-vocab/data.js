@@ -58565,7 +58565,7 @@ window.LESSON_DATA = {
               "tokens": [
                 {
                   "text": "風車",
-                  "kana": "かざぐるま",
+                  "kana": "ふうしゃ",
                   "t": 0
                 },
                 {
@@ -58579,7 +58579,7 @@ window.LESSON_DATA = {
                 },
                 {
                   "text": "する",
-                  "t": 1.34
+                  "t": 1.32
                 },
                 {
                   "text": "。"
@@ -58590,7 +58590,7 @@ window.LESSON_DATA = {
               "blanks": [
                 "逆転する"
               ],
-              "audio": "audio/seg-bf7a4485977e.mp3"
+              "audio": "audio/seg-9ab65f21ac63.mp3"
             },
             {
               "id": 1049,

@@ -287,6 +287,8 @@ _KANJI_MIN_MORA = {
 
 
 _TOKEN_READING_OVERRIDES_UNCONDITIONAL = {
+    # "風車"统一读ふうしゃ（pykakasi 默认かざぐるま，与TTS音频不一致）
+    "風車": "ふうしゃ",
     "極ま": "ごくま",   # 0910 極まれ（ごくまれ）：pykakasi 读きわま
     # "スーツ一着"：一着(量词)读いっちゃく，Sudachi 误读いちちゃく。
     "一着": "いっちゃく",
